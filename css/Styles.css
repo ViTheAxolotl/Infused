@@ -750,7 +750,7 @@ table, .itemSearch, #itemImg
   @media (max-width: 768px) {
     .col-md-6  
     {
-        width: 47.9%;
+        width: 47.9% !important;
     }
 
     .col-md-9
