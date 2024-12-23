@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name = "keywords" content = "Creation Story">
+    <link rel="shortcut icon" href="images/favicon.png">
+
+    <!-- CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href = "css/Styles.css" rel = "stylesheet" />
+
+    <title>Map</title>
+    <script src="//script.sheetsu.com/"></script>
+  </head>
+  
+  <body>
+    <nav class="navbar navbar-expand-lg bg-dark navbar-primary"> 
+        <script src="js/pageSetup.js" class = "noParent" type="module"></script>
+    </nav>
+
+    <div class="container">
+      <div id="cover" class = "invisible" style="z-index: 1011;">
+        <button id="hideCover" class="invisible hbhbhbhb" style="z-index: 1012;">Exit</button>
+        <img id = "viewToken" class="invisible veiwTokens" style="z-index: 1013;" src=""/>
+        <img id = "viewBorder" class="invisible veiwTokens"  style="z-index: 1014;" src=""/>
+        <img id = "viewHp" class="invisible veiwTokens" style="z-index: 1015;" src=""/>
+        <h3 id = "viewTitle" class="invisible center" style="z-index: 1016;"></h3>
+        <p class="invisible hbhbhbhb" id = "showInstructions" style="padding:10px;"></p>
+      </div>
+
+      <img id="helpBtn" src="images/helpBtn.png"/>
+
+      <div class="row align-items-top">
+        <div id = "header" class = "col-12">
+          <h1>Map</h1><br>
+        </div>
+
+        <div id = "gridMap" class = "bg-UP-purple color-UP-black col-md-12 col-sm-12">
+          <img id = "grid" src = "images/map/grid.png"/>
+        </div>
+
+        <div id = "controls" class = "bg-UP-purple color-UP-black col-md-12 col-sm-12">
+          <h3 id = "name"></h3>
+          <div class="center">
+            <button name="stats" class = "gridButton firstMenu selected">Stats</button>
+            <button name="actions" class = "gridButton firstMenu">Actions</button>
+            <button name="favorites" class = "gridButton firstMenu"><img src="images/favorited.png" height="20px"/></button>
+            <button name="DmSite" class="gridButton firstMenu isVi">DmSite</button>
+          </div>
+          
+          <div id = "stats">
+            <table>
+              <tr>
+                <td>
+                  <div id = "arrows" class = "center">
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100">
+                      <image width="100" height="100" xlink:href="images/map/dPad.png"></image> 
+                      <a id="up">
+                        <rect x="32" y="0" fill="#fff" opacity="0" width="35" height="35"></rect>
+                      </a>
+                      <a id = "left">
+                        <rect x="0" y="33" fill="#fff" opacity="0" width="35" height="35"></rect>
+                      </a>
+                      <a id="right">
+                        <rect x="65" y="33" fill="#fff" opacity="0" width="35" height="35"></rect>
+                      </a> 
+                      <a id="down">
+                        <rect x="33" y="65" fill="#fff" opacity="0" width="35" height="35"></rect>
+                      </a>
+                    </svg>
+                  </div>
+
+                  <div id = "titles">
+                    <h6 class="color-UP-yellow labelS" id="title">Status: </h6>
+                    <span class="blo"></span>
+                    <button class="inOrDe" name="title">+</button>
+                    <input type = "text" id="status"/>
+                    <button class="inOrDe" name="title">-</button>
+                  </div>
+                </td>
+
+                <td>
+                  <div id = "hp">
+                    <h6 class="color-UP-yellow labelS">Current Hp:</h6>
+                    <button class="inOrDe" name="current">+</button>
+                    <input class = "numberInput" type = "number" value = "" min = "0" step="1" id = "current"/>
+                    <button class="inOrDe" name="current">-</button>
+                    <spam class="blo"></spam>
+                    <h6 class="color-UP-yellow labelS">Max Hp:</h6> 
+                    <button class="inOrDe" name="max">+</button>
+                    <input class = "numberInput" type = "number" value = "" min = "0" step="1" id = "max"/>
+                    <button class="inOrDe" name="max">-</button>
+                    <spam class="blo"></spam>
+                    <h6 class="color-UP-yellow labelS">Temp Hp:</h6> 
+                    <button class="inOrDe" name="temp">+</button>
+                    <input class = "numberInput" type = "number" value = "" min = "0" step="1" id = "temp"/>
+                    <button class="inOrDe" name="temp">-</button>
+                  </div>
+                </td>
+              </tr>
+            
+              <tr>
+                <td>
+                  <div id="turn">
+                    <h6 class="center color-UP-yellow">Turn Order:</h6>
+                    <hr/>
+                    <div id="turnOrder"></div>
+                  </div>
+                  
+                  <div>
+                    <button class="inOrDe isVi" style="display: inline;" name="turn">+</button>
+                    <h6 class="center isVi color-UP-yellow" style="display: inline;">Current Turn</h6>
+                    <button class="inOrDe isVi" name="turn"style="display: inline;">-</button>
+                  </div>
+                </td>
+                
+                <td style="vertical-align: top;">
+                  <div id = "changeToken">
+                    <button id="changeTokenBtn">Change Token</button>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </div> 
+
+          <div id = "favorites" style="display: none;">
+            <div class="center">
+              <button name="spellsF" class = "gridButton secondMenu selected">Spells</button>
+              <button name="abilityF" class = "gridButton secondMenu">Abilities</button>
+            </div>
+
+            <div id="spellsF">
+              <button name="0" class = "gridButton spell create">Create New Spell</button>
+            </div>
+
+            <div id="abilityF" style="display: none;">
+              <button name="0" class = "gridButton spell create">Create New Ability</button>
+            </div>
+          </div>
+
+          <div id = "actions" style="display: none;">
+            <div class="center">
+              <button name="spells" class = "gridButton secondMenu selected">Spells</button>
+              <button name="ability" class = "gridButton secondMenu">Abilities</button>
+            </div>
+
+            <div id="spells">
+              <button name="0" class = "gridButton spell">Cantrips</button>
+              <button name="1" class = "gridButton spell">Lvl 1</button>
+              <button name="2" class = "gridButton spell">Lvl 2</button>
+              <button name="3" class = "gridButton spell">Lvl 3</button>
+              <button name="4" class = "gridButton spell">Lvl 4</button>
+              <button name="5" class = "gridButton spell">Lvl 5</button>
+              <button name="6" class = "gridButton spell">Lvl 6</button>
+              <button name="7" class = "gridButton spell">Lvl 7</button>
+              <button name="8" class = "gridButton spell">Lvl 8</button>
+              <button name="9" class = "gridButton spell">Lvl 9</button>
+            </div>
+
+            <div id="ability" style="display: none;">
+              <button name="Artificer" class = "gridButton action">Artificer</button>
+              <button name="Barbarian" class = "gridButton action">Barbarian</button>
+              <button name="Bard" class = "gridButton action">Bard</button>
+              <button name="Cleric" class = "gridButton action">Cleric</button>
+              <button name="Druid" class = "gridButton action">Druid</button>
+              <button name="Fighter" class = "gridButton action">Fighter</button>
+              <button name="Monk" class = "gridButton action">Monk</button>
+              <button name="Paladin" class = "gridButton action">Paladin</button>
+              <button name="Ranger" class = "gridButton action">Ranger</button>
+              <button name="Rogue" class = "gridButton action">Rogue</button>
+              <button name="Sorcerer" class = "gridButton action">Sorcerer</button>
+              <button name="Warlock" class = "gridButton action">Warlock</button>
+              <button name="Wizard" class = "gridButton action">Wizard</button>
+              <button name="Misc" class = "gridButton action">Misc</button>
+            </div>
+          </div>
+
+          <div id = "DmSite" style="display: none;">
+            <iframe src="dmSite.html" title="dmSite" scrolling = "no" style="width: 100%; height: 50vh; overflow: hidden;"></iframe>
+          </div>
+
+          <div id="searchDiv" class="center" style="display: none;">
+            <h3 style="display: inline; margin-right: 5px;">Search:</h3>
+            <input style="display: inline; min-width: 20%;" name="search">
+          </div>
+          
+          <div id="cards"></div>
+          <hr>
+          
+          <div class="center">
+            <h3>Roll Dice:</h3>
+            <input id="diceToRoll" style="display: inline;" placeholder="1"/>
+            <p style="display: inline;">d</p>
+            <input id="sides" style="display: inline;" placeholder="20"/>
+            <p style="display: inline;">+/-</p>
+            <input id = "modifier" style="display: inline;" placeholder="-2"/>
+            <button id = "rollDice">Roll</button>
+          </div>
+        </div>
+
+        <div id = "discDisplay" class = "bg-UP-purple color-UP-black col-md-12 col-sm-12" style="height: 800px;">
+          <h3>Display</h3>
+          <hr>
+          <widgetbot
+            server="1042157480463040613"
+            channel="1227307145796521985"
+            height="90%"
+            width="100%"
+          ></widgetbot>
+          <script src="https://cdn.jsdelivr.net/npm/@widgetbot/html-embed"></script>
+        </div>
+      </div>
+    
+      <div id = "footer" class = "col-12">
+      </div>
+    </div>
+
+     <!-- Bootstrap JavaScript Components-LOAD LAST -->
+     <script scr="js/bootstrap/scripts.js"></script>
+     <script src="js/bootstrap/bootstrap.bundle.min.js"></script>
+     <script src="js/mapControler.js" type = "module"></script>
+     <script src="src/map.js" type = "module"></script>
+  </body>
+</html>
