@@ -85,7 +85,7 @@ body
     margin: 20px 10px 0px 0px;
 }
 
-#info
+#info, .col-md-7
 {
     flex:0 0 auto;
     width:56.81%
