@@ -575,6 +575,12 @@ table, .itemSearch, #itemImg
     display: none;
 }
 
+.info
+{
+    flex:0 0 auto;
+    width:56.81%
+}
+
 @media (max-width: 1399px) {
     .col-md-6
     {
