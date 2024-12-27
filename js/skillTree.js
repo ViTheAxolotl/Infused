@@ -74,14 +74,14 @@ function init()
 
 function handleClick()
 {
-    if(this.classlist.contains("selected"))
+    if(this.classname.contains("selected"))
     {
-        this.classlist.remove("selected");
+        this.classname = ".";
     }
 
     else
     {
-        this.classlist.add("selected");
+        this.classname = "selected";
     }
 }
 
