@@ -581,7 +581,10 @@ table, .itemSearch, #itemImg
     display: none;
 }
 
-
+area 
+{
+    outline-color: white;
+}
 
 @media (max-width: 1399px) {
     .col-md-6
