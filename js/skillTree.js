@@ -5,6 +5,38 @@ import { toTitleCase, auth, database } from './viMethods.js';
 
 let player;
 
+class ResponsiveImageMap {
+    constructor(map, img, width) {
+        this.img = img;
+        this.originalWidth = width;
+        this.areas = [];
+
+        for (const area of map.getElementsByTagName('area')) {
+            this.areas.push({
+                element: area,
+                originalCoords: area.coords.split(',')
+            });
+        }
+
+        window.addEventListener('resize', e => this.resize(e));
+        this.resize();
+    }
+
+    resize() {
+        const ratio = this.img.offsetWidth / this.originalWidth;
+
+        for (const area of this.areas) {
+            const newCoords = [];
+            for (const originalCoord of area.originalCoords) {
+                newCoords.push(Math.round(originalCoord * ratio));
+            }
+            area.element.coords = newCoords.join(',');
+        }
+
+        return true;
+    };
+}
+
 onAuthStateChanged(auth, (user) => 
 {
     if (!user) 
@@ -23,12 +55,16 @@ onAuthStateChanged(auth, (user) =>
 
 function init()
 {
-    let tokens = document.getElementById("tree").children;
+    let map = document.getElementById('tree');
+    let tokens = map.children;
+    let image = document.getElementById('skillImg');
 
     for(let token of tokens)
     {
         token.onclick = handleClick;
     }
+
+    new ResponsiveImageMap(map, image, image.width);
 }
 
 function handleClick()
