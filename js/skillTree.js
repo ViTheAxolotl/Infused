@@ -64,7 +64,7 @@ function init()
         token.onclick = handleClick;
     }
 
-    new ResponsiveImageMap(map, image, image.width);
+    new ResponsiveImageMap(map, image, 1920);
 }
 
 function handleClick()
