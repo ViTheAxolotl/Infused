@@ -2,6 +2,7 @@
 import { ref, onValue } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js';
 import { onAuthStateChanged} from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
 import { toTitleCase, auth, database } from './viMethods.js';
+import { imageMapResize } from './resizeMap.js';
 
 let player;
 
@@ -17,7 +18,7 @@ onAuthStateChanged(auth, (user) =>
     {
         player = auth.currentUser.email.split("@");
         player = toTitleCase(player[0]);
-        document.getElementById("name").innerHTML = `${player} ${document.getElementById("name").innerHTML}`;
+        document.getElementById("name").innerHTML = `${player}${document.getElementById("name").innerHTML}`;
     }
 });
 
@@ -45,3 +46,4 @@ function handleClick()
 }
 
 init();
+imageMapResize();
