@@ -22,14 +22,19 @@ class ResponsiveImageMap {
         this.resize();
     }
 
-    resize() {
+    resize() 
+    {
         const ratio = this.img.offsetWidth / this.originalWidth;
 
-        for (const area of this.areas) {
+        for (const area of this.areas) 
+        {
             const newCoords = [];
-            for (const originalCoord of area.originalCoords) {
+
+            for (const originalCoord of area.originalCoords) 
+            {
                 newCoords.push(Math.round(originalCoord * ratio));
             }
+
             area.element.coords = newCoords.join(',');
         }
 
