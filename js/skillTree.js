@@ -2,7 +2,6 @@
 import { ref, onValue } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js';
 import { onAuthStateChanged} from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
 import { toTitleCase, auth, database } from './viMethods.js';
-import { imageMapResize } from './resizeMap.js';
 
 let player;
 
@@ -46,4 +45,3 @@ function handleClick()
 }
 
 init();
-imageMapResize();
