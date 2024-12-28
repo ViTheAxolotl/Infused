@@ -70,6 +70,7 @@ onAuthStateChanged(auth, (user) =>
         {
             const data = snapshot.val();
             wholeSkills = data;
+            skills = {"Strength" : 0, "Dexterity" : 0, "Constitution" : 0, "Intelligence" : 0, "Wisdom" : 0, "Charisma" : 0};
 
             if(data == null)
             {
@@ -152,8 +153,6 @@ function handleClick()
         this.style.opacity = "0";
         setDoc(`playerChar/${player}/skillTree/${this.id}`, "active");
     }
-
-    skills = {"Strength" : 0, "Dexterity" : 0, "Constitution" : 0, "Intelligence" : 0, "Wisdom" : 0, "Charisma" : 0};
 }
 
 function changeSkill(modifier, skill)
