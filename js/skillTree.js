@@ -9,7 +9,7 @@ let skills = {"Strength" : 0, "Dexterity" : 0, "Constitution" : 0, "Intelligence
 
 function getSkillName(skill)
 {
-    return skill.slice(0, this.id.length - 1);
+    return skill.slice(0, skill.length - 1);
 }
 
 class ResponsiveImageMap {
