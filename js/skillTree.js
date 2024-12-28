@@ -86,7 +86,7 @@ function summonDarkness(map, image)
         newImage.style.position = "absolute";
         newImage.style.width = (radius*2) + "px";
         newImage.style.height = (radius*2) + "px";
-        newImage.style.left = (x - radius) / ratio + "px";
+        newImage.style.left = (x - radius) + "px";
         newImage.style.top = (y + radius) / ratio + "px";
         newImage.style.border = "none";
         newImage.style.margin = "0px";
