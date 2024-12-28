@@ -73,6 +73,7 @@ function summonDarkness(map, image)
     let y;
     let radius;
     let offSet = 0;
+    let ratio = image.offsetWidth / 1920;
 
     for(let token of tokens)
     {
@@ -85,8 +86,8 @@ function summonDarkness(map, image)
         newImage.style.position = "absolute";
         newImage.style.width = (radius*2) + "px";
         newImage.style.height = (radius*2) + "px";
-        newImage.style.left = (x - radius) + "px";
-        newImage.style.top = (y + radius * 1.6) + "px";
+        newImage.style.left = (x - radius) / ratio + "px";
+        newImage.style.top = (y + radius) / ratio + "px";
         newImage.style.border = "none";
         newImage.style.margin = "0px";
         document.getElementById("map").appendChild(newImage);
