@@ -134,7 +134,7 @@ function summonDarkness(map, image)
 function handleClick()
 {
     let skill = getSkillName(this.id);
-    let modifier;
+    let modifier = 0;
 
     if(this.style.opacity == "0")
     {
