@@ -98,14 +98,14 @@ function summonDarkness(map, image)
 
 function handleClick()
 {
-    if(this.className == "selected")
+    if(this.style.opacity == 0)
     {
-        this.className = ".";
+        this.style.opacity = 100;
     }
 
     else
     {
-        this.className = "selected";
+        this.style.opacity = 0;
     }
 }
 
