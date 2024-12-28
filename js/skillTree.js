@@ -60,11 +60,10 @@ onAuthStateChanged(auth, (user) =>
 
 function init()
 {
-    new ResponsiveImageMap(map, image, 1920);
-
     let map = document.getElementById('tree');
     let tokens = map.children;
     let image = document.getElementById('skillImg');
+    new ResponsiveImageMap(map, image, 1920);
     let x;
     let y;
     let radius;
