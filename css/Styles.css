@@ -581,6 +581,16 @@ table, .itemSearch, #itemImg
     display: none;
 }
 
+.area 
+{
+    position: relative;
+}
+
+.overlay-image
+{
+    position: absolute;
+}
+
 @media (max-width: 1399px) {
     .col-md-6
     {

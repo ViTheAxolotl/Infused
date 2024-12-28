@@ -83,13 +83,13 @@ function summonDarkness(map, image)
 
         var newImage = document.createElement("img");
         newImage.src = 'images/hide.png';
-        newImage.style.position = "absolute";
         newImage.style.width = (radius*2) + "px";
         newImage.style.height = (radius*2) + "px";
         newImage.style.left = (x - radius) + "px";
         newImage.style.top = (y) / (ratio * 1.2) + "px";
         newImage.style.border = "none";
         newImage.style.margin = "0px";
+        newImage.classList = "overlay-image";
         document.getElementById("map").appendChild(newImage);
         newImage.onclick = handleClick;
         offSet += .55;
