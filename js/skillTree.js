@@ -74,7 +74,7 @@ function init()
         x = cords[0]; y = cords[1]; radius = cords[2];
         
         const ctx = image.getContext("2d");
-        cxt.onclick = handleClick;
+        ctx.onclick = handleClick;
         ctx.beginPath();
         ctx.arc(x, y, radius, 0, 2 * Math.PI);
         ctx.stroke();
