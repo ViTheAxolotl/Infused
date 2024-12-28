@@ -65,7 +65,7 @@ onAuthStateChanged(auth, (user) =>
             const data = snapshot.val();
             wholeSkills = data;
 
-            if(data.length() == 0)
+            if(data == null)
             {
                 setDoc(`playerChar/${player}/skillTree/start`, "active");
             }
