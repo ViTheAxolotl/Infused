@@ -71,7 +71,7 @@ function init()
     for(let token of tokens)
     {
         let cords = token.coords.split(",");
-        x = cords[0]; y = cords[1]; radius = cords[2];
+        x = cords[0] + image.offsetWidth; y = cords[1] + image.offsetHeight; radius = cords[2];
 
         var newImage = document.createElement("img");
         newImage.src = 'images/hide.png';
