@@ -581,10 +581,9 @@ table, .itemSearch, #itemImg
     display: none;
 }
 
-area 
-{
-    outline-color: white;
-}
+area:link, area:hover, area:active, area:focus {
+    border: 5px #f00 solid;
+   }
 
 @media (max-width: 1399px) {
     .col-md-6
