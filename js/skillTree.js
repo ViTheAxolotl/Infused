@@ -5,7 +5,7 @@ import { toTitleCase, auth, database, setDoc, deleteDoc, returnHpImage } from '.
 
 let player;
 let wholeSkills;
-let skills = {"Strength" : 0, "Dexterity" : 0, "Constitution" : 0, "Intelligence" : 0, "Wisdom" : 0, "Charisma" : 0};
+let skills;
 
 function getSkillName(skill)
 {

@@ -938,7 +938,7 @@ function loadMap()
 function handleGenerate()
 {
     hideButtons();
-    backupFavorites();
+    setDoc(`playerChar/Dream`, wholeChar["Okami"]);
 
     alert("done");
     handleDone();
