@@ -90,7 +90,7 @@ function summonDarkness(map, image)
         newImage.style.border = "none";
         document.getElementById("map").appendChild(newImage);
         newImage.onclick = handleClick;
-        offSet += .4;
+        offSet += .6;
     }
 }
 
