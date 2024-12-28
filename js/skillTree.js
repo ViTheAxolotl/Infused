@@ -79,7 +79,7 @@ function init()
         newImage.width = radius*2;
         newImage.style.left = (x - (newImage.width/2)) + "px";
         newImage.style.top = (y - (newImage.width/2)) + "px";
-        document.body.appendChild(newImage);
+        document.getElementById(map).appendChild(newImage);
         newImage.onclick = handleClick;
     }
 }
