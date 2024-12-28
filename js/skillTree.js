@@ -82,9 +82,9 @@ onAuthStateChanged(auth, (user) =>
                 {
                     document.getElementById(key).style.opacity = "0";
                     
-                    if(Object.keys(skills).includes(`${getSkillName(this.id)}`))
+                    if(Object.keys(skills).includes(`${getSkillName(key)}`))
                     {
-                        changeSkill(1, getSkillName(this.id));
+                        changeSkill(1, getSkillName(key));
                     }
                 }
             }
