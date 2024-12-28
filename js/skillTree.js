@@ -72,6 +72,7 @@ function summonDarkness(map, image)
     let x;
     let y;
     let radius;
+    let offSet = 0;
 
     for(let token of tokens)
     {
@@ -85,10 +86,11 @@ function summonDarkness(map, image)
         newImage.style.width = (radius*2) + "px";
         newImage.style.height = (radius*2) + "px";
         newImage.style.left = (x - radius) + "px";
-        newImage.style.top = (y + radius) + "px";
+        newImage.style.top = (y + radius + offSet) + "px";
         newImage.style.border = "none";
         document.getElementById("map").appendChild(newImage);
         newImage.onclick = handleClick;
+        offSet += .4;
     }
 }
 
