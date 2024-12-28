@@ -78,7 +78,7 @@ function summonDarkness(map, image)
     {
         let cords = token.coords.split(",");
         for(let i = 0; i < 3; i++){cords[i] = parseInt(cords[i]);}
-        x = cords[0] + image.offsetLeft; y = cords[1]; radius = cords[2];
+        x = cords[0] + image.offsetLeft; y = cords[1] + image.offsetTop; radius = cords[2];
 
         var newImage = document.createElement("img");
         newImage.src = 'images/hide.png';
