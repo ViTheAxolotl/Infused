@@ -159,6 +159,7 @@ function handleClick()
 function changeSkill(modifier, skill)
 {
     skills[skill] = skills[skill] + modifier;
+    updateDisplay();
 }
 
 function updateDisplay()
