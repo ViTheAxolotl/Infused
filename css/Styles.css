@@ -586,11 +586,6 @@ table, .itemSearch, #itemImg
     position: relative;
 }
 
-.overlay-image
-{
-    
-}
-
 @media (max-width: 1399px) {
     .col-md-6
     {

@@ -1,9 +1,10 @@
 "use strict";
 import { ref, onValue } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js';
 import { onAuthStateChanged} from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
-import { toTitleCase, auth, database } from './viMethods.js';
+import { toTitleCase, auth, database, setDoc, deleteDoc, returnHpImage } from '../js/viMethods.js';
 
 let player;
+let wholeSkills;
 
 class ResponsiveImageMap {
     constructor(map, img, width) {
@@ -43,6 +44,8 @@ class ResponsiveImageMap {
     };
 }
 
+
+
 onAuthStateChanged(auth, (user) => 
 {
     if (!user) 
@@ -56,6 +59,25 @@ onAuthStateChanged(auth, (user) =>
         player = auth.currentUser.email.split("@");
         player = toTitleCase(player[0]);
         document.getElementById("name").innerHTML = `${player}${document.getElementById("name").innerHTML}`;
+        let skillRef = ref(database, `playerChar/${player}/skillTree`);
+        onValue(skillRef, (snapshot) => 
+        {
+            const data = snapshot.val();
+            wholeSkills = data;
+
+            if(data.length() == 0)
+            {
+                setDoc(`playerChar/${player}/skillTree/start`, "active");
+            }
+
+            else
+            {
+                for(let key of Object.keys(wholeSkills))
+                {
+                    document.getElementById(key).style.opacity = "0";
+                }
+            }
+        });
     }
 });
 
@@ -73,7 +95,6 @@ function summonDarkness(map, image)
     let y;
     let radius;
     let offSet = 0;
-    let ratio = image.offsetWidth / 1920;
 
     for(let token of tokens)
     {
@@ -90,6 +111,7 @@ function summonDarkness(map, image)
         newImage.style.border = "none";
         newImage.style.margin = "0px";
         newImage.style.position = "absolute";
+        newImage.id = token.title;
         document.getElementById("map").appendChild(newImage);
         newImage.onclick = handleClick;
         offSet += .55;
