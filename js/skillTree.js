@@ -80,7 +80,7 @@ function init()
         newImage.style.width = (radius*2) + "px";
         newImage.style.height = (radius*2) + "px";
         newImage.style.left = (x - radius) + "px";
-        newImage.style.top = (y + radius) + "px";
+        newImage.style.top = (y + radius*2) + "px";
         newImage.style.border = "none";
         document.getElementById("map").appendChild(newImage);
         newImage.onclick = handleClick;
