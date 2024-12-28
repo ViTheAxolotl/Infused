@@ -76,8 +76,8 @@ function init()
         var newImage = document.createElement("img");
         newImage.src = 'images/hide.png';
         newImage.style.position = "absolute";
-        newImage.style.left = (x - (newImage.width/2)) + "px";
-        newImage.style.top = (y - (newImage.height/2)) + "px";
+        newImage.style.left = (x - (0)) + "px";
+        newImage.style.top = (y - (0)) + "px";
         document.body.appendChild(newImage);
         newImage.onclick = handleClick;
     }
