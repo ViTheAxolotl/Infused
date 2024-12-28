@@ -74,7 +74,7 @@ function init()
 
 function handleClick()
 {
-    if(this.className.contains("selected"))
+    if(this.className == selected)
     {
         this.className = ".";
     }
