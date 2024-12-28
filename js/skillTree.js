@@ -63,17 +63,22 @@ function init()
     let map = document.getElementById('tree');
     let tokens = map.children;
     let image = document.getElementById('skillImg');
+    let canvas = document.getElementById("canvas");
     new ResponsiveImageMap(map, image, 1920);
     let x;
     let y;
     let radius;
-    
+
+    canvas.style.position = "absolute";
+    canvas.style.left = image.offsetLeft;
+    canvas.style.top = image.offsetTop;
+        
     for(let token of tokens)
     {
         let cords = token.coords.split(",");
         x = cords[0]; y = cords[1]; radius = cords[2];
         
-        const ctx = image.getContext("2d");
+        const ctx = canvas.getContext("2d");
         ctx.onclick = handleClick;
         ctx.beginPath();
         ctx.arc(x, y, radius, 0, 2 * Math.PI);
