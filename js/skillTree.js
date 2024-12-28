@@ -85,7 +85,7 @@ function init()
         newImage.style.border = "none";
         document.getElementById("map").appendChild(newImage);
         newImage.onclick = handleClick;
-        offset += .33;
+        offset += 1;
     }
 }
 
