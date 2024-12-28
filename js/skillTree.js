@@ -76,7 +76,7 @@ function init()
         var newImage = document.createElement("img");
         newImage.src = 'images/hide.png';
         newImage.style.position = "absolute";
-        newImage.width = radius*2;
+        newImage.width = radius*2 + "px";
         newImage.style.left = (x - (newImage.width/2)) + "px";
         newImage.style.top = (y - (newImage.width/2)) + "px";
         document.getElementById("map").appendChild(newImage);
