@@ -86,6 +86,14 @@ onAuthStateChanged(auth, (user) =>
                     {
                         changeSkill(1, getSkillName(key));
                     }
+
+                    else if("all" == getSkillName(key))
+                    {
+                        for(let skill of Object.keys(skills))
+                        {
+                            changeSkill(1, skill);
+                        }
+                    }
                 }
             }
 
