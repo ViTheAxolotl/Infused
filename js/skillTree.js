@@ -71,6 +71,7 @@ function init()
     for(let token of tokens)
     {
         let cords = token.coords.split(",");
+        for(let i = 0; i < 3; i++){cords[i] = parseInt(cords[i]);}
         x = cords[0] + image.offsetWidth; y = cords[1] + image.offsetHeight; radius = cords[2];
 
         var newImage = document.createElement("img");
