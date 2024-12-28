@@ -89,7 +89,7 @@ function summonDarkness(map, image)
         newImage.style.top = (y - radius) + "px";
         newImage.style.border = "none";
         newImage.style.margin = "0px";
-        newImage.classList = "overlay-image";
+        newImage.style.position = "absolute";
         document.getElementById("map").appendChild(newImage);
         newImage.onclick = handleClick;
         offSet += .55;
@@ -98,14 +98,14 @@ function summonDarkness(map, image)
 
 function handleClick()
 {
-    if(this.style.opacity == 0)
+    if(this.style.opacity == "0")
     {
-        this.style.opacity = 100;
+        this.style.opacity = "100";
     }
 
     else
     {
-        this.style.opacity = 0;
+        this.style.opacity = "0";
     }
 }
 
