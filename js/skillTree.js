@@ -5,6 +5,12 @@ import { toTitleCase, auth, database, setDoc, deleteDoc, returnHpImage } from '.
 
 let player;
 let wholeSkills;
+let skills = {"Strength" : 0, "Dexterity" : 0, "Constitution" : 0, "Intelligence" : 0, "Wisdom" : 0, "Charisma" : 0};
+
+function getSkillName(skill)
+{
+    return skill.slice(0, this.id.length - 1);
+}
 
 class ResponsiveImageMap {
     constructor(map, img, width) {
@@ -75,8 +81,15 @@ onAuthStateChanged(auth, (user) =>
                 for(let key of Object.keys(wholeSkills))
                 {
                     document.getElementById(key).style.opacity = "0";
+                    
+                    if(Object.keys(skills).includes(`${getSkillName(this.id)}`))
+                    {
+                        changeSkill(1, getSkillName(this.id));
+                    }
                 }
             }
+
+            updateDisplay();
         });
     }
 });
@@ -120,17 +133,45 @@ function summonDarkness(map, image)
 
 function handleClick()
 {
+    let skill = getSkillName(this.id);
+    let modifier;
+
     if(this.style.opacity == "0")
     {
         this.style.opacity = "100";
         deleteDoc(`playerChar/${player}/skillTree/${this.id}`, "active");
+        modifier = -1;
     }
 
     else
     {
         this.style.opacity = "0";
         setDoc(`playerChar/${player}/skillTree/${this.id}`, "active");
+        modifier = 1;
     }
+
+    if(Object.keys(skills).includes(`${skill}`))
+    {
+        changeSkill(modifier, getSkillName(this.id));
+    }
+}
+
+function changeSkill(modifier, skill)
+{
+    skills[skill] = skills[skill] + modifier;
+}
+
+function updateDisplay()
+{
+    let display = document.getElementById("skillDisplay");
+    let stat = "";
+
+    for(let key of Object.keys(skills))
+    {
+        stat += `<li>${key}: +${skills[key]}</li>`;
+    }
+
+    display.innerHTML = `<p>Plus to Stats:</p> <p><ul>${stat}</ul></p>`;
 }
 
 init();
