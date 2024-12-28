@@ -60,16 +60,26 @@ onAuthStateChanged(auth, (user) =>
 
 function init()
 {
+    new ResponsiveImageMap(map, image, 1920);
+
     let map = document.getElementById('tree');
     let tokens = map.children;
     let image = document.getElementById('skillImg');
-
+    let x;
+    let y;
+    let radius;
+    
     for(let token of tokens)
     {
-        token.onclick = handleClick;
+        let cords = token.coords.split(",");
+        x = cords[0]; y = cords[1]; radius = cords[2];
+        
+        const ctx = image.getContext("2d");
+        cxt.onclick = handleClick;
+        ctx.beginPath();
+        ctx.arc(x, y, radius, 0, 2 * Math.PI);
+        ctx.stroke();
     }
-
-    new ResponsiveImageMap(map, image, 1920);
 }
 
 function handleClick()
