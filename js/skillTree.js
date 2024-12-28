@@ -79,8 +79,8 @@ function init()
         newImage.style.position = "absolute";
         newImage.style.width = (radius*2) + "px";
         newImage.style.height = (radius*2) + "px";
-        newImage.style.left = (x - (0)) + "px";
-        newImage.style.top = (y - (0)) + "px";
+        newImage.style.left = (x - radius) + "px";
+        newImage.style.top = (y + radius) + "px";
         newImage.style.border = "none";
         document.getElementById("map").appendChild(newImage);
         newImage.onclick = handleClick;
