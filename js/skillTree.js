@@ -88,6 +88,7 @@ function summonDarkness(map, image)
         newImage.style.left = (x - radius) + "px";
         newImage.style.top = (y + radius + offSet) + "px";
         newImage.style.border = "none";
+        newImage.style.margin = "0px";
         document.getElementById("map").appendChild(newImage);
         newImage.onclick = handleClick;
         offSet += .55;
