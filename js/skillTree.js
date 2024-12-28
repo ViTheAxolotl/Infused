@@ -133,26 +133,16 @@ function summonDarkness(map, image)
 
 function handleClick()
 {
-    let skill = getSkillName(this.id);
-    let modifier = 0;
-
     if(this.style.opacity == "0")
     {
         this.style.opacity = "100";
         deleteDoc(`playerChar/${player}/skillTree/${this.id}`, "active");
-        modifier = -1;
     }
 
     else
     {
         this.style.opacity = "0";
         setDoc(`playerChar/${player}/skillTree/${this.id}`, "active");
-        modifier = 1;
-    }
-
-    if(Object.keys(skills).includes(`${skill}`))
-    {
-        changeSkill(modifier, getSkillName(this.id));
     }
 }
 
