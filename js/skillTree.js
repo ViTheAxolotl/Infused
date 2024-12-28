@@ -74,7 +74,7 @@ function init()
         x = cords[0]; y = cords[1]; radius = cords[2];
 
         var newImage = document.createElement("img");
-        newImage.setAttribute('src', 'hide.png');
+        newImage.setAttribute('src', '../images/hide.png');
         newImage.setAttribute('class', 'overlays');
         newImage.style.left = (x - (newImage.width/2)) + "px";
         newImage.style.top = (y - (newImage.height/2)) + "px";
