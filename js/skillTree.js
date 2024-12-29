@@ -240,7 +240,7 @@ function handleButtonClick(elm)
 
             else if("all" == getSkillName(elm))
             {
-                let skill = getSkillName(elm);
+                let skill = getSkillName(toTitleCase(elm));
                 viewTitle.innerHTML = skill;
                 showInstructions.innerHTML = `+1 to all 6 ability scores.`;
             }
