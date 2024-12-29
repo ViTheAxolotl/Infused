@@ -123,6 +123,9 @@ function init()
     let map = document.getElementById('tree');
     let image = document.getElementById('skillImg');
     new ResponsiveImageMap(map, image, 1920);
+    document.getElementById("helpBtn").onclick = function(){handleButtonClick(this.id);};
+    document.getElementById("hideCover").onclick = function(){handleButtonClick(this.id);};
+    document.getElementById("unlock").onclick = function(){handleButtonClick(this.id);};
     fetch('https://vitheaxolotl.github.io/Infused/src/skillTree.json').then(res => res.json()).then((json) => skillDesc = json);
 }
 
@@ -165,7 +168,7 @@ function handleClick()
 
     else
     {
-        setDoc(`playerChar/${player}/skillTree/${this.id}`, "active");
+        handleButtonClick(this.id);
     }
 }
 
@@ -196,6 +199,37 @@ function updateDisplay()
         }
     
         abilityDisplay.innerHTML = `<p>Abilities<ul>${abilities}</ul></p><h3>${abilityDisplay.title} ${infusedRate}%</h3>`;
+    }
+}
+
+function handleButtonClick(elm)
+{
+    let viewDiv = document.getElementById("cover");
+    viewDiv.classList = "";
+    viewDiv.style.zIndex = "1011";
+    let viewTitle = document.getElementById("viewTitle");
+    let showInstructions = document.getElementById("showInstructions");
+
+    switch(elm.id)
+    {
+        case "helpBtn":
+            viewTitle.innerHTML = "Tech Tree";
+            showInstructions.innerHTML = "This is your tech tree, each level up after level one gives you one point to spend on the tree. Once unlocked it can't be undone in game, by clicking on one of the circles it will tell you what it unlocks. If you change your mind about unlocking it, click cancel. If you want to unlock it, click unlock. All your current changes will display underneath the chart.";
+            break;
+        
+        case "hideCover":
+            viewDiv.classList = "invisible";
+            break;
+        
+        case "unlock":
+            setDoc(`playerChar/${player}/skillTree/${elm.title}`, "active");
+            break;
+        
+        default:
+            document.getElementById("unlock").title = elm.id;
+            viewTitle.innerHTML = skillDesc[player][elm.id]["name"];
+            showInstructions = skillDesc[player][elm.id]["desc"];
+            break;
     }
 }
 
