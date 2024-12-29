@@ -99,7 +99,7 @@ onAuthStateChanged(auth, (user) =>
                         }
                     }
 
-                    else if("start")
+                    else if("start" == getSkillName(key))
                     {
                         
                     }
