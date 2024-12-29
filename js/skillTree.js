@@ -230,8 +230,32 @@ function handleButtonClick(elm)
         default:
             document.getElementById("unlock").title = elm;
             document.getElementById("unlock").classList.remove("invisible");
-            viewTitle.innerHTML = skillDesc[player][elm]["name"];
-            showInstructions.innerHTML = skillDesc[player][elm]["desc"];
+            
+            if(Object.keys(skills).includes(`${getSkillName(elm)}`))
+            {
+                let skill = getSkillName(elm);
+                viewTitle.innerHTML = skill;
+                showInstructions.innerHTML = `+1 to ${skill} ability score.`;
+            }
+
+            else if("all" == getSkillName(key))
+            {
+                let skill = getSkillName(elm);
+                viewTitle.innerHTML = skill;
+                showInstructions.innerHTML = `+1 to all 6 ability scores.`;
+            }
+
+            else if("start" == getSkillName(key))
+            {
+                viewTitle.innerHTML = "Starting";
+                showInstructions.innerHTML = `This is unlocked for Level 1.`;
+            }
+
+            else
+            {
+                viewTitle.innerHTML = skillDesc[player][elm]["name"];
+                showInstructions.innerHTML = skillDesc[player][elm]["desc"];
+            }
             break;
     }
 }
