@@ -60,7 +60,7 @@ onAuthStateChanged(auth, (user) =>
     if (!user) 
     {
         alert("You need to login before using this resource. Click Ok and be redirected");
-        window.location.href = "loginPage.html?map.html"; 
+        window.location.href = "loginPage.html?skillTree.html"; 
     } 
 
     else
@@ -101,7 +101,7 @@ onAuthStateChanged(auth, (user) =>
 
                     else if("start")
                     {
-                        continue;
+                        
                     }
 
                     else
