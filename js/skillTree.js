@@ -195,7 +195,7 @@ function updateDisplay()
             abilities += `<li>${key}: ${infused[key]}</li>`;
         }
     
-        abilityDisplay.innerHTML = `<p>${abilities}</p><h3>${abilityDisplay.title} ${infusedRate}%</h3>`;
+        abilityDisplay.innerHTML = `<p>Abilities<ul>${abilities}</ul></p><h3>${abilityDisplay.title} ${infusedRate}%</h3>`;
     }
 }
 
