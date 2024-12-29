@@ -164,6 +164,7 @@ function handleClick()
     if(this.style.opacity == "0")
     {
         deleteDoc(`playerChar/${player}/skillTree/${this.id}`, "active");
+        this.style.opacity = "100";
     }
 
     else
@@ -223,13 +224,14 @@ function handleButtonClick(elm)
         
         case "unlock":
             setDoc(`playerChar/${player}/skillTree/${elm.title}`, "active");
+            viewDiv.classList = "invisible";
             break;
         
         default:
             document.getElementById("unlock").title = elm;
             document.getElementById("unlock").classList.remove("invisible");
             viewTitle.innerHTML = skillDesc[player][elm]["name"];
-            showInstructions = skillDesc[player][elm]["desc"];
+            showInstructions.innerHTML = skillDesc[player][elm]["desc"];
             break;
     }
 }
