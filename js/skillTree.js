@@ -227,6 +227,7 @@ function handleButtonClick(elm)
         
         default:
             document.getElementById("unlock").title = elm.id;
+            document.getElementById("unlock").classList.remove("invisible");
             viewTitle.innerHTML = skillDesc[player][elm.id]["name"];
             showInstructions = skillDesc[player][elm.id]["desc"];
             break;
