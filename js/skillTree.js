@@ -1,11 +1,14 @@
 "use strict";
 import { ref, onValue } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js';
 import { onAuthStateChanged} from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
-import { toTitleCase, auth, database, setDoc, deleteDoc, returnHpImage } from '../js/viMethods.js';
+import { toTitleCase, auth, database, setDoc, deleteDoc } from '../js/viMethods.js';
 
 let player;
 let wholeSkills;
 let skills;
+let skillDesc;
+let infused = {};
+let infusedRate = 0;
 
 function getSkillName(skill)
 {
@@ -95,7 +98,14 @@ onAuthStateChanged(auth, (user) =>
                             changeSkill(1, skill);
                         }
                     }
+
+                    else
+                    {
+                        infused[skillDesc[player][key]["name"]] = skillDesc[player][key]["desc"];
+                        infusedRate += skillDesc[player][key]["infusionRate"];
+                    }
                 }
+
             }
 
             updateDisplay();
@@ -108,6 +118,7 @@ function init()
     let map = document.getElementById('tree');
     let image = document.getElementById('skillImg');
     new ResponsiveImageMap(map, image, 1920);
+    fetch('https://vitheaxolotl.github.io/Infused/src/skillTree.json').then(res => res.json()).then((json) => skillDesc = json);
 }
 
 function summonDarkness(map, image)
@@ -162,15 +173,27 @@ function changeSkill(modifier, skill)
 
 function updateDisplay()
 {
-    let display = document.getElementById("skillDisplay");
+    let skillDisplay = document.getElementById("skillDisplay");
+    let abilityDisplay = document.getElementById("beast");
     let stat = "";
+    let abilities = "";
 
     for(let key of Object.keys(skills))
     {
         stat += `<li>${key}: +${skills[key]}</li>`;
     }
 
-    display.innerHTML = `<p>Plus to Stats:</p> <p><ul>${stat}</ul></p>`;
+    skillDisplay.innerHTML = `<p>Plus to Stats:</p> <p><ul>${stat}</ul></p>`;   
+
+    if(Object.keys(infused).length > 0)
+    {
+        for(let key of Object.keys(infused))
+        {
+            abilities += `<li>${key}: ${infused[key]}</li>`;
+        }
+    
+        abilityDisplay.innerHTML = `<p>${abilities}</p><h3>${abilityDisplay.title} ${infusedRate}%</h3>`;
+    }
 }
 
 init();
