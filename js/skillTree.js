@@ -77,7 +77,7 @@ onAuthStateChanged(auth, (user) =>
 
             if(data == null)
             {
-                setDoc(`playerChar/${player}/skillTree/start`, "active");
+                setDoc(`playerChar/${player}/skillTree/start1`, "active");
             }
 
             else
