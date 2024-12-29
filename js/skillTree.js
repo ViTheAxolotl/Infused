@@ -99,6 +99,11 @@ onAuthStateChanged(auth, (user) =>
                         }
                     }
 
+                    else if("start")
+                    {
+                        continue;
+                    }
+
                     else
                     {
                         infused[skillDesc[player][key]["name"]] = skillDesc[player][key]["desc"];
