@@ -123,9 +123,9 @@ function init()
     let map = document.getElementById('tree');
     let image = document.getElementById('skillImg');
     new ResponsiveImageMap(map, image, 1920);
-    document.getElementById("helpBtn").onclick = function(){handleButtonClick(this.id);};
-    document.getElementById("hideCover").onclick = function(){handleButtonClick(this.id);};
-    document.getElementById("unlock").onclick = function(){handleButtonClick(this.id);};
+    document.getElementById("helpBtn").onclick = function(){handleButtonClick(this);};
+    document.getElementById("hideCover").onclick = function(){handleButtonClick(this);};
+    document.getElementById("unlock").onclick = function(){handleButtonClick(this);};
     fetch('https://vitheaxolotl.github.io/Infused/src/skillTree.json').then(res => res.json()).then((json) => skillDesc = json);
 }
 
