@@ -155,13 +155,11 @@ function handleClick()
 {
     if(this.style.opacity == "0")
     {
-        this.style.opacity = "100";
         deleteDoc(`playerChar/${player}/skillTree/${this.id}`, "active");
     }
 
     else
     {
-        this.style.opacity = "0";
         setDoc(`playerChar/${player}/skillTree/${this.id}`, "active");
     }
 }
