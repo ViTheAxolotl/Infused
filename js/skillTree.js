@@ -226,10 +226,10 @@ function handleButtonClick(elm)
             break;
         
         default:
-            document.getElementById("unlock").title = elm.id;
+            document.getElementById("unlock").title = elm;
             document.getElementById("unlock").classList.remove("invisible");
-            viewTitle.innerHTML = skillDesc[player][elm.id]["name"];
-            showInstructions = skillDesc[player][elm.id]["desc"];
+            viewTitle.innerHTML = skillDesc[player][elm]["name"];
+            showInstructions = skillDesc[player][elm]["desc"];
             break;
     }
 }
