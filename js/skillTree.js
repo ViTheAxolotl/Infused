@@ -1,7 +1,7 @@
 "use strict";
 import { ref, onValue } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js';
 import { onAuthStateChanged} from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
-import { toTitleCase, auth, database, setDoc, deleteDoc } from '../js/viMethods.js';
+import { toTitleCase, auth, database, setDoc, deleteDoc, reload } from '../js/viMethods.js';
 
 let player;
 let wholeSkills;
@@ -164,7 +164,7 @@ function handleClick()
     if(this.style.opacity == "0")
     {
         deleteDoc(`playerChar/${player}/skillTree/${this.id}`, "active");
-        this.style.opacity = "100";
+        reload(1);
     }
 
     else
