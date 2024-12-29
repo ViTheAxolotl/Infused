@@ -238,14 +238,14 @@ function handleButtonClick(elm)
                 showInstructions.innerHTML = `+1 to ${skill} ability score.`;
             }
 
-            else if("all" == getSkillName(key))
+            else if("all" == getSkillName(elm))
             {
                 let skill = getSkillName(elm);
                 viewTitle.innerHTML = skill;
                 showInstructions.innerHTML = `+1 to all 6 ability scores.`;
             }
 
-            else if("start" == getSkillName(key))
+            else if("start" == getSkillName(elm))
             {
                 viewTitle.innerHTML = "Starting";
                 showInstructions.innerHTML = `This is unlocked for Level 1.`;
