@@ -124,7 +124,7 @@ function init()
     let image = document.getElementById('skillImg');
     new ResponsiveImageMap(map, image, 1920);
     document.getElementById("helpBtn").onclick = function(){handleButtonClick(this);};
-    document.getElementById("hideCover").onclick = function(){handleButtonClick(this);};
+    document.getElementById("hideCovers").onclick = function(){handleButtonClick(this);};
     document.getElementById("unlock").onclick = function(){handleButtonClick(this);};
     fetch('https://vitheaxolotl.github.io/Infused/src/skillTree.json').then(res => res.json()).then((json) => skillDesc = json);
 }
@@ -207,8 +207,8 @@ function handleButtonClick(elm)
     let viewDiv = document.getElementById("cover");
     viewDiv.classList = "";
     viewDiv.style.zIndex = "1011";
-    let viewTitle = document.getElementById("viewTitle");
-    let showInstructions = document.getElementById("showInstructions");
+    let viewTitle = document.getElementById("viewTitles");
+    let showInstructions = document.getElementById("showInstruction");
 
     switch(elm.id)
     {
@@ -217,7 +217,7 @@ function handleButtonClick(elm)
             showInstructions.innerHTML = "This is your tech tree, each level up after level one gives you one point to spend on the tree. Once unlocked it can't be undone in game, by clicking on one of the circles it will tell you what it unlocks. If you change your mind about unlocking it, click cancel. If you want to unlock it, click unlock. All your current changes will display underneath the chart.";
             break;
         
-        case "hideCover":
+        case "hideCovers":
             viewDiv.classList = "invisible";
             break;
         
