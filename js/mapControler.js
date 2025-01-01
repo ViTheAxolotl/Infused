@@ -227,7 +227,7 @@ function basicRoll(amount, dice)
     for(let i = 0; i < amount; i++) //Rolls for each dice needed
     {
         let random = Math.random();
-        let roll = Math.floor(random * (dice + 1)); //Gives random roll
+        let roll = Math.floor(random * (parseInt(dice) + 1)); //Gives random roll
         rolls.push(roll);
     }
 
