@@ -31,7 +31,7 @@
 
         "ability5" : 
         {
-            "name" : "Etherealness",
+            "name" : "Ghostly Etherealness",
             "desc" : "While in Ghost Mode, you can positions your body in between both Material plane and Ethereal Plane for an action. While in between the two realms you are visible on both planes, yet you can't affect either and they can't affect you. You can regain full access to material plane at any time, or forcefully when Ghost Mode ends. For these benefits you gain 10% more Infusion Rate.",
             "infusionRate" : 10
         },
@@ -45,21 +45,21 @@
 
         "upgrade2" : 
         {
-            "name" : "Phase Further",
+            "name" : "Improved Ghost Phasing",
             "desc" : "By unlocking this your Ghost Mode phasing can go up to 5 feet in depth instead of the normal 3ft. As an extra benefit you are able to phase through moving things now as well. For these benefits you gain 10% more Infusion Rate.",
             "infusionRate" : 10
         },
 
         "upgrade3" : 
         {
-            "name" : "Upgraded Levitation",
+            "name" : "Improved Ghostly Levitation",
             "desc" : "By unlocking this your levitation from your Ghost Mode goes up to a full 40 feet and can be activated while midair. For these benefits you gain 10% more Infusion Rate.",
             "infusionRate" : 10
         },
 
         "upgrade4" : 
         {
-            "name" : "Enhanced Wildshape",
+            "name" : "Enhanced Ghost Wildshape",
             "desc" : "By unlocking this your Ghost Wildshape gains stronger giving you many upgrades. You can now wildshape up to your proficiency bonus instead of pb/2. You also can remain in wildshape for up to 10 turns, and only need to wait 5 minutes instead of the 10 to wildshape. For these benefits you gain 10% more Infusion Rate.",
             "infusionRate" : 10
         }
