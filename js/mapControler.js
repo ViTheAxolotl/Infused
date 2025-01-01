@@ -98,7 +98,7 @@ let wholeFavorite = {};
 let wholeDb = {};
 let wholeSpells;
 let wholeActions;
-let currentLv = "5th level";
+let currentLv = "3th level";
 let profBonus = "3";
 let spellLevel;
 let curClass;
@@ -226,7 +226,8 @@ function basicRoll(amount, dice)
 
     for(let i = 0; i < amount; i++) //Rolls for each dice needed
     {
-        let roll = Math.floor(Math.random() * (dice + 1)); //Gives random roll
+        let random = Math.random();
+        let roll = Math.floor(random * (dice + 1)); //Gives random roll
         rolls.push(roll);
     }
 
