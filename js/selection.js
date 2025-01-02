@@ -226,8 +226,8 @@ function addCustomImgs()
 
     let customsBtn = document.createElement("button");
     customsBtn.classList = "gridButton";
-    customsBtn.innerHTML = "Manage Custom Imgs";
-    customsBtn.style.float = "right";
+    customsBtn.innerHTML = "Manage Imgs";
+    customsBtn.style.width = "100%";
     customsBtn.onclick = handleCustomImg;
     placeBefore(customsBtn, bord);
 }
