@@ -82,32 +82,40 @@ onAuthStateChanged(auth, (user) =>
 
             else
             {
+                let skill = getSkillName(key);
+
                 for(let key of Object.keys(wholeSkills))
                 {
                     document.getElementById(key).style.opacity = "0";
                     
-                    if(Object.keys(skills).includes(`${getSkillName(key)}`))
+                    if(Object.keys(skills).includes(`${skill}`))
                     {
-                        changeSkill(1, getSkillName(key));
-                    }
-
-                    else if("all" == getSkillName(key))
-                    {
-                        for(let skill of Object.keys(skills))
-                        {
-                            changeSkill(1, skill);
-                        }
-                    }
-
-                    else if("start" == getSkillName(key))
-                    {
-                        
+                        changeSkill(1, skill);
                     }
 
                     else
                     {
-                        infused[skillDesc[player][key]["name"]] = skillDesc[player][key]["desc"];
-                        infusedRate += skillDesc[player][key]["infusionRate"];
+                        switch(skill)
+                        {
+                            case "all":
+                                for(let skill of Object.keys(skills))
+                                {
+                                    changeSkill(1, skill);
+                                }
+                                break;
+
+                            case "start":
+                                break;
+
+                            case "empty":
+                                infused[skill] = "This needs unlocked before you can progress further.";
+                                break;
+
+                            default:
+                                infused[skillDesc[player][key]["name"]] = skillDesc[player][key]["desc"];
+                                infusedRate += skillDesc[player][key]["infusionRate"];
+                                break;
+                        }
                     }
                 }
                 setDoc(`playerChar/${player}/infusedRate`, `${infusedRate}`);
@@ -230,31 +238,38 @@ function handleButtonClick(elm)
         default:
             document.getElementById("unlock").title = elm;
             document.getElementById("unlock").classList.remove("invisible");
+            let skill = getSkillName(toTitleCase(elm));
             
-            if(Object.keys(skills).includes(`${getSkillName(elm)}`))
+            if(Object.keys(skills).includes(`${skill}`))
             {
-                let skill = getSkillName(elm);
                 viewTitle.innerHTML = skill;
                 showInstructions.innerHTML = `+1 to ${skill} ability score.`;
             }
 
-            else if("all" == getSkillName(elm))
-            {
-                let skill = getSkillName(toTitleCase(elm));
-                viewTitle.innerHTML = skill;
-                showInstructions.innerHTML = `+1 to all 6 ability scores.`;
-            }
-
-            else if("start" == getSkillName(elm))
-            {
-                viewTitle.innerHTML = "Starting";
-                showInstructions.innerHTML = `This is unlocked for Level 1.`;
-            }
-
             else
             {
-                viewTitle.innerHTML = skillDesc[player][elm]["name"];
-                showInstructions.innerHTML = skillDesc[player][elm]["desc"];
+                switch(skill)
+                {
+                    case "all":
+                        viewTitle.innerHTML = skill;
+                        showInstructions.innerHTML = `+1 to all 6 ability scores.`;
+                        break;
+
+                    case "start":
+                        viewTitle.innerHTML = "Starting";
+                        showInstructions.innerHTML = `This is unlocked for Level 1.`;
+                        break;
+
+                    case "empty":
+                        viewTitle.innerHTML = "Empty";
+                        showInstructions.innerHTML = `This needs unlocked before you can progress further.`;
+                        break;
+
+                    default:
+                        viewTitle.innerHTML = skillDesc[player][elm]["name"];
+                        showInstructions.innerHTML = skillDesc[player][elm]["desc"];
+                        break;
+                }
             }
             break;
     }
