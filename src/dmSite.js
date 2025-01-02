@@ -397,7 +397,7 @@ function resetState()
     div = document.createElement("div");
     div.id = "story";
     div.classList = "bg-UP-purple color-UP-black col-md-12 col-sm-12";
-    placeBefore(div, aboveDiv.childNodes[2]);
+    placeBefore(div, aboveDiv.childNodes[1]);
 }
 
 function resetDelete()
