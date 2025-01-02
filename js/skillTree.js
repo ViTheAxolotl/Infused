@@ -82,10 +82,9 @@ onAuthStateChanged(auth, (user) =>
 
             else
             {
-                let skill = getSkillName(key);
-
                 for(let key of Object.keys(wholeSkills))
                 {
+                    let skill = getSkillName(key);
                     document.getElementById(key).style.opacity = "0";
                     
                     if(Object.keys(skills).includes(`${skill}`))
