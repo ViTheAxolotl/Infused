@@ -113,60 +113,6 @@ function setUpCharacters(currentName)
 
     div.appendChild(char);
 
-    switch(currentName)
-    {
-        case "axolotl":
-            let mapLink = document.createElement("a");
-            mapLink.innerHTML = "Map Link";
-            mapLink.onclick = openWindow;
-            mapLink.id = "map.html?invisible-_invisible_vi";
-            mapLink.classList = "blo";
-            let dmLink = document.createElement("a");
-            dmLink.innerHTML = "DM Link";
-            dmLink.onclick = openWindow;
-            dmLink.id = "dmSite.html?Axo1ot1";
-            mapLink.classList = "blo";
-            div.appendChild(dmLink);
-            div.appendChild(mapLink);
-            break;
-
-        case "nook":
-            for(let i = 0; i < 2; i++)
-            {
-                people.push(currentName + '-' + numToLet[i]);
-            }
-            break;
-
-        case "guest1":
-        case "guest2":
-            for(let i = 0; i < 1; i++)
-            {
-                people.push(currentName + '-' + numToLet[i]);
-            }
-            break;
-
-        case "leonier":
-            for(let i = 0; i < 3; i++)
-            {
-                people.push(currentName + '-' + numToLet[i]);
-            }
-            break;
-
-        case "razor":
-            for(let i = 0; i < 2; i++)
-            {
-                people.push(currentName + '-' + numToLet[i]);
-            }
-            break;
-
-        case "nibbly":
-            for(let i = 0; i < 2; i++)
-            {
-                people.push(currentName + '-' + numToLet[i]);
-            }
-            break;
-    }
-
     if(currentName != "axolotl")
     {
         addCharacters()
