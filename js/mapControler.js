@@ -64,6 +64,17 @@ onAuthStateChanged(auth, (user) =>
     } 
 });
 
+/**
+ * When anything under this changes it will use onValue
+ */
+const iRRef = ref(database, `playerChar/${player}/infusedRate`);
+onValue(iRRef, (snapshot) => 
+{
+    const data = snapshot.val();
+    let infusedRate = document.getElementById("infusionRate");
+    infusedRate.innerHTML = `${infusedRate.title} ${data}%`;
+});
+
 const gridMap = document.querySelector("#gridMap");
 const rect = gridMap.getBoundingClientRect();
 let mapSize;

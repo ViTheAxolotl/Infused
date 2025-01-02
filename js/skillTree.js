@@ -110,7 +110,7 @@ onAuthStateChanged(auth, (user) =>
                         infusedRate += skillDesc[player][key]["infusionRate"];
                     }
                 }
-
+                setDoc(`playerChar/${player}/infusedRate`, `${infusedRate}`);
             }
 
             updateDisplay();
