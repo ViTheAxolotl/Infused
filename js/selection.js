@@ -9,7 +9,6 @@ let wholeCustom = {};
 let wholeDb = {};
 let enter = document.getElementById("enter");
 let charName = document.getElementById("name");
-let currentName;
 let div = document.getElementById("story");
 let borders = [];
 let char = document.createElement("h3");
@@ -386,7 +385,7 @@ function handleGoButton()
 
 function createChar(curCharacter, curBorder)
 {
-    let charName = currentName;
+    let charName = curCharacter.slice(7);
     let char = {border : curBorder, currentHp : `${document.getElementById("Current Hp").value}`, maxHp : `${document.getElementById("Max Hp").value}`, tempHp : document.getElementById("Temp Hp").value, map : "", id : charName, name : curCharacter, title : " " + charName + ", ", xPos : "1", yPos : "A", isSummon : false};
 
     if(oldToken != null || oldToken != undefined)
