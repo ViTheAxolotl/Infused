@@ -69,6 +69,72 @@
     {
         "ability1" : 
         {
+            "name" : "Swift Ferret",
+            "desc" : "Your ferret infusion grants you many benefits, and drawbacks. The more stronger this side of you get, the less control of your body you have. By unlocking this skill you gain advantage on  Wisdom (Perception) checks that rely on hearing or smell. You also gain Ferret Mode, an an active ability by using an action your ferret side grows temporally (5 Turns) to boost your abilities. In Ferret Mode you gain the ability to do an extra bonus action from your excess energy. Also in the Ferret Mode you can use your action to do a little ferret dance memorizing creatures within 5 feet from you. (Their next turn will be skipped/They will be distracted for the 7 seconds). Ferret mode can be used as much times as you have proficiency bonus. For these benefits you gain 15% Infusion Rate, once you hit 100% you will become permanently your chosen animal/beast forever. When in an interaction that may have your infused side wanting to do something, you must roll a d100 if you roll above your Infusion Rate you resist that action.",
+            "infusionRate" : 15
+        },
+        
+        "ability2" : 
+        {
+            "name" : "Quick Ferret Nap",
+            "desc" : "Your ferret side loves naps, these naps help give it the energy and dexterity it needs for survival. While in ferret mode, you are able to give up an action and an bonus action to heal some of your missing hp. (Current Level + Proficiency Bonus + 1d6) For these benefits you gain 10% more Infusion Rate.",
+            "infusionRate" : 10
+        },
+
+        "ability3" : 
+        {
+            "name" : "Ferret Wildshape",
+            "desc" : "By having your ferret side take over majority of your body you will be able to wildshape into a ferret (Using Weasel D&D 5e Stat Block) for an action, this can be done proficiency bonus / 2 (rounded down) times a day. You can stay a ferret for up to 5 turns or until your HP drops to 0 (Any overflow will go to your normal hp same as druid) Once unwildshaped, you must wait 10 minutes before using the ability again, as your ferret side needs time to recharge. For these benefits you gain 15% more Infusion Rate.",
+            "infusionRate" : 15
+        },
+
+        "ability4" : 
+        {
+            "name" : "Longer Ferret Nap",
+            "desc" : "With your infusion being a big part of you now, longer naps (short rest & long rest) now do more healing. Buy going into Ferret Mode before the rest, you will roll a 1d2. On a one you will heal 1.5 the amount of hp you would for the rest. On a two you will gain the normal hp & 1/2 of the hp that was healed as Temp Hp. For these benefits you gain 10% more Infusion Rate.",
+            "infusionRate" : 10
+        },
+
+        "ability5" : 
+        {
+            "name" : "Quicken Ferret Action",
+            "desc" : "With unlocking this, you are able to turn something that would take an action into a bonus action instead. You can do this once a turn wile in ferret mode. For these benefits you gain 10% more Infusion Rate.",
+            "infusionRate" : 10
+        },
+
+        "upgrade1" : 
+        {
+            "name" : "Longer Ferret Mode",
+            "desc" : "By unlocking this your Ferret Mode ability will be able to be held for 10 turns instead of the normal 5. As a bonus you also will gain +1 to Dex ability score. For these benefits you gain 10% more Infusion Rate.",
+            "infusionRate" : 10
+        },
+
+        "upgrade2" : 
+        {
+            "name" : "Enhanced Ferret Nap",
+            "desc" : "By unlocking this your naps in ferret mode does more healing, instead of the normal 1d6 added to level and Proficiency, you will now heal (Current Level + Proficiency + 2d8). For these benefits you gain 10% more Infusion Rate.",
+            "infusionRate" : 10
+        },
+
+        "upgrade3" : 
+        {
+            "name" : "Quicker Ferret Action",
+            "desc" : "By unlocking this your extra bonus action while in Ferret Mode can be an action or bonus action instead. For these benefits you gain 10% more Infusion Rate.",
+            "infusionRate" : 10
+        },
+
+        "upgrade4" : 
+        {
+            "name" : "Enhanced Ferret Wildshape",
+            "desc" : "By unlocking this your Ferret Wildshape gains stronger giving you many upgrades. You can now wildshape up to your proficiency bonus instead of pb/2. You also can remain in wildshape for up to 10 turns, and only need to wait 5 minutes instead of the 10 to wildshape. For these benefits you gain 10% more Infusion Rate.",
+            "infusionRate" : 10
+        }
+    },
+
+    "Okami" : 
+    {
+        "ability1" : 
+        {
             "name" : "ability1",
             "desc" : "",
             "infusionRate" : 15
@@ -85,7 +151,7 @@
         {
             "name" : "ability3",
             "desc" : "",
-            "infusionRate" : 10
+            "infusionRate" : 15
         },
 
         "ability4" : 
@@ -99,7 +165,7 @@
         {
             "name" : "ability5",
             "desc" : "",
-            "infusionRate" : 15
+            "infusionRate" : 10
         },
 
         "upgrade1" : 
