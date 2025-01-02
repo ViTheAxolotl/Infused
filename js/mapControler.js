@@ -4,6 +4,53 @@ import { ref, onValue } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
 import { toTitleCase, auth, database, createCard, setDoc, deleteDoc, placeBefore, createLabel, clenseInput, reload } from './viMethods.js';
 
+const gridMap = document.querySelector("#gridMap");
+const rect = gridMap.getBoundingClientRect();
+let mapSize;
+let bumper;
+let distance;
+let movement;
+let bounds;
+let currentPos;
+let currentCharacter;
+let playerName = document.getElementById("name");
+let key;
+let keyControl;
+let arrows = [];
+let currentHp = document.getElementById("current");
+let maxHp = document.getElementById("max");
+let tempHp = document.getElementById("temp");
+let buttons;
+let player;
+let pos;
+let firstRun = true;
+let div = document.getElementById("grid");
+let currentBorders = document.getElementsByClassName("border_");
+let firstMenu;
+let secondMenu;
+let spellBtn;
+let rollDiceBtn;
+let actionBtn;
+let wholeTO = {};
+let wholeChar = {};
+let wholeCustom = {};
+let wholeFavorite = {};
+let wholeDb = {};
+let wholeSpells;
+let wholeActions;
+let currentLv = "3th level";
+let profBonus = "3";
+let spellLevel;
+let curClass;
+let searchBar = document.getElementsByName("search");
+let upper = document.getElementById("cards");
+let favorite = false;
+let db;
+let lastSpell;
+let lastAbility;
+let changeTokenBtn;
+let imgs;
+
 /**
  * When anything under this changes it will use onValue
  */
@@ -74,53 +121,6 @@ onValue(iRRef, (snapshot) =>
     let infusedRate = document.getElementById("infusionRate");
     infusedRate.innerHTML = `${infusedRate.title} ${data}%`;
 });
-
-const gridMap = document.querySelector("#gridMap");
-const rect = gridMap.getBoundingClientRect();
-let mapSize;
-let bumper;
-let distance;
-let movement;
-let bounds;
-let currentPos;
-let currentCharacter;
-let playerName = document.getElementById("name");
-let key;
-let keyControl;
-let arrows = [];
-let currentHp = document.getElementById("current");
-let maxHp = document.getElementById("max");
-let tempHp = document.getElementById("temp");
-let buttons;
-let player;
-let pos;
-let firstRun = true;
-let div = document.getElementById("grid");
-let currentBorders = document.getElementsByClassName("border_");
-let firstMenu;
-let secondMenu;
-let spellBtn;
-let rollDiceBtn;
-let actionBtn;
-let wholeTO = {};
-let wholeChar = {};
-let wholeCustom = {};
-let wholeFavorite = {};
-let wholeDb = {};
-let wholeSpells;
-let wholeActions;
-let currentLv = "3th level";
-let profBonus = "3";
-let spellLevel;
-let curClass;
-let searchBar = document.getElementsByName("search");
-let upper = document.getElementById("cards");
-let favorite = false;
-let db;
-let lastSpell;
-let lastAbility;
-let changeTokenBtn;
-let imgs;
 
 /**
  * Runs when JS opens
