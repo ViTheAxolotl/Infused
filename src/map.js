@@ -263,7 +263,7 @@ function setTurnOrder()
 function tokenValidator(image, callback)
 {
     let img = new Image();
-    if(!img.includes("custom-")){img.src = image;}
+    if(!image.includes("custom-")){img.src = image;}
     else{img.src = wholeCustom[image]["src"];}
     
     img.onload = () => callback(true);
