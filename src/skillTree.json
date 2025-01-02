@@ -84,21 +84,21 @@
         "ability3" : 
         {
             "name" : "Ferret Wildshape",
-            "desc" : "By having your ferret side take over majority of your body you will be able to wildshape into a ferret (Using Weasel D&D 5e Stat Block) for an action, this can be done proficiency bonus / 2 (rounded down) times a day. You can stay a ferret for up to 5 turns or until your HP drops to 0 (Any overflow will go to your normal hp same as druid) Once unwildshaped, you must wait 10 minutes before using the ability again, as your ferret side needs time to recharge. For these benefits, you gain 15% more Infusion Rate.",
+            "desc" : "By having your ferret side take over the majority of your body you will be able to wildshape into a ferret (Using Weasel D&D 5e Stat Block) for an action, this can be done proficiency bonus / 2 (rounded down) times a day. You can stay a ferret for up to 5 turns or until your HP drops to 0 (Any overflow will go to your normal hp same as druid) Once unwildshaped, you must wait 10 minutes before using the ability again, as your ferret side needs time to recharge. For these benefits, you gain 15% more Infusion Rate.",
             "infusionRate" : 15
         },
 
         "ability4" : 
         {
             "name" : "Longer Ferret Nap",
-            "desc" : "With your infusion being a big part of you now, longer naps (short rest & long rest) now do more healing. Buy going into Ferret Mode before the rest, you will roll a 1d2. On a one you will heal 1.5 the amount of hp you would for the rest. On a two you will gain the normal hp & 1/2 of the hp that was healed as Temp Hp. For these benefits, you gain 10% more Infusion Rate.",
+            "desc" : "With your infusion being a big part of you now, longer naps (short rest & long rest) do more healing. By going into Ferret Mode before the rest, you will roll a 1d2. On a one you will heal 1.5 the amount of hp you would for the rest. On a two you will gain the normal hp & 1/2 of the hp that was healed as Temp Hp. For these benefits, you gain 10% more Infusion Rate.",
             "infusionRate" : 10
         },
 
         "ability5" : 
         {
             "name" : "Quicken Ferret Action",
-            "desc" : "With unlocking this, you are able to turn something that would take an action into a bonus action instead. You can do this once a turn wile in ferret mode. For these benefits, you gain 10% more Infusion Rate.",
+            "desc" : "With unlocking this, you can turn something that would take an action into a bonus action instead. You can do this once a turn while in ferret mode. For these benefits, you gain 10% more Infusion Rate.",
             "infusionRate" : 10
         },
 
