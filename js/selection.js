@@ -60,7 +60,7 @@ function userLoggedIn()
     oldToken = wholeChars[player]["token"];
     init();
     charName.value = wholeChars[player]["charName"];
-    handleEnterButton();
+    setUpCharacters();
 }
 
 function init()
