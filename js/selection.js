@@ -17,7 +17,6 @@ let bord = document.createElement("h3");
 let hp = document.createElement("h3");
 let go = document.createElement("button");
 let people = [];
-let numToLet = {0 : "", 1 : "a", 2 : "b"};
 let firstRun = true;
 let firstRunCustom = true;
 let imgs = {};
@@ -36,17 +35,6 @@ onValue(charRef, (snapshot) =>
 });
 
 const customsRef = ref(database, 'customImages/');
-onValue(customsRef, (snapshot) => 
-{
-    const data = snapshot.val();
-    wholeCustom = data;
-    
-    if(firstRunCustom)
-    {
-        addCustomImgs();
-        firstRunCustom = false;
-    }
-});
 
 const dbRef = ref(database, 'currentMap/');
 onValue(dbRef, (snapshot) => 
@@ -90,21 +78,14 @@ function init()
     hp.classList = "blo";
     hp.style.margin = "5px";
 
-    enter.onclick = handleEnterButton;
+    enter.onclick = setUpCharacters;
     go.onclick = handleGoButton;
     
     let temp = imgs["borders"];
     for(let border of Object.keys(temp)){if(border != "invisible"){borders.push(border);}} //Populates the borders with each border
 }
 
-function handleEnterButton()
-{
-    currentName = charName.value;
-    currentName = currentName.toLowerCase();
-    setUpCharacters(currentName);
-}
-
-function setUpCharacters(currentName)
+function setUpCharacters()
 {
     for(let elem of div.children)
     {
@@ -113,20 +94,29 @@ function setUpCharacters(currentName)
 
     div.appendChild(char);
 
-    if(currentName != "axolotl")
-    {
-        addCharacters()
-        addBorders();
-        addHp();
-        div.appendChild(go);
+    addCharacters()
+    addBorders();
+    addHp();
+    div.appendChild(go);
 
-        if(oldToken != null || oldToken != undefined)
+    onValue(customsRef, (snapshot) => 
+    {
+        const data = snapshot.val();
+        wholeCustom = data;
+        
+        if(firstRunCustom)
         {
-            document.getElementById(`${oldToken["border"]}`).onclick();
-            document.getElementById(`Max Hp`).value = oldToken["maxHp"];
-            document.getElementById(`Current Hp`).value = oldToken["currentHp"];
-            document.getElementById(`Temp Hp`).value = oldToken["tempHp"];
+            addCustomImgs();
+            firstRunCustom = false;
         }
+    });
+
+    if(oldToken != null || oldToken != undefined)
+    {
+        document.getElementById(`${oldToken["border"]}`).onclick();
+        document.getElementById(`Max Hp`).value = oldToken["maxHp"];
+        document.getElementById(`Current Hp`).value = oldToken["currentHp"];
+        document.getElementById(`Temp Hp`).value = oldToken["tempHp"];
     }
 }
 
