@@ -52,6 +52,18 @@ let changeTokenBtn;
 let imgs;
 
 /**
+ * When it shows that your logged in
+ */
+onAuthStateChanged(auth, (user) => 
+{
+    if (user) //If logged in
+    {
+        player = auth.currentUser.email.split("@");
+        player = toTitleCase(player[0]); //gives the players name
+    } 
+});
+
+/**
  * When anything under this changes it will use onValue
  */
 const currentTORef = ref(database, 'currentTO/');
@@ -68,7 +80,9 @@ const charRef = ref(database, 'playerChar/');
 onValue(charRef, (snapshot) => 
 {
     const data = snapshot.val();
+    let infusedRate = document.getElementById("infusionRate");
     wholeChar = data;
+    infusedRate.innerHTML = `${infusedRate.title} ${data[player]["infusedRate"]}%`;
 
     if(firstRun) //The first time it loads
     {
@@ -100,26 +114,13 @@ onValue(dBRef, (snapshot) =>
 let favoriteRef;
 
 /**
- * When it shows that your logged in
- */
-onAuthStateChanged(auth, (user) => 
-{
-    if (user) //If logged in
-    {
-        player = auth.currentUser.email.split("@");
-        player = toTitleCase(player[0]); //gives the players name
-    } 
-});
-
-/**
  * When anything under this changes it will use onValue
  */
 const iRRef = ref(database, `playerChar/${player}/infusedRate/`);
 onValue(iRRef, (snapshot) => 
 {
     const data = snapshot.val();
-    let infusedRate = document.getElementById("infusionRate");
-    infusedRate.innerHTML = `${infusedRate.title} ${data}%`;
+    
 });
 
 /**
