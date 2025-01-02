@@ -303,8 +303,8 @@ function handleCustomImg()
     cancelBtn.onclick = function () {reload(.001);};
     cancelBtn.style.margin = "5px";
 
-    newDiv.appendChild(cancelBtn);
     newDiv.appendChild(createBtn);
+    newDiv.appendChild(cancelBtn);
     customsDiv.appendChild(newDiv);
 
     div.appendChild(customsDiv);

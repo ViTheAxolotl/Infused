@@ -260,11 +260,11 @@ function setTurnOrder()
     }
 }
 
-function tokenValidator(img, callback)
+function tokenValidator(image, callback)
 {
     let img = new Image();
-    if(!img.includes("custom-")){img.src = img;}
-    else{img.src = wholeCustom[img]["src"];}
+    if(!img.includes("custom-")){img.src = image;}
+    else{img.src = wholeCustom[image]["src"];}
     
     img.onload = () => callback(true);
     img.onerror = () => callback(false);
