@@ -1570,7 +1570,7 @@ function handleFavoriteBtn()
 
 function handleChangeToken()
 {
-    changeTokenBtn.innerHTML = "Upload";
+    changeTokenBtn.innerHTML = "Submit";
     changeTokenBtn.onclick = handleUpdateToken;
 
     let labels = ["Character", "Border"];
@@ -1662,8 +1662,9 @@ function handleChangeToken()
         }
     }
 
-    placeBefore(cancelBtn, changeTokenBtn);
-    placeBefore(customsBtn, cancelBtn);
+    document.getElementById("changeToken").appendChild(cancelBtn);
+    placeBefore(customsBtn, changeTokenBtn);
+
 }
 
 function changeSourceSelect()
