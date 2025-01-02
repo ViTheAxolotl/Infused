@@ -114,7 +114,7 @@ onAuthStateChanged(auth, (user) =>
 /**
  * When anything under this changes it will use onValue
  */
-const iRRef = ref(database, `playerChar/${player}/infusedRate`);
+const iRRef = ref(database, `playerChar/${player}/infusedRate/`);
 onValue(iRRef, (snapshot) => 
 {
     const data = snapshot.val();
