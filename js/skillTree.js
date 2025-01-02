@@ -249,17 +249,17 @@ function handleButtonClick(elm)
             {
                 switch(skill)
                 {
-                    case "all":
+                    case "All":
                         viewTitle.innerHTML = skill;
                         showInstructions.innerHTML = `+1 to all 6 ability scores.`;
                         break;
 
-                    case "start":
+                    case "Start":
                         viewTitle.innerHTML = "Starting";
                         showInstructions.innerHTML = `This is unlocked for Level 1.`;
                         break;
 
-                    case "empty":
+                    case "Empty":
                         viewTitle.innerHTML = "Empty";
                         showInstructions.innerHTML = `This needs unlocked before you can progress further.`;
                         break;
