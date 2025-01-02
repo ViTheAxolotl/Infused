@@ -263,7 +263,7 @@ function setTurnOrder()
 function tokenValidator(image, callback)
 {
     let img = new Image();
-    if(!image.includes("custom-")){img.src = image;}
+    if(!image.includes("custom-")){img.src = `images/map/tokens/${image}.png`;}
     else{img.src = wholeCustom[image]["src"];}
     
     img.onload = () => callback(true);
@@ -282,7 +282,7 @@ function addCharacter(character, update)
     {
         if(exists)
         {
-            if(!tokenImg.includes("custom-")){char[0].src = `images/map/tokens/${character["name"]}.png`;}
+            if(!tokenImg.includes("custom-")){char[0].src = `images/map/tokens/${tokenImg}.png`;}
             else{char[0].src = wholeCustom[tokenImg]["src"]; char[0].classList.add("customImg");}
         }
 

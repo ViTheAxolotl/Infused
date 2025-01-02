@@ -1591,7 +1591,7 @@ function handleChangeToken()
         label.style.padding = "5%";
         placeBefore(selects[i], changeTokenBtn);
         placeBefore(label, selects[i]);
-        selects[i].classList = "ddown ddownHide";
+        selects[i].classList = "ddown ddownHide sDropdown";
         selects[i].id = labels[i];
         selects[i].style.width = "100%";
 
@@ -1720,19 +1720,32 @@ function handleCancelTokenChange()
 
 function handleShowSelect()
 {
-    let div = document.getElementById(this.classList[1]);
+    let divs = document.getElementsByClassName("sDropdown");
 
-    if(div.classList.contains("ddownHide"))
+    for(let div of divs)
     {
-        div.classList.remove("ddownHide");
-        div.classList.add("ddownShow");
-    }
+        if(div.id == this.classList[1])
+        {
+            if(div.classList.contains("ddownHide"))
+            {
+                div.classList.remove("ddownHide");
+                div.classList.add("ddownShow");
+            }
+        
+            else if(div.classList.contains("ddownShow"))
+            {
+                div.classList.remove("ddownShow");
+                div.classList.add("ddownHide");
+            }
+        }
 
-    else if(div.classList.contains("ddownShow"))
-    {
-        div.classList.remove("ddownShow");
-        div.classList.add("ddownHide");
+        else
+        {
+            div.classList.remove("ddownShow");
+            div.classList.add("ddownHide");
+        }
     }
+    
 }
 
 function handleCustomsButton()
