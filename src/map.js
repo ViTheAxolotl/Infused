@@ -260,12 +260,38 @@ function setTurnOrder()
     }
 }
 
+function tokenValidator(img, callback)
+{
+    let img = new Image();
+    if(!img.includes("custom-")){img.src = img;}
+    else{img.src = wholeCustom[img]["src"];}
+    
+    img.onload = () => callback(true);
+    img.onerror = () => callback(false);
+}
+
 function addCharacter(character, update)
 {
     let char = [document.createElement("img"), document.createElement("img"), document.createElement("img")];
+    let tokenImg = character["name"];
+    let x = pos[0];
+    let y = pos[0];
+
     char[0].classList = `tokens ${character["id"]} char`;
-    if(!character["name"].includes("custom-")){char[0].src = `images/map/tokens/${character["name"]}.png`;}
-    else{char[0].src = wholeCustom[character["name"]]["src"]; char[0].classList.add("customImg");}
+    tokenValidator(tokenImg, (exists) => 
+    {
+        if(exists)
+        {
+            if(!tokenImg.includes("custom-")){char[0].src = `images/map/tokens/${character["name"]}.png`;}
+            else{char[0].src = wholeCustom[tokenImg]["src"]; char[0].classList.add("customImg");}
+        }
+
+        else
+        {
+            char[0].src = `images/map/tokens/unknown-.png`;
+        }
+    });
+    
     char[0].id = character["id"];
     char[1].src = `images/map/tokens/${character["border"]}Border.png`;
     char[1].id = character["border"];
@@ -273,8 +299,6 @@ function addCharacter(character, update)
     char[2].src = getHpImg(character);
     char[2].id = "hp";
     char[2].classList = `tokens ${character["id"]} hp`;
-    let x = pos[0];
-    let y = pos[0];
     
     if(!character["title"].includes("Hidden"))
     {
