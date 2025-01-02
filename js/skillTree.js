@@ -113,6 +113,7 @@ onAuthStateChanged(auth, (user) =>
                             default:
                                 infused[skillDesc[player][key]["name"]] = skillDesc[player][key]["desc"];
                                 infusedRate += skillDesc[player][key]["infusionRate"];
+                                if(skillDesc[player][key]["name"] == "Longer Ferret Mode"){changeSkill(1, "Dexterity");}
                                 break;
                         }
                     }
