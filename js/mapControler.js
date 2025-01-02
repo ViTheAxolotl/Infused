@@ -114,16 +114,6 @@ onValue(dBRef, (snapshot) =>
 let favoriteRef;
 
 /**
- * When anything under this changes it will use onValue
- */
-const iRRef = ref(database, `playerChar/${player}/infusedRate/`);
-onValue(iRRef, (snapshot) => 
-{
-    const data = snapshot.val();
-    
-});
-
-/**
  * Runs when JS opens
  */
 function init()
