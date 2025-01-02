@@ -135,11 +135,6 @@ function addCharacters()
         person.onclick = handleChoose;
         div.appendChild(person);
     }
-
-    if(oldToken != null || oldToken != undefined)
-    {
-        document.getElementById(`${oldToken["name"]}`).onclick();
-    }
 }
 
 function addCustomImgs()
@@ -165,6 +160,12 @@ function addCustomImgs()
     customsBtn.style.width = "100%";
     customsBtn.onclick = handleCustomImg;
     placeBefore(customsBtn, bord);
+
+    
+    if(oldToken != null || oldToken != undefined)
+    {
+        document.getElementById(`${oldToken["name"]}`).onclick();
+    }
 }
 
 function handleCustomImg()
