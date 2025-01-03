@@ -449,8 +449,7 @@ table, .itemSearch, #itemImg
     position: absolute;
     top: 70%;
     left: 30%;
-    color: white;
-    background-color: black;
+    color: black;
 }
 
 #hideCover
