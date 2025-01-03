@@ -110,6 +110,11 @@ function init()
                 button.onclick = handleLoad;
                 break;
             
+            case "interactive":
+                fiveButtons.push(button);
+                button.onclick = handleInteractive;
+                break;
+
             case "generate":
                 fiveButtons.push(button);
                 button.onclick = handleGenerate;
@@ -933,6 +938,48 @@ function loadMap()
 
         handleDone();
     }, 500);
+}
+
+function handleInteractive()
+{
+    hideButtons();
+    let labels = ["iText", "iURL"];
+    let elms = [document.createElement("input"), document.createElement("input")];
+
+    for(let i = 0; i < labels.length; i++)
+    {
+        let label = createLabel(labels[i]);
+        label.style.padding = "5%";
+        elms[i].id = label[i];
+        elms[i].type = "text";
+        elms[i].innerHTML = "";
+        
+        div.appendChild(label[i]);
+        div.appendChild(elms[i]);
+    }
+
+    let buttons = ["Exit", "Upload"];
+
+    for(let i = 0; i < buttons.length; i++)
+    {
+        let button = document.createElement("button");
+        button.innerHTML = buttons[i];
+
+        if(i = 0){button.onclick = handleDone;}
+        else if(i == 1){button.onclick = handleUploadInteractive;}
+
+        div.appendChild(button);
+    }
+}
+
+function handleUploadInteractive()
+{
+    let text = document.getElementById("iText");
+    let img = document.getElementById("iURL");
+    let obj = {"image" : `${img.innerHTML}`, "text" : `${text.innerHTML}`};
+
+    setDoc("playerChar/Vi/interactive", obj);
+    handleDone();
 }
 
 function handleGenerate()
