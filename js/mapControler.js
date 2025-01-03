@@ -50,6 +50,7 @@ let lastSpell;
 let lastAbility;
 let changeTokenBtn;
 let imgs;
+let wholeInteractive;
 
 /**
  * When it shows that your logged in
@@ -71,6 +72,21 @@ onValue(currentTORef, (snapshot) =>
 {
     const data = snapshot.val();
     wholeTO = data;
+});
+
+/**
+ * When anything under this changes it will use onValue
+ */
+const interactiveRef = ref(database, 'playerChar/Vi/interactive');
+onValue(interactiveRef, (snapshot) => 
+{
+    const data = snapshot.val();
+    wholeInteractive = data;
+
+    if(!firstRun)
+    {
+        displayInteractive();
+    }
 });
 
 /**
@@ -1843,4 +1859,19 @@ function handleCreateCustom()
 
     setDoc(`customImages/${nickname}`, {"name" : nickname, "player" : player, "src" : url});
     reload(.5);
+}
+
+function displayInteractive()
+{
+    let image = document.getElementById("viewToken");
+    let text = document.getElementById("viewTitle");
+    let viewDiv = document.getElementById("cover");
+    viewDiv.classList = "";
+    viewDiv.style.zIndex = "1011";
+    
+    image.classList.remove("invisible");
+    text.classList.remove("invisible");
+
+    image.src = wholeInteractive["image"];
+    text.innerHTML = wholeInteractive["text"];
 }
