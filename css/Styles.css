@@ -593,7 +593,7 @@ table, .itemSearch, #itemImg
     .col-md-7
     {
         flex:0 0 auto;
-        width: 56.8% !important;
+        width: 55.5% !important;
     }
 
     #arrows img
@@ -761,7 +761,7 @@ table, .itemSearch, #itemImg
     .col-md-7
     {
         flex:0 0 auto;
-        width: 55.5% !important;
+        width: 100% !important;
     }
     
     .col-md-6  
@@ -772,6 +772,11 @@ table, .itemSearch, #itemImg
     .col-md-9
     {
         width: 100%;
+    }
+
+    .col-sm-12
+    {
+        margin-top: 10px;
     }
 
     #charImg
@@ -788,6 +793,12 @@ table, .itemSearch, #itemImg
   }
 
 @media (max-width: 574px) {
+    .col-md-7
+    {
+        flex:0 0 auto;
+        width: 56.8% !important;
+    }
+
     .col-md-6  
     {
         width: 100%;
