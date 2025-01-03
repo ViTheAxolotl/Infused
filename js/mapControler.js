@@ -1869,10 +1869,13 @@ function displayInteractive()
     document.getElementById("hideCover").classList.remove("invisible");
     viewDiv.classList = "";
     viewDiv.style.zIndex = "1011";
-    
-    image.classList.remove("invisible");
     text.classList.remove("invisible");
 
-    image.src = wholeInteractive["image"];
+    if(wholeInteractive["image"] != "")
+    {
+        image.classList.remove("invisible");
+        image.src = wholeInteractive["image"];
+    }
+    
     text.innerHTML = wholeInteractive["text"];
 }
