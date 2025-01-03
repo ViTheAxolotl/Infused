@@ -776,7 +776,7 @@ table, .itemSearch, #itemImg
 
     .col-sm-12
     {
-        margin-top: 10px;
+        margin: 10px 0px 0px 0px !important;
     }
 
     #charImg
