@@ -955,7 +955,7 @@ function handleInteractive()
         label.style.padding = "5%";
         elms[i].id = labels[i];
         elms[i].type = "text";
-        elms[i].innerHTML = "";
+        if(i == 1){elms[i].value = "images/push/";}
         
         div.appendChild(label);
         div.appendChild(elms[i]);
