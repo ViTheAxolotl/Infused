@@ -135,6 +135,72 @@
     {
         "ability1" : 
         {
+            "name" : "Pixiu's Treasure",
+            "desc" : "Your Pixiu infusion grants you many benefits and drawbacks. The stronger this side of you gets, the less control of your body you have. By unlocking this skill you gain resistance to Necrotic and immunity to being cursed. You also gain Pixiu Mode, an active ability by using an action your Pixiu side grows temporally (5 Turns) to boost your abilities. In Pixiu Mode you can connect (Bind) yourself with someone who is allied with you. As long as you are within 20 feet of this person when they take damage, you can use your reaction to fly at top speed, appearing within 5 feet of them, and push them aside. Making them only take 1/2 the damage and you take the other half. You can change who you are bound to by using a bonus action. Also while in Pixiu Mode you can fly up to 10 feet off the ground and move your normal walking across. Pixiu mode can be used as many times as you have proficiency bonus. For these benefits, you gain 15% Infusion Rate, once you hit 100% you will become permanently your chosen animal/beast forever. When in an interaction that may have your infused side wanting to do something, you must roll a d100 if you roll above your Infusion Rate you resist that action.",
+            "infusionRate" : 15
+        },
+        
+        "ability2" : 
+        {
+            "name" : "Pixiu's Bounded Pact",
+            "desc" : "While in Pixiu mode and bound to a person, your connection will grow stronger with this ability. You and your bond are so connected that any that would affect them will also affect you as well. For example, any healing you gain will heal the same to them as well. This works for bad things as well. If they are put to sleep from a spell you are put to sleep as well until they wake up or your Pixiu Mode expires you will remain in that state. Any active or passive effects will affect the two of you. (Damage taken by any party isn’t shared) You also will gain the ability to telepathically speak to one another within 30 feet of each other. For these benefits, you gain 10% more Infusion Rate.",
+            "infusionRate" : 10
+        },
+
+        "ability3" : 
+        {
+            "name" : "Pixiu Wildshape",
+            "desc" : "By having your Pixiu side take over the majority of your body you will be able to wildshape into a Pixiu (Using <a class='nav-link active' aria-current='page' href='pixiu.html' target='_blank'>Pixiu</a> 5e Stat Block) for an action, this can be done proficiency bonus / 2 (rounded down) times a day. You can stay a Pixiu for up to 5 turns or until your HP drops to 0 (Any overflow will go to your normal hp same as druid) Once unwildshaped, you must wait 10 minutes before using the ability again, as your Pixiu side needs time to recharge. For these benefits, you gain 15% more Infusion Rate.",
+            "infusionRate" : 15
+        },
+
+        "ability4" : 
+        {
+            "name" : "Pixiu's Hunger for Riches",
+            "desc" : "Pixiu is known for finding gold and giving it to the masters. They are also known to eat their treasures as well. You have been feeling this need to hoard these precious jewels, but with this ability in Pixiu Mode, you can now use these jewelry and money to your advantage. Eating gold will heal you, eating silver will make you more durable, and eating copper will make you more strong for some time. These effects also apply to your bounded pact. For coins, you must eat 5 of them to gain their effect. Eating more will increase duration or impact. (Gold every 5 coins heals you 2d8 + 3 + Proficiency), (Silver every 5 coins gives you temp hp of 2d8 + 3 + Proficiency. Temp Hp given this way can stack), (Copper 5 coins give you +2d6 + 3 + Proficiency more damage on attacks and increases your strength stat by 4 for 1 minute per 5 coins) For these benefits, you gain 10% more Infusion Rate.",
+            "infusionRate" : 10
+        },
+
+        "ability5" : 
+        {
+            "name" : "Pixiu's Multipact",
+            "desc" : "With this ability unlocked, you can bind to 2 people now instead of one in Pixiu Mode. You can choose to be bound to one or two, to change your bindings you will still use a bonus action. If you have Pixiu’s Bound Pact unlocked you are all linked to one another, they can borrow stats and communicate between themselves or you. You can all three discuss in your mind group chat, and things that affect one of you affect the other two as well. You also now share resistances and proficiencies as well. Etc. For these benefits, you gain 10% more Infusion Rate.",
+            "infusionRate" : 10
+        },
+
+        "upgrade1" : 
+        {
+            "name" : "Longer Pixiu Mode",
+            "desc" : "By unlocking this your Pixiu Mode ability will be able to be held for 10 turns instead of the normal 5. As a bonus you can also fly up to 30 feet high instead of the 10. For these benefits, you gain 10% more Infusion Rate.",
+            "infusionRate" : 10
+        },
+
+        "upgrade2" : 
+        {
+            "name" : "Improved Pixiu Pact",
+            "desc" : "By unlocking this ability your Pixiu pact will no longer share the negative effects, only the ones deemed as positive. As a bonus, through your telepathic connection, you both can now share stats from Intelligence, Wisdom, and Charisma. Being that they are giving you the knowledge/advice from their experiences. For these benefits, you gain 10% more Infusion Rate.",
+            "infusionRate" : 10
+        },
+
+        "upgrade3" : 
+        {
+            "name" : "Improved Pixiu Protection",
+            "desc" : "By unlocking this your Pixiu protection goes from splitting the damage in half between you and your bound to you taking 1/2 and them taking 1/4 of the total damage. For these benefits, you gain 10% more Infusion Rate.",
+            "infusionRate" : 10
+        },
+
+        "upgrade4" : 
+        {
+            "name" : "Enhanced Pixiu Wildshape",
+            "desc" : "By unlocking this your Pixiu Wildshape gains stronger giving you many upgrades. You can now wildshape up to your proficiency bonus instead of pb/2. You also can remain in wildshape for up to 10 turns, and only need to wait 5 minutes instead of the 10 to wildshape. For these benefits, you gain 10% more Infusion Rate.",
+            "infusionRate" : 10
+        }
+    },
+
+    "Alejandro" : 
+    {
+        "ability1" : 
+        {
             "name" : "ability1",
             "desc" : "",
             "infusionRate" : 15
