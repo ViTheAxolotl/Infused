@@ -593,7 +593,7 @@ table, .itemSearch, #itemImg
     .col-md-7
     {
         flex:0 0 auto;
-        width:56.81%
+        width: 56.81% !important;
     }
 
     #arrows img
@@ -758,6 +758,12 @@ table, .itemSearch, #itemImg
   }
 
   @media (max-width: 768px) {
+    .col-md-7
+    {
+        flex:0 0 auto;
+        width: 55.5% !important;
+    }
+    
     .col-md-6  
     {
         width: 47.9% !important;
