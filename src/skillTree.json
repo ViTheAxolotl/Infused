@@ -150,7 +150,7 @@
         "ability3" : 
         {
             "name" : "Pixiu Wildshape",
-            "desc" : "By having your Pixiu side take over the majority of your body you will be able to wildshape into a Pixiu (Using <a class='nav-link active' aria-current='page' href='pixiu.html' target='_blank' style=`display: inline;>Pixiu</a> 5e Stat Block) for an action, this can be done proficiency bonus / 2 (rounded down) times a day. You can stay a Pixiu for up to 5 turns or until your HP drops to 0 (Any overflow will go to your normal hp same as druid) Once unwildshaped, you must wait 10 minutes before using the ability again, as your Pixiu side needs time to recharge. For these benefits, you gain 15% more Infusion Rate.",
+            "desc" : "By having your Pixiu side take over the majority of your body you will be able to wildshape into a Pixiu (Using <a class='nav-link active' aria-current='page' href='pixiu.html' target='_blank' style=`display: inline;`>Pixiu</a> 5e Stat Block) for an action, this can be done proficiency bonus / 2 (rounded down) times a day. You can stay a Pixiu for up to 5 turns or until your HP drops to 0 (Any overflow will go to your normal hp same as druid) Once unwildshaped, you must wait 10 minutes before using the ability again, as your Pixiu side needs time to recharge. For these benefits, you gain 15% more Infusion Rate.",
             "infusionRate" : 15
         },
 
