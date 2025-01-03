@@ -590,7 +590,7 @@ table, .itemSearch, #itemImg
         width: 73.2%;
     }
 
-    #info, .col-md-7
+    .col-md-7
     {
         flex:0 0 auto;
         width:56.81%
