@@ -957,9 +957,9 @@ function handleInteractive()
         elms[i].type = "text";
         elms[i].innerHTML = "";
         
-        div.appendChild(divider);
         div.appendChild(label);
         div.appendChild(elms[i]);
+        div.appendChild(divider);
     }
 
     let buttons = ["Exit", "Upload"];
@@ -981,7 +981,7 @@ function handleUploadInteractive()
 {
     let text = document.getElementById("iText");
     let img = document.getElementById("iURL");
-    let obj = {"image" : `${img.innerHTML}`, "text" : `${text.innerHTML}`};
+    let obj = {"image" : `${img.value}`, "text" : `${text.value}`};
 
     setDoc("playerChar/Vi/interactive", obj);
     handleDone();
