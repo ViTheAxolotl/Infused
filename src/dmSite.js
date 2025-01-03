@@ -965,7 +965,7 @@ function handleInteractive()
         let button = document.createElement("button");
         button.innerHTML = buttons[i];
 
-        if(i = 0){button.onclick = handleDone;}
+        if(i == 0){button.onclick = handleDone;}
         else if(i == 1){button.onclick = handleUploadInteractive;}
 
         div.appendChild(button);
