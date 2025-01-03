@@ -85,12 +85,6 @@ body
     margin: 20px 10px 0px 0px;
 }
 
-#info, .col-md-7
-{
-    flex:0 0 auto;
-    width:56.81%
-}
-
 #story, #map, #towns, #controls, #discDisplay, #gridMap, #login
 {
     margin-top: 20px;
@@ -594,6 +588,12 @@ table, .itemSearch, #itemImg
     .col-md-9
     {
         width: 73.2%;
+    }
+
+    #info, .col-md-7
+    {
+        flex:0 0 auto;
+        width:56.81%
     }
 
     #arrows img
