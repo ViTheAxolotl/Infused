@@ -579,6 +579,12 @@ table, .itemSearch, #itemImg
     position: relative;
 }
 
+.col-md-7
+{
+    flex:0 0 auto;
+    width: 56.8% !important;
+}
+
 @media (max-width: 1399px) {
     .col-md-6
     {
@@ -593,7 +599,7 @@ table, .itemSearch, #itemImg
     .col-md-7
     {
         flex:0 0 auto;
-        width: 55.5% !important;
+        width: 56.5% !important;
     }
 
     #arrows img
@@ -676,6 +682,12 @@ table, .itemSearch, #itemImg
         width: 48.9%;
     }
 
+    .col-md-7
+    {
+        flex:0 0 auto;
+        width: 56.2% !important;
+    }
+
     .col-md-9
     {
         width: 72.8%;
@@ -707,6 +719,12 @@ table, .itemSearch, #itemImg
     .col-md-9
     {
         width: 72.2%;
+    }
+
+    .col-md-7
+    {
+        flex:0 0 auto;
+        width: 55.5% !important;
     }
 
     #grid
@@ -796,7 +814,7 @@ table, .itemSearch, #itemImg
     .col-md-7
     {
         flex:0 0 auto;
-        width: 56.8% !important;
+        width: 100% !important;
     }
 
     .col-md-6  
