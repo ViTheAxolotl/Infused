@@ -969,6 +969,7 @@ function handleInteractive()
         let button = document.createElement("button");
         button.innerHTML = buttons[i];
         button.classList.add("gridButton");
+        button.style.margin = "5px";
 
         if(i == 0){button.onclick = handleDone;}
         else if(i == 1){button.onclick = handleUploadInteractive;}
