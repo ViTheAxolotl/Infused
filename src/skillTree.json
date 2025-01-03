@@ -201,64 +201,64 @@
     {
         "ability1" : 
         {
-            "name" : "ability1",
-            "desc" : "",
+            "name" : "Basilisk's Eyes",
+            "desc" : "Your Basilisk infusion grants you many benefits and drawbacks. The stronger this side of you gets, the less control of your body you have. By unlocking this skill you gain immunity to poison and advantage on Constitution saving throws. You also gain Basilisk Mode, an active ability by using an action your Basilisk side grows temporally (5 Turns) to boost your abilities. In Basilisk Mode you can use an action to do a petrifying stare on creatures looking at you (in a fight this would include anyone fighting you directly, not in a fight anyone who is talking to you would be implied to be looking at you in the eyes. This ability also works on yourself if you see your own eyes). The being must be within 10 feet of you, then they must save on a DC 12 Constitution saving throw. If they fail, the creature magically begins to turn to stone and is restrained. It must repeat the saving throw at the end of its next turn. On a success, the effect ends. On a second failure, the creature is petrified until freed by the greater restoration spell or other magic. You also will gain 30 feet of dark vision in this form. Basilisk mode can be used as many times as you have proficiency bonus. For these benefits, you gain 15% Infusion Rate, once you hit 100% you will become permanently your chosen animal/beast forever. When in an interaction that may have your infused side wanting to do something, you must roll a d100 if you roll above your Infusion Rate you resist that action.",
             "infusionRate" : 15
         },
         
         "ability2" : 
         {
-            "name" : "ability2",
-            "desc" : "",
+            "name" : "Basilisk's Venom",
+            "desc" : "The venom from a basilisk is one of the most deadly venoms in the world. Once this venom is inside of a being there is little to do to cure it without magic. Of course you are immune to this venom, the only way for you to deploy this is through your teeth. While in Basilisk mode you gain the Basilisk Bite ability, doing 1d10+3 damage on a hit. This will then infect the target, doing 2d6+2 on each of their turns of poison damage. For these benefits, you gain 10% more Infusion Rate.",
             "infusionRate" : 10
         },
 
         "ability3" : 
         {
-            "name" : "ability3",
-            "desc" : "",
+            "name" : "Basilisk Wildshape",
+            "desc" : "By having your Basilisk side take over the majority of your body you will be able to wildshape into a Basilisk (Using <a class='nav-link active' aria-current='page' href='wildshape.html?basilisk' target='_blank' style='display: inline;'>Basilisk</a> 5e Stat Block) for an action, this can be done proficiency bonus / 2 (rounded down) times a day. You can stay a Basilisk for up to 5 turns or until your HP drops to 0 (Any overflow will go to your normal hp same as druid) Once unwildshaped, you must wait 10 minutes before using the ability again, as your Basilisk side needs time to recharge. For these benefits, you gain 15% more Infusion Rate.",
             "infusionRate" : 15
         },
 
         "ability4" : 
         {
-            "name" : "ability4",
-            "desc" : "",
+            "name" : "Basilisk's Fire Breath",
+            "desc" : "Basilisk are also known for their burning hot fire breath. While in Basilisk mode you can use your bonus action to do a fire breath attack. This travels in a line from you for 10 feet. Any creature in this line rolls a DC 13 dexterity saving throw. On a failed save they take 3d6+2 fire damage, or half as much on a success. For these benefits, you gain 10% more Infusion Rate.",
             "infusionRate" : 10
         },
 
         "ability5" : 
         {
-            "name" : "ability5",
-            "desc" : "",
+            "name" : "Basilisk Dripping Venom",
+            "desc" : "With this unlocked, you can now make your teeth drip its venom in Basilisk mode. This can be collected and used to coat weapons, poured into food, or anything you wish. Once this venom is inside a person it will do its normal damage decided from Basilisk Venom's ability. If this ability is still locked it will do 1d6 poison damage a turn, this is incurable by normal means. Only magic can end its effects. For these benefits, you gain 10% more Infusion Rate.",
             "infusionRate" : 10
         },
 
         "upgrade1" : 
         {
-            "name" : "upgrade1",
-            "desc" : "",
+            "name" : "Longer Basilisk Mode",
+            "desc" : "By unlocking this your Basilisk Mode ability will be able to be held for 10 turns instead of the normal 5. As a bonus, you also get 60 feet of dark vision high instead of 30. For these benefits, you gain 10% more Infusion Rate.",
             "infusionRate" : 10
         },
 
         "upgrade2" : 
         {
-            "name" : "upgrade2",
-            "desc" : "",
+            "name" : "Stronger Basilisk Venom",
+            "desc" : "By unlocking this your bite attack goes from 1d10+3 into 2d10+6 and your venom will go from 2d6+2 into 3d6+4 damage each of their turns. For these benefits, you gain 10% more Infusion Rate.",
             "infusionRate" : 10
         },
 
         "upgrade3" : 
         {
-            "name" : "upgrade3",
-            "desc" : "",
+            "name" : "Improved Basilisk Vision",
+            "desc" : "By unlocking this your Basilisk petrifying stare goes from 10 feet from you to 30 feet where your locking eyes can turn them to stone. For these benefits, you gain 10% more Infusion Rate.",
             "infusionRate" : 10
         },
 
         "upgrade4" : 
         {
-            "name" : "upgrade4",
-            "desc" : "",
+            "name" : "Enhanced Basilisk Wildshape",
+            "desc" : "By unlocking this your Basilisk Wildshape gains stronger giving you many upgrades. You can now wildshape up to your proficiency bonus instead of pb/2. You also can remain in wildshape for up to 10 turns, and only need to wait 5 minutes instead of the 10 to wildshape. For these benefits, you gain 10% more Infusion Rate.",
             "infusionRate" : 10
         }
     }

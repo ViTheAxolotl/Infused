@@ -19,6 +19,10 @@ function init()
         case "ferret":
             img.src = "images/weasel.png";
             break;
+
+        case "basilisk":
+            img.src = "images/basilisk.png";
+            break;
     }
 }
 
