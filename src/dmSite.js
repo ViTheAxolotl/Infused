@@ -954,7 +954,7 @@ function handleInteractive()
         elms[i].type = "text";
         elms[i].innerHTML = "";
         
-        div.appendChild(label[i]);
+        div.appendChild(labels[i]);
         div.appendChild(elms[i]);
     }
 
