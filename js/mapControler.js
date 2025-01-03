@@ -1866,6 +1866,7 @@ function displayInteractive()
     let image = document.getElementById("viewToken");
     let text = document.getElementById("viewTitle");
     let viewDiv = document.getElementById("cover");
+    document.getElementById("hideCover").classList.remove("invisible");
     viewDiv.classList = "";
     viewDiv.style.zIndex = "1011";
     
