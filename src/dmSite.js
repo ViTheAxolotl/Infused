@@ -948,12 +948,16 @@ function handleInteractive()
 
     for(let i = 0; i < labels.length; i++)
     {
+        let divider = document.createElement("span");
+        divider.style.display = "block";
+
         let label = createLabel(labels[i]);
         label.style.padding = "5%";
-        elms[i].id = label[i];
+        elms[i].id = labels[i];
         elms[i].type = "text";
         elms[i].innerHTML = "";
         
+        div.appendChild(divider);
         div.appendChild(label);
         div.appendChild(elms[i]);
     }
@@ -964,6 +968,7 @@ function handleInteractive()
     {
         let button = document.createElement("button");
         button.innerHTML = buttons[i];
+        button.classList.add("gridButton");
 
         if(i == 0){button.onclick = handleDone;}
         else if(i == 1){button.onclick = handleUploadInteractive;}
