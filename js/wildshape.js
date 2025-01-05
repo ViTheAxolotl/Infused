@@ -23,6 +23,9 @@ function init()
         case "basilisk":
             img.src = "images/basilisk.png";
             break;
+
+        case "vSquid":
+            img.src = "images/vSquid.jpg";
     }
 }
 

@@ -237,7 +237,7 @@
         "upgrade1" : 
         {
             "name" : "Longer Basilisk Mode",
-            "desc" : "By unlocking this your Basilisk Mode ability will be able to be held for 10 turns instead of the normal 5. As a bonus, you also get 60 feet of dark vision high instead of 30. For these benefits, you gain 10% more Infusion Rate.",
+            "desc" : "By unlocking this your Basilisk Mode ability will be able to be held for 10 turns instead of the normal 5. As a bonus, you also get 60 feet of dark vision instead of 30. For these benefits, you gain 10% more Infusion Rate.",
             "infusionRate" : 10
         },
 
@@ -259,6 +259,72 @@
         {
             "name" : "Enhanced Basilisk Wildshape",
             "desc" : "By unlocking this your Basilisk Wildshape gains stronger giving you many upgrades. You can now wildshape up to your proficiency bonus instead of pb/2. You also can remain in wildshape for up to 10 turns, and only need to wait 5 minutes instead of the 10 to wildshape. For these benefits, you gain 10% more Infusion Rate.",
+            "infusionRate" : 10
+        }
+    }, 
+
+    "Dream" : 
+    {
+        "ability1" : 
+        {
+            "name" : "Vampire Squid's Light",
+            "desc" : "Your Vampire Squid infusion grants you many benefits and drawbacks. The stronger this side of you gets, the less control of your body you have. By unlocking this skill you gain resistance to Cold and can breathe underwater with the help of your gills. You also gain Vampire Squid Mode, an active ability by using an action your Vampire Squid side grows temporally (5 Turns) to boost your abilities. In Vampire Squid Mode you can use a bonus action to make the ends of your tentacles glow in any color you choose, creating 15 feet of light from each. You can also use your action to have your tentacles grab and try to grapple someone within 5 feet of you. The target will do an athletics save, they must beat your (athletics + lv + proficiency) DC. If they don’t they are grappled for the turn. On their next turn, they can use their action to try and break out again. Also while in Vampire Squid Mode you will have darkvision up to 30ft. Vampire Squid mode can be used as many times as you have proficiency bonus. For these benefits, you gain 15% Infusion Rate, once you hit 100% you will become permanently your chosen animal/beast forever. When in an interaction that may have your infused side wanting to do something, you must roll a d100 if you roll above your Infusion Rate you resist that action.",
+            "infusionRate" : 15
+        },
+        
+        "ability2" : 
+        {
+            "name" : "Vampire Squid Bioluminescence Mucus",
+            "desc" : "Like the vampire squid, you too can create a bioluminescence mucus cloud, after unlocking this ability you can use your action in Vampire Squid Mode to spit this mucus on someone within 5ft of you. This mucus will restrain the creature for 1d4 + 1 turns before it starts to dissolve. For these benefits, you gain 10% more Infusion Rate.",
+            "infusionRate" : 10
+        },
+
+        "ability3" : 
+        {
+            "name" : "Vampire Squid Wildshape",
+            "desc" : "By having your Vampire Squid side take over the majority of your body you will be able to wildshape into a Vampire Squid (Using <a class='nav-link active' aria-current='page' href='wildshape.html?vSquid target='_blank' style='display: inline;'>Basilisk</a> 5e Stat Block) for an action, this can be done proficiency bonus / 2 (rounded down) times a day. You can stay a Vampire Squid for up to 5 turns or until your HP drops to 0 (Any overflow will go to your normal hp same as druid) Once unwildshaped, you must wait 10 minutes before using the ability again, as your Vampire Squid side needs time to recharge. For these benefits, you gain 15% more Infusion Rate.",
+            "infusionRate" : 15
+        },
+
+        "ability4" : 
+        {
+            "name" : "Vampire Squid's Teeth",
+            "desc" : "Vampire Squid are known for inverting itself inside out revealing their teeth. You can do this as well. But instead of your mouth, your tentacles will invert revealing teeth. When using a bonus action in Vampire Squid Mode, you can invert them giving you a temporary increase to your AC the increase is by your proficiency modifier and will last till your Vampire Squid mode runs out. If any creature attacks miss they will take 2d4+2 damage from hitting your teeth. For these benefits, you gain 10% more Infusion Rate.",
+            "infusionRate" : 10
+        },
+
+        "ability5" : 
+        {
+            "name" : "Vampire Squid Regeneration",
+            "desc" : "Vampire Squid are known for the regeneration of their arms. You too can gain this ability, while in Vampire Squid Mode at the start of each of your turns, you may roll 2d4+2 and regain that amount of health. For these benefits, you gain 10% more Infusion Rate.",
+            "infusionRate" : 10
+        },
+
+        "upgrade1" : 
+        {
+            "name" : "Longer Vampire Squid Mode",
+            "desc" : "By unlocking this your Vampire Squid Mode ability will be able to be held for 10 turns instead of the normal 5. As a bonus, you also get 60 feet of darkvision instead of 30. For these benefits, you gain 10% more Infusion Rate.",
+            "infusionRate" : 10
+        },
+
+        "upgrade2" : 
+        {
+            "name" : "Improved Vampire Squid Mucus",
+            "desc" : "By unlocking this your Vampire Squid Mucus can now reach 10 feet from you and restrain the creature for 2d4 + 3 turns instead of the 1d4 + 1. For these benefits, you gain 10% more Infusion Rate.",
+            "infusionRate" : 10
+        },
+
+        "upgrade3" : 
+        {
+            "name" : "Improved Vampire Squid Grapple",
+            "desc" : "By unlocking this your Vampire Squid Mode grapple can be used as a bonus action instead of an action. The DC stays at (athletics + lv + proficiency). As a bonus, you gain a swim speed of 30ft in Vampire Squid Mode. For these benefits, you gain 10% more Infusion Rate.",
+            "infusionRate" : 10
+        },
+
+        "upgrade4" : 
+        {
+            "name" : "Enhanced Vampire Squid Wildshape",
+            "desc" : "By unlocking this your Vampire Squid Wildshape gains stronger giving you many upgrades. You can now wildshape up to your proficiency bonus instead of pb/2. You also can remain in wildshape for up to 10 turns, and only need to wait 5 minutes instead of the 10 to wildshape. For these benefits, you gain 10% more Infusion Rate.",
             "infusionRate" : 10
         }
     }
