@@ -57,9 +57,9 @@ let wholeSpells;
 
 function init()
 {
-    fetch('https://vitheaxolotl.github.io/Forgotten-Realm/src/files.json').then(res => res.json()).then((json) => imgs = json);
-    fetch('https://vitheaxolotl.github.io/Forgotten-Realm/src/actions.json').then(res => res.json()).then((json) => wholeActions = json);
-    fetch('https://vitheaxolotl.github.io/Forgotten-Realm/src/spells.json').then(res => res.json()).then((json) => wholeSpells = json);
+    fetch('https://vitheaxolotl.github.io/Infused/src/files.json').then(res => res.json()).then((json) => imgs = json);
+    fetch('https://vitheaxolotl.github.io/Infused/src/actions.json').then(res => res.json()).then((json) => wholeActions = json);
+    fetch('https://vitheaxolotl.github.io/Infused/src/spells.json').then(res => res.json()).then((json) => wholeSpells = json);
     
     for(let button of document.getElementsByTagName("button"))
     {
