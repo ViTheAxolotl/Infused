@@ -114,7 +114,7 @@ function init()
     yPos = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M"];
     xPos = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13"];
     fetch('https://vitheaxolotl.github.io/Infused/src/files.json').then(res => res.json()).then((json) => imgs = json);
-    document.getElementById("hideCover").onclick = hideCover;
+    document.getElementById("hideCover").onclick = hideCover; 
 }
 
 function addTokens()
