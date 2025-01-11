@@ -11,7 +11,7 @@
         "stage" : "images/map/stage.jpg",
         "throwingGame" : "images/map/throwingGame.jpg",
         "woodenFloor" : "images/map/woodenFloor.jpg",
-        "townHall" : "images/map/townHall.jpg" 
+        "townHall" : "images/map/townHall.jpg"
     }, 
 
     "tokens" : 

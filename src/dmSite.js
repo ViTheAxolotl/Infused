@@ -119,6 +119,11 @@ function init()
                 fiveButtons.push(button);
                 button.onclick = handleGenerate;
                 break;
+
+            case "openPage":
+                fiveButtons.push(button);
+                button.onclick = handleOpenPage;
+                break;
         }
     }
 }
@@ -1042,6 +1047,15 @@ function backupFavorites()
     dlAnchorElem.setAttribute("href",     dataStr     );
     dlAnchorElem.setAttribute("download", "actions.json");
     dlAnchorElem.click();
+}
+
+function handleOpenPage()
+{
+    let window = document.createElement("a");
+    window.href = "dmSite.html";
+    window.target = "_blank";
+    window.click();
+    handleDone();
 }
 
 function handleDone()
