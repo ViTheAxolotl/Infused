@@ -585,6 +585,13 @@ table, .itemSearch, #itemImg
     width: 56.8% !important;
 }
 
+#grid
+{
+    width: 80%;
+    height: 80%;
+    margin: 10%;
+}
+
 @media (max-width: 1399px) {
     .col-md-6
     {
