@@ -1312,7 +1312,7 @@ function handleUseAction()
             damage = diceRoller(damage[0], damage[1], damage[2], "false");
             
             if(display){display += `\nAccurcy: ${accurcy} to Hit.\nOn Hit: ${damage} Damage.\n`;}
-            else{display = `${wholeChar[player]["charName"]} cast,\n${lastUse}:\n${useInfo}\n\nAccurcy: ${accurcy} to Hit.\nOn Hit: ${damage} Damage.\n`;}
+            else{display = `${wholeChar[player]["currentToken"]} cast,\n${lastUse}:\n${useInfo}\n\nAccurcy: ${accurcy} to Hit.\nOn Hit: ${damage} Damage.\n`;}
     
             if(!spellLevel){display = display.replaceAll("cast", "used the ability");}
         }
