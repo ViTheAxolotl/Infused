@@ -1180,7 +1180,7 @@ function handleUseAction()
 
             setDoc(`playerChar/Vi/responses`, {"ability" : skill, "currentResponse" : lastUse, "toBeat" : toBeat, "castBy" : wholeChar[player]["charName"], "isSpell" : isSpell, "ind" : ind, "castUp" : castUp});
 
-            display = `${wholeChar[player]["currentToken"]} cast,\n${lastUse}:\n${useInfo} \nWaiting for others to use the Response Action (Under Actions, Miscs)...`;
+            display = `${toTitleCase(wholeChar[player]["currentToken"])} cast,\n${lastUse}:\n${useInfo} \nWaiting for others to use the Response Action (Under Actions, Miscs)...`;
 
             if(!spellLevel){display = display.replaceAll("cast", "used the ability");} //At the end
             discription = "";
@@ -1312,7 +1312,7 @@ function handleUseAction()
             damage = diceRoller(damage[0], damage[1], damage[2], "false");
             
             if(display){display += `\nAccurcy: ${accurcy} to Hit.\nOn Hit: ${damage} Damage.\n`;}
-            else{display = `${wholeChar[player]["currentToken"]} cast,\n${lastUse}:\n${useInfo}\n\nAccurcy: ${accurcy} to Hit.\nOn Hit: ${damage} Damage.\n`;}
+            else{display = `${toTitleCase(wholeChar[player]["currentToken"])} cast,\n${lastUse}:\n${useInfo}\n\nAccurcy: ${accurcy} to Hit.\nOn Hit: ${damage} Damage.\n`;}
     
             if(!spellLevel){display = display.replaceAll("cast", "used the ability");}
         }
@@ -1339,7 +1339,7 @@ function handleUseAction()
 
     else
     {
-        display = `${wholeChar[player]["currentToken"]} cast:\n${lastUse}\n${useInfo}`;
+        display = `${toTitleCase(wholeChar[player]["currentToken"])} cast:\n${lastUse}\n${useInfo}`;
         if(curClass){display = display.replaceAll("cast", "use the ability");}
     }
 
