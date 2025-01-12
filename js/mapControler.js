@@ -1339,7 +1339,7 @@ function handleUseAction()
 
     else
     {
-        display = `${wholeChar[player]["charName"]} cast:\n${lastUse}\n${useInfo}`;
+        display = `${wholeChar[player]["currentToken"]} cast:\n${lastUse}\n${useInfo}`;
         if(curClass){display = display.replaceAll("cast", "use the ability");}
     }
 
