@@ -39,6 +39,7 @@ let wholeDb = {};
 let wholeSpells;
 let wholeActions;
 let currentLv = "3th level";
+let level = 3;
 let profBonus = "3";
 let spellLevel;
 let curClass;
