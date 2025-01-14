@@ -996,7 +996,7 @@ function handleUploadInteractive()
 function handleGenerate()
 {
     hideButtons();
-    setDoc(`playerChar/Dream`, wholeChar["Okami"]);
+    setDoc(`playerChar/Kody`, wholeChar["Okami"]);
 
     alert("done");
     handleDone();
