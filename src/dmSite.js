@@ -506,7 +506,7 @@ function handlePreset()
 {
     hideButtons();
     if(preOrSumm == undefined){preOrSumm = 0;}
-    db = [wholePre, wholeSummons["summonPreset"]];
+    db = [wholePre, wholeSummons];
 
     for(let token of Object.keys(db[preOrSumm]))
     {
