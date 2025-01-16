@@ -347,22 +347,22 @@
 
         "ability3" : 
         {
-            "name" : "Vampire Squid Wildshape",
-            "desc" : "By having your Vampire Squid side take over the majority of your body you will be able to wildshape into a Vampire Squid (Using <a class='nav-link active' aria-current='page' href='wildshape.html?vSquid' target='_blank' style='display: inline;'>Vampire Squid</a> 5e Stat Block) for an action, this can be done proficiency bonus / 2 (rounded down) times a day. You can stay a Vampire Squid for up to 5 turns or until your HP drops to 0 (Any overflow will go to your normal hp same as druid) Once unwildshaped, you must wait 10 minutes before using the ability again, as your Vampire Squid side needs time to recharge. For these benefits, you gain 15% more Infusion Rate.",
+            "name" : "Hydra Wildshape",
+            "desc" : "By having your Hydra side take over the majority of your body you will be able to wildshape into a Hydra (Using <a class='nav-link active' aria-current='page' href='wildshape.html?hydra' target='_blank' style='display: inline;'>Hydra</a> 5e Stat Block) for an action, this can be done proficiency bonus / 2 (rounded down) times a day. You can stay a Vampire Squid for up to 5 turns or until your HP drops to 0 (Any overflow will go to your normal hp same as druid) Once unwildshaped, you must wait 10 minutes before using the ability again, as your Hydra side needs time to recharge. For these benefits, you gain 15% more Infusion Rate.",
             "infusionRate" : 15
         },
 
         "ability4" : 
         {
-            "name" : "Vampire Squid's Teeth",
-            "desc" : "Vampire Squid are known for inverting itself inside out revealing their teeth. You can do this as well. But instead of your mouth, your tentacles will invert revealing teeth. When using a bonus action in Vampire Squid Mode, you can invert them giving you a temporary increase to your AC the increase is by your proficiency modifier and will last till your Vampire Squid mode runs out. If any creature attacks miss they will take 2d4+2 damage from hitting your teeth. For these benefits, you gain 10% more Infusion Rate.",
+            "name" : "Hydra Breathless",
+            "desc" : "Hydra's are also able to hold their breaths for a long time. With this unlocked you can do this as well. If you have one head you can hold your breath for 30 minutes, but if you have 2 heads you can hold it for 60 minutes. For these benefits, you gain 10% more Infusion Rate.",
             "infusionRate" : 10
         },
 
         "ability5" : 
         {
-            "name" : "Vampire Squid Regeneration",
-            "desc" : "Vampire Squid are known for the regeneration of their arms. You too can gain this ability, while in Vampire Squid Mode at the start of each of your turns, you may roll 2d4+2 and regain that amount of health. For these benefits, you gain 10% more Infusion Rate.",
+            "name" : "Hydra Venomous Bite",
+            "desc" : "Some Hydra's have venom going through their breaths or bite. You too can gain this ability, while in Hydra Mode your bite attack goes to dealing a 1d10+proficency bonus with an extra 2d8+5 acid damage with proficiency being added to the accuracy roll. For these benefits, you gain 10% more Infusion Rate.",
             "infusionRate" : 10
         },
 
@@ -375,8 +375,8 @@
 
         "upgrade2" : 
         {
-            "name" : "Improved Vampire Squid Mucus",
-            "desc" : "By unlocking this your Vampire Squid Mucus can now reach 10 feet from you and restrain the creature for 2d4 + 3 turns instead of the 1d4 + 1. For these benefits, you gain 10% more Infusion Rate.",
+            "name" : "Improved Extra Head",
+            "desc" : "Your extra head will be able to use as a bonus action or a reaction while in Hydra Mode. Your extra head gives you 10 max hp instead of the normal 5. For these benefits, you gain 10% more Infusion Rate.",
             "infusionRate" : 10
         },
 
@@ -389,8 +389,8 @@
 
         "upgrade4" : 
         {
-            "name" : "Enhanced Vampire Squid Wildshape",
-            "desc" : "By unlocking this your Vampire Squid Wildshape gains stronger giving you many upgrades. You can now wildshape up to your proficiency bonus instead of pb/2. You also can remain in wildshape for up to 10 turns, and only need to wait 5 minutes instead of the 10 to wildshape. For these benefits, you gain 10% more Infusion Rate.",
+            "name" : "Enhanced Hydra Wildshape",
+            "desc" : "By unlocking this your Hydra Wildshape gains stronger giving you many upgrades. You can now wildshape up to your proficiency bonus instead of pb/2. You also can remain in wildshape for up to 10 turns, and only need to wait 5 minutes instead of the 10 to wildshape. For these benefits, you gain 10% more Infusion Rate.",
             "infusionRate" : 10
         }
     }

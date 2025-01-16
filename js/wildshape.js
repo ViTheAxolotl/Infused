@@ -26,6 +26,11 @@ function init()
 
         case "vSquid":
             img.src = "images/vSquid.jpg";
+            break;
+
+        case "hydra":
+            img.src = "images/hydra.jpg";
+            break;
     }
 }
 
