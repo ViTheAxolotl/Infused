@@ -632,7 +632,6 @@ function handleSummons()
         };
     div.appendChild(changeIsSummons);
     handlePreset();
-    addDone();
 }
 
 function makeTORow(key)
