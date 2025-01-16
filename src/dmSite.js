@@ -1114,19 +1114,15 @@ function addToken()
         mode = "none";
     }
 
+    if(s == true)
+    {
+        table = `playerChar/Vi/summons/summonPreset/${id}`;
+    }
+
     let table = `currentMap/${id}`;
     if(mode == "preset")
     {
-        if(preOrSumm == 1)
-        {
-            s = true;
-            table = `playerChar/Vi/summons/summonPreset/${id}`;
-        }
-
-        else
-        {
-            table = `preset/${id}`;    
-        }
+        table = `preset/${id}`;    
     }
  
     setDoc(table,
