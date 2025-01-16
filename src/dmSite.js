@@ -626,9 +626,10 @@ function handleSummons()
             else{changeIsSummons.innerHTML = "Turn Summon's Off"; setDoc(`playerChar/Vi/summons/isSummonOn`, true);}
         };
     let back = document.createElement("button");
-    back.innerHTML = "back";
-    div.appendChild(back);
+    back.innerHTML = "Back";
+    back.handleDone();
     div.appendChild(changeIsSummons);
+    div.appendChild(back);
     handlePreset();
 }
 
@@ -1101,7 +1102,7 @@ function addToken()
     let t = document.getElementById("title").value;
     let x = document.getElementById("xPos").value;
     let y = document.getElementById("yPos").value;
-    let s = false;
+    let s = document.getElementById("isSummon").value;
     let id = n.slice(0, n.indexOf("-"));
     
     if(Object.keys(wholeDB).includes(id) && mode == "add")
