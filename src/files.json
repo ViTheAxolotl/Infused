@@ -11,7 +11,8 @@
         "stage" : "images/map/stage.jpg",
         "throwingGame" : "images/map/throwingGame.jpg",
         "woodenFloor" : "images/map/woodenFloor.jpg",
-        "townHall" : "images/map/townHall.jpg"
+        "townHall" : "images/map/townHall.jpg",
+        "caveFloor" : "images/map/caveFloor.jpg"
     }, 
 
     "tokens" : 
@@ -39,7 +40,12 @@
         "table-" : "images/map/tokens/table-.png",
         "magicAura-" : "images/map/tokens/magicAura-.png",
         "goblin-" : "images/map/tokens/goblin-.png",
-        "ogre-" : "images/map/tokens/ogre-.png"
+        "ogre-" : "images/map/tokens/ogre-.png",
+        "iceDoor-" : "images/map/tokens/iceDoor-.png",
+        "iceWallX-" : "images/map/tokens/iceWallX-.png",
+        "iceWallY-" : "images/map/tokens/iceWallY-.png",
+        "skyla-" : "images/map/tokens/skyla-.png",
+        "milo-" : "images/map/tokens/milo-.png"
     },
  
     "borders" : 
