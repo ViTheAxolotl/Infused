@@ -625,12 +625,9 @@ function handleSummons()
             if(wholeSummons["isSummonOn"]){changeIsSummons.innerHTML = "Turn Summon's On"; setDoc(`playerChar/Vi/summons/isSummonOn`, false);}
             else{changeIsSummons.innerHTML = "Turn Summon's Off"; setDoc(`playerChar/Vi/summons/isSummonOn`, true);}
         };
-    let back = document.createElement("button");
-    back.innerHTML = "Back";
-    back.handleDone();
     div.appendChild(changeIsSummons);
-    div.appendChild(back);
     handlePreset();
+    addDone();
 }
 
 function makeTORow(key)
