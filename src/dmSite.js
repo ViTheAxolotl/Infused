@@ -243,7 +243,7 @@ function deleteToken()
  
 function handleEdit()
 {
-    let names = ["border", "name", "maxHp", "currentHp", "title", "xPos", "yPos", "tempHp"];
+    let names = ["border", "name", "maxHp", "currentHp", "title", "xPos", "yPos", "tempHp", "isSummon"];
     let txtFeilds = [];
     let buttons = [document.createElement("button"), document.createElement("button")];
     let buttonsName = ["edit", "back"];
@@ -300,7 +300,7 @@ function handleEdit()
         }
     }
     
-    for(let i = 0; i < 8; i++)
+    for(let i = 0; i < 9; i++)
     {
         let label = createLabel(names[i]);
         
@@ -367,6 +367,7 @@ function handleEdit()
     txtFeilds[5].value = curCharacter.xPos;
     txtFeilds[6].value = curCharacter.yPos;
     txtFeilds[7].value = curCharacter.tempHp;
+    txtFeilds[8].value = curCharacter.isSummon;
     editDiv.appendChild(document.createElement("h6"));
     buttons.forEach(em => {editDiv.appendChild(em)});
 }
@@ -624,6 +625,9 @@ function handleSummons()
             if(wholeSummons["isSummonOn"]){changeIsSummons.innerHTML = "Turn Summon's On"; setDoc(`playerChar/Vi/summons/isSummonOn`, false);}
             else{changeIsSummons.innerHTML = "Turn Summon's Off"; setDoc(`playerChar/Vi/summons/isSummonOn`, true);}
         };
+    let back = document.createElement(button);
+    back.innerHTML = "back";
+    div.appendChild(back);
     div.appendChild(changeIsSummons);
     handlePreset();
 }
