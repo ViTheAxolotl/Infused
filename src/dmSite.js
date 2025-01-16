@@ -510,6 +510,11 @@ function handlePreset()
 
     for(let token of Object.keys(db[preOrSumm]))
     {
+        if(token == true)
+        {
+            continue;
+        }
+        
         makeToken(db[preOrSumm][token]);
         let currentDiv = document.getElementById(`${db[preOrSumm][token].id}-div`);
         let names = ["Edit", "Delete", "Upload"];
