@@ -165,7 +165,8 @@ function addTokens()
 
     for(let key of Object.keys(wholeDB))
     {
-        addCharacter(wholeDB[key], false);
+        if(key == "map") {document.getElementById("grid").src = imgs["mapName"][wholeDB[key]];}
+        else{addCharacter(wholeDB[key], false);}     
     }
 
     if(player == "Vi")
@@ -305,11 +306,6 @@ function addCharacter(character, update)
         let title = character.title;
         x = pos[xPos.indexOf(character["xPos"])];
         y = pos[yPos.indexOf(character["yPos"])];
-
-        if(char[0].id == "invisible")
-        {
-            document.getElementById("grid").src = imgs["mapName"][character.map];
-        }
 
         if(title.includes("Large"))
         {

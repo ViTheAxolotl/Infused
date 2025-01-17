@@ -802,19 +802,7 @@ function handleChangeMap()
 function updateMap()
 {
     let select = document.getElementById("select");
-    let invisible;
-    
-    for(let key of Object.keys(wholeDB))
-    {
-        if(wholeDB[key].name == "invisible-")
-        {
-            invisible = wholeDB[key];
-        }
-    }
-
-    invisible.map = select[select.selectedIndex].value;
-
-    setDoc(`currentMap/invisible`, invisible);
+    setDoc(`currentMap/map`, select[select.selectedIndex].value);
 
     handleDone();
 }
