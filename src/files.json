@@ -45,6 +45,10 @@
         "iceWallX-" : "images/map/tokens/iceWallX-.png",
         "iceWallY-" : "images/map/tokens/iceWallY-.png",
         "skyla-" : "images/map/tokens/skyla-.png",
+        "iceFlower-" : "images/map/tokens/iceFlower-.png",
+        "iceHole-" : "images/map/tokens/iceHole-.png",
+        "iceSnowFlake-" : "images/map/tokens/iceSnowFlake-.png",
+        "iceSun-" : "images/map/tokens/iceSun-.png",
         "milo-" : "images/map/tokens/milo-.png"
     },
  
