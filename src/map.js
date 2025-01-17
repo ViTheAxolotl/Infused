@@ -260,16 +260,6 @@ function setTurnOrder()
     }
 }
 
-function tokenValidator(image, callback)
-{
-    let img = new Image();
-    if(!image.includes("custom-")){img.src = `images/map/tokens/${image}.png`;}
-    else{img.src = wholeCustom[image]["src"];}
-    
-    img.onload = () => callback(true);
-    img.onerror = () => callback(false);
-}
-
 function addCharacter(character, update)
 {
     let char = [document.createElement("img"), document.createElement("img"), document.createElement("img")];
@@ -278,19 +268,14 @@ function addCharacter(character, update)
     let y = pos[0];
 
     char[0].classList = `tokens ${character["id"]} char`;
-    tokenValidator(tokenImg, (exists) => 
-    {
-        if(exists)
-        {
-            if(!tokenImg.includes("custom-")){char[0].src = `images/map/tokens/${tokenImg}.png`;}
-            else{char[0].src = wholeCustom[tokenImg]["src"]; char[0].classList.add("customImg");}
-        }
 
-        else
-        {
-            char[0].src = `images/map/tokens/unknown-.png`;
-        }
-    });
+    let image = tokenImg;
+    let img = new Image();
+    if(!image.includes("custom-")){img.src = `images/map/tokens/${image}.png`;}
+    else{img.src = wholeCustom[image]["src"];}
+    
+    img.onload = () => {if(!tokenImg.includes("custom-")){char[0].src = `images/map/tokens/${tokenImg}.png`;} else{char[0].src = wholeCustom[tokenImg]["src"]; char[0].classList.add("customImg");}};
+    img.onerror = () => {char[0].src = `images/map/tokens/unknown-.png`;};
     
     char[0].id = character["id"];
     char[1].src = `images/map/tokens/${character["border"]}Border.png`;
