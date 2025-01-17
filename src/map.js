@@ -273,10 +273,9 @@ function addCharacter(character, update)
     let img = new Image();
     if(!image.includes("custom-")){img.src = `images/map/tokens/${image}.png`;}
     else{img.src = wholeCustom[image]["src"];}
-    
-    img.onload = () => {if(!tokenImg.includes("custom-")){char[0].src = `images/map/tokens/${tokenImg}.png`;} else{char[0].src = wholeCustom[tokenImg]["src"]; char[0].classList.add("customImg");}};
     img.onerror = () => {char[0].src = `images/map/tokens/unknown-.png`;};
     
+    if(!tokenImg.includes("custom-")){char[0].src = `images/map/tokens/${tokenImg}.png`;} else{char[0].src = wholeCustom[tokenImg]["src"]; char[0].classList.add("customImg");}
     char[0].id = character["id"];
     char[1].src = `images/map/tokens/${character["border"]}Border.png`;
     char[1].id = character["border"];
