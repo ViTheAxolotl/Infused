@@ -433,7 +433,7 @@ function addCharacter(character, update)
             let name = titleTxt.innerHTML.replaceAll(" ", "").slice(titleTxt.innerHTML.indexOf(":") + 1).split(",");
             let compName = title.replaceAll(" ", "").slice(title.indexOf(":") + 1).split(",");
 
-            if(!(name.includes(compName[0]) && compName[0] != ""))
+            if(!(name.includes(compName[0]) && compName[0] != "" && player == "Vi"))
             {
                 for(let image of char)
                 {
