@@ -431,7 +431,7 @@ function addCharacter(character, update)
         if(title.includes("Hidden"))
         {
             let name = titleTxt.innerHTML.replaceAll(" ", "").slice(titleTxt.innerHTML.indexOf(":") + 1).split(",");
-            let compName = title.replaceAll(" ", "").slice(this.title.indexOf(":") + 1).split(",");
+            let compName = title.replaceAll(" ", "").slice(title.indexOf(":") + 1).split(",");
 
             if(!(name.includes(compName[0]) && compName[0] != ""))
             {
