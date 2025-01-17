@@ -13,7 +13,8 @@
         "woodenFloor" : "images/map/woodenFloor.jpg",
         "townHall" : "images/map/townHall.jpg",
         "caveFloor" : "images/map/caveFloor.jpg",
-        "iceMaze": "images/map/iceMaze.jpg"
+        "iceMaze": "images/map/iceMaze.jpg",
+        "arena": "images/map/arena.jpg"
     }, 
 
     "tokens" : 
@@ -51,7 +52,8 @@
         "iceSnowFlake-" : "images/map/tokens/iceSnowFlake-.png",
         "iceSun-" : "images/map/tokens/iceSun-.png",
         "milo-" : "images/map/tokens/milo-.png",
-        "ladder-" : "images/map/tokens/ladder-.png"
+        "ladder-" : "images/map/tokens/ladder-.png",
+        "iceDragon-" : "images/map/tokens/iceDragon-.png"
 
     },
  
