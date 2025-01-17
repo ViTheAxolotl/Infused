@@ -14,7 +14,8 @@
         "townHall" : "images/map/townHall.jpg",
         "caveFloor" : "images/map/caveFloor.jpg",
         "iceMaze": "images/map/iceMaze.jpg",
-        "arena": "images/map/arena.jpg"
+        "arena": "images/map/arena.jpg",
+        "lab": "images/map/lab.jpg"
     }, 
 
     "tokens" : 
@@ -53,7 +54,9 @@
         "iceSun-" : "images/map/tokens/iceSun-.png",
         "milo-" : "images/map/tokens/milo-.png",
         "ladder-" : "images/map/tokens/ladder-.png",
-        "iceDragon-" : "images/map/tokens/iceDragon-.png"
+        "iceDragon-" : "images/map/tokens/iceDragon-.png",
+        "iceChestPlate-" : "images/map/tokens/iceChestPlate-.png"
+
 
     },
  
