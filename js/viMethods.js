@@ -33,7 +33,7 @@ export function toTitleCase(word)
         {
             finalWord += `${singleWord[0].toUpperCase() + singleWord.slice(1)} `; //Capitilize each word in the varible
         }
-        finalWord = finalWord.slice(0, finalWord.length - 2);
+        finalWord = finalWord.slice(0, finalWord.length - 1);
     }
 
     else //If only one word given
