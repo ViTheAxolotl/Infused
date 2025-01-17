@@ -430,9 +430,15 @@ function addCharacter(character, update)
 
         if(title.includes("Hidden"))
         {
-            for(let image of char)
+            let name = titleTxt.innerHTML.replaceAll(" ", "").slice(titleTxt.innerHTML.indexOf(":") + 1).split(",");
+            let compName = this.title.replaceAll(" ", "").slice(this.title.indexOf(":") + 1).split(",");
+
+            if(!(name.includes(compName[0]) && compName[0] != ""))
             {
-                image.src = "images/map/tokens/invisible-.png";
+                for(let image of char)
+                {
+                    image.src = "images/map/tokens/invisible-.png";
+                }
             }
         }
 
@@ -613,7 +619,7 @@ function getHpImg(character)
 function handleCharClick()
 {
     let name = titleTxt.innerHTML.replaceAll(" ", "").slice(titleTxt.innerHTML.indexOf(":") + 1).split(",");
-    let compName = this.title.replaceAll(" ", "").slice(this.title.indexOf(":") + 1).split(",")
+    let compName = this.title.replaceAll(" ", "").slice(this.title.indexOf(":") + 1).split(",");
 
     if(wholeChar[player]["currentToken"] == this.classList[1])
     {
