@@ -1693,7 +1693,8 @@ function changeSourceSelect()
 
 function handleUpdateToken()
 {
-    let toUpdate = document.getElementById("name").innerHTML.toLowerCase();
+    let name = document.getElementById("name").innerHTML;
+    let toUpdate = name[0].toLowerCase() + name.slice(1);
     let fields = wholeDb[toUpdate];
 
     fields.border = `${document.getElementById("BorderButton").innerHTML}`;
