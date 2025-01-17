@@ -12,7 +12,8 @@
         "throwingGame" : "images/map/throwingGame.jpg",
         "woodenFloor" : "images/map/woodenFloor.jpg",
         "townHall" : "images/map/townHall.jpg",
-        "caveFloor" : "images/map/caveFloor.jpg"
+        "caveFloor" : "images/map/caveFloor.jpg",
+        "iceMaze": "images/map/iceMaze.jpg"
     }, 
 
     "tokens" : 
