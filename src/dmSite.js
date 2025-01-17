@@ -948,7 +948,7 @@ function loadMap()
         }
 
         handleDone();
-    }, 100);
+    }, 50);
 }
 
 function handleInteractive()
