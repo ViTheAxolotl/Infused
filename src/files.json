@@ -50,7 +50,9 @@
         "iceHole-" : "images/map/tokens/iceHole-.png",
         "iceSnowFlake-" : "images/map/tokens/iceSnowFlake-.png",
         "iceSun-" : "images/map/tokens/iceSun-.png",
-        "milo-" : "images/map/tokens/milo-.png"
+        "milo-" : "images/map/tokens/milo-.png",
+        "ladder-" : "images/map/tokens/ladder-.png"
+
     },
  
     "borders" : 
