@@ -456,22 +456,22 @@ function addCharacter(character, update)
             }
         }
 
-        if(title.includes("Dup x"))
+        if(title.includes("Dup X"))
         {
             dup("x", char, character, [x, y], title);
         }
 
-        if(title.includes("Dup y"))
+        if(title.includes("Dup Y"))
         {
             dup("y", char, character, [x, y], title);
         }
 
-        if(title.includes("Exp x")) 
+        if(title.includes("Exp X")) 
         {   
             exp("x", title, char);             
         }
 
-        if(title.includes("Exp y")) 
+        if(title.includes("Exp Y")) 
         {
             exp("y", title, char);
         }
@@ -504,8 +504,8 @@ function exp(xOrY, title, char)
 {
     let expNum;
 
-    if(xOrY == "x"){expNum = title.slice(title.indexOf("Exp x"));}
-    else{expNum = title.slice(title.indexOf("Exp y"));}
+    if(xOrY == "x"){expNum = title.slice(title.indexOf("Exp X"));}
+    else{expNum = title.slice(title.indexOf("Exp Y"));}
 
     if(expNum[5] != ",")
     {
@@ -553,8 +553,8 @@ function dup(xOrY, char, character, locations, title)
     let dupNum;
     let rotate = "0";
 
-    if(xOrY == "x"){dupNum = title.slice(title.indexOf("Dup x"));}
-    else{dupNum = title.slice(title.indexOf("Dup y"));}
+    if(xOrY == "x"){dupNum = title.slice(title.indexOf("Dup X"));}
+    else{dupNum = title.slice(title.indexOf("Dup Y"));}
     if(title.includes("90")){rotate = "90";}
     else if(title.includes("180")){rotate = "180";}
     else if(title.includes("270")){rotate = "270";}
