@@ -52,7 +52,7 @@
 
         "upgrade3" : 
         {
-            "name" :: "Improved Scorpion Poison",
+            "name" : "Improved Scorpion Poison",
             "desc" : "By unlocking this on a tail sting success target must make a dc (10+dex+prof) Constitution saving throw, taking 4d6 poison damage on a fail, or half damage on a success. For these benefits, you gain 10% more Infusion Rate.",
             "infusionRate" : 10
         },
