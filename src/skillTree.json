@@ -4,7 +4,7 @@
         "ability1" : 
         {
             "name": "Scorpion Pointy Tail",
-            "desc" : "Your Scorpion infusion grants you many benefits, and drawbacks. The more stronger this side of you get, the less control of your body you have. By unlocking this skill you gain 10ft of Blindsight, allowing you to sense invisible creatures around you. You also gain Scorpion Mode, an active ability by using an action your Scorpion side grows temporally (5 Turns) to boost your abilities. In Scorpion Mode you gain the ability to use your tail to sting an someone using your proficiency and dex to hit. On a hit you will do 1d10 + dex piercing damage, and target must make a dc (10+dex+prof) Constitution saving throw, taking 2d6 poison damage on a fail, or half damage on a success. You are also able to use a bonus action to have your tail eject the poison, this can be collected and used at a later date. Scorpion mode can be used as much times as you have proficiency bonus. For these benefits, you gain 15% Infusion Rate, once you hit 100% you will become permanently your chosen animal/beast forever. When in an interaction that may have your infused side wanting to do something, you must roll a d100 if you roll above your Infusion Rate you resist that action.",
+            "desc" : "Your Scorpion infusion grants you many benefits, and drawbacks. The more stronger this side of you get, the less control of your body you have. By unlocking this skill you gain 15fr of Blindsight, allowing you to sense invisible creatures around you. You also gain Scorpion Mode, an active ability by using an action your Scorpion side grows temporally (5 Turns) to boost your abilities. In Scorpion Mode you gain the ability to use your tail to sting an someone using your proficiency and dex to hit. On a hit you will do 1d10 + dex piercing damage, and target must make a dc (10+dex+prof) Constitution saving throw, taking 2d6 poison damage on a fail, or half damage on a success. You are also able to use a bonus action to have your tail eject the poison, this can be collected and used at a later date. Scorpion mode can be used as much times as you have proficiency bonus. For these benefits, you gain 15% Infusion Rate, once you hit 100% you will become permanently your chosen animal/beast forever. When in an interaction that may have your infused side wanting to do something, you must roll a d100 if you roll above your Infusion Rate you resist that action.",
             "infusionRate" : 15
         },
         
@@ -31,15 +31,15 @@
 
         "ability5" : 
         {
-            "name" : ".",
-            "desc" : "While in Ghost Mode, you can positions your body in between both Material plane and Ethereal Plane for an action. While in between the two realms you are visible on both planes, yet you can't affect either and they can't affect you. You can regain full access to material plane at any time, or forcefully when Ghost Mode ends. For these benefits, you gain 10% more Infusion Rate.",
+            "name" : "Variatent Scorpion Poison",
+            "desc" : "While in Scorpion mode when you use you sting ability you can chose to get a random poison effect. Roll a poison off the injury poison list. 1d9 for poison and 1d2 for strength of that poison. You can also collect this poison like your normal poison collection ability. For these benefits, you gain 10% more Infusion Rate.",
             "infusionRate" : 10
         },
 
         "upgrade1" : 
         {
             "name" : "Longer Scorpion Mode",
-            "desc" : "By unlocking this your Scorpion Mode ability will be able to be held for 10 turns instead of the normal 5. As a bonus you also will gain 20 feet of Blindsight. For these benefits, you gain 10% more Infusion Rate.",
+            "desc" : "By unlocking this your Scorpion Mode ability will be able to be held for 10 turns instead of the normal 5. As a bonus you also will gain 25 feet of Blindsight. For these benefits, you gain 10% more Infusion Rate.",
             "infusionRate" : 10
         },
 
