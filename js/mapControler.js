@@ -1193,7 +1193,7 @@ function handleUseAction()
             let userAddTo = prompt(`The Current Response is to ${wholeRespone["currentResponse"]}, cast by ${wholeRespone["castBy"]}. This check is checking for ${wholeRespone["ability"]} stat. What is your Modifier? (+/-)`, wholeChar[player]["stats"][wholeRespone["ability"]]);
             userAddTo = userAddTo.replaceAll(" ", "");
             let abilityDisc;
-            if(wholeRespone["isSpell"]){abilityDisc = db[wholeRespone["ind"]][wholeRespone["currentResponse"]]["description"];}
+            if(wholeRespone["isSpell"]){abilityDisc = wholeSpells[wholeRespone["ind"]][wholeRespone["currentResponse"]]["description"];}
             else{abilityDisc = db[wholeRespone["ind"]][wholeRespone["currentResponse"]]["description"];}
 
             setDoc(`playerChar/${player}/stats/${wholeRespone["ability"]}`, userAddTo);
