@@ -1135,8 +1135,7 @@ function handleUseAction()
 
     if(upcast[0])
     {
-        if(discription.includes("{@damage")){discription += `{@sDice ${upcast[0].value}}`;}
-        else if(discription.includes("{@scaledamage")){if(!discription.includes("{@save") && discription.includes("{@damage")){discription = `{@damage ${upcast[0].value}}`;} else if (!discription.includes("{@save") && discription.includes("{@sDice")){discription = `{@sDice ${upcast[0].value}}`;}}
+        if(discription.includes("{@scaledamage")){if(!discription.includes("{@save") && discription.includes("{@damage")){discription = `{@damage ${upcast[0].value}}`;} else if (!discription.includes("{@save") && discription.includes("{@sDice")){discription = `{@sDice ${upcast[0].value}}`;}}
         else if(discription.includes("{@absorb")){discription = `{@sDice ${upcast[0].value}}`}
     }
 
