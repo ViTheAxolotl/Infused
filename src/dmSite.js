@@ -990,7 +990,7 @@ function handleUploadInteractive()
 function handleGenerate()
 {
     hideButtons();
-    setDoc(`playerChar/Kody`, wholeChar["Okami"]);
+    backupFavorites();
 
     alert("done");
     handleDone();
@@ -998,7 +998,7 @@ function handleGenerate()
 
 function backupFavorites()
 {
-    let classes = ["Artificer", "Barbarian", "Bard", "Cleric", "Druid", "Fighter", "Monk", "Paladin", "Ranger", "Rogue", "Sorcerer", "Warlock", "Wizard"];
+    let classes = ["Artificer", "Barbarian", "Bard", "Cleric", "Druid", "Fighter", "Monk", "Paladin", "Ranger", "Rogue", "Sorcerer", "Warlock", "Wizard", "Infused Abilities"];
 
     for(let player of Object.keys(wholeChar))
     {
