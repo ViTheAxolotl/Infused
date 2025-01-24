@@ -8,8 +8,8 @@ function init()
 
     switch(url)
     {
-        case "ghost":
-            img.src = "images/ghost.png";
+        case "scorpion":
+            img.src = "images/scorpion.png";
             break;
         
         case "pixiu":
@@ -17,7 +17,7 @@ function init()
             break;
 
         case "ferret":
-            img.src = "images/weasel.png";
+            img.src = "images/ferret.jpg";
             break;
 
         case "basilisk":
