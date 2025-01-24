@@ -4,14 +4,14 @@
         "ability1" : 
         {
             "name": "Scorpion Pointy Tail",
-            "desc" : "Your Scorpion infusion grants you many benefits, and drawbacks. The more stronger this side of you get, the less control of your body you have. By unlocking this skill you gain 15fr of Blindsight, allowing you to sense invisible creatures around you. You also gain Scorpion Mode, an active ability by using an action your Scorpion side grows temporally (5 Turns) to boost your abilities. In Scorpion Mode you gain the ability to use your tail to sting an someone using your proficiency and dex to hit. On a hit you will do 1d10 + dex piercing damage, and target must make a dc (10+dex+prof) Constitution saving throw, taking 2d6 poison damage on a fail, or half damage on a success. You are also able to use a bonus action to have your tail eject the poison, this can be collected and used at a later date. Scorpion mode can be used as much times as you have proficiency bonus. For these benefits, you gain 15% Infusion Rate, once you hit 100% you will become permanently your chosen animal/beast forever. When in an interaction that may have your infused side wanting to do something, you must roll a d100 if you roll above your Infusion Rate you resist that action.",
+            "desc" : "Your Scorpion infusion grants you many benefits, and drawbacks. The stronger this side of you gets, the less control of your body you have. By unlocking this skill you gain 15ft of Blindsight, allowing you to sense invisible creatures around you. You also gain Scorpion Mode, an active ability by using an action your Scorpion side grows temporally (5 Turns) to boost your abilities. In Scorpion Mode, you gain the ability to use your tail to sting someone using your proficiency and dex to hit. On a hit you will do 1d10 + dex piercing damage, and the target must make a dc (10+dex+prof) Constitution saving throw, taking 2d6 poison damage on a fail, or half damage on a success. You are also able to use a bonus action to have your tail eject the poison, this can be collected and used at a later date. Scorpion mode can be used as many times as you have a proficiency bonus. For these benefits, you gain 15% Infusion Rate, once you hit 100% you will become permanently your chosen animal/beast forever. When in an interaction that may have your infused side wanting to do something, you must roll a d100 if you roll above your Infusion Rate you resist that action.",
             "infusionRate" : 15
         },
         
         "ability2" : 
         {
             "name" : "Scorpion Storing Energy",
-            "desc" : "Like other Scorpion you can store you energy as well. When you end your turn in Scorpion Mode, any unused action, bonus action, or reaction can be carried over to your next turn for a max of 2 of each. Reactions carried over this way can be used on same target. For these benefits, you gain 10% more Infusion Rate.",
+            "desc" : "Like other Scorpions, you can store your energy as well. When you end your turn in Scorpion Mode, any unused action, bonus action, or reaction can be carried over to your next turn for a max of 2 of each. Reactions carried over this way can be used on the same target. For these benefits, you gain 10% more Infusion Rate.",
             "infusionRate" : 10
         },
 
@@ -24,15 +24,15 @@
 
         "ability4" : 
         {
-            "name" : "Resiliant Scorpion",
+            "name" : "Resilient Scorpion",
             "desc" : "By unlocking this you are now able through all terrain (except cold environments) without having any speed impact. For these benefits, you gain 15% more Infusion Rate.",
             "infusionRate" : 10
         },
 
         "ability5" : 
         {
-            "name" : "Variatent Scorpion Poison",
-            "desc" : "While in Scorpion mode when you use you sting ability you can chose to get a random poison effect. Roll a poison off the injury poison list. 1d9 for poison and 1d2 for strength of that poison. You can also collect this poison like your normal poison collection ability. For these benefits, you gain 10% more Infusion Rate.",
+            "name" : "Variant Scorpion Poison",
+            "desc" : "While in Scorpion mode when you use your sting ability you can choose to get a random poison effect. Roll a poison of the injury poison list. 1d9 for poison and 1d2 for the strength of that poison. You can also collect this poison like your normal poison collection ability. For these benefits, you gain 10% more Infusion Rate.",
             "infusionRate" : 10
         },
 

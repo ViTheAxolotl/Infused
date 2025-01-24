@@ -9,7 +9,7 @@ function init()
     switch(url)
     {
         case "scorpion":
-            img.src = "images/scorpion.png";
+            img.src = "images/scorpion.jpg";
             break;
         
         case "pixiu":
