@@ -399,6 +399,8 @@ function createChar(curCharacter, curBorder)
 
     setDoc(`currentMap/${charName}`, char);
     setDoc(`playerChar/${player}/token`, char);
+    setDoc(`playerChar/${player}/charName`, char["id"]);
+    setDoc(`playerChar/${player}/currentToken`, char["id"]);
 }
 
 fetch('https://vitheaxolotl.github.io/Forgotten-Realm/src/files.json').then(res => res.json()).then((json) => imgs = json);
