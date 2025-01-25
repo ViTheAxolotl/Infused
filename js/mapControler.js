@@ -1891,10 +1891,10 @@ function displaySelect()
     let text = document.getElementById("viewTitle");
     let viewDiv = document.getElementById("cover");
     let doneButton = document.createElement("button");
-    doneButton.innerHTML = "Finished";
+    doneButton.innerHTML = "Done";
     doneButton.onclick = useAbility;
     viewDiv.classList = "";
-    viewDiv.style.zIndex = "1011";
+    viewDiv.style.zIndex = "0";
     viewDiv.style.opacity = .55;
     text.classList.remove("invisible");
     text.innerHTML = "Select Your Targets";
@@ -1918,4 +1918,5 @@ function useAbility()
     }
 
     this.remove();
+    document.getElementById("hideCover").click();
 }
