@@ -42,6 +42,8 @@ onValue(summonsRef, (snapshot) =>
     isSummonOn = wholeSummons["isSummonOn"];
 });
 
+
+
 let wholeDB = {};
 let div = document.getElementById("gridMap");
 let html = {};
@@ -72,6 +74,8 @@ let wholeCustom;
 let firstRun = true;
 let currentTurn;
 let players = ["nibbly", "nook", "razor", "leonier"];
+let mode = "";
+let modeRef;
 
 onAuthStateChanged(auth, (user) => 
 {
@@ -85,6 +89,14 @@ onAuthStateChanged(auth, (user) =>
     {
         player = auth.currentUser.email.split("@");
         player = toTitleCase(player[0]);
+        setDoc(`playerChar/${player}/mode`, "waiting");
+        
+        modeRef = ref(database, `playerChar/${player}/summons`);
+        onValue(modeRef, (snapshot) => 
+        {
+            const data = snapshot.val();
+            mode = data;
+        });
     }
 });
 
@@ -623,31 +635,39 @@ function handleCharClick()
     let name = titleTxt.innerHTML.replaceAll(" ", "").slice(titleTxt.innerHTML.indexOf(":") + 1).split(",");
     let compName = this.title.replaceAll(" ", "").slice(this.title.indexOf(":") + 1).split(",");
 
-    if(wholeChar[player]["currentToken"] == this.classList[1])
+    switch(mode)
     {
-        handleViewTokens(this);
-    }
+        case "waiting":
+            if(player == "Vi")
+            {
+                setDoc(`playerChar/${player}/currentToken`, this.classList[1]);
+                location.reload();
+            }
+        
+            else if(name.includes(compName[0]) && compName[0] != "")
+            {
+                setDoc(`playerChar/${player}/currentToken`, this.classList[1]);
+                location.reload();
+            }
+        
+            else
+            {
+                handleViewTokens(this);
+            }
 
-    else if(this.id == "helpBtn")
-    {
-        handleViewTokens(this);
-    }
+            break;
+        
+        case "using":
+            if(this.classList.contains("selected-temp"))
+            {
+                this.classList.remove("selected-temp");
+            }
 
-    else if(player == "Vi")
-    {
-        setDoc(`playerChar/${player}/currentToken`, this.classList[1]);
-        location.reload();
-    }
-
-    else if(name.includes(compName[0]) && compName[0] != "")
-    {
-        setDoc(`playerChar/${player}/currentToken`, this.classList[1]);
-        location.reload();
-    }
-
-    else
-    {
-        handleViewTokens(this);
+            else
+            {
+                this.classList.add("selected-temp");
+            }
+            break;
     }
 }
 

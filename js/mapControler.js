@@ -52,6 +52,7 @@ let lastAbility;
 let changeTokenBtn;
 let imgs;
 let wholeInteractive;
+let currentAction;
 
 /**
  * When it shows that your logged in
@@ -1000,7 +1001,7 @@ function handleCardClick()
 
         let castBtn = document.createElement("button");
         castBtn.classList.add("gridButton");
-        castBtn.onclick = handleUseAction;
+        castBtn.onclick = displaySelect;
         castBtn.innerHTML = "Cast Spell";
         castBtn.name = currentTitle;
         castBtn.style.margin = "0px 5px";
@@ -1115,7 +1116,7 @@ function handleCardClick()
     }
 }
 
-function handleUseAction()
+function handleUseAction(targets)
 {
     let display;
     let useInfo;
@@ -1143,7 +1144,10 @@ function handleUseAction()
     {
         if(discription.includes("{@Choice"))
         {
-            display = `${wholeChar[player]["charName"]} cast:\n${lastUse}\n${useInfo}`;
+            display = `${wholeChar[player]["charName"]} cast:\n${lastUse} on `;
+            if(targets == "self"){display += "themself, ";} else{for(key in targets){display += `${key.classList[1]}, `}}
+            display = display.slice(0, display.length - 2);
+            display += `\n${useInfo}`;
             if(curClass){display = display.replaceAll("cast", "use the ability");}
         }
         if(discription.includes("{@save")) 
@@ -1870,6 +1874,7 @@ function displayInteractive()
     document.getElementById("hideCover").classList.remove("invisible");
     viewDiv.classList = "";
     viewDiv.style.zIndex = "1011";
+    viewDiv.style.opacity = .95;
     text.classList.remove("invisible");
 
     if(wholeInteractive["image"] != "")
@@ -1879,4 +1884,38 @@ function displayInteractive()
     }
     
     text.innerHTML = wholeInteractive["text"];
+}
+
+function displaySelect()
+{
+    let text = document.getElementById("viewTitle");
+    let viewDiv = document.getElementById("cover");
+    let doneButton = document.createElement("done");
+    doneButton.innerHTML = "Finished";
+    doneButton.onclick = useAbility;
+    viewDiv.classList = "";
+    viewDiv.style.zIndex = "1011";
+    viewDiv.style.opacity = .05;
+    text.classList.remove("invisible");
+    text.innerHTML = "Select Your Targets";
+    placeBefore(doneButton, document.getElementById("showInstructions")); 
+    setDoc(`playerChar/${player}/mode`, "using");
+}
+
+function useAbility()
+{
+    let targets = getElementsByClassName("selected-temp");
+    setDoc(`playerChar/${player}/mode`, "waiting");
+    
+    if(targets.length < 1)
+    {
+        handleUseAction("self");
+    }
+
+    else
+    {
+        handleUseAction(targets);
+    }
+
+    this.remove();
 }

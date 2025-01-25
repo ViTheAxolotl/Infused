@@ -378,6 +378,11 @@ table, .itemSearch, #itemImg
     border: solid lightseagreen 3px;
 }
 
+.selected-temp
+{
+    border: solid lightseagreen 3px;
+}
+
 .blo
 {
     display: block;
