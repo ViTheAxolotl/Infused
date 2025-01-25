@@ -1317,7 +1317,7 @@ function handleUseAction(targets)
             damage = splitRoll(discription, "@damage");
             if(accurcy.includes("(20)")){damage[0] = `${parseInt(damage[0]) * 2}`}
             damage = diceRoller(damage[0], damage[1], damage[2], "false");
-            
+
             if(display){display += `\nAccurcy: ${accurcy} to Hit.\nOn Hit: ${damage} Damage.\n`;}
             else{display = `${toTitleCase(wholeChar[player]["currentToken"])} cast,\n${lastUse} on `;
             if(targets == "self"){display += "themself, ";} else{for(key in targets){display += `${targets[key].title.slice(0, targets[key].title.indexOf(":"))}, `}}
