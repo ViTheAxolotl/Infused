@@ -91,7 +91,7 @@ onAuthStateChanged(auth, (user) =>
         player = toTitleCase(player[0]);
         setDoc(`playerChar/${player}/mode`, "waiting");
         
-        modeRef = ref(database, `playerChar/${player}/summons`);
+        modeRef = ref(database, `playerChar/${player}/mode`);
         onValue(modeRef, (snapshot) => 
         {
             const data = snapshot.val();
