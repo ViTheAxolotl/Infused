@@ -1320,7 +1320,8 @@ function handleUseAction(targets)
 
             if(display){display += `\nAccurcy: ${accurcy} to Hit.\nOn Hit: ${damage} Damage.\n`;}
             else{display = `${toTitleCase(wholeChar[player]["currentToken"])} cast,\n${lastUse} on `;
-            if(targets == "self"){display += "themself, ";} else{for(key in targets){display += `${targets[key].title.slice(0, targets[key].title.indexOf(":"))}, `}}
+            let temp = targets[key].title.indexOf(":");
+            if(targets == "self"){display += "themself, ";} else{for(key in targets){display += `${targets[key].title.slice(0, )}, `}}
             display = display.slice(0, display.length - 2);
             display += `\n${useInfo}\nAccurcy: ${accurcy} to Hit.\nOn Hit: ${damage} Damage.\n`;}
     
