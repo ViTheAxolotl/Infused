@@ -1907,7 +1907,7 @@ function displaySelect()
 
 function useAbility()
 {
-    let targets = getElementsByClassName("selected-temp");
+    let targets = document.getElementsByClassName("selected-temp");
     setDoc(`playerChar/${player}/mode`, "waiting");
     
     if(targets.length < 1)
