@@ -658,14 +658,17 @@ function handleCharClick()
             break;
         
         case "using":
-            if(this.classList.contains("selected-temp"))
+            if(this.title.includes(":"))
             {
-                this.classList.remove("selected-temp");
-            }
-
-            else
-            {
-                this.classList.add("selected-temp");
+                if(this.classList.contains("selected-temp"))
+                    {
+                        this.classList.remove("selected-temp");
+                    }
+        
+                    else
+                    {
+                        this.classList.add("selected-temp");
+                    }
             }
             break;
     }
