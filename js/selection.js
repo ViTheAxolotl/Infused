@@ -300,9 +300,9 @@ function addBorders()
 function addHp()
 {
     div.appendChild(hp);
-    let names = ["Max Hp", "Current Hp", "Temp Hp"];
-    let labels = [document.createElement("h6"), document.createElement("h6"), document.createElement("h6")];
-    let numbers = [document.createElement("input"), document.createElement("input"), document.createElement("input")];
+    let names = ["Max Hp", "Current Hp", "Temp Hp", "DC"];
+    let labels = [document.createElement("h6"), document.createElement("h6"), document.createElement("h6"), document.createElement("h6")];
+    let numbers = [document.createElement("input"), document.createElement("input"), document.createElement("input"), document.createElement("input")];
 
     for(let i = 0; i < names.length; i++)
     {
@@ -387,7 +387,7 @@ function handleGoButton()
 function createChar(curCharacter, curBorder)
 {
     let charName = curCharacter.slice(7);
-    let char = {border : curBorder, currentHp : `${document.getElementById("Current Hp").value}`, maxHp : `${document.getElementById("Max Hp").value}`, tempHp : document.getElementById("Temp Hp").value, map : "", id : charName, name : curCharacter, title : " " + charName + ", ", xPos : "1", yPos : "A", isSummon : false};
+    let char = {border : curBorder, currentHp : `${document.getElementById("Current Hp").value}`, maxHp : `${document.getElementById("Max Hp").value}`, tempHp : document.getElementById("Temp Hp").value, map : "", id : charName, name : curCharacter, title : " " + charName + ", ", xPos : "1", yPos : "A", isSummon : false, dc : document.getElementById("DC")};
 
     if(oldToken != null || oldToken != undefined)
     {

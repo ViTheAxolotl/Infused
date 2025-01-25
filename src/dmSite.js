@@ -140,7 +140,7 @@ function handleAdd()
     hideButtons();
 
     mode = "add";
-    curCharacter = {border: "invisible", currentHp: "20", map: "", maxHp: "20", tempHp: "0", isSummon : false, name: "invisible-", id: "invisible", title: " ", xPos: "5", yPos: "D"};
+    curCharacter = {border: "invisible", currentHp: "20", map: "", maxHp: "20", tempHp: "0", isSummon : false, name: "invisible-", id: "invisible", title: " ", xPos: "5", yPos: "D", dc: "10"};
     makeToken(curCharacter);
     editDiv = document.getElementById("invisible-div");
     temp = curCharacter.name;
@@ -243,7 +243,7 @@ function deleteToken()
  
 function handleEdit()
 {
-    let names = ["border", "name", "maxHp", "currentHp", "title", "xPos", "yPos", "tempHp", "isSummon"];
+    let names = ["border", "name", "maxHp", "currentHp", "title", "xPos", "yPos", "tempHp", "isSummon", "dc"];
     let txtFeilds = [];
     let buttons = [document.createElement("button"), document.createElement("button")];
     let buttonsName = ["edit", "back"];
@@ -300,7 +300,7 @@ function handleEdit()
         }
     }
     
-    for(let i = 0; i < 9; i++)
+    for(let i = 0; i < 10; i++)
     {
         let label = createLabel(names[i]);
         
@@ -368,6 +368,7 @@ function handleEdit()
     txtFeilds[6].value = curCharacter.yPos;
     txtFeilds[7].value = curCharacter.tempHp;
     txtFeilds[8].value = curCharacter.isSummon;
+    txtFeilds[9].value = curCharacter.dc;
     editDiv.appendChild(document.createElement("h6"));
     buttons.forEach(em => {editDiv.appendChild(em)});
 }
@@ -496,7 +497,8 @@ function quickUpdate()
         name : wholeDB[i].name,
         title : wholeDB[i].title,
         xPos : wholeDB[i].xPos,
-        yPos : wholeDB[i].yPos
+        yPos : wholeDB[i].yPos,
+        dc: wholeDB[i].dc
     });
 
     resetQuick();
@@ -571,7 +573,7 @@ function addPreset()
      
     if(this == undefined)
     {
-        token = {border : "invisible", currentHp : "20", maxHp : "20", tempHp : "0", isSummon: false, map : "", name : "invisible-", title : " ", xPos : "1", yPos : "A"};
+        token = {border : "invisible", currentHp : "20", maxHp : "20", tempHp : "0", isSummon: false, map : "", name : "invisible-", title : " ", xPos : "1", yPos : "A", dc: "10"};
         if(preOrSumm == 1){token["isSummon"] = true};
         db[preOrSumm]["invisible"] = token;
     }
@@ -1092,6 +1094,7 @@ function addToken()
     let x = document.getElementById("xPos").value;
     let y = document.getElementById("yPos").value;
     let s = document.getElementById("isSummon").value;
+    let dc = document.getElementById("dc").value;
     let id = n.slice(0, n.indexOf("-"));
     
     if(Object.keys(wholeDB).includes(id) && mode == "add")
@@ -1130,6 +1133,7 @@ function addToken()
         title : t,
         xPos : x,
         yPos : y,
+        dc : dc
     });
 
     resetDelete();

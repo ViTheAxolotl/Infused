@@ -59,6 +59,7 @@ let imgs;
 let currentHp = document.getElementById("current");
 let maxHp = document.getElementById("max");
 let tempHp = document.getElementById("temp");
+let DC = document.getElementById("DC");
 let titleTxt = document.getElementById("title");
 let offSet;
 let divTO = document.getElementById("turnOrder");
@@ -297,6 +298,7 @@ function addCharacter(character, update)
             currentHp.defaultValue = character["currentHp"];
             maxHp.defaultValue = character["maxHp"];
             tempHp.defaultValue = character["tempHp"];
+            DC.defaultValue = character["DC"];
             document.getElementById("title").innerHTML += character["title"];
         }
     }
@@ -855,7 +857,7 @@ function updateToken(token)
                 break;
         }
 
-        let token = {border : borderColor, currentHp : currentHp.value, maxHp : maxHp.value, tempHp : tempHp.value, isSummon : wholeDB[char.id]["isSummon"], id : char.id, name : n, title : t, xPos : x, yPos : y, map : ""};
+        let token = {border : borderColor, currentHp : currentHp.value, maxHp : maxHp.value, tempHp : tempHp.value, isSummon : wholeDB[char.id]["isSummon"], id : char.id, name : n, title : t, xPos : x, yPos : y, map : "", DC: DC.value};
         setDoc(`currentMap/${char.id}`, token);
 
         if(wholeChar[player]["currentToken"] == wholeChar[player]["token"]["id"])
