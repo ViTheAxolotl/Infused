@@ -1892,11 +1892,14 @@ function displaySelect()
     let viewDiv = document.getElementById("cover");
     let doneButton = document.createElement("button");
     doneButton.innerHTML = "Done";
+    doneButton.classList.add("gridButton");
+    doneButton.style.zIndex = "1001";
     doneButton.onclick = useAbility;
     viewDiv.classList = "";
     viewDiv.style.zIndex = "0";
     viewDiv.style.opacity = .55;
     text.classList.remove("invisible");
+    text.style.zIndex = "1000";
     text.innerHTML = "Select Your Targets";
     placeBefore(doneButton, document.getElementById("showInstructions")); 
     setDoc(`playerChar/${player}/mode`, "using");
