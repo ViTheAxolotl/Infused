@@ -1145,7 +1145,7 @@ function handleUseAction(targets)
         if(discription.includes("{@Choice"))
         {
             display = `${wholeChar[player]["charName"]} cast:\n${lastUse} on `;
-            if(targets == "self"){display += "themself, ";} else{for(key in targets){display += `${key.classList[1]}, `}}
+            if(targets == "self"){display += "themself, ";} else{for(key in targets){display += `${targets[key].classList[1]}, `}}
             display = display.slice(0, display.length - 2);
             display += `\n${useInfo}`;
             if(curClass){display = display.replaceAll("cast", "use the ability");}
@@ -1185,7 +1185,7 @@ function handleUseAction(targets)
             setDoc(`playerChar/Vi/responses`, {"ability" : skill, "currentResponse" : lastUse, "toBeat" : toBeat, "castBy" : wholeChar[player]["charName"], "isSpell" : isSpell, "ind" : ind, "castUp" : castUp});
 
             display = `${toTitleCase(wholeChar[player]["currentToken"])} cast,\n${lastUse} on `;
-            if(targets == "self"){display += "themself, ";} else{for(key in targets){display += `${key.classList[1]}, `}}
+            if(targets == "self"){display += "themself, ";} else{for(key in targets){display += `${targets[key].classList[1]}, `}}
             display = display.slice(0, display.length - 2);
             display += `\n${useInfo}\nWaiting for them to use the Response Action (Under Actions, Miscs)...`;
 
@@ -1320,7 +1320,7 @@ function handleUseAction(targets)
             
             if(display){display += `\nAccurcy: ${accurcy} to Hit.\nOn Hit: ${damage} Damage.\n`;}
             else{display = `${toTitleCase(wholeChar[player]["currentToken"])} cast,\n${lastUse} on `;
-            if(targets == "self"){display += "themself, ";} else{for(key in targets){display += `${key.classList[1]}, `}}
+            if(targets == "self"){display += "themself, ";} else{for(key in targets){display += `${targets[key].classList[1]}, `}}
             display = display.slice(0, display.length - 2);
             display += `\n${useInfo}\nAccurcy: ${accurcy} to Hit.\nOn Hit: ${damage} Damage.\n`;}
     
