@@ -1926,7 +1926,7 @@ function useAbility()
         handleUseAction(targets);
     }
 
-    for(let key in Object.keys(targets)){key.classList.remove("selected-temp");}
+    for(let key in Object.keys(targets)){targets[key].classList.remove("selected-temp");}
     this.remove();
     document.getElementById("hideCover").click();
 }
