@@ -1971,6 +1971,6 @@ function useAbility()
     }
 
     document.getElementById("hideCover").click();
-    for(let key = 0; key++ ; key < targets.length){targets[key].classList.remove("selected-temp");}
+    for(let key = 0; key < targets.length; key++){targets[key].classList.remove("selected-temp");}
     this.remove();
 }
