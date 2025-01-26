@@ -1355,18 +1355,18 @@ function handleUseAction(targets)
 
                     if(parseInt(roll) >= parseInt(dc))
                     {
-                        display += `(Success) ${targets[key].title.split(":")[0]} (${roll}), `;
+                        display += `(Success hit) ${targets[key].title.split(":")[0]} (${roll}), `;
                         fail = false; 
                     }
 
                     else
                     {
-                        display += `(Fail) ${targets[key].title.split(":")[0]} (${roll}), `;
+                        display += `(Fail hit) ${targets[key].title.split(":")[0]} (${roll}), `;
                     }
                 }
 
                 display = display.slice(0, display.length - 2);
-                if(fail == false){display += `Dealing: ${damage} Damage.\n`;}
+                if(fail == false){display += `\nDealing: ${damage} Damage.\n`;}
             }
             if(!spellLevel){display = display.replaceAll("cast", "used the ability");}
         }
