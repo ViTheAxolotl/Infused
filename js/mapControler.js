@@ -1327,11 +1327,14 @@ function handleUseAction(targets)
                 for(let key in Object.keys(targets))
                 {
                     let dc = wholeDb[targets[key].title.split(":")[0]].DC;
+                    let mod = "-";
 
                     if(parseInt(roll) >= parseInt(dc))
                     {
+                        if(discription.includes("regains")){mod = "+"}
                         display += `(Success) ${targets[key].title.split(":")[0]} (${dc}), `;
                         fail = false; 
+                        handleChangeHp(damage, wholeDb[targets[key].title.split(":")[0]], mod);
                     }
 
                     else
@@ -1974,4 +1977,20 @@ function useAbility()
     for(let key = 0; key < targets.length; key++){targets[key].classList.remove("selected-temp");}
     targets[0].classList.remove("selected-temp");
     this.remove();
+}
+
+function handleChangeHp(damage, token, modifier)
+{
+    switch(modifier)
+    {
+        case "+":
+            token.currentHp = `${parseInt(token.currentHp) + parseInt(damage)}`;
+            break;
+
+        case "-":
+            token.currentHp = `${parseInt(token.currentHp) - parseInt(damage)}`;
+            break;
+    }
+
+    
 }
