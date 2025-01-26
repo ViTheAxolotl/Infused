@@ -300,7 +300,7 @@ function addCharacter(character, update)
     
     if(!character["title"].includes("Hidden"))
     {
-        char[1].title = `${toTitleCase(character["id"])}:${character["title"]}`;
+        char[1].title = `${character["id"]}:${character["title"]}`;
     }
 
     if(wholeChar[player]["currentToken"] == character["id"])
