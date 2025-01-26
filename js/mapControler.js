@@ -1330,13 +1330,13 @@ function handleUseAction(targets)
 
                     if(parseInt(roll) >= parseInt(dc))
                     {
-                        display += `(Success) ${targets[key].title.split(":")[0]} (${roll}), `;
+                        display += `(Success) ${targets[key].title.split(":")[0]} (${dc}), `;
                         fail = false; 
                     }
 
                     else
                     {
-                        display += `(Fail) ${targets[key].title.split(":")[0]} (${roll}), `;
+                        display += `(Fail) ${targets[key].title.split(":")[0]} (${dc}), `;
                     }
                 }
 
@@ -1970,7 +1970,7 @@ function useAbility()
         handleUseAction(targets);
     }
 
-    for(let key in Object.keys(targets)){targets[key].classList.remove("selected-temp");}
-    this.remove();
     document.getElementById("hideCover").click();
+    for(let key = 0; key++ ; key < key.length){targets[key].classList.remove("selected-temp");}
+    this.remove();
 }
