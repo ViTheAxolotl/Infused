@@ -1992,8 +1992,5 @@ function handleChangeHp(damage, token, modifier)
             break;
     }
 
-    for(let prop of currentCharacter) //For each image of current token
-    {
-        prop.classList += " update";
-    }
+    setDoc("currentMap/", wholeDb);
 }
