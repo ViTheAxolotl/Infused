@@ -1329,17 +1329,17 @@ function handleUseAction(targets)
                 {
                     let dc = wholeDb[targets[key].title.split(":")[0]].DC;
 
-                    if(parseInt(roll) >= parseInt(dc))
+                    if(display.includes("regains"))
+                    {
+                        fail = false;
+                        handleChangeHp(damage.split("**")[1], wholeDb[targets[key].title.split(":")[0]], "+");
+                    }
+
+                    else if(parseInt(roll) >= parseInt(dc))
                     {
                         display += `(Success Hit) ${targets[key].title.split(":")[0]} (${dc}), `;
                         fail = false; 
                         handleChangeHp(damage.split("**")[1], wholeDb[targets[key].title.split(":")[0]], "-");
-                    }
-
-                    else if(discription.includes("regains"))
-                    {
-                        fail = false;
-                        handleChangeHp(damage.split("**")[1], wholeDb[targets[key].title.split(":")[0]], "+");
                     }
 
                     else
@@ -1361,7 +1361,7 @@ function handleUseAction(targets)
                 {
                     let dc = wholeDb[targets[key].title.split(":")[0]].DC;
                     
-                    if(discription.includes("regains"))
+                    if(display.includes("regains"))
                     {
                         fail = false;
                         handleChangeHp(damage.split("**")[1], wholeDb[targets[key].title.split(":")[0]], "+");
@@ -1996,11 +1996,27 @@ function handleChangeHp(damage, token, modifier)
     switch(modifier)
     {
         case "+":
-            token.currentHp = `${parseInt(token.currentHp) + parseInt(damage)}`;
+            if(parseInt(token.currentHp) + parseInt(damage) <= token.maxHp)
+            {
+                token.currentHp = `${parseInt(token.currentHp) + parseInt(damage)}`;
+            }
+            
+            else
+            {
+                token.currentHp = token.maxHp;
+            }
             break;
 
         case "-":
-            token.currentHp = `${parseInt(token.currentHp) - parseInt(damage)}`;
+            if(parseInt(token.currentHp) - parseInt(damage) >= 0)
+            {
+                token.currentHp = `${parseInt(token.currentHp) - parseInt(damage)}`;
+            }
+            
+            else
+            {
+                token.currentHp = "0";
+            }
             break;
     }
 }
