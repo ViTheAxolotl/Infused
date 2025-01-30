@@ -1334,7 +1334,7 @@ function handleUseAction(targets)
                         if(discription.includes("regains")){mod = "+"}
                         display += `(Success Hit) ${targets[key].title.split(":")[0]} (${dc}), `;
                         fail = false; 
-                        handleChangeHp(damage, wholeDb[targets[key].title.split(":")[0]], mod);
+                        handleChangeHp(damage.split("**")[1], wholeDb[targets[key].title.split(":")[0]], mod);
                     }
 
                     else
@@ -1362,7 +1362,7 @@ function handleUseAction(targets)
                         if(discription.includes("regains")){mod = "+"}
                         display += `(Success Hit) ${targets[key].title.split(":")[0]} (${dc}), `;
                         fail = false; 
-                        handleChangeHp(damage, wholeDb[targets[key].title.split(":")[0]], mod);
+                        handleChangeHp(damage.split("**")[1], wholeDb[targets[key].title.split(":")[0]], mod);
                     }
 
                     else
