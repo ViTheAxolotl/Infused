@@ -1024,7 +1024,7 @@ function handleCardClick()
             {
                 let scale = spellDisc.slice(spellDisc.indexOf("scaledamage"), spellDisc.indexOf("} for each slot"));
                 let individual = scale.split(" ");
-                individual = individual[0].split("|");
+                individual = individual[1].split("|");
                 let slotSelect = document.createElement("select");
                 slotSelect.name = "upcast";
                 slotSelect.id = individual[0] + "|" + individual[2];
