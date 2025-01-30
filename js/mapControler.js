@@ -1310,6 +1310,7 @@ function handleUseAction(targets)
             if(discription.includes("toHit}")){let temp = discription.indexOf("toHit}"); userAddTo = discription.charAt(temp - 2); userAddTo += discription.charAt(temp - 1)}
             else{userAddTo = spellOrAttackBonus("@damage")}
             let accurcy = diceRoller(1, 20, userAddTo, "false");
+            let ending = "Damage";
             
             if(discription.includes(currentLv))
             {
@@ -1333,6 +1334,8 @@ function handleUseAction(targets)
                     {
                         fail = false;
                         handleChangeHp(damage.split("**")[1], wholeDb[targets[key].title.split(":")[0]], "+");
+                        display = display.split("Accurcy:")[0];
+                        ending = "Healing";
                     }
 
                     else if(parseInt(roll) >= parseInt(dc))
@@ -1349,7 +1352,7 @@ function handleUseAction(targets)
                 }
 
                 display = display.slice(0, display.length - 2);
-                if(fail == false){display += `Dealing: ${damage} Damage.\n`;}
+                if(fail == false){display += `Dealing: ${damage} ${ending}.\n`;}
             }
             else{display = `${toTitleCase(wholeChar[player]["currentToken"])} cast,\n${lastUse} on `;
             if(targets == "self"){display += "themself, ";} else{for(key in Object.keys(targets)){display += `${toTitleCase(targets[key].title.split(":")[0])}, `}}
@@ -1365,6 +1368,8 @@ function handleUseAction(targets)
                     {
                         fail = false;
                         handleChangeHp(damage.split("**")[1], wholeDb[targets[key].title.split(":")[0]], "+");
+                        display = display.split("Accurcy:")[0];
+                        ending = "Healing";
                     }
 
                     else if(parseInt(roll) >= parseInt(dc))
@@ -1376,12 +1381,12 @@ function handleUseAction(targets)
 
                     else
                     {
-                        display += `(Fail hit) ${targets[key].title.split(":")[0]} (${dc}), `;
+                        display += `(Fail Hit) ${targets[key].title.split(":")[0]} (${dc}), `;
                     }
                 }
 
                 display = display.slice(0, display.length - 2);
-                if(fail == false){display += `\nDealing: ${damage} Damage.\n`; setDoc("currentMap/", wholeDb);}
+                if(fail == false){display += `\nDealing: ${damage} ${ending}.\n`; setDoc("currentMap/", wholeDb);}
             }
             if(!spellLevel){display = display.replaceAll("cast", "used the ability");}
         }
