@@ -1327,14 +1327,18 @@ function handleUseAction(targets)
                 for(let key in Object.keys(targets))
                 {
                     let dc = wholeDb[targets[key].title.split(":")[0]].DC;
-                    let mod = "-";
 
                     if(parseInt(roll) >= parseInt(dc))
                     {
-                        if(discription.includes("regains")){mod = "+"}
                         display += `(Success Hit) ${targets[key].title.split(":")[0]} (${dc}), `;
                         fail = false; 
-                        handleChangeHp(damage.split("**")[1], wholeDb[targets[key].title.split(":")[0]], mod);
+                        handleChangeHp(damage.split("**")[1], wholeDb[targets[key].title.split(":")[0]], "-");
+                    }
+
+                    else if(discription.includes("regains"))
+                    {
+                        fail = false;
+                        handleChangeHp(damage.split("**")[1], wholeDb[targets[key].title.split(":")[0]], "+");
                     }
 
                     else
@@ -1355,14 +1359,18 @@ function handleUseAction(targets)
                 for(let key in Object.keys(targets))
                 {
                     let dc = wholeDb[targets[key].title.split(":")[0]].DC;
-                    let mod = "-";
-
+                    
                     if(parseInt(roll) >= parseInt(dc))
                     {
-                        if(discription.includes("regains")){mod = "+"}
                         display += `(Success Hit) ${targets[key].title.split(":")[0]} (${dc}), `;
                         fail = false; 
-                        handleChangeHp(damage.split("**")[1], wholeDb[targets[key].title.split(":")[0]], mod);
+                        handleChangeHp(damage.split("**")[1], wholeDb[targets[key].title.split(":")[0]], "-");
+                    }
+
+                    else if(discription.includes("regains"))
+                    {
+                        fail = false;
+                        handleChangeHp(damage.split("**")[1], wholeDb[targets[key].title.split(":")[0]], "+");
                     }
 
                     else
