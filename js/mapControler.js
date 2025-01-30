@@ -1372,7 +1372,7 @@ function handleUseAction(targets)
                 }
 
                 display = display.slice(0, display.length - 2);
-                if(fail == false){display += `\nDealing: ${damage} Damage.\n`;}
+                if(fail == false){display += `\nDealing: ${damage} Damage.\n`; setDoc("currentMap/", wholeDb);}
             }
             if(!spellLevel){display = display.replaceAll("cast", "used the ability");}
         }
@@ -1994,6 +1994,4 @@ function handleChangeHp(damage, token, modifier)
             token.currentHp = `${parseInt(token.currentHp) - parseInt(damage)}`;
             break;
     }
-
-    setDoc("currentMap/", wholeDb);
 }
