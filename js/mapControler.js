@@ -1145,11 +1145,12 @@ function handleUseAction(targets)
         if(discription.includes("{@Choice"))
         {
             display = `${wholeChar[player]["charName"]} cast:\n${lastUse} on `;
-            if(targets == "self"){display += "themself, ";} else{for(key in Object.keys(targets)){display += `${targets[key].classList[1]}, `}}
+            if(targets == "self"){display += "themself, ";} else{for(key in Object.keys(targets)){display += `${toTitleCase(targets[key].classList[1])}, `}}
             display = display.slice(0, display.length - 2);
             display += `\n${useInfo}`;
             if(curClass){display = display.replaceAll("cast", "use the ability");}
         }
+
         if(discription.includes("{@save")) 
         {
             let skill = "unknown";
@@ -1185,7 +1186,7 @@ function handleUseAction(targets)
             setDoc(`playerChar/Vi/responses`, {"ability" : skill, "currentResponse" : lastUse, "toBeat" : toBeat, "castBy" : wholeChar[player]["charName"], "isSpell" : isSpell, "ind" : ind, "castUp" : castUp});
 
             display = `${toTitleCase(wholeChar[player]["currentToken"])} cast,\n${lastUse} on `;
-            if(targets == "self"){display += "themself, ";} else{for(key in Object.keys(targets)){display += `${targets[key].classList[1]}, `}}
+            if(targets == "self"){display += "themself, ";} else{for(key in Object.keys(targets)){display += `${toTitleCase(targets[key].classList[1])}, `}}
             display = display.slice(0, display.length - 2);
             display += `\n${useInfo}\nWaiting for them to use the Response Action (Under Actions, Miscs)...`;
 
@@ -1351,7 +1352,7 @@ function handleUseAction(targets)
                 if(fail == false){display += `Dealing: ${damage} Damage.\n`;}
             }
             else{display = `${toTitleCase(wholeChar[player]["currentToken"])} cast,\n${lastUse} on `;
-            if(targets == "self"){display += "themself, ";} else{for(key in Object.keys(targets)){display += `${targets[key].title.split(":")[0]}, `}}
+            if(targets == "self"){display += "themself, ";} else{for(key in Object.keys(targets)){display += `${toTitleCase(targets[key].title.split(":")[0])}, `}}
             display = display.slice(0, display.length - 2);
             display += `\n${useInfo}\nAccurcy: ${accurcy} to Hit.\n`;
                 let roll = accurcy.split("**")[1];
@@ -1360,17 +1361,17 @@ function handleUseAction(targets)
                 {
                     let dc = wholeDb[targets[key].title.split(":")[0]].DC;
                     
-                    if(parseInt(roll) >= parseInt(dc))
+                    if(discription.includes("regains"))
+                    {
+                        fail = false;
+                        handleChangeHp(damage.split("**")[1], wholeDb[targets[key].title.split(":")[0]], "+");
+                    }
+
+                    else if(parseInt(roll) >= parseInt(dc))
                     {
                         display += `(Success Hit) ${targets[key].title.split(":")[0]} (${dc}), `;
                         fail = false; 
                         handleChangeHp(damage.split("**")[1], wholeDb[targets[key].title.split(":")[0]], "-");
-                    }
-
-                    else if(discription.includes("regains"))
-                    {
-                        fail = false;
-                        handleChangeHp(damage.split("**")[1], wholeDb[targets[key].title.split(":")[0]], "+");
                     }
 
                     else
