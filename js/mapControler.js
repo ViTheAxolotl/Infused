@@ -1332,14 +1332,14 @@ function handleUseAction(targets)
                     if(parseInt(roll) >= parseInt(dc))
                     {
                         if(discription.includes("regains")){mod = "+"}
-                        display += `(Success) ${targets[key].title.split(":")[0]} (${dc}), `;
+                        display += `(Success Hit) ${targets[key].title.split(":")[0]} (${dc}), `;
                         fail = false; 
                         handleChangeHp(damage, wholeDb[targets[key].title.split(":")[0]], mod);
                     }
 
                     else
                     {
-                        display += `(Fail) ${targets[key].title.split(":")[0]} (${dc}), `;
+                        display += `(Fail Hit) ${targets[key].title.split(":")[0]} (${dc}), `;
                     }
                 }
 
@@ -1355,11 +1355,14 @@ function handleUseAction(targets)
                 for(let key in Object.keys(targets))
                 {
                     let dc = wholeDb[targets[key].title.split(":")[0]].DC;
+                    let mod = "-";
 
                     if(parseInt(roll) >= parseInt(dc))
                     {
-                        display += `(Success hit) ${targets[key].title.split(":")[0]} (${dc}), `;
+                        if(discription.includes("regains")){mod = "+"}
+                        display += `(Success Hit) ${targets[key].title.split(":")[0]} (${dc}), `;
                         fail = false; 
+                        handleChangeHp(damage, wholeDb[targets[key].title.split(":")[0]], mod);
                     }
 
                     else
