@@ -2018,7 +2018,7 @@ function useAbility()
     
     if(targets.length < 1)
     {
-        let awnser = confirm("You need to select your targets before using this. If the target is yourself, tap yes.");
+        let awnser = confirm("You need to select your targets before using this. If the target is yourself, tap 'OK'.");
 
         if(awnser)
         {
@@ -2026,7 +2026,7 @@ function useAbility()
 
             for(let token of tokens)
             {
-                if(token.id == wholeDb[wholeChar["currentToken"]].border)
+                if(token.id == wholeDb[wholeChar[player]["currentToken"]].border)
                 {
                     token.classList.add("selected-temp");
                     useAbility();
