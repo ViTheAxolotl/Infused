@@ -298,7 +298,7 @@ function diceRoller(amount, dice, modifier, ifName)
     if(modifier >= 0 && !viewMod.includes("+")){viewMod = "+" + modifier;} //Adds the + if the modifier is positive
     let message = ""; 
     if(ifName == "discord"){message = `${player} rolled `;} //Creates the message for discord
-    message += `*${amount}d${dice}${viewMod}*: *(`;
+    message += ` *${amount}d${dice}${viewMod}* : *(`;
     
     for(let roll of rolls) //For each die that was rolled
     {
@@ -312,7 +312,7 @@ function diceRoller(amount, dice, modifier, ifName)
     }
     
     let finalResult = sum + parseInt(modifier); //Adds the sum and modifier
-    message += `)${viewMod}=* **${finalResult}**`; 
+    message += `)${viewMod}=* **${finalResult}** `; 
     if(ifName == "finalResult"){message = `${finalResult}`;}
 
     return message;
