@@ -42,8 +42,6 @@ onValue(summonsRef, (snapshot) =>
     isSummonOn = wholeSummons["isSummonOn"];
 });
 
-
-
 let wholeDB = {};
 let div = document.getElementById("gridMap");
 let html = {};
@@ -76,6 +74,30 @@ let currentTurn;
 let players = ["nibbly", "nook", "razor", "leonier"];
 let mode = "";
 let modeRef;
+let isDragging = false;
+let startX, currentX;
+
+gridMap.addEventListener('mousedown', (e) => {
+  isDragging = true;
+  startX = e.clientX - gridMap.scrollLeft;
+});
+
+gridMap.addEventListener('mousemove', (e) => {
+  if (!isDragging) return;
+
+  e.preventDefault();
+  currentX = e.clientX;
+  const scrollAmount = startX - currentX;
+  gridMap.scrollLeft += scrollAmount;
+});
+
+gridMap.addEventListener('mouseup', () => {
+  isDragging = false;
+});
+
+gridMap.addEventListener('mouseleave', () => {
+  isDragging = false;
+});
 
 onAuthStateChanged(auth, (user) => 
 {
