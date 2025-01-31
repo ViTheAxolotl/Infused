@@ -18,14 +18,13 @@ function showDisplay()
 {
     display.innerHTML = "<ul>";
     let current = wholeDisplay["current"];
-    let tempCurrent = current;
 
     for(let i = 0; i < 10; i++)
     {
-        display.innerHTML += `<li>${wholeDisplay[tempCurrent]}</li>`;
+        display.innerHTML += `<li>${wholeDisplay[current]}</li>`;
 
-        if(tempCurrent == "9"){tempCurrent = "0";}
-        else{tempCurrent = `${parseInt(tempCurrent) + 1}`;}
+        if(current == "9"){current = "0";}
+        else{current = `${parseInt(current) + 1}`;}
     }
 
     display.innerHTML += "</ul>";
