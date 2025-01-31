@@ -28,7 +28,7 @@ function showDisplay()
         desc = desc.replaceAll(" *", " <i>");
         desc = desc.replaceAll("\n", "<br>");
 
-        display.innerHTML += `${desc}<hr>`;
+        display.innerHTML += `<p>${desc}</p><hr>`;
 
         if(current == "0"){current = "9";}
         else{current = `${parseInt(current) - 1}`;}

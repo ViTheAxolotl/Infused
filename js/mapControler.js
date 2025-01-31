@@ -1248,7 +1248,7 @@ function handleUseAction(targets)
                 {
                     if(abilityDisc.includes("half damage"))
                     {
-                        display = `${wholeChar[player]["charName"]} has succeded the ${wholeRespone["ability"]} check/save for ${wholeRespone["currentResponse"]}, (${parseInt(usersRoll) + (-1 * parseInt(userAddTo))} + ${userAddTo} = **${usersRoll}** ) taking half of the damage. (${damage} / 2) = **${parseInt(damage) / 2}**.`;
+                        display = `${wholeChar[player]["charName"]} has succeded the ${wholeRespone["ability"]} check/save for ${wholeRespone["currentResponse"]}, (${parseInt(usersRoll) + (-1 * parseInt(userAddTo))} + ${userAddTo} = **${usersRoll}** ) taking half of the damage. (${damage} / 2) = **${parseInt(damage) / 2}** .`;
                         if(parseInt(token.currentHp) - (parseInt(damage) / 2) > 0){token.currentHp = `${parseInt(token.currentHp) - (parseInt(damage) / 2)}`;}
                         else{token.currentHp = "0";}
                     }
@@ -1271,7 +1271,7 @@ function handleUseAction(targets)
 
             else
             {
-                display = `${wholeChar[player]["charName"]} has failed the ${wholeRespone["ability"]} check/save for ${wholeRespone["currentResponse"]}, ${parseInt(usersRoll) + (-1 * parseInt(userAddTo))} + ${userAddTo} = **${usersRoll}**.`;
+                display = `${wholeChar[player]["charName"]} has failed the ${wholeRespone["ability"]} check/save for ${wholeRespone["currentResponse"]}, ${parseInt(usersRoll) + (-1 * parseInt(userAddTo))} + ${userAddTo} = **${usersRoll}** .`;
 
                 if(parseInt(usersRoll) >= parseInt(wholeRespone["toBeat"])) 
                 {
@@ -2042,7 +2042,7 @@ function useAbility()
         handleUseAction(targets);
         document.getElementById("hideCover").click();
         for(let key = 0; key < targets.length; key++){targets[key].classList.remove("selected-temp");}
-        targets[0].classList.remove("selected-temp");
+        if(targets[0]){targets[0].classList.remove("selected-temp");}
     }
 }
 
