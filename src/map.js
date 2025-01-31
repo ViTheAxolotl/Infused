@@ -45,10 +45,10 @@ onValue(summonsRef, (snapshot) =>
 
 
 let wholeDB = {};
-let div = document.getElementById("map");
+let div = document.getElementById("gridMap");
 let html = {};
-const map = document.querySelector("#map"); //map
-const rect = map.getBoundingClientRect();
+const gridMap = document.querySelector("#gridMap"); //gridMap
+const rect = gridMap.getBoundingClientRect();
 let mapSize;
 let bumper;
 let distance;
