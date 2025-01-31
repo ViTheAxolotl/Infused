@@ -2029,7 +2029,7 @@ function useAbility()
                 if(token.id == wholeDb[wholeChar[player]["currentToken"]].border)
                 {
                     token.classList.add("selected-temp");
-                    useAbility();
+                    this.click();
                 }
             }
         }
