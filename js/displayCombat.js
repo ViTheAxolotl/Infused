@@ -22,8 +22,8 @@ function showDisplay()
     for(let i = 0; i < 10; i++)
     {
         let desc = wholeDisplay[current];
-        desc = desc.replaceAll(" **", " <b><i>");
-        desc = desc.replaceAll("** ", "</b></i> ");
+        desc = desc.replaceAll(" **", " <b>");
+        desc = desc.replaceAll("** ", "</b> ");
         desc = desc.replaceAll("* ", "</i> ");
         desc = desc.replaceAll(" *", " <i>");
 
