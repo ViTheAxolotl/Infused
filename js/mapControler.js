@@ -1448,7 +1448,7 @@ function handleUseAction(targets)
 
     else
     {
-        display = `${toTitleCase(wholeChar[player]["currentToken"])} cast:\n${lastUse}\n${useInfo}`;
+        display = `${toTitleCase(wholeChar[player]["currentToken"])} cast: ${lastUse}\n${useInfo}`;
         if(curClass){display = display.replaceAll("cast", "use the ability");}
     }
 
