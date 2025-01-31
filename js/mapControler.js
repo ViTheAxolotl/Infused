@@ -1988,12 +1988,13 @@ function useAbility()
 
     else
     {
+        this.onclick = displaySelect;
         setDoc(`playerChar/${player}/mode`, "waiting");
         handleUseAction(targets);
         document.getElementById("hideCover").click();
         for(let key = 0; key < targets.length; key++){targets[key].classList.remove("selected-temp");}
         targets[0].classList.remove("selected-temp");
-        this.onclick = displaySelect;
+        
     }
 }
 
