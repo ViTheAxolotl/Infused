@@ -4,8 +4,8 @@ import { ref, onValue } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
 import { toTitleCase, auth, database, createCard, setDoc, deleteDoc, placeBefore, createLabel, clenseInput, reload } from './viMethods.js';
 
-const gridMap = document.querySelector("#gridMap");
-const rect = gridMap.getBoundingClientRect();
+const map = document.querySelector("#map");
+const rect = map.getBoundingClientRect();
 let mapSize;
 let bumper;
 let distance;
