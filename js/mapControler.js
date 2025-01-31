@@ -53,6 +53,7 @@ let changeTokenBtn;
 let imgs;
 let wholeInteractive;
 let currentAction;
+let wholeDisplay = {};
 
 /**
  * When it shows that your logged in
@@ -127,6 +128,13 @@ onValue(dBRef, (snapshot) =>
 {
     const data = snapshot.val();
     wholeDb = data;
+});
+
+const displayRef = ref(database, 'display/');
+onValue(displayRef, (snapshot) => 
+{
+    const data = snapshot.val();
+    wholeDisplay = data;
 });
 
 let favoriteRef;
@@ -221,6 +229,7 @@ function setMainVaribles()
   */
 function sendDiscordMessage(message)
 {
+    sendMessageToDisplay(message);
     message = message + "\n\n ||                ||"; //Makes message seperating bars
     let webhook = wholeChar["Vi"]["testingWebhook"]; //Which channel it goes to by webhook
     const contents = `${message}`;
@@ -232,6 +241,25 @@ function sendDiscordMessage(message)
         content: contents
     } 
     request.send(JSON.stringify(prams)); //Sends message
+}
+
+function sendMessageToDisplay(message)
+{
+    let current = parseInt(wholeDisplay["current"]);
+
+    if(current + 1 > 9)
+    {
+        setDoc("display/current", "0");
+        current = 0;
+    }
+
+    else
+    {
+        setDoc("display/current", `${current + 1}`);
+        current++;
+    }
+
+    setDoc(`display/${current}`, message);
 }
 
 /**
