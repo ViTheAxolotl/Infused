@@ -26,6 +26,7 @@ function showDisplay()
         desc = desc.replaceAll("** ", "</b> ");
         desc = desc.replaceAll("* ", "</i> ");
         desc = desc.replaceAll(" *", " <i>");
+        desc = desc.replaceAll("\n", "<br>");
 
         display.innerHTML += `<li>${desc}</li>`;
 
