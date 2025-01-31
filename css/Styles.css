@@ -346,6 +346,8 @@ table, .itemSearch, #itemImg
 #gridMap
 {
     position: relative;
+    overflow: scroll;
+    height: 60vh;
 }
 
 #gridMap .tokens
