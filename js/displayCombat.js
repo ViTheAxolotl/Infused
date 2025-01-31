@@ -24,8 +24,8 @@ function showDisplay()
         let desc = wholeDisplay[current];
         desc = desc.replaceAll(" **", " <b><i>");
         desc = desc.replaceAll("** ", "</b></i> ");
-        desc = desc.replaceAll("* ", "</b></i> ");
-        desc = desc.replaceAll(" *", " <b><i>");
+        desc = desc.replaceAll("* ", "</i> ");
+        desc = desc.replaceAll(" *", " <i>");
 
         display.innerHTML += `<li>${desc}</li>`;
 
