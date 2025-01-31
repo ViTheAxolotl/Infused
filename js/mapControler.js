@@ -1973,14 +1973,13 @@ function displaySelect()
     text.innerHTML = "Select Your Targets";
     placeBefore(doneButton, document.getElementById("showInstructions")); */
     alert("Tap on the targets for this action/spell. Then when finished click 'Cast Spell' or 'Use Ability' again.");
-    this.onclick = useAbility();
+    this.onclick = useAbility;
     setDoc(`playerChar/${player}/mode`, "using");
 }
 
 function useAbility()
 {
     let targets = document.getElementsByClassName("selected-temp");
-    setDoc(`playerChar/${player}/mode`, "waiting");
     
     if(targets.length < 1)
     {
@@ -1989,13 +1988,12 @@ function useAbility()
 
     else
     {
+        setDoc(`playerChar/${player}/mode`, "waiting");
         handleUseAction(targets);
+        document.getElementById("hideCover").click();
+        for(let key = 0; key < targets.length; key++){targets[key].classList.remove("selected-temp");}
+        targets[0].classList.remove("selected-temp");
     }
-
-    document.getElementById("hideCover").click();
-    for(let key = 0; key < targets.length; key++){targets[key].classList.remove("selected-temp");}
-    targets[0].classList.remove("selected-temp");
-    this.remove();
 }
 
 function handleChangeHp(damage, token, modifier)
