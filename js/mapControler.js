@@ -1238,6 +1238,7 @@ function handleUseAction(targets)
             if(abilityDisc.includes("{@save "))
             {
                 let damage;
+                let token =wholeDb[wholeChar[player]["currentToken"]];
                 damage = splitRoll(abilityDisc, "@save");
                 if(abilityDisc.includes("{@scaledamage")){damage = splitRoll(wholeRespone["castUp"], "@save")}
                 else if(abilityDisc.includes(currentLv)){damage = splitRoll(abilityDisc.slice(`${abilityDisc.indexOf(currentLv)}`), "@save");}
@@ -1247,7 +1248,9 @@ function handleUseAction(targets)
                 {
                     if(abilityDisc.includes("half damage"))
                     {
-                        display = `${wholeChar[player]["charName"]} has succeded the ${wholeRespone["ability"]} check/save for ${wholeRespone["currentResponse"]}, (${parseInt(usersRoll) + (-1 * parseInt(userAddTo))} + ${userAddTo} = **${usersRoll}**) taking half of the damage. (${damage} / 2) = **${parseInt(damage) / 2}**.`; /** STOP */
+                        display = `${wholeChar[player]["charName"]} has succeded the ${wholeRespone["ability"]} check/save for ${wholeRespone["currentResponse"]}, (${parseInt(usersRoll) + (-1 * parseInt(userAddTo))} + ${userAddTo} = **${usersRoll}**) taking half of the damage. (${damage} / 2) = **${parseInt(damage) / 2}**.`;
+                        if(parseInt(token.currentHp) - (parseInt(damage) / 2) > 0){token.currentHp = `${parseInt(token.currentHp) - (parseInt(damage) / 2)}`;}
+                        else{token.currentHp = "0";}
                     }
 
                     else
@@ -1258,8 +1261,12 @@ function handleUseAction(targets)
                 
                 else
                 {
-                    display = `${wholeChar[player]["charName"]} has failed the ${wholeRespone["ability"]} check/save for ${wholeRespone["currentResponse"]}, (${parseInt(usersRoll) + (-1 * parseInt(userAddTo))} + ${userAddTo} = **${usersRoll}**) taking the **${damage}** damage.`; /** STOP */
+                    display = `${wholeChar[player]["charName"]} has failed the ${wholeRespone["ability"]} check/save for ${wholeRespone["currentResponse"]}, (${parseInt(usersRoll) + (-1 * parseInt(userAddTo))} + ${userAddTo} = **${usersRoll}**) taking the **${damage}** damage.`;
+                    if(parseInt(token.currentHp) - parseInt(damage) > 0){token.currentHp = `${parseInt(token.currentHp) - parseInt(damage)}`;}
+                    else{token.currentHp = "0";}
                 }
+
+                setDoc("currentMap/", wholeDb);
             }
 
             else
@@ -2022,7 +2029,6 @@ function useAbility()
         document.getElementById("hideCover").click();
         for(let key = 0; key < targets.length; key++){targets[key].classList.remove("selected-temp");}
         targets[0].classList.remove("selected-temp");
-        
     }
 }
 
