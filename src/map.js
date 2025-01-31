@@ -307,10 +307,10 @@ function addCharacter(character, update)
     {
         if(currentHp.value == "" && maxHp.value == "" && title.innerHTML == "Status: ")
         {
-            currentHp.defaultValue = character["currentHp"];
-            maxHp.defaultValue = character["maxHp"];
-            tempHp.defaultValue = character["tempHp"];
-            DC.defaultValue = character["DC"];
+            currentHp.value = character["currentHp"];
+            maxHp.value = character["maxHp"];
+            tempHp.value = character["tempHp"];
+            DC.value = character["DC"];
             document.getElementById("title").innerHTML += character["title"];
         }
     }
