@@ -1389,7 +1389,7 @@ function handleUseAction(targets)
                 display = display.slice(0, display.length - 2);
                 if(fail == false){display += `Dealing: ${damage} ${ending}.\n`;}
             }
-            else{display = `${toTitleCase(wholeChar[player]["currentToken"])} cast,\n${lastUse} on `;
+            else{display = `${toTitleCase(wholeChar[player]["currentToken"])} cast, ${lastUse} on `;
             for(key in Object.keys(targets)){display += `${toTitleCase(targets[key].title.split(":")[0])}, `}
             display = display.slice(0, display.length - 2);
             display += `\n${useInfo}\nAccurcy: ${accurcy} to Hit.\n`;
@@ -1432,7 +1432,7 @@ function handleUseAction(targets)
             damage = diceRoller(damage[0], damage[1], damage[2], "false");
     
             if(display){display += `\nResult: ${damage}. \n`;}
-            else{display = `${wholeChar[player]["charName"]} used the ability, \n${lastUse}:\n${useInfo}\n\nResult: ${damage}. \n`;}
+            else{display = `${wholeChar[player]["charName"]} used the ability, ${lastUse}:\n${useInfo}\n\nResult: ${damage}. \n`;}
         }
 
         if(discription.includes("{@sneak"))
@@ -1442,7 +1442,7 @@ function handleUseAction(targets)
             damage = diceRoller(damage[0], damage[1], damage[2], "false");
     
             if(display){display += `nResult: ${damage}. \n`;}
-            else{display = `${wholeChar[player]["charName"]} used the ability, \n${lastUse}:\n${useInfo}\n\nResult: ${damage}. \n`;}
+            else{display = `${wholeChar[player]["charName"]} used the ability, ${lastUse}:\n${useInfo}\n\nResult: ${damage}. \n`;}
         }
     }
 
