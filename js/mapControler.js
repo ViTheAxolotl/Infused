@@ -1145,7 +1145,7 @@ function handleUseAction(targets)
         if(discription.includes("{@Choice"))
         {
             display = `${wholeChar[player]["charName"]} cast:\n${lastUse} on `;
-            if(targets == "self"){display += "themself, ";} else{for(key in Object.keys(targets)){display += `${toTitleCase(targets[key].classList[1])}, `}}
+            for(key in Object.keys(targets)){display += `${toTitleCase(targets[key].classList[1])}, `}
             display = display.slice(0, display.length - 2);
             display += `\n${useInfo}`;
             if(curClass){display = display.replaceAll("cast", "use the ability");}
@@ -1186,7 +1186,7 @@ function handleUseAction(targets)
             setDoc(`playerChar/Vi/responses`, {"ability" : skill, "currentResponse" : lastUse, "toBeat" : toBeat, "castBy" : wholeChar[player]["charName"], "isSpell" : isSpell, "ind" : ind, "castUp" : castUp});
 
             display = `${toTitleCase(wholeChar[player]["currentToken"])} cast,\n${lastUse} on `;
-            if(targets == "self"){display += "themself, ";} else{for(key in Object.keys(targets)){display += `${toTitleCase(targets[key].classList[1])}, `}}
+            for(key in Object.keys(targets)){display += `${toTitleCase(targets[key].classList[1])}, `}
             display = display.slice(0, display.length - 2);
             display += `\n${useInfo}\nWaiting for them to use the Response Action (Under Actions, Miscs)...`;
 
@@ -1330,7 +1330,7 @@ function handleUseAction(targets)
                 {
                     let dc = wholeDb[targets[key].title.split(":")[0]].DC;
 
-                    if(display.includes("regains"))
+                    if(display.includes("regain"))
                     {
                         fail = false;
                         handleChangeHp(damage.split("**")[1], wholeDb[targets[key].title.split(":")[0]], "+");
@@ -1355,7 +1355,7 @@ function handleUseAction(targets)
                 if(fail == false){display += `Dealing: ${damage} ${ending}.\n`;}
             }
             else{display = `${toTitleCase(wholeChar[player]["currentToken"])} cast,\n${lastUse} on `;
-            if(targets == "self"){display += "themself, ";} else{for(key in Object.keys(targets)){display += `${toTitleCase(targets[key].title.split(":")[0])}, `}}
+            for(key in Object.keys(targets)){display += `${toTitleCase(targets[key].title.split(":")[0])}, `}
             display = display.slice(0, display.length - 2);
             display += `\n${useInfo}\nAccurcy: ${accurcy} to Hit.\n`;
                 let roll = accurcy.split("**")[1];
@@ -1514,7 +1514,7 @@ function handleEditCard()
     cardText.setAttribute("class", "card-text");
     cardText.style.margin = "3px";
     cardText.style.display = "inline";
-    cardText.innerHTML = "<li>{@save} : makes it able to use the save/check rolls. Can use {@save 2d6} to have it roll damage as well, for the skill you need to write strength (etc.) or use {@skil Perception} to show.</li> <li>{@damage 3d4} will roll accuracy then damage of 3d4.</li><li>{+3toHit} will add 3 to the accuracy roll.</li><li>{@Choice} will make a bullet point.</li><li>{@sDice 2d4} Will just roll 2d4 not accuercy</li><li>{@Summon pictureName:Hp:border} Picture name decides which picture and id it will have, ask me for an exact one a universal one is 'genericA-'. Hp is the max and current hp the token will have. Border is the color border it will have.</li>";
+    cardText.innerHTML = "<li>{@save} : makes it able to use the save/check rolls. Can use {@save 2d6} to have it roll damage as well, for the skill you need to write strength (etc.) or use {@skil Perception} to show.</li> <li>{@damage 3d4} will roll accuracy then damage of 3d4. Or if it has the word regains in the description, then it will heal instead.</li><li>{+3toHit} will add 3 to the accuracy roll.</li><li>{@Choice} will make a bullet point.</li><li>{@sDice 2d4} Will just roll 2d4 not accuercy</li><li>{@Summon pictureName:Hp:border} Picture name decides which picture and id it will have, ask me for an exact one a universal one is 'genericA-'. Hp is the max and current hp the token will have. Border is the color border it will have.</li>";
     cardBody.appendChild(cardText);
     cardBody.appendChild(document.createElement("br"));
 
@@ -1958,7 +1958,7 @@ function displayInteractive()
 
 function displaySelect()
 {
-    let text = document.getElementById("viewTitle");
+    /**let text = document.getElementById("viewTitle");
     let viewDiv = document.getElementById("cover");
     let doneButton = document.createElement("button");
     doneButton.innerHTML = "Done";
@@ -1971,7 +1971,9 @@ function displaySelect()
     text.classList.remove("invisible");
     text.style.zIndex = "1000";
     text.innerHTML = "Select Your Targets";
-    placeBefore(doneButton, document.getElementById("showInstructions")); 
+    placeBefore(doneButton, document.getElementById("showInstructions")); */
+    alert("Tap on the targets for this action/spell. Then when finished click 'Cast Spell' or 'Use Ability' again.");
+    this.onclick = useAbility();
     setDoc(`playerChar/${player}/mode`, "using");
 }
 
@@ -1982,7 +1984,7 @@ function useAbility()
     
     if(targets.length < 1)
     {
-        handleUseAction("self");
+        alert("You need to select your targets before using this. If the target is yourself, tap on your own token.");
     }
 
     else
