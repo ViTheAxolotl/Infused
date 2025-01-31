@@ -23,8 +23,8 @@ function showDisplay()
     {
         display.innerHTML += `<li>${wholeDisplay[current]}</li>`;
 
-        if(current == "9"){current = "0";}
-        else{current = `${parseInt(current) + 1}`;}
+        if(current == "0"){current = "9";}
+        else{current = `${parseInt(current) - 1}`;}
     }
 
     display.innerHTML += "</ul>";
