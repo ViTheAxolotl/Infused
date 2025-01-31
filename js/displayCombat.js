@@ -22,10 +22,10 @@ function showDisplay()
     for(let i = 0; i < 10; i++)
     {
         let desc = wholeDisplay[current];
-        desc = desc.replace(" **", "<b><i>");
-        desc = desc.replace("** ", "</b></i>");
-        desc = desc.replace("* ", "</b></i>");
-        desc = desc.replace(" *", "<b><i>");
+        desc = desc.replaceAll(" **", "<b><i>");
+        desc = desc.replaceAll("** ", "</b></i>");
+        desc = desc.replaceAll("* ", "</b></i>");
+        desc = desc.replaceAll(" *", "<b><i>");
 
         display.innerHTML += `<li>${wholeDisplay[current]}</li>`;
 
