@@ -1248,20 +1248,20 @@ function handleUseAction(targets)
                 {
                     if(abilityDisc.includes("half damage"))
                     {
-                        display = `${wholeChar[player]["charName"]} has succeded the ${wholeRespone["ability"]} check/save for ${wholeRespone["currentResponse"]}, (${parseInt(usersRoll) + (-1 * parseInt(userAddTo))} + ${userAddTo} = **${usersRoll}**) taking half of the damage. (${damage} / 2) = **${parseInt(damage) / 2}**.`;
+                        display = `${wholeChar[player]["charName"]} has succeded the ${wholeRespone["ability"]} check/save for ${wholeRespone["currentResponse"]}, (${parseInt(usersRoll) + (-1 * parseInt(userAddTo))} + ${userAddTo} = **${usersRoll}** ) taking half of the damage. (${damage} / 2) = **${parseInt(damage) / 2}**.`;
                         if(parseInt(token.currentHp) - (parseInt(damage) / 2) > 0){token.currentHp = `${parseInt(token.currentHp) - (parseInt(damage) / 2)}`;}
                         else{token.currentHp = "0";}
                     }
 
                     else
                     {
-                        display = `${wholeChar[player]["charName"]} has succeded the ${wholeRespone["ability"]} check/save for ${wholeRespone["currentResponse"]}. With the roll of ${parseInt(usersRoll) + (-1 * parseInt(userAddTo))} + ${userAddTo} = **${usersRoll}**.`
+                        display = `${wholeChar[player]["charName"]} has succeded the ${wholeRespone["ability"]} check/save for ${wholeRespone["currentResponse"]}. With the roll of ${parseInt(usersRoll) + (-1 * parseInt(userAddTo))} + ${userAddTo} = **${usersRoll}** .`
                     }
                 }
                 
                 else
                 {
-                    display = `${wholeChar[player]["charName"]} has failed the ${wholeRespone["ability"]} check/save for ${wholeRespone["currentResponse"]}, (${parseInt(usersRoll) + (-1 * parseInt(userAddTo))} + ${userAddTo} = **${usersRoll}**) taking the **${damage}** damage.`;
+                    display = `${wholeChar[player]["charName"]} has failed the ${wholeRespone["ability"]} check/save for ${wholeRespone["currentResponse"]}, (${parseInt(usersRoll) + (-1 * parseInt(userAddTo))} + ${userAddTo} = **${usersRoll}** ) taking the **${damage}** damage.`;
                     if(parseInt(token.currentHp) - parseInt(damage) > 0){token.currentHp = `${parseInt(token.currentHp) - parseInt(damage)}`;}
                     else{token.currentHp = "0";}
                 }
@@ -2018,7 +2018,21 @@ function useAbility()
     
     if(targets.length < 1)
     {
-        alert("You need to select your targets before using this. If the target is yourself, tap on your own token.");
+        let awnser = confirm("You need to select your targets before using this. If the target is yourself, tap yes.");
+
+        if(awnser)
+        {
+            let tokens = document.getElementsByClassName(wholeChar[player]["currentToken"]);
+
+            for(let token of tokens)
+            {
+                if(token.id == wholeDb[wholeChar["currentToken"]].border)
+                {
+                    token.classList.add("selected-temp");
+                    useAbility();
+                }
+            }
+        }
     }
 
     else
