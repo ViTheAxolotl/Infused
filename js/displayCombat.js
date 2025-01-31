@@ -16,7 +16,7 @@ onValue(displayRef, (snapshot) =>
 
 function showDisplay()
 {
-    display.innerHTML = "<ul>";
+    display.innerHTML = ""
     let current = wholeDisplay["current"];
 
     for(let i = 0; i < 10; i++)
@@ -28,11 +28,9 @@ function showDisplay()
         desc = desc.replaceAll(" *", " <i>");
         desc = desc.replaceAll("\n", "<br>");
 
-        display.innerHTML += `<li>${desc}</li>`;
+        display.innerHTML += `${desc}<hr>`;
 
         if(current == "0"){current = "9";}
         else{current = `${parseInt(current) - 1}`;}
     }
-
-    display.innerHTML += "</ul>";
 }
