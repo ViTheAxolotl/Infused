@@ -635,17 +635,7 @@ table, .itemSearch, #itemImg
         margin: 10%;
     }
 
-    #gridMap .tokens
-    {
-        width: 5%;
-        height: 5%;
-    }
 
-    #gridMap .customImg
-    {
-        width: 4.5%;
-        height: 4.5%;
-    }
 
     .tODiv
     {
