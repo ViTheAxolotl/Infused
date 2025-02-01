@@ -732,7 +732,9 @@ table, .itemSearch, #itemImg
 
     #grid
     {
-        margin: 0%;
+        margin: 0%; 
+        width: 2200px;
+        height: 2200px;
     }
 
     #arrows img
