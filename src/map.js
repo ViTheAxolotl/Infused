@@ -77,6 +77,7 @@ let modeRef;
 let isDragging = false;
 let startX, currentX, startY, currentY;
 
+/**
 gridMap.addEventListener('mousedown', (e) => {
   isDragging = true;
   startX = e.clientX - gridMap.scrollLeft;
@@ -102,6 +103,7 @@ gridMap.addEventListener('mouseup', () => {
 gridMap.addEventListener('mouseleave', () => {
   isDragging = false;
 }); 
+Somewhat works, only for X*/
 
 onAuthStateChanged(auth, (user) => 
 {
