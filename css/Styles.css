@@ -343,6 +343,11 @@ table, .itemSearch, #itemImg
     height: 60%;
 }
 
+#grid
+{
+    cursor: pointer;
+}
+
 #gridMap
 {
     position: relative;

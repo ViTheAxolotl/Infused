@@ -74,36 +74,33 @@ let currentTurn;
 let players = ["nibbly", "nook", "razor", "leonier"];
 let mode = "";
 let modeRef;
-let isDragging = false;
-let startX, currentX, startY, currentY;
+let mouseDown = false;
+let startX, scrollLeft;
+let slider = gridMap;
 
-/**
-gridMap.addEventListener('mousedown', (e) => {
-  isDragging = true;
-  startX = e.clientX - gridMap.scrollLeft;
-  startY = e.clientY - gridMap.scrollUp;
-});
+const startDragging = (e) => {
+  mouseDown = true;
+  startX = e.pageX - slider.offsetLeft;
+  scrollLeft = slider.scrollLeft;
+}
 
-gridMap.addEventListener('mousemove', (e) => {
-  if (!isDragging) return;
+const stopDragging = (e) => {
+  mouseDown = false;
+}
 
+const move = (e) => {
   e.preventDefault();
-  currentX = e.clientX;
-  currentY = e.clientY;
-  const scrollAmountX = startX - currentX;
-  const scrollAmountY = startY - currentY;
-  gridMap.scrollLeft += scrollAmountX;
-  gridMap.scrollUp += scrollAmountY;
-});
+  if(!mouseDown) { return; }
+  const x = e.pageX - slider.offsetLeft;
+  const scroll = x - startX;
+  slider.scrollLeft = scrollLeft - scroll;
+}
 
-gridMap.addEventListener('mouseup', () => {
-  isDragging = false;
-});
-
-gridMap.addEventListener('mouseleave', () => {
-  isDragging = false;
-}); 
-Somewhat works, only for X*/
+// Add the event listeners
+slider.addEventListener('mousemove', move, false);
+slider.addEventListener('mousedown', startDragging, false);
+slider.addEventListener('mouseup', stopDragging, false);
+slider.addEventListener('mouseleave', stopDragging, false);
 
 onAuthStateChanged(auth, (user) => 
 {
