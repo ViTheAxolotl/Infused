@@ -144,7 +144,7 @@ function init()
     if(rect.width < 999)
     {
         mapSize = trueMapSize;
-        bumper = 79; 
+        bumper = 80; 
         distance = Math.round(mapSize / 27);
         movement = distance - 4; 
     }
@@ -152,7 +152,7 @@ function init()
     else
     {
         mapSize = (trueMapSize * (8 / 10));
-        bumper = Math.round(trueMapSize / 10) + 4;
+        bumper = Math.round(trueMapSize / 10) + 3;
         distance = Math.round(mapSize / 27);
         movement = distance - 4;
     } 
