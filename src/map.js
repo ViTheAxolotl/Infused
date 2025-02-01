@@ -75,12 +75,12 @@ let players = ["nibbly", "nook", "razor", "leonier"];
 let mode = "";
 let modeRef;
 let isDragging = false;
-let startX, currentX;
+let startX, currentX, startY, currentY;
 
-/**
 gridMap.addEventListener('mousedown', (e) => {
   isDragging = true;
   startX = e.clientX - gridMap.scrollLeft;
+  startY = e.clientY - gridMap.scrollUp;
 });
 
 gridMap.addEventListener('mousemove', (e) => {
@@ -88,8 +88,11 @@ gridMap.addEventListener('mousemove', (e) => {
 
   e.preventDefault();
   currentX = e.clientX;
-  const scrollAmount = startX - currentX;
-  gridMap.scrollLeft += scrollAmount;
+  currentY = e.clientY;
+  const scrollAmountX = startX - currentX;
+  const scrollAmountY = startY - currentY;
+  gridMap.scrollLeft += scrollAmountX;
+  gridMap.scrollUp += scrollAmountY;
 });
 
 gridMap.addEventListener('mouseup', () => {
@@ -99,7 +102,6 @@ gridMap.addEventListener('mouseup', () => {
 gridMap.addEventListener('mouseleave', () => {
   isDragging = false;
 }); 
-Somewhat works, only for X*/
 
 onAuthStateChanged(auth, (user) => 
 {
