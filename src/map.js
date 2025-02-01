@@ -76,13 +76,17 @@ let mode = "";
 let modeRef;
 let mouseDown = false;
 let startX, scrollLeft;
+let startY, scrollUp;
 let slider = gridMap;
 
 const startDragging = (e) => 
 {
     mouseDown = true;
     startX = e.pageX - slider.offsetLeft;
+    startY = e.pageY - slider.offsetTop;
     scrollLeft = slider.scrollLeft;
+    scrollUp = slider.scrollTop;
+
 }
 
 const stopDragging = (e) => 
@@ -95,8 +99,11 @@ const move = (e) =>
     e.preventDefault();
     if(!mouseDown) { return; }
     const x = e.pageX - slider.offsetLeft;
-    const scroll = x - startX;
-    slider.scrollLeft = scrollLeft - scroll;
+    const scrollX = x - startX;
+    slider.scrollLeft = scrollLeft - scrollX;
+    const y = e.pageY - slider.offsetTop;
+    const scrollY = y - startY;
+    slider.scrollLeft = scrollUp - scrollY;
 }
 
 // Add the event listeners
