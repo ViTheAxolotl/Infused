@@ -140,9 +140,10 @@ function init()
     setInterval(timer, 100);
 
     document.getElementById("helpBtn").onclick = handleCharClick;
+    let trueMapSize = 2200;
 
-    mapSize = (rect.width * (8 / 10));
-    bumper = Math.round(rect.width / 10) + 2;
+    mapSize = (trueMapSize * (8 / 10));
+    bumper = Math.round(trueMapSize / 10) + 2;
     distance = Math.round(mapSize / 27);
     movement = distance - 6;
 
