@@ -144,7 +144,7 @@ function init()
     if(rect.width < 999)
     {
         mapSize = trueMapSize;
-        bumper = 77; 
+        bumper = 79; 
         distance = Math.round(mapSize / 27);
         movement = distance - 4; 
     }
@@ -154,7 +154,7 @@ function init()
         mapSize = (trueMapSize * (8 / 10));
         bumper = Math.round(trueMapSize / 10) + 4;
         distance = Math.round(mapSize / 27);
-        movement = distance - 5;
+        movement = distance - 4;
     } 
 
     let disAndBum = distance + bumper;
