@@ -141,11 +141,21 @@ function init()
 
     document.getElementById("helpBtn").onclick = handleCharClick;
     let trueMapSize = 2200;
+    if(rect.width < 999)
+    {
+        mapSize = trueMapSize;
+        bumper = 9; 
+        distance = Math.round(mapSize / 27);
+        movement = distance - 4; 
+    }
 
-    mapSize = (trueMapSize * (8 / 10));
-    bumper = Math.round(trueMapSize / 10) + 2;
-    distance = Math.round(mapSize / 27);
-    movement = distance - 6;
+    else
+    {
+        mapSize = (trueMapSize * (8 / 10));
+        bumper = Math.round(trueMapSize / 10) + 2;
+        distance = Math.round(mapSize / 27);
+        movement = distance - 6;
+    } 
 
     let disAndBum = distance + bumper;
     pos = [disAndBum, disAndBum + movement, disAndBum + (movement * 2), disAndBum + (movement * 3), disAndBum + (movement * 4), disAndBum + (movement * 5), disAndBum + (movement * 6), disAndBum + (movement * 7), disAndBum + (movement * 8), disAndBum + (movement * 9), disAndBum + (movement * 10), disAndBum + (movement * 11), disAndBum + (movement * 12)];
