@@ -103,7 +103,7 @@ const move = (e) =>
     slider.scrollLeft = scrollLeft - scrollX;
     const y = e.pageY - slider.offsetTop;
     const scrollY = y - startY;
-    slider.scrollLeft = scrollUp - scrollY;
+    slider.scrollTop = scrollUp - scrollY;
 }
 
 // Add the event listeners
