@@ -526,6 +526,11 @@ table, .itemSearch, #itemImg
     height: 4.5%;
 }
 
+#gridMap
+{
+    transition: transform 0.3s ease;
+}
+
 #story .tokens
 {
     width: 12vh;
