@@ -85,7 +85,7 @@ body
     margin: 20px 10px 0px 0px;
 }
 
-#story, #map, #towns, #controls, #discDisplay, #gridMap, #login
+#story, #map, #towns, #controls, #discDisplay, #gridMapWrapper, #login
 {
     margin-top: 20px;
 }
@@ -95,7 +95,7 @@ p
     text-indent: 30px;
 }
 
-#info, #hometown, #footer, #header, #story, #list, #display, #map, #towns, #search, #item, #quests, #notes, #controls, #discDisplay, #gridMap, #login
+#info, #hometown, #footer, #header, #story, #list, #display, #map, #towns, #search, #item, #quests, #notes, #controls, #discDisplay, #gridMapWrapper, #login
 {
     border: #555555 4px solid;
     padding: 10px 10px 0px 10px;
