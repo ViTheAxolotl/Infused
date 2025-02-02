@@ -37,9 +37,13 @@
           <h1>Map</h1><br>
         </div>
 
-        <div id = "gridMap" class = "bg-UP-purple color-UP-black col-md-12 col-sm-12">
+	<div id = "gridMapWrapper" class = "bg-UP-purple color-UP-black col-md-12 col-sm-12">      
+        <div id = "gridMap">
           <img id = "grid" src = "images/map/grid.png" draggable="false"/>
-        </div>
+	</div>
+		<button id="zoomIn" class = "gridMap"> + </button>
+		<button id="zoomOut" class = "gridMap"> - </button>
+	</div>
 
         <div id = "controls" class = "bg-UP-purple color-UP-black col-md-12 col-sm-12">
           <h3 id = "name"></h3>
