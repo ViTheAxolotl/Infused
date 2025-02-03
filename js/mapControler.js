@@ -550,6 +550,23 @@ function changeValue()
                 }
             }
             break;
+
+        case "zoom":
+            zoomLevel = 1;
+            
+            if(modifier == "+") //If plus button is 
+            {
+                zoomLevel += .1;
+            }
+
+            else //minus button is clicked
+            {
+                zoomLevel -= .1;
+                if (zoomLevel < 0.1){zoomLevel = 0.1;}
+            }
+
+            document.getElementById("gridMap").style.transform = `scale(${zoomLevel})`;
+            break;
         
         case "title":
             let title = document.getElementById("title");
