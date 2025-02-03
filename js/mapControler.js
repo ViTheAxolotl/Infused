@@ -54,6 +54,7 @@ let imgs;
 let wholeInteractive;
 let currentAction;
 let wholeDisplay = {};
+let zoomLevel = 1;
 
 /**
  * When it shows that your logged in
@@ -552,8 +553,6 @@ function changeValue()
             break;
 
         case "zoom":
-            zoomLevel = 1;
-            
             if(modifier == "+") //If plus button is 
             {
                 zoomLevel += .1;
@@ -565,7 +564,7 @@ function changeValue()
                 if (zoomLevel < 0.1){zoomLevel = 0.1;}
             }
 
-            document.getElementById("gridMap").style.transform = `scale(${zoomLevel})`;
+            this.style.transform = `scale(${zoomLevel})`;
             break;
         
         case "title":
