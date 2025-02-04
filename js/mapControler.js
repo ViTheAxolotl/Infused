@@ -564,7 +564,7 @@ function changeValue()
                 if (zoomLevel < 0.1){zoomLevel = 0.1;}
             }
 
-            document.getElementById("gridMap").style.transition = `transform ${zoomLevel}s`;
+            document.getElementById("gridMap").style.transform = `scale(${zoomLevel})`;
             break;
         
         case "title":
