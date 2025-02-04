@@ -353,6 +353,7 @@ table, .itemSearch, #itemImg
     position: relative;
     overflow: scroll;
     height: 70vh;
+    width: 700px;
 }
 
 #gridMap .tokens
