@@ -530,6 +530,7 @@ table, .itemSearch, #itemImg
 #gridMap
 {
     transition: transform 0.3s ease;
+    transform-origin: center center;
 }
 
 #story .tokens
