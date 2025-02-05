@@ -350,13 +350,12 @@ table, .itemSearch, #itemImg
 
 #gridMap
 {
-    position: relative;
+    
     height: 300px;
     width: 300px;
     min-height: 300px;
-    min-width: 300px;
-    display: inline-block; /* change the default display type to inline-block */
-    overflow: hidden;
+    min-width: 300px; /* change the default display type to inline-block */
+    overflow: scroll;
 }
 
 #gridMap .tokens
