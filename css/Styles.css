@@ -354,6 +354,8 @@ table, .itemSearch, #itemImg
     overflow: scroll;
     height: 300px;
     width: 300px;
+    min-height: 300px;
+    min-width: 300px;
 }
 
 #gridMap .tokens
