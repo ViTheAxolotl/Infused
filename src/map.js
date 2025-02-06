@@ -140,7 +140,7 @@ function init()
     setInterval(timer, 100);
 
     document.getElementById("helpBtn").onclick = handleCharClick;
-    let trueMapSize = 2200;
+    let trueMapSize = 2030;
     if(rect.width < 999)
     {
         mapSize = trueMapSize;
