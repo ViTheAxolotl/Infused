@@ -1,7 +1,7 @@
 "use strict";
 import { ref, onValue } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js';
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
-import { toTitleCase, auth, database, setDoc, deleteDoc, returnHpImage } from '../js/viMethods.js';
+import { toTitleCase, auth, database, setDoc, deleteDoc, returnHpImage, setMapValue } from '../js/viMethods.js';
 
 const customsRef = ref(database, 'customImages/');
 onValue(customsRef, (snapshot) => 
@@ -140,27 +140,7 @@ function init()
     setInterval(timer, 100);
 
     document.getElementById("helpBtn").onclick = handleCharClick;
-    let trueMapSize = 2030;
-    if(rect.width < 999)
-    {
-        mapSize = trueMapSize;
-        bumper = 80; 
-        distance = Math.round(mapSize / 27);
-        movement = distance - 4; 
-    }
-
-    else
-    {
-        mapSize = (trueMapSize * (8 / 10));
-        bumper = Math.round(trueMapSize / 26) * 1.655;
-        distance = Math.round(mapSize / 26);
-        movement = distance;
-    } 
-
-    let disAndBum = distance + bumper;
-    pos = [disAndBum, disAndBum + movement, disAndBum + (movement * 2), disAndBum + (movement * 3), disAndBum + (movement * 4), disAndBum + (movement * 5), disAndBum + (movement * 6), disAndBum + (movement * 7), disAndBum + (movement * 8), disAndBum + (movement * 9), disAndBum + (movement * 10), disAndBum + (movement * 11), disAndBum + (movement * 12), disAndBum + (movement * 13), disAndBum + (movement * 14), disAndBum + (movement * 15), disAndBum + (movement * 16), disAndBum + (movement * 17), disAndBum + (movement * 18), disAndBum + (movement * 19), disAndBum + (movement * 20), disAndBum + (movement * 21), disAndBum + (movement * 22), disAndBum + (movement * 23), disAndBum + (movement * 24), disAndBum + (movement * 25)];
-    yPos = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-    xPos = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26"];
+    setMapValue();
     fetch('https://vitheaxolotl.github.io/Infused/src/files.json').then(res => res.json()).then((json) => imgs = json);
     document.getElementById("hideCover").onclick = hideCover; 
 }

@@ -2,7 +2,7 @@
 
 import { ref, onValue } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js';
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
-import { toTitleCase, auth, database, createCard, setDoc, deleteDoc, placeBefore, createLabel, clenseInput, reload } from './viMethods.js';
+import { toTitleCase, auth, database, createCard, setDoc, deleteDoc, placeBefore, createLabel, clenseInput, reload, setMapValue } from './viMethods.js';
 
 const gridMap = document.querySelector("#gridMap");
 const rect = gridMap.getBoundingClientRect();
@@ -198,25 +198,9 @@ function setMainVaribles()
         }
     }
 
-    if(rect.width < 999) //If on phone
-    {
-        mapSize = rect.width;
-        bumper = 9;
-        distance = Math.round(mapSize / 14);
-        movement = distance - 4;
-    }
-
-    else //If on computer
-    {
-        mapSize = (rect.width * (8 / 10));
-        bumper = Math.round(rect.width / 10) + 2;
-        distance = Math.round(mapSize / 14);
-        movement = distance - 6;
-    }
-
-    let disAndBum = distance + bumper; //boxes locations
-    pos = [disAndBum, disAndBum + movement, disAndBum + (movement * 2), disAndBum + (movement * 3), disAndBum + (movement * 4), disAndBum + (movement * 5), disAndBum + (movement * 6), disAndBum + (movement * 7), disAndBum + (movement * 8), disAndBum + (movement * 9), disAndBum + (movement * 10), disAndBum + (movement * 11), disAndBum + (movement * 12)]; //Each bod
-    bounds = [pos[0], pos[12]]; //Left, Right, Up, and Down walls
+    setMapValue();
+    
+    bounds = [pos[0], pos[25]]; //Left, Right, Up, and Down walls
 
     for(let button of buttons) //All + and - buttons
     {
@@ -775,25 +759,25 @@ function handleArrow()
         {
             if(title.includes("Large")) //If the token is 3X3
             {
-                bounds = [pos[0], pos[11]]; //Stops the token from moving outside the borders
+                bounds = [pos[0], pos[24]]; //Stops the token from moving outside the borders
                 break;
             }
 
             else if(title.includes("Huge")) //If the token is 4x4
             {
-                bounds = [pos[0], pos[10]]; //Stops the token from moving outside the borders
+                bounds = [pos[0], pos[23]]; //Stops the token from moving outside the borders
                 break;
             }
 
             else if (title.includes("Gargantuan")) //If the token is 5x5
             {
-                bounds = [pos[0], pos[9]]; //Stops the token from moving outside the borders
+                bounds = [pos[0], pos[22]]; //Stops the token from moving outside the borders
                 break;
             }
 
             else //If token is 2x2
             {
-                bounds = [pos[0], pos[12]]; //Sets normal borders
+                bounds = [pos[0], pos[25]]; //Sets normal borders
             }
         }
     }
