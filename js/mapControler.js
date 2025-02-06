@@ -6,10 +6,6 @@ import { toTitleCase, auth, database, createCard, setDoc, deleteDoc, placeBefore
 
 const gridMap = document.querySelector("#gridMap");
 const rect = gridMap.getBoundingClientRect();
-let mapSize;
-let bumper;
-let distance;
-let movement;
 let bounds;
 let currentPos;
 let currentCharacter;
@@ -24,8 +20,6 @@ let buttons;
 let player;
 let pos;
 let firstRun = true;
-let div = document.getElementById("grid");
-let currentBorders = document.getElementsByClassName("border_");
 let firstMenu;
 let secondMenu;
 let spellBtn;
@@ -55,6 +49,7 @@ let wholeInteractive;
 let currentAction;
 let wholeDisplay = {};
 let zoomLevel = 100;
+let map;
 
 /**
  * When it shows that your logged in
@@ -198,9 +193,9 @@ function setMainVaribles()
         }
     }
 
-    setMapValue();
+    map = setMapValue();
     
-    bounds = [pos[0], pos[25]]; //Left, Right, Up, and Down walls
+    bounds = [map.pos[0], map.pos[25]]; //Left, Right, Up, and Down walls
 
     for(let button of buttons) //All + and - buttons
     {
@@ -759,25 +754,25 @@ function handleArrow()
         {
             if(title.includes("Large")) //If the token is 3X3
             {
-                bounds = [pos[0], pos[24]]; //Stops the token from moving outside the borders
+                bounds = [map.pos[0], map.pos[24]]; //Stops the token from moving outside the borders
                 break;
             }
 
             else if(title.includes("Huge")) //If the token is 4x4
             {
-                bounds = [pos[0], pos[23]]; //Stops the token from moving outside the borders
+                bounds = [map.pos[0], map.pos[23]]; //Stops the token from moving outside the borders
                 break;
             }
 
             else if (title.includes("Gargantuan")) //If the token is 5x5
             {
-                bounds = [pos[0], pos[22]]; //Stops the token from moving outside the borders
+                bounds = [map.pos[0], map.pos[22]]; //Stops the token from moving outside the borders
                 break;
             }
 
             else //If token is 2x2
             {
-                bounds = [pos[0], pos[25]]; //Sets normal borders
+                bounds = [map.pos[0], map.pos[25]]; //Sets normal borders
             }
         }
     }
@@ -798,28 +793,28 @@ function handleArrow()
         case "up":
             if(bounds[0] < currentPos[1]) //If they are not on the top border
             {
-                moveChar(currentPos[0], currentPos[1] - movement);
+                moveChar(currentPos[0], currentPos[1] - map.movement);
             }  
             break;
         
         case "down":
             if(bounds[1] > currentPos[1]) //If they are not on the bottom border
             {
-                moveChar(currentPos[0], currentPos[1] + movement);
+                moveChar(currentPos[0], currentPos[1] + map.movement);
             }    
             break;
 
         case "left": 
             if(bounds[0] < currentPos[0]) //If they are not on the left border
             {
-                moveChar(currentPos[0] - movement, currentPos[1]);
+                moveChar(currentPos[0] - map.movement, currentPos[1]);
             }
             break;
 
         case "right":
             if(bounds[1] > currentPos[0]) //If they are not on the right border
             {
-                moveChar(currentPos[0] + movement, currentPos[1]);
+                moveChar(currentPos[0] + map.movement, currentPos[1]);
             } 
             break;
     }

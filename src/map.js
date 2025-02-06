@@ -47,13 +47,6 @@ let div = document.getElementById("gridMap");
 let html = {};
 const gridMap = document.querySelector("#gridMap"); //gridMap
 const rect = gridMap.getBoundingClientRect();
-let mapSize;
-let bumper;
-let distance;
-let movement;
-let pos; 
-let yPos;
-let xPos;
 let tokens = [];
 let imgs;
 let currentHp = document.getElementById("current");
@@ -293,8 +286,8 @@ function addCharacter(character, update)
 {
     let char = [document.createElement("img"), document.createElement("img"), document.createElement("img")];
     let tokenImg = character["name"];
-    let x = pos[0];
-    let y = pos[0];
+    let x = map.pos[0];
+    let y = map.pos[0];
 
     char[0].classList = `tokens ${character["id"]} char`;
 
@@ -334,8 +327,8 @@ function addCharacter(character, update)
     if(character.title != "")
     {
         let title = character.title;
-        x = pos[xPos.indexOf(character["xPos"])];
-        y = pos[yPos.indexOf(character["yPos"])];
+        x = map.pos[map.xPos.indexOf(character["xPos"])];
+        y = map.pos[map.yPos.indexOf(character["yPos"])];
 
         if(title.includes("Large"))
         {
@@ -544,7 +537,7 @@ function exp(xOrY, title, char)
 
 function setupExp(num, char, xOrY)
 {
-    let size = (pos[num] - pos[0]) + "px";
+    let size = (map.pos[num] - map.pos[0]) + "px";
 
     if(xOrY == "x")
     {
@@ -593,8 +586,8 @@ function dup(xOrY, char, character, locations, title)
         num = 12
     }
 
-    if(xOrY == "x"){offSet = xPos.indexOf(character["xPos"]);}
-    else{offSet = yPos.indexOf(character["yPos"]);}
+    if(xOrY == "x"){offSet = map.xPos.indexOf(character["xPos"]);}
+    else{offSet = map.yPos.indexOf(character["yPos"]);}
 
     for(let i = 0; i < num; i++){setupDup(char, character, xOrY, locations, rotate)}
 }
@@ -612,8 +605,8 @@ function setupDup(char, character, xOrY, locations, rotate)
         stuffs[d].style.transform = `rotate(${rotate}deg)`;
         stuffs[d].classList.add(character["id"]);
         
-        if(xOrY == "x"){placeTokens(pos[offSet], locations[1], stuffs[d]);}
-        else{placeTokens(locations[0], pos[offSet], stuffs[d]);}
+        if(xOrY == "x"){placeTokens(map.pos[offSet], locations[1], stuffs[d]);}
+        else{placeTokens(locations[0], map.pos[offSet], stuffs[d]);}
         
         switch(d)
         {
@@ -862,8 +855,8 @@ function updateToken(token)
                 borderColor = token.id;
                 x = parseInt(token.style.left.replace("px", ""));
                 y = parseInt(token.style.top.replace("px", ""));
-                x = xPos[pos.indexOf(x)];
-                y = yPos[pos.indexOf(y)];
+                x = map.xPos[map.pos.indexOf(x)];
+                y = map.yPos[map.pos.indexOf(y)];
             }
 
             token.classList.remove("update");
