@@ -4,9 +4,7 @@ import { ref, onValue } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
 import { toTitleCase, auth, database, createCard, setDoc, deleteDoc, placeBefore, createLabel, clenseInput, reload, setMapValue } from './viMethods.js';
 
-const gridMap = document.querySelector("#gridMap");
-const rect = gridMap.getBoundingClientRect();
-let bounds;
+let map = setMapValue();
 let currentPos;
 let currentCharacter;
 let playerName = document.getElementById("name");
@@ -49,7 +47,6 @@ let wholeInteractive;
 let currentAction;
 let wholeDisplay = {};
 let zoomLevel = 100;
-let map;
 
 /**
  * When it shows that your logged in

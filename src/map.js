@@ -3,6 +3,36 @@ import { ref, onValue } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
 import { toTitleCase, auth, database, setDoc, deleteDoc, returnHpImage, setMapValue } from '../js/viMethods.js';
 
+let map = map = setMapValue();let wholeDB = {};
+let div = document.getElementById("gridMap");
+let html = {};
+const gridMap = document.querySelector("#gridMap"); //gridMap
+const rect = gridMap.getBoundingClientRect();
+let tokens = [];
+let imgs;
+let currentHp = document.getElementById("current");
+let maxHp = document.getElementById("max");
+let tempHp = document.getElementById("temp");
+let DC = document.getElementById("DC");
+let titleTxt = document.getElementById("title");
+let offSet;
+let divTO = document.getElementById("turnOrder");
+let wholeTO;
+let wholeSummons;
+let isSummonOn;
+let player;
+let wholeChar;
+let wholeCustom;
+let firstRun = true;
+let currentTurn;
+let players = ["nibbly", "nook", "razor", "leonier"];
+let mode = "";
+let modeRef;
+let mouseDown = false;
+let startX, scrollLeft;
+let startY, scrollUp;
+let slider = gridMap;
+
 const customsRef = ref(database, 'customImages/');
 onValue(customsRef, (snapshot) => 
 {
@@ -41,37 +71,6 @@ onValue(summonsRef, (snapshot) =>
     wholeSummons = data;
     isSummonOn = wholeSummons["isSummonOn"];
 });
-
-let wholeDB = {};
-let div = document.getElementById("gridMap");
-let html = {};
-const gridMap = document.querySelector("#gridMap"); //gridMap
-const rect = gridMap.getBoundingClientRect();
-let tokens = [];
-let imgs;
-let currentHp = document.getElementById("current");
-let maxHp = document.getElementById("max");
-let tempHp = document.getElementById("temp");
-let DC = document.getElementById("DC");
-let titleTxt = document.getElementById("title");
-let offSet;
-let divTO = document.getElementById("turnOrder");
-let wholeTO;
-let wholeSummons;
-let isSummonOn;
-let player;
-let wholeChar;
-let wholeCustom;
-let firstRun = true;
-let currentTurn;
-let players = ["nibbly", "nook", "razor", "leonier"];
-let mode = "";
-let modeRef;
-let mouseDown = false;
-let startX, scrollLeft;
-let startY, scrollUp;
-let slider = gridMap;
-let map;
 
 const startDragging = (e) => 
 {
@@ -134,7 +133,6 @@ function init()
     setInterval(timer, 100);
 
     document.getElementById("helpBtn").onclick = handleCharClick;
-    map = setMapValue();
     fetch('https://vitheaxolotl.github.io/Infused/src/files.json').then(res => res.json()).then((json) => imgs = json);
     document.getElementById("hideCover").onclick = hideCover; 
 }
