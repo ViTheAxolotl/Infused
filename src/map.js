@@ -153,7 +153,7 @@ function init()
     {
         mapSize = (trueMapSize * (8 / 10));
         bumper = Math.round(trueMapSize / 27) * 1.74;
-        distance = Math.round(mapSize / 27);
+        distance = Math.round(mapSize / 27) +4;
         movement = distance;
     } 
 
