@@ -28,7 +28,7 @@ export function setMapValue()
     let mapSize = (trueMapSize * (8 / 10));
     let bumper = Math.round(trueMapSize / 26) * 1.655;
     let distance = Math.round(mapSize / 26);
-    let movement = distance;
+    let movement = distance * 1.655;
 
     if(rect.width < 999)
     {
