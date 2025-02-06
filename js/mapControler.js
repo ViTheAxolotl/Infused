@@ -16,7 +16,7 @@ let maxHp = document.getElementById("max");
 let tempHp = document.getElementById("temp");
 let buttons;
 let player;
-let pos;
+let bounds;
 let firstRun = true;
 let firstMenu;
 let secondMenu;
