@@ -154,7 +154,7 @@ function init()
         mapSize = (trueMapSize * (8 / 10));
         bumper = Math.round(trueMapSize / 27) * 1.74;
         distance = Math.round(mapSize / 27);
-        movement = distance - 4;
+        movement = distance - 7;
     } 
 
     let disAndBum = distance + bumper;
