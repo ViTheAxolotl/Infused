@@ -71,6 +71,7 @@ let mouseDown = false;
 let startX, scrollLeft;
 let startY, scrollUp;
 let slider = gridMap;
+let map;
 
 const startDragging = (e) => 
 {
@@ -133,7 +134,7 @@ function init()
     setInterval(timer, 100);
 
     document.getElementById("helpBtn").onclick = handleCharClick;
-    setMapValue();
+    map = setMapValue();
     fetch('https://vitheaxolotl.github.io/Infused/src/files.json').then(res => res.json()).then((json) => imgs = json);
     document.getElementById("hideCover").onclick = hideCover; 
 }
