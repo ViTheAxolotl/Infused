@@ -3,7 +3,7 @@ import { ref, onValue } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
 import { toTitleCase, auth, database, setDoc, deleteDoc, returnHpImage, setMapValue } from '../js/viMethods.js';
 
-let map = map = setMapValue();let wholeDB = {};
+let map = setMapValue();let wholeDB = {};
 let div = document.getElementById("gridMap");
 let html = {};
 const gridMap = document.querySelector("#gridMap"); //gridMap
