@@ -38,6 +38,11 @@ export function setMapValue()
         movement = distance - 4; 
     }
 
+    else if(rect.width < 1400)
+    {
+        movement = distance * 1.17;
+    }
+
     let disAndBum = distance + bumper;
     disAndBum = parseInt(disAndBum);
     movement = parseInt(movement);
