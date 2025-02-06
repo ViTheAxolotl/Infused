@@ -22,7 +22,10 @@ export let database = getDatabase(); //Sets up connection
  */
 export function setMapValue()
 {
+    const gridMap = document.querySelector("#gridMap"); //gridMap
+    const rect = gridMap.getBoundingClientRect();
     let trueMapSize = 2030;
+    
     if(rect.width < 999)
     {
         mapSize = trueMapSize;
