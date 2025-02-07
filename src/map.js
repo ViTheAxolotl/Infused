@@ -823,7 +823,7 @@ function timer()
 {
     checkUpdates();
 
-    if(wholeBubbles.length > 1)
+    if(Object.keys(wholeBubbles).length > 1)
     {
         for(let bubble of Object.keys(wholeBubbles))
         {
@@ -838,13 +838,13 @@ function editBubble(bubbleDB)
     {
         bubbleDB.size += 0.5;
         document.getElementById(bubbleDB.id).style.transform = `scale(${bubbleDB.size})`;
-       // setDoc();
+        setDoc(`bubbles/${bubbleDB.id}`, bubbleDB);
     }
     
     else
     {
         document.getElementById(bubbleDB.id).remove();
-       // deleteDoc();
+        deleteDoc(`bubbles/${bubbleDB.id}`, bubbleDB);
     } 
 }
 
