@@ -827,28 +827,25 @@ function timer()
     {
         for(let bubble of Object.keys(wholeBubbles))
         {
-            
+            editBubble(wholeBubbles[bubble]);
         }
     }
 }
 
-function editBubble()
+function editBubble(bubbleDB)
 {
-    let bubble = document.getElementById(`${player}-bubble`);
-    let size = parseFloat(bubble.title);
-
-    if(size < 3.5)
+    if(bubbleDB.size < 3.5)
     {
-        size += 0.5;
-        bubble.title = `${size}`;
-        bubble.style.transform = `scale(${size})`;
-        setTimeout(editBubble, 250);
+        bubbleDB.size += 0.5;
+        document.getElementById(bubbleDB.id).style.transform = `scale(${bubbleDB.size})`;
+       // setDoc();
     }
     
     else
     {
-        bubble.remove();
-    }
+        document.getElementById(bubbleDB.id).remove();
+       // deleteDoc();
+    } 
 }
 
 function checkUpdates()
