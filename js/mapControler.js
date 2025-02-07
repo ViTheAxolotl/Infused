@@ -243,6 +243,7 @@ function sendMessageToDisplay(message)
 
 function handleGridClick()
 {
+    if(document.getElementById(`${player}-bubble`)){document.getElementById(`${player}-bubble`).remove();}
     let bubble = document.createElement("img");
     bubble.style.position = "absolute";
     bubble.style.left = `${this.x}px`;
@@ -256,7 +257,6 @@ function handleGridClick()
 
 function editBubble()
 {
-    if(document.getElementById(`${player}-bubble`)){document.getElementById(`${player}-bubble`).remove();}
     let bubble = document.getElementById(`${player}-bubble`);
     let size = parseFloat(bubble.title);
 
