@@ -15,7 +15,7 @@
         "caveFloor" : "images/map/caveFloor.jpg",
         "iceMaze": "images/map/iceMaze.jpg",
         "arena": "images/map/arena.jpg",
-        "lab": "images/map/lab.png"
+        "lab": "images/map/lab.jpg"
     }, 
 
     "tokens" : 
