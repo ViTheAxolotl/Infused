@@ -257,25 +257,6 @@ function handleGridClick(e)
     setTimeout(editBubble, 250);
 }
 
-function editBubble()
-{
-    let bubble = document.getElementById(`${player}-bubble`);
-    let size = parseFloat(bubble.title);
-
-    if(size < 3.5)
-    {
-        size += 0.5;
-        bubble.title = `${size}`;
-        bubble.style.transform = `scale(${size})`;
-        setTimeout(editBubble, 250);
-    }
-    
-    else
-    {
-        bubble.remove();
-    }
-}
-
 /**
  * Rolls number of base dice with no modifier
  * @param {*} amount 
