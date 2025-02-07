@@ -244,17 +244,6 @@ function sendMessageToDisplay(message)
 
 function handleGridClick(e)
 {
-    if(document.getElementById(`${player}-bubble`)){document.getElementById(`${player}-bubble`).remove();}
-
-    let bubble = document.createElement("img");
-    bubble.style.position = "absolute";
-    bubble.style.left = `${e.offsetX - 36}px`;
-    bubble.style.top = `${e.offsetY - 36}px`;
-    bubble.id = `${player}-bubble`;
-    bubble.title = "1";
-    bubble.src = `${imgs["borders"][wholeDb[wholeChar[player]["currentToken"]].border]}`;
-    placeBefore(bubble, e.currentTarget);
-
     let bubbleDB = {id : `${player}-bubble`, x : e.offsetX - 36, y : e.offsetY - 36, size : 1, src : imgs["borders"][wholeDb[wholeChar[player]["currentToken"]].border]};
     setDoc(`bubbles/${bubbleDB.id}`, bubbleDB);
 }

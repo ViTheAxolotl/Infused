@@ -146,6 +146,20 @@ function init()
     document.getElementById("hideCover").onclick = hideCover; 
 }
 
+function addBubbles(bubbleDB)
+{
+    if(document.getElementById(bubbleDB.id)){document.getElementById(bubbleDB.id).remove();}
+
+    let bubble = document.createElement("img");
+    bubble.style.position = "absolute";
+    bubble.style.left = `${e.offsetX - 36}px`;
+    bubble.style.top = `${e.offsetY - 36}px`;
+    bubble.id = `${player}-bubble`;
+    bubble.title = "1";
+    bubble.src = `${imgs["borders"][wholeDb[wholeChar[player]["currentToken"]].border]}`;
+    placeBefore(bubble, e.currentTarget);
+}
+
 function addTokens()
 {
     if(div.children.length > 1)
