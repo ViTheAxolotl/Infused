@@ -1,7 +1,7 @@
 "use strict";
 import { ref, onValue } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js';
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
-import { toTitleCase, auth, database, setDoc, deleteDoc, returnHpImage, setMapValue } from '../js/viMethods.js';
+import { toTitleCase, auth, database, setDoc, deleteDoc, returnHpImage, setMapValue, placeBefore } from '../js/viMethods.js';
 
 let map = setMapValue();
 let wholeDB = {};
