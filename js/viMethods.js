@@ -22,7 +22,7 @@ export let database = getDatabase(); //Sets up connection
  */
 export function setMapValue()
 {
-    const gridMap = document.querySelector("#gridMap"); //gridMap
+    const gridMap = document.querySelector("body"); //gridMap
     const rect = gridMap.getBoundingClientRect();
     let trueMapSize = 2030;
     let mapSize = (trueMapSize * (8 / 10));
@@ -30,19 +30,19 @@ export function setMapValue()
     let distance = Math.round(mapSize / 26);
     let movement = distance * 1.18;
 
-    if(rect.width < 933)
+    if(screen.width < 933)
+    {
+        bumper = Math.round(trueMapSize / 26) * 1.25;
+        movement = distance * 1.17745;
+    }
+
+    else if(screen.width < 1112)
     {
         bumper = Math.round(trueMapSize / 26) * 1.45;
         movement = distance * 1.17745;
     }
 
-    else if(rect.width < 1200)
-    {
-        bumper = Math.round(trueMapSize / 26) * 1.45;
-        movement = distance * 1.17745;
-    }
-
-    else if(rect.width < 1400)
+    else if(screen.width < 1400)
     {
         bumper = Math.round(trueMapSize / 26) * 1.655;
         movement = distance * 1.17745;
