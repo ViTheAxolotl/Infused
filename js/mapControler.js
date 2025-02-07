@@ -243,12 +243,13 @@ function sendMessageToDisplay(message)
 
 function handleGridClick()
 {
-
+    let bubble = document.createElement("img");
+    bubble.style.position = "absolute";
 }
 
 function removeBubble()
 {
-    
+
 }
 
 /**

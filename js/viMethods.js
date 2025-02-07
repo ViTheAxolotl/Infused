@@ -38,8 +38,8 @@ export function setMapValue()
 
     else if(screen.width < 768)
     {
-        bumper = Math.round(trueMapSize / 26) * 1.285;
-        movement = distance * 1.17745;
+        bumper = Math.round(trueMapSize / 26) * 0.15;
+        movement = distance * 1.2899999999999999999999999;
     }
 
     else if(screen.width < 992)
