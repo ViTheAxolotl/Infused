@@ -162,7 +162,7 @@ function addBubbles(bubbleDB)
         bubble.style.left = `${bubbleDB.x}px`;
         bubble.style.top = `${bubbleDB.y}px`;
         bubble.style.transform = `scale(${bubbleDB.size})`;
-
+ 
         bubble.id = bubbleDB.id;
         bubble.src = bubbleDB.src;
         placeBefore(bubble, document.getElementById("grid"));
