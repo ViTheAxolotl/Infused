@@ -33,6 +33,7 @@ let mouseDown = false;
 let startX, scrollLeft;
 let startY, scrollUp;
 let slider = gridMap;
+let wholeBubbles;
 
 const customsRef = ref(database, 'customImages/');
 onValue(customsRef, (snapshot) => 
@@ -71,6 +72,13 @@ onValue(summonsRef, (snapshot) =>
     const data = snapshot.val();
     wholeSummons = data;
     isSummonOn = wholeSummons["isSummonOn"];
+});
+
+const bubbleRef = ref(database, 'bubbles');
+onValue(bubbleRef, (snapshot) => 
+{
+    const data = snapshot.val();
+    wholeBubbles = data;
 });
 
 const startDragging = (e) => 
