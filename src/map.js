@@ -79,6 +79,11 @@ onValue(bubbleRef, (snapshot) =>
 {
     const data = snapshot.val();
     wholeBubbles = data;
+
+    for(let bubble of Object.keys(wholeBubbles))
+    {
+        addBubbles(wholeBubbles[bubble]);
+    }
 });
 
 const startDragging = (e) => 
@@ -148,16 +153,18 @@ function init()
 
 function addBubbles(bubbleDB)
 {
-    if(document.getElementById(bubbleDB.id)){document.getElementById(bubbleDB.id).remove();}
+    if(!bubbleDB.hold)
+    {
+        if(document.getElementById(bubbleDB.id)){document.getElementById(bubbleDB.id).remove();}
 
-    let bubble = document.createElement("img");
-    bubble.style.position = "absolute";
-    bubble.style.left = `${e.offsetX - 36}px`;
-    bubble.style.top = `${e.offsetY - 36}px`;
-    bubble.id = `${player}-bubble`;
-    bubble.title = "1";
-    bubble.src = `${imgs["borders"][wholeDb[wholeChar[player]["currentToken"]].border]}`;
-    placeBefore(bubble, e.currentTarget);
+        let bubble = document.createElement("img");
+        bubble.style.position = "absolute";
+        bubble.style.left = `${bubbleDB.x}px`;
+        bubble.style.top = `${bubbleDB.y}px`;
+        bubble.id = bubbleDB.id;
+        bubble.src = bubbleDB.src;
+        placeBefore(bubble, document.getElementById("grid"));
+    }
 }
 
 function addTokens()
