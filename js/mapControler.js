@@ -244,10 +244,15 @@ function sendMessageToDisplay(message)
 function handleGridClick()
 {
     if(document.getElementById(`${player}-bubble`)){document.getElementById(`${player}-bubble`).remove();}
+    let x = this.x;
+    if(x < 0){x = x * -1;}
+    let y = this.y;
+    if(y < 0){y = y * -1;}
+
     let bubble = document.createElement("img");
     bubble.style.position = "absolute";
-    bubble.style.left = `${this.x}px`;
-    bubble.style.top = `${this.y}px`;
+    bubble.style.left = `${x}px`;
+    bubble.style.top = `${y}px`;
     bubble.id = `${player}-bubble`;
     bubble.title = "1";
     bubble.src = `${imgs["borders"][wholeDb[wholeChar[player]["currentToken"]].border]}`;
