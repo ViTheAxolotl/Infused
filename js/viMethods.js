@@ -40,7 +40,7 @@ export function setMapValue()
 
     else if(rect.width < 1400)
     {
-        movement = distance * 1.185;
+        movement = distance * 1.18;
     }
 
     let disAndBum = distance + bumper;
