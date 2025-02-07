@@ -3,6 +3,7 @@
 import { ref, onValue } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js';
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
 import { toTitleCase, auth, database, createCard, setDoc, deleteDoc, placeBefore, createLabel, clenseInput, reload, setMapValue } from './viMethods.js';
+import { doc } from 'firebase/firestore/lite';
 
 let map = setMapValue();
 let currentPos;
@@ -247,11 +248,29 @@ function handleGridClick()
     bubble.style.position = "absolute";
     bubble.style.left = `${this.x}px`;
     bubble.style.top = `${this.y}px`;
+    bubble.id = `${player}-bubble`;
+    bubble.title = "1";
+    placeBefore(bubble, this);
+    setTimeout(editBubble, 1000);
 }
 
-function removeBubble()
+function editBubble()
 {
+    let bubble = document.getElementById(`${player}-bubble`);
+    let size = parseFloat(bubble.title);
 
+    if(size < 3.5)
+    {
+        size += 0.5;
+        bubble.title = `${size}`;
+        bubble.style.transform = `scale(${size})`;
+        setTimeout(editBubble, 1000);
+    }
+    
+    else
+    {
+        bubble.remove();
+    }
 }
 
 /**
