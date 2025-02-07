@@ -254,7 +254,8 @@ function handleGridClick(e)
     bubble.title = "1";
     bubble.src = `${imgs["borders"][wholeDb[wholeChar[player]["currentToken"]].border]}`;
     placeBefore(bubble, e.currentTarget);
-    setTimeout(editBubble, 250);
+
+    let bubbleDB = {"id" : `${player}-bubble`, "x" : e.offsetX - 36, "y" : e.offsetY - 36, "size" : 1}
 }
 
 /**
