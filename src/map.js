@@ -144,7 +144,7 @@ onAuthStateChanged(auth, (user) =>
 
 function init()
 {
-    setInterval(timer, 100);
+    setInterval(timer, 250);
 
     document.getElementById("helpBtn").onclick = handleCharClick;
     fetch('https://vitheaxolotl.github.io/Infused/src/files.json').then(res => res.json()).then((json) => imgs = json);
