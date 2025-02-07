@@ -162,6 +162,7 @@ function addBubbles(bubbleDB)
         bubble.style.left = `${bubbleDB.x}px`;
         bubble.style.top = `${bubbleDB.y}px`;
         bubble.style.transform = `scale(${bubbleDB.size})`;
+        bubble.classList.add("bubbles");
  
         bubble.id = bubbleDB.id;
         bubble.src = bubbleDB.src;
@@ -852,6 +853,24 @@ function timer()
         {
             editBubble(wholeBubbles[bubble]);
         }
+    }
+
+    else
+    {
+        if(document.getElementsByClassName("bubbles").length > 0)
+        {
+            removeNullBubbles();
+        }
+    }
+}
+
+function removeNullBubbles()
+{
+    let nullBubbles = document.getElementsByClassName("bubbles");
+
+    for(let nullBubble of nullBubbles)
+    {
+        nullBubble.remove();
     }
 }
 
