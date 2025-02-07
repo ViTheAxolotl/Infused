@@ -876,17 +876,20 @@ function removeNullBubbles()
 
 function editBubble(bubbleDB)
 {
-    if(bubbleDB.size < 3.5)
+    if(bubbleDB != "hold")
     {
-        bubbleDB.size += 0.5;
-        setDoc(`bubbles/${bubbleDB.id}`, bubbleDB);
+        if(bubbleDB.size < 3.5)
+        {
+            bubbleDB.size += 0.5;
+            setDoc(`bubbles/${bubbleDB.id}`, bubbleDB);
+        }
+        
+        else
+        {
+            document.getElementById(bubbleDB.id).remove();
+            deleteDoc(`bubbles/${bubbleDB.id}`, bubbleDB);
+        } 
     }
-    
-    else
-    {
-        document.getElementById(bubbleDB.id).remove();
-        deleteDoc(`bubbles/${bubbleDB.id}`, bubbleDB);
-    } 
 }
 
 function checkUpdates()
