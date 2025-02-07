@@ -243,6 +243,11 @@ function sendMessageToDisplay(message)
 
 function handleGridClick()
 {
+
+}
+
+function removeBubble()
+{
     
 }
 
