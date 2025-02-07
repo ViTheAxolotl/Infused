@@ -245,6 +245,7 @@ function handleGridClick()
 {
     let bubble = document.createElement("img");
     bubble.style.position = "absolute";
+    this;
 }
 
 function removeBubble()
