@@ -245,15 +245,11 @@ function sendMessageToDisplay(message)
 function handleGridClick(e)
 {
     if(document.getElementById(`${player}-bubble`)){document.getElementById(`${player}-bubble`).remove();}
-    let x = this.x;
-    if(x < 0){x = x * -1;}
-    let y = this.y;
-    if(y < 0){y = y * -1;}
 
     let bubble = document.createElement("img");
     bubble.style.position = "absolute";
-    bubble.style.left = `${x}px`;
-    bubble.style.top = `${y}px`;
+    bubble.style.left = `${e.offsetX}px`;
+    bubble.style.top = `${e.offsetY}px`;
     bubble.id = `${player}-bubble`;
     bubble.title = "1";
     bubble.src = `${imgs["borders"][wholeDb[wholeChar[player]["currentToken"]].border]}`;
