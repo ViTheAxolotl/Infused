@@ -153,7 +153,7 @@ function init()
 
 function addBubbles(bubbleDB)
 {
-    if(!bubbleDB.hold)
+    if(bubbleDB != "hold")
     {
         if(document.getElementById(bubbleDB.id)){document.getElementById(bubbleDB.id).remove();}
 
