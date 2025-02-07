@@ -40,7 +40,7 @@ export function setMapValue()
 
     else if(rect.width < 1400)
     {
-        bumper = Math.round(trueMapSize / 26) * 1.543;
+        bumper = Math.round(trueMapSize / 26) * 1.54;
         movement = distance * 1.17745;
     }
 
