@@ -248,8 +248,8 @@ function handleGridClick(e)
 
     let bubble = document.createElement("img");
     bubble.style.position = "absolute";
-    bubble.style.left = `${e.offsetX}px`;
-    bubble.style.top = `${e.offsetY}px`;
+    bubble.style.left = `${e.offsetX - 36}px`;
+    bubble.style.top = `${e.offsetY - 36}px`;
     bubble.id = `${player}-bubble`;
     bubble.title = "1";
     bubble.src = `${imgs["borders"][wholeDb[wholeChar[player]["currentToken"]].border]}`;
