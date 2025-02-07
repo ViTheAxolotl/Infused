@@ -160,7 +160,8 @@ function init()
 
     document.addEventListener("keydown", (ev) => {key = ev.key.slice(ev.key.indexOf("w") + 1).toLowerCase(); keyControl = ev; let keyValues = ["left", "right", "down", "up"]; if(keyValues.includes(key) && ev.ctrlKey) {handleArrow();}}); //If control is held down and an arrow
     setMainVaribles();
-    grid.onclick = handleGridClick;
+    grid.onclick = function(e){handleGridClick(e);};
+
 }
 
 /**
@@ -241,7 +242,7 @@ function sendMessageToDisplay(message)
     setDoc(`display/${current}`, message);
 }
 
-function handleGridClick()
+function handleGridClick(e)
 {
     if(document.getElementById(`${player}-bubble`)){document.getElementById(`${player}-bubble`).remove();}
     let x = this.x;
