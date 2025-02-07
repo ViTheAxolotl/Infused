@@ -250,12 +250,14 @@ function handleGridClick()
     bubble.style.top = `${this.y}px`;
     bubble.id = `${player}-bubble`;
     bubble.title = "1";
+    bubble.src = `${imgs[wholeDb[wholeChar[player]["currentToken"]].border]}`;
     placeBefore(bubble, this);
     setTimeout(editBubble, 1000);
 }
 
 function editBubble()
 {
+    if(document.getElementById(`${player}-bubble`)){document.getElementById(`${player}-bubble`).remove();}
     let bubble = document.getElementById(`${player}-bubble`);
     let size = parseFloat(bubble.title);
 
