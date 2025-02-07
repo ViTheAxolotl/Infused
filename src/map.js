@@ -822,6 +822,14 @@ function placeTokens(x, y, prop)
 function timer()
 {
     checkUpdates();
+
+    if(wholeBubbles.length > 1)
+    {
+        for(let bubble of Object.keys(wholeBubbles))
+        {
+            
+        }
+    }
 }
 
 function editBubble()
