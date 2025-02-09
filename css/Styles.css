@@ -610,6 +610,12 @@ table, .itemSearch, #itemImg
     margin: 10%;
 }
 
+#story input
+{
+    display: inline;
+    width: 25vw;
+}
+
 @media (max-width: 1399px) {
     .col-md-6
     {
