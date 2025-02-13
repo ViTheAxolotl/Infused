@@ -1026,8 +1026,8 @@ function displayInteractive(exitButton)
             img.src = sources[x];
             img.onclick = changeSourceSelect; 
             img.classList.add(dropBtn.id);
-            img.style.width = "5vh";
-            img.style.height = "5vh";
+            img.style.width = "20vw";
+            img.style.height = "20vw";
             
             temp = img.src;
             temp = temp.split("/");
