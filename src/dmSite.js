@@ -1053,8 +1053,6 @@ function displayInteractive(exitButton)
             selectDiv.appendChild(img); 
         }
     }
-
-    placeBefore(customsBtn, exitButton);
 }
 
 function changeSourceSelect()
