@@ -60,7 +60,7 @@ export function setMapValue()
     {
         bumper = Math.round(trueMapSize / 26) * 1.455;
         movement = distance * 1.17745;
-        bubble = -54;
+        bubble = -74;
     }
 
     let disAndBum = distance + bumper;
