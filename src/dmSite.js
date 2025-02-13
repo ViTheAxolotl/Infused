@@ -1044,10 +1044,7 @@ function displayInteractive(exitButton)
 
             else
             {
-                for(let token of Object.keys(wholeCustom))
-                {
-                    if(wholeCustom[token]["src"] == img.src){temp = wholeCustom[token]["name"];}
-                }
+                temp = temp.slice(0, temp.indexOf("."));
             }
 
             img.classList.add(temp);
