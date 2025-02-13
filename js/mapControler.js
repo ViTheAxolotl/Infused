@@ -245,7 +245,7 @@ function sendMessageToDisplay(message)
 function handleGridClick(e)
 {
     let bubbleDB = {id : `${player}-bubble`, x : e.offsetX - 36, y : e.offsetY - 36, size : 1, src : imgs["borders"][wholeDb[wholeChar[player]["currentToken"]].border]};
-    if(bubbleDB.src == “invisible-.png”){bubbleDB.src = “blueBorder-.png”;}
+    if(bubbleDB.src == "invisible-.png"){bubbleDB.src = "blueBorder-.png";}
     setDoc(`bubbles/${bubbleDB.id}`, bubbleDB);
 }
 
