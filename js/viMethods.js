@@ -53,14 +53,14 @@ export function setMapValue()
     {
         bumper = Math.round(trueMapSize / 26) * 1.17999999999999;
         movement = distance * 1.17745;
-        bubble = -72;
+        bubble = -54;
     }
 
     else if(screen.width < 1400)
     {
         bumper = Math.round(trueMapSize / 26) * 1.455;
         movement = distance * 1.17745;
-        bubble = -72;
+        bubble = -54;
     }
 
     let disAndBum = distance + bumper;
