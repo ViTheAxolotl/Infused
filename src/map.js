@@ -847,19 +847,22 @@ function timer()
 {
     checkUpdates();
 
-    if(Object.keys(wholeBubbles).length > 1)
+    if(wholeBubbles)
     {
-        for(let bubble of Object.keys(wholeBubbles))
+        if(Object.keys(wholeBubbles).length > 1)
         {
-            editBubble(wholeBubbles[bubble]);
+            for(let bubble of Object.keys(wholeBubbles))
+            {
+                editBubble(wholeBubbles[bubble]);
+            }
         }
-    }
-
-    else
-    {
-        if(document.getElementsByClassName("bubbles").length > 0)
+    
+        else
         {
-            removeNullBubbles();
+            if(document.getElementsByClassName("bubbles").length > 0)
+            {
+                removeNullBubbles();
+            }
         }
     }
 }
