@@ -1099,7 +1099,7 @@ function handleUploadInteractive()
     let select = document.getElementById("PushButton");
     let src = img.value;
 
-    if(select.innerHTML != ""){src == imgs[select.innerHTML];}
+    if(select.innerHTML != ""){src = imgs[select.innerHTML];}
     let obj = {"image" : `${src}`, "text" : `${text.value}`};
 
     setDoc("playerChar/Vi/interactive", obj);
