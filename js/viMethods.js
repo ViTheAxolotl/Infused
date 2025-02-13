@@ -29,7 +29,7 @@ export function setMapValue()
     let bumper = Math.round(trueMapSize / 26) * 1.655;
     let distance = Math.round(mapSize / 26);
     let movement = distance * 1.18;
-    let bubbleOffset = 0;
+    let bubble = 36;
 
     if(screen.width < 576)
     {
@@ -53,12 +53,14 @@ export function setMapValue()
     {
         bumper = Math.round(trueMapSize / 26) * 1.17999999999999;
         movement = distance * 1.17745;
+        bubble = 0;
     }
 
     else if(screen.width < 1400)
     {
         bumper = Math.round(trueMapSize / 26) * 1.455;
         movement = distance * 1.17745;
+        bubble = 0;
     }
 
     let disAndBum = distance + bumper;
@@ -68,7 +70,7 @@ export function setMapValue()
     let yPos = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
     let xPos = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26"];
     
-    let map = {"trueMapSize" : trueMapSize, "mapSize" : mapSize, "bumper" : bumper, "distance" : distance, "movement" : movement, "disAndBum" : disAndBum, "pos" : pos, "xPos" : xPos, "yPos" : yPos};
+    let map = {"trueMapSize" : trueMapSize, "mapSize" : mapSize, "bumper" : bumper, "distance" : distance, "movement" : movement, "disAndBum" : disAndBum, "pos" : pos, "xPos" : xPos, "yPos" : yPos, "bubble" : bubble};
     return map;
 }
 

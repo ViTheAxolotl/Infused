@@ -161,7 +161,6 @@ function init()
     document.addEventListener("keydown", (ev) => {key = ev.key.slice(ev.key.indexOf("w") + 1).toLowerCase(); keyControl = ev; let keyValues = ["left", "right", "down", "up"]; if(keyValues.includes(key) && ev.ctrlKey) {handleArrow();}}); //If control is held down and an arrow
     setMainVaribles();
     grid.onclick = function(e){handleGridClick(e);};
-
 }
 
 /**
@@ -244,7 +243,7 @@ function sendMessageToDisplay(message)
 
 function handleGridClick(e)
 {
-    let bubbleDB = {id : `${player}-bubble`, x : e.offsetX - 36, y : e.offsetY - 36, size : 1, src : imgs["borders"][wholeDb[wholeChar[player]["currentToken"]].border]};
+    let bubbleDB = {id : `${player}-bubble`, x : e.offsetX - map.bubble, y : e.offsetY - map.bubble, size : 1, src : imgs["borders"][wholeDb[wholeChar[player]["currentToken"]].border]};
     if(bubbleDB.src.includes("invisible")){bubbleDB.src = imgs["borders"]["blue"];}
     setDoc(`bubbles/${bubbleDB.id}`, bubbleDB);
 }
