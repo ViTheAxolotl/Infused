@@ -63,6 +63,11 @@ export function setMapValue()
         bubble = -74;
     }
 
+    else
+    {
+        bubble = -74;
+    }
+
     let disAndBum = distance + bumper;
     disAndBum = parseInt(disAndBum);
     movement = parseInt(movement);
