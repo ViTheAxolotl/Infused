@@ -956,7 +956,6 @@ function handleInteractive()
         label.style.padding = "5%";
         elms[i].id = labels[i];
         elms[i].type = "text";
-        if(i == 1){elms[i].value = "images/push/";}
         
         div.appendChild(label);
         div.appendChild(elms[i]);
@@ -1027,6 +1026,8 @@ function displayInteractive(exitButton)
             img.src = sources[x];
             img.onclick = changeSourceSelect; 
             img.classList.add(dropBtn.id);
+            img.width = "5%";
+            img.height = "5%";
             
             temp = img.src;
             temp = temp.split("/");
@@ -1053,7 +1054,6 @@ function displayInteractive(exitButton)
         }
     }
 
-    document.getElementById("changeToken").appendChild(cancelBtn);
     placeBefore(customsBtn, exitButton);
 }
 
@@ -1098,7 +1098,11 @@ function handleUploadInteractive()
 {
     let text = document.getElementById("iText");
     let img = document.getElementById("iURL");
-    let obj = {"image" : `${img.value}`, "text" : `${text.value}`};
+    let select = document.getElementById("PushButton");
+    let src = img.value;
+
+    if(select.innerHTML != ""){src == imgs[select.innerHTML];}
+    let obj = {"image" : `${src}`, "text" : `${text.value}`};
 
     setDoc("playerChar/Vi/interactive", obj);
     handleDone();
