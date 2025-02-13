@@ -71,5 +71,15 @@
         "pink" : "images/map/tokens/pinkBorder.png",
         "purple" : "images/map/tokens/purpleBorder.png",
         "red" : "images/map/tokens/redBorder.png"
+    },
+
+    "push" :
+    {
+        "iceChestplate" : "images/push/iceChestplate.png",
+        "iceDragon" : "images/push/iceDragon.png",
+        "iceStone" : "images/push/iceStone.png",
+        "mapOfPasc" : "images/push/mapOfPasc.jpg",
+        "milo" : "images/push/milo.jpg",
+        "skyla" : "images/push/skyla.jpg"
     }
 }

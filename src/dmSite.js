@@ -964,6 +964,7 @@ function handleInteractive()
     }
 
     let buttons = ["Exit", "Upload"];
+    let exitButton;
 
     for(let i = 0; i < buttons.length; i++)
     {
@@ -972,11 +973,128 @@ function handleInteractive()
         button.classList.add("gridButton");
         button.style.margin = "5px";
 
-        if(i == 0){button.onclick = handleDone;}
+        if(i == 0){button.onclick = handleDone; exitButton = button;}
         else if(i == 1){button.onclick = handleUploadInteractive;}
 
         div.appendChild(button);
     }
+
+    displayInteractive(exitButton);
+}
+
+function displayInteractive(exitButton)
+{
+    let labels = ["Push"];
+    let selects = [document.createElement("div")];
+    
+    for(let i = 0; i < labels.length; i++)
+    {
+        let label = createLabel(labels[i]);
+
+        label.style.padding = "5%";
+        placeBefore(selects[i], exitButton);
+        placeBefore(label, selects[i]);
+        selects[i].classList = "ddown ddownHide sDropdown";
+        selects[i].id = labels[i];
+        selects[i].style.width = "100%";
+
+        let dropBtn = document.createElement("button");
+        dropBtn.classList.add("dropbtn");
+        dropBtn.classList.add(labels[i]);
+        dropBtn.id = `${labels[i]}Button`;
+        dropBtn.onclick = handleShowSelect; //
+        placeBefore(dropBtn, selects[i]);
+
+        let selectDiv = document.createElement("div");
+        selectDiv.classList.add("ddown-content");
+        selects[i].appendChild(selectDiv);
+        selectDiv.id = `${labels[i]}Select`;
+
+        let sources = [];
+        let temp;
+
+        switch(i)
+        {
+            case 0:
+                temp = imgs["push"];
+                for(let img of Object.keys(temp)){sources.push(temp[img]);} //Populates Sources with all the selectable images
+                break;
+        }
+
+        for(let x = 0; x < sources.length; x++)
+        {
+            let img = document.createElement("img");
+            img.src = sources[x];
+            img.onclick = changeSourceSelect; 
+            img.classList.add(dropBtn.id);
+            
+            temp = img.src;
+            temp = temp.split("/");
+            temp = temp[temp.length - 1];
+
+            if(temp.includes("Border"))
+            {
+                temp = temp.slice(0, temp.indexOf("Border"));
+            }
+
+            else if(temp.includes("-."))
+            {
+                temp = temp.slice(0, temp.indexOf("."));
+            }
+
+            else
+            {
+                for(let token of Object.keys(wholeCustom))
+                {
+                    if(wholeCustom[token]["src"] == img.src){temp = wholeCustom[token]["name"];}
+                }
+            }
+
+            img.classList.add(temp);
+            img.classList.add("char");
+            selectDiv.appendChild(img); 
+        }
+    }
+
+    document.getElementById("changeToken").appendChild(cancelBtn);
+    placeBefore(customsBtn, exitButton);
+}
+
+function changeSourceSelect()
+{
+    let select = document.getElementById(this.classList[0]);
+    select.innerHTML = this.classList[1];
+    select.click();
+}
+
+function handleShowSelect()
+{
+    let divs = document.getElementsByClassName("sDropdown");
+
+    for(let div of divs)
+    {
+        if(div.id == this.classList[1])
+        {
+            if(div.classList.contains("ddownHide"))
+            {
+                div.classList.remove("ddownHide");
+                div.classList.add("ddownShow");
+            }
+        
+            else if(div.classList.contains("ddownShow"))
+            {
+                div.classList.remove("ddownShow");
+                div.classList.add("ddownHide");
+            }
+        }
+
+        else
+        {
+            div.classList.remove("ddownShow");
+            div.classList.add("ddownHide");
+        }
+    }
+    
 }
 
 function handleUploadInteractive()

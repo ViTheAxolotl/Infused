@@ -1790,7 +1790,6 @@ function handleChangeToken()
 
     document.getElementById("changeToken").appendChild(cancelBtn);
     placeBefore(customsBtn, changeTokenBtn);
-
 }
 
 function changeSourceSelect()
