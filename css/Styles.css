@@ -624,7 +624,7 @@ table, .itemSearch, #itemImg
 
 .stats input
 {
-    width: 15vw !important;
+    width: 5vw !important;
 }
 
 @media (max-width: 1399px) {
