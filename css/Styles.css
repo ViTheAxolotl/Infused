@@ -626,6 +626,11 @@ table, .itemSearch, #itemImg
 {
     width: 5vw !important;
 }
+.stats p
+{
+    text-indent: 0px;
+    padding: 5px;
+}
 
 @media (max-width: 1399px) {
     .col-md-6
