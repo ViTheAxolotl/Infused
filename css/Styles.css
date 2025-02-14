@@ -621,6 +621,11 @@ table, .itemSearch, #itemImg
     border: 1px solid black;
 }
 
+.stats input
+{
+    width: 15vw;
+}
+
 @media (max-width: 1399px) {
     .col-md-6
     {
