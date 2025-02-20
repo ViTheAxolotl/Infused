@@ -172,6 +172,16 @@ function addBubbles(bubbleDB)
 
 function addTokens()
 {
+    if(!document.getElementById("grid"))
+    {
+        let grid = document.createElement("img");
+        grid.src = "images/map/grid.png";
+        grid.id = "grid";
+        grid.draggable = false;
+        grid.style.zIndex = 1;
+        document.getElementById("gridMap").appendChild(grid);
+    }
+
     if(div.children.length > 1)
     {
         let loop = true;
@@ -845,16 +855,6 @@ function placeTokens(x, y, prop)
 
 function timer()
 {
-    if(!document.getElementById("grid"))
-    {
-        let grid = document.createElement("img");
-        grid.src = "images/map/grid.png";
-        grid.id = "grid";
-        grid.draggable = false;
-        grid.style.zIndex = 1;
-        document.getElementById("gridMap").appendChild(grid);
-    }
-
     if(wholeBubbles)
     {
         if(Object.keys(wholeBubbles).length > 1)
