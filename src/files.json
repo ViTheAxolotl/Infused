@@ -56,7 +56,10 @@
         "milo-" : "images/map/tokens/milo-.png",
         "ladder-" : "images/map/tokens/ladder-.png",
         "iceDragon-" : "images/map/tokens/iceDragon-.png",
-        "iceChestPlate-" : "images/map/tokens/iceChestPlate-.png"
+        "iceChestPlate-" : "images/map/tokens/iceChestPlate-.png",
+        "garrett-" : "images/map/tokens/garrett-.png",
+        "kody-" : "images/map/tokens/kody-.png",
+        "ben-" : "images/map/tokens/ben-.png"
     },
  
     "borders" : 
