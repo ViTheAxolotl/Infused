@@ -404,4 +404,4 @@ function createChar(curCharacter, curBorder)
     setDoc(`playerChar/${player}/currentToken`, char["id"]);
 }
 
-fetch('https://vitheaxolotl.github.io/Forgotten-Realm/src/files.json').then(res => res.json()).then((json) => imgs = json);
+fetch('https://vitheaxolotl.github.io/Infused/src/files.json').then(res => res.json()).then((json) => imgs = json);
