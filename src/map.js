@@ -172,7 +172,7 @@ function addBubbles(bubbleDB)
 
 function addTokens()
 {
-    if(!document.getElementById("grid"))
+    if(!document.getElementById("grid")) 
     {
         let grid = document.createElement("img");
         grid.src = "images/map/grid.png";
