@@ -196,7 +196,7 @@ function addTokens()
             {
                 if(div.children.length > 1)
                 {
-                    if(!(div.children[1].classList.contains("update")))
+                    if(!(div.children[0].classList.contains("update")) && div.children[0].id != "grid")
                     {
                         div.removeChild(div.children[1]);
                     } 
@@ -861,7 +861,7 @@ function placeTokens(x, y, prop)
 function timer()
 {
     rebuildMap();
-    
+
     if(wholeBubbles)
     {
         if(Object.keys(wholeBubbles).length > 1)
