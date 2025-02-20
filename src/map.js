@@ -845,8 +845,6 @@ function placeTokens(x, y, prop)
 
 function timer()
 {
-    checkUpdates();
-
     if(wholeBubbles)
     {
         if(Object.keys(wholeBubbles).length > 1)
@@ -864,6 +862,13 @@ function timer()
                 removeNullBubbles();
             }
         }
+
+        checkUpdates();
+    }
+
+    else
+    {
+        checkUpdates();
     }
 }
 
