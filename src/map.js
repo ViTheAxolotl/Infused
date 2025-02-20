@@ -198,7 +198,7 @@ function addTokens()
                 {
                     if(!(div.children[0].classList.contains("update")) && div.children[0].id != "grid")
                     {
-                        div.removeChild(div.children[1]);
+                        div.removeChild(div.children[0]);
                     } 
 
                     else
