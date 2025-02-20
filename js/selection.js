@@ -131,7 +131,7 @@ function addCharacters()
     {
         let person = document.createElement("img");
         person.id = char;
-        person.src = `images/map/tokens/${char}.png`;
+        person.src = imgs["tokens"][char];
         person.classList = "char";
         person.onclick = handleChoose;
         div.appendChild(person);
