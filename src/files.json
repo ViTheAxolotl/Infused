@@ -57,9 +57,9 @@
         "ladder-" : "images/map/tokens/ladder-.png",
         "iceDragon-" : "images/map/tokens/iceDragon-.png",
         "iceChestPlate-" : "images/map/tokens/iceChestPlate-.png",
-        "garrett-" : "images/map/tokens/garrett-.png",
-        "kody-" : "images/map/tokens/kody-.png",
-        "ben-" : "images/map/tokens/ben-.png"
+        "Garrett-" : "images/map/tokens/garrett-.png",
+        "Kody-" : "images/map/tokens/kody-.png",
+        "Ben-" : "images/map/tokens/ben-.png"
     },
  
     "borders" : 

@@ -91,7 +91,7 @@ function setUpCharacters()
         elem.classList = "hide";
     }
 
-    if(imgs["tokens"][`${player.toLowerCase()}-`]){people.push(`${player.toLowerCase()}-`);}
+    if(imgs["tokens"][`${player}-`]){people.push(`${player.toLowerCase()}-`);}
 
     div.appendChild(char);
 
