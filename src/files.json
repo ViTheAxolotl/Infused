@@ -62,7 +62,8 @@
         "iceChestPlate-" : "images/map/tokens/iceChestPlate-.png",
         "Garrett-" : "images/map/tokens/garrett-.png",
         "Kody-" : "images/map/tokens/kody-.png",
-        "Ben-" : "images/map/tokens/ben-.png"
+        "Ben-" : "images/map/tokens/ben-.png",
+        "jackalwere-" : "images/map/tokens/jackalwere-.png"
     },
  
     "borders" : 
