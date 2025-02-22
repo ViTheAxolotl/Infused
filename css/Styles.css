@@ -351,7 +351,7 @@ table, .itemSearch, #itemImg
 #gridMap
 {
     position: relative;
-    height: 60vh;
+    height: 80vh;
     width: 100%;
     overflow: scroll;
     object-fit: cover;
