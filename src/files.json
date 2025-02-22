@@ -16,6 +16,9 @@
         "iceMaze": "images/map/iceMaze.jpg",
         "arena": "images/map/arena.jpg",
         "lab": "images/map/lab.jpg",
+        "hPath": "images/map/hPath.jpg",
+        "yPath": "images/map/yPath.jpg",
+        "vPath": "images/map/vPath.jpg",
         "bloodyTownHall": "images/map/bloodyTownHall.jpg"
     }, 
 
