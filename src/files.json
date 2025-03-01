@@ -60,9 +60,9 @@
         "ladder-" : "images/map/tokens/ladder-.png",
         "iceDragon-" : "images/map/tokens/iceDragon-.png",
         "iceChestPlate-" : "images/map/tokens/iceChestPlate-.png",
-        "Garrett-" : "images/map/tokens/garrett-.png",
-        "Kody-" : "images/map/tokens/kody-.png",
-        "Ben-" : "images/map/tokens/ben-.png",
+        "Garrett-" : "images/map/tokens/Garrett-.png",
+        "Kody-" : "images/map/tokens/Kody-.png",
+        "Ben-" : "images/map/tokens/Ben-.png",
         "jackalwere-" : "images/map/tokens/jackalwere-.png",
         "Dream-" : "images/map/tokens/Dream-.png"
     },
