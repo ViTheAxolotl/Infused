@@ -280,7 +280,7 @@ function diceRoller(amount, dice, modifier, ifName)
 {
     let rolls = basicRoll(amount, dice); //rolls each die
     let sum = 0;
-    let viewMod = modifier;
+    let viewMod = `${modifier}`;
     if(modifier >= 0 && !viewMod.includes("+")){viewMod = "+" + modifier;} //Adds the + if the modifier is positive
     let message = ""; 
     if(ifName == "discord"){message = `${player} rolled `;} //Creates the message for discord
