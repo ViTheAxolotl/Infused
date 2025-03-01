@@ -1011,6 +1011,7 @@ function handleCardClick()
     if(lastAbility != currentTitle && lastSpell != currentTitle) //If they didn't click the same card twice
     {
         searchBar[0].value = currentTitle;
+        handleSearch();
         let optionDiv = document.createElement("div");
         optionDiv.classList.add("center");
         optionDiv.id = "optionDiv";
@@ -1144,6 +1145,7 @@ function handleCardClick()
         searchBar[0].value = "";
         lastSpell = "";
         lastAbility = "";
+        handleSearch();
     }
 }
 
