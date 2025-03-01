@@ -1010,134 +1010,143 @@ function handleCardClick()
     
     if(lastAbility != currentTitle && lastSpell != currentTitle) //If they didn't click the same card twice
     {
-        searchBar[0].value = currentTitle;
-        handleSearch();
-        let optionDiv = document.createElement("div");
-        optionDiv.classList.add("center");
-        optionDiv.id = "optionDiv";
-
-        let favoriteBtn = document.createElement("img");
-        favoriteBtn.setAttribute("id", "favoriteBtn");
-        favoriteBtn.classList.add(currentTitle.replaceAll(" ", "_"));
-        favoriteBtn.style.height = "20px";
-        favoriteBtn.style.width = "20px";
-        favoriteBtn.setAttribute("src", "images/unFavorite.png");
-
-        let wrapper = document.createElement("button");
-        wrapper.classList.add("gridButton");
-        wrapper.classList.add("center");
-        wrapper.onclick = handleFavoriteBtn;
-        wrapper.id = "favBtn";
-        wrapper.appendChild(favoriteBtn);
-
-        let castBtn = document.createElement("button");
-        castBtn.classList.add("gridButton");
-        castBtn.onclick = displaySelect;
-        castBtn.innerHTML = "Cast Spell";
-        castBtn.name = currentTitle;
-        castBtn.style.margin = "0px 5px";
-
-        if(spellLevel) //If it was a spell clicked
+        if(searchBar[0].value != "")
         {
-            lastSpell = currentTitle;
-            let spellDisc = db[spellLevel][currentTitle]["description"];
-            if(favorite){spellDisc = wholeFavorite["spells"][spellLevel][currentTitle]["description"]}
+            let optionDiv = document.createElement("div");
+            optionDiv.classList.add("center");
+            optionDiv.id = "optionDiv";
 
-            if(wholeChar[player]["favorites"]["spells"][spellLevel])
+            let favoriteBtn = document.createElement("img");
+            favoriteBtn.setAttribute("id", "favoriteBtn");
+            favoriteBtn.classList.add(currentTitle.replaceAll(" ", "_"));
+            favoriteBtn.style.height = "20px";
+            favoriteBtn.style.width = "20px";
+            favoriteBtn.setAttribute("src", "images/unFavorite.png");
+
+            let wrapper = document.createElement("button");
+            wrapper.classList.add("gridButton");
+            wrapper.classList.add("center");
+            wrapper.onclick = handleFavoriteBtn;
+            wrapper.id = "favBtn";
+            wrapper.appendChild(favoriteBtn);
+
+            let castBtn = document.createElement("button");
+            castBtn.classList.add("gridButton");
+            castBtn.onclick = displaySelect;
+            castBtn.innerHTML = "Cast Spell";
+            castBtn.name = currentTitle;
+            castBtn.style.margin = "0px 5px";
+
+            if(spellLevel) //If it was a spell clicked
             {
-                if(wholeChar[player]["favorites"]["spells"][spellLevel][currentTitle])
-                {
-                    favoriteBtn.setAttribute("src", "images/favorited.png");
-                }
-            }
+                lastSpell = currentTitle;
+                let spellDisc = db[spellLevel][currentTitle]["description"];
+                if(favorite){spellDisc = wholeFavorite["spells"][spellLevel][currentTitle]["description"]}
 
-            if(spellDisc.includes("spell slot") && spellDisc.includes("scaledamage"))
-            {
-                let scale = spellDisc.slice(spellDisc.indexOf("scaledamage"), spellDisc.indexOf("} for each slot"));
-                let individual = scale.split(" ");
-                individual = individual[1].split("|");
-                let slotSelect = document.createElement("select");
-                slotSelect.name = "upcast";
-                slotSelect.id = individual[0] + "|" + individual[2];
-                slotSelect.style.margin = "0px 5px";
-
-                for(let i = parseInt(spellLevel); i < 10; i++)
+                if(wholeChar[player]["favorites"]["spells"][spellLevel])
                 {
-                    let option = document.createElement("option");
-                    let suff = ["st", "nd", "rd", "th"];
-                    if(i > 3){suff = suff[3];}
-                    else{suff = suff[i - 1];}
-                    option.value = individual[0];
-                    if(i > parseInt(spellLevel))
+                    if(wholeChar[player]["favorites"]["spells"][spellLevel][currentTitle])
                     {
-                        let inisal = individual[0].split("d");
-                        let multiplier = individual[2].split("d");
-                        let total = parseInt(inisal[0]) + parseInt(multiplier[0]) * (i - parseInt(spellLevel));
-                        option.value = `${total}d${inisal[1]}`;
+                        favoriteBtn.setAttribute("src", "images/favorited.png");
                     }
-                    option.text = `${i}${suff} Level Slot (${option.value})`;
-                    slotSelect.appendChild(option);
                 }
 
-                optionDiv.appendChild(slotSelect);
+                if(spellDisc.includes("spell slot") && spellDisc.includes("scaledamage"))
+                {
+                    let scale = spellDisc.slice(spellDisc.indexOf("scaledamage"), spellDisc.indexOf("} for each slot"));
+                    let individual = scale.split(" ");
+                    individual = individual[1].split("|");
+                    let slotSelect = document.createElement("select");
+                    slotSelect.name = "upcast";
+                    slotSelect.id = individual[0] + "|" + individual[2];
+                    slotSelect.style.margin = "0px 5px";
+
+                    for(let i = parseInt(spellLevel); i < 10; i++)
+                    {
+                        let option = document.createElement("option");
+                        let suff = ["st", "nd", "rd", "th"];
+                        if(i > 3){suff = suff[3];}
+                        else{suff = suff[i - 1];}
+                        option.value = individual[0];
+                        if(i > parseInt(spellLevel))
+                        {
+                            let inisal = individual[0].split("d");
+                            let multiplier = individual[2].split("d");
+                            let total = parseInt(inisal[0]) + parseInt(multiplier[0]) * (i - parseInt(spellLevel));
+                            option.value = `${total}d${inisal[1]}`;
+                        }
+                        option.text = `${i}${suff} Level Slot (${option.value})`;
+                        slotSelect.appendChild(option);
+                    }
+
+                    optionDiv.appendChild(slotSelect);
+                }
             }
+
+            else
+            {
+                lastAbility = currentTitle;
+                let abilityDisc = db[curClass][currentTitle]["description"];
+                if(favorite){abilityDisc = wholeFavorite["actions"][curClass][currentTitle]["description"];}
+
+                if(wholeChar[player]["favorites"]["actions"][curClass])
+                {
+                    if(wholeChar[player]["favorites"]["actions"][curClass][currentTitle])
+                    {
+                        favoriteBtn.setAttribute("src", "images/favorited.png");
+                    }
+                }
+
+                if(abilityDisc.includes("{@absorb}"))
+                {
+                    let dice = 4;
+                    let lvlSelect = document.createElement("select");
+                    lvlSelect.name = "upcast";
+                    lvlSelect.style.margin = "0px 5px";
+
+                    for(let i = 1; i < 10; i++)
+                    {
+                        let option = document.createElement("option");
+                        let suff = ["st", "nd", "rd", "th"];
+                        if(i > 3){suff = suff[3];}
+                        else{suff = suff[i - 1];}
+
+                        option.value = `1d${dice}`;
+                        dice = dice + 2;
+                        option.text = `${i}${suff} Level Slot (1 on ${option.value})`;
+                        lvlSelect.appendChild(option);
+                    }
+
+                    optionDiv.appendChild(lvlSelect);
+                }
+
+                castBtn.innerHTML = "Use Ability";
+            }
+
+            if(favorite) 
+            {
+                let edit = document.createElement("button");
+                edit.classList.add("gridButton");
+                edit.onclick = handleEditCard;
+                edit.innerHTML = "Edit";
+                edit.name = currentTitle;
+                edit.style.margin = "0px 5px";
+                optionDiv.appendChild(edit);
+            }
+
+            optionDiv.appendChild(castBtn);
+            this.parentNode.appendChild(wrapper);
+            if(this.parentNode.nextSibling != null){placeBefore(optionDiv, this.parentNode.nextSibling);}
+            else{this.parentElement.parentElement.appendChild(optionDiv);}
         }
 
         else
         {
-            lastAbility = currentTitle;
-            let abilityDisc = db[curClass][currentTitle]["description"];
-            if(favorite){abilityDisc = wholeFavorite["actions"][curClass][currentTitle]["description"];}
-
-            if(wholeChar[player]["favorites"]["actions"][curClass])
-            {
-                if(wholeChar[player]["favorites"]["actions"][curClass][currentTitle])
-                {
-                    favoriteBtn.setAttribute("src", "images/favorited.png");
-                }
-            }
-
-            if(abilityDisc.includes("{@absorb}"))
-            {
-                let dice = 4;
-                let lvlSelect = document.createElement("select");
-                lvlSelect.name = "upcast";
-                lvlSelect.style.margin = "0px 5px";
-
-                for(let i = 1; i < 10; i++)
-                {
-                    let option = document.createElement("option");
-                    let suff = ["st", "nd", "rd", "th"];
-                    if(i > 3){suff = suff[3];}
-                    else{suff = suff[i - 1];}
-
-                    option.value = `1d${dice}`;
-                    dice = dice + 2;
-                    option.text = `${i}${suff} Level Slot (1 on ${option.value})`;
-                    lvlSelect.appendChild(option);
-                }
-
-                optionDiv.appendChild(lvlSelect);
-            }
-
-            castBtn.innerHTML = "Use Ability";
+            searchBar[0].value = currentTitle;
+            handleSearch();
+            this.click();
         }
-
-        if(favorite) 
-        {
-            let edit = document.createElement("button");
-            edit.classList.add("gridButton");
-            edit.onclick = handleEditCard;
-            edit.innerHTML = "Edit";
-            edit.name = currentTitle;
-            edit.style.margin = "0px 5px";
-            optionDiv.appendChild(edit);
-        }
-
-        optionDiv.appendChild(castBtn);
-        this.parentNode.appendChild(wrapper);
-        if(this.parentNode.nextSibling != null){placeBefore(optionDiv, this.parentNode.nextSibling);}
-        else{this.parentElement.parentElement.appendChild(optionDiv);}
+        
     }
 
     else
