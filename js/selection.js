@@ -389,7 +389,7 @@ function createChar(curCharacter, curBorder)
 {
     let charName = curCharacter.slice(0, curCharacter.length - 1);
     if(curCharacter.includes("ustom")){charName = curCharacter.slice(7);}
-    let char = {border : curBorder, currentHp : `${document.getElementById("Current Hp").value}`, maxHp : `${document.getElementById("Max Hp").value}`, tempHp : document.getElementById("Temp Hp").value, map : "", id : charName, name : curCharacter, title : " " + charName + ", ", xPos : "1", yPos : "A", isSummon : false, dc : document.getElementById("DC")};
+    let char = {border : curBorder, currentHp : `${document.getElementById("Current Hp").value}`, maxHp : `${document.getElementById("Max Hp").value}`, tempHp : document.getElementById("Temp Hp").value, map : "", id : charName, name : curCharacter, title : " " + charName + ", ", xPos : "1", yPos : "A", isSummon : false, dc : document.getElementById("DC").value};
 
     
     if(oldToken != null || oldToken != undefined)
