@@ -1135,7 +1135,7 @@ function handleCardClick()
             }
 
             optionDiv.appendChild(castBtn);
-            this.parentNode.appendChild(wrapper);
+            document.getElementById("cards").childNodes[0].appendChild(wrapper);
             if(this.parentNode.nextSibling != null){placeBefore(optionDiv, this.parentNode.nextSibling);}
             else{document.getElementById("cards").appendChild(optionDiv);}
         }
