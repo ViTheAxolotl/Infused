@@ -1137,7 +1137,7 @@ function handleCardClick()
             optionDiv.appendChild(castBtn);
             this.parentNode.appendChild(wrapper);
             if(this.parentNode.nextSibling != null){placeBefore(optionDiv, this.parentNode.nextSibling);}
-            else{this.parentElement.parentElement.appendChild(optionDiv);}
+            else{this.parentElement.appendChild(optionDiv);}
         }
 
         else
