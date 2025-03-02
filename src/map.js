@@ -305,6 +305,7 @@ function setTurnOrder()
     {
         for(let key of Object.keys(wholeTO))
         {
+            if(wholeTO[key] == "var"){continue}
             if(i == wholeTO[key].position)
             {
                 makeToken(wholeTO[key].charName, wholeTO[key].selected, wholeTO[key].position);
