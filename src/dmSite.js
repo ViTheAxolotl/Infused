@@ -759,7 +759,7 @@ function uploadTO()
         setTimeout(() => {uploadRowTO(key)}, 250);
     }
 
-    setDoc(`currentTO/Var/currentTurn`, 0);
+    setDoc(`currentTO/Var/currentTurn`, 1);
     let curDate = new Date().toLocaleTimeString();
     let date = document.createElement("h3");
     date.innerHTML = `Current Turn Order at time of ${curDate}`;
