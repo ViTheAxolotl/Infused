@@ -305,8 +305,15 @@ function setTurnOrder()
     {
         for(let key of Object.keys(wholeTO))
         {
-            if(wholeTO[key] == "var"){continue}
-            if(i == wholeTO[key].position)
+            if(wholeTO[key] == "Var")
+            {
+                let turn = document.createElement('h6');
+                turn.innerHTML = `Turn: ${wholeTO[key]["currentTurn"]}`;
+                placeBefore(turn, divTO.firstChild);
+                continue; 
+            }
+                
+            else if(i == wholeTO[key].position)
             {
                 makeToken(wholeTO[key].charName, wholeTO[key].selected, wholeTO[key].position);
                 break;
