@@ -307,7 +307,7 @@ function setTurnOrder()
         {
             if(key == "Var")
             {
-                let turn = document.createElement('h6');
+                let turn = document.createElement('h1');
                 turn.innerHTML = `Turn: ${wholeTO[key]["currentTurn"]}`;
                 placeBefore(turn, divTO.firstChild);
                 continue; 
