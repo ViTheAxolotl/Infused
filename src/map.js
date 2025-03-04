@@ -307,8 +307,9 @@ function setTurnOrder()
         {
             if(key == "Var")
             {
-                let turn = document.createElement('h1');
+                let turn = document.createElement('h6');
                 turn.innerHTML = `Turn: ${wholeTO[key]["currentTurn"]}`;
+                turn.classList = 'color-UP-yellow center';
                 placeBefore(turn, divTO.firstChild);
                 continue; 
             }
