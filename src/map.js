@@ -305,7 +305,7 @@ function setTurnOrder()
     {
         for(let key of Object.keys(wholeTO))
         {
-            if(wholeTO[key] == "Var")
+            if(key == "Var")
             {
                 let turn = document.createElement('h6');
                 turn.innerHTML = `Turn: ${wholeTO[key]["currentTurn"]}`;
