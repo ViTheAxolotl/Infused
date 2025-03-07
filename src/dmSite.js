@@ -753,6 +753,7 @@ function uploadTO()
 {
     temp = wholeTO;
     emptyTOCollection();
+    deleteDoc("currentTO/Var");
 
     for(let key of Object.keys(temp))
     {   
@@ -775,7 +776,7 @@ function uploadRowTO(key)
         position : document.getElementById(`Order_${temp[key].charName}`).value,
         selected : document.getElementById(`Selected_${temp[key].charName}`).value
     });
-    
+
     setDoc(`currentTO/Var/${key}`, {"temp" : "temp"});
 }
 

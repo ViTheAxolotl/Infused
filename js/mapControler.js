@@ -1467,6 +1467,33 @@ function handleUseAction(targets)
         if(curClass){display = display.replaceAll("cast", "use the ability");}
     }
 
+    if(listOf[lastUse]["duration"]) //spell set turn count down
+    {
+        let time = listOf[lastUse]["duration"].split(" ");
+        let timeActive = "0";
+        
+        switch(time[1])
+        {
+            case "Hour":
+                timeActive = parseInt[time[0]] * 514;
+                break;
+
+            case "Minute":
+                timeActive = parseInt[time[0]] * 9;
+                break;
+
+            case "Round":
+                timeActive = parseInt[time[0]];
+                break;
+        }
+
+        if(timeActive != "0")
+        {
+            if(player != "Vi"){setDoc(`currentTO/Var/${playerChar[player]["charName"]}/${lastUse}`, wholeTO["Var"]["currentTurn"] + timeActive);}
+            else{setDoc(`currentTO/Var/Enemy/${lastUse}`, wholeTO["Var"]["currentTurn"] + timeActive);}
+        }
+    }
+
     display = display.replaceAll("<li>", "\n- ");
     display = display.replaceAll("</li>", "");
     sendDiscordMessage(display);
