@@ -1474,15 +1474,15 @@ function handleUseAction(targets)
         
         switch(time[1])
         {
-            case "Hour":
+            case "hour":
                 timeActive = parseInt[time[0]] * 514;
                 break;
 
-            case "Minute":
+            case "minute":
                 timeActive = parseInt[time[0]] * 9;
                 break;
 
-            case "Round":
+            case "round":
                 timeActive = parseInt[time[0]];
                 break;
         }
