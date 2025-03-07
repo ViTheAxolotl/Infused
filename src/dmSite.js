@@ -764,6 +764,7 @@ function uploadTO()
     let date = document.createElement("h3");
     date.innerHTML = `Current Turn Order at time of ${curDate}`;
     div.appendChild(date);
+
 }
 
 function uploadRowTO(key)
@@ -774,6 +775,8 @@ function uploadRowTO(key)
         position : document.getElementById(`Order_${temp[key].charName}`).value,
         selected : document.getElementById(`Selected_${temp[key].charName}`).value
     });
+    
+    setDoc(`currentTO/Var/${key}`, {"temp" : "temp"});
 }
 
 function handleChangeMap()
