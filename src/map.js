@@ -1,6 +1,7 @@
 "use strict";
 import { ref, onValue } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js';
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
+import { handleViewActive } from '../js/mapControler.js';
 import { toTitleCase, auth, database, setDoc, deleteDoc, returnHpImage, setMapValue, placeBefore } from '../js/viMethods.js';
 
 let map = setMapValue();
@@ -258,10 +259,10 @@ function addTokens()
 
 function makeToken(key, turn, charPos)
 {
-    let row = [document.createElement("div"), document.createElement("h6"), document.createElement("h6")];
-    let names = ["div", "Position", "Name"];
+    let row = [document.createElement("div"), document.createElement("h6"), document.createElement("h6"), document.createElement("img")];
+    let names = ["div", "Position", "Name", "timer"];
 
-    for(let i = 0; i < 3; i++)
+    for(let i = 0; i < 4; i++)
     {
         row[i].id = `${key}-${names[i]}`;
         row[i].style.margin = "5px";
@@ -271,6 +272,13 @@ function makeToken(key, turn, charPos)
             row[0].appendChild(row[i]); 
             row[i].style.display = "inline";
             row[i].classList.add("color-UP-yellow");
+
+            if(i == 3)
+            {
+                if(wholeTO["Var"][key].length == 1){row[i].classList.add("invisible");}
+                row[i].src = "images/upcomingAction";
+                row[i].onclick = handleViewActive;
+            }
         }
     }
 

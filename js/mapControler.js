@@ -2116,3 +2116,8 @@ function handleChangeHp(damage, token, modifier)
             break;
     }
 }
+
+export function handleViewActive()
+{
+    
+}
