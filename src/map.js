@@ -275,8 +275,8 @@ function makeToken(key, turn, charPos)
 
             if(i == 3)
             {
-                if(wholeTO["Var"][key].length == 1){row[i].classList.add("invisible");}
-                row[i].src = "images/upcomingAction";
+                if(Object.keys(wholeTO["Var"][key]).length == 1){row[i].classList.add("invisible");}
+                row[i].src = "images/upcomingAction.png";
                 row[i].onclick = handleViewActive;
             }
         }
