@@ -654,6 +654,7 @@ function handleChangeInTurn(direction)
     let curSelected;
     let newSelected;
     let newPosition;
+    let currentTurn = wholeTO["var"]["currentTurn"];
 
     for(let key of Object.keys(wholeTO)) //For each turn of the turn order
     {
@@ -666,13 +667,13 @@ function handleChangeInTurn(direction)
 
     if(direction == "up") //If the + button is hit
     {
-        if(wholeTO[curSelected].position == Object.keys(wholeTO).length){newPosition = "1";} //If the selected is the last one in the order move to the beginning
+        if(wholeTO[curSelected].position == Object.keys(wholeTO).length - 1){newPosition = "1";} //If the selected is the last one in the order move to the beginning
         else{newPosition = `${parseInt(wholeTO[curSelected].position) + 1}`} //Else move down one in the order
     }
         
     else if(direction == "down") //If the - button is hit
     {
-        if(wholeTO[curSelected].position == "1"){newPosition = `${Object.keys(wholeTO).length}`;} //If the selected is the first one in the order move to the end
+        if(wholeTO[curSelected].position == "1"){newPosition = `${Object.keys(wholeTO).length - 1}`;} //If the selected is the first one in the order move to the end
         else{newPosition = `${parseInt(wholeTO[curSelected].position) - 1}`} //Else move up one in the order
     }
 
