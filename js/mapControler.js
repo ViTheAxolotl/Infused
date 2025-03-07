@@ -654,7 +654,7 @@ function handleChangeInTurn(direction)
     let curSelected;
     let newSelected;
     let newPosition;
-    let currentTurn = wholeTO["var"]["currentTurn"];
+    let currentTurn = wholeTO["Var"]["currentTurn"];
 
     for(let key of Object.keys(wholeTO)) //For each turn of the turn order
     {
