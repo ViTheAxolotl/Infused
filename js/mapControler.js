@@ -1490,7 +1490,7 @@ function handleUseAction(targets)
         if(timeActive != "0")
         {
             if(player != "Vi"){setDoc(`currentTO/Var/${playerChar[player]["charName"]}/${lastUse}`, wholeTO["Var"]["currentTurn"] + timeActive);}
-            else{setDoc(`currentTO/Var/Enemy/${lastUse}`, {"expires" : wholeTO["Var"]["currentTurn"] + timeActive), "castOn": wholeTO["Var"]["currentTurn"], "id" : lastUsed};}
+            else{setDoc(`currentTO/Var/Enemy/${lastUse}`, {"expires" : wholeTO["Var"]["currentTurn"] + timeActive, "castOn": wholeTO["Var"]["currentTurn"], "id" : lastUse});}
         }
     }
 
