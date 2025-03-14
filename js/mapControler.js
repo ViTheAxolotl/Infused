@@ -679,7 +679,7 @@ function handleChangeInTurn(direction)
 
             else
             {
-                if(wholeTO["Var"][person].length > 1)
+                if(Object.keys(wholeTO["Var"][person]).length > 1)
                 {
                     for(let ability of Object.keys(wholeTO["Var"][person]))
                     {
