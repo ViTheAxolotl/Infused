@@ -694,7 +694,8 @@ function handleChangeInTurn(direction)
                             
                             if(used["expires"] - 2 <= currentTurn)
                             {
-                                document.getElementById(`${person}-timer`).src = "images/expiringAction.png";
+                                let timer = document.getElementById(`${person}-timer`);
+                                timer.src = "images/expiringAction.png";
                             }
                         }
                     }
