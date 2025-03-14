@@ -353,7 +353,7 @@ function setTurnOrder()
                     {
                         let used = wholeTO["Var"][person][ability];
                         
-                        if(used["expires"] - 2 <= currentTurn + 1)
+                        if(used["expires"] - 2 <= currentTurn)
                         {
                             let timer = document.getElementById(`${person}-timer`);
                             timer.src = "images/expiringAction.png";
