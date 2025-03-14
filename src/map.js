@@ -357,6 +357,7 @@ function setTurnOrder()
                         {
                             let timer = document.getElementById(`${person}-timer`);
                             timer.src = "images/expiringAction.png";
+                            timer.title = "Has a Spell/Ability that ends soon. Click To Find Out What.";
                         }
                     }
                 }
