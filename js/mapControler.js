@@ -669,39 +669,6 @@ function handleChangeInTurn(direction)
     {
         if(wholeTO[curSelected].position == Object.keys(wholeTO).length - 1){newPosition = "1"; setDoc("currentTO/Var/currentTurn", currentTurn + 1);} //If the selected is the last one in the order move to the beginning
         else{newPosition = `${parseInt(wholeTO[curSelected].position) + 1}`} //Else move down one in the order
-
-        for(let person of Object.keys(wholeTO["Var"]))
-        {
-            if(person == "currentTurn")
-            {
-                continue;
-            }
-
-            else
-            {
-                if(Object.keys(wholeTO["Var"][person]).length > 1)
-                {
-                    for(let ability of Object.keys(wholeTO["Var"][person]))
-                    {
-                        if(ability == "temp")
-                        {
-                            continue;
-                        }
-
-                        else
-                        {
-                            let used = wholeTO["Var"][person][ability];
-                            
-                            if(used["expires"] - 2 <= currentTurn)
-                            {
-                                let timer = document.getElementById(`${person}-timer`);
-                                timer.src = "images/expiringAction.png";
-                            }
-                        }
-                    }
-                }
-            }
-        }
     }
         
     else if(direction == "down") //If the - button is hit

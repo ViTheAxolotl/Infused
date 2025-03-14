@@ -330,6 +330,39 @@ function setTurnOrder()
             }
         }
     }
+
+    for(let person of Object.keys(wholeTO["Var"]))
+    {
+        if(person == "currentTurn")
+        {
+            continue;
+        }
+
+        else
+        {
+            if(Object.keys(wholeTO["Var"][person]).length > 1)
+            {
+                for(let ability of Object.keys(wholeTO["Var"][person]))
+                {
+                    if(ability == "temp")
+                    {
+                        continue;
+                    }
+
+                    else
+                    {
+                        let used = wholeTO["Var"][person][ability];
+                        
+                        if(used["expires"] - 2 <= currentTurn + 1)
+                        {
+                            let timer = document.getElementById(`${person}-timer`);
+                            timer.src = "images/expiringAction.png";
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 function addCharacter(character, update)
