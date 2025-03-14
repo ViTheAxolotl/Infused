@@ -1467,10 +1467,11 @@ function handleUseAction(targets)
         if(curClass){display = display.replaceAll("cast", "use the ability");}
     }
 
+    let timeActive = "0";
+
     if(listOf[lastUse]["duration"]) //spell set turn count down
     {
         let time = listOf[lastUse]["duration"].split(" ");
-        let timeActive = "0";
         
         switch(time[1])
         {
@@ -1486,12 +1487,42 @@ function handleUseAction(targets)
                 timeActive = parseInt(time[0]);
                 break;
         }
+    }
 
-        if(timeActive != "0")
+    else if(useInfo.includes("hour") || useInfo.includes("minute") || useInfo.includes("turns") || useInfo.includes("round"))
+    {
+        let usedInfo = useInfo;
+        let cut;
+
+        if(useInfo.includes("hour")){cut = "hour";}
+        else if(useInfo.includes("minute")){cut = "minute";}
+        else if(useInfo.includes("turns")){cut = "turns";}
+        else if(useInfo.includes("round")){cut = "round";}
+
+        usedInfo = usedInfo.slice(0, usedInfo.indexOf(cut) - 1);
+        usedInfo = usedInfo.slice(usedInfo.lastIndexOf(" "));
+
+        switch(cut)
         {
-            if(player != "Vi"){setDoc(`currentTO/Var/${playerChar[player]["charName"]}/${lastUse}`, wholeTO["Var"]["currentTurn"] + timeActive);}
-            else{setDoc(`currentTO/Var/Enemy/${lastUse}`, {"expires" : wholeTO["Var"]["currentTurn"] + timeActive, "castOn": wholeTO["Var"]["currentTurn"], "id" : lastUse});}
+            case "hour":
+                timeActive = parseInt(usedInfo) * 514;
+                break;
+
+            case "minute":
+                timeActive = parseInt(usedInfo) * 9;
+                break;
+
+            case "turns":
+            case "round":
+                timeActive = parseInt(usedInfo);
+                break;
         }
+    }
+
+    if(timeActive != "0")
+    {
+        if(player != "Vi"){setDoc(`currentTO/Var/${playerChar[player]["charName"]}/${lastUse}`, wholeTO["Var"]["currentTurn"] + timeActive);}
+        else{setDoc(`currentTO/Var/Enemy/${lastUse}`, {"expires" : wholeTO["Var"]["currentTurn"] + timeActive, "castOn": wholeTO["Var"]["currentTurn"], "id" : lastUse});}
     }
 
     display = display.replaceAll("<li>", "\n- ");
@@ -2115,9 +2146,4 @@ function handleChangeHp(damage, token, modifier)
             }
             break;
     }
-}
-
-export function handleViewActive()
-{
-    
 }
