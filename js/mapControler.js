@@ -1494,10 +1494,10 @@ function handleUseAction(targets)
         let usedInfo = useInfo.toLowerCase();
         let cut;
 
-        if(useInfo.includes("hour")){cut = "hour";}
-        else if(useInfo.includes("minute")){cut = "minute";}
-        else if(useInfo.includes("turns")){cut = "turns";}
-        else if(useInfo.includes("round")){cut = "round";}
+        if(usedInfo.includes("hour")){cut = "hour";}
+        else if(usedInfo.includes("minute")){cut = "minute";}
+        else if(usedInfo.includes("turns")){cut = "turns";}
+        else if(usedInfo.includes("round")){cut = "round";}
 
         usedInfo = usedInfo.slice(0, usedInfo.indexOf(cut) - 1);
         usedInfo = usedInfo.slice(usedInfo.lastIndexOf(" "));
