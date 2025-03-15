@@ -1500,7 +1500,23 @@ function handleUseAction(targets)
         else if(usedInfo.includes("round")){cut = "round";}
 
         usedInfo = usedInfo.slice(0, usedInfo.indexOf(cut) - 1);
-        usedInfo = usedInfo.slice(usedInfo.lastIndexOf(" "));
+        usedInfo = usedInfo.slice(usedInfo.lastIndexOf(" ") + 1);
+        let remove = 0;
+
+        for(let char of usedInfo)
+        {
+            if(isNaN(Number(char)))
+            {
+                break;
+            }
+
+            else
+            {
+                remove++;
+            }
+        }
+
+        usedInfo = usedInfo.slice(remove)
 
         switch(cut)
         {
