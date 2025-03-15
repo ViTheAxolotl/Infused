@@ -1491,7 +1491,7 @@ function handleUseAction(targets)
 
     else if(useInfo.toLowerCase().includes("hour") || useInfo.toLowerCase().includes("minute") || useInfo.toLowerCase().includes("turns") || useInfo.toLowerCase().includes("round"))
     {
-        let usedInfo = useInfo;
+        let usedInfo = useInfo.toLowerCase();
         let cut;
 
         if(useInfo.includes("hour")){cut = "hour";}
