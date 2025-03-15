@@ -1489,7 +1489,7 @@ function handleUseAction(targets)
         }
     }
 
-    else if(useInfo.includes("hour") || useInfo.includes("minute") || useInfo.includes("turns") || useInfo.includes("round"))
+    else if(useInfo.toLowerCase().includes("hour") || useInfo.toLowerCase().includes("minute") || useInfo.toLowerCase().includes("turns") || useInfo.toLowerCase().includes("round"))
     {
         let usedInfo = useInfo;
         let cut;
