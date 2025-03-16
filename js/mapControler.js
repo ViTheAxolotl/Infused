@@ -1505,7 +1505,7 @@ function handleUseAction(targets)
 
         for(let char of usedInfo)
         {
-            if(isNaN(Number(char)))
+            if(!isNaN(Number(char)))
             {
                 break;
             }
