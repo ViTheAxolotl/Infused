@@ -1114,7 +1114,7 @@ function handleUploadInteractive()
 function handleGenerate()
 {
     hideButtons();
-    backupFavorites();
+    setDoc("playerChar/Hannah", wholeChar["Garrett"]);
 
     alert("done");
     handleDone();
