@@ -1443,11 +1443,19 @@ function handleUseAction(targets)
         
         if(discription.includes("{@sDice"))
         {
-            damage = splitRoll(discription, "@sDice");
-            damage = diceRoller(damage[0], damage[1], damage[2], "false");
-    
-            if(display){display += `\nResult: ${damage}. \n`;}
-            else{display = `${wholeChar[player]["charName"]} used the ability, ${lastUse}:\n${useInfo}\n\nResult: ${damage}. \n`;}
+            let sDices = discription.split("{@sDice");
+
+            for(let i = 0; i < sDices.length; i++)
+            {
+                if(i == 0){continue;}
+                let sDice = "{@sDice" + sDices[i];
+
+                damage = splitRoll(sDice, "@sDice");
+                damage = diceRoller(damage[0], damage[1], damage[2], "false");
+            
+                if(display){display += `\nResult: ${damage}. \n`;}
+                else{display = `${wholeChar[player]["charName"]} used the ability, ${lastUse}:\n${useInfo}\n\nResult: ${damage}. \n`;}
+            }
         }
 
         if(discription.includes("{@sneak"))
