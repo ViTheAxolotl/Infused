@@ -388,16 +388,17 @@ function handleTurnTimer()
 
     for(let skill of Object.keys(skills))
     {
-        if(skill != temp)
+        if(skill != "temp")
         {
             let bullet = document.createElement("li");
-            bullet.classList= "center color-UP-yellow";
+            bullet.classList= "color-UP-yellow";
             bullet.innerHTML = `${skill} | ${skills[skill]["expires"] - wholeTO["Var"]["currentTurn"]} turns left active.`;
             list.appendChild(bullet);
         }
     }
 
     div.appendChild(title);
+    div.appendChild(back);
     div.appendChild(document.createElement("hr"));
     div.appendChild(list);
 }
