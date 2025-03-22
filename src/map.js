@@ -380,6 +380,7 @@ function handleTurnTimer()
 
     back.innerHTML = "<- Back";
     back.onclick = function(){removeTurnOrder(); setTurnOrder();};
+    back.style.color = "#20b2aa";
 
     while(div.children.length > 0)
     {
@@ -397,9 +398,8 @@ function handleTurnTimer()
         }
     }
 
-    div.appendChild(title);
     div.appendChild(back);
-    div.appendChild(document.createElement("hr"));
+    div.appendChild(title);
     div.appendChild(list);
 }
 

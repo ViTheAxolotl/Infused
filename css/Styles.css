@@ -384,7 +384,7 @@ table, .itemSearch, #itemImg
 
 .selected
 {
-    border: solid lightseagreen 3px;
+    border: solid #20b2aa 3px;
 }
 
 .selected-temp

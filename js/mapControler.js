@@ -683,8 +683,11 @@ function handleChangeInTurn(direction)
         else if(direction == "down" && wholeTO[key].position == newPosition){newSelected = key; break;} //If we are moving down in turn order and the current turn is the new turn
     }
 
-    document.getElementById(`${curSelected}-div`).classList.remove("selected"); //Removes selected class from last turn
-    document.getElementById(`${newSelected}-div`).classList.add("selected"); //Adds selected class to the new turn
+    if(document.getElementById(`${curSelected}-div`)) //If the turns are currently visible
+    {
+        document.getElementById(`${curSelected}-div`).classList.remove("selected"); //Removes selected class from last turn
+        document.getElementById(`${newSelected}-div`).classList.add("selected"); //Adds selected class to the new turn
+    }
 
     changeTOValue(wholeTO[curSelected], "unset");
     changeTOValue(wholeTO[newSelected], "set");
