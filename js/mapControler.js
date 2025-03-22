@@ -938,30 +938,38 @@ function setUpText(current, lst)
     }
 
     let lineNum = txt.length - 1; //Keep track of line number when list is involved.
-    let temp = JSON.stringify(lst[current]["description"]).replaceAll("\"", "").split("\\n"); //gets rid of \ and splits it by paragraphs
-
-    for(let t in temp) //For each line in the description
+    
+    if(JSON.stringify(lst[current]["description"]))
     {
-        if(temp[t].includes("{@Choice}")) //If its is a list
-        {
-            txt.push(temp[t].replace("{@Choice}", "<li>") + "</li>"); //Makes the choice into a list
-            lineNum++;
-        }
+        let temp = JSON.stringify(lst[current]["description"]).replaceAll("\"", "").split("\\n"); //gets rid of \ and splits it by paragraphs
 
-        else //If the line isn't apart of the list
+        for(let t in temp) //For each line in the description
         {
-            if(lineNum > 0 && txt[`${lineNum}`].includes("<li>")) //If the last line was apart of the list
+            if(temp[t].includes("{@Choice}")) //If its is a list
             {
+                txt.push(temp[t].replace("{@Choice}", "<li>") + "</li>"); //Makes the choice into a list
                 lineNum++;
-                txt.push("");
             }
 
-            txt[`${lineNum}`] = txt[`${lineNum}`] + ` ${temp[t]}`; //Adds the sentence to the text
+            else //If the line isn't apart of the list
+            {
+                if(lineNum > 0 && txt[`${lineNum}`].includes("<li>")) //If the last line was apart of the list
+                {
+                    lineNum++;
+                    txt.push("");
+                }
+
+                txt[`${lineNum}`] = txt[`${lineNum}`] + ` ${temp[t]}`; //Adds the sentence to the text
+            }
         }
+        
+        return txt;
     }
     
-    
-    return txt;
+    else
+    {
+        return [""];
+    }
 }
 
 /**
