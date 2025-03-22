@@ -356,12 +356,41 @@ function setTurnOrder()
                             let timer = document.getElementById(`${person}-timer`);
                             timer.src = "images/expiringAction.png";
                             timer.title = "Has a Spell/Ability that ends soon. Click To Find Out What.";
+                            timer.onclick = handleTurnTimer;
                         }
                     }
                 }
             }
         }
     }
+}
+
+function handleTurnTimer()
+{
+    let div = document.getElementById("turnOrder");
+    let person = this.id.slice(0, this.id.indexOf("-"));
+    let skills = wholeTO["Var"][person];
+    let title = document.createElement("h3");
+    let list = document.createElement("ul");
+
+    title.innerHTML = toTitleCase(person);
+    title.classList = "center color-UP-yellow";
+
+    while(div.children.length > 0)
+    {
+        div.firstChild.remove();
+    }
+
+    for(let skill of Object.keys(skills))
+    {
+        let bullet = document.createElement("li");
+        bullet.innerHTML = `${skill} | ${skills[skill]["expires"] - wholeTO["Var"]["currentTurn"]} turns left active.`;
+        list.appendChild(bullet);
+    }
+
+    div.appendChild(title);
+    div.appendChild(document.createElement("hr"));
+    div.appendChild(list);
 }
 
 function addCharacter(character, update)
