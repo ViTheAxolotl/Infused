@@ -2100,23 +2100,15 @@ function displayInteractive()
 
 function displaySelect()
 {
-    /**let text = document.getElementById("viewTitle");
-    let viewDiv = document.getElementById("cover");
-    let doneButton = document.createElement("button");
-    doneButton.innerHTML = "Done";
-    doneButton.classList.add("gridButton");
-    doneButton.style.zIndex = "1001";
-    doneButton.onclick = useAbility;
-    viewDiv.classList = "";
-    viewDiv.style.zIndex = "0";
-    viewDiv.style.opacity = .55;
-    text.classList.remove("invisible");
-    text.style.zIndex = "1000";
-    text.innerHTML = "Select Your Targets";
-    placeBefore(doneButton, document.getElementById("showInstructions")); */
     alert("Tap on the targets for this action/spell. Then when finished click 'Cast Spell' or 'Use Ability' again.");
     this.onclick = useAbility;
     setDoc(`playerChar/${player}/mode`, "using");
+    let otherCast = document.createElement("button");
+    otherCast.classList = this.classList;
+    otherCast.innerHTML = this.innerHTML;
+    otherCast.onclick = useAbility;
+    otherCast.id = "otherCast";
+    placeBefore(otherCast, document.getElementById("grid"));
 }
 
 function useAbility()
