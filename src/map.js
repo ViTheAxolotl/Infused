@@ -360,7 +360,7 @@ function setTurnOrder()
                             timer.onclick = handleTurnTimer;
                         }
 
-                        else if(used["expires"] >= wholeTO["Var"]["currentTurn"])
+                        if(used["expires"] == wholeTO["Var"]["currentTurn"])
                         {
                             deleteDoc(`currentTO/Var/${person}/${ability}`);
                         }

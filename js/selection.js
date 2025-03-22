@@ -375,7 +375,7 @@ function handleGoButton()
 
         let loading = document.createElement("h3");
         let loadingGif = document.createElement("img");
-        loading.innerHTML = "Loading, AxolMap V1.4 now with better interface...";
+        loading.innerHTML = "Loading, AxolMap V1.5 With bug fixes and new UI...";
         loadingGif.src = "images/loadingGif.gif";
         loadingGif.style.minWidth = "10%";
         div.classList.add("center"); 
