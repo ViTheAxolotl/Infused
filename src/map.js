@@ -371,11 +371,15 @@ function handleTurnTimer()
     let div = document.getElementById("turnOrder");
     let person = this.id.slice(0, this.id.indexOf("-"));
     let skills = wholeTO["Var"][person];
-    let title = document.createElement("h3");
+    let back = document.createElement("a");
+    let title = document.createElement("h5");
     let list = document.createElement("ul");
 
     title.innerHTML = toTitleCase(person);
     title.classList = "center color-UP-yellow";
+
+    back.innerHTML = "<- Back";
+    back.onclick = function(){removeTurnOrder(); setTurnOrder();};
 
     while(div.children.length > 0)
     {
@@ -384,9 +388,13 @@ function handleTurnTimer()
 
     for(let skill of Object.keys(skills))
     {
-        let bullet = document.createElement("li");
-        bullet.innerHTML = `${skill} | ${skills[skill]["expires"] - wholeTO["Var"]["currentTurn"]} turns left active.`;
-        list.appendChild(bullet);
+        if(skill != temp)
+        {
+            let bullet = document.createElement("li");
+            bullet.classList= "center color-UP-yellow";
+            bullet.innerHTML = `${skill} | ${skills[skill]["expires"] - wholeTO["Var"]["currentTurn"]} turns left active.`;
+            list.appendChild(bullet);
+        }
     }
 
     div.appendChild(title);
