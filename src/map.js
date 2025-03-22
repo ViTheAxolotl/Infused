@@ -279,6 +279,7 @@ function makeToken(key, turn, charPos)
                 row[i].style.width = "25px";
                 row[i].style.height = "25px";
                 row[i].title = "Has Active Spell/Ability. Click To Find Out What."
+                row[i].onclick = handleTurnTimer;
             }
         }
     }
