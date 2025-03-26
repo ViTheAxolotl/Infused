@@ -1469,6 +1469,26 @@ function handleUseAction(targets)
             }
         }
 
+        if(discription.includes("{@infuseRate"))
+        {
+            let rate = parseInt(wholeChar[player]["infusedRate"]);
+            let roll = diceRoller("1", "100", "0");
+            let result;
+
+            if(rate >= roll)//Succeded
+            {
+                result = "Succeded";
+            }
+
+            else //Failure
+            {
+                result = "Failed";
+            }
+
+            if(display){display += `\nInfusion Check: ${result}, rolled ${roll}. \n`;}
+            else{display = `${wholeChar[player]["charName"]} used the ability, ${lastUse}:\n${useInfo}\n\nInfusion Check: ${damage}, rolled ${roll}. \n`;}
+        }
+
         if(discription.includes("{@sneak"))
         {
             let lvl = currentLv.charAt(0);
