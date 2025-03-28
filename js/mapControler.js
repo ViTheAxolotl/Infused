@@ -1478,7 +1478,7 @@ function handleUseAction(targets)
             roll = roll.slice(roll.indexOf("**") + 2);
             roll = parseInt(roll.slice(0, roll.indexOf("**")));
 
-            if(rate >= roll)//Succeded
+            if(rate <= roll)//Succeded
             {
                 result = "Succeded";
             }
