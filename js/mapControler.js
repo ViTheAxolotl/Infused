@@ -1489,7 +1489,7 @@ function handleUseAction(targets)
             }
 
             if(display){display += `\nInfusion Check: ${result}, rolled ${roll}. \n`;}
-            else{display = `${wholeChar[player]["charName"]} used the ability, ${lastUse}:\n${useInfo}\n\nInfusion Check: ${damage}, rolled ${roll}. \n`;}
+            else{display = `${wholeChar[player]["charName"]} used the ability, ${lastUse}:\n${useInfo}\n\nInfusion Check: ${result}, rolled ${roll}. \n`;}
         }
 
         if(discription.includes("{@sneak"))
