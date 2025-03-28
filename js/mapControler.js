@@ -1049,6 +1049,22 @@ function handleCardClick()
             castBtn.name = currentTitle;
             castBtn.style.margin = "0px 5px";
 
+            let individual = ["Advantage/Disadvantage", "Advantage", "Disadvantage"];
+            let slotSelect = document.createElement("select");
+            slotSelect.name = "advantage";
+            slotSelect.id = "advantage";
+            slotSelect.style.margin = "0px 5px";
+
+            for(let i = 0; i < individual.length; i++)
+            {
+                let option = document.createElement("option");
+                option.value = individual[i];
+                option.text = individual[i];
+                slotSelect.appendChild(option);
+            }
+
+            slotSelect.selectedIndex = "0";
+
             if(spellLevel) //If it was a spell clicked
             {
                 lastSpell = currentTitle;
@@ -1146,6 +1162,7 @@ function handleCardClick()
                 optionDiv.appendChild(edit);
             }
 
+            optionDiv.appendChild(slotSelect);
             optionDiv.appendChild(castBtn);
             document.getElementById("cards").childNodes[0].appendChild(wrapper);
             if(this.parentNode.nextSibling != null){placeBefore(optionDiv, this.parentNode.nextSibling);}
