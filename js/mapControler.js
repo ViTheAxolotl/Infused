@@ -1419,7 +1419,11 @@ function handleUseAction(targets)
             if(document.getElementById("advantage").value != "Advantage/Disadvantage")
             {
                 let take = accurcy;
+                take = take.slice(take.indexOf("**") + 2);
+                take = parseInt(take.slice(0, take.indexOf("**")));
                 let take2 = diceRoller(1, 20, userAddTo, "false");
+                take2 = take2.slice(take2.indexOf("**") + 2);
+                take2 = parseInt(take2.slice(0, take2.indexOf("**")));
 
                 switch(document.getElementById("advantage").value)
                 {
