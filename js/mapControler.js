@@ -1475,6 +1475,8 @@ function handleUseAction(targets)
             let roll = diceRoller("1", "100", "0");
             let result;
 
+            roll = roll.slice(roll.indexOf("**") + 2);
+
             if(rate >= roll)//Succeded
             {
                 result = "Succeded";
