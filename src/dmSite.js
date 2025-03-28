@@ -1117,7 +1117,11 @@ function handleUploadInteractive()
 function handleGenerate()
 {
     hideButtons();
-    setDoc("playerChar/Hannah", wholeChar["Garrett"]);
+    
+    for(let player of Object.keys(wholeChar))
+    {
+        setDoc(`playerChar/${player}/favorites/actions/Misc/Infusion Reaction`, wholeChar["Hannah"]["favorites"]["actions"]["Misc"]["Infusion Reaction"]);
+    }
 
     alert("done");
     handleDone();
