@@ -1272,16 +1272,36 @@ function handleUseAction(targets)
             let userAddTo = prompt(`The Current Response is to ${wholeRespone["currentResponse"]}, cast by ${wholeRespone["castBy"]}. This check is checking for ${wholeRespone["ability"]} stat. What is your Modifier? (+/-)`, wholeChar[player]["stats"][wholeRespone["ability"]]);
             userAddTo = userAddTo.replaceAll(" ", "");
             let abilityDisc;
+            let ad_dis = "";
             if(wholeRespone["isSpell"]){abilityDisc = wholeSpells[wholeRespone["ind"]][wholeRespone["currentResponse"]]["description"];}
             else{abilityDisc = db[wholeRespone["ind"]][wholeRespone["currentResponse"]]["description"];}
 
             setDoc(`playerChar/${player}/stats/${wholeRespone["ability"]}`, userAddTo);
             usersRoll = diceRoller("1", "20", userAddTo, "finalResult");
 
+            if(document.getElementById("advantage").value != "Advantage/Disadvantage")
+            {
+                let take = usersRoll;
+                let take2 = diceRoller("1", "20", userAddTo, "finalResult");
+
+                switch(document.getElementById("advantage").value)
+                {
+                    case "Advantage":
+                        if(take > take2){usersRoll = take;} else {usersRoll = take2;}
+                        break;
+
+                    case "Disadvantage":
+                        if(take < take2){usersRoll = take;} else {usersRoll = take2;}
+                        break;
+                }
+
+                ad_dis = `First Roll: ${take}, Second Roll: ${take2}.`;
+            }
+
             if(abilityDisc.includes("{@save "))
             {
                 let damage;
-                let token =wholeDb[wholeChar[player]["currentToken"]];
+                let token = wholeDb[wholeChar[player]["currentToken"]];
                 damage = splitRoll(abilityDisc, "@save");
                 if(abilityDisc.includes("{@scaledamage")){damage = splitRoll(wholeRespone["castUp"], "@save")}
                 else if(abilityDisc.includes(currentLv)){damage = splitRoll(abilityDisc.slice(`${abilityDisc.indexOf(currentLv)}`), "@save");}
@@ -1323,6 +1343,7 @@ function handleUseAction(targets)
             }
 
             discription = abilityDisc;
+            display += ad_dis;
         }
 
         if(discription.includes("{@Summon"))
