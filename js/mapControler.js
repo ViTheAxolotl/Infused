@@ -1488,8 +1488,8 @@ function handleUseAction(targets)
                 result = "Failed";
             }
 
-            if(display){display += `\nInfusion Check: ${result}, rolled ${roll}. \n`;}
-            else{display = `${wholeChar[player]["charName"]} used the ability, ${lastUse}:\n${useInfo}\n\nInfusion Check: ${result}, rolled ${roll}. \n`;}
+            if(display){display += `\nInfusion Check: ${result}, rolled ${roll}, needs to be above ${rate}. \n`;}
+            else{display = `${wholeChar[player]["charName"]} used the ability, ${lastUse}:\n${useInfo}\n\nInfusion Check: ${result}, rolled ${roll}, needs to be above ${rate}.\n`;}
         }
 
         if(discription.includes("{@sneak"))
