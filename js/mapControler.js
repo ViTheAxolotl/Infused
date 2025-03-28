@@ -1299,7 +1299,7 @@ function handleUseAction(targets)
                         break;
                 }
 
-                ad_dis = `First Roll: ${take}, Second Roll: ${take2}.`;
+                ad_dis = ` First Roll: ${take}, Second Roll: ${take2}.`;
             }
 
             if(abilityDisc.includes("{@save "))
@@ -1414,6 +1414,26 @@ function handleUseAction(targets)
             else{userAddTo = spellOrAttackBonus("@damage")}
             let accurcy = diceRoller(1, 20, userAddTo, "false");
             let ending = "Damage";
+            let ad_dis = "";
+
+            if(document.getElementById("advantage").value != "Advantage/Disadvantage")
+            {
+                let take = accurcy;
+                let take2 = diceRoller(1, 20, userAddTo, "false");
+
+                switch(document.getElementById("advantage").value)
+                {
+                    case "Advantage":
+                        if(take > take2){accurcy = take;} else {accurcy = take2;}
+                        break;
+
+                    case "Disadvantage":
+                        if(take < take2){accurcy = take;} else {accurcy = take2;}
+                        break;
+                }
+
+                ad_dis = ` First Roll: ${take}, Second Roll: ${take2}.`;
+            }
             
             if(discription.includes(currentLv))
             {
@@ -1492,6 +1512,8 @@ function handleUseAction(targets)
                 if(fail == false){display += `\nDealing: ${damage} ${ending}.\n`; setDoc("currentMap/", wholeDb);}
             }
             if(!spellLevel){display = display.replaceAll("cast", "used the ability");}
+
+            display += ad_dis;
         }
         
         if(discription.includes("{@sDice"))
