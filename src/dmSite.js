@@ -1118,10 +1118,7 @@ function handleGenerate()
 {
     hideButtons();
     
-    for(let player of Object.keys(wholeChar))
-    {
-        setDoc(`playerChar/${player}/favorites/actions/Misc/Infusion Reaction`, wholeChar["Hannah"]["favorites"]["actions"]["Misc"]["Infusion Reaction"]);
-    }
+    backupFavorites();
 
     alert("done");
     handleDone();

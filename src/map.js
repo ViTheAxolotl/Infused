@@ -447,7 +447,7 @@ function addCharacter(character, update)
         currentHp.value = character["currentHp"];
         maxHp.value = character["maxHp"];
         tempHp.value = character["tempHp"];
-        DC.value = character["dc"];
+        DC.value = character["DC"];
     }
 
     if(character.title != "")
