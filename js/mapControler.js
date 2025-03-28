@@ -1019,6 +1019,10 @@ function handleCardClick()
 
     let favBtn = document.getElementById("favBtn");
     if(favBtn){favBtn.remove();} //Removes other cards options that was visible
+
+    let anchor = document.createElement("a");
+    anchor.href = "#searchDiv";
+    anchor.click();
     
     if(lastAbility != currentTitle && lastSpell != currentTitle) //If they didn't click the same card twice
     {
