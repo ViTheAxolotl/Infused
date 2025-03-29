@@ -309,8 +309,8 @@ function diceRoller(amount, dice, modifier, ifName)
     {
         let iDice = basicRoll("1", "6");
 
-        finalResult += iDice;
-        message += `)${viewMod} + ${iDice}=* **${finalResult}** `;
+        parseInt(finalResult) += parseInt(iDice);
+        message += `)${viewMod}+${iDice} (Inspiration)=* **${finalResult}** `;
         deleteDoc(`playerChar/${player}/bardicInspo`);
     }
 
