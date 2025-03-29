@@ -302,7 +302,7 @@ function diceRoller(amount, dice, modifier, ifName)
     
     if(wholeChar[player]["bardicInspo"] && dice == "20")
     {
-        inspo = alert(`You have rolled a ${finalResult} on your d20. You do have a Bardic Inspiration Die, would you like to roll it and add it to the total?`);
+        inspo = confirm(`You have rolled a ${finalResult} on your d20. You do have a Bardic Inspiration Die, would you like to roll it and add it to the total?`);
     }
 
     if(inspo)
