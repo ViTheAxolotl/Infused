@@ -107,7 +107,7 @@ onValue(charRef, (snapshot) =>
     {
         let inspo = document.getElementById("inspo");
         inspo.classList.remove("hidden");
-        inspo.innerHTML = `${inspo.title} True`;
+        inspo.innerHTML = `${inspo.title} 1`;
     }
 });
 
@@ -321,7 +321,7 @@ function diceRoller(amount, dice, modifier, ifName)
         deleteDoc(`playerChar/${player}/bardicInspo`);
 
         let vis = document.getElementById("inspo");
-        vis.classList.add("hidden");
+        vis.style.display = "none";
     }
 
     else{message += `)${viewMod}=* **${finalResult}** `;}
