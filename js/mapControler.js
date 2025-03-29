@@ -102,6 +102,13 @@ onValue(charRef, (snapshot) =>
         firstRun = false;
         init();
     }
+
+    if(wholeChar[player]["bardicInspo"])
+    {
+        let inspo = document.getElementById("inspo");
+        inspo.classList.remove("hidden");
+        inspo.innerHTML = `${inspo.title} True`;
+    }
 });
 
 /**
@@ -309,9 +316,12 @@ function diceRoller(amount, dice, modifier, ifName)
     {
         let iDice = basicRoll("1", "6");
 
-        parseInt(finalResult) += parseInt(iDice);
+        finalResult += parseInt(iDice);
         message += `)${viewMod}+${iDice} (Inspiration)=* **${finalResult}** `;
         deleteDoc(`playerChar/${player}/bardicInspo`);
+
+        let vis = document.getElementById("inspo");
+        vis.classList.add("hidden");
     }
 
     else{message += `)${viewMod}=* **${finalResult}** `;}
