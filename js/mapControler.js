@@ -280,6 +280,7 @@ function diceRoller(amount, dice, modifier, ifName)
 {
     let rolls = basicRoll(amount, dice); //rolls each die
     let sum = 0;
+    let inspo = false;
     let viewMod = `${modifier}`;
     if(modifier >= 0 && !viewMod.includes("+")){viewMod = "+" + modifier;} //Adds the + if the modifier is positive
     let message = ""; 
@@ -298,7 +299,23 @@ function diceRoller(amount, dice, modifier, ifName)
     }
     
     let finalResult = sum + parseInt(modifier); //Adds the sum and modifier
-    message += `)${viewMod}=* **${finalResult}** `; 
+    
+    if(wholeChar[player]["bardicInspo"] && dice == "20")
+    {
+        inspo = alert(`You have rolled a ${finalResult} on your d20. You do have a Bardic Inspiration Die, would you like to roll it and add it to the total?`);
+    }
+
+    if(inspo)
+    {
+        let iDice = basicRoll("1", "6");
+
+        finalResult += iDice;
+        message += `)${viewMod} + ${iDice}=* **${finalResult}** `;
+        deleteDoc(`playerChar/${player}/bardicInspo`);
+    }
+
+    else{message += `)${viewMod}=* **${finalResult}** `;}
+
     if(ifName == "finalResult"){message = `${finalResult}`;}
 
     return message;
@@ -1215,12 +1232,34 @@ function handleUseAction(targets)
         else if(discription.includes("{@absorb")){discription = `{@sDice ${upcast[0].value}}`}
     }
 
+    if(discription.includes("Bardic Inspiration die"))
+    {
+        display += "Giving Bardic Die to: "
+
+        for(key in Object.keys(targets))
+        {
+            let target = toTitleCase(targets[key].classList[1]);
+
+            if(wholeChar[target])
+            {
+                setDoc(`playerChar/${target}/bardicInspo`, true);
+            }
+
+            else
+            {
+                setDoc(`playerChar/Vi/bardicInspo`, true);
+            }
+
+            display += target;
+        }
+    }
+
     if(discription.includes("{@"))
     {
         if(discription.includes("{@Choice"))
         {
             display = `${wholeChar[player]["charName"]} cast:\n${lastUse} on `;
-            for(key in Object.keys(targets)){display += `${toTitleCase(targets[key].classList[1])}, `}
+            for(key in Object.keys(targets)){display += `${toTitleCase(targets[key].classList[1])}, `;}
             display = display.slice(0, display.length - 2);
             display += `\n${useInfo}`;
             if(curClass){display = display.replaceAll("cast", "use the ability");}
