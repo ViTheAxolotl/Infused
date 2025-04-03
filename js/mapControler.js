@@ -565,7 +565,7 @@ function changeValue()
             break;
 
         case "zoom":
-            if(modifier == "+") //If plus button is 
+            if(modifier == "+" & zoomLevel < 300) //If plus button is 
             {
                 zoomLevel += 10;
             }
