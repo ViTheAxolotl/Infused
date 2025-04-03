@@ -565,15 +565,15 @@ function changeValue()
             break;
 
         case "zoom":
-            if(modifier == "+" & zoomLevel < 200) //If plus button is 
+            if(modifier == "+") //If plus button is 
             {
-                zoomLevel += 10;
+                if(zoomLevel < 200){zoomLevel += 10;}
             }
 
             else //minus button is clicked
             {
                 zoomLevel -= 10;
-                if (zoomLevel < 10){zoomLevel = 10;}
+                if (zoomLevel < 50){zoomLevel = 10;}
             }
 
             document.getElementById("gridMap").style.zoom = `${zoomLevel}%`;
