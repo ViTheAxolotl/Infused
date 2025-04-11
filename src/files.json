@@ -63,7 +63,8 @@
         "Kody-" : "images/map/tokens/Kody-.png",
         "Ben-" : "images/map/tokens/Ben-.png",
         "jackalwere-" : "images/map/tokens/jackalwere-.png",
-        "Dream-" : "images/map/tokens/Dream-.png"
+        "Dream-" : "images/map/tokens/Dream-.png",
+        "rug-" : "images/map/tokens/rug-.png"
     },
  
     "borders" : 
