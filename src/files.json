@@ -19,7 +19,8 @@
         "hPath": "images/map/hPath.jpg",
         "yPath": "images/map/yPath.jpg",
         "vPath": "images/map/vPath.jpg",
-        "bloodyTownHall": "images/map/bloodyTownHall.jpg"
+        "bloodyTownHall": "images/map/bloodyTownHall.jpg",
+        "nileLight" : "images/map/nileLight.jpg"
     }, 
 
     "tokens" : 
