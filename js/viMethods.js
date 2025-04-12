@@ -66,7 +66,7 @@ export function setMapValue()
 
     else
     {
-        bubble = 0;
+        bubble = 35;
     }
 
     let disAndBum = distance + bumper;
