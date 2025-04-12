@@ -52,7 +52,7 @@ export function setMapValue()
     else if(screen.width < 1200)
     {
         bumper = Math.round(trueMapSize / 26) * 1.23;
-        movement = distance * 1.19367;
+        movement = distance * 1.19363;
         bubble = -54;
     }
 
