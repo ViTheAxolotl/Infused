@@ -605,11 +605,6 @@ table, .itemSearch, #itemImg
     width: 56.8% !important;
 }
 
-#grid
-{
-    margin: 10%;
-}
-
 #story input
 {
     display: inline;
@@ -658,11 +653,6 @@ table, .itemSearch, #itemImg
     #arrows #up
     {
         margin-left: 14%;
-    }
-
-    #grid
-    {
-        margin: 10%;
     }
 
     .tODiv
