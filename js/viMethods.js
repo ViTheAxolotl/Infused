@@ -26,21 +26,21 @@ export function setMapValue()
     const rect = body.getBoundingClientRect();
     let trueMapSize = 2030;
     let mapSize = (trueMapSize * (8 / 10));
-    let bumper = Math.round(trueMapSize / 26) * 0.000011;
+    let bumper = Math.round(trueMapSize / 26) * 0.000311;
     let distance = Math.round(mapSize / 26);
-    let movement = distance * 1.2655;
+    let movement = distance * 1.26055;
     let bubble = 36;
 
     if(screen.width < 576)
     {
         bumper = Math.round(trueMapSize / 26) * 0.15;
-        movement = distance * 1.290255;
+        movement = distance * 1.290258;
     }
 
     else if(screen.width < 768)
     {
-        bumper = Math.round(trueMapSize / 26) * 0.13555;
-        movement = distance * 1.2902585;
+        bumper = Math.round(trueMapSize / 26) * 0.135555;
+        movement = distance * 1.2902589;
     }
  
     else if(screen.width < 992)
@@ -58,7 +58,7 @@ export function setMapValue()
 
     else if(screen.width < 1400)
     {
-        bumper = Math.round(trueMapSize / 26) * 0.0424;
+        bumper = Math.round(trueMapSize / 26) * 0.04235;
         movement = distance * 1.1933183;
         bubble = -74;
     }
