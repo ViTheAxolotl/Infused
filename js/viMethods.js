@@ -28,7 +28,7 @@ export function setMapValue()
     let mapSize = (trueMapSize * (8 / 10));
     let bumper = Math.round(trueMapSize / 26) * 0.0006999;
     let distance = Math.round(mapSize / 26);
-    let movement = distance * 1.182099;
+    let movement = distance * 1.182299;
     let bubble = 36;
 
     if(screen.width < 576)
@@ -40,13 +40,13 @@ export function setMapValue()
     else if(screen.width < 768)
     {
         bumper = Math.round(trueMapSize / 26) * 0.135555;
-        movement = distance * 1.2902409;
+        movement = distance * 1.2904409;
     }
  
     else if(screen.width < 992)
     {
         bumper = Math.round(trueMapSize / 26) * 0.127996;
-        movement = distance * 1.27803;
+        movement = distance * 1.27853;
     }
 
     else if(screen.width < 1200)
