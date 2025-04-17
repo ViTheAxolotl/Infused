@@ -67,7 +67,9 @@
         "Dream-" : "images/map/tokens/Dream-.png",
         "rug-" : "images/map/tokens/rug-.png",
         "bush-" : "images/map/tokens/bush-.png",
-        "chair-" : "images/map/tokens/chair-.png"
+        "chair-" : "images/map/tokens/chair-.png",
+        "Okami-" : "images/map/tokens/Okami-.png",
+        "tiger-" : "images/map/tokens/tiger-.png"
     },
  
     "borders" : 
