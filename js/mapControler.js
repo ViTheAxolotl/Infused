@@ -573,7 +573,7 @@ function changeValue()
             else //minus button is clicked
             {
                 zoomLevel -= 10;
-                if (zoomLevel < 50){zoomLevel = 50;}
+                if (zoomLevel < 70){zoomLevel = 70;}
             }
 
             document.getElementById("gridMap").style.zoom = `${zoomLevel}%`;
