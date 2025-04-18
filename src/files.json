@@ -20,7 +20,8 @@
         "yPath": "images/map/yPath.jpg",
         "vPath": "images/map/vPath.jpg",
         "bloodyTownHall": "images/map/bloodyTownHall.jpg",
-        "nileLight" : "images/map/nileLight.jpg"
+        "nileLight" : "images/map/nileLight.jpg",
+        "jasonsLab" : "images/map/jasonsLab.jpg"
     }, 
 
     "tokens" : 
@@ -69,7 +70,9 @@
         "bush-" : "images/map/tokens/bush-.png",
         "chair-" : "images/map/tokens/chair-.png",
         "Okami-" : "images/map/tokens/Okami-.png",
-        "tiger-" : "images/map/tokens/tiger-.png"
+        "tiger-" : "images/map/tokens/tiger-.png",
+        "jason-" : "images/map/tokens/jason-.png",
+        "thug-" : "images/map/tokens/thug-.png"
     },
  
     "borders" : 
