@@ -635,7 +635,7 @@ function changeValue()
             break;
         
         case "turn":
-            if(modifier == "+") //If plus button is clicked
+            if(modifier == "↓") //If plus button is clicked
             {
                 handleChangeInTurn("up");
             }
