@@ -72,7 +72,8 @@
         "Okami-" : "images/map/tokens/Okami-.png",
         "tiger-" : "images/map/tokens/tiger-.png",
         "jason-" : "images/map/tokens/jason-.png",
-        "thug-" : "images/map/tokens/thug-.png"
+        "thug-" : "images/map/tokens/thug-.png",
+        "Garrett-" : "images/map/tokens/Garrett-.png"
     },
  
     "borders" : 
