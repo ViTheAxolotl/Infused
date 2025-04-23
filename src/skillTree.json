@@ -19,7 +19,7 @@
         {
             "name" : "Ghost Wildshape",
             "desc" : "By having your ghostly side take over majority of your body you will be able to wildshape into a ghost (Using ‹a class='nav-link active' aria-current='page' href='wildshape.html?ghost' target=' blank' style='display: inline;'>Ghost</a> D&D 5e Stat
-Block) for an action, this can be done proficiency bonus / 2 (rounded down) times a day. You can stay a ghost for up to 5 turns or until your HP drops to 0 (Any overflow will go to your normal hp same as druid) Once unwildshaped, you must wait 10 minutes before using the ability again, as your ghost side needs time to recharge. For this benefit you gain 15% infusion rate.", "name": "Ghost Wildshape.",
+Block) for an action, this can be done proficiency bonus / 2 (rounded down) times a day. You can stay a ghost for up to 5 turns or until your HP drops to 0 (Any overflow will go to your normal hp same as druid) Once unwildshaped, you must wait 10 minutes before using the ability again, as your ghost side needs time to recharge. For this benefit you gain 15% infusion rate.",
             "infusionRate" : 15
         },
 
