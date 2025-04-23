@@ -11,7 +11,7 @@
         "ability2" : 
         {
             "name" : "Ghost Phasing",
-            "desc" : "Like other ghosts being able to travel through objects and people, with this upgrade you can as well. While in Ghost mode for an action, you are able to move through any solid (non-moving) object / people as long as it is less than 3 feet wide. Your physical body can't go beyond this amount, at least with this much Infusion Rate. For this benefit you gain 10% Infusion Rate." "name": "Ghost Phasing",
+            "desc" : "Like other ghosts being able to travel through objects and people, with this upgrade you can as well. While in Ghost mode for an action, you are able to move through any solid (non-moving) object / people as long as it is less than 3 feet wide. Your physical body can't go beyond this amount, at least with this much Infusion Rate. For this benefit you gain 10% Infusion Rate.",
             "infusionRate" : 10
         },
 
