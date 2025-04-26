@@ -619,13 +619,19 @@ table, .itemSearch, #itemImg
 
 .stats input
 {
+    width: 4vw !important;
+    text-align: center;
+}
+
+.topHalf .stats input
+{
     width: 9vw !important;
     text-align: center;
 }
 
 .stats input[type=radio]
 {
-    width: 2vw !important;
+    width: 2.5vw !important;
     text-align: center;
 }
 
