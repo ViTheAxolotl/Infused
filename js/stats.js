@@ -34,13 +34,13 @@ onAuthStateChanged(auth, (user) =>
 function init()
 {
     let display = document.getElementById("story");
-    let stats = document.getElementsByClassName("stats");
+    let stats = document.getElementsByClassName("stat");
 
     for(let stat of stats)
     {
-        if(wholeChar[player]["stats"][stat])
+        if(wholeChar[player]["stats"][stat.id])
         {
-            stat.value = wholeChar[player]["stats"][stat];
+            stat.value = wholeChar[player]["stats"][stat.id];
         }
 
         stat.onchange = updateStat;
