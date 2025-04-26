@@ -627,6 +627,12 @@ table, .itemSearch, #itemImg
     padding: 5px;
 }
 
+.stat
+{
+    text-align: center;
+    
+}
+
 @media (max-width: 1399px) {
     .col-md-6
     {
