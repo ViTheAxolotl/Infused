@@ -113,6 +113,7 @@ onValue(charRef, (snapshot) =>
     if(wholeChar[player]["zoomLevel"])
     {
         zoomLevel = wholeChar[player]["zoomLevel"];
+        document.getElementById("gridMap").style.zoom = `${zoomLevel}%`;
     }
 });
 
@@ -581,7 +582,6 @@ function changeValue()
                 if (zoomLevel < 70){zoomLevel = 70;}
             }
 
-            document.getElementById("gridMap").style.zoom = `${zoomLevel}%`;
             setDoc(`playerChar/${player}/zoomLevel`, zoomLevel);
             break;
         
