@@ -15,91 +15,75 @@
   </head>
   
   <body>
-    <nav class="navbar navbar-expand-lg bg-dark navbar-primary"> 
-        <script src="js/pageSetup.js" class="noParent" type="module"></script>
-    </nav>
+    <div id = "story" class = "bg-UP-purple color-UP-black col-md-12 col-sm-12 center stats">
+      <table>
+        <td><p>Character Name:</p><input id="name"/></td>
+        <td><p>Class, Race, and Lv:</p><input id="class"/><input id="race"/><input id="lv"/></td>
+        <td><p>Background & Alignment:</p><input id="background"/><input id="alignment"/></td>
+      </table>
 
-    <div class="container">
-      <div class="row align-items-top">
-        <div id = "header" class = "col-12">
-          <h1>Stats</h1><br>
-        </div>
-
-        <div id = "story" class = "bg-UP-purple color-UP-black col-md-12 col-sm-12 center stats">
-          <table>
-            <td><p>Character Name:</p><input id="name"/></td>
-            <td><p>Class, Race, and Lv:</p><input id="class"/><input id="race"/><input id="lv"/></td>
-            <td><p>Background & Alignment:</p><input id="background"/><input id="alignment"/></td>
-          </table>
-
-          <table>
-            <tbody>
+      <table>
+        <tbody>
+          <tr>
+            <td>
+              <table>
+                <tr><td><p>Str:</p><input id="Strength"></td></tr>
+                <tr><td><p>Dex:</p><input id="Dexterity"></td></tr>
+                <tr><td><p>Con:</p><input id="Constitution"></td></tr>
+                <tr><td><p>Int:</p><input id="Intelligence"></td></tr>
+                <tr><td><p>Wis:</p><input id="Wisdom"></td></tr>
+                <tr><td><p>Char:</p><input id="Charisma"></td></tr>
+              </table>
+            </td>
+            
+            <td>
+              <tr><table><td><input id="inspiration"/></td><td>Inspiration</td></table></tr>
+              <tr><table><td><input id="proficiency"/></td><td>Proficiency</td></table></tr>
               <tr>
-                <td>
-                  <table>
-                    <tr><td><p>Str:</p><input id="Strength"></td></tr>
-                    <tr><td><p>Dex:</p><input id="Dexterity"></td></tr>
-                    <tr><td><p>Con:</p><input id="Constitution"></td></tr>
-                    <tr><td><p>Int:</p><input id="Intelligence"></td></tr>
-                    <tr><td><p>Wis:</p><input id="Wisdom"></td></tr>
-                    <tr><td><p>Char:</p><input id="Charisma"></td></tr>
-                  </table>
-                </td>
-                
-                <td>
-                  <tr><table><td><input id="inspiration"/></td><td>Inspiration</td></table></tr>
-                  <tr><table><td><input id="proficiency"/></td><td>Proficiency</td></table></tr>
-                  <tr>
-                    <input type="radio" id="strSave"><p>Strength</p>
-                    <input type="radio" id="dexSave"><p>Dexterity</p>
-                    <input type="radio" id="conSave"><p>Constitution</p>
-                    <input type="radio" id="intSave"><p>Intelligence</p>
-                    <input type="radio" id="wisSave"><p>Wisdom</p>
-                    <input type="radio" id="charSave"><p>Charisma</p>
-                    <h3>Saving Throws</h3>
-                  </tr>
-                  
-                  <tr>
-                    <input type="radio" id="acrobatics"><p>Acrobatics</p>
-                    <input type="radio" id="animalHandling"><p>Animal Handling</p>
-                    <input type="radio" id="arcana"><p>Arcana</p>
-                    <input type="radio" id="athletics"><p>Athletics</p>
-                    <input type="radio" id="deception"><p>Deception</p>
-                    <input type="radio" id="history"><p>History</p>
-                    <input type="radio" id="insight"><p>Insight</p>
-                    <input type="radio" id="intimidation"><p>Intimidation</p>
-                    <input type="radio" id="investigation"><p>Investigation</p>
-                    <input type="radio" id="medicine"><p>Medicine</p>
-                    <input type="radio" id="nature"><p>Nature</p>
-                    <input type="radio" id="perception"><p>Perception</p>
-                    <input type="radio" id="performance"><p>Performance</p>
-                    <input type="radio" id="persuasion"><p>Persuasion</p>
-                    <input type="radio" id="religion"><p>Religion</p>
-                    <input type="radio" id="slightOfHand"><p>Slight of Hand</p>
-                    <input type="radio" id="stealth"><p>Stealth</p>
-                    <input type="radio" id="survival"><p>Survival</p>
-                  </tr>
-                </td>
+                <input type="radio" id="strSave"><p>Strength</p>
+                <input type="radio" id="dexSave"><p>Dexterity</p>
+                <input type="radio" id="conSave"><p>Constitution</p>
+                <input type="radio" id="intSave"><p>Intelligence</p>
+                <input type="radio" id="wisSave"><p>Wisdom</p>
+                <input type="radio" id="charSave"><p>Charisma</p>
+                <h3>Saving Throws</h3>
               </tr>
               
               <tr>
-                <p>Passive Perception: </p><input id="passivePerception">
-                <tr><p>Proficiencies and Languages:</p></tr>
-                <textarea id="profAndLang"></textarea>
+                <input type="radio" id="acrobatics"><p>Acrobatics</p>
+                <input type="radio" id="animalHandling"><p>Animal Handling</p>
+                <input type="radio" id="arcana"><p>Arcana</p>
+                <input type="radio" id="athletics"><p>Athletics</p>
+                <input type="radio" id="deception"><p>Deception</p>
+                <input type="radio" id="history"><p>History</p>
+                <input type="radio" id="insight"><p>Insight</p>
+                <input type="radio" id="intimidation"><p>Intimidation</p>
+                <input type="radio" id="investigation"><p>Investigation</p>
+                <input type="radio" id="medicine"><p>Medicine</p>
+                <input type="radio" id="nature"><p>Nature</p>
+                <input type="radio" id="perception"><p>Perception</p>
+                <input type="radio" id="performance"><p>Performance</p>
+                <input type="radio" id="persuasion"><p>Persuasion</p>
+                <input type="radio" id="religion"><p>Religion</p>
+                <input type="radio" id="slightOfHand"><p>Slight of Hand</p>
+                <input type="radio" id="stealth"><p>Stealth</p>
+                <input type="radio" id="survival"><p>Survival</p>
               </tr>
-            </tbody>
+            </td>
+          </tr>
+          
+          <tr>
+            <p>Passive Perception: </p><input id="passivePerception">
+            <tr><p>Proficiencies and Languages:</p></tr>
+            <textarea id="profAndLang"></textarea>
+          </tr>
+        </tbody>
 
-            <tbody>
-              
-            </tbody>
-          </table>
-        </div>
-      
-        <div id = "footer" class = "col-12">
-        </div>
-      </div>
-	</div>
-
+        <tbody>
+          
+        </tbody>
+      </table>
+    </div>
      <!-- Bootstrap JavaScript Components-LOAD LAST -->
      <script scr="js/bootstrap/scripts.js"></script>
      <script src="js/bootstrap/bootstrap.bundle.min.js"></script>
