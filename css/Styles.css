@@ -629,6 +629,11 @@ table, .itemSearch, #itemImg
     padding: 5px;
 }
 
+.inlineDisplay
+{
+    display: inline;
+}
+
 @media (max-width: 1399px) {
     .col-md-6
     {
