@@ -773,7 +773,7 @@ function handleCharClick()
     switch(mode)
     {
         case "waiting":
-            if(player == "Vi")
+            if(player == "Vi" && !event.ctrlKey)
             {
                 setDoc(`playerChar/${player}/currentToken`, this.classList[1]);
                 location.reload();
