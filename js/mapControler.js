@@ -1493,7 +1493,7 @@ function handleUseAction(targets)
                         break;
                 }
 
-                ad_dis = ` First Roll: ${take}, Second Roll: ${take2}.`;
+                ad_dis = ` <strong>First Roll: ${take}, Second Roll: ${take2}.</strong>`;
             }
             
             if(discription.includes(currentLv))
