@@ -340,7 +340,7 @@ function handleDiceRoll()
     let dice = parseInt(document.getElementById("sides").value);
     let modifier = parseInt(document.getElementById("modifier").value);
     
-    if(amount != NaN && dice != NaN && modifier != NaN) //If all three values are given
+    if(!Number.isNaN(amount) && !Number.isNaN(dice) && !Number.isNaN(modifier)) //If all three values are given
     {
         sendDiscordMessage(diceRoller(amount, dice, modifier, "discord")); //Rolls the dice given and send the result to discord
     }
