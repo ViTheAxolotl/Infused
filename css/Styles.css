@@ -623,7 +623,7 @@ table, .itemSearch, #itemImg
     text-align: center;
 }
 
-.topHalf .stats input
+.topHalf input
 {
     width: 9vw !important;
     text-align: center;
