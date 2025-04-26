@@ -619,9 +619,10 @@ table, .itemSearch, #itemImg
 
 .stats input
 {
-    width: 5vw !important;
+    width: 10vw !important;
     text-align: center;
 }
+
 .stats p
 {
     text-indent: 0px;
