@@ -1717,20 +1717,43 @@ function spellOrAttackBonus(usage)
 {
     let userAddTo;
 
-    if(usage == "@damage")
+    if(player == "Vi")
     {
-        if(spellLevel){userAddTo = prompt("What is your Spell Attack Bonus?", wholeChar[player]["stats"]["addToSpell"]);}
-        else{userAddTo = prompt("What is your Attack Bonus?", wholeChar[player]["stats"]["attackBonus"]);}
-        userAddTo = userAddTo.replaceAll(" ", "");
-
-        if(spellLevel){setDoc(`playerChar/${player}/stats/addToSpell`, userAddTo);}
-        else{setDoc(`playerChar/${player}/stats/attackBonus`, userAddTo);}
-    }
+        if(usage == "@damage")
+        {
+            if(spellLevel){userAddTo = prompt("What is your Spell Attack Bonus?", wholeChar[player]["stats"]["addToSpell"]);}
+            else{userAddTo = prompt("What is your Attack Bonus?", wholeChar[player]["stats"]["attackBonus"]);}
+            userAddTo = userAddTo.replaceAll(" ", "");
     
-    else if(usage == "@save")
+            if(spellLevel){setDoc(`playerChar/${player}/stats/addToSpell`, userAddTo);}
+            else{setDoc(`playerChar/${player}/stats/attackBonus`, userAddTo);}
+        }
+        
+        else if(usage == "@save")
+        {
+            userAddTo = prompt("What is the DC to beat (Spell DC)?", wholeChar[player]["stats"]["spellDC"]);
+            setDoc(`playerChar/${player}/stats/spellDC`, userAddTo);
+        }
+    }
+
+    else
     {
-        userAddTo = prompt("What is the DC to beat (Spell DC)?", wholeChar[player]["stats"]["spellDC"]);
-        setDoc(`playerChar/${player}/stats/spellDC`, userAddTo);
+        if(usage == "@damage")
+        {
+            if(spellLevel){if(!wholeChar[player]["stats"]["addToSpell"]){userAddTo = prompt("What is your Spell Attack Bonus?", wholeChar[player]["stats"]["addToSpell"]);} else{userAddTo = wholeChar[player]["stats"]["addToSpell"];}}
+            else{if(!wholeChar[player]["stats"]["attackBonus"]){userAddTo = prompt("What is your Attack Bonus?", wholeChar[player]["stats"]["attackBonus"]);} else{userAddTo = wholeChar[player]["stats"]["attackBonus"];}}
+            userAddTo = userAddTo.replaceAll(" ", "");
+    
+            if(spellLevel){setDoc(`playerChar/${player}/stats/addToSpell`, userAddTo);}
+            else{setDoc(`playerChar/${player}/stats/attackBonus`, userAddTo);}
+        }
+        
+        else if(usage == "@save")
+        {
+            if(!wholeChar[player]["stats"]["spellDC"]){userAddTo = prompt("What is the DC to beat (Spell DC)?", wholeChar[player]["stats"]["spellDC"]);}
+            else{userAddTo = wholeChar[player]["stats"]["spellDC"];}
+            setDoc(`playerChar/${player}/stats/spellDC`, userAddTo);
+        }
     }
 
     return userAddTo;
