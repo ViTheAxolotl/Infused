@@ -620,17 +620,12 @@ table, .itemSearch, #itemImg
 .stats input
 {
     width: 5vw !important;
+    text-align: center;
 }
 .stats p
 {
     text-indent: 0px;
     padding: 5px;
-}
-
-.stat
-{
-    text-align: center;
-    
 }
 
 @media (max-width: 1399px) {

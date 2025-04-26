@@ -40,7 +40,15 @@ function init()
     {
         if(wholeChar[player]["stats"][stat.id])
         {
-            stat.value = wholeChar[player]["stats"][stat.id];
+            if(typeof wholeChar[player]["stats"][stat.id] == "string")
+            {
+                stat.value = wholeChar[player]["stats"][stat.id];
+            }
+
+            else
+            {
+                stat.checked = wholeChar[player]["stats"][stat.id];
+            }
         }
 
         stat.onchange = updateStat;
