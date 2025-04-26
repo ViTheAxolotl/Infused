@@ -1,4 +1,70 @@
 {
+    "Garrett" : 
+    {
+        "ability1" : 
+        {
+            "name": "Ghostly Beginnings",
+            "desc" : "Your ghost infusion grants you many benefits, and drawbacks. The stronger this side of you get, the less control of your body you have. By unlocking this skill you gain resistance to Cold & Necrotic. You also gain Ghost Mode, an active ability by using an action your ghostly side grows temporally (5 Turns) to boost your abilities. In Ghost Mode you gain the ability to levitate (While on the ground) you can float up to 10 feet off the ground, and can see up to 60 feet in the Ethereal Plane. Ghost mode can be used as many times as you have proficiency bonus. For these benefits you gain 15% Infusion Rate, once you hit 100% you will become permanently your chosen animal/beast forever. When in an interaction that may have your infused side wanting to do something, you must roll a d100 if you roll above your Infusion Rate you resist that action.",
+            "infusionRate" : 15
+        },
+        
+        "ability2" : 
+        {
+            "name" : "Ghost Phasing",
+            "desc" : "Like other ghosts being able to travel through objects and people, with this upgrade you can as well. While in Ghost mode for an action, you are able to move through any solid (non-moving) object / people as long as it is less than 3 feet wide. Your physical body can't go beyond this amount, at least with this much Infusion Rate. For this benefit you gain 10% Infusion Rate.",
+            "infusionRate" : 10
+        },
+
+        "ability3" : 
+        {
+            "name" : "Ghost Wildshape",
+            "desc" : "By having your ghostly side take over majority of your body you will be able to wildshape into a ghost (Using ‹a class='nav-link active' aria-current='page' href='wildshape.html?ghost' target=' blank' style='display: inline;'>Ghost</a> D&D 5e Stat Block) for an action, this can be done proficiency bonus / 2 (rounded down) times a day. You can stay a ghost for up to 5 turns or until your HP drops to 0 (Any overflow will go to your normal hp same as druid) Once unwildshaped, you must wait 10 minutes before using the ability again, as your ghost side needs time to recharge. For this benefit you gain 15% infusion rate.",
+            "infusionRate" : 15
+        },
+
+        "ability4" : 
+        {
+            "name" : "Ghostly Possession",
+            "desc" : "By unlocking this you are now able to possess people and items while in Ghost Mode. A humanoid must succeed on a D13 Charisma saving throw, or be possessed by you. Your body fuses into your target and you can pilot the person, you keep your Int, Wis, & Char, but don't gain access to target's knowledge. Once the target's HP drop to 0, or you end on bonus action you are kicked out of the target. When possessing objects, you are able to hear, smell, see, and feel what is around you. You can also vibrate or manipulate objects if they are designed to do so (Flipping a lever, pushing a button). For these benefits you gain 10% infusion rate.",
+            "infusionRate" : 10
+        },
+
+        "ability5" : 
+        {
+            "name" : "Ghostly Etherealness",
+            "desc" : "While in Ghost Mode, you can position your body in between both Material Plane and Ethereal Plane for an action. While in between the two realms you are visible on both planes, yet you can't affect either and they can't affect you. You can regain full access to material plane at any time, or forcefully when Ghost Mode ends. For these benefits you gain an infusion rate of 10%.",
+            "infusionRate" : 10
+        },
+
+        "upgrade1" : 
+        {
+            "name" : "Longer Ghostly Beginings ",
+            "desc" : "By unlocking this your Ghost Mode ability will be able to be held for 10 turns instead of the normal 5. As a bonus you also gain 60 feet of dark vision in both Material and Ethereal plains. For these benefits, you gain 10% more Infusion Rate.",
+            "infusionRate" : 10
+        },
+
+        "upgrade2" : 
+        {
+            "name" : "Improved Ghost Phasing",
+            "desc" : "By unlocking this your Ghost Mode phasing can go up to 5 feet in depth instead of the normal 3ft. As an extra benefit you are able to phase through moving things now as well. For these benefits you will gain an infusion rate of 10%.",
+            "infusionRate" : 10
+        },
+
+        "upgrade3" : 
+        {
+            "name" : "Enhanced Ghost Wildshape",
+            "desc" : "By having your ghostly side take over majority of your body you will be able to wildshape into a ghost (Using <a class= 'nav-link active' aria-current= 'page' href='wildshape.html?ghost' target=' blank' style='display: inline;' ›Ghost</a> D&D 5e Stat Block) for an action, this can be done proficiency bonus times a day. You can stay a ghost for up to 10 turns or until your HP drops to 0 (Any overflow will go to your normal hp same as druid) Once unwildshaped, you must wait 5 minutes before using the ability again, as your ghost side needs time to recharge. For these benefits, you gain 10% more Infusion Rate.",
+            "infusionRate" : 10
+        },
+
+        "upgrade4" : 
+        {
+            "name" : "Improved Ghostly Levitation",
+            "desc" : "By unlocking this your levitation from your Ghost Mode goes up to a full 40 feet and can be activated while midair. For these benefits you gain 10% more Infusion Rate.",
+            "infusionRate" : 10
+        }
+    },
+
     "Hannah" : 
     {
         "ability1" : 
