@@ -109,6 +109,11 @@ onValue(charRef, (snapshot) =>
         vis.style.display = "block";
         inspo.innerHTML = `${inspo.title} 1`;
     }
+
+    if(wholeChar[player]["zoomLevel"])
+    {
+        zoomLevel = wholeChar[player]["zoomLevel"];
+    }
 });
 
 /**
@@ -577,6 +582,7 @@ function changeValue()
             }
 
             document.getElementById("gridMap").style.zoom = `${zoomLevel}%`;
+            setDoc(`playerChar/${player}/zoomLevel`, zoomLevel);
             break;
         
         case "title":
