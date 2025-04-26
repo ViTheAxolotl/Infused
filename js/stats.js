@@ -33,40 +33,21 @@ onAuthStateChanged(auth, (user) =>
 
 function init()
 {
-    stats = wholeChar[player]["stats"];
     let display = document.getElementById("story");
+    let stats = document.getElementsByClassName("stats");
 
-    for(let stat of Object.keys(stats))
+    for(let stat of stats)
     {
-        let elem = [document.createElement("h6"), document.createElement("input"), document.createElement("div")];
-        elem[0].innerHTML = `${stat}:`;
-        elem[0].style.display = "inline";
-        elem[0].classList = "color-UP-yellow";
-        elem[1].style.width = "75px";
-        elem[1].id = stat;
-        elem[1].style.marginLeft = "5%";
-        elem[1].value = stats[stat]
-        elem[2].appendChild(elem[0]);
-        elem[2].appendChild(elem[1]);
-        display.appendChild(elem[2]);
-    }
+        if(wholeChar[player]["stats"][stat])
+        {
+            stat.value = wholeChar[player]["stats"][stat];
+        }
 
-    let submitBtn = document.createElement("button");
-    submitBtn.innerHTML = "Submit Changes"
-    submitBtn.onclick = submitChanges;
-    display.appendChild(submitBtn);
+        stat.onchange = updateStat;
+    }
 }
 
-function submitChanges()
+function updateStat()
 {
-    for(let stat of Object.keys(stats))
-    {
-        let value = document.getElementById(stat).value;
-        if(value == ""){value = "0";}
-        stats[stat] = value;
-    }
-
-    setDoc(`playerChar/${player}/stats`, stats)
-    alert("Stats have been changed.");
-    location.reload();
+    setDoc(`playerChar/${player}/stats/${this.id}`, this.value);
 }
