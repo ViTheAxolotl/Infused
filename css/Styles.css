@@ -348,7 +348,7 @@ table, .itemSearch, #itemImg
     cursor: pointer;
 }
 
-#gridMap,#statSheet
+#gridMap, #statSheet
 {
     position: relative;
     height: 80vh;
