@@ -1400,7 +1400,6 @@ function handleUseAction(targets)
                 }
             }
 
-            discription = abilityDisc;
             display += ad_dis;
         }
 
