@@ -149,7 +149,6 @@ let slider2 = document.querySelector("#sheet");
 
 const startDragging2 = (e) => 
 {
-    e.preventDefault();
     mouseDown = true;
     startX2 = e.pageX - slider.offsetLeft;
     startY2 = e.pageY - slider.offsetTop;
