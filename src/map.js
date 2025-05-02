@@ -32,9 +32,6 @@ let mouseDown = false;
 let startX, scrollLeft;
 let startY, scrollUp;
 let slider = gridMap;
-let startX2, scrollLeft2;
-let startY2, scrollUp2;
-let slider2 = document.getElementById("#sheet");
 let wholeBubbles;
 fetch('https://vitheaxolotl.github.io/Infused/src/files.json').then(res => res.json()).then((json) => imgs = json);
 
@@ -145,6 +142,10 @@ const move = (e) =>
     const scrollY = y - startY;
     slider.scrollTop = scrollUp - scrollY;
 }
+
+let startX2, scrollLeft2;
+let startY2, scrollUp2;
+let slider2 = document.getElementById("#sheet");
 
 const startDragging2 = (e) => 
 {
