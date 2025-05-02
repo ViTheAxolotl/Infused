@@ -143,36 +143,6 @@ const move = (e) =>
     slider.scrollTop = scrollUp - scrollY;
 }
 
-let startX2, scrollLeft2;
-let startY2, scrollUp2;
-let slider2 = document.querySelector("#story");
-
-const startDragging2 = (e) => 
-{
-    mouseDown = true;
-    startX2 = e.pageX - slider.offsetLeft;
-    startY2 = e.pageY - slider.offsetTop;
-    scrollLeft2 = slider.scrollLeft;
-    scrollUp2 = slider.scrollTop;
-}
-
-const stopDragging2 = (e) => 
-{
-    mouseDown = false;
-}
-
-const move2 = (e) => 
-{
-    e.preventDefault();
-    if(!mouseDown) { return; }
-    const x = e.pageX - slider.offsetLeft;
-    const scrollX = x - startX2;
-    slider.scrollLeft = scrollLeft2 - scrollX;
-    const y = e.pageY - slider.offsetTop;
-    const scrollY = y - startY2;
-    slider.scrollTop = scrollUp2 - scrollY;
-}
-
 // Add the event listeners
 slider.addEventListener('mousemove', move, false);
 slider.addEventListener('mousedown', startDragging, false);
@@ -1132,3 +1102,33 @@ function updateToken(token)
 }
 
 init();
+
+let startX2, scrollLeft2;
+let startY2, scrollUp2;
+let slider2 = document.querySelector("#story");
+
+const startDragging2 = (e) => 
+{
+    mouseDown = true;
+    startX2 = e.pageX - slider.offsetLeft;
+    startY2 = e.pageY - slider.offsetTop;
+    scrollLeft2 = slider.scrollLeft;
+    scrollUp2 = slider.scrollTop;
+}
+
+const stopDragging2 = (e) => 
+{
+    mouseDown = false;
+}
+
+const move2 = (e) => 
+{
+    e.preventDefault();
+    if(!mouseDown) { return; }
+    const x = e.pageX - slider.offsetLeft;
+    const scrollX = x - startX2;
+    slider.scrollLeft = scrollLeft2 - scrollX;
+    const y = e.pageY - slider.offsetTop;
+    const scrollY = y - startY2;
+    slider.scrollTop = scrollUp2 - scrollY;
+}
