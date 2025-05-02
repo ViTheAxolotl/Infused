@@ -43,36 +43,36 @@
                   <tr style="text-align: center;"><td><input class = "stat" id="proficiency"/><p style="display: inline;">  Proficiency</p></td></tr>
                   <tr>
                     <td>
-                      <input class = "stat" type="radio" id="strSave"><p style="display: inline;">Strength</p><br>
-                      <input class = "stat" type="radio" id="dexSave"><p style="display: inline;">Dexterity</p><br>
-                      <input class = "stat" type="radio" id="conSave"><p style="display: inline;">Constitution</p><br>
-                      <input class = "stat" type="radio" id="intSave"><p style="display: inline;">Intelligence</p><br>
-                      <input class = "stat" type="radio" id="wisSave"><p style="display: inline;">Wisdom</p><br>
-                      <input class = "stat" type="radio" id="charSave"><p style="display: inline;">Charisma</p><br>
+                      <input class = "stat" type="checkbox" id="strSave"><p style="display: inline;">Strength</p><br>
+                      <input class = "stat" type="checkbox" id="dexSave"><p style="display: inline;">Dexterity</p><br>
+                      <input class = "stat" type="checkbox" id="conSave"><p style="display: inline;">Constitution</p><br>
+                      <input class = "stat" type="checkbox" id="intSave"><p style="display: inline;">Intelligence</p><br>
+                      <input class = "stat" type="checkbox" id="wisSave"><p style="display: inline;">Wisdom</p><br>
+                      <input class = "stat" type="checkbox" id="charSave"><p style="display: inline;">Charisma</p><br>
                       <h6 class="center">Saving Throws</h6>
                     </td>
                   </tr>
                   
                   <tr>
                     <td>
-                      <input class = "stat" type="radio" id="acrobatics"><p style="display: inline;">Acrobatics</p><br>
-                      <input class = "stat" type="radio" id="animalHandling"><p style="display: inline;">Animal Handling</p><br>
-                      <input class = "stat" type="radio" id="arcana"><p style="display: inline;">Arcana</p><br>
-                      <input class = "stat" type="radio" id="athletics"><p style="display: inline;">Athletics</p><br>
-                      <input class = "stat" type="radio" id="deception"><p style="display: inline;">Deception</p><br>
-                      <input class = "stat" type="radio" id="history"><p style="display: inline;">History</p><br>
-                      <input class = "stat" type="radio" id="insight"><p style="display: inline;">Insight</p><br>
-                      <input class = "stat" type="radio" id="intimidation"><p style="display: inline;">Intimidation</p><br>
-                      <input class = "stat" type="radio" id="investigation"><p style="display: inline;">Investigation</p><br>
-                      <input class = "stat" type="radio" id="medicine"><p style="display: inline;">Medicine</p><br>
-                      <input class = "stat" type="radio" id="nature"><p style="display: inline;">Nature</p><br>
-                      <input class = "stat" type="radio" id="perception"><p style="display: inline;">Perception</p><br>
-                      <input class = "stat" type="radio" id="performance"><p style="display: inline;">Performance</p><br>
-                      <input class = "stat" type="radio" id="persuasion"><p style="display: inline;">Persuasion</p><br>
-                      <input class = "stat" type="radio" id="religion"><p style="display: inline;">Religion</p><br>
-                      <input class = "stat" type="radio" id="slightOfHand"><p style="display: inline;">Slight of Hand</p><br>
-                      <input class = "stat" type="radio" id="stealth"><p style="display: inline;">Stealth</p><br>
-                      <input class = "stat" type="radio" id="survival"><p style="display: inline;">Survival</p><br>
+                      <input class = "stat" type="checkbox" id="acrobatics"><p style="display: inline;">Acrobatics</p><br>
+                      <input class = "stat" type="checkbox" id="animalHandling"><p style="display: inline;">Animal Handling</p><br>
+                      <input class = "stat" type="checkbox" id="arcana"><p style="display: inline;">Arcana</p><br>
+                      <input class = "stat" type="checkbox" id="athletics"><p style="display: inline;">Athletics</p><br>
+                      <input class = "stat" type="checkbox" id="deception"><p style="display: inline;">Deception</p><br>
+                      <input class = "stat" type="checkbox" id="history"><p style="display: inline;">History</p><br>
+                      <input class = "stat" type="checkbox" id="insight"><p style="display: inline;">Insight</p><br>
+                      <input class = "stat" type="checkbox" id="intimidation"><p style="display: inline;">Intimidation</p><br>
+                      <input class = "stat" type="checkbox" id="investigation"><p style="display: inline;">Investigation</p><br>
+                      <input class = "stat" type="checkbox" id="medicine"><p style="display: inline;">Medicine</p><br>
+                      <input class = "stat" type="checkbox" id="nature"><p style="display: inline;">Nature</p><br>
+                      <input class = "stat" type="checkbox" id="perception"><p style="display: inline;">Perception</p><br>
+                      <input class = "stat" type="checkbox" id="performance"><p style="display: inline;">Performance</p><br>
+                      <input class = "stat" type="checkbox" id="persuasion"><p style="display: inline;">Persuasion</p><br>
+                      <input class = "stat" type="checkbox" id="religion"><p style="display: inline;">Religion</p><br>
+                      <input class = "stat" type="checkbox" id="slightOfHand"><p style="display: inline;">Slight of Hand</p><br>
+                      <input class = "stat" type="checkbox" id="stealth"><p style="display: inline;">Stealth</p><br>
+                      <input class = "stat" type="checkbox" id="survival"><p style="display: inline;">Survival</p><br>
                       <h6 class="center">Skills<h6>
                     </td>
                   </tr>
@@ -81,9 +81,63 @@
             </td>
 
             <td style="width: 34%;">
+              <tr>
               <div style="width: 33%; display: inline;" class="center"><p style="display: inline;">AC: </p><input class = "stat" id="DC"/></div>
               <div style="width: 33%; display: inline;" class="center"><p style="display: inline;">Initiative: </p><input class = "stat" id="Initiative"/></div>
-              <div style="width: 33%; display: inline;" class="center"><p style="display: inline;">Speed: </p><input class = "stat" id="Speed"/></div>
+              <div style="width: 33%; display: inline;" class="center"><p style="display: inline;">Speed: </p><input class = "stat" id="Speed"/></div><br>
+
+              <div style="width: 33%; display: inline;" class="center"><p style="display: inline;">Hp: </p><input class = "stat" id="currentHp"/> / <input class = "stat" id="maxHp"></div>
+              <div style="width: 33%; display: inline;" class="center"><p style="display: inline;">Temp Hp: </p><input class = "stat" id="tempHp"/></div><br>
+              
+              <table>
+                <tr>
+                  <th>Hit Dice:</th>
+                  <th>Death Saves:</th>
+                </tr>
+                <tr>
+                  <td>
+                    <p>Total:</p><input class = "stat" id="totalHitDice"><br>
+                    <p>Current:</p><input class = "stat" id="currentHitDice">
+                  </td>
+
+                  <td>
+                    <p>Success:</p>
+                    <input class = "stat" type="checkbox" id="success1"><input class = "stat" type="checkbox" id="success2"><input class = "stat" type="checkbox" id="success3"><br>
+                    <p>Failures:</p>
+                    <input class = "stat" type="checkbox" id="fail1"><input class = "stat" type="checkbox" id="fail2"><input class = "stat" type="checkbox" id="fail3"> 
+                  </td>
+                </tr>
+              </table>
+              </tr>
+
+              <tr>
+                <h6>Attacks & Spell Casting:</h6>
+                <table>
+                  <tr>
+                    <th>Name</th>
+                    <th>Attack Bonus</th>
+                    <th>Damage</th>
+                  </tr>
+
+                  <tr>
+                    <td><input class = "stat" id="actionName1"/></td>
+                    <td><input class = "stat" id="actionBonus1"/></td>
+                    <td><input class = "stat" id="actionDamage1"/></td>
+                  </tr>
+
+                  <tr>
+                    <td><input class = "stat" id="actionName2"/></td>
+                    <td><input class = "stat" id="actionBonus2"/></td>
+                    <td><input class = "stat" id="actionDamage2"/></td>
+                  </tr>
+
+                  <tr>
+                    <td><input class = "stat" id="actionName3"/></td>
+                    <td><input class = "stat" id="actionBonus3"/></td>
+                    <td><input class = "stat" id="actionDamage3"/></td>
+                  </tr>
+                </table>
+              </tr>
             </td>
 
             <td style="width: 33%;">
