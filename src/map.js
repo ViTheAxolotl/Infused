@@ -111,6 +111,15 @@ onValue(bubbleRef, (snapshot) =>
     }
 });
 
+function init()
+{
+    setInterval(timer, 250);
+
+    document.getElementById("helpBtn").onclick = handleCharClick;
+    fetch('https://vitheaxolotl.github.io/Infused/src/files.json').then(res => res.json()).then((json) => imgs = json);
+    document.getElementById("hideCover").onclick = hideCover; 
+}
+
 const startDragging = (e) => 
 {
     mouseDown = true;
@@ -173,15 +182,6 @@ slider2.addEventListener('mousemove', move2, false);
 slider2.addEventListener('mousedown', startDragging2, false);
 slider2.addEventListener('mouseup', stopDragging2, false);
 slider2.addEventListener('mouseleave', stopDragging2, false);
-
-function init()
-{
-    setInterval(timer, 250);
-
-    document.getElementById("helpBtn").onclick = handleCharClick;
-    fetch('https://vitheaxolotl.github.io/Infused/src/files.json').then(res => res.json()).then((json) => imgs = json);
-    document.getElementById("hideCover").onclick = hideCover; 
-}
 
 function addBubbles(bubbleDB)
 {
