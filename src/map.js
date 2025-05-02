@@ -35,7 +35,7 @@ let startY, scrollUp;
 let slider = gridMap;
 let startX2, scrollLeft2;
 let startY2, scrollUp2;
-let slider2 = document.querySelector("#sheet");
+let slider2 = document.getElementById("#statSheet");
 let wholeBubbles;
 
 const customsRef = ref(database, 'customImages/');
