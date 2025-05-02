@@ -33,6 +33,9 @@ let mouseDown = false;
 let startX, scrollLeft;
 let startY, scrollUp;
 let slider = gridMap;
+let startX2, scrollLeft2;
+let startY2, scrollUp2;
+let slider2 = document.querySelector("#sheet");
 let wholeBubbles;
 
 const customsRef = ref(database, 'customImages/');
@@ -93,7 +96,6 @@ const startDragging = (e) =>
     startY = e.pageY - slider.offsetTop;
     scrollLeft = slider.scrollLeft;
     scrollUp = slider.scrollTop;
-
 }
 
 const stopDragging = (e) => 
@@ -113,11 +115,42 @@ const move = (e) =>
     slider.scrollTop = scrollUp - scrollY;
 }
 
+const startDragging2 = (e) => 
+{
+    mouseDown = true;
+    startX2 = e.pageX - slider.offsetLeft;
+    startY2 = e.pageY - slider.offsetTop;
+    scrollLeft2 = slider.scrollLeft;
+    scrollUp2 = slider.scrollTop;
+}
+
+const stopDragging2 = (e) => 
+{
+    mouseDown = false;
+}
+
+const move2 = (e) => 
+{
+    e.preventDefault();
+    if(!mouseDown) { return; }
+    const x = e.pageX - slider.offsetLeft;
+    const scrollX = x - startX2;
+    slider.scrollLeft = scrollLeft2 - scrollX;
+    const y = e.pageY - slider.offsetTop;
+    const scrollY = y - startY2;
+    slider.scrollTop = scrollUp2 - scrollY;
+}
+
 // Add the event listeners
 slider.addEventListener('mousemove', move, false);
 slider.addEventListener('mousedown', startDragging, false);
 slider.addEventListener('mouseup', stopDragging, false);
 slider.addEventListener('mouseleave', stopDragging, false);
+
+slider2.addEventListener('mousemove', move2, false);
+slider2.addEventListener('mousedown', startDragging2, false);
+slider2.addEventListener('mouseup', stopDragging2, false);
+slider2.addEventListener('mouseleave', stopDragging2, false);
 
 onAuthStateChanged(auth, (user) => 
 {
