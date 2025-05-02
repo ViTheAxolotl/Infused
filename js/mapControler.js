@@ -1587,6 +1587,7 @@ function handleUseAction(targets)
 
                 damage = splitRoll(sDice, "@sDice");
                 damage = diceRoller(damage[0], damage[1], damage[2], "false");
+                handleChangeHp(damage.split("**")[1], wholeDb[targets[key].title.split(":")[0]], "-");
             
                 if(display){display += `\nResult: ${damage}. \n`;}
                 else{display = `${wholeChar[player]["charName"]} used the ability, ${lastUse}:\n${useInfo}\n\nResult: ${damage}. \n`;}
