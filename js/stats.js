@@ -57,5 +57,8 @@ function init()
 
 function updateStat()
 {
-    setDoc(`playerChar/${player}/stats/${this.id}`, this.value);
+    let setTo = this.value;
+    if(setTo == "on"){setTo = true;}
+    else if(setTo == "off"){setTo = false;}
+    setDoc(`playerChar/${player}/stats/${this.id}`, setTo);
 }
