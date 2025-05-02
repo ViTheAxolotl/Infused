@@ -26,7 +26,6 @@ let wholeChar;
 let wholeCustom;
 let firstRun = true;
 let currentTurn;
-let players = ["nibbly", "nook", "razor", "leonier"];
 let mode = "";
 let modeRef;
 let mouseDown = false;
@@ -37,6 +36,29 @@ let startX2, scrollLeft2;
 let startY2, scrollUp2;
 let slider2 = document.getElementById("#statSheet");
 let wholeBubbles;
+
+onAuthStateChanged(auth, (user) => 
+{
+    if (!user) 
+    {
+        alert("You need to login before using this resource. Click Ok and be redirected");
+        window.location.href = "loginPage.html?map.html"; 
+    } 
+
+    else
+    {
+        player = auth.currentUser.email.split("@");
+        player = toTitleCase(player[0]);
+        setDoc(`playerChar/${player}/mode`, "waiting");
+        
+        modeRef = ref(database, `playerChar/${player}/mode`);
+        onValue(modeRef, (snapshot) => 
+        {
+            const data = snapshot.val();
+            mode = data;
+        });
+    }
+});
 
 const customsRef = ref(database, 'customImages/');
 onValue(customsRef, (snapshot) => 
@@ -151,29 +173,6 @@ slider2.addEventListener('mousemove', move2, false);
 slider2.addEventListener('mousedown', startDragging2, false);
 slider2.addEventListener('mouseup', stopDragging2, false);
 slider2.addEventListener('mouseleave', stopDragging2, false);
-
-onAuthStateChanged(auth, (user) => 
-{
-    if (!user) 
-    {
-        alert("You need to login before using this resource. Click Ok and be redirected");
-        window.location.href = "loginPage.html?map.html"; 
-    } 
-
-    else
-    {
-        player = auth.currentUser.email.split("@");
-        player = toTitleCase(player[0]);
-        setDoc(`playerChar/${player}/mode`, "waiting");
-        
-        modeRef = ref(database, `playerChar/${player}/mode`);
-        onValue(modeRef, (snapshot) => 
-        {
-            const data = snapshot.val();
-            mode = data;
-        });
-    }
-});
 
 function init()
 {
