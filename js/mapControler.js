@@ -256,7 +256,7 @@ function sendMessageToDisplay(message)
 
 function handleGridClick(e)
 {
-    let bubbleDB = {id : `${player}-bubble`, x : (e.offsetX - map.bubble) * (zoomLevel/100), y : (e.offsetY - map.bubble) * (zoomLevel/100), size : 1, src : imgs["borders"][wholeDb[wholeChar[player]["currentToken"]].border]};
+    let bubbleDB = {id : `${player}-bubble`, x : (e.offsetX * (zoomLevel/100) - map.bubble), y : (e.offsetY * (zoomLevel/100) - map.bubble), size : 1, src : imgs["borders"][wholeDb[wholeChar[player]["currentToken"]].border]};
     if(bubbleDB.src.includes("invisible")){bubbleDB.src = imgs["borders"]["blue"];}
     setDoc(`bubbles/${bubbleDB.id}`, bubbleDB);
 }
