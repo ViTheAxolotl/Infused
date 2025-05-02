@@ -1321,7 +1321,6 @@ function handleUseAction(targets)
             display += `\n${useInfo}\nWaiting for them to use the Response Action (Under Actions, Miscs)...`;
 
             if(!spellLevel){display = display.replaceAll("cast", "used the ability");} //At the end
-            discription = "";
         }
 
         if(discription.includes("{@respond}")) //Needs to check if half damage if sucess
