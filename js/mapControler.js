@@ -1398,7 +1398,7 @@ function handleUseAction(targets)
                 {
                     display = display.replace("failed", "succeded");
                 }
-            }
+            } 
 
             display += ad_dis;
         }
