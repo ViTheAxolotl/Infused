@@ -149,11 +149,6 @@ slider.addEventListener('mousedown', startDragging, false);
 slider.addEventListener('mouseup', stopDragging, false);
 slider.addEventListener('mouseleave', stopDragging, false);
 
-slider2.addEventListener('mousemove', move2, false);
-slider2.addEventListener('mousedown', startDragging2, false);
-slider2.addEventListener('mouseup', stopDragging2, false);
-slider2.addEventListener('mouseleave', stopDragging2, false);
-
 function addBubbles(bubbleDB)
 {
     if(bubbleDB != "hold")
@@ -1132,3 +1127,8 @@ const move2 = (e) =>
     const scrollY = y - startY2;
     slider.scrollTop = scrollUp2 - scrollY;
 }
+
+slider2.addEventListener('mousemove', move2, false);
+slider2.addEventListener('mousedown', startDragging2, false);
+slider2.addEventListener('mouseup', stopDragging2, false);
+slider2.addEventListener('mouseleave', stopDragging2, false);
