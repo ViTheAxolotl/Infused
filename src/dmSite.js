@@ -1259,7 +1259,7 @@ function addToken()
         title : t,
         xPos : x,
         yPos : y,
-        dc : dc
+        DC : dc
     });
 
     resetDelete();
