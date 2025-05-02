@@ -58,7 +58,6 @@ function init()
 function updateStat()
 {
     let setTo = this.value;
-    if(setTo == "on"){setTo = true;}
-    else if(setTo == "off"){setTo = false;}
+    if(setTo == "on"){setTo = this.checked;}
     setDoc(`playerChar/${player}/stats/${this.id}`, setTo);
 }
