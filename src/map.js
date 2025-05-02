@@ -36,6 +36,7 @@ let startX2, scrollLeft2;
 let startY2, scrollUp2;
 let slider2 = document.getElementById("#statSheet");
 let wholeBubbles;
+fetch('https://vitheaxolotl.github.io/Infused/src/files.json').then(res => res.json()).then((json) => imgs = json);
 
 onAuthStateChanged(auth, (user) => 
 {
@@ -116,7 +117,6 @@ function init()
     setInterval(timer, 250);
 
     document.getElementById("helpBtn").onclick = handleCharClick;
-    fetch('https://vitheaxolotl.github.io/Infused/src/files.json').then(res => res.json()).then((json) => imgs = json);
     document.getElementById("hideCover").onclick = hideCover; 
 }
 
