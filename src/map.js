@@ -145,7 +145,7 @@ const move = (e) =>
 
 let startX2, scrollLeft2;
 let startY2, scrollUp2;
-let slider2 = document.querySelector("#statSheet");
+let slider2 = document.querySelector("#sheet");
 
 const startDragging2 = (e) => 
 {
