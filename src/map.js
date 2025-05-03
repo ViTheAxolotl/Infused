@@ -819,7 +819,7 @@ function handleViewTokens(t)
 
     viewDiv.classList = "";
     viewDiv.style.zIndex = "1011";
-    for(let elm of viewDiv.children[0])
+    for(let elm of viewDiv.children[0].children)
     {
         if(t.id != "helpBtn" || elm.id == "hideCover" || elm.id == "showInstructions")
         {
