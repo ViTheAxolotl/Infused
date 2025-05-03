@@ -2378,10 +2378,10 @@ function useAbility()
         this.onclick = displaySelect;
         setDoc(`playerChar/${player}/mode`, "waiting");
         handleUseAction(targets);
+        emptyCards();
         document.getElementById("hideCover").click();
         for(let key = 0; key < targets.length; key++){targets[key].classList.remove("selected-temp");}
         if(targets[0]){targets[0].classList.remove("selected-temp");}
-        emptyCards();
         document.getElementById("otherCast").remove();
     }
 }
