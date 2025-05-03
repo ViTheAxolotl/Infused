@@ -92,7 +92,7 @@ function updateStat()
     {
         let full = this.value;
         let smaller;
-        let ref = document.getElementById(this.id.slice(0, this.id.length-5));
+        let ref = document.getElementById(this.id.slice(0, this.id.length-4));
 
         full = parseInt(full);
         smaller = (full - 10) / 2;
