@@ -1127,7 +1127,8 @@ const move2 = (e) =>
     const scrollY = y - startY2;
     slider.scrollTop = scrollUp2 - scrollY;
 }
-window.onload = loaded;
+
+setTimeout(loaded, 5000);
 
 function loaded()
 {   
