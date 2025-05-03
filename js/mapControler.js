@@ -273,9 +273,11 @@ function handleQuickAction()
 
     for(let elm of viewDiv.children[0].children)
     {
-        if(elm.id != "hideCover");
-        elm.classList = `invisible ${elm.classList[0]}`;
-        elm.style.zIndex = "0";
+        if(elm.id != "hideCover")
+        {
+            elm.classList = `invisible ${elm.classList[0]}`;
+            elm.style.zIndex = "0";
+        }
     }
 }
 
@@ -989,7 +991,7 @@ function handleShowActions()
         {
             let location = "cards";
             if(quickAction){location="qaCards";}
-            
+
             createCard(action, setUpText(action, actions), location);
         }
 
