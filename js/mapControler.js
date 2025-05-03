@@ -946,7 +946,7 @@ function handleShowSpells()
         for(let spell of Object.keys(spells)) //For spells in the spell level
         {
             let location = "cards";
-            if(quickAction){location = "qaCards";}
+            if(quickAction){location = "qaCards"; setQuickAction(false); emptyCards(); setQuickAction(true);}
 
             createCard(spell, setUpText(spell, spells), location);
         }
@@ -990,7 +990,7 @@ function handleShowActions()
         for(let action of Object.keys(actions)) //For each action in the tag
         {
             let location = "cards";
-            if(quickAction){location="qaCards";}
+            if(quickAction){location = "qaCards"; setQuickAction(false); emptyCards(); setQuickAction(true);}
 
             createCard(action, setUpText(action, actions), location);
         }
@@ -1113,6 +1113,11 @@ function handleCardClick()
     {
         anchor.href = "#searchDiv";
         anchor.click();
+    }
+
+    else
+    {
+
     }
 
     if(lastAbility != currentTitle && lastSpell != currentTitle) //If they didn't click the same card twice
@@ -2380,7 +2385,6 @@ function useAbility()
         handleUseAction(targets);
         emptyCards();
         document.getElementById("hideCover").click();
-        setQuickAction(false);
         emptyCards();
         for(let key = 0; key < targets.length; key++){targets[key].classList.remove("selected-temp");}
         if(targets[0]){targets[0].classList.remove("selected-temp");}

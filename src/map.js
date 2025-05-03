@@ -933,7 +933,7 @@ function hideCover()
         elm.classList = `invisible ${elm.classList[0]}`;
         elm.style.zIndex = "0";
     }
-
+    
     let holdingDiv = document.getElementById("holdingDiv");
     if(holdingDiv != null){holdingDiv.remove();}
 
