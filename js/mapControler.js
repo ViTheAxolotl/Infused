@@ -264,10 +264,19 @@ function handleGridClick(e)
 
 function handleQuickAction()
 {
+    let viewDiv = document.getElementById("cover");
+
     setQuickAction(true);
     handleFavoriteSelect();
 
     document.getElementById("quickDiv").children[0].classList = "center";
+
+    for(let elm of viewDiv.children[0].children)
+    {
+        if(elm.id != "hideCover");
+        elm.classList = `invisible ${elm.classList[0]}`;
+        elm.style.zIndex = "0";
+    }
 }
 
 /**
@@ -884,6 +893,16 @@ function handleArrow()
  */
 function emptyCards()
 {
+    if(quickAction)
+    {
+        upper = document.getElementById("qaCards");
+    }
+
+    else
+    {
+        upper = document.getElementById("cards");
+    }
+
     while(upper.children.length > 0) //While cards are still present
     {
         upper.removeChild(upper.lastChild); //Removes the last card there
@@ -924,7 +943,10 @@ function handleShowSpells()
 
         for(let spell of Object.keys(spells)) //For spells in the spell level
         {
-            createCard(spell, setUpText(spell, spells), "cards");
+            let location = "cards";
+            if(quickAction){location = "qaCards";}
+
+            createCard(spell, setUpText(spell, spells), location);
         }
 
         for(let key of document.getElementsByClassName("card-body")){key.onclick = handleCardClick;} //For each spell created change it's on click
@@ -952,7 +974,7 @@ function handleShowActions()
 
     this.classList.add("selected");
 
-    emptyCards()
+    emptyCards();
 
     if(searchBar[0].value != "") //If search bar has something in it
     {
@@ -965,7 +987,10 @@ function handleShowActions()
 
         for(let action of Object.keys(actions)) //For each action in the tag
         {
-            createCard(action, setUpText(action, actions), "cards");
+            let location = "cards";
+            if(quickAction){location="qaCards";}
+            
+            createCard(action, setUpText(action, actions), location);
         }
 
         for(let key of document.getElementsByClassName("card-body")){key.onclick = handleCardClick;} //Changes onclick for the new cards created
