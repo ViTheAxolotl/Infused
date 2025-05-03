@@ -16,6 +16,12 @@ const firebaseApp = initializeApp
 
 export let auth = getAuth(); //Logs into accounts
 export let database = getDatabase(); //Sets up connection
+export let quickAction = false;
+
+export function setQuickAction(bool)
+{
+    quickAction = bool;
+}
 
 /**
  * Sets Map Values

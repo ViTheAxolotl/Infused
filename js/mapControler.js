@@ -2,7 +2,7 @@
 
 import { ref, onValue } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js';
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
-import { toTitleCase, auth, database, createCard, setDoc, deleteDoc, placeBefore, createLabel, clenseInput, reload, setMapValue } from './viMethods.js';
+import { toTitleCase, auth, database, createCard, setDoc, deleteDoc, placeBefore, createLabel, clenseInput, reload, setMapValue, quickAction, setQuickAction } from './viMethods.js';
 
 let map = setMapValue();
 let currentPos;
@@ -196,6 +196,7 @@ function setMainVaribles()
     actionBtn = document.getElementsByClassName("action");
     for(let aButton of actionBtn){aButton.onclick = handleShowActions;} //for each of the actions row
     rollDiceBtn = document.getElementById("rollDice").onclick = handleDiceRoll;
+    document.getElementById("quickAction").onclick = handleQuickAction;
 
     if(player != "Vi") //If player isn't me
     {
@@ -259,6 +260,13 @@ function handleGridClick(e)
     let bubbleDB = {id : `${player}-bubble`, x : (e.offsetX * (100/zoomLevel) - map.bubble), y : (e.offsetY * (100/zoomLevel) - map.bubble), size : 1, src : imgs["borders"][wholeDb[wholeChar[player]["currentToken"]].border]};
     if(bubbleDB.src.includes("invisible")){bubbleDB.src = imgs["borders"]["blue"];}
     setDoc(`bubbles/${bubbleDB.id}`, bubbleDB);
+}
+
+function handleQuickAction()
+{
+    setQuickAction(true);
+
+
 }
 
 /**
@@ -406,14 +414,21 @@ function handleFavoriteSelect()
     { //Every time something changes in the database
         const data = snapshot.val();
         wholeFavorite = data;
+        let spellDiv = document.getElementById("spellsF");
+        let actionDiv = document.getElementById("abilityF");
 
-        let spellDiv = document.getElementById("spellsF")
+        if(quickAction == true)
+        {
+            spellDiv = document.getElementById("spellsFQ");
+            actionDiv = document.getElementById("abilityFQ");
+        }
+
         while(spellDiv.children.length > 0) //Until the div is empty
         {
             spellDiv.removeChild(spellDiv.lastChild); 
         }
 
-        let actionDiv = document.getElementById("abilityF")
+
         while(actionDiv.children.length > 0) //Until the div is empty
         {
             actionDiv.removeChild(actionDiv.lastChild);

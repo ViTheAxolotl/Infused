@@ -22,12 +22,25 @@
 
     <div class="container">
       <div id="cover" class = "invisible" style="z-index: 1011;">
-        <button id="hideCover" class="invisible hbhbhbhb" style="z-index: 1012;">Exit</button>
-        <img id = "viewToken" class="invisible veiwTokens" style="z-index: 1013;" src=""/>
-        <img id = "viewBorder" class="invisible veiwTokens"  style="z-index: 1014;" src=""/>
-        <img id = "viewHp" class="invisible veiwTokens" style="z-index: 1015;" src=""/>
-        <h3 id = "viewTitle" class="invisible center" style="z-index: 1016;"></h3>
-        <p class="invisible hbhbhbhb" id = "showInstructions" style="padding:10px;"></p>
+        <div style="display: inline;">
+          <button id="quickAction" class="invisible hbhbhbhb" style="z-index: 1011;">Quick Action</button>
+          <button id="hideCover" class="invisible hbhbhbhb" style="z-index: 1012;">Exit</button>
+          <img id = "viewToken" class="invisible veiwTokens" style="z-index: 1013;" src=""/>
+          <img id = "viewBorder" class="invisible veiwTokens"  style="z-index: 1014;" src=""/>
+          <img id = "viewHp" class="invisible veiwTokens" style="z-index: 1015;" src=""/>
+          <h3 id = "viewTitle" class="invisible center" style="z-index: 1016;"></h3>
+          <p class="invisible hbhbhbhb" id = "showInstructions" style="padding:10px;"></p>
+        </div>
+
+        <div id="quickDiv" class="invisible hbhbhbhb" style="display: inline;">
+          <div class="center">
+            <button name="spellsFQ" class = "gridButton secondMenu">Spells</button>
+            <button name="abilityFQ" class = "gridButton secondMenu">Abilities</button>
+          </div>
+
+          <div id="spellsFQ" style="display: none;"></div>
+          <div id="abilityFQ" style="display: none;"></div>
+        </div>
       </div>
 
       <img id="helpBtn" src="images/helpBtn.png"/>

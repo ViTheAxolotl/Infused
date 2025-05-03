@@ -1,7 +1,7 @@
 "use strict";
 import { ref, onValue } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js';
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
-import { toTitleCase, auth, database, setDoc, deleteDoc, returnHpImage, setMapValue, placeBefore } from '../js/viMethods.js';
+import { toTitleCase, auth, database, setDoc, deleteDoc, returnHpImage, setMapValue, placeBefore, quickAction, setQuickAction } from '../js/viMethods.js';
 
 let map = setMapValue();
 let wholeDB = {};
@@ -115,6 +115,7 @@ function init()
 
     document.getElementById("helpBtn").onclick = handleCharClick;
     document.getElementById("hideCover").onclick = hideCover; 
+    
 }
 
 const startDragging = (e) => 
@@ -785,6 +786,7 @@ function handleCharClick()
         
             else
             {
+                this.classList.add("selected-temp");
                 handleViewTokens(this);
             }
 
@@ -915,6 +917,7 @@ function changeInstructions()
 function hideCover()
 {
     let viewDiv = document.getElementById("cover");
+    let selected = document.getElementsByClassName("selected-temp");
 
     for(let elm of viewDiv.children)
     {
@@ -927,6 +930,29 @@ function hideCover()
 
     viewDiv.classList = `invisible`;
     viewDiv.style.zIndex = "0";
+
+    if(selected.length > 0)
+    {
+        for(let select of selected)
+        {
+            select.classList.remove("selected-temp");
+        }
+
+        setQuickAction(false);
+        let spellDiv = document.getElementById("spellsFQ");
+        let actionDiv = document.getElementById("abilityFQ");
+
+        while(spellDiv.children.length > 0) //Until the div is empty
+        {
+            spellDiv.removeChild(spellDiv.lastChild); 
+        }
+
+
+        while(actionDiv.children.length > 0) //Until the div is empty
+        {
+            actionDiv.removeChild(actionDiv.lastChild);
+        }
+    }
 }
 
 function placeTokens(x, y, prop)
