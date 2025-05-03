@@ -267,7 +267,7 @@ function handleQuickAction()
     setQuickAction(true);
     handleFavoriteSelect();
 
-    
+    document.getElementById("quickDiv").children[0].classList = "center";
 }
 
 /**
