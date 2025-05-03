@@ -1089,6 +1089,12 @@ function handleCardClick()
 {
     let children = this.childNodes; 
     let currentTitle = children[0].innerHTML; //Get title from card
+    
+    for(let card of this.parentNode.children)
+    {
+        card.classList.remove("selected");
+    }
+
     this.classList.add("selected");
     
     let temp = document.getElementById("optionDiv");
