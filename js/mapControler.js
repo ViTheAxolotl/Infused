@@ -1269,7 +1269,6 @@ function handleCardClick()
 
             else
             {
-                document.getElementById("qaCards").childNodes[0].appendChild(wrapper);
                 document.getElementById("qaCards").appendChild(optionDiv);
             }
         }

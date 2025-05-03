@@ -141,15 +141,12 @@ export function createCard(title, text, location)
     
     else
     {
-        if(!title.includes("Create New"))
-        {
-            let card = document.createElement("button");
-            card.classList = "center gridButton card-body color-UP-yellow bg-UP-white";
-            card.innerHTML = title;
+        let card = document.createElement("button");
+        card.classList = "center gridButton card-body color-UP-yellow bg-UP-white";
+        card.innerHTML = title;
 
-            let noteDisplay = document.getElementById(location);
-            noteDisplay.appendChild(card);
-        }  
+        let noteDisplay = document.getElementById(location);
+        noteDisplay.appendChild(card); 
     }
 }
 
