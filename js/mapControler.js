@@ -1089,6 +1089,7 @@ function handleCardClick()
 {
     let children = this.childNodes; 
     let currentTitle = children[0].innerHTML; //Get title from card
+    this.classList.add("selected");
     
     let temp = document.getElementById("optionDiv");
     if(temp){temp.remove();} //Removes other cards options that was visible
@@ -1097,9 +1098,12 @@ function handleCardClick()
     if(favBtn){favBtn.remove();} //Removes other cards options that was visible
 
     let anchor = document.createElement("a");
-    anchor.href = "#searchDiv";
-    anchor.click();
-    
+    if(!quickAction)
+    {
+        anchor.href = "#searchDiv";
+        anchor.click();
+    }
+
     if(lastAbility != currentTitle && lastSpell != currentTitle) //If they didn't click the same card twice
     {
         if(searchBar[0].value != "")
@@ -1244,9 +1248,19 @@ function handleCardClick()
 
             optionDiv.appendChild(slotSelect);
             optionDiv.appendChild(castBtn);
-            document.getElementById("cards").childNodes[0].appendChild(wrapper);
-            if(this.parentNode.nextSibling != null){placeBefore(optionDiv, this.parentNode.nextSibling);}
-            else{document.getElementById("cards").appendChild(optionDiv);}
+            
+            if(!quickAction)
+            {
+                document.getElementById("cards").childNodes[0].appendChild(wrapper);
+                if(this.parentNode.nextSibling != null){placeBefore(optionDiv, this.parentNode.nextSibling);}
+                else{document.getElementById("cards").appendChild(optionDiv);}
+            }
+
+            else
+            {
+                document.getElementById("qaCards").childNodes[0].appendChild(wrapper);
+                document.getElementById("qaCards").appendChild(optionDiv);
+            }
         }
 
         else

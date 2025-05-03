@@ -142,7 +142,7 @@ export function createCard(title, text, location)
     else
     {
         let card = document.createElement("button");
-        card.classList = "center gridButton card";
+        card.classList = "center gridButton card-body";
         card.innerHTML = title;
 
         let noteDisplay = document.getElementById(location);
