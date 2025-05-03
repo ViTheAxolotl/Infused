@@ -42,7 +42,8 @@ function init()
         {
             if(typeof wholeChar[player]["stats"][stat.id] == "string")
             {
-                stat.value = wholeChar[player]["stats"][stat.id];
+                if(stat.value = ""){stat.value = wholeChar[player]["stats"][stat.id];}
+                else{stat.innerHTML = wholeChar[player]["stats"][stat.id];}
             }
 
             else
