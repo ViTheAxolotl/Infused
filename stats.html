@@ -26,67 +26,71 @@
         <tbody>
           <tr>
             <td style="width: 33%;">
-              <table><tr><td><div style="display: inline-block; width: 28%; transform: translateY(-17%);">
-                <table style="width: 85%;">
-                  <tr><td><p>Str:</p><input class = "stat" id="Strength"></td></tr>
-                  <tr><td><p>Dex:</p><input class = "stat" id="Dexterity"></td></tr>
-                  <tr><td><p>Con:</p><input class = "stat" id="Constitution"></td></tr>
-                  <tr><td><p>Int:</p><input class = "stat" id="Intelligence"></td></tr>
-                  <tr><td><p>Wis:</p><input class = "stat" id="Wisdom"></td></tr>
-                  <tr><td><p>Char:</p><input class = "stat" id="Charisma"></td></tr>
-                </table>
-              </div>
+              <table style="width: 100%;">
+                <tr>
+                  <td>
+                    <div style="display: inline-block; width: 28%; transform: translateY(-17%);">
+                      <table style="width: 85%;">
+                        <tr><td><p>Str:</p><input class = "stat" id="Strength"></td></tr>
+                        <tr><td><p>Dex:</p><input class = "stat" id="Dexterity"></td></tr>
+                        <tr><td><p>Con:</p><input class = "stat" id="Constitution"></td></tr>
+                        <tr><td><p>Int:</p><input class = "stat" id="Intelligence"></td></tr>
+                        <tr><td><p>Wis:</p><input class = "stat" id="Wisdom"></td></tr>
+                        <tr><td><p>Char:</p><input class = "stat" id="Charisma"></td></tr>
+                      </table>
+                    </div>
             
-              <div style="text-align: left; display: inline-block; width: 70%;">
-                <table style="width: 100%;">
-                  <tr style="text-align: center;"><td><input class = "stat" id="inspiration"/><p style="display: inline;">  Inspiration</p></td></tr>
-                  <tr style="text-align: center;"><td><input class = "stat" id="proficiency"/><p style="display: inline;">  Proficiency</p></td></tr>
-                  <tr>
-                    <td>
-                      <input class = "stat" type="checkbox" id="strSave"><p style="display: inline;">Strength</p><br>
-                      <input class = "stat" type="checkbox" id="dexSave"><p style="display: inline;">Dexterity</p><br>
-                      <input class = "stat" type="checkbox" id="conSave"><p style="display: inline;">Constitution</p><br>
-                      <input class = "stat" type="checkbox" id="intSave"><p style="display: inline;">Intelligence</p><br>
-                      <input class = "stat" type="checkbox" id="wisSave"><p style="display: inline;">Wisdom</p><br>
-                      <input class = "stat" type="checkbox" id="charSave"><p style="display: inline;">Charisma</p><br>
-                      <h6 class="center">Saving Throws</h6>
-                    </td>
-                  </tr>
-                  
-                  <tr>
-                    <td>
-                      <input class = "stat" type="checkbox" id="acrobatics"><p style="display: inline;">Acrobatics</p><br>
-                      <input class = "stat" type="checkbox" id="animalHandling"><p style="display: inline;">Animal Handling</p><br>
-                      <input class = "stat" type="checkbox" id="arcana"><p style="display: inline;">Arcana</p><br>
-                      <input class = "stat" type="checkbox" id="athletics"><p style="display: inline;">Athletics</p><br>
-                      <input class = "stat" type="checkbox" id="deception"><p style="display: inline;">Deception</p><br>
-                      <input class = "stat" type="checkbox" id="history"><p style="display: inline;">History</p><br>
-                      <input class = "stat" type="checkbox" id="insight"><p style="display: inline;">Insight</p><br>
-                      <input class = "stat" type="checkbox" id="intimidation"><p style="display: inline;">Intimidation</p><br>
-                      <input class = "stat" type="checkbox" id="investigation"><p style="display: inline;">Investigation</p><br>
-                      <input class = "stat" type="checkbox" id="medicine"><p style="display: inline;">Medicine</p><br>
-                      <input class = "stat" type="checkbox" id="nature"><p style="display: inline;">Nature</p><br>
-                      <input class = "stat" type="checkbox" id="perception"><p style="display: inline;">Perception</p><br>
-                      <input class = "stat" type="checkbox" id="performance"><p style="display: inline;">Performance</p><br>
-                      <input class = "stat" type="checkbox" id="persuasion"><p style="display: inline;">Persuasion</p><br>
-                      <input class = "stat" type="checkbox" id="religion"><p style="display: inline;">Religion</p><br>
-                      <input class = "stat" type="checkbox" id="slightOfHand"><p style="display: inline;">Slight of Hand</p><br>
-                      <input class = "stat" type="checkbox" id="stealth"><p style="display: inline;">Stealth</p><br>
-                      <input class = "stat" type="checkbox" id="survival"><p style="display: inline;">Survival</p><br>
-                      <h6 class="center">Skills<h6>
-                    </td>
-                  </tr>
-                </table>
-              </div></td></tr>
-              
-              <tr>
-                <td>
-                  <p style="display: inline;">Passive Perception:</p><input class = "stat" id="passivePerception"><br><br>
-                  <textarea class="stat" id="profAndLang" style="width: 30vw; height: 10vh;"></textarea>
-                  <h6 class="center">Proficiencies and Languages</h6>
-                </td>
-              </tr>
-            </table>
+                    <div style="text-align: left; display: inline-block; width: 70%;">
+                      <table style="width: 100%;">
+                        <tr style="text-align: center;"><td><input class = "stat" id="inspiration"/><p style="display: inline;">  Inspiration</p></td></tr>
+                        <tr style="text-align: center;"><td><input class = "stat" id="proficiency"/><p style="display: inline;">  Proficiency</p></td></tr>
+                        <tr>
+                          <td>
+                            <input class = "stat" type="checkbox" id="strSave"><p style="display: inline;">Strength</p><br>
+                            <input class = "stat" type="checkbox" id="dexSave"><p style="display: inline;">Dexterity</p><br>
+                            <input class = "stat" type="checkbox" id="conSave"><p style="display: inline;">Constitution</p><br>
+                            <input class = "stat" type="checkbox" id="intSave"><p style="display: inline;">Intelligence</p><br>
+                            <input class = "stat" type="checkbox" id="wisSave"><p style="display: inline;">Wisdom</p><br>
+                            <input class = "stat" type="checkbox" id="charSave"><p style="display: inline;">Charisma</p><br>
+                            <h6 class="center">Saving Throws</h6>
+                          </td>
+                        </tr>
+                        
+                        <tr>
+                          <td>
+                            <input class = "stat" type="checkbox" id="acrobatics"><p style="display: inline;">Acrobatics</p><br>
+                            <input class = "stat" type="checkbox" id="animalHandling"><p style="display: inline;">Animal Handling</p><br>
+                            <input class = "stat" type="checkbox" id="arcana"><p style="display: inline;">Arcana</p><br>
+                            <input class = "stat" type="checkbox" id="athletics"><p style="display: inline;">Athletics</p><br>
+                            <input class = "stat" type="checkbox" id="deception"><p style="display: inline;">Deception</p><br>
+                            <input class = "stat" type="checkbox" id="history"><p style="display: inline;">History</p><br>
+                            <input class = "stat" type="checkbox" id="insight"><p style="display: inline;">Insight</p><br>
+                            <input class = "stat" type="checkbox" id="intimidation"><p style="display: inline;">Intimidation</p><br>
+                            <input class = "stat" type="checkbox" id="investigation"><p style="display: inline;">Investigation</p><br>
+                            <input class = "stat" type="checkbox" id="medicine"><p style="display: inline;">Medicine</p><br>
+                            <input class = "stat" type="checkbox" id="nature"><p style="display: inline;">Nature</p><br>
+                            <input class = "stat" type="checkbox" id="perception"><p style="display: inline;">Perception</p><br>
+                            <input class = "stat" type="checkbox" id="performance"><p style="display: inline;">Performance</p><br>
+                            <input class = "stat" type="checkbox" id="persuasion"><p style="display: inline;">Persuasion</p><br>
+                            <input class = "stat" type="checkbox" id="religion"><p style="display: inline;">Religion</p><br>
+                            <input class = "stat" type="checkbox" id="slightOfHand"><p style="display: inline;">Slight of Hand</p><br>
+                            <input class = "stat" type="checkbox" id="stealth"><p style="display: inline;">Stealth</p><br>
+                            <input class = "stat" type="checkbox" id="survival"><p style="display: inline;">Survival</p><br>
+                            <h6 class="center">Skills<h6>
+                          </td>
+                        </tr>
+                      </table>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p style="display: inline;">Passive Perception:</p><input class = "stat" id="passivePerception"><br><br>
+                    <textarea class="stat" id="profAndLang" style="width: 30vw; height: 10vh;"></textarea>
+                    <h6 class="center">Proficiencies and Languages</h6>
+                  </td>
+                </tr>
+              </table>
             </td>
 
             <td style="width: 34%;">
@@ -125,14 +129,14 @@
                   <table style="width: 100%;">
                     <tr>
                       <td>Name</td>
-                      <td>Attack Bonus</td>
+                      <td style="width: 20%;">Attack Bonus</td>
                       <td>Damage</td>
                     </tr>
   
                     <tr>
-                      <td><input class = "stat" id="actionName1"/></td>
-                      <td><input class = "stat" id="actionBonus1"/></td>
-                      <td><input class = "stat" id="actionDamage1"/></td>
+                      <td><input class = "stat" id="actionName1" style="width: 100%;"/></td>
+                      <td><input class = "stat" id="actionBonus1" style="width: 100%;"/></td>
+                      <td><input class = "stat" id="actionDamage1" style="width: 100%;"/></td>
                     </tr>
   
                     <tr>
@@ -142,9 +146,9 @@
                     </tr>
   
                     <tr>
-                      <td><input class = "stat" id="actionName3"/></td>
-                      <td><input class = "stat" id="actionBonus3"/></td>
-                      <td><input class = "stat" id="actionDamage3"/></td>
+                      <td><input class = "stat" id="actionName3" style="width: 100%;"/></td>
+                      <td><input class = "stat" id="actionBonus3" style="width: 100%;"/></td>
+                      <td><input class = "stat" id="actionDamage3" style="width: 100%;"/></td>
                     </tr>
                   </table>
                 </td></tr>
