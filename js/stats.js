@@ -77,14 +77,14 @@ function updateStat()
         setTo = setTo.filter(item => item !== '•   ');
         setTo = setTo.join("\n");
 
-        setTo = setTo.split("   ");
+        setTo = setTo.split("    ");
 
         for(let i = 0; i < setTo.length; i++)
         {
             if(setTo[i][setTo[i].length -2] != "\\"){setTo[i] += "\n";}
         }
 
-        setTo = setTo.join("   ");
+        setTo = setTo.join("    ");
 
         this.value = setTo;
     }
