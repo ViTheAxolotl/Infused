@@ -847,6 +847,9 @@ function handleViewTokens(t)
         }
     }
 
+    viewDiv.children[0].classList = "";
+    viewDiv.children[1].classList = "";
+
     if(t.id == "helpBtn")
     {
         let instructions = document.createElement("h3");
