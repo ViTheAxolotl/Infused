@@ -2380,6 +2380,8 @@ function useAbility()
         handleUseAction(targets);
         emptyCards();
         document.getElementById("hideCover").click();
+        setQuickAction(false);
+        emptyCards();
         for(let key = 0; key < targets.length; key++){targets[key].classList.remove("selected-temp");}
         if(targets[0]){targets[0].classList.remove("selected-temp");}
         document.getElementById("otherCast").remove();
