@@ -937,6 +937,8 @@ function hideCover()
     let holdingDiv = document.getElementById("holdingDiv");
     if(holdingDiv != null){holdingDiv.remove();}
 
+    viewDiv.children[1].children[0].classList.add("invisible")
+
     viewDiv.classList = `invisible`;
     viewDiv.style.zIndex = "0";
 
