@@ -17,6 +17,7 @@ const firebaseApp = initializeApp
 export let auth = getAuth(); //Logs into accounts
 export let database = getDatabase(); //Sets up connection
 export let quickAction = false;
+export let skillDecrypt = {"Athletics" : "Strength", "Acrobatics" : "Dexterity", "Sleight of Hand" : "Dexterity", "Stealth" : "Dexterity", "Arcana" : "Intelligence", "History" : "Intelligence", "Investigation" : "Intelligence", "Nature" : "Intelligence", "Religion" : "Intelligence", "Animal Handling" : "Wisdom", "Insight" : "Wisdom", "Medicine" : "Wisdom", "Perception" : "Wisdom", "Survival" : "Wisdom",  "Deception" : "Charisma",  "Intimidation" : "Charisma",  "Performance" : "Charisma",  "Persuasion" : "Charisma"};
 
 export function setQuickAction(bool)
 {
