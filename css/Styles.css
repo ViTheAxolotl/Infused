@@ -631,6 +631,7 @@ table, .itemSearch, #itemImg
 {
     width: 4vw !important;
     text-align: center;
+    margin: 5px;
 }
 
 .topHalf input
@@ -649,6 +650,11 @@ table, .itemSearch, #itemImg
 {
     text-indent: 0px;
     padding: 5px;
+}
+
+.statSheet p
+{
+    margin-bottom: 0px;
 }
 
 .inlineDisplay
