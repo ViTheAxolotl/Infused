@@ -459,7 +459,7 @@ function handleFavoriteSelect()
                 lvlBtn.innerHTML = `Lvl ${spellLv}`;
                 lvlBtn.onclick = handleShowSpells;
                 if(spellLv == "0"){lvlBtn.innerHTML = "Cantrips";} //If the spell level is 0 change the name to cantrips
-                else if(spellLv == "hold"){lvlBtn.innerHTML = "Create New Spell"; lvlBtn.onclick = handleCreateNew;} //After they reach the last button make it the create new button
+                else if(spellLv == "hold"){if(!quickAction){lvlBtn.innerHTML = "Create New Spell"; lvlBtn.onclick = handleCreateNew;}} //After they reach the last button make it the create new button
                 spellDiv.appendChild(lvlBtn); //Adds the buttons to the div
             }
         }
@@ -473,7 +473,7 @@ function handleFavoriteSelect()
                 tagBtn.classList = "gridButton action";
                 tagBtn.innerHTML = `${actionTag}`;
                 tagBtn.onclick = handleShowActions;
-                if(actionTag == "hold"){tagBtn.innerHTML = "Create New Ability"; tagBtn.onclick = handleCreateNew;} //After they reach the last button make it the create new button
+                if(actionTag == "hold"){if(!quickAction){tagBtn.innerHTML = "Create New Ability"; tagBtn.onclick = handleCreateNew;}} //After they reach the last button make it the create new button
                 actionDiv.appendChild(tagBtn); //Adds the buttons to the div
             }
         }
