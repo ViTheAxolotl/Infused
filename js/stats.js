@@ -88,5 +88,18 @@ function updateStat()
         this.value = setTo;
     }
 
+    if(this.classList.contains("base6"))
+    {
+        let full = this.value;
+        let smaller;
+        let ref = document.getElementById(this.id.slice(0, this.id.length-5));
+
+        full = parseInt(full);
+        smaller = (full - 10) / 2;
+        smaller = Math.floor(smaller);
+        ref.innerHTML = smaller;
+        setDoc(`playerChar/${player}/stats/${this.id.slice(0, this.id.length-5)}`, smaller);
+    }
+
     setDoc(`playerChar/${player}/stats/${this.id}`, setTo);
 }
