@@ -1100,7 +1100,7 @@ init();
 
 let startX2, scrollLeft2;
 let startY2, scrollUp2;
-let slider2 = document.querySelector("#story");
+let slider2;
 
 const startDragging2 = (e) => 
 {
@@ -1127,8 +1127,14 @@ const move2 = (e) =>
     const scrollY = y - startY2;
     slider.scrollTop = scrollUp2 - scrollY;
 }
+window.onload = loaded;
 
-slider2.addEventListener('mousemove', move2, false);
-slider2.addEventListener('mousedown', startDragging2, false);
-slider2.addEventListener('mouseup', stopDragging2, false);
-slider2.addEventListener('mouseleave', stopDragging2, false);
+function loaded()
+{   
+    slider2 = document.querySelector("#story");
+    slider2.addEventListener('mousemove', move2, false);
+    slider2.addEventListener('mousedown', startDragging2, false);
+    slider2.addEventListener('mouseup', stopDragging2, false);
+    slider2.addEventListener('mouseleave', stopDragging2, false);
+}
+
