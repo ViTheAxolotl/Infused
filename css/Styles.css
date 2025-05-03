@@ -23,6 +23,11 @@ body
     background-color: rgb(70, 70, 70);
 }
 
+.bg-UP-white
+{
+    background-color: white !important;
+}
+
 .color-UP-purple
 {
     color: #510086;

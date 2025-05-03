@@ -1090,6 +1090,11 @@ function handleCardClick()
     let children = this.childNodes; 
     let currentTitle = children[0].innerHTML; //Get title from card
     
+    if(currentTitle == undefined)
+    {
+        currentTitle = this.innerHTML;
+    }
+
     for(let card of this.parentNode.children)
     {
         card.classList.remove("selected");
