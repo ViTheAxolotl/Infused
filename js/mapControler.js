@@ -1117,7 +1117,7 @@ function handleCardClick()
 
     if(lastAbility != currentTitle && lastSpell != currentTitle) //If they didn't click the same card twice
     {
-        if(searchBar[0].value != "")
+        if(searchBar[0].value != "" || quickAction)
         {
             let optionDiv = document.createElement("div");
             optionDiv.classList.add("center");
