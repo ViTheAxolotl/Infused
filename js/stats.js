@@ -81,7 +81,7 @@ function updateStat()
  
         for(let i = 0; i < setTo.length - 1; i++)
         {
-            if(setTo[i][setTo[i].length -2] != "\\"){setTo[i] += "\n";}
+            if(setTo[i][setTo[i].length - 1] != "\\"){setTo[i] += "\n";}
         }
 
         setTo = setTo.join("    ");
