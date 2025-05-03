@@ -74,6 +74,8 @@ function updateStat()
             if(setTo[i][0] != "•"){setTo[i] = "•   " + setTo[i];}
         }
 
+        setTo = setTo.filter(item => item !== '•   ');
+
         setTo = setTo.join("\n");
         this.value = setTo;
     }
