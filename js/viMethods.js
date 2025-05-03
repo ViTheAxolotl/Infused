@@ -114,27 +114,40 @@ export function toTitleCase(word)
  */
 export function createCard(title, text, location)
 {
-    let cardDiv = document.createElement("div");
-    cardDiv.setAttribute("class", "card .bg-UP-blue notes");
-    let cardBody = document.createElement("div");
-    cardBody.setAttribute("class", "card-body notes");
-    let cardTitle = document.createElement("h5");
-    cardTitle.setAttribute("class", "card-title");
-    cardTitle.innerHTML = title;
-    cardBody.appendChild(cardTitle);
+    if(!quickAction)
+    {   
+        let cardDiv = document.createElement("div");
+        cardDiv.setAttribute("class", "card .bg-UP-blue notes");
+        let cardBody = document.createElement("div");
+        cardBody.setAttribute("class", "card-body notes");
+        let cardTitle = document.createElement("h5");
+        cardTitle.setAttribute("class", "card-title");
+        cardTitle.innerHTML = title;
+        cardBody.appendChild(cardTitle);
 
-    for(let i = 0; i < text.length; i++) //For each sentence in the card
-    {
-        let cardText = document.createElement("p");
-        cardText.setAttribute("class", "card-text");
-        cardText.style.margin = "3px";
-        cardText.innerHTML = text[i];
-        cardBody.appendChild(cardText);
+        for(let i = 0; i < text.length; i++) //For each sentence in the card
+        {
+            let cardText = document.createElement("p");
+            cardText.setAttribute("class", "card-text");
+            cardText.style.margin = "3px";
+            cardText.innerHTML = text[i];
+            cardBody.appendChild(cardText);
+        }
+        
+        let noteDisplay = document.getElementById(location);
+        noteDisplay.appendChild(cardDiv);
+        cardDiv.appendChild(cardBody);
     }
     
-    let noteDisplay = document.getElementById(location);
-    noteDisplay.appendChild(cardDiv);
-    cardDiv.appendChild(cardBody);
+    else
+    {
+        let card = document.createElement("button");
+        card.classList = "center gridButton card";
+        card.innerHTML = title;
+
+        let noteDisplay = document.getElementById(location);
+        noteDisplay.appendChild(card);
+    }
 }
 
 /**
