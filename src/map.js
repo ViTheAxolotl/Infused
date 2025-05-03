@@ -919,6 +919,12 @@ function hideCover()
     let viewDiv = document.getElementById("cover");
     let selected = document.getElementsByClassName("selected-temp");
 
+    for(let elm of viewDiv.children[0].children)
+    {
+        elm.classList = `invisible ${elm.classList[0]}`;
+        elm.style.zIndex = "0";
+    }
+
     for(let elm of viewDiv.children)
     {
         elm.classList = `invisible ${elm.classList[0]}`;

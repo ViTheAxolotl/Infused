@@ -460,7 +460,7 @@ table, .itemSearch, #itemImg
     color: black;
 }
 
-#hideCover
+#hideCover, #quickAction
 {
     background-color: #510086;
     color: white;
@@ -468,6 +468,11 @@ table, .itemSearch, #itemImg
     position: absolute;
     top: 0px;
     left: 80%;
+}
+
+#quickAction
+{
+    left: 58%;
 }
 
 .gridButton

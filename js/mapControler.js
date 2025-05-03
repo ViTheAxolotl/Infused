@@ -265,8 +265,9 @@ function handleGridClick(e)
 function handleQuickAction()
 {
     setQuickAction(true);
+    handleFavoriteSelect();
 
-
+    
 }
 
 /**
