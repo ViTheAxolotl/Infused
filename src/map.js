@@ -1132,7 +1132,7 @@ setTimeout(loaded, 5000);
 
 function loaded()
 {   
-    slider2 = document.querySelector("#story");
+    slider2 = document.getElementById("story");
     slider2.addEventListener('mousemove', move2, false);
     slider2.addEventListener('mousedown', startDragging2, false);
     slider2.addEventListener('mouseup', stopDragging2, false);
