@@ -86,7 +86,7 @@
                 <tr>
                   <td>
                     <p style="display: inline;">Passive Perception:</p><input class = "stat" id="passivePerception"><br><br>
-                    <textarea class="stat" id="profAndLang" style="width: 30vw; height: 10vh;"></textarea>
+                    <textarea class="stat" id="profAndLang" style="width: 30vw; height: 40vh;"></textarea>
                     <h6 class="center">Proficiencies and Languages</h6>
                   </td>
                 </tr>
@@ -95,67 +95,81 @@
 
             <td style="width: 34%;">
               <table style = "width: 100%;">
-                <tr><td>
-                  <div style="width: 33%; display: inline;" class="center"><p style="display: inline;">AC: </p><input class = "stat" id="DC"/></div>
-                  <div style="width: 33%; display: inline;" class="center"><p style="display: inline;">Initiative: </p><input class = "stat" id="Initiative"/></div>
-                  <div style="width: 33%; display: inline;" class="center"><p style="display: inline;">Speed: </p><input class = "stat" id="Speed"/></div><br>
+                <tr>
+                  <td>
+                    <div style="width: 33%; display: inline;" class="center"><p style="display: inline;">AC: </p><input class = "stat" id="DC"/></div>
+                    <div style="width: 33%; display: inline;" class="center"><p style="display: inline;">Initiative: </p><input class = "stat" id="Initiative"/></div>
+                    <div style="width: 33%; display: inline;" class="center"><p style="display: inline;">Speed: </p><input class = "stat" id="Speed"/></div><br>
+    
+                    <div style="width: 33%; display: inline;" class="center"><p style="display: inline;">Hp: </p><input class = "stat" id="currentHp"/> / <input class = "stat" id="maxHp"></div>
+                    <div style="width: 33%; display: inline;" class="center"><p style="display: inline;">Temp Hp: </p><input class = "stat" id="tempHp"/></div><br>
+                  
+                    <table style="width: 100%;">
+                      <tr>
+                        <td>Hit Dice:</td>
+                        <td>Death Saves:</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p>Total:</p><input class = "stat" id="totalHitDice"><br>
+                          <p>Current:</p><input class = "stat" id="currentHitDice">
+                        </td>
+    
+                        <td>
+                          <p>Success:</p>
+                          <input class = "stat" type="checkbox" id="success1">-<input class = "stat" type="checkbox" id="success2">-<input class = "stat" type="checkbox" id="success3"><br>
+                          <p>Failures:</p>
+                          <input class = "stat" type="checkbox" id="fail1">-<input class = "stat" type="checkbox" id="fail2">-<input class = "stat" type="checkbox" id="fail3"> 
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
   
-                  <div style="width: 33%; display: inline;" class="center"><p style="display: inline;">Hp: </p><input class = "stat" id="currentHp"/> / <input class = "stat" id="maxHp"></div>
-                  <div style="width: 33%; display: inline;" class="center"><p style="display: inline;">Temp Hp: </p><input class = "stat" id="tempHp"/></div><br>
+                <tr>
+                  <td>
+                    <h6>Attacks & Spell Casting:</h6>
+                    
+                    <table style="width: 100%;">
+                      <tr>
+                        <td>Name</td>
+                        <td style="width: 20%;">Attack Bonus</td>
+                        <td>Damage</td>
+                      </tr>
+    
+                      <tr>
+                        <td><input class = "stat" id="actionName1" style="width: 100%;"/></td>
+                        <td><input class = "stat" id="actionBonus1" style="width: 100%;"/></td>
+                        <td><input class = "stat" id="actionDamage1" style="width: 100%;"/></td>
+                      </tr>
+    
+                      <tr>
+                        <td><input class = "stat" id="actionName2"/></td>
+                        <td><input class = "stat" id="actionBonus2"/></td>
+                        <td><input class = "stat" id="actionDamage2"/></td>
+                      </tr>
+    
+                      <tr>
+                        <td><input class = "stat" id="actionName3" style="width: 100%;"/></td>
+                        <td><input class = "stat" id="actionBonus3" style="width: 100%;"/></td>
+                        <td><input class = "stat" id="actionDamage3" style="width: 100%;"/></td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
                 
-                  <table style="width: 100%;">
-                    <tr>
-                      <td>Hit Dice:</td>
-                      <td>Death Saves:</td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <p>Total:</p><input class = "stat" id="totalHitDice"><br>
-                        <p>Current:</p><input class = "stat" id="currentHitDice">
-                      </td>
-  
-                      <td>
-                        <p>Success:</p>
-                        <input class = "stat" type="checkbox" id="success1">-<input class = "stat" type="checkbox" id="success2">-<input class = "stat" type="checkbox" id="success3"><br>
-                        <p>Failures:</p>
-                        <input class = "stat" type="checkbox" id="fail1">-<input class = "stat" type="checkbox" id="fail2">-<input class = "stat" type="checkbox" id="fail3"> 
-                      </td>
-                    </tr>
-                  </table>
-                </td></tr>
-  
-                <tr><td>
-                  <h6>Attacks & Spell Casting:</h6>
-                  <table style="width: 100%;">
-                    <tr>
-                      <td>Name</td>
-                      <td style="width: 20%;">Attack Bonus</td>
-                      <td>Damage</td>
-                    </tr>
-  
-                    <tr>
-                      <td><input class = "stat" id="actionName1" style="width: 100%;"/></td>
-                      <td><input class = "stat" id="actionBonus1" style="width: 100%;"/></td>
-                      <td><input class = "stat" id="actionDamage1" style="width: 100%;"/></td>
-                    </tr>
-  
-                    <tr>
-                      <td><input class = "stat" id="actionName2"/></td>
-                      <td><input class = "stat" id="actionBonus2"/></td>
-                      <td><input class = "stat" id="actionDamage2"/></td>
-                    </tr>
-  
-                    <tr>
-                      <td><input class = "stat" id="actionName3" style="width: 100%;"/></td>
-                      <td><input class = "stat" id="actionBonus3" style="width: 100%;"/></td>
-                      <td><input class = "stat" id="actionDamage3" style="width: 100%;"/></td>
-                    </tr>
-                  </table>
-                </td></tr>
-                
-                <tr><td>
-
-                </td></tr>
+                <tr>
+                  <td>
+                    <h6>Money:</h6>
+                    <table style="width: 100%;">
+                      <td><p>CP</p><input class="stat" id="copperP"></td>
+                      <td><p>SP</p><input class="stat" id="silverP"></td>
+                      <td><p>EP</p><input class="stat" id="electrumP"></td>
+                      <td><p>GP</p><input class="stat" id="goldP"></td>
+                      <td><p>PP</p><input class="stat" id="platinumP"></td>
+                    </table>
+                  </td>
+                </tr>
               </table>
             </td>
 
