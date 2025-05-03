@@ -1135,7 +1135,7 @@ function handleCardClick()
             wrapper.classList.add("center");
             wrapper.onclick = handleFavoriteBtn;
             wrapper.id = "favBtn";
-            wrapper.appendChild(favoriteBtn);
+            if(!quickAction){wrapper.appendChild(favoriteBtn);}
 
             let castBtn = document.createElement("button");
             castBtn.classList.add("gridButton");
