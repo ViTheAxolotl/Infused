@@ -1254,7 +1254,7 @@ function handleCardClick()
                 edit.innerHTML = "Edit";
                 edit.name = currentTitle;
                 edit.style.margin = "0px 5px";
-                optionDiv.appendChild(edit);
+                if(!quickAction){optionDiv.appendChild(edit);}
             }
 
             optionDiv.appendChild(slotSelect);
