@@ -66,7 +66,6 @@ function updateStat()
 
     else if(setTo.includes("\n"))
     {
-        if(setTo[0] != "•"){setTo = "•   " + setTo;}
         setTo = setTo.split("\n");
 
         for(let i = 0; i < setTo.length; i++)
