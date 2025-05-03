@@ -2,7 +2,7 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js';
 import { ref, onValue } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js';
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
-import { toTitleCase, auth, database, setDoc } from './viMethods.js';
+import { toTitleCase, auth, database, setDoc, statFormat } from './viMethods.js';
 
 let player;
 let wholeChar = {};
@@ -96,7 +96,7 @@ function updateStat()
 
         full = parseInt(full);
         smaller = (full - 10) / 2;
-        smaller = Math.floor(smaller);
+        smaller = statFormat(Math.floor(smaller));
         ref.innerHTML = smaller;
         setDoc(`playerChar/${player}/stats/${this.id.slice(0, this.id.length-5)}`, smaller);
     }

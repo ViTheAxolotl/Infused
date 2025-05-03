@@ -253,6 +253,19 @@ export function clenseInput(toClense)
     }
 }
 
+export function statFormat(stat)
+{
+    if(stat >= 0)
+    {
+        return "+" + stat;
+    }
+
+    else
+    {
+        return `${stat}`;
+    }
+}
+
 /**
  * Refreshes page after the given seconds
  * @param {*} seconds 
