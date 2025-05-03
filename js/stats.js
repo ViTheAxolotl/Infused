@@ -58,6 +58,25 @@ function init()
 function updateStat()
 {
     let setTo = this.value;
-    if(setTo == "on"){setTo = this.checked;}
+
+    if(setTo == "on")
+    {
+        setTo = this.checked;
+    }
+
+    else if(setTo.includes("\n"))
+    {
+        if(setTo[0] != "•"){setTo = "• " + setTo;}
+        setTo.split("\n");
+
+        for(let i = 0; i < setTo.length; i++)
+        {
+            if(setTo[i][0] != "•"){setTo[i] = "• " + setTo[i];}
+        }
+
+        setTo = setTo.join("\n");
+        this.value = setTo;
+    }
+
     setDoc(`playerChar/${player}/stats/${this.id}`, setTo);
 }
