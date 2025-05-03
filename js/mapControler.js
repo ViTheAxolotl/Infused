@@ -2371,6 +2371,9 @@ function useAbility()
                 }
             }
         }
+
+        emptyCards();
+        document.getElementById("hideCover").click();
     }
 
     else
