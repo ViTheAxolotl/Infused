@@ -50,25 +50,34 @@ function init()
             else
             {
                 stat.checked = wholeChar[player]["stats"][stat.id];
-                
-                if(stat.id.includes("Save"))
-                {
-                    let skill = stat.id.slice(0, stat.id.length-8);
-                    let modifier = wholeChar[player]["stats"][skill];
-
-                    if(stat.checked)
-                    {
-                        modifier = parseInt(modifier) + parseInt(wholeChar[player]["stats"]["proficiency"]);
-                    }
-
-                    modifier = statFormat(modifier);
-                    
-                    document.getElementById(skill + "Save").innerHTML = skill + ": " + modifier;
-                }
+                setSave(stat);
             }
         }
 
+        else
+        {
+            setSave(stat);
+        }
+
         stat.onchange = updateStat;
+    }
+}
+
+function setSave(stat)
+{
+    if(stat.id.includes("Save"))
+    {
+        let skill = stat.id.slice(0, stat.id.length-8);
+        let modifier = wholeChar[player]["stats"][skill];
+
+        if(stat.checked)
+        {
+            modifier = parseInt(modifier) + parseInt(wholeChar[player]["stats"]["proficiency"]);
+        }
+
+        modifier = statFormat(modifier);
+        
+        document.getElementById(skill + "Save").innerHTML = skill + ": " + modifier;
     }
 }
 
@@ -79,22 +88,7 @@ function updateStat()
     if(setTo == "on")
     {
         setTo = this.checked;
-
-        if(this.id.includes("Save"))
-        {
-            let skill = this.id.slice(0, this.id.length-8);
-            let modifier = wholeChar[player]["stats"][skill];
-
-            if(this.checked)
-            {
-                modifier = parseInt(modifier) + parseInt(wholeChar[player]["stats"]["proficiency"]);
-            }
-
-            modifier = statFormat(modifier);
-            
-            document.getElementById(skill + "Save").innerHTML = skill + ": " + modifier;
-            setDoc(`playerChar/${player}/stats/${skill}Save`, modifier);
-        }
+        setSave(this);
     }
 
     else if(setTo.includes("\n"))
@@ -133,5 +127,6 @@ function updateStat()
         ref.innerHTML = smaller;
         setDoc(`playerChar/${player}/stats/${this.id.slice(0, this.id.length-4)}`, smaller);
     }
+    
     setDoc(`playerChar/${player}/stats/${this.id}`, setTo);
 }
