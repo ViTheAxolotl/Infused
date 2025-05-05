@@ -65,7 +65,7 @@ function init()
 
 function setSave(stat)
 {
-    if(stat.id.includes("Save"))
+    if(stat.id.includes("Save-btn"))
     {
         let skill = stat.id.slice(0, stat.id.length-8);
         let modifier = wholeChar[player]["stats"][skill];
@@ -127,6 +127,6 @@ function updateStat()
         ref.innerHTML = smaller;
         setDoc(`playerChar/${player}/stats/${this.id.slice(0, this.id.length-4)}`, smaller);
     }
-    
+
     setDoc(`playerChar/${player}/stats/${this.id}`, setTo);
 }
