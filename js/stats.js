@@ -49,6 +49,21 @@ function init()
             else
             {
                 stat.checked = wholeChar[player]["stats"][stat.id];
+                
+                if(this.id.includes("save"))
+                {
+                    let skill = this.id.slice(0, this.id.length-8);
+                    let modifier = wholeChar[player]["stats"][skill];
+
+                    if(this.checked)
+                    {
+                        modifier = parseInt(modifier) + parseInt(wholeChar[player]["stats"]["proficiency"]);
+                    }
+
+                    modifier = statFormat(modifier);
+                    
+                    document.getElementById(skill + "Save").innerHTML = skill + ": " + modifier;
+                }
             }
         }
 
@@ -62,18 +77,23 @@ function updateStat()
 
     if(setTo == "on")
     {
-        let skill = this.id.slice(0, this.id.length-8);
-        let modifier = wholeChar[player]["stats"][skill];
-
-        if(this.checked)
-        {
-            modifier = parseInt(modifier) + parseInt(wholeChar[player]["stats"]["proficiency"]);
-        }
-
-        modifier = statFormat(modifier);
         setTo = this.checked;
-        document.getElementById(skill + "Save").innerHTML = skill + ": " + modifier;
-        setDoc(`playerChar/${player}/stats/${skill}Save`, modifier);
+
+        if(this.id.includes("save"))
+        {
+            let skill = this.id.slice(0, this.id.length-8);
+            let modifier = wholeChar[player]["stats"][skill];
+
+            if(this.checked)
+            {
+                modifier = parseInt(modifier) + parseInt(wholeChar[player]["stats"]["proficiency"]);
+            }
+
+            modifier = statFormat(modifier);
+            
+            document.getElementById(skill + "Save").innerHTML = skill + ": " + modifier;
+            setDoc(`playerChar/${player}/stats/${skill}Save`, modifier);
+        }
     }
 
     else if(setTo.includes("\n"))
