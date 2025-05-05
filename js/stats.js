@@ -72,7 +72,7 @@ function updateStat()
 
         modifier = statFormat(modifier);
         setTo = this.checked;
-        document.getElementById(skill).innerHTML = skill + ": " + modifier;
+        document.getElementById(skill + "Save").innerHTML = skill + ": " + modifier;
         setDoc(`playerChar/${player}/stats/${skill}Save`, modifier);
     }
 
