@@ -60,12 +60,12 @@ function updateStat()
 {
     let setTo = this.value;
 
-    if(setTo == "on" || setTo == "off")
+    if(setTo == "on")
     {
-        let skill = this.id.slice(0, this.id.length-4);
+        let skill = this.id.slice(0, this.id.length-8);
         let modifier = wholeChar[player]["stats"][skill];
 
-        if(setTo == "on")
+        if(setTo == this.checked)
         {
             modifier = parseInt(modifier) + parseInt(wholeChar[player]["stats"][proficiency]);
         }
@@ -73,7 +73,7 @@ function updateStat()
         modifier = statFormat(modifier);
         setTo = this.checked;
         document.getElementById(skill).innerHTML = skill + ": " + modifier;
-        setDoc(`playerChar/${player}/stats/${skill}`, modifier);
+        setDoc(`playerChar/${player}/stats/${skill}Save`, modifier);
     }
 
     else if(setTo.includes("\n"))
