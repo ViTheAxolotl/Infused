@@ -65,7 +65,7 @@ function updateStat()
         let skill = this.id.slice(0, this.id.length-8);
         let modifier = wholeChar[player]["stats"][skill];
 
-        if(setTo == this.checked)
+        if(this.checked)
         {
             modifier = parseInt(modifier) + parseInt(wholeChar[player]["stats"][proficiency]);
         }
