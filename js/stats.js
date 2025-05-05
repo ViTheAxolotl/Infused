@@ -42,6 +42,7 @@ function init()
         {
             if(typeof wholeChar[player]["stats"][stat.id] == "string")
             {
+                if(stat.id.includes("Save")){continue;}
                 if(stat.value == ""){stat.value = wholeChar[player]["stats"][stat.id];}
                 else{stat.innerHTML = wholeChar[player]["stats"][stat.id];}
             }
