@@ -50,21 +50,22 @@ function init()
             else
             {
                 stat.checked = wholeChar[player]["stats"][stat.id];
-                setSave(stat);
+                setStats(stat);
             }
         }
 
         else
         {
-            setSave(stat);
+            setStats(stat);
         }
 
         stat.onchange = updateStat;
     }
 }
 
-function setSave(stat)
+function setStats(stat)
 {
+    if(stat.id.includes("-btn")){
     if(stat.id.includes("Save-btn"))
     {
         let skill = stat.id.slice(0, stat.id.length-8);
@@ -80,6 +81,24 @@ function setSave(stat)
         
         document.getElementById(skill + "Save").innerHTML = skill + ": " + modifier;
     }
+
+    else
+    {
+        let skill = stat.id.slice(0, stat.id.length-4);
+        let base6 = skillDecrypt[skill];
+        let modifier = wholeChar[player]["stats"][base6];
+
+        if(stat.checked)
+        {
+            modifier = parseInt(modifier) + parseInt(wholeChar[player]["stats"]["proficiency"]);
+        }
+
+        modifier = statFormat(modifier);
+        setDoc(`playerChar/${player}/stats/${stat.id.slice(0, stat.id.length-4)}`, modifier);
+        
+        document.getElementById(skill).innerHTML = skill + ": " + modifier;
+    }
+}
 }
 
 function updateStat()
@@ -89,7 +108,7 @@ function updateStat()
     if(setTo == "on")
     {
         setTo = this.checked;
-        setSave(this);
+        setStats(this);
     }
 
     else if(setTo.includes("\n"))
