@@ -256,6 +256,8 @@ export function clenseInput(toClense)
 
 export function statFormat(stat)
 {
+    stat = parseInt(stat);
+    
     if(stat >= 0)
     {
         return "+" + stat;
