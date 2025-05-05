@@ -67,7 +67,7 @@ function updateStat()
 
         if(this.checked)
         {
-            modifier = parseInt(modifier) + parseInt(wholeChar[player]["stats"][proficiency]);
+            modifier = parseInt(modifier) + parseInt(wholeChar[player]["stats"]["proficiency"]);
         }
 
         modifier = statFormat(modifier);
