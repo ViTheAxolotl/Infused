@@ -79,7 +79,7 @@ function setStats(stat)
         modifier = statFormat(modifier);
         setDoc(`playerChar/${player}/stats/${stat.id.slice(0, stat.id.length-4)}`, modifier);
         
-        document.getElementById(skill + "Save").innerHTML = skill + ": " + modifier;
+        document.getElementById(skill + "Save").innerHTML = toTitleCase(skill + ": " + modifier);
     }
 
     else
@@ -96,7 +96,7 @@ function setStats(stat)
         modifier = statFormat(modifier);
         setDoc(`playerChar/${player}/stats/${stat.id.slice(0, stat.id.length-4)}`, modifier);
         
-        document.getElementById(skill).innerHTML = skill + ": " + modifier;
+        document.getElementById(skill).innerHTML = toTitleCase(skill + ": " + modifier);
     }
 }
 }
