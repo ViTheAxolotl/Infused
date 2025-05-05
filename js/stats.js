@@ -146,10 +146,10 @@ function updateStat()
         smaller = statFormat(Math.floor(smaller));
         ref.innerHTML = smaller;
         setDoc(`playerChar/${player}/stats/${this.id.slice(0, this.id.length-4)}`, smaller);
-        reload(1500);
+        reload(1.5);
     }
 
-    else if(this.id == "proficiency"){reload(1500);}
+    else if(this.id == "proficiency"){reload(1.5);}
 
     setDoc(`playerChar/${player}/stats/${this.id}`, setTo);
 }
