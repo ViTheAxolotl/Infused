@@ -76,6 +76,7 @@ function setSave(stat)
         }
 
         modifier = statFormat(modifier);
+        setDoc(`playerChar/${player}/stats/${stat.id.slice(0, stat.id.length-4)}`, modifier);
         
         document.getElementById(skill + "Save").innerHTML = skill + ": " + modifier;
     }
