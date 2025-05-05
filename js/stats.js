@@ -50,12 +50,12 @@ function init()
             {
                 stat.checked = wholeChar[player]["stats"][stat.id];
                 
-                if(this.id.includes("save"))
+                if(stat.id.includes("save"))
                 {
-                    let skill = this.id.slice(0, this.id.length-8);
+                    let skill = stat.id.slice(0, stat.id.length-8);
                     let modifier = wholeChar[player]["stats"][skill];
 
-                    if(this.checked)
+                    if(stat.checked)
                     {
                         modifier = parseInt(modifier) + parseInt(wholeChar[player]["stats"]["proficiency"]);
                     }
