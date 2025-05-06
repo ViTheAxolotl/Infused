@@ -1478,7 +1478,7 @@ function handleUseAction(targets)
 
         if(discription.includes("{@Summon"))
         {
-            let token = {border : "blue", currentHp : `0`, maxHp : `0`, tempHp : "0", map : "", id : "", name : "", title : ` ${wholeChar[player]["charName"].toLowerCase()}, `, xPos : "1", yPos : "A", isSummon : true, dc : "10"};
+            let token = {border : "blue", currentHp : `0`, maxHp : `0`, tempHp : "0", map : "", id : "", name : "", title : ` ${wholeChar[player]["charName"].toLowerCase()}, `, xPos : "1", yPos : "A", isSummon : true, ac : "10"};
             let info = discription.slice(discription.indexOf("{@Summon"));
             info = info.slice(info.indexOf(" ") + 1, info.indexOf("}"));
             info = info.split(":"); 
@@ -1583,7 +1583,7 @@ function handleUseAction(targets)
 
                 for(let key in Object.keys(targets))
                 {
-                    let dc = wholeDb[targets[key].title.split(":")[0]].DC;
+                    let ac = wholeDb[targets[key].title.split(":")[0]].AC;
 
                     if(display.includes("regain"))
                     {
@@ -1593,16 +1593,16 @@ function handleUseAction(targets)
                         ending = "Healing";
                     }
 
-                    else if(parseInt(roll) >= parseInt(dc))
+                    else if(parseInt(roll) >= parseInt(ac))
                     {
-                        display += `(Success Hit) ${targets[key].title.split(":")[0]} (${dc}), `;
+                        display += `(Success Hit) ${targets[key].title.split(":")[0]} (${ac}), `;
                         fail = false; 
                         handleChangeHp(damage.split("**")[1], wholeDb[targets[key].title.split(":")[0]], "-");
                     }
 
                     else
                     {
-                        display += `(Fail Hit) ${targets[key].title.split(":")[0]} (${dc}), `;
+                        display += `(Fail Hit) ${targets[key].title.split(":")[0]} (${ac}), `;
                     }
                 }
 
@@ -1617,7 +1617,7 @@ function handleUseAction(targets)
 
                 for(let key in Object.keys(targets))
                 {
-                    let dc = wholeDb[targets[key].title.split(":")[0]].DC;
+                    let ac = wholeDb[targets[key].title.split(":")[0]].AC;
                     
                     if(display.includes("regains"))
                     {
@@ -1627,16 +1627,16 @@ function handleUseAction(targets)
                         ending = "Healing";
                     }
 
-                    else if(parseInt(roll) >= parseInt(dc))
+                    else if(parseInt(roll) >= parseInt(ac))
                     {
-                        display += `(Success Hit) ${targets[key].title.split(":")[0]} (${dc}), `;
+                        display += `(Success Hit) ${targets[key].title.split(":")[0]} (${ac}), `;
                         fail = false; 
                         handleChangeHp(damage.split("**")[1], wholeDb[targets[key].title.split(":")[0]], "-");
                     }
 
                     else
                     {
-                        display += `(Fail Hit) ${targets[key].title.split(":")[0]} (${dc}), `;
+                        display += `(Fail Hit) ${targets[key].title.split(":")[0]} (${ac}), `;
                     }
                 }
 

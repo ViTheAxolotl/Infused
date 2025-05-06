@@ -301,7 +301,7 @@ function addBorders()
 function addHp()
 {
     div.appendChild(hp);
-    let names = ["Max Hp", "Current Hp", "Temp Hp", "DC"];
+    let names = ["Max Hp", "Current Hp", "Temp Hp", "AC"];
     let labels = [document.createElement("h6"), document.createElement("h6"), document.createElement("h6"), document.createElement("h6")];
     let numbers = [document.createElement("input"), document.createElement("input"), document.createElement("input"), document.createElement("input")];
 
@@ -389,7 +389,7 @@ function createChar(curCharacter, curBorder)
 {
     let charName = curCharacter.slice(0, curCharacter.length - 1);
     if(curCharacter.includes("ustom")){charName = curCharacter.slice(7);}
-    let char = {border : curBorder, currentHp : `${document.getElementById("Current Hp").value}`, maxHp : `${document.getElementById("Max Hp").value}`, tempHp : document.getElementById("Temp Hp").value, map : "", id : charName, name : curCharacter, title : " " + charName + ", ", xPos : "1", yPos : "A", isSummon : false, DC : document.getElementById("DC").value};
+    let char = {border : curBorder, currentHp : `${document.getElementById("Current Hp").value}`, maxHp : `${document.getElementById("Max Hp").value}`, tempHp : document.getElementById("Temp Hp").value, map : "", id : charName, name : curCharacter, title : " " + charName + ", ", xPos : "1", yPos : "A", isSummon : false, AC : document.getElementById("AC").value};
 
     
     if(oldToken != null || oldToken != undefined)
