@@ -31,8 +31,6 @@ let wholeDb = {};
 let wholeSpells;
 let wholeActions;
 let currentLv = "3th level";
-let level = 3;
-let profBonus = "3";
 let spellLevel;
 let curClass;
 let searchBar = document.getElementsByName("search");
@@ -161,8 +159,8 @@ function init()
     fetch('https://vitheaxolotl.github.io/Infused/src/actions.json').then(res => res.json()).then((json) => wholeActions = json); //Opens the actions json file
 
     currentHp.onchange = updateHp;
-    maxHp.onchange = addUpdate;
     tempHp.onchange = tempHpUpdate;
+    maxHp.innerHTML = "/ " + wholeChar[player]["stats"]["maxHp"];
     searchBar[0].onchange = handleSearch;
 
     for(let arrow of arrows)
@@ -563,21 +561,6 @@ function changeValue()
                 if(!(cHp - 1 < 0)) //If current hp - 1 isn't in the negatives
                 {
                     currentHp.value = `${cHp - 1}`; //Minus one from the current hp
-                }
-            }
-            break;
-        
-        case "max":
-            if(modifier == "+") //If plus button is clicked
-            {
-                maxHp.value = `${mHp + 1}`; //Increases the max hp you can have by one
-            }
-            
-            else //minus button is clicked
-            {
-                if(!(mHp - 1 < cHp)) //If max hp - 1 isn't in the negatives
-                {
-                    maxHp.value = `${mHp - 1}`; //Minus one from the max hp
                 }
             }
             break;
