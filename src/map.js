@@ -1103,7 +1103,7 @@ function updateToken(token)
                 break;
         }
 
-        let token = {border : borderColor, currentHp : currentHp.value, maxHp : maxHp.value, tempHp : tempHp.value, isSummon : wholeDB[char.id]["isSummon"], id : char.id, name : n, title : t, xPos : x, yPos : y, map : "", AC: AC.value};
+        let token = {border : borderColor, currentHp : currentHp.value, maxHp : wholeChar[player]["stats"]["maxHp"], tempHp : tempHp.value, isSummon : wholeDB[char.id]["isSummon"], id : char.id, name : n, title : t, xPos : x, yPos : y, map : "", AC: wholeChar[player]["stats"]["AC"]};
         setDoc(`currentMap/${char.id}`, token);
 
         if(wholeChar[player]["currentToken"] == wholeChar[player]["token"]["id"])
