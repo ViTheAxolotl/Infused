@@ -1311,7 +1311,7 @@ function handleUseAction(targets)
             mod = `${wholeChar[player]["stats"][stat]}`;
             discription = discription.replaceAll(`$${stat}$`, mod);
 
-            if(!discription.includes("$")){isDollar = false;}
+            if(!discription.includes("$")){isDollar = false;}alert(discription);
         }
     }
 
