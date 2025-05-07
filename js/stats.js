@@ -151,5 +151,11 @@ function updateStat()
 
     else if(this.id == "proficiency"){setTimeout(init, 1000);}
 
+    else if(["AC", "currentHp", "maxHp", "tempHp"].includes(this.id))
+    {
+        setDoc(`playerChar/${player}/token/${this.id}`, setTo);
+        setDoc(`currentMap/${player}/${this.id}`, setTo);
+    }
+
     setDoc(`playerChar/${player}/stats/${this.id}`, setTo);
 }
