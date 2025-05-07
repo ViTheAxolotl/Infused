@@ -1132,7 +1132,7 @@ function handleGenerate()
     }
 
     deleteDoc("currentMap");
-    setDoc("currentMap", currentMap);
+    setTimeout(function(){setDoc("currentMap", currentMap);}, 500);
     alert("done");
     handleDone();
 }
