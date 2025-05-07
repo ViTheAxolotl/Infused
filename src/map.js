@@ -444,9 +444,8 @@ function addCharacter(character, update)
         }
 
         currentHp.value = character["currentHp"];
-        maxHp.value = character["maxHp"];
+        maxHp.innerHTML = "/ " + character["maxHp"];
         tempHp.value = character["tempHp"];
-        AC.value = character["AC"];
     }
 
     if(character.title != "")
