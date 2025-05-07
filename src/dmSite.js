@@ -1125,7 +1125,7 @@ function handleGenerate()
 
         if(typeof wholeDB[token] != "string")
         {
-            currentMap[token]["AC"] = currentMap[token]["DC"];
+            if(!currentMap[token]["AC"]){currentMap[token]["AC"] = currentMap[token]["DC"];}
             delete currentMap[token]["DC"];
         }
         
