@@ -1313,6 +1313,8 @@ function handleUseAction(targets)
 
             if(!discription.includes("$")){isDollar = false;}alert(discription);
         }
+
+        listOf[lastUse]["description"] = discription;
     }
 
     if(upcast[0])
