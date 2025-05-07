@@ -1122,8 +1122,13 @@ function handleGenerate()
     for(let token of Object.keys(wholeDB))
     {
         currentMap[token] = wholeDB[token];
-        currentMap[token]["AC"] = currentMap[token]["DC"];
-        delete currentMap[token]["DC"];
+
+        if(typeof wholeDB[token] != "string")
+        {
+            currentMap[token]["AC"] = currentMap[token]["DC"];
+            delete currentMap[token]["DC"];
+        }
+        
     }
 
     deleteDoc("currentMap");
