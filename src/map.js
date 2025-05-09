@@ -1147,8 +1147,8 @@ iframe.contentWindow.addEventListener("mousedown", (e) =>
 
     const onMouseMove = (moveEvent) => 
     {
-        const dx = MouseEvent.clientX - startX;
-        const dy = MouseEvent.clientY - startY;
+        const dx = moveEvent.clientX - startX;
+        const dy = moveEvent.clientY - startY;
 
         iframe.contentWindow.scrollTo(startScrollLeft - dx, startScrollTop - dy);
     };
