@@ -1298,25 +1298,6 @@ function handleUseAction(targets)
     useInfo = setUpText(lastUse, listOf);
     useInfo = useInfo.join("\n");
 
-    if(discription.includes("$"))
-    {
-        let stat;
-        let isDollar = true;
-        let mod;
-
-        while(isDollar)
-        {
-            stat = discription.slice(discription.indexOf("$")+1);
-            stat = stat.slice(0, stat.indexOf("$"));
-            mod = parseInt(wholeChar[player]["stats"][stat]) + "";
-            discription = discription.replaceAll(`$${stat}$`, mod);
-
-            if(!discription.includes("$")){isDollar = false;}alert(discription);
-        }
-
-        listOf[lastUse]["description"] = discription;
-    }
-
     if(upcast[0])
     {
         if(discription.includes("{@scaledamage")){if(!discription.includes("{@save") && discription.includes("{@damage")){discription = `{@damage ${upcast[0].value}}`;} else if (!discription.includes("{@save") && discription.includes("{@sDice")){discription = `{@sDice ${upcast[0].value}}`;}}
@@ -1343,6 +1324,25 @@ function handleUseAction(targets)
 
             display += target;
         }
+    }
+
+    if(discription.includes("$"))
+    {
+        let stat;
+        let isDollar = true;
+        let mod;
+
+        while(isDollar)
+        {
+            stat = discription.slice(discription.indexOf("$")+1);
+            stat = stat.slice(0, stat.indexOf("$"));
+            mod = parseInt(wholeChar[player]["stats"][stat]) + "";
+            discription = discription.replaceAll(`$${stat}$`, mod);
+
+            if(!discription.includes("$")){isDollar = false;}alert(discription);
+        }
+
+        listOf[lastUse]["description"] = discription;
     }
 
     if(discription.includes("{@"))
