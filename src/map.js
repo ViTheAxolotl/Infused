@@ -1149,14 +1149,6 @@ iframe.contentWindow.addEventListener("mousedown", (e) =>
     startY2 = e.clientY;
     startScrollLeft = iframe.contentWindow.scrollX;
     startScrollTop = iframe.contentWindow.scrollY;
-
-    const onMouseUp = () =>
-    {
-        iframe.contentWindow.removeEventListener('mousemove', onMouseMove);
-        iframe.contentWindow.removeEventListener('mouseup', onMouseUp);
-        iframe.contentWindow.addEventListener('mousemove', onMouseMove);
-        iframe.contentWindow.addEventListener('mouseup', onMouseUp);
-    };
 });
 
 iframe.contentWindow.addEventListener("mousemove", (moveEvent) =>
@@ -1165,4 +1157,12 @@ iframe.contentWindow.addEventListener("mousemove", (moveEvent) =>
     const dy = moveEvent.clientY - startY2;
 
     iframe.contentWindow.scrollTo(startScrollLeft - dx, startScrollTop - dy);
+});
+
+iframe.contentWindow.addEventListener("mouseup", () =>
+{
+    iframe.contentWindow.removeEventListener('mousemove', onMouseMove);
+    iframe.contentWindow.removeEventListener('mouseup', onMouseUp);
+    iframe.contentWindow.addEventListener('mousemove', onMouseMove);
+    iframe.contentWindow.addEventListener('mouseup', onMouseUp);
 });
