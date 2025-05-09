@@ -1541,7 +1541,12 @@ function handleUseAction(targets)
         {
             let userAddTo = "";
             let fail = true;
-            if(discription.includes("toHit}")){let temp = discription.indexOf("toHit}"); userAddTo = discription.charAt(temp - 2); userAddTo += discription.charAt(temp - 1)}
+            if(discription.includes("toHit}"))
+            {
+                let toHit = discription.slice(0, discription.indexOf("toHit}"));
+                toHit = toHit.slice(toHit.lastIndexOf("{") + 1);
+                userAddTo = toHit;
+            }
             else{userAddTo = spellOrAttackBonus("@damage")}
             let accurcy = diceRoller(1, 20, userAddTo, "false");
             let ending = "Damage";
