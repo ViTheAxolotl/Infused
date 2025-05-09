@@ -1339,7 +1339,7 @@ function handleUseAction(targets)
             mod = parseInt(wholeChar[player]["stats"][stat]) + "";
             discription = discription.replaceAll(`$${stat}$`, mod);
 
-            if(!discription.includes("$")){isDollar = false;}alert(discription);
+            if(!discription.includes("$")){isDollar = false;}
         }
 
         listOf[lastUse]["description"] = discription;
