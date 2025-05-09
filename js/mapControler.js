@@ -1545,6 +1545,23 @@ function handleUseAction(targets)
             {
                 let toHit = discription.slice(0, discription.indexOf("toHit}"));
                 toHit = toHit.slice(toHit.lastIndexOf("{") + 1);
+                
+                if(toHit.length > 2)
+                {
+                    toHit = toHit.replaceAll("+", "/");
+                    toHit = toHit.replaceAll("-", "/-");
+                    if(toHit[0]=="/"){toHit = toHit.slice(1);}
+                    toHit = toHit.split("/");
+                    let total = "0";
+
+                    for(let hit in toHit)
+                    {
+                        total += parseInt(hit);
+                    }
+
+                    if(toHit >= 0){toHit = `+${toHit}`;}
+                }
+                
                 userAddTo = toHit;
             }
             else{userAddTo = spellOrAttackBonus("@damage")}
