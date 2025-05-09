@@ -43,6 +43,7 @@ function init()
             if(typeof wholeChar[player]["stats"][stat.id] == "string")
             {
                 if(stat.id == "spellBonus"){let bonus = statFormat(parseInt(wholeChar[player]["stats"][wholeChar[player]["stats"]["spellAbility"]]) + parseInt(wholeChar[player]["stats"]["proficiency"])); stat.innerHTML = bonus; setDoc(`playerChar/${player}/stats/spellBonus`, bonus);}
+                else if(stat.id == "spellDC"){let dc = statFormat(parseInt(wholeChar[player]["stats"][wholeChar[player]["stats"]["spellAbility"]]) + parseInt(wholeChar[player]["stats"]["proficiency"]) + 8); stat.innerHTML = dc; setDoc(`playerChar/${player}/stats/spellDC`, dc);}
                 else if(stat.id.includes("Save")){continue;}
                 else if(stat.value == ""){stat.value = wholeChar[player]["stats"][stat.id];}
                 else{stat.innerHTML = wholeChar[player]["stats"][stat.id];}
