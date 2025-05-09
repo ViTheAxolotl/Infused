@@ -1140,6 +1140,7 @@ let startX2;
 let startY2;
 let startScrollLeft;
 let startScrollTop;
+let drag = false;
 
 const iframe = document.getElementById("statSheet");
 iframe.contentWindow.addEventListener("mousedown", (e) =>
@@ -1149,6 +1150,7 @@ iframe.contentWindow.addEventListener("mousedown", (e) =>
     startY2 = e.clientY;
     startScrollLeft = iframe.contentWindow.scrollX;
     startScrollTop = iframe.contentWindow.scrollY;
+    drag = true;
 });
 
 iframe.contentWindow.addEventListener("mousemove", (moveEvent) =>
@@ -1156,13 +1158,10 @@ iframe.contentWindow.addEventListener("mousemove", (moveEvent) =>
     const dx = moveEvent.clientX - startX2;
     const dy = moveEvent.clientY - startY2;
 
-    iframe.contentWindow.scrollTo(startScrollLeft - dx, startScrollTop - dy);
+    if(drag){iframe.contentWindow.scrollTo(startScrollLeft - dx, startScrollTop - dy);}
 });
 
 iframe.contentWindow.addEventListener("mouseup", () =>
 {
-    iframe.contentWindow.removeEventListener('mousemove', onMouseMove);
-    iframe.contentWindow.removeEventListener('mouseup', onMouseUp);
-    iframe.contentWindow.addEventListener('mousemove', onMouseMove);
-    iframe.contentWindow.addEventListener('mouseup', onMouseUp);
+    drag = false;
 });
