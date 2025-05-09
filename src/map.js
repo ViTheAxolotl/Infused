@@ -1154,7 +1154,7 @@ iframe.contentWindow.addEventListener("mousedown", (e) =>
 
 iframe.contentWindow.addEventListener("mousemove", (moveEvent) =>
 {
-    setTimeout(function () {e.preventDefault();}, 10);
+    setTimeout(function () {moveEvent.preventDefault();}, 10);
     const dx = moveEvent.clientX - startX2;
     const dy = moveEvent.clientY - startY2;
 
