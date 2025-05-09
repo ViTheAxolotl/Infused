@@ -1559,7 +1559,7 @@ function handleUseAction(targets)
                         total += parseInt(hit);
                     }
 
-                    if(toHit >= 0){toHit = `+${toHit}`;}
+                    if(total >= 0){toHit = `+${total}`;}
                 }
                 
                 userAddTo = toHit;
