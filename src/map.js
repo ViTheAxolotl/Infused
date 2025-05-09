@@ -1145,7 +1145,7 @@ let drag = false;
 const iframe = document.getElementById("statSheet");
 iframe.contentWindow.addEventListener("mousedown", (e) =>
 {
-    setTimeout(e.preventDefault(), 200)
+    setTimeout(e.preventDefault(), 800);
     startX2 = e.clientX;
     startY2 = e.clientY;
     startScrollLeft = iframe.contentWindow.scrollX;
