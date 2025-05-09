@@ -1552,7 +1552,7 @@ function handleUseAction(targets)
                     toHit = toHit.replaceAll("-", "/-");
                     if(toHit[0]=="/"){toHit = toHit.slice(1);}
                     toHit = toHit.split("/");
-                    let total = "0";
+                    let total = 0;
 
                     for(let hit in toHit)
                     {
