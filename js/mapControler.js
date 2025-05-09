@@ -30,7 +30,7 @@ let wholeFavorite = {};
 let wholeDb = {};
 let wholeSpells;
 let wholeActions;
-let currentLv = "3th level";
+let currentLv;
 let spellLevel;
 let curClass;
 let searchBar = document.getElementsByName("search");
@@ -172,6 +172,7 @@ function init()
     document.addEventListener("keydown", (ev) => {key = ev.key.slice(ev.key.indexOf("w") + 1).toLowerCase(); keyControl = ev; let keyValues = ["left", "right", "down", "up"]; if(keyValues.includes(key) && ev.ctrlKey) {handleArrow();}}); //If control is held down and an arrow
     setMainVaribles();
     grid.onclick = function(e){handleGridClick(e);};
+    currentLv = wholeChar[player]["stats"]["lv"] + "th level";
 }
 
 /**
