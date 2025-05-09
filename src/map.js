@@ -1136,22 +1136,19 @@ function updateToken(token)
 
 init();
 
+let startX2;
+let startY2;
+let startScrollLeft;
+let startScrollTop;
+
 const iframe = document.getElementById("statSheet");
 iframe.contentWindow.addEventListener("mousedown", (e) =>
 {
     e.preventDefault();
-    const startX = e.clientX;
-    const startY = e.clientY;
-    const startScrollLeft = iframe.contentWindow.scrollX;
-    const startScrollTop = iframe.contentWindow.scrollY;
-
-    const onMouseMove = (moveEvent) => 
-    {
-        const dx = moveEvent.clientX - startX;
-        const dy = moveEvent.clientY - startY;
-
-        iframe.contentWindow.scrollTo(startScrollLeft - dx, startScrollTop - dy);
-    };
+    startX2 = e.clientX;
+    startY2 = e.clientY;
+    startScrollLeft = iframe.contentWindow.scrollX;
+    startScrollTop = iframe.contentWindow.scrollY;
 
     const onMouseUp = () =>
     {
@@ -1160,4 +1157,12 @@ iframe.contentWindow.addEventListener("mousedown", (e) =>
         iframe.contentWindow.addEventListener('mousemove', onMouseMove);
         iframe.contentWindow.addEventListener('mouseup', onMouseUp);
     };
+});
+
+iframe.contentWindow.addEventListener("mousemove", (moveEvent) =>
+{
+    const dx = moveEvent.clientX - startX2;
+    const dy = moveEvent.clientY - startY2;
+
+    iframe.contentWindow.scrollTo(startScrollLeft - dx, startScrollTop - dy);
 });
