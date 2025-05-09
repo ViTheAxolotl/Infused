@@ -1383,7 +1383,7 @@ function handleUseAction(targets)
                 {
                     if(discription.includes(abilityNames[save]))
                     {
-                        skill = abilityNames[save];
+                        skill = abilityNames[save] + "Save";
                         break;
                     }
                 }
@@ -1403,7 +1403,9 @@ function handleUseAction(targets)
         {
             let wholeRespone = wholeChar["Vi"]["responses"];
             let usersRoll;
-            let userAddTo = prompt(`The Current Response is to ${wholeRespone["currentResponse"]}, cast by ${wholeRespone["castBy"]}. This check is checking for ${wholeRespone["ability"]} stat. What is your Modifier? (+/-)`, wholeChar[player]["stats"][wholeRespone["ability"]]);
+            let userAddTo;
+            if(wholeChar[player]["stats"][wholeRespone["ability"]]){userAddTo = wholeChar[player]["stats"][wholeRespone["ability"]];}
+            else{userAddTo = prompt(`The Current Response is to ${wholeRespone["currentResponse"]}, cast by ${wholeRespone["castBy"]}. This check is checking for ${wholeRespone["ability"]} stat. What is your Modifier? (+/-)`, wholeChar[player]["stats"][wholeRespone["ability"]]);}
             userAddTo = userAddTo.replaceAll(" ", "");
             let abilityDisc;
             let ad_dis = "";
@@ -1816,12 +1818,9 @@ function spellOrAttackBonus(usage)
     {
         if(usage == "@damage")
         {
-            if(spellLevel){if(!wholeChar[player]["stats"]["addToSpell"]){userAddTo = prompt("What is your Spell Attack Bonus?", wholeChar[player]["stats"]["addToSpell"]);} else{userAddTo = wholeChar[player]["stats"]["addToSpell"];}}
-            else{if(!wholeChar[player]["stats"]["attackBonus"]){userAddTo = prompt("What is your Attack Bonus?", wholeChar[player]["stats"]["attackBonus"]);} else{userAddTo = wholeChar[player]["stats"]["attackBonus"];}}
+            if(spellLevel){if(!wholeChar[player]["stats"]["spellBonus"]){userAddTo = prompt("What is your Spell Attack Bonus?", wholeChar[player]["stats"]["spellBonus"]);} else{userAddTo = wholeChar[player]["stats"]["spellBonus"];}}
+            else{userAddTo = `${parseInt(wholeChar[player]["stats"]["proficiency"]) + parseInt(wholeChar[player]["stats"]["Strength"])}`;}
             userAddTo = userAddTo.replaceAll(" ", "");
-    
-            if(spellLevel){setDoc(`playerChar/${player}/stats/addToSpell`, userAddTo);}
-            else{setDoc(`playerChar/${player}/stats/attackBonus`, userAddTo);}
         }
         
         else if(usage == "@save")
