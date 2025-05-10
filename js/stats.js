@@ -47,7 +47,7 @@ function init()
                 else if(stat.id == "proficiency"){let prof = statFormat(Math.ceil(parseInt(wholeChar[player]["stats"]["lv"])/4)+1); setDoc(`playerChar/${player}/stats/proficiency`, prof); stat.innerHTML = prof;}
                 else if(stat.id.includes("Save")){continue;}
                 else if(stat.id == "spellAbility"){stat.value = wholeChar[player]["stats"][stat.id];}
-                else if(stat.value == ""){stat.value = wholeChar[player]["stats"][stat.id]; this.style.width = this.value.length + 2 + "ch";}
+                else if(stat.value == ""){stat.value = wholeChar[player]["stats"][stat.id]; this.style.minWidth = this.value.length + 2 + "ch";}
                 else{stat.innerHTML = wholeChar[player]["stats"][stat.id];}
             }
 
