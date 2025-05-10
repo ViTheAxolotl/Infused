@@ -40,6 +40,7 @@ function init()
     {
         if(wholeChar[player]["stats"][stat.id])
         {
+            if(!wholeChar[player]["stats"][stat.id]){setDoc(`wholeChar/${player}/stats/${stat.id}`, "");}
             if(typeof wholeChar[player]["stats"][stat.id] == "string")
             {
                 if(stat.id == "spellBonus"){let bonus = statFormat(parseInt(wholeChar[player]["stats"][wholeChar[player]["stats"]["spellAbility"]]) + parseInt(wholeChar[player]["stats"]["proficiency"])); stat.innerHTML = bonus; setDoc(`playerChar/${player}/stats/spellBonus`, bonus);}
