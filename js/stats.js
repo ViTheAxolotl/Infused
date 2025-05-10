@@ -2,7 +2,7 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js';
 import { ref, onValue } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js';
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
-import { toTitleCase, auth, database, setDoc, statFormat, skillDecrypt, reload } from './viMethods.js';
+import { toTitleCase, auth, database, setDoc, statFormat, skillDecrypt, reload, deleteDoc } from './viMethods.js';
 
 let player;
 let wholeChar = {};
@@ -69,44 +69,66 @@ function init()
 
         stat.onchange = updateStat;
     }
+
+    for(let stat of document.getElementsByClassName("expertise")){stat.onclick = handleExpertise;}
 }
 
 function setStats(stat)
 {
-    if(stat.id.includes("-btn")){
-    if(stat.id.includes("Save-btn"))
+    if(stat.id.includes("-btn"))
     {
-        let skill = stat.id.slice(0, stat.id.length-8);
-        let modifier = wholeChar[player]["stats"][skill];
+        let display;
+        let skill;
+        let modifier;
+
+        if(stat.id.includes("Save-btn"))
+        {
+            skill = stat.id.slice(0, stat.id.length-8);
+            modifier = wholeChar[player]["stats"][skill];
+            display = document.getElementById(skill + "Save");
+        }
+
+        else
+        {
+            skill = stat.id.slice(0, stat.id.length-4);
+            let base6 = skillDecrypt[skill];
+            modifier = wholeChar[player]["stats"][base6];
+            display = document.getElementById(skill);
+        }
 
         if(stat.checked)
         {
             modifier = parseInt(modifier) + parseInt(wholeChar[player]["stats"]["proficiency"]);
-        }
+
+            if(wholeChar[player]["stats"][`${skill}-expertise`]){modifier += parseInt(wholeChar[player]["stats"]["proficiency"]);}
+        } 
 
         modifier = statFormat(modifier);
         setDoc(`playerChar/${player}/stats/${stat.id.slice(0, stat.id.length-4)}`, modifier);
-        
-        document.getElementById(skill + "Save").innerHTML = toTitleCase(skill + ": " + modifier);
-    }
-
-    else
-    {
-        let skill = stat.id.slice(0, stat.id.length-4);
-        let base6 = skillDecrypt[skill];
-        let modifier = wholeChar[player]["stats"][base6];
-
-        if(stat.checked)
-        {
-            modifier = parseInt(modifier) + parseInt(wholeChar[player]["stats"]["proficiency"]);
-        }
-
-        modifier = statFormat(modifier);
-        setDoc(`playerChar/${player}/stats/${stat.id.slice(0, stat.id.length-4)}`, modifier);
-        
-        document.getElementById(skill).innerHTML = toTitleCase(skill + ": " + modifier);
+        display.innerHTML = toTitleCase(skill + ": " + modifier);
+        if(wholeChar[player]["stats"][`${skill}-expertise`]){display.innerHTML += " <strong>(Expertise)</strong>"}
     }
 }
+
+function handleExpertise()
+{
+    let stat = this.id;
+    let button = document.getElementById(stat + "-btn");
+
+    if(button.checked)
+    {
+        if(wholeChar[player]["stats"][`${stat}-expertise`])
+        {
+            deleteDoc(`playerChar/${player}/stats/${stat}-expertise`);
+        }
+
+        else
+        {
+            setDoc(`playerChar/${player}/stats/${stat}-expertise`, true);
+        }
+
+        setTimeout(init, 1000);
+    }
 }
 
 function updateStat()
