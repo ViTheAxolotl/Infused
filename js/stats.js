@@ -80,12 +80,14 @@ function setStats(stat)
         let display;
         let skill;
         let modifier;
+        let exper;
 
         if(stat.id.includes("Save-btn"))
         {
             skill = stat.id.slice(0, stat.id.length-8);
             modifier = wholeChar[player]["stats"][skill];
             display = document.getElementById(skill + "Save");
+            exper = skill + "Save";
         }
 
         else
@@ -94,19 +96,20 @@ function setStats(stat)
             let base6 = skillDecrypt[skill];
             modifier = wholeChar[player]["stats"][base6];
             display = document.getElementById(skill);
+            exper = skill;
         }
 
         if(stat.checked)
         {
             modifier = parseInt(modifier) + parseInt(wholeChar[player]["stats"]["proficiency"]);
 
-            if(wholeChar[player]["stats"][`${skill}-expertise`]){modifier += parseInt(wholeChar[player]["stats"]["proficiency"]);}
+            if(wholeChar[player]["stats"][`${exper}-expertise`]){modifier += parseInt(wholeChar[player]["stats"]["proficiency"]);}
         } 
 
         modifier = statFormat(modifier);
         setDoc(`playerChar/${player}/stats/${stat.id.slice(0, stat.id.length-4)}`, modifier);
         display.innerHTML = toTitleCase(skill + ": " + modifier);
-        if(wholeChar[player]["stats"][`${skill}-expertise`]){display.innerHTML += " <strong>(Expertise)</strong>"}
+        if(wholeChar[player]["stats"][`${exper}-expertise`]){display.innerHTML += " <strong>(Expertise)</strong>"}
     }
 }
 
