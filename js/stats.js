@@ -48,7 +48,7 @@ function init()
                 else if(stat.id == "proficiency"){let prof = statFormat(Math.ceil(parseInt(wholeChar[player]["stats"]["lv"])/4)+1); setDoc(`playerChar/${player}/stats/proficiency`, prof); stat.innerHTML = prof;}
                 else if(stat.id == "name"){stat.innerHTML = player;}
                 else if(stat.id == "totalHitDice"){for(let i = 0; i < stat.length; i++){stat[i].innerHTML = `${wholeChar[player]["stats"]["lv"]}${stat[i].value}`; stat.value = wholeChar[player]["stats"][stat.id];}}
-                else if(stat.id == "currentHitDice"){let max = wholeChar[player]["stats"]["totalHitDice"]; for(let i = parseInt(wholeChar[player]["stats"]["lv"]); i >= 0; i++){let option = document.createElement("option"); option.innerHTML = `${i}${max}`; option.value = option.innerHTML; stat.appendChild(option);} stat.value = wholeChar[player]["stats"][stat.id];}
+                else if(stat.id == "currentHitDice"){let max = wholeChar[player]["stats"]["totalHitDice"]; for(let i = parseInt(wholeChar[player]["stats"]["lv"]); i >= 0; i--){let option = document.createElement("option"); option.innerHTML = `${i}${max}`; option.value = option.innerHTML; stat.appendChild(option);} stat.value = wholeChar[player]["stats"][stat.id];}
                 else if(stat.id.includes("Save")){continue;}
                 else if(["spellAbility", "lv"].includes(stat.id)){stat.value = wholeChar[player]["stats"][stat.id];}
                 else if(stat.value == ""){stat.value = wholeChar[player]["stats"][stat.id]; if(!["profAndLang", "infusion", "feats", "equipment"].includes(stat.id)){stat.style.minWidth = stat.value.length + 2 + "ch";}}
