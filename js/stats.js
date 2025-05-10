@@ -158,7 +158,7 @@ function updateStat()
         setTimeout(init, 1000);
     }
 
-    else if(this.id == "lv" || this.id == "spellAbility"){setTimeout(init, 1000);}
+    else if(["lv", "spellAbility", "totalHitDice"].includes(this.id)){setTimeout(init, 1000);}
 
     else if(["AC", "currentHp", "maxHp", "tempHp"].includes(this.id))
     {
