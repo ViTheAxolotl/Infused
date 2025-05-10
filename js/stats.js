@@ -64,7 +64,7 @@ function init()
 
         else
         {
-            setDoc(`playerChar/${player}/stats/${stat.id}`, "\t"); 
+            setDoc(`playerChar/${player}/stats/${stat.id}`, ""); 
             setStats(stat);
         }
 
@@ -198,6 +198,5 @@ function updateStat()
         if(!["profAndLang", "infusion", "feats", "equipment"].includes(this.id)){this.style.minWidth = this.value.length + 2 + "ch";}
     }
 
-    if(setTo.includes("\t")){setTo = setTo.replace("\t", ""); this.innerHTML = this.innerHTML.replace("\t", "");}
     setDoc(`playerChar/${player}/stats/${this.id}`, setTo);
 }
