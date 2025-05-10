@@ -138,6 +138,7 @@ function updateStat()
         setTo = setTo.join("    ");
 
         this.value = setTo;
+        this.style.minWidth = this.value.length + 2 + "ch";
     }
 
     else if(this.classList.contains("base6"))
@@ -160,6 +161,12 @@ function updateStat()
     {
         setDoc(`playerChar/${player}/token/${this.id}`, setTo);
         setDoc(`currentMap/${player}/${this.id}`, setTo);
+        this.style.minWidth = this.value.length + 2 + "ch";
+    }
+
+    else
+    {
+        this.style.minWidth = this.value.length + 2 + "ch";
     }
 
     setDoc(`playerChar/${player}/stats/${this.id}`, setTo);
