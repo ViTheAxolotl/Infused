@@ -38,7 +38,7 @@ function init()
 
     for(let stat of stats)
     {
-        if(wholeChar[player]["stats"][stat.id])
+        if(wholeChar[player]["stats"][stat.id] || wholeChar[player]["stats"][stat.id] == "")
         {
             if(!wholeChar[player]["stats"][stat.id]){setDoc(`wholeChar/${player}/stats/${stat.id}`, "");}
             if(typeof wholeChar[player]["stats"][stat.id] == "string")
