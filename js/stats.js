@@ -64,7 +64,8 @@ function init()
 
         else
         {
-            setDoc(`playerChar/${player}/stats/${stat.id}`, ""); 
+            if(stat.id.includes("-btn")){setDoc(`playerChar/${player}/stats/${stat.id}`, false); }
+            else{setDoc(`playerChar/${player}/stats/${stat.id}`, "");}
             setStats(stat);
         }
 
