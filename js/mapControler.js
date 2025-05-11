@@ -1601,6 +1601,24 @@ function handleUseAction(targets)
             
             damage = splitRoll(discription, "@damage");
             if(accurcy.includes("(20)")){damage[0] = `${parseInt(damage[0]) * 2}`}
+            
+            if(damage[2].length > 2)
+                {
+                    damage[2] = damage[2].replaceAll("+", "/");
+                    damage[2] = damage[2].replaceAll("-", "/-");
+                    if(damage[2][0]=="/"){damage[2] = damage[2].slice(1);}
+                    damage[2] = damage[2].split("/");
+                    let total = 0;
+
+                    for(let hit in damage[2])
+                    {
+                        total += parseInt(hit);
+                    }
+
+                    if(total >= 0){damage[2] = `+${total}`;}
+                }
+
+            
             damage = diceRoller(damage[0], damage[1], damage[2], "false");
 
             if(display)
