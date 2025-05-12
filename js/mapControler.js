@@ -1594,11 +1594,24 @@ function handleUseAction(targets)
                 ad_dis = ` <strong>First Roll: ${take}, Second Roll: ${take2}.</strong>`;
             }
             
-            if(discription.includes(currentLv))
+            if(spellLevel == “0”)
             {
-                discription = discription.slice(`${discription.indexOf(currentLv)}`);
+                if(parseInt(wholeChar[player][“stats”][lv]) >= 17)
+                {
+                    discription = discription.slice(`${discription.indexOf(17th Level)}`);
+                }
+
+                else if(parseInt(wholeChar[player][“stats”][lv]) >= 11)
+                {
+                    discription = discription.slice(`${discription.indexOf(11th Level)}`);
+                }
+
+                else if(parseInt(wholeChar[player][“stats”][lv]) >= 5)
+                {
+                    discription = discription.slice(`${discription.indexOf(5th Level)}`);
+                }
             }
-            
+
             damage = splitRoll(discription, "@damage");
             if(accurcy.includes("(20)")){damage[0] = `${parseInt(damage[0]) * 2}`}
             
