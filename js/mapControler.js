@@ -1594,21 +1594,21 @@ function handleUseAction(targets)
                 ad_dis = ` <strong>First Roll: ${take}, Second Roll: ${take2}.</strong>`;
             }
             
-            if(spellLevel == “0”)
+            if(spellLevel == "0")
             {
-                if(parseInt(wholeChar[player][“stats”][lv]) >= 17)
+                if(parseInt(wholeChar[player]["stats"][lv]) >= 17)
                 {
-                    discription = discription.slice(`${discription.indexOf(17th Level)}`);
+                    discription = discription.slice(`${discription.indexOf("17th Level")}`);
                 }
 
-                else if(parseInt(wholeChar[player][“stats”][lv]) >= 11)
+                else if(parseInt(wholeChar[player]["stats"][lv]) >= 11)
                 {
-                    discription = discription.slice(`${discription.indexOf(11th Level)}`);
+                    discription = discription.slice(`${discription.indexOf("11th Level")}`);
                 }
 
-                else if(parseInt(wholeChar[player][“stats”][lv]) >= 5)
+                else if(parseInt(wholeChar[player]["stats"][lv]) >= 5)
                 {
-                    discription = discription.slice(`${discription.indexOf(5th Level)}`);
+                    discription = discription.slice(`${discription.indexOf("5th Level")}`);
                 }
             }
 
