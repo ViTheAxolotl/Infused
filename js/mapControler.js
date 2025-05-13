@@ -1608,7 +1608,7 @@ function handleUseAction(targets)
 
                 else if(parseInt(wholeChar[player]["stats"]["lv"]) >= 5)
                 {
-                    discription = discription.slice(discription.indexOf("5th Level"));
+                    discription = discription.slice(discription.indexOf("5th Level")); alert(`${discription.indexOf("5th Level")}`);
                 }
             }
 
