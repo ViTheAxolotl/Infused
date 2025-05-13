@@ -1598,17 +1598,17 @@ function handleUseAction(targets)
             {
                 if(parseInt(wholeChar[player]["stats"]["lv"]) >= 17)
                 {
-                    discription = discription.slice(`${discription.indexOf("17th Level")}`);
+                    discription = discription.slice(discription.indexOf("17th Level"));
                 }
 
                 else if(parseInt(wholeChar[player]["stats"]["lv"]) >= 11)
                 {
-                    discription = discription.slice(`${discription.indexOf("11th Level")}`);
+                    discription = discription.slice(discription.indexOf("11th Level"));
                 }
 
                 else if(parseInt(wholeChar[player]["stats"]["lv"]) >= 5)
                 {
-                    discription = discription.slice(`${discription.indexOf("5th Level")}`);
+                    discription = discription.slice(discription.indexOf("5th Level"));
                 }
             }
 
