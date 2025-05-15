@@ -1886,13 +1886,13 @@ function spellOrAttackBonus(usage)
 }
 
 function splitRoll(discription, splitValue)
-{
+{[].join()
     let damage;
     damage = discription.slice(discription.indexOf(splitValue));
     damage = damage.slice(splitValue.length + 1, damage.indexOf("}"));
     damage = damage.split("d");
-    if(damage[1].includes("+")){let temp = damage[1].split("+"); damage[1] = temp[0]; temp[0] = ""; temp.join("+"); damage.push(temp.slice(1));}
-    else if(damage[1].includes("-")){let temp = damage[1].split("-"); damage[1] = temp[0]; temp[0] = ""; temp.join("-"); damage.push(temp.slice(1));}
+    if(damage[1].includes("+")){let temp = damage[1].split("+"); damage[1] = temp[0]; temp[0] = ""; temp = temp.join("+"); damage.push(temp.slice(1));}
+    else if(damage[1].includes("-")){let temp = damage[1].split("-"); damage[1] = temp[0]; temp[0] = ""; temp = temp.join("-"); damage.push(temp.slice(1));}
     else{damage.push("0");}
     return damage;
 }
