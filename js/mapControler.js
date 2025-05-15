@@ -1342,8 +1342,6 @@ function handleUseAction(targets)
 
             if(!discription.includes("$")){isDollar = false;}
         }
-
-        listOf[lastUse]["description"] = discription;
     }
 
     if(discription.includes("{@"))
