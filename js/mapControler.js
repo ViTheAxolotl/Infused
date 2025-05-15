@@ -1554,7 +1554,7 @@ function handleUseAction(targets)
 
                     for(let hit in toHit)
                     {
-                        total += parseInt(hit);
+                        total += parseInt(toHit[hit]);
                     }
 
                     if(total >= 0){toHit = `+${total}`;}
@@ -1623,7 +1623,7 @@ function handleUseAction(targets)
 
                     for(let hit in damage[2])
                     {
-                        total += parseInt(hit);
+                        total += parseInt(damage[2][hit]);
                     }
 
                     if(total >= 0){damage[2] = `+${total}`;}
