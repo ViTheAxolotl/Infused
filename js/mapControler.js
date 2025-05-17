@@ -113,6 +113,11 @@ onValue(charRef, (snapshot) =>
         zoomLevel = wholeChar[player]["zoomLevel"];
         document.getElementById("gridMap").style.zoom = `${zoomLevel}%`;
     }
+
+    if(wholeChar[player]["zoomSheetLevel"])
+    {
+        document.getElementById("statSheet").style.zoom = `${wholeChar[player]["zoomSheetLevel"]}%`;
+    }
 });
 
 /**
@@ -594,6 +599,21 @@ function changeValue()
             }
 
             setDoc(`playerChar/${player}/zoomLevel`, zoomLevel);
+            break;
+
+        case "zoomSheet":
+            if(modifier == "+") //If plus button is 
+            {
+                if(zoomLevel < 170){zoomLevel += 10;}
+            }
+
+            else //minus button is clicked
+            {
+                zoomLevel -= 10;
+                if (zoomLevel < 70){zoomLevel = 70;}
+            }
+
+            setDoc(`playerChar/${player}/zoomSheetLevel`, zoomLevel);
             break;
         
         case "title":
