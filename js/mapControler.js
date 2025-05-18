@@ -602,6 +602,7 @@ function changeValue()
             break;
 
         case "zoomSheet":
+            let zoomLevel = 100; if(wholeChar[player]["zoomSheetLevel"]){zoomLevel = wholeChar[player]["zoomSheetLevel"];}
             if(modifier == "+") //If plus button is 
             {
                 if(zoomLevel < 170){zoomLevel += 10;}
