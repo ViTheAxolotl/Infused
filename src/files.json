@@ -21,7 +21,8 @@
         "vPath": "images/map/vPath.jpg",
         "bloodyTownHall": "images/map/bloodyTownHall.jpg",
         "nileLight" : "images/map/nileLight.jpg",
-        "jasonsLab" : "images/map/jasonsLab.jpg"
+        "jasonsLab" : "images/map/jasonsLab.jpg",
+        "flowerTunnel" : "images/map/flowerTunnel.jpg"
     }, 
 
     "tokens" : 
@@ -97,6 +98,7 @@
         "mapOfPasc" : "images/push/mapOfPasc.jpg",
         "milo" : "images/push/milo.jpg",
         "skyla" : "images/push/skyla.jpg",
-        "jason" : "images/push/jason.png"
+        "jason" : "images/push/jason.png",
+        "dracoTablet" : "images/push/dracoTablet.png"
     }
 }
