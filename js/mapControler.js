@@ -587,6 +587,7 @@ function changeValue()
             break;
 
         case "zoom":
+            let zoomLevel = 100; if(wholeChar[player]["zoomLevel"]){zoomLevel = wholeChar[player]["zoomLevel"];}
             if(modifier == "+") //If plus button is 
             {
                 if(zoomLevel < 170){zoomLevel += 10;}
@@ -602,16 +603,16 @@ function changeValue()
             break;
 
         case "zoomSheet":
-            let zoomLevel = 100; if(wholeChar[player]["zoomSheetLevel"]){zoomLevel = wholeChar[player]["zoomSheetLevel"];}
+            let zoomSheetLevel = 100; if(wholeChar[player]["zoomSheetLevel"]){zoomLevel = wholeChar[player]["zoomSheetLevel"];}
             if(modifier == "+") //If plus button is 
             {
-                if(zoomLevel < 170){zoomLevel += 10;}
+                if(zoomSheetLevel < 170){zoomSheetLevel += 10;}
             }
 
             else //minus button is clicked
             {
-                zoomLevel -= 10;
-                if (zoomLevel < 70){zoomLevel = 70;}
+                zoomSheetLevel -= 10;
+                if (zoomSheetLevel < 70){zoomSheetLevel = 70;}
             }
 
             setDoc(`playerChar/${player}/zoomSheetLevel`, zoomLevel);
