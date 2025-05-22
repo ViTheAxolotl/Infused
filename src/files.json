@@ -74,7 +74,8 @@
         "tiger-" : "images/map/tokens/tiger-.png",
         "jason-" : "images/map/tokens/jason-.png",
         "thug-" : "images/map/tokens/thug-.png",
-        "Garrett-" : "images/map/tokens/Garrett-.png"
+        "Garrett-" : "images/map/tokens/Garrett-.png",
+        "owlBear-" : "images/map/tokens/owlBear-.png"
     },
  
     "borders" : 
