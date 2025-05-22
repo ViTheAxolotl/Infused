@@ -1117,22 +1117,7 @@ function handleUploadInteractive()
 function handleGenerate()
 {
     hideButtons();
-    let currentMap = {};
-    
-    for(let token of Object.keys(wholeDB))
-    {
-        currentMap[token] = wholeDB[token];
-
-        if(typeof wholeDB[token] != "string")
-        {
-            if(!currentMap[token]["AC"]){currentMap[token]["AC"] = currentMap[token]["DC"];}
-            delete currentMap[token]["DC"];
-        }
-        
-    }
-
-    deleteDoc("currentMap");
-    setTimeout(function(){setDoc("currentMap", currentMap);}, 500);
+    backupFavorites();
     alert("done");
     handleDone();
 }
