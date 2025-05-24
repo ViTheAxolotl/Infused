@@ -75,7 +75,8 @@
         "jason-" : "images/map/tokens/jason-.png",
         "thug-" : "images/map/tokens/thug-.png",
         "Garrett-" : "images/map/tokens/Garrett-.png",
-        "owlBear-" : "images/map/tokens/owlBear-.png"
+        "owlBear-" : "images/map/tokens/owlBear-.png",
+        "purifier-" : "images/map/tokens/purifier-.png"
     },
  
     "borders" : 
@@ -100,6 +101,8 @@
         "milo" : "images/push/milo.jpg",
         "skyla" : "images/push/skyla.jpg",
         "jason" : "images/push/jason.png",
-        "dracoTablet" : "images/push/dracoTablet.png"
+        "dracoTablet" : "images/push/dracoTablet.png",
+        "purifier" : "images/push/purifier.png",
+        "purifiers" : "images/push/purifiers.png"
     }
 }
