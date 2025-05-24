@@ -117,6 +117,7 @@ onValue(charRef, (snapshot) =>
     if(wholeChar[player]["zoomSheetLevel"])
     {
         document.getElementById("statSheet").style.zoom = `${wholeChar[player]["zoomSheetLevel"]}%`;
+        document.getElementById("statSheet").style += `-webkit-transform: scale(${wholeChar[player]["zoomSheetLevel"]}); -webkit-transform-origin: 0 0;`;
     }
 });
 
