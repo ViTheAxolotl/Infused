@@ -615,7 +615,7 @@ function changeValue()
                 if (zoomSheetLevel < 70){zoomSheetLevel = 70;}
             }
 
-            setDoc(`playerChar/${player}/zoomSheetLevel`, zoomLevel);
+            setDoc(`playerChar/${player}/zoomSheetLevel`, zoomSheetLevel);
             break;
         
         case "title":
