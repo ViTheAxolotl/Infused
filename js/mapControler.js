@@ -2489,10 +2489,10 @@ function handleChangeHp(damage, token, modifier)
                 let full = parseInt(token.tempHp) + parseInt(token.currentHp);
                 full -= parseInt(damage);
 
-                if(parseInt(token.maxHp) <= full) 
+                if(full-parseInt(token.currentHp) < 0) 
                 {
                     token.tempHp = "0";
-                    token.currentHp = `${full}`;
+                    token.currentHp = `${full-parseInt(token.tempHp)}`;
                     break;
                 }
 
