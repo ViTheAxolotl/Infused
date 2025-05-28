@@ -1,0 +1,9 @@
+{
+  “rolls” :
+  {
+    “basic” : “basic”,
+    “saves” : [“StrengthSave”, “ConstitutionSave”, “DexteritySave”, “WisdomSave”, “IntelligenceSave”, “CharismaSave”],
+    “checks” : [”acrobatics”,”animalHandleing”, “arcana”, “athletics”, “deception”, “history”, “insight”, “intimidation”, “investigation”, “medicine”, “nature”, “perception”, “performance”, “persuasion”, “religion”, “slightOfHand”, “stealth”, “survival”],
+    “misc” : [”initiative”, “deathSave”, “hitDice”]
+  }
+}
