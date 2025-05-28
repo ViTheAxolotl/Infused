@@ -2469,6 +2469,15 @@ function useAbility()
 
 function handleChangeHp(damage, token, modifier)
 {
+    if(discription.contains("temporary hit point"))
+    {
+        let total = parseInt(token.tempHp);
+        total += damage;
+        token.tempHp = total + "";
+    }
+
+    else
+    {
     switch(modifier)
     {
         case "+":
@@ -2514,4 +2523,5 @@ function handleChangeHp(damage, token, modifier)
             }
             break;
     }
+}
 }
