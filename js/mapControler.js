@@ -46,6 +46,7 @@ let currentAction;
 let wholeDisplay = {};
 let zoomLevel = 100;
 let grid = document.getElementById("grid");
+let discription;
 
 /**
  * When it shows that your logged in
@@ -1308,7 +1309,6 @@ function handleUseAction(targets)
     let display;
     let useInfo;
     let damage;
-    let discription;
     let upcast = document.getElementsByName("upcast");
     let listOf;
     let lastUse;
@@ -2473,7 +2473,7 @@ function handleChangeHp(damage, token, modifier)
     {
         let total = parseInt(token.tempHp);
         total += damage;
-        token.tempHp = total + "";
+        token.tempHp = `${total}`;
     }
 
     else
