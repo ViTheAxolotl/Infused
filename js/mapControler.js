@@ -1316,18 +1316,19 @@ function handleUseAction(targets)
     if(spellLevel){listOf = db[spellLevel]; lastUse = lastSpell;}
     else{listOf = db[curClass]; lastUse = lastAbility;}
 
-    discription = listOf[lastUse]["description"];
+    let description = listOf[lastUse]["description"];
+    discription = description;
     
     useInfo = setUpText(lastUse, listOf);
     useInfo = useInfo.join("\n");
 
     if(upcast[0])
     {
-        if(discription.includes("{@scaledamage")){if(!discription.includes("{@save") && discription.includes("{@damage")){discription = `{@damage ${upcast[0].value}}`;} else if (!discription.includes("{@save") && discription.includes("{@sDice")){discription = `{@sDice ${upcast[0].value}}`;}}
-        else if(discription.includes("{@absorb")){discription = `{@sDice ${upcast[0].value}}`}
+        if(description.includes("{@scaledamage")){if(!description.includes("{@save") && description.includes("{@damage")){description = `{@damage ${upcast[0].value}}`;} else if (!description.includes("{@save") && description.includes("{@sDice")){description = `{@sDice ${upcast[0].value}}`;}}
+        else if(description.includes("{@absorb")){description = `{@sDice ${upcast[0].value}}`}
     }
 
-    if(discription.includes("Bardic Inspiration die"))
+    if(description.includes("Bardic Inspiration die"))
     {
         display += "Giving Bardic Die to: "
 
@@ -1349,7 +1350,7 @@ function handleUseAction(targets)
         }
     }
 
-    if(discription.includes("$"))
+    if(description.includes("$"))
     {
         let stat;
         let isDollar = true;
@@ -1357,18 +1358,18 @@ function handleUseAction(targets)
 
         while(isDollar)
         {
-            stat = discription.slice(discription.indexOf("$")+1);
+            stat = description.slice(description.indexOf("$")+1);
             stat = stat.slice(0, stat.indexOf("$"));
             mod = parseInt(wholeChar[player]["stats"][stat]) + "";
-            discription = discription.replaceAll(`$${stat}$`, mod);
+            description = description.replaceAll(`$${stat}$`, mod);
 
-            if(!discription.includes("$")){isDollar = false;}
+            if(!description.includes("$")){isDollar = false;}
         }
     }
 
-    if(discription.includes("{@"))
+    if(description.includes("{@"))
     {
-        if(discription.includes("{@Choice"))
+        if(description.includes("{@Choice"))
         {
             display = `${wholeChar[player]["charName"]} cast:\n${lastUse} on `;
             for(key in Object.keys(targets)){display += `${toTitleCase(targets[key].classList[1])}, `;}
@@ -1377,7 +1378,7 @@ function handleUseAction(targets)
             if(curClass){display = display.replaceAll("cast", "use the ability");}
         }
 
-        if(discription.includes("{@save")) 
+        if(description.includes("{@save")) 
         {
             let skill = "unknown";
             let toBeat = spellOrAttackBonus("@save");
@@ -1389,9 +1390,9 @@ function handleUseAction(targets)
             else{ind = spellLevel;}
             if(upcast[0]){castUp = `{@save ${upcast[0].value}}`;}
 
-            if(discription.includes("{@skill")) //Get the skill check
+            if(description.includes("{@skill")) //Get the skill check
             {
-                skill = discription.slice(discription.indexOf("{@skill"));
+                skill = description.slice(description.indexOf("{@skill"));
                 skill = skill.slice(7, skill.indexOf("}"));
             }
 
@@ -1401,7 +1402,7 @@ function handleUseAction(targets)
 
                 for(let save in abilityNames)
                 {
-                    if(discription.includes(abilityNames[save]))
+                    if(description.includes(abilityNames[save]))
                     {
                         skill = abilityNames[save] + "Save";
                         break;
@@ -1419,7 +1420,7 @@ function handleUseAction(targets)
             if(!spellLevel){display = display.replaceAll("cast", "used the ability");} //At the end
         }
 
-        if(discription.includes("{@respond}")) //Needs to check if half damage if sucess
+        if(description.includes("{@respond}")) //Needs to check if half damage if sucess
         {
             let wholeRespone = wholeChar["Vi"]["responses"];
             let usersRoll;
@@ -1501,10 +1502,10 @@ function handleUseAction(targets)
             display += ad_dis;
         }
 
-        if(discription.includes("{@Summon"))
+        if(description.includes("{@Summon"))
         {
             let token = {border : "blue", currentHp : `0`, maxHp : `0`, tempHp : "0", map : "", id : "", name : "", title : ` ${wholeChar[player]["charName"].toLowerCase()}, `, xPos : "1", yPos : "A", isSummon : true, ac : "10"};
-            let info = discription.slice(discription.indexOf("{@Summon"));
+            let info = description.slice(description.indexOf("{@Summon"));
             info = info.slice(info.indexOf(" ") + 1, info.indexOf("}"));
             info = info.split(":"); 
             token.name = info[0] + "-";
@@ -1557,13 +1558,13 @@ function handleUseAction(targets)
             setDoc(`currentMap/${token.id}`, token);
         }
 
-        if(discription.includes("{@damage"))
+        if(description.includes("{@damage"))
         {
             let userAddTo = "";
             let fail = true;
-            if(discription.includes("toHit}"))
+            if(description.includes("toHit}"))
             {
-                let toHit = discription.slice(0, discription.indexOf("toHit}"));
+                let toHit = description.slice(0, description.indexOf("toHit}"));
                 toHit = toHit.slice(toHit.lastIndexOf("{") + 1);
                 
                 if(toHit.length > 2)
@@ -1618,21 +1619,21 @@ function handleUseAction(targets)
             {
                 if(parseInt(wholeChar[player]["stats"]["lv"]) >= 17)
                 {
-                    discription = discription.slice(discription.indexOf("17th level"));
+                    description = description.slice(description.indexOf("17th level"));
                 }
 
                 else if(parseInt(wholeChar[player]["stats"]["lv"]) >= 11)
                 {
-                    discription = discription.slice(discription.indexOf("11th level"));
+                    description = description.slice(description.indexOf("11th level"));
                 }
 
                 else if(parseInt(wholeChar[player]["stats"]["lv"]) >= 5)
                 {
-                    discription = discription.slice(discription.indexOf("5th level"));
+                    description = description.slice(description.indexOf("5th level"));
                 }
             }
 
-            damage = splitRoll(discription, "@damage");
+            damage = splitRoll(description, "@damage");
             if(accurcy.includes("(20)")){damage[0] = `${parseInt(damage[0]) * 2}`}
             
             if(damage[2].length > 2)
@@ -1726,9 +1727,9 @@ function handleUseAction(targets)
             display += ad_dis;
         }
         
-        if(discription.includes("{@sDice"))
+        if(description.includes("{@sDice"))
         {
-            let sDices = discription.split("{@sDice");
+            let sDices = description.split("{@sDice");
 
             for(let i = 0; i < sDices.length; i++)
             {
@@ -1745,7 +1746,7 @@ function handleUseAction(targets)
             }
         }
 
-        if(discription.includes("{@infuseRate"))
+        if(description.includes("{@infuseRate"))
         {
             let rate = parseInt(wholeChar[player]["infusedRate"]);
             let roll = diceRoller("1", "100", "0");
@@ -1768,7 +1769,7 @@ function handleUseAction(targets)
             else{display = `${wholeChar[player]["charName"]} used the ability, ${lastUse}:\n${useInfo}\n\nInfusion Check: ${result}, rolled ${roll}, needs to be above ${rate}.\n`;}
         }
 
-        if(discription.includes("{@sneak"))
+        if(description.includes("{@sneak"))
         {
             let lvl = currentLv.charAt(0);
             damage = [`${Math.ceil(parseInt(lvl) / 2)}`, "6", "0"];
@@ -2469,7 +2470,7 @@ function useAbility()
 
 function handleChangeHp(damage, token, modifier)
 {
-    if(discription.contains("temporary hit point"))
+    if(description.contains("temporary hit point"))
     {
         let total = parseInt(token.tempHp);
         total += damage;
