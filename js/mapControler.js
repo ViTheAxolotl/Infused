@@ -2470,7 +2470,7 @@ function useAbility()
 
 function handleChangeHp(damage, token, modifier)
 {
-    if(discription.contains("temporary hit point"))
+    if(discription.includes("temporary hit point"))
     {
         let total = parseInt(token.tempHp);
         total += damage;
