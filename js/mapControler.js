@@ -2473,56 +2473,56 @@ function handleChangeHp(damage, token, modifier)
     if(discription.includes("temporary hit point"))
     {
         let total = parseInt(token.tempHp);
-        total += damage;
+        total += parseInt(damage);
         token.tempHp = `${total}`;
     }
 
     else
     {
-    switch(modifier)
-    {
-        case "+":
-            if(parseInt(token.currentHp) + parseInt(damage) <= token.maxHp)
-            {
-                token.currentHp = `${parseInt(token.currentHp) + parseInt(damage)}`;
-            }
-            
-            else
-            {
-                token.currentHp = token.maxHp;
-            }
-            break;
-
-        case "-":
-            if(parseInt(token.tempHp) > 0)
-            {
-                let full = parseInt(token.tempHp) + parseInt(token.currentHp);
-                full -= parseInt(damage);
-
-                if(full-parseInt(token.currentHp) < 0) 
+        switch(modifier)
+        {
+            case "+":
+                if(parseInt(token.currentHp) + parseInt(damage) <= token.maxHp)
                 {
-                    token.tempHp = "0";
-                    token.currentHp = `${full-parseInt(token.tempHp)}`;
-                    break;
+                    token.currentHp = `${parseInt(token.currentHp) + parseInt(damage)}`;
                 }
-
+                
                 else
                 {
-                    token.tempHp = `${full-parseInt(token.currentHp)}`;
-                    break;
+                    token.currentHp = token.maxHp;
                 }
-            }
+                break;
 
-            if(parseInt(token.currentHp) - parseInt(damage) >= 0)
-            {
-                token.currentHp = `${parseInt(token.currentHp) - parseInt(damage)}`;
-            }
-            
-            else
-            {
-                token.currentHp = "0";
-            }
-            break;
+            case "-":
+                if(parseInt(token.tempHp) > 0)
+                {
+                    let full = parseInt(token.tempHp) + parseInt(token.currentHp);
+                    full -= parseInt(damage);
+
+                    if(full-parseInt(token.currentHp) < 0) 
+                    {
+                        token.tempHp = "0";
+                        token.currentHp = `${full-parseInt(token.tempHp)}`;
+                        break;
+                    }
+
+                    else
+                    {
+                        token.tempHp = `${full-parseInt(token.currentHp)}`;
+                        break;
+                    }
+                }
+
+                if(parseInt(token.currentHp) - parseInt(damage) >= 0)
+                {
+                    token.currentHp = `${parseInt(token.currentHp) - parseInt(damage)}`;
+                }
+                
+                else
+                {
+                    token.currentHp = "0";
+                }
+                break;
+        }
     }
-}
 }
