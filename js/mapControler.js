@@ -372,16 +372,27 @@ function diceRoller(amount, dice, modifier, ifName)
  */
 function handleDiceRoll()
 {
-    let amount = parseInt(document.getElementById("diceToRoll").value);
-    let dice = parseInt(document.getElementById("sides").value);
-    let modifier = parseInt(document.getElementById("modifier").value);
-    
-    if(!Number.isNaN(amount) && !Number.isNaN(dice) && !Number.isNaN(modifier)) //If all three values are given
+    if(document.getElementsByClassName("selected-dice")[0].innerHTML == "Basic")
     {
-        sendDiscordMessage(diceRoller(amount, dice, modifier, "discord")); //Rolls the dice given and send the result to discord
-    }
+        let amount = parseInt(document.getElementById("diceToRoll").value);
+        let dice = parseInt(document.getElementById("sides").value);
+        let modifier = parseInt(document.getElementById("modifier").value);
+        
+        if(!Number.isNaN(amount) && !Number.isNaN(dice) && !Number.isNaN(modifier)) //If all three values are given
+        {
+            sendDiscordMessage(diceRoller(amount, dice, modifier, "discord")); //Rolls the dice given and send the result to discord
+        }
 
-    else{alert("Need input in all 3 inputs.");} //If one or more of the values are missed
+        else{alert("Need input in all 3 inputs.");} //If one or more of the values are missed
+    }
+    
+    else
+    {
+        let modifier = document.getElementById("diceMod").innerHTML;
+        modifier = modifier.split;
+        
+        sendDiscordMessage(`${diceRoller("1", "20", modifier, "discord")} on their ${modifier[0]}.`);
+    }
 }
 
 /**
@@ -2530,7 +2541,7 @@ function updateStat()
 {
     let diceMod = document.getElementById("diceMod");
     let stat = document.getElementById("statChoice").value;
-    if(["deathSave", "Misc", "Saves", "Checks", "Basic"].contains(stat)){diceMod.innerHTML = `${toTitleCase(stat)}: ${wholeChar[player]["stats"][stat]}`;}
+    if(["deathSave", "Misc", "Saves", "Checks", "Basic"].includes(stat)){diceMod.innerHTML = `${toTitleCase(stat)}: ${wholeChar[player]["stats"][stat]}`;}
     else{diceMod.innerHTML = `${toTitleCase(stat)}: +0`;}
 }
 
