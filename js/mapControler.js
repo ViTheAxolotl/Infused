@@ -2511,7 +2511,7 @@ function handleDiceSelect()
 
             for(let roll of wholeRoles["rolls"][this.innerHTML])
             {
-                select.innerHTML += `<option value="${roll}">${roll}</option>`;
+                select.innerHTML += `<option value="${roll}">${toTitleCase(roll)}</option>`;
             }
 
             let mod = document.createElement("table");
@@ -2528,7 +2528,7 @@ function updateStat()
 {
     let diceMod = document.getElementById("diceMod");
     let stat = document.getElementById("statChoice").value;
-    diceMod.innerHTML = `${stat}: ${wholeChar[player]["stats"][stat]}`;
+    diceMod.innerHTML = `${toTitleCase(stat)}: ${wholeChar[player]["stats"][stat]}`;
 }
 
 function handleChangeHp(damage, token, modifier)
