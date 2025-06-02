@@ -2487,17 +2487,17 @@ function handleDiceSelect()
     {
         case "Basic":
             let numOfDice = document.createElement("input");
-            numOfDice.id = "diceToRoll"; numOfDice.value = "1"; numOfDice.placeholder = "1"; display.appendChild(numOfDice);
+            numOfDice.id = "diceToRoll"; numOfDice.placeholder = "1"; display.appendChild(numOfDice);
             display.innerHTML += '<p class="color-UP-yellow">d</p>';
             
             let sides = document.createElement("input");
-            sides.id = "sides"; sides.value = "20"; sides.placeholder = "20"; display.appendChild(sides);
+            sides.id = "sides"; sides.placeholder = "20"; display.appendChild(sides);
             display.innerHTML += '<p class="color-UP-yellow">+/-</p>';
             
             let modifier = document.createElement("input");
-            modifier.id = "modifier"; modifier.value = "0"; modifier.placeholder = "0"; display.appendChild(modifier);
+            modifier.id = "modifier"; modifier.placeholder = "0"; display.appendChild(modifier);
             
-            for(let elm of display.childNodes){elm.style.display = "inline";}
+            for(let elm of display.childNodes){elm.style.display = "inline"; elm.style.margin = "5px"; if(elm.placeholder != ""){elm.value = elm.placeholder;}}
             break;
         
         case "Checks":
