@@ -2541,9 +2541,8 @@ function updateStat()
 {
     let diceMod = document.getElementById("diceMod");
     let stat = document.getElementById("statChoice").value;
-    let check = ["deathSave", "Misc", "Saves", "Checks", "Basic"];
     
-    if(check.includes(stat)){diceMod.innerHTML = `${toTitleCase(stat)}: ${wholeChar[player]["stats"][stat]}`;}
+    if(!["deathSave", "Misc", "Saves", "Checks", "Basic"].includes(stat)){diceMod.innerHTML = `${toTitleCase(stat)}: ${wholeChar[player]["stats"][stat]}`;}
     else{diceMod.innerHTML = `${toTitleCase(stat)}: +0`;}
 }
 
