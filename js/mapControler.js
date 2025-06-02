@@ -2509,7 +2509,7 @@ function handleDiceSelect()
             select.onchange = updateStat;
             select.style.display = "inline";
 
-            for(let roll of wholeRoles[this.innerHTML])
+            for(let roll of wholeRoles["rolls"][this.innerHTML])
             {
                 select.innerHTML += `<option value="${roll}">${roll}</option>`;
             }
