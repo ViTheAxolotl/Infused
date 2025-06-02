@@ -389,7 +389,7 @@ function handleDiceRoll()
     else
     {
         let modifier = document.getElementById("diceMod").innerHTML;
-        modifier = modifier.split;
+        modifier = modifier.split();
         
         sendDiscordMessage(`${diceRoller("1", "20", modifier, "discord")} on their ${modifier[0]}.`);
     }
