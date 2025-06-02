@@ -380,7 +380,7 @@ function handleDiceRoll()
         
         if(!Number.isNaN(amount) && !Number.isNaN(dice) && !Number.isNaN(modifier)) //If all three values are given
         {
-            sendDiscordMessage(diceRoller(amount, dice, modifier, "discord")); //Rolls the dice given and send the result to discord
+            sendDiscordMessage(diceRoller(amount, dice, modifier, "discord") + "."); //Rolls the dice given and send the result to discord
         }
 
         else{alert("Need input in all 3 inputs.");} //If one or more of the values are missed
