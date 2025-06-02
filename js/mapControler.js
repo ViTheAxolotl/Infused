@@ -2501,14 +2501,34 @@ function handleDiceSelect()
             break;
         
         case "Checks":
-            break;
-
         case "Saves":
-            break;
-
         case "Misc":
+            let select = document.createElement("select");
+            select.id = "statChoice";
+            select.innerHTML = `<option value="none">${this.innerHTML}</option>`;
+            select.onchange = updateStat;
+            select.style.display = "inline";
+
+            for(let roll of wholeRoles[this.innerHTML])
+            {
+                select.innerHTML += `<option value="${roll}">${roll}</option>`;
+            }
+
+            let mod = document.createElement("table");
+            mod.style.display = "inline";
+            mod.innerHTML = "<tr><th>Modifier</th></tr><tr><td id='diceMod'>+0</td></tr>";
+
+            display.appendChild(select);
+            display.appendChild(mod);
             break;
     }
+}
+
+function updateStat()
+{
+    let diceMod = document.getElementById("diceMod");
+    let stat = document.getElementById("statChoice").value;
+    diceMod.innerHTML = `${stat}: ${wholeChar[player]["stats"][stat]}`;
 }
 
 function handleChangeHp(damage, token, modifier)
