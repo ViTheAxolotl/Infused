@@ -2515,9 +2515,10 @@ function handleDiceSelect()
                 select.innerHTML += `<option value="${roll}">${toTitleCase(roll)}</option>`;
             }
 
-            let mod = document.createElement("table");
+            let mod = document.createElement("h6");
+            mod.id = "diceMod";
             mod.style.display = "inline";
-            mod.innerHTML = "<table style = 'display: inline; margin: 5px'><tr><th>Modifier</th></tr><tr><td id='diceMod'>+0</td></tr></table>";
+            mod.innerHTML = "+0";
 
             display.appendChild(select);
             display.appendChild(mod);
@@ -2529,7 +2530,7 @@ function updateStat()
 {
     let diceMod = document.getElementById("diceMod");
     let stat = document.getElementById("statChoice").value;
-    if(["deathSave", "Misc", "Saves", "Checks", "Basic"].include(stat)){diceMod.innerHTML = `${toTitleCase(stat)}: ${wholeChar[player]["stats"][stat]}`;}
+    if(["deathSave", "Misc", "Saves", "Checks", "Basic"].contains(stat)){diceMod.innerHTML = `${toTitleCase(stat)}: ${wholeChar[player]["stats"][stat]}`;}
     else{diceMod.innerHTML = `${toTitleCase(stat)}: +0`;}
 }
 
