@@ -3,6 +3,7 @@
 import { ref, onValue } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js';
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
 import { toTitleCase, auth, database, createCard, setDoc, deleteDoc, placeBefore, createLabel, clenseInput, reload, setMapValue, quickAction, setQuickAction, skillDecrypt } from './viMethods.js';
+import { doc } from 'firebase/firestore/lite';
 
 let map = setMapValue();
 let currentPos;
@@ -28,6 +29,7 @@ let wholeChar = {};
 let wholeCustom = {};
 let wholeFavorite = {};
 let wholeDb = {};
+let wholeRoles = {};
 let wholeSpells;
 let wholeActions;
 let currentLv;
@@ -163,6 +165,8 @@ function init()
     fetch('https://vitheaxolotl.github.io/Infused/src/files.json').then(res => res.json()).then((json) => imgs = json);
     fetch('https://vitheaxolotl.github.io/Infused/src/spells.json').then(res => res.json()).then((json) => wholeSpells = json); //Opens the spell json file
     fetch('https://vitheaxolotl.github.io/Infused/src/actions.json').then(res => res.json()).then((json) => wholeActions = json); //Opens the actions json file
+    fetch('https://vitheaxolotl.github.io/Infused/src/rolls.json').then(res => res.json()).then((json) => wholeRoles = json); //Opens the actions json file
+
 
     currentHp.onchange = updateHp;
     tempHp.onchange = tempHpUpdate;
@@ -179,6 +183,8 @@ function init()
     setMainVaribles();
     grid.onclick = function(e){handleGridClick(e);};
     currentLv = wholeChar[player]["stats"]["lv"] + "th level";
+
+    for(let diceSelect of document.getElementsByClassName("diceSelect")){diceSelect.onclick = handleDiceSelect;}
 }
 
 /**
@@ -2465,6 +2471,44 @@ function useAbility()
         for(let key = 0; key < targets.length; key++){targets[key].classList.remove("selected-temp");}
         if(targets[0]){targets[0].classList.remove("selected-temp");}
         document.getElementById("otherCast").remove();
+    }
+}
+
+function handleDiceSelect()
+{
+    let selects = document.getElementsByClassName("diceSelect");
+    let display = document.getElementById("diceRoller");
+
+    for(let select of selects){select.classList = "gridButton diceSelect";}
+    this.classList = "gridButton diceSelect selected-dice";
+
+    display.innerHTML = "";
+
+    switch(this.innerHTML)
+    {
+        case "Basic":
+            let numOfDice = document.createElement("input");
+            numOfDice.id = "diceToRoll"; numOfDice.value = "1"; numOfDice.placeholder = "1"; display.appendChild(numOfDice);
+            display.innerHTML += '<p class="color-UP-yellow">d</p>"';
+            
+            let sides = document.createElement("input");
+            sides.id = "sides"; sides.value = "20"; sides.placeholder = "20"; display.appendChild(sides);
+            display.innerHTML += '<p class="color-UP-yellow">+/-</p>';
+            
+            let modifier = document.createElement("input");
+            modifier.id = "modifier"; modifier.value = "0"; modifier.placeholder = "0"; display.appendChild(modifier);
+            
+            for(elm of display.childNodes){elm.style.display = "inline";}
+            break;
+        
+        case "Checks":
+            break;
+
+        case "Saves":
+            break;
+
+        case "Misc":
+            break;
     }
 }
 

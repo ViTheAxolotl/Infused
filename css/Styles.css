@@ -389,14 +389,9 @@ table, .itemSearch, #itemImg
     touch-action: manipulation;
 }
 
-.selected
+.selected, .selected-temp, .selected-dice
 {
     border: solid #20b2aa 3px;
-}
-
-.selected-temp
-{
-    border: solid lightseagreen 3px;
 }
 
 .blo
