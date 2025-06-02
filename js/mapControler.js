@@ -2488,7 +2488,7 @@ function handleDiceSelect()
         case "Basic":
             let numOfDice = document.createElement("input");
             numOfDice.id = "diceToRoll"; numOfDice.value = "1"; numOfDice.placeholder = "1"; display.appendChild(numOfDice);
-            display.innerHTML += '<p class="color-UP-yellow">d</p>"';
+            display.innerHTML += '<p class="color-UP-yellow">d</p>';
             
             let sides = document.createElement("input");
             sides.id = "sides"; sides.value = "20"; sides.placeholder = "20"; display.appendChild(sides);
@@ -2497,7 +2497,7 @@ function handleDiceSelect()
             let modifier = document.createElement("input");
             modifier.id = "modifier"; modifier.value = "0"; modifier.placeholder = "0"; display.appendChild(modifier);
             
-            for(elm of display.childNodes){elm.style.display = "inline";}
+            for(let elm of display.childNodes){elm.style.display = "inline";}
             break;
         
         case "Checks":
