@@ -1397,7 +1397,7 @@ function handleUseAction(targets)
         if(description.includes("{@save")) 
         {
             let skill = "unknown";
-            let toBeat = spellOrAttackBonus("@save");
+            let toBeat = parseInt(spellOrAttackBonus("@save"));
             let isSpell = true;
             let ind;
             let castUp = false;
@@ -1431,7 +1431,7 @@ function handleUseAction(targets)
             display = `${toTitleCase(wholeChar[player]["currentToken"])} cast,\n${lastUse} on `;
             for(key in Object.keys(targets)){display += `${toTitleCase(targets[key].classList[1])}, `}
             display = display.slice(0, display.length - 2);
-            display += `\n${useInfo}\nWaiting for them to use the Response Action (Under Actions, Miscs)...`;
+            display += `\n${useInfo}\nPlease roll ${skill}, DC: ${toBeat})...`;
 
             if(!spellLevel){display = display.replaceAll("cast", "used the ability");} //At the end
         }
