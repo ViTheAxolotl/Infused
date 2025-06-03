@@ -421,7 +421,7 @@ function handleChangeFirstDisplay()
 function handleFavoriteSelect()
 {
     favorite = true;
-    hanFavoriteSelect();
+    hanFavoriteSelect(player);
 }
 
 /**
