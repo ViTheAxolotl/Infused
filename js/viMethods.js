@@ -45,7 +45,7 @@ export function handleQuickAction(player)
 
 export function hanFavoriteSelect(player)
 {
-    favoriteRef = ref(database, `playerChar/${player}/favorites/`); //Connects the the favorites database
+    let favoriteRef = ref(database, `playerChar/${player}/favorites/`); //Connects the the favorites database
     onValue(favoriteRef, (snapshot) => 
     { //Every time something changes in the database
         const data = snapshot.val();

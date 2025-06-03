@@ -149,8 +149,6 @@ onValue(displayRef, (snapshot) =>
     wholeDisplay = data;
 });
 
-let favoriteRef;
-
 /**
  * Runs when JS opens
  */
