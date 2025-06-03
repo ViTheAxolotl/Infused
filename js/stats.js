@@ -106,7 +106,12 @@ function setStats(stat)
             modifier = parseInt(modifier) + parseInt(wholeChar[player]["stats"]["proficiency"]);
 
             if(wholeChar[player]["stats"][`${exper}-expertise`]){modifier += parseInt(wholeChar[player]["stats"]["proficiency"]);}
-        } 
+        }
+        
+        else if(!stat.checked && wholeChar[player]["stats"]["class"] == "Bard")
+        {
+            modifier = parseInt(modifier) + Math.floor(parseInt(wholeChar[player]["stats"]["proficiency"]) / 2);
+        }
 
         modifier = statFormat(modifier);
         setDoc(`playerChar/${player}/stats/${stat.id.slice(0, stat.id.length-4)}`, modifier);

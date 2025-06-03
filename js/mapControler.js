@@ -110,6 +110,13 @@ onValue(charRef, (snapshot) =>
         inspo.innerHTML = `${inspo.title} 1`;
     }
 
+    else
+    {
+        let inspo = document.getElementById("inspo");
+        inspo.style.display = "none";
+        inspo.innerHTML = `${inspo.title} 0`;
+    }
+
     if(wholeChar[player]["zoomLevel"])
     {
         zoomLevel = wholeChar[player]["zoomLevel"];
