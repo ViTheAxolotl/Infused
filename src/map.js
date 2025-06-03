@@ -1,7 +1,7 @@
 "use strict";
 import { ref, onValue } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js';
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
-import { toTitleCase, auth, database, setDoc, deleteDoc, returnHpImage, setMapValue, placeBefore, quickAction, setQuickAction } from '../js/viMethods.js';
+import { toTitleCase, auth, database, setDoc, deleteDoc, returnHpImage, setMapValue, placeBefore, quickAction, setQuickAction, handleQuickAction } from '../js/viMethods.js';
 
 let map = setMapValue();
 let wholeDB = {};
@@ -615,6 +615,7 @@ function addCharacter(character, update)
     for(let i = 0; i < char.length; i++)
     {
         char[i].onclick = handleCharClick;
+        char[i].oncontextmenu = function() {this.preventDefault; handleCharClick(); handleQuickAction();}
         placeTokens(x, y, char[i]);
         
         if(update)

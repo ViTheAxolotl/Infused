@@ -2,6 +2,7 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js';
 import { getDatabase, ref, set } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js';
 import { getAuth } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
+import { handleFavoriteSelect } from './mapControler.js';
 
 const firebaseApp = initializeApp
 ({
@@ -22,6 +23,25 @@ export let skillDecrypt = {"athletics" : "Strength", "acrobatics" : "Dexterity",
 export function setQuickAction(bool)
 {
     quickAction = bool;
+}
+
+export function handleQuickAction()
+{
+    let viewDiv = document.getElementById("cover");
+
+    setQuickAction(true);
+    handleFavoriteSelect();
+
+    document.getElementById("quickDiv").children[0].classList = "center";
+
+    for(let elm of viewDiv.children[0].children)
+    {
+        if(elm.id != "hideCover")
+        {
+            elm.classList = `invisible ${elm.classList[0]}`;
+            elm.style.zIndex = "0";
+        }
+    }
 }
 
 /**

@@ -2,7 +2,7 @@
 
 import { ref, onValue } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js';
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
-import { toTitleCase, auth, database, createCard, setDoc, deleteDoc, placeBefore, createLabel, clenseInput, reload, setMapValue, quickAction, setQuickAction, skillDecrypt } from './viMethods.js';
+import { toTitleCase, auth, database, createCard, setDoc, deleteDoc, placeBefore, createLabel, clenseInput, reload, setMapValue, quickAction, setQuickAction, skillDecrypt, handleQuickAction } from './viMethods.js';
 
 let map = setMapValue();
 let currentPos;
@@ -272,25 +272,6 @@ function handleGridClick(e)
     setDoc(`bubbles/${bubbleDB.id}`, bubbleDB);
 }
 
-function handleQuickAction()
-{
-    let viewDiv = document.getElementById("cover");
-
-    setQuickAction(true);
-    handleFavoriteSelect();
-
-    document.getElementById("quickDiv").children[0].classList = "center";
-
-    for(let elm of viewDiv.children[0].children)
-    {
-        if(elm.id != "hideCover")
-        {
-            elm.classList = `invisible ${elm.classList[0]}`;
-            elm.style.zIndex = "0";
-        }
-    }
-}
-
 /**
  * Rolls number of base dice with no modifier
  * @param {*} amount 
@@ -439,7 +420,7 @@ function handleChangeFirstDisplay()
 /**
  * Displays the favored spells and actions
  */
-function handleFavoriteSelect()
+export function handleFavoriteSelect()
 {
     favorite = true;
     favoriteRef = ref(database, `playerChar/${player}/favorites/`); //Connects the the favorites database
