@@ -1431,7 +1431,7 @@ function handleUseAction(targets)
             display = `${toTitleCase(wholeChar[player]["currentToken"])} cast,\n${lastUse} on `;
             for(key in Object.keys(targets)){display += `${toTitleCase(targets[key].classList[1])}, `}
             display = display.slice(0, display.length - 2);
-            display += `\n${useInfo}\nPlease roll ${skill}, DC: ${toBeat})...`;
+            display += `\n${useInfo}\nPlease roll ${skill}, DC: ${toBeat} or use the Response option under Misc...`;
 
             if(!spellLevel){display = display.replaceAll("cast", "used the ability");} //At the end
         }
