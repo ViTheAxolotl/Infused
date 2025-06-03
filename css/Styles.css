@@ -659,6 +659,11 @@ table, .itemSearch, #itemImg
     display: inline;
 }
 
+#siteList p
+{
+    text-indent: 0px;
+}
+
 @media (max-width: 1399px) {
     .col-md-6
     {
