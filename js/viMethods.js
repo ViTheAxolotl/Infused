@@ -320,5 +320,3 @@ export function createLabel(name)
     label.classList = "color-UP-yellow";
     return label;
 }
-
-import { handleFavoriteSelect } from './mapControler.js';
