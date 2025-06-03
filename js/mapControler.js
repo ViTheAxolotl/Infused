@@ -2,7 +2,7 @@
 
 import { ref, onValue } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js';
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
-import { toTitleCase, auth, database, createCard, setDoc, deleteDoc, placeBefore, createLabel, clenseInput, reload, setMapValue, quickAction, setQuickAction, skillDecrypt, handleQuickAction } from './viMethods.js';
+import { toTitleCase, auth, database, createCard, setDoc, deleteDoc, placeBefore, createLabel, clenseInput, reload, setMapValue, quickAction, setQuickAction, skillDecrypt, handleQuickAction, hanFavoriteSelect } from './viMethods.js';
 
 let map = setMapValue();
 let currentPos;
@@ -420,66 +420,10 @@ function handleChangeFirstDisplay()
 /**
  * Displays the favored spells and actions
  */
-export function handleFavoriteSelect()
+function handleFavoriteSelect()
 {
     favorite = true;
-    favoriteRef = ref(database, `playerChar/${player}/favorites/`); //Connects the the favorites database
-    onValue(favoriteRef, (snapshot) => 
-    { //Every time something changes in the database
-        const data = snapshot.val();
-        wholeFavorite = data;
-        let spellDiv = document.getElementById("spellsF");
-        let actionDiv = document.getElementById("abilityF");
-
-        if(quickAction == true)
-        {
-            spellDiv = document.getElementById("spellsFQ");
-            actionDiv = document.getElementById("abilityFQ");
-        }
-
-        while(spellDiv.children.length > 0) //Until the div is empty
-        {
-            spellDiv.removeChild(spellDiv.lastChild); 
-        }
-
-
-        while(actionDiv.children.length > 0) //Until the div is empty
-        {
-            actionDiv.removeChild(actionDiv.lastChild);
-        }
-
-        spellDiv.classList.add("center"); //Centers the spells
-        actionDiv.classList.add("center"); //Centers the actions
-        
-        if(wholeFavorite["spells"]) //The spell btn is active
-        {
-            for(let spellLv of Object.keys(wholeFavorite["spells"])) //For each spell in the favorite of the player
-            {
-                let lvlBtn = document.createElement("button"); //Creates the button
-                lvlBtn.name = spellLv;
-                lvlBtn.classList = "gridButton spell";
-                lvlBtn.innerHTML = `Lvl ${spellLv}`;
-                lvlBtn.onclick = handleShowSpells;
-                if(spellLv == "0"){lvlBtn.innerHTML = "Cantrips";} //If the spell level is 0 change the name to cantrips
-                else if(spellLv == "hold"){if(!quickAction){lvlBtn.innerHTML = "Create New Spell"; lvlBtn.onclick = handleCreateNew;} else{continue;}} //After they reach the last button make it the create new button
-                spellDiv.appendChild(lvlBtn); //Adds the buttons to the div
-            }
-        }
-
-        if(wholeFavorite["actions"]) //If the action btn is active
-        {
-            for(let actionTag of Object.keys(wholeFavorite["actions"])) //For each spell in the favorite of the player
-            {
-                let tagBtn = document.createElement("button"); //Creates the button
-                tagBtn.name = actionTag;
-                tagBtn.classList = "gridButton action";
-                tagBtn.innerHTML = `${actionTag}`;
-                tagBtn.onclick = handleShowActions;
-                if(actionTag == "hold"){if(!quickAction){tagBtn.innerHTML = "Create New Ability"; tagBtn.onclick = handleCreateNew;} else{continue;}} //After they reach the last button make it the create new button
-                actionDiv.appendChild(tagBtn); //Adds the buttons to the div
-            }
-        }
-    });
+    hanFavoriteSelect();
 }
 
 /**
