@@ -2,7 +2,6 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js';
 import { getDatabase, ref, set } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js';
 import { getAuth } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
-import { handleFavoriteSelect } from './mapControler.js';
 
 const firebaseApp = initializeApp
 ({
@@ -19,6 +18,8 @@ export let auth = getAuth(); //Logs into accounts
 export let database = getDatabase(); //Sets up connection
 export let quickAction = false;
 export let skillDecrypt = {"athletics" : "Strength", "acrobatics" : "Dexterity", "slightOfHand" : "Dexterity", "stealth" : "Dexterity", "arcana" : "Intelligence", "history" : "Intelligence", "investigation" : "Intelligence", "nature" : "Intelligence", "religion" : "Intelligence", "animalHandling" : "Wisdom", "insight" : "Wisdom", "medicine" : "Wisdom", "perception" : "Wisdom", "survival" : "Wisdom",  "deception" : "Charisma",  "intimidation" : "Charisma",  "performance" : "Charisma",  "persuasion" : "Charisma"};
+
+
 
 export function setQuickAction(bool)
 {
@@ -321,3 +322,5 @@ export function createLabel(name)
     label.classList = "color-UP-yellow";
     return label;
 }
+
+import { handleFavoriteSelect } from './mapControler.js';
