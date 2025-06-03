@@ -2518,7 +2518,7 @@ function handleDiceSelect()
             select.id = "statChoice";
             select.innerHTML = `<option value="none">${this.innerHTML}</option>`;
             select.onchange = updateStat;
-            select.style.margin = "5px";
+            select.style.margin = "10px";
             select.style.display = "inline";
 
             for(let roll of wholeRoles["rolls"][this.innerHTML])
@@ -2530,6 +2530,7 @@ function handleDiceSelect()
             mod.id = "diceMod";
             mod.style.display = "inline";
             mod.innerHTML = "+0";
+            mod.style.margin = "10px";
 
             display.appendChild(select);
             display.appendChild(mod);
