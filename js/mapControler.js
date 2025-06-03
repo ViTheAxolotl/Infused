@@ -206,7 +206,7 @@ function setMainVaribles()
     actionBtn = document.getElementsByClassName("action");
     for(let aButton of actionBtn){aButton.onclick = handleShowActions;} //for each of the actions row
     rollDiceBtn = document.getElementById("rollDice").onclick = handleDiceRoll;
-    document.getElementById("quickAction").onclick = handleQuickAction;
+    document.getElementById("quickAction").onclick = function(){handleQuickAction(player);};
 
     if(player != "Vi") //If player isn't me
     {

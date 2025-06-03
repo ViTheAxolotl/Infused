@@ -24,12 +24,12 @@ export function setQuickAction(bool)
     quickAction = bool;
 }
 
-export function handleQuickAction()
+export function handleQuickAction(player)
 {
     let viewDiv = document.getElementById("cover");
 
     setQuickAction(true);
-    hanFavoriteSelect();
+    hanFavoriteSelect(player);
 
     document.getElementById("quickDiv").children[0].classList = "center";
 
@@ -43,7 +43,7 @@ export function handleQuickAction()
     }
 }
 
-export function hanFavoriteSelect()
+export function hanFavoriteSelect(player)
 {
     favoriteRef = ref(database, `playerChar/${player}/favorites/`); //Connects the the favorites database
     onValue(favoriteRef, (snapshot) => 

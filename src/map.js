@@ -615,7 +615,7 @@ function addCharacter(character, update)
     for(let i = 0; i < char.length; i++)
     {
         char[i].onclick = handleCharClick;
-        char[i].oncontextmenu = function() {this.classList.add("selected-temp"); handleViewTokens(this); handleQuickAction();}
+        char[i].oncontextmenu = function() {this.classList.add("selected-temp"); handleViewTokens(this); handleQuickAction(player);}
         placeTokens(x, y, char[i]);
         
         if(update)
