@@ -106,7 +106,7 @@ onValue(charRef, (snapshot) =>
     if(wholeChar[player]["bardicInspo"])
     {
         let inspo = document.getElementById("inspo");
-        vis.style.display = "block";
+        inspo.style.display = "block";
         inspo.innerHTML = `${inspo.title} 1`;
     }
 
