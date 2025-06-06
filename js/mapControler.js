@@ -1202,7 +1202,7 @@ function handleCardClick()
             sneakSelect.id = "sneak";
             sneakSelect.style.margin = "0px 5px";
 
-            for(let i = 0; i < individual.length; i++)
+            for(let i = 0; i < sneak.length; i++)
             {
                 let option = document.createElement("option");
                 option.value = sneak[i];
@@ -1405,11 +1405,6 @@ function handleUseAction(targets)
 
             if(!description.includes("$")){isDollar = false;}
         }
-    }
-
-    if(document.getElementById("sneak").value != "Sneak-Attack?")
-    {
-        description += `{@sDice ${Math.floor(parseInt(wholeChar[player]["stats"]["lv"])/2)}d6} Sneak Attack.`;
     }
 
     if(description.includes("{@"))
@@ -1722,6 +1717,7 @@ function handleUseAction(targets)
                         display += `(Success Hit) ${targets[key].title.split(":")[0]} (${ac}), `;
                         fail = false; 
                         handleChangeHp(damage.split("**")[1], wholeDb[targets[key].title.split(":")[0]], "-");
+                        if(document.getElementById("sneak").value != "Sneak-Attack?"){description += `{@sDice ${Math.floor(parseInt(wholeChar[player]["stats"]["lv"])/2)}d6} Sneak Attack.`;}
                     }
 
                     else
