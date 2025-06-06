@@ -1525,8 +1525,6 @@ function handleUseAction(targets)
                     if(parseInt(token.currentHp) - parseInt(damage) > 0){token.currentHp = `${parseInt(token.currentHp) - parseInt(damage)}`;}
                     else{token.currentHp = "0";}
                 }
-
-                setDoc("currentMap/", wholeDb);
             }
 
             else
@@ -1718,7 +1716,6 @@ function handleUseAction(targets)
                         fail = false; 
                         handleChangeHp(damage.split("**")[1], wholeDb[targets[key].title.split(":")[0]], "-");
                         if(document.getElementById("sneak").value != "Sneak-Attack?"){description += `{@sDice ${Math.floor(parseInt(wholeChar[player]["stats"]["lv"])/2)}d6} Sneak Attack.`;}
-s
                     }
 
                     else
@@ -1763,7 +1760,7 @@ s
                 }
 
                 display = display.slice(0, display.length - 2);
-                if(fail == false){display += `\nDealing: ${damage} ${ending}.\n`; setDoc("currentMap/", wholeDb);}
+                if(fail == false){display += `\nDealing: ${damage} ${ending}.\n`;}
             }
             if(!spellLevel){display = display.replaceAll("cast", "used the ability");}
 
@@ -1776,7 +1773,7 @@ s
 
             if(description.includes("Sneak Attack"))
             {
-                display += "Rolling Sneak Attack at end!";
+                display += "\nRolling Sneak Attack at end!";
             }
 
             for(let i = 0; i < sDices.length; i++)
@@ -1790,7 +1787,6 @@ s
             
                 if(display){display += `\nResult: ${damage}. \n`;}
                 else{display = `${wholeChar[player]["charName"]} used the ability, ${lastUse}:\n${useInfo}\n\nResult: ${damage}. \n`;}
-                setDoc("currentMap/", wholeDb);
             }
         }
 
@@ -1826,6 +1822,8 @@ s
             if(display){display += `nResult: ${damage}. \n`;}
             else{display = `${wholeChar[player]["charName"]} used the ability, ${lastUse}:\n${useInfo}\n\nResult: ${damage}. \n`;}
         }
+
+        setDoc("currentMap/", wholeDb);
     }
 
     else
