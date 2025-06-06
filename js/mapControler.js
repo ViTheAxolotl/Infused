@@ -1196,6 +1196,22 @@ function handleCardClick()
 
             slotSelect.selectedIndex = "0";
 
+            let sneak = ["Sneak-Attack?", "Sneak-Attack!"];
+            let sneakSelect = document.createElement("select");
+            sneakSelect.name = "sneak";
+            sneakSelect.id = "sneak";
+            sneakSelect.style.margin = "0px 5px";
+
+            for(let i = 0; i < individual.length; i++)
+            {
+                let option = document.createElement("option");
+                option.value = sneak[i];
+                option.text = sneak[i];
+                sneakSelect.appendChild(option);
+            }
+
+            sneakSelect.selectedIndex = "0";
+
             if(spellLevel) //If it was a spell clicked
             {
                 lastSpell = currentTitle;
@@ -1294,6 +1310,7 @@ function handleCardClick()
             }
 
             optionDiv.appendChild(slotSelect);
+            if(wholeChar[player]["stats"]["class"].includes("Rogue")){optionDiv.appendChild(sneakSelect);}
             optionDiv.appendChild(castBtn);
             
             if(!quickAction)
@@ -1388,6 +1405,11 @@ function handleUseAction(targets)
 
             if(!description.includes("$")){isDollar = false;}
         }
+    }
+
+    if(document.getElementById("sneak").value != "Sneak-Attack?")
+    {
+        description += `{@sDice ${Math.floor(parseInt(wholeChar[player]["stats"]["lv"])/2)}d6} Sneak Attack.`;
     }
 
     if(description.includes("{@"))
@@ -1753,6 +1775,11 @@ function handleUseAction(targets)
         if(description.includes("{@sDice"))
         {
             let sDices = description.split("{@sDice");
+
+            if(description.includes("Sneak Attack"))
+            {
+                display += "Rolling Sneak Attack at end!";
+            }
 
             for(let i = 0; i < sDices.length; i++)
             {
