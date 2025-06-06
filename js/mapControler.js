@@ -1718,6 +1718,7 @@ function handleUseAction(targets)
                         fail = false; 
                         handleChangeHp(damage.split("**")[1], wholeDb[targets[key].title.split(":")[0]], "-");
                         if(document.getElementById("sneak").value != "Sneak-Attack?"){description += `{@sDice ${Math.floor(parseInt(wholeChar[player]["stats"]["lv"])/2)}d6} Sneak Attack.`;}
+s
                     }
 
                     else
@@ -1752,6 +1753,7 @@ function handleUseAction(targets)
                         display += `(Success Hit) ${targets[key].title.split(":")[0]} (${ac}), `;
                         fail = false; 
                         handleChangeHp(damage.split("**")[1], wholeDb[targets[key].title.split(":")[0]], "-");
+                        if(document.getElementById("sneak").value != "Sneak-Attack?"){description += `{@sDice ${Math.floor(parseInt(wholeChar[player]["stats"]["lv"])/2)}d6} Sneak Attack.`;}
                     }
 
                     else
