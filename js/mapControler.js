@@ -1545,7 +1545,7 @@ function handleUseAction(targets)
             let token = {border : "blue", currentHp : `0`, maxHp : `0`, tempHp : "0", map : "", id : "", name : "", title : ` ${player}, `, xPos : "1", yPos : "A", isSummon : false, ac : "10"};
             let info = discription.slice(discription.indexOf("{@Summon"));
             let currentToken = wholeDb[wholeChar[player]["currentToken"]];
-            if(!currentToken["title"].includes(player)){currentToken.title = ` ${player}, ${currentToken["title"]}`;}
+            if(!currentToken["title"].includes(player)){currentToken.title = ` ${player}, ${currentToken["title"]}`; document.getElementById("title").innerHTML = "Status: " + currentToken.title;}
             info = info.slice(info.indexOf(" ") + 1, info.indexOf("}"));
             info = info.split(":"); 
             token.name = info[0] + "-";
