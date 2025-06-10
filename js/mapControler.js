@@ -1540,7 +1540,7 @@ function handleUseAction(targets)
             display += ad_dis;
         }
 
-        if(description.includes("{@Summon"))
+        if(discription.includes("{@Summon"))
         {
             let token = {border : "blue", currentHp : `0`, maxHp : `0`, tempHp : "0", map : "", id : "", name : "", title : ` ${player}, `, xPos : "1", yPos : "A", isSummon : true, ac : "10"};
             let info = description.slice(description.indexOf("{@Summon"));
