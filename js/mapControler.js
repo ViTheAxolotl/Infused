@@ -1506,7 +1506,7 @@ function handleUseAction(targets)
             let info = discription.slice(discription.indexOf("{@Summon"));
             info = info.slice(info.indexOf(" ") + 1, info.indexOf("}"));
             info = info.split(":"); 
-            token.title += `${info[3]}`;
+            token.title += `${info[3]}, `;
             let currentToken = wholeDb[wholeChar[player]["currentToken"]];
             if(!currentToken["title"].includes(player)){currentToken.title = ` ${player}, ${currentToken["title"]}`; document.getElementById("title").innerHTML = "Status: " + currentToken.title;}
             
