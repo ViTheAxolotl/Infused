@@ -649,46 +649,6 @@ function changeValue()
             if(modifier == "+") //If plus button is clicked
             {
                 title.innerHTML += ` ${toTitleCase(status.value)},`; //Adds the key word written to your title
-                
-                if(status.value.includes("Fin"))
-                {
-                    let currentToken = wholeChar[player][token];
-
-                    switch(player)
-                    {
-                        case "Okami":
-                            setDoc(`playerChar/${player}/favorites/actions/Final/Life-Steal`, wholeActions["Misc"]["Life-Steal"]);
-                            setDoc(`playerChar/${player}/favorites/actions/Final/Beastly Claws`, wholeActions["Misc"]["Beastly Claws"]);
-                            currentToken.name = "leonier-fin";
-                            currentToken.maxHp = "85";
-                            currentToken.currentHp = "85";
-                            break;
-
-                        case "Alejandro":
-                            setDoc(`playerChar/${player}/favorites/actions/Final/Life-Steal`, wholeActions["Misc"]["Life-Steal"]);
-                            setDoc(`playerChar/${player}/favorites/actions/Final/Beastly Fangs`, wholeActions["Misc"]["Beastly Fangs"]);
-                            currentToken.name = "razor-fin";
-                            currentToken.maxHp = "73";
-                            currentToken.currentHp = "73";
-                            break;
-
-                        case "Garrett":
-                            setDoc(`playerChar/${player}/favorites/actions/Final/Enhanced Wild Shape`, wholeActions["Misc"]["Enhanced Wild Shape"]);
-                            currentToken.name = "nook-fin";
-                            currentToken.maxHp = "69";
-                            currentToken.currentHp = "69";
-                            break;
-
-                        case "Ben":
-                            setDoc(`playerChar/${player}/favorites/actions/Final/Enhanced Rage`, wholeActions["Misc"]["Enhanced Rage"]);
-                            currentToken.name = "nibbly-fin";
-                            currentToken.maxHp = "95";
-                            currentToken.currentHp = "95";
-                    }
-
-                    setDoc(`currentMap/${currentToken.id}`, currentToken);
-                    setDoc(`playerChar/${currentToken.id}`, currentToken);
-                }
             }
 
             else //minus button is clicked
