@@ -2469,6 +2469,7 @@ function useAbility()
         this.onclick = displaySelect;
         setDoc(`playerChar/${player}/mode`, "waiting");
         handleUseAction(targets);
+        searchBar.value = "";
         emptyCards();
         document.getElementById("hideCover").click();
         emptyCards();
