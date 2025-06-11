@@ -1508,7 +1508,7 @@ function handleUseAction(targets)
             info = info.split(":"); 
             token.title += `${info[3]}, `;
             let currentToken = wholeDb[wholeChar[player]["currentToken"]];
-            if(!currentToken["title"].includes(player)){currentToken.title = ` ${player}, ${currentToken["title"]}`; document.getElementById("title").innerHTML = "Status: " + currentToken.title;}
+            if(!currentToken["title"].includes(player)){currentToken.title = ` ${player}, ${currentToken["title"]}`; document.getElementById("title").innerHTML = "Status: " + currentToken.title; document.getElementById(player).classList.add("update");}
             
             token.name = info[0] + "-";
             let id = info[0];
