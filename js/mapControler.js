@@ -2474,8 +2474,8 @@ function useAbility()
         emptyCards();
         for(let key = 0; key < targets.length; key++){targets[key].classList.remove("selected-temp");}
         if(targets[0]){targets[0].classList.remove("selected-temp");}
-        searchBar.value = "";
-        searchBar.innerHTML = "";
+        searchBar[0].value = "";
+        searchBar[0].innerHTML = "";
         document.getElementById("otherCast").remove();
     }
 }
