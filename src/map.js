@@ -439,7 +439,7 @@ function addCharacter(character, update)
 
     if(wholeChar[player]["currentToken"] == character["id"])
     {
-        if(currentHp.value == "" && maxHp.value == "" && title.innerHTML == "Status: ")
+        if(currentHp.value == "" && title.innerHTML == "Status: ")
         {
             document.getElementById("title").innerHTML += character["title"];
         }
