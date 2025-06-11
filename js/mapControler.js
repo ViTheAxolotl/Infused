@@ -1502,7 +1502,7 @@ function handleUseAction(targets)
 
         if(discription.includes("{@Summon"))
         {
-            let token = {border : "blue", currentHp : `0`, maxHp : `0`, tempHp : "0", map : "", id : "", name : "", title : ` ${player}, `, xPos : "1", yPos : "A", isSummon : false, ac : "10"};
+            let token = {border : "blue", currentHp : `0`, maxHp : `0`, tempHp : "0", map : "", id : "", name : "", title : ` ${player}, `, xPos : "1", yPos : "A", isSummon : false, AC : "10"};
             let info = discription.slice(discription.indexOf("{@Summon"));
             info = info.slice(info.indexOf(" ") + 1, info.indexOf("}"));
             info = info.split(":"); 
