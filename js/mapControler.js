@@ -2469,12 +2469,13 @@ function useAbility()
         this.onclick = displaySelect;
         setDoc(`playerChar/${player}/mode`, "waiting");
         handleUseAction(targets);
-        searchBar.value = "";
         emptyCards();
         document.getElementById("hideCover").click();
         emptyCards();
         for(let key = 0; key < targets.length; key++){targets[key].classList.remove("selected-temp");}
         if(targets[0]){targets[0].classList.remove("selected-temp");}
+        searchBar.value = "";
+        searchBwe.innerHTML = "";
         document.getElementById("otherCast").remove();
     }
 }
