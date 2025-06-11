@@ -2475,7 +2475,7 @@ function useAbility()
         for(let key = 0; key < targets.length; key++){targets[key].classList.remove("selected-temp");}
         if(targets[0]){targets[0].classList.remove("selected-temp");}
         searchBar.value = "";
-        searchBwe.innerHTML = "";
+        searchBar.innerHTML = "";
         document.getElementById("otherCast").remove();
     }
 }
