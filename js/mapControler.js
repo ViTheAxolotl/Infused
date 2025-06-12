@@ -2476,7 +2476,8 @@ function useAbility()
         if(targets[0]){targets[0].classList.remove("selected-temp");}
         searchBar[0].value = "";
         searchBar[0].innerHTML = "";
-        for(let btn of secondMenu){btn.classList.remove("selected");}
+        for(let btn of document.getElementsByClassName("spell")){btn.classList.remove("selected");}
+        for(let btn of document.getElementsByClassName("action")){btn.classList.remove("selected");}
         document.getElementById("otherCast").remove();
     }
 }
