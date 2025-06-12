@@ -2476,6 +2476,7 @@ function useAbility()
         if(targets[0]){targets[0].classList.remove("selected-temp");}
         searchBar[0].value = "";
         searchBar[0].innerHTML = "";
+        for(let btn of secondMenu){btn.classList.remove("selected");}
         document.getElementById("otherCast").remove();
     }
 }
