@@ -1502,13 +1502,13 @@ function handleUseAction(targets)
 
         if(discription.includes("{@Summon"))
         {
-            let token = {border : "blue", currentHp : `0`, maxHp : `0`, tempHp : "0", map : "", id : "", name : "", title : ` ${player}, `, xPos : "1", yPos : "A", isSummon : false, ac : "10"};
+            let token = {border : "blue", currentHp : `0`, maxHp : `0`, tempHp : "0", map : "", id : "", name : "", title : ` ${player}, `, xPos : "1", yPos : "A", isSummon : false, AC : "10"};
             let info = discription.slice(discription.indexOf("{@Summon"));
             info = info.slice(info.indexOf(" ") + 1, info.indexOf("}"));
             info = info.split(":"); 
             token.title += `${info[3]}, `;
             let currentToken = wholeDb[wholeChar[player]["currentToken"]];
-            if(!currentToken["title"].includes(player)){currentToken.title = ` ${player}, ${currentToken["title"]}`; document.getElementById("title").innerHTML = "Status: " + currentToken.title;}
+            if(!currentToken["title"].includes(player)){currentToken.title = ` ${player}, ${currentToken["title"]}`; document.getElementById("title").innerHTML = "Status: " + currentToken.title; document.getElementById(player).classList.add("update");}
             
             token.name = info[0] + "-";
             let id = info[0];
@@ -2474,6 +2474,10 @@ function useAbility()
         emptyCards();
         for(let key = 0; key < targets.length; key++){targets[key].classList.remove("selected-temp");}
         if(targets[0]){targets[0].classList.remove("selected-temp");}
+        searchBar[0].value = "";
+        searchBar[0].innerHTML = "";
+        for(let btn of document.getElementsByClassName("spell")){btn.classList.remove("selected");}
+        for(let btn of document.getElementsByClassName("action")){btn.classList.remove("selected");}
         document.getElementById("otherCast").remove();
     }
 }
