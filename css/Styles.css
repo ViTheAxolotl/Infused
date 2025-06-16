@@ -664,6 +664,11 @@ table, .itemSearch, #itemImg
     text-indent: 0px;
 }
 
+#story td, #story tbody, #story tr
+{
+    width: 100%;
+}
+
 @media (max-width: 1399px) {
     .col-md-6
     {
