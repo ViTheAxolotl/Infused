@@ -16,14 +16,14 @@
   
   <body style ="-webkit-text-size-adjust: none;">
     <div id = "story" class = "bg-UP-purple color-UP-black center stats" style="margin: 0px; border: none; min-width:1800px; background-size: 100% 100%; -webkit-text-size-adjust: none;">
-      <table style="width: 100%;" class="topHalf statSheet paper">
-        <td style="width: 33%;"><p>Character Name:</p><h6 class = "stat" id="name"></h6></td>
-        <td style="width: 34%;"><p>Class, Race, and Lv:</p><input class = "stat" id="class"/><input class = "stat" id="race"/><select class="stat" id="lv"><option value = "1">1</option><option value = "2">2</option><option value = "3">3</option><option value = "4">4</option><option value = "5">5</option><option value = "6">6</option><option value = "7">7</option><option value = "8">8</option><option value = "9">9</option><option value = "10">10</option><option value = "11">11</option><option value = "12">12</option><option value = "13">13</option><option value = "14">14</option><option value = "15">15</option><option value = "16">16</option><option value = "17">17</option><option value = "18">18</option><option value = "19">19</option><option value = "20">20</option></select></td>
-        <td style="width: 33%;"><p>Background & Alignment:</p><input class = "stat" id="background"/><input class = "stat" id="alignment"/></td>
-      </table>
-
-      <table style="width: 100%; min-height: 1000px; margin-bottom: 10px;" class="statSheet paper">
+      <table style="width: 100%; min-height: 1300px; margin-bottom: 10px;" class="statSheet paper">
         <tbody>
+          <tr>
+            <td style="width: 33%;"><p>Character Name:</p><h6 class = "stat" id="name"></h6></td>
+            <td style="width: 34%;"><p>Class, Race, and Lv:</p><input class = "stat" id="class"/><input class = "stat" id="race"/><select class="stat" id="lv"><option value = "1">1</option><option value = "2">2</option><option value = "3">3</option><option value = "4">4</option><option value = "5">5</option><option value = "6">6</option><option value = "7">7</option><option value = "8">8</option><option value = "9">9</option><option value = "10">10</option><option value = "11">11</option><option value = "12">12</option><option value = "13">13</option><option value = "14">14</option><option value = "15">15</option><option value = "16">16</option><option value = "17">17</option><option value = "18">18</option><option value = "19">19</option><option value = "20">20</option></select></td>
+            <td style="width: 33%;"><p>Background & Alignment:</p><input class = "stat" id="background"/><input class = "stat" id="alignment"/></td>
+          </tr>
+
           <tr>
             <td style="width: 33%;">
               <table style="width: 100%;">
@@ -265,9 +265,10 @@
           <td><h6>Waypoints:</h6><p>•  Penrith (Jason’s Lab)</p></td>
         </tr>
       </table>
+      <div class="paper"></div>
       <h6>Infusion & Other:</h6>
       <textarea class="stat" id="infusion" style="width: 70%; height: 1000px;"></textarea>
-    </div>
+    </div></div>
 
      <!-- Bootstrap JavaScript Components-LOAD LAST -->
      <script scr="js/bootstrap/scripts.js"></script>
