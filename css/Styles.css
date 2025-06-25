@@ -440,6 +440,11 @@ table, .itemSearch, #itemImg
     margin: 5px;
 }
 
+#story span
+{
+    text-align: left;
+}
+
 #cover
 {
     background-color: grey; 
