@@ -77,7 +77,7 @@ function init()
 
 function setStats(stat)
 {
-    if(stat.id.includes("-btn"))
+    if(stat.id.includes("-btn") && !stat.id.includes("lvl"))
     {
         let display;
         let skill;
