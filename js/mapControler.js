@@ -632,13 +632,13 @@ function changeValue()
             let zoomSheetLevel = 100; if(wholeChar[player]["zoomSheetLevel"]){zoomSheetLevel = wholeChar[player]["zoomSheetLevel"];}
             if(modifier == "+") //If plus button is 
             {
-                if(zoomSheetLevel < 170){zoomSheetLevel += 10;}
+                if(zoomSheetLevel < 100){zoomSheetLevel += 10;}
             }
 
             else //minus button is clicked
             {
                 zoomSheetLevel -= 10;
-                if (zoomSheetLevel < 70){zoomSheetLevel = 70;}
+                if (zoomSheetLevel < 20){zoomSheetLevel = 20;}
             }
 
             setDoc(`playerChar/${player}/zoomSheetLevel`, zoomSheetLevel);
