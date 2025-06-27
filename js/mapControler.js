@@ -125,7 +125,10 @@ onValue(charRef, (snapshot) =>
 
     if(wholeChar[player]["zoomSheetLevel"])
     {
-        document.getElementById("statSheet").style.zoom = `${wholeChar[player]["zoomSheetLevel"]}%`;
+        //document.getElementById("statSheet").style.zoom = `${wholeChar[player]["zoomSheetLevel"]}%`;
+        document.getElementById("statSheet").style.transform = `scale(${wholeChar[player]["zoomSheetLevel"]/100})`;
+        document.getElementById("statSheet").style.width = `${100/(wholeChar[player]["zoomSheetLevel"]/100)}%`;
+
     }
 });
 
