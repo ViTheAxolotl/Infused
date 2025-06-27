@@ -16,7 +16,7 @@
   
   <body style ="-webkit-text-size-adjust: none;">
     <div id = "story" class = "bg-UP-purple color-UP-black center stats" style="margin: 0px; border: none; min-width:1800px; background-size: 100% 100%; -webkit-text-size-adjust: none;">
-      <table style="width: 100%; min-height: 1300px; margin-bottom: 10px;" class="statSheet paper">
+      <table style="width: 100%; margin-bottom: 10px;" class="statSheet paper">
         <tbody>
           <tr>
             <td style="width: 33%;"><p>Character Name:</p><h6 class = "stat" id="name"></h6></td>
@@ -94,7 +94,7 @@
             </td>
 
             <td style="width: 34%;">
-              <table style = "width: 100%;">
+              <table style = "width: 100%; margin: 10px;">
                 <tr>
                   <td>
                     <div style="width: 33%; display: inline;" class="center"><p style="display: inline;">AC: </p><input class = "stat" id="AC"/></div>
@@ -206,45 +206,56 @@
           <tr>
             <td style="width: 50%;">
               <table style="width: 100%; height: 100%;">
-                <tr><td style="height: 202px;">
-                  <textarea class="stat" id = "apperance" style="width: 100%; height: 202px;"></textarea>
-                  <h6>Character Apperance</h6>
-                </td></tr>
+                <tr>
+                  <td style="height: 202px;">
+                    <textarea class="stat" id = "apperance" style="width: 100%; height: 202px;"></textarea>
+                    <h6>Character Apperance</h6>
+                  </td>
+                </tr>
 
-                <tr><td style="height: 800px;">
-                  <textarea class="stat" id="characterBackstory" style="height: 800px; width: 100%;"></textarea>
-                  <h6>Character Backstory</h6>
-                </td></tr>
+                <tr>
+                  <td style="height: 800px;">
+                    <textarea class="stat" id="characterBackstory" style="height: 800px; width: 100%;"></textarea>
+                    <h6>Character Backstory</h6>
+                  </td>
+                </tr>
               </table>
             </td>
 
             <td style="width: 49%;">
               <table style="width: 100%;">
-              <tr><td>
-                <table style="width: 100%; height: 245px;">
-                  <tr>
-                    <td>
-                      <textarea class="stat" id="ally1" style="width: 100%; height: 245px;"></textarea>
-                    </td>
+                <tr>
+                  <td>
+                    <table style="width: 100%; height: 245px;">
+                      <tr>
+                        <td>
+                          <textarea class="stat" id="ally1" style="width: 100%; height: 245px;"></textarea>
+                        </td>
 
-                    <td>
-                      <h6>Name</h6>
-                      <textarea class="stat" id="ally2" style="width: 100%; height: 230px;"></textarea>
-                    </td>
-                  </tr>
-                </table>
-                <h6>Alliances & Organizations</h6></td>
-              </tr>
-              
-              <tr><td style="height: 334px;">
-                <textarea class="stat" id="additionalFeat&Traits" style="width: 100%; height: 334px;"></textarea>
-                <h6>Additional Features & Traits</h6>
-              </td></tr>
+                        <td>
+                          <h6>Name</h6>
+                          <textarea class="stat" id="ally2" style="width: 100%; height: 230px;"></textarea>
+                        </td>
+                      </tr>
+                    </table>
 
-              <tr><td style="height: 334px;">
-                <textarea class="stat" id="treasure" style="width: 100%; height: 334px;"></textarea>
-                <h6>Treasure</h6>
-              </td></tr>
+                    <h6>Alliances & Organizations</h6>
+                  </td>
+                </tr>
+                
+                <tr>
+                  <td style="height: 334px;">
+                    <textarea class="stat" id="additionalFeat&Traits" style="width: 100%; height: 334px;"></textarea>
+                    <h6>Additional Features & Traits</h6>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td style="height: 334px;">
+                    <textarea class="stat" id="treasure" style="width: 100%; height: 334px;"></textarea>
+                    <h6>Treasure</h6>
+                  </td>
+                </tr>
               </table> 
             </td>
           </tr>
@@ -252,12 +263,16 @@
       </table>
 
       <table class ="paper" style="width:100%;margin-top: 10px;">
-        <tr><td><table style="width: 1750px">
-          <td><p style="display: inline;">Spellcasting Class: <input class="stat" id="spellClass"/></p></td>
-          <td><p style="display: inline;">Spellcasting Ability:</p> <select class="stat" id="spellAbility"><option value = "Strength">Strength</option><option value = "Dexterity">Dexterity</option><option value = "Constitution">Constitution</option><option value = "Intelligence">Intelligence</option><option value = "Wisdom">Wisdom</option><option value = "Charisma">Charisma</option></select></td>
-          <td><p style="display: inline;">DC:</p><h6 style="display: inline;" class="stat" id="spellDC"></h6></td>
-          <td><p style="display: inline;">Spell Attack Bonus:</p><h6 style="display: inline;" class="stat" id="spellBonus"></h6></td>
-        </table></td></tr>
+        <tr>
+          <td>
+            <table style="width: 1750px">
+            <td><p style="display: inline;">Spellcasting Class: <input class="stat" id="spellClass"/></p></td>
+            <td><p style="display: inline;">Spellcasting Ability:</p> <select class="stat" id="spellAbility"><option value = "Strength">Strength</option><option value = "Dexterity">Dexterity</option><option value = "Constitution">Constitution</option><option value = "Intelligence">Intelligence</option><option value = "Wisdom">Wisdom</option><option value = "Charisma">Charisma</option></select></td>
+            <td><p style="display: inline;">DC:</p><h6 style="display: inline;" class="stat" id="spellDC"></h6></td>
+            <td><p style="display: inline;">Spell Attack Bonus:</p><h6 style="display: inline;" class="stat" id="spellBonus"></h6></td>
+            </table>
+          </td>
+        </tr>
         
         <tr>
           <td>
@@ -276,7 +291,7 @@
                   <input class="stat" id="can-9" style="display: block;"/>
                   <input class="stat" id="can-10" style="display: block;"/>
                   <hr>
-                  <h6 style="display: inline;">Level 1: Slots:</h6><input class="stat" id="level1-slot">
+                  <h6>Level 1:</h6><h6 style="display: inline;">Slots:</h6><input class="stat" id="level1-slot">
                   <span style="display: block;"><input type="checkbox" class="stat" id="lvl1-1-btn"><input class="stat" id="lvl1-1"></span>
                   <span style="display: block;"><input type="checkbox" class="stat" id="lvl1-2-btn"><input class="stat" id="lvl1-2"></span>
                   <span style="display: block;"><input type="checkbox" class="stat" id="lvl1-3-btn"><input class="stat" id="lvl1-3"></span>
@@ -288,7 +303,7 @@
                   <span style="display: block;"><input type="checkbox" class="stat" id="lvl1-9-btn"><input class="stat" id="lvl1-9"></span>
                   <span style="display: block;"><input type="checkbox" class="stat" id="lvl1-10-btn"><input class="stat" id="lvl1-10"></span>
                   <hr>
-                  <h6 style="display: inline;">Level 2: Slots:</h6><input class="stat" id="level2-slot">
+                  <h6>Level 2:</h6><h6 style="display: inline;">Slots:</h6><input class="stat" id="level2-slot">
                   <span style="display: block;"><input type="checkbox" class="stat" id="lvl2-1-btn"><input class="stat" id="lvl2-1"></span>
                   <span style="display: block;"><input type="checkbox" class="stat" id="lvl2-2-btn"><input class="stat" id="lvl2-2"></span>
                   <span style="display: block;"><input type="checkbox" class="stat" id="lvl2-3-btn"><input class="stat" id="lvl2-3"></span>
@@ -302,7 +317,7 @@
                 </td>
 
                 <td style="width: 583px;">
-                  <h6 style="display: inline;">Level 3: Slots:</h6><input class="stat" id="level3-slot">
+                  <h6>Level 3:</h6><h6 style="display: inline;">Slots:</h6><input class="stat" id="level3-slot">
                   <span style="display: block;"><input type="checkbox" class="stat" id="lvl3-1-btn"><input class="stat" id="lvl3-1"></span>
                   <span style="display: block;"><input type="checkbox" class="stat" id="lvl3-2-btn"><input class="stat" id="lvl3-2"></span>
                   <span style="display: block;"><input type="checkbox" class="stat" id="lvl3-3-btn"><input class="stat" id="lvl3-3"></span>
@@ -313,7 +328,7 @@
                   <span style="display: block;"><input type="checkbox" class="stat" id="lvl3-8-btn"><input class="stat" id="lvl3-8"></span>
                   <span style="display: block;"><input type="checkbox" class="stat" id="lvl3-9-btn"><input class="stat" id="lvl3-9"></span>
                   <hr>
-                  <h6 style="display: inline;">Level 4: Slots:</h6><input class="stat" id="level4-slot">
+                  <h6>Level 4:</h6><h6 style="display: inline;">Slots:</h6><input class="stat" id="level4-slot">
                   <span style="display: block;"><input type="checkbox" class="stat" id="lvl4-1-btn"><input class="stat" id="lvl4-1"></span>
                   <span style="display: block;"><input type="checkbox" class="stat" id="lvl4-2-btn"><input class="stat" id="lvl4-2"></span>
                   <span style="display: block;"><input type="checkbox" class="stat" id="lvl4-3-btn"><input class="stat" id="lvl4-3"></span>
@@ -325,7 +340,7 @@
                   <span style="display: block;"><input type="checkbox" class="stat" id="lvl4-9-btn"><input class="stat" id="lvl4-9"></span>
                   <span style="display: block;"><input type="checkbox" class="stat" id="lvl4-10-btn"><input class="stat" id="lvl4-10"></span>
                   <hr>
-                  <h6 style="display: inline;">Level 5: Slots:</h6><input class="stat" id="level5-slot">
+                  <h6>Level 5:</h6><h6 style="display: inline;">Slots:</h6><input class="stat" id="level5-slot">
                   <span style="display: block;"><input type="checkbox" class="stat" id="lvl5-1-btn"><input class="stat" id="lvl5-1"></span>
                   <span style="display: block;"><input type="checkbox" class="stat" id="lvl5-2-btn"><input class="stat" id="lvl5-2"></span>
                   <span style="display: block;"><input type="checkbox" class="stat" id="lvl5-3-btn"><input class="stat" id="lvl5-3"></span>
@@ -339,7 +354,7 @@
                 </td>
 
                 <td style="width: 583px;">
-                  <h6 style="display: inline;">Level 6: Slots:</h6><input class="stat" id="level6-slot">
+                  <h6>Level 6:</h6><h6 style="display: inline;">Slots:</h6><input class="stat" id="level6-slot">
                   <span style="display: block;"><input type="checkbox" class="stat" id="lvl6-1-btn"><input class="stat" id="lvl6-1"></span>
                   <span style="display: block;"><input type="checkbox" class="stat" id="lvl6-2-btn"><input class="stat" id="lvl6-2"></span>
                   <span style="display: block;"><input type="checkbox" class="stat" id="lvl6-3-btn"><input class="stat" id="lvl6-3"></span>
@@ -349,7 +364,7 @@
                   <span style="display: block;"><input type="checkbox" class="stat" id="lvl6-7-btn"><input class="stat" id="lvl6-7"></span>
                   <span style="display: block;"><input type="checkbox" class="stat" id="lvl6-8-btn"><input class="stat" id="lvl6-8"></span>
                   <hr>
-                  <h6 style="display: inline;">Level 7: Slots:</h6><input class="stat" id="level7-slot">
+                  <h6>Level 7:</h6><h6 style="display: inline;">Slots:</h6><input class="stat" id="level7-slot">
                   <span style="display: block;"><input type="checkbox" class="stat" id="lvl7-1-btn"><input class="stat" id="lvl7-1"></span>
                   <span style="display: block;"><input type="checkbox" class="stat" id="lvl7-2-btn"><input class="stat" id="lvl7-2"></span>
                   <span style="display: block;"><input type="checkbox" class="stat" id="lvl7-3-btn"><input class="stat" id="lvl7-3"></span>
@@ -358,7 +373,7 @@
                   <span style="display: block;"><input type="checkbox" class="stat" id="lvl7-6-btn"><input class="stat" id="lvl7-6"></span>
                   <span style="display: block;"><input type="checkbox" class="stat" id="lvl7-7-btn"><input class="stat" id="lvl7-7"></span>
                   <hr>
-                  <h6 style="display: inline;">Level 8: Slots:</h6><input class="stat" id="level8-slot">
+                  <h6>Level 8:</h6><h6 style="display: inline;">Slots:</h6><input class="stat" id="level8-slot">
                   <span style="display: block;"><input type="checkbox" class="stat" id="lvl8-1-btn"><input class="stat" id="lvl8-1"></span>
                   <span style="display: block;"><input type="checkbox" class="stat" id="lvl8-2-btn"><input class="stat" id="lvl8-2"></span>
                   <span style="display: block;"><input type="checkbox" class="stat" id="lvl8-3-btn"><input class="stat" id="lvl8-3"></span>
@@ -366,7 +381,7 @@
                   <span style="display: block;"><input type="checkbox" class="stat" id="lvl8-5-btn"><input class="stat" id="lvl8-5"></span>
                   <span style="display: block;"><input type="checkbox" class="stat" id="lvl8-6-btn"><input class="stat" id="lvl8-6"></span>
                   <hr>
-                  <h6 style="display: inline;">Level 9: Slots:</h6><input class="stat" id="level9-slot">
+                  <h6>Level 9:</h6><h6 style="display: inline;">Slots:</h6><input class="stat" id="level9-slot">
                   <span style="display: block;"><input type="checkbox" class="stat" id="lvl9-1-btn"><input class="stat" id="lvl9-1"></span>
                   <span style="display: block;"><input type="checkbox" class="stat" id="lvl9-2-btn"><input class="stat" id="lvl9-2"></span>
                   <span style="display: block;"><input type="checkbox" class="stat" id="lvl9-3-btn"><input class="stat" id="lvl9-3"></span>
@@ -381,8 +396,8 @@
       </table>
 
       <div class="paper">
-      <h6>Infusion & Other:</h6>
-      <textarea class="stat" id="infusion" style="width: 70%; height: 1000px;"></textarea>
+        <h6>Infusion & Other:</h6>
+        <textarea class="stat" id="infusion" style="width: 70%; height: 1000px;"></textarea>
       </div>
 
       <table style="width: 80%; margin-top: 10px;" class="paper"> 
