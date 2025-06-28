@@ -202,7 +202,7 @@ function updateStat()
 
     else
     {
-        if(!["profAndLang", "infusion", "feats", "equipment"].includes(this.id)){this.style.minWidth = this.value.length + 2 + "ch";}
+        if(!["profAndLang", "infusion", "feats", "equipment", "apperance", "characterBackstory", "ally1", "ally2", "additionalFeat&Traits", "treasure"].includes(this.id)){this.style.minWidth = this.value.length + 2 + "ch";}
     }
 
     setDoc(`playerChar/${player}/stats/${this.id}`, setTo);
