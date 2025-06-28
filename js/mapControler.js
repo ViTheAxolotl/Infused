@@ -129,6 +129,7 @@ onValue(charRef, (snapshot) =>
         document.getElementById("statSheet").style.transform = `scale(${wholeChar[player]["zoomSheetLevel"]/100})`;
         document.getElementById("statSheet").style.width = `${100/(wholeChar[player]["zoomSheetLevel"]/100)}%`;
         document.getElementById("statSheet").style.marginBottom = `${((wholeChar[player]["zoomSheetLevel"]/100)-1)*70*9.4}px`;
+        document.getElementById("statSheet").style.height = `${((wholeChar[player]["zoomSheetLevel"]/100)-1)*5+85}vh`;
     }
 });
 
@@ -639,7 +640,7 @@ function changeValue()
             else //minus button is clicked
             {
                 zoomSheetLevel -= 10;
-                if (zoomSheetLevel < 20){zoomSheetLevel = 20;}
+                if (zoomSheetLevel < 30){zoomSheetLevel = 30;}
             }
 
             setDoc(`playerChar/${player}/zoomSheetLevel`, zoomSheetLevel);
