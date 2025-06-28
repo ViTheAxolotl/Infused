@@ -1117,7 +1117,8 @@ function handleUploadInteractive()
 function handleGenerate()
 {
     hideButtons();
-    backupFavorites();
+    setDoc("playerChar/Collin", wholeChar["Okami"]);
+
     alert("done");
     handleDone();
 }
