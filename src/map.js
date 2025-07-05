@@ -1018,50 +1018,6 @@ function editBubble(bubbleDB)
     }
 }
 
-function updateToken(token)
-{
-    try 
-    {
-        let x;
-        let y;
-        let t = document.getElementById("title");
-        t = t.innerHTML.slice(t.innerHTML.indexOf(" "));
-        const currentTokens = document.getElementsByClassName(wholeChar[player]["currentToken"]);
-        let char = document.getElementById(wholeChar[player]["currentToken"]);
-        let borderColor;
-        let n = wholeDB[wholeChar[player]["currentToken"]]["name"];
-
-        let token = {border : borderColor, currentHp : currentHp.value, maxHp : document.getElementById("max").innerHTML.slice(2), tempHp : tempHp.value, isSummon : wholeDB[char.id]["isSummon"], id : char.id, name : n, title : t, xPos : x, yPos : y, map : "", AC: wholeDB[wholeChar[player]["currentToken"]]["AC"]};
-        setDoc(`currentMap/${char.id}`, token);
-
-        if(wholeChar[player]["currentToken"] == wholeChar[player]["token"]["id"])
-        {
-            setDoc(`playerChar/${player}/token`, token);
-        }
-
-        else if(isSummonOn)
-        {
-            if(wholeDB[char.id]["isSummon"])
-            {
-                if(currentHp.value == "0")
-                {
-                    deleteDoc(`playerChar/Vi/summons/${char.id}`);
-                }
-
-                else
-                {
-                    setDoc(`playerChar/Vi/summons/${char.id}`, token);
-                }
-            }
-        }
-    } 
-    
-    catch (e) 
-    {
-        alert("Error adding document: ", e);
-    }
-}
-
 init();
 
 let startX2;

@@ -780,20 +780,6 @@ function moveChar(xPos, yPos)
 }
 
 /**
- * Adds update class for each image of the current token
- */
-function addUpdate()
-{
-    for(let prop of currentCharacter) 
-    {
-        if(!(prop.classList.contains("update")))
-        {
-            prop.classList += " update";
-        }
-    }
-}
-
-/**
  * Changes the hp image of the token then makes sure update class is added
  */
 function updateHp()
