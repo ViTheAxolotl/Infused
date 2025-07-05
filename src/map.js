@@ -1031,35 +1031,6 @@ function updateToken(token)
         let borderColor;
         let n = wholeDB[wholeChar[player]["currentToken"]]["name"];
 
-        
-
-        switch(char.id)
-        {
-            case "sky":
-                if(t.includes("Dragon"))
-                {
-                    n = "sky-dragon";
-                }
-                
-                else 
-                {
-                    n = "sky-";
-                }
-                break;
-
-            case "ember":
-                if(t.includes("Cat"))
-                {
-                    n = "ember-cat";
-                }
-                
-                else 
-                {
-                    n = "ember-";
-                }
-                break;
-        }
-
         let token = {border : borderColor, currentHp : currentHp.value, maxHp : document.getElementById("max").innerHTML.slice(2), tempHp : tempHp.value, isSummon : wholeDB[char.id]["isSummon"], id : char.id, name : n, title : t, xPos : x, yPos : y, map : "", AC: wholeDB[wholeChar[player]["currentToken"]]["AC"]};
         setDoc(`currentMap/${char.id}`, token);
 

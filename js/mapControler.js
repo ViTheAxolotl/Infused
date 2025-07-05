@@ -761,6 +761,12 @@ function moveChar(xPos, yPos)
 
     setDoc(`currentMap/${currentCharacter[0].classList[1]}/xPos`, x);
     setDoc(`currentMap/${currentCharacter[0].classList[1]}/yPos`, y);
+
+    if(currentCharacter[0].classList[1] == player)
+    {
+        setDoc(`playerChar/${player}/token/xPos`, x);
+        setDoc(`playerChar/${player}/token/yPos`, y);
+    }
 }
 
 /**
@@ -1513,7 +1519,16 @@ function handleUseAction(targets)
             info = info.split(":"); 
             token.title += `${info[3]}, `;
             let currentToken = wholeDb[wholeChar[player]["currentToken"]];
-            if(!currentToken["title"].includes(player)){currentToken.title = ` ${player}, ${currentToken["title"]}`; document.getElementById("title").innerHTML = "Status: " + currentToken.title; document.getElementById(player).classList.add("update");}
+
+            if(!currentToken["title"].includes(player))
+            {
+                let t = document.getElementById("title");
+                currentToken.title = ` ${player}, ${currentToken["title"]}`; 
+                t.innerHTML = "Status: " + currentToken.title; 
+
+                setDoc(`currentMap/${player}/title`, currentToken.title);
+                setDoc(`playerChar/${player}/token/title`, currentToken.title);
+            }
             
             token.name = info[0] + "-";
             let id = info[0];
