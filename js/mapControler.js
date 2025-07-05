@@ -565,6 +565,10 @@ function tempHpUpdate()
         tempHp.value = "0";
     }
 
+    setDoc(`currentMap/${currentCharacter[0].classList[1]}/tempHp`, tempHp.value);
+
+    if(player == currentCharacter[0].classList[1]){setDoc(`playerChar/${player}/token/tempHp`, tempHp.value);}
+
     addUpdate();
 }
 
@@ -788,24 +792,6 @@ function addUpdate()
  */
 function updateHp()
 {
-    /*let hpImg;
-
-    for(let prop of currentCharacter) //For each image in the current token
-    {
-        if(prop.classList.contains("hp")) //If the image is the hp image
-        {
-            hpImg = prop;
-            break;
-        }
-    }
-
-    if(parseInt(this.value) > parseInt(maxHp)) //If the current hp value is higher then max hp
-    {
-        this.value = maxHp;
-    }
-
-    hpImg.src = returnHpImage(maxHp, tempHp, this.value); //Sets hp image to the current image*/
-
     setDoc(`currentMap/${currentCharacter[0].classList[1]}/currentHp`, `${this.value}`);
 
     if(currentCharacter[0].classList[1] == player)
