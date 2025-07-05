@@ -48,6 +48,7 @@ let wholeDisplay = {};
 let zoomLevel = 100;
 let grid = document.getElementById("grid");
 let discription;
+let currentToken;
 
 /**
  * When it shows that your logged in
@@ -193,6 +194,7 @@ function init()
     setMainVaribles();
     grid.onclick = function(e){handleGridClick(e);};
     currentLv = wholeChar[player]["stats"]["lv"] + "th level";
+    currentToken = wholeChar[player]["currentToken"];
 
     for(let diceSelect of document.getElementsByClassName("diceSelect")){diceSelect.onclick = handleDiceSelect;}
 }
@@ -568,8 +570,6 @@ function tempHpUpdate()
     setDoc(`currentMap/${currentCharacter[0].classList[1]}/tempHp`, tempHp.value);
 
     if(player == currentCharacter[0].classList[1]){setDoc(`playerChar/${player}/token/tempHp`, tempHp.value);}
-
-    addUpdate();
 }
 
 /**
@@ -601,6 +601,8 @@ function changeValue()
                     currentHp.value = `${cHp - 1}`; //Minus one from the current hp
                 }
             }
+
+            updateHp();
             break;
         
         case "temp":
@@ -616,7 +618,9 @@ function changeValue()
                     tempHp.value = `${tHp - 1}`; //Minus one from the temp hp
                 }
             }
-            break;
+
+            tempHpUpdate();
+            break; 
 
         case "zoom":
             let zoomLevel = 100; if(wholeChar[player]["zoomLevel"]){zoomLevel = wholeChar[player]["zoomLevel"];}
@@ -663,6 +667,10 @@ function changeValue()
             {
                 title.innerHTML = title.innerHTML.replace(` ${toTitleCase(status.value)},`, ""); //Removes the given keyword from the title
             }
+
+            title = title.value.slice(title.value.indexOf(": ") + 2);
+            setDoc(`currentMap/${currentToken}/title`, title);
+            if(currentToken == player){setDoc(`playerChar/${player}/token/title`, title);}
             break;
         
         case "turn":
@@ -677,8 +685,6 @@ function changeValue()
             }
             return;
     }
-
-    addUpdate();
 }
 
 /**
@@ -792,11 +798,13 @@ function addUpdate()
  */
 function updateHp()
 {
-    setDoc(`currentMap/${currentCharacter[0].classList[1]}/currentHp`, `${this.value}`);
+    let current = document.getElementById("current");
+
+    setDoc(`currentMap/${currentCharacter[0].classList[1]}/currentHp`, `${current.value}`);
 
     if(currentCharacter[0].classList[1] == player)
     {
-        setDoc(`playerChar/${player}/token/currentHp`, `${this.value}`);
+        setDoc(`playerChar/${player}/token/currentHp`, `${current.value}`);
     }
 }
 
