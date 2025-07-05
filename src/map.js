@@ -617,12 +617,6 @@ function addCharacter(character, update)
     {
         char[i].onclick = handleCharClick;
         placeTokens(x, y, char[i]);
-        
-        if(update)
-        {
-            char[i].classList.add("update");
-        }
-
         div.appendChild(char[i]);
     }
 
@@ -993,13 +987,6 @@ function timer()
                 removeNullBubbles();
             }
         }
-
-        checkUpdates();
-    }
-
-    else
-    {
-        checkUpdates();
     }
 }
 
@@ -1031,25 +1018,6 @@ function editBubble(bubbleDB)
     }
 }
 
-function checkUpdates()
-{
-    tokens = [];
-
-    for(let name of Object.keys(wholeDB))
-    {
-        let token = document.getElementById(name);
-        if(token != null)
-        {
-            if(token.classList.contains("update"))
-            {
-                updateToken(token);
-            }
-
-            tokens.push(token);
-        }
-    }
-}
-
 function updateToken(token)
 {
     try 
@@ -1063,19 +1031,7 @@ function updateToken(token)
         let borderColor;
         let n = wholeDB[wholeChar[player]["currentToken"]]["name"];
 
-        for(let token of currentTokens)
-        {
-            if(token.classList.contains("border_"))
-            {
-                borderColor = token.id;
-                x = parseInt(token.style.left.replace("px", ""));
-                y = parseInt(token.style.top.replace("px", ""));
-                x = map.xPos[map.pos.indexOf(x)];
-                y = map.yPos[map.pos.indexOf(y)];
-            }
-
-            token.classList.remove("update");
-        }
+        
 
         switch(char.id)
         {

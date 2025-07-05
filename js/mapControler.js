@@ -754,12 +754,13 @@ function handleChangeInTurn(direction)
  */
 function moveChar(xPos, yPos)
 {
-    for(let prop of currentCharacter) //For each image of current token
-    {
-        prop.style.left = xPos + "px";
-        prop.style.top = yPos + "px";
-        prop.classList += " update";
-    }   
+    let x, y;
+
+    x = map.xPos[map.pos.indexOf(xPos)];
+    y = map.yPos[map.pos.indexOf(yPos)];
+
+    setDoc(`currentMap/${currentCharacter[0].classList[1]}/xPos`, x);
+    setDoc(`currentMap/${currentCharacter[0].classList[1]}/yPos`, y);
 }
 
 /**
