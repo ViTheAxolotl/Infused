@@ -668,7 +668,7 @@ function changeValue()
                 title.innerHTML = title.innerHTML.replace(` ${toTitleCase(status.value)},`, ""); //Removes the given keyword from the title
             }
 
-            title = title.value.slice(title.value.indexOf(": ") + 2);
+            title = title.innerHTML.slice(title.value.indexOf(": ") + 2).trim;
             setDoc(`currentMap/${currentToken}/title`, title);
             if(currentToken == player){setDoc(`playerChar/${player}/token/title`, title);}
             break;
