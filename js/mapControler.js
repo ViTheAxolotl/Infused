@@ -570,6 +570,7 @@ function tempHpUpdate()
     setDoc(`currentMap/${currentCharacter[0].classList[1]}/tempHp`, tempHp.value);
 
     if(player == currentCharacter[0].classList[1]){setDoc(`playerChar/${player}/token/tempHp`, tempHp.value);}
+    if(wholeDb[currentCharacter[0].classList[1]]["isSummon"]){setDoc(`playerChar/Vi/summons/${currentCharacter[0].classList[1]}/tempHp`, tempHp.value);}
 }
 
 /**
@@ -671,6 +672,7 @@ function changeValue()
             title = title.innerHTML.slice(title.innerHTML.indexOf(": ") + 2).trim();
             setDoc(`currentMap/${currentToken}/title`, title);
             if(currentToken == player){setDoc(`playerChar/${player}/token/title`, title);}
+            if(wholeDb[currentCharacter[0].classList[1]]["isSummon"]){setDoc(`playerChar/Vi/summons/${currentCharacter[0].classList[1]}/title`, title);}
             break;
         
         case "turn":
@@ -777,6 +779,13 @@ function moveChar(xPos, yPos)
         setDoc(`playerChar/${player}/token/xPos`, x);
         setDoc(`playerChar/${player}/token/yPos`, y);
     }
+
+    if(wholeDb[currentCharacter[0].classList[1]]["isSummon"])
+    {
+        setDoc(`playerChar/Vi/summons/${currentCharacter[0].classList[1]}/xPos`, x);
+        setDoc(`playerChar/Vi/summons/${currentCharacter[0].classList[1]}/yPos`, y);
+    }
+
 }
 
 /**
@@ -792,6 +801,8 @@ function updateHp()
     {
         setDoc(`playerChar/${player}/token/currentHp`, `${current.value}`);
     }
+
+    if(wholeDb[currentCharacter[0].classList[1]]["isSummon"]){setDoc(`playerChar/Vi/summons/${currentCharacter[0].classList[1]}/currentHp`, `${current.value}`);}
 }
 
 /**
