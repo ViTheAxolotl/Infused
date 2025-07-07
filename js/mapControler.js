@@ -1374,6 +1374,14 @@ function handleUseAction(targets)
         }
     }
 
+    if(lastUse == "Toll the Dead")
+    {
+        if(wholeDb[targets[0].classList[1]]["currentHp"] > wholeDb[targets[0].classList[1]]["maxHp"])
+        {
+            description.replaceAll("d8", "d12");
+        }
+    }
+
     if(description.includes("{@"))
     {
         if(description.includes("{@Choice"))
