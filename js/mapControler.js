@@ -1379,6 +1379,7 @@ function handleUseAction(targets)
         if(wholeDb[targets[0].classList[1]]["currentHp"] > wholeDb[targets[0].classList[1]]["maxHp"])
         {
             description.replaceAll("d8", "d12");
+            alert("D12");
         }
     }
 
