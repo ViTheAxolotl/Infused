@@ -1374,15 +1374,6 @@ function handleUseAction(targets)
         }
     }
 
-    if(lastUse == "Toll the Dead")
-    {
-        if(wholeDb[targets[0].classList[1]]["currentHp"] > wholeDb[targets[0].classList[1]]["maxHp"])
-        {
-            description.replaceAll("d8", "d12");
-            alert("D12");
-        }
-    }
-
     if(description.includes("{@"))
     {
         if(description.includes("{@Choice"))
@@ -1445,10 +1436,20 @@ function handleUseAction(targets)
             else{userAddTo = prompt(`The Current Response is to ${wholeRespone["currentResponse"]}, cast by ${wholeRespone["castBy"]}. This check is checking for ${wholeRespone["ability"]} stat. What is your Modifier? (+/-)`, wholeChar[player]["stats"][wholeRespone["ability"]]);}
             userAddTo = userAddTo.replaceAll(" ", "");
             let abilityDisc;
+            let abilityName;
             let ad_dis = "";
-            if(wholeRespone["isSpell"]){abilityDisc = wholeSpells[wholeRespone["ind"]][wholeRespone["currentResponse"]]["description"];}
-            else{abilityDisc = db[wholeRespone["ind"]][wholeRespone["currentResponse"]]["description"];}
+            if(wholeRespone["isSpell"]){abilityName = wholeSpells[wholeRespone["ind"]][wholeRespone["currentResponse"]]; abilityDisc = wholeSpells[abilityName]["description"];}
+            else{abilityName = db[wholeRespone["ind"]][wholeRespone["currentResponse"]]; abilityDisc = db[abilityName]["description"];}
 
+            if(abilityName == "Toll the Dead")
+    {
+        if(wholeDb[targets[0].classList[1]]["currentHp"] > wholeDb[targets[0].classList[1]]["maxHp"])
+        {
+            abilityDisc.replaceAll("d8", "d12");
+            alert("D12");
+        }
+    }
+            
             setDoc(`playerChar/${player}/stats/${wholeRespone["ability"]}`, userAddTo);
             usersRoll = diceRoller("1", "20", userAddTo, "finalResult");
 
