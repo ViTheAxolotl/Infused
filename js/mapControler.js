@@ -1441,6 +1441,7 @@ function handleUseAction(targets)
             if(wholeRespone["isSpell"]){abilityName = wholeSpells[wholeRespone["ind"]][wholeRespone["currentResponse"]]; abilityDisc = wholeSpells[abilityName]["description"];}
             else{abilityName = db[wholeRespone["ind"]][wholeRespone["currentResponse"]]; abilityDisc = db[abilityName]["description"];}
 
+            alert(abilityName);
             if(abilityName == "Toll the Dead")
     {
         if(wholeDb[targets[0].classList[1]]["currentHp"] > wholeDb[targets[0].classList[1]]["maxHp"])
