@@ -1442,13 +1442,12 @@ function handleUseAction(targets)
             else{abilityDisc = db[wholeRespone["ind"]][wholeRespone["currentResponse"]]["description"];}
 
             if(wholeRespone["currentResponse"] == "Toll the Dead")
-    {
-        if(parseInt(wholeDb[targets[0].classList[1]]["currentHp"]) < parseInt(wholeDb[targets[0].classList[1]]["maxHp"]))
-        {
-            abilityDisc.replaceAll("d8", "d12");
-
-        }
-    }
+            {
+                if(parseInt(wholeDb[targets[0].classList[1]]["currentHp"]) < parseInt(wholeDb[targets[0].classList[1]]["maxHp"]))
+                {
+                    abilityDisc = abilityDisc.replaceAll("d8", "d12");
+                }
+            }
             
             setDoc(`playerChar/${player}/stats/${wholeRespone["ability"]}`, userAddTo);
             usersRoll = diceRoller("1", "20", userAddTo, "finalResult");
