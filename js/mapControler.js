@@ -1446,12 +1446,13 @@ function handleUseAction(targets)
         if(parseInt(wholeDb[targets[0].classList[1]]["currentHp"]) < parseInt(wholeDb[targets[0].classList[1]]["maxHp"]))
         {
             abilityDisc.replaceAll("d8", "d12");
-            alert("D12");
+
         }
     }
             
             setDoc(`playerChar/${player}/stats/${wholeRespone["ability"]}`, userAddTo);
             usersRoll = diceRoller("1", "20", userAddTo, "finalResult");
+            ad_dis += " Rolling d12's instead, since they were hurt.";
 
             if(document.getElementById("advantage").value != "Advantage/Disadvantage")
             {
@@ -1469,7 +1470,7 @@ function handleUseAction(targets)
                         break;
                 }
 
-                ad_dis = ` First Roll: ${take}, Second Roll: ${take2}.`;
+                ad_dis += ` First Roll: ${take}, Second Roll: ${take2}.`;
             }
 
             if(abilityDisc.includes("{@save "))
