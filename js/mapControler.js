@@ -1443,7 +1443,7 @@ function handleUseAction(targets)
 
             if(wholeRespone["currentResponse"] == "Toll the Dead")
     {
-        if(wholeDb[targets[0].classList[1]]["currentHp"] > wholeDb[targets[0].classList[1]]["maxHp"])
+        if(parseInt(wholeDb[targets[0].classList[1]]["currentHp"]) < parseInt(wholeDb[targets[0].classList[1]]["maxHp"]))
         {
             abilityDisc.replaceAll("d8", "d12");
             alert("D12");
