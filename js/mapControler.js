@@ -1438,11 +1438,10 @@ function handleUseAction(targets)
             let abilityDisc;
             let abilityName;
             let ad_dis = "";
-            if(wholeRespone["isSpell"]){abilityName = wholeSpells[wholeRespone["ind"]][wholeRespone["currentResponse"]]; abilityDisc = wholeSpells[abilityName]["description"];}
-            else{abilityName = db[wholeRespone["ind"]][wholeRespone["currentResponse"]]; abilityDisc = db[abilityName]["description"];}
+            if(wholeRespone["isSpell"]){abilityDisc = wholeSpells[wholeRespone["ind"]][wholeRespone["currentResponse"]]["description"];}
+            else{abilityDisc = db[wholeRespone["ind"]][wholeRespone["currentResponse"]]["description"];}
 
-            alert(abilityName);
-            if(abilityName == "Toll the Dead")
+            if(wholeRespone["currentResponse"] == "Toll the Dead")
     {
         if(wholeDb[targets[0].classList[1]]["currentHp"] > wholeDb[targets[0].classList[1]]["maxHp"])
         {
