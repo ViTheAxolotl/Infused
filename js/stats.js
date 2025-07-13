@@ -39,11 +39,6 @@ function init()
     let exitBtn = document.getElementById("exitIframe");
     exitBtn.onclick = handleExit;
 
-    for(let viewButton of viewButtons)
-    {
-        viewButton.onclick = showSpell;
-    }
-
     for(let stat of stats)
     {
         if(wholeChar[player]["stats"][stat.id] || wholeChar[player]["stats"][stat.id] == "")
@@ -78,6 +73,15 @@ function init()
         }
 
         stat.onchange = updateStat;
+    }
+
+    for(let viewButton of viewButtons)
+    {
+        viewButton.onclick = showSpell;
+        if(document.getElementById(viewButton.id.slice(0, viewButton.id.length - 4)).value == "")
+        {
+            viewButton.classList.add("invisible");
+        }
     }
 
     for(let stat of document.getElementsByClassName("expertise")){stat.onclick = handleExpertise;}
@@ -213,6 +217,19 @@ function updateStat()
     }
 
     setDoc(`playerChar/${player}/stats/${this.id}`, setTo);
+
+    if(this.id.includes("lvl") || this.id.includes("can"))
+    {
+        if(setTo != "")
+        {
+            document.getElementById(this.id + "-See").classList.remove("invisible");
+        }
+
+        else
+        {
+            document.getElementById(this.id + "-See").classList.add("invisible");
+        }
+    }
 }
 
 function showSpell()
