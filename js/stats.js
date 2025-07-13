@@ -35,6 +35,14 @@ function init()
 {
     let display = document.getElementById("story");
     let stats = document.getElementsByClassName("stat");
+    let viewButtons = document.getElementsByClassName("viewSpell");
+    let exitBtn = document.getElementById("exitIframe");
+    exitBtn.onclick = handleExit;
+
+    for(let viewButton of viewButtons)
+    {
+        viewButton.onclick = showSpell;
+    }
 
     for(let stat of stats)
     {
@@ -205,4 +213,23 @@ function updateStat()
     }
 
     setDoc(`playerChar/${player}/stats/${this.id}`, setTo);
+}
+
+function showSpell()
+{
+    let spellName = toTitleCase(document.getElementById(this.id.slice(0, this.id.length - 4)).value);
+    let link;
+
+    if(spellName != "")
+    {
+        spellName.replaceAll(" ", "%20");
+        link = `https://roll20.net/compendium/dnd5e/${spellName}`;
+        document.getElementById("spellLookup").src = link;
+        document.getElementById("spellFrame").classList.remove("invisible");
+    }
+}
+
+function handleExit()
+{
+    document.getElementById("spellFrame").classList.add("invisible");
 }

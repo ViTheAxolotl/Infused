@@ -445,7 +445,7 @@ table, .itemSearch, #itemImg
     text-align: left;
 }
 
-#cover
+#cover, #spellFrame
 {
     background-color: grey; 
     opacity: .95; 
