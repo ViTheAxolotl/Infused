@@ -169,23 +169,13 @@ function updateStat()
 
         for(let i = 0; i < setTo.length; i++)
         {
-            if(setTo[i][0] != "•" && setTo[0] != " "){setTo[i] = "•   " + setTo[i];}
+            if(setTo[i][0] != "•" && setTo[0] != " " && setTo[i][0] != " "){setTo[i] = "•   " + setTo[i];} 
             if(setTo[i] == "•   "){setTo[i] = "";}
         }
 
         setTo = setTo.join("\n");
 
-        setTo = setTo.split("    ");
- 
-        for(let i = 0; i < setTo.length - 1; i++)
-        {
-            if(setTo[i][setTo[i].length - 1] != "\n"){setTo[i] += "\n";}
-        }
-
-        setTo = setTo.join("    ");
-
         this.value = setTo;
-        reload(1);
     }
 
     else if(this.classList.contains("base6"))
