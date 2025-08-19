@@ -76,7 +76,8 @@
         "thug-" : "images/map/tokens/thug-.png",
         "Garrett-" : "images/map/tokens/Garrett-.png",
         "owlBear-" : "images/map/tokens/owlBear-.png",
-        "purifier-" : "images/map/tokens/purifier-.png"
+        "purifier-" : "images/map/tokens/purifier-.png",
+        "oni-": "images/map/tokens/oni-.png"
     },
  
     "borders" : 

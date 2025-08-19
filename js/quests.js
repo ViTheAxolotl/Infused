@@ -23,12 +23,14 @@ function setUpCards()
 
 let titleAndText =
 {
-    "Figure out Where You Are" : "You have arrived in an unfamiliar plane, when leaving the building you are in, you are no longer in Kansas anymore. With the mid evil architect it looks like a place in a history book. Then you notice the fantasy beings, you gather the feeling that you need to find allies. With everyone looking at you like your the strange ones.",
+    "Impower Infusion" : "You have been given the quest to gather supplies to make a toxin that will strengthen your infusions. You have gathered the Pickled Greens and the flowers from the ravine. Now you must report back to him to create the toxin.",
+    "Missing Pieces" : "You have restored the tablet from a century ago, surprisingly it still works. However it is missing 3 computing parts, ECC Chip, RTC Chip, & Fusion Chip. Jason may have a lead, but he needed some time to remember where he found the tablet. Check back with him the next time you see him."
 };
 
 let titleAndStatus =
 {
-    "Figure out Where You Are" : "incomplete",
+    "Impower Infusion" : "incomplete",
+    "Missing Pieces" : "incomplete"
 };
 
 setUpCards();
