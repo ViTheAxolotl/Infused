@@ -83,7 +83,10 @@
         "waterCube-": "images/map/tokens/waterCube-.png",
         "yellowDoorX-" : "images/map/tokens/yellowDoorX-.png",
         "yellowWallX-" : "images/map/tokens/yellowWallX-.png",
-        "yellowWallY-" : "images/map/tokens/yellowWallY-.png"
+        "yellowWallY-" : "images/map/tokens/yellowWallY-.png",
+        "mimicSpirit-" : "images/map/tokens/mimicSpirit-.png",
+        "spiderSpirit-" : "images/map/tokens/spiderSpirit-.png",
+        "wolfSpirit-" : "images/map/tokens/wolfSpirit-.png"
     },
  
     "borders" : 
