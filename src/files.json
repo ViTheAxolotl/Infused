@@ -77,7 +77,10 @@
         "Garrett-" : "images/map/tokens/Garrett-.png",
         "owlBear-" : "images/map/tokens/owlBear-.png",
         "purifier-" : "images/map/tokens/purifier-.png",
-        "oni-": "images/map/tokens/oni-.png"
+        "oni-": "images/map/tokens/oni-.png",
+        "yellowDoorX-" : "images/map/tokens/yellowDoorX-.png",
+        "yellowWallX-" : "images/map/tokens/yellowWallX-.png",
+        "yellowWallY-" : "images/map/tokens/yellowWallY-.png"
     },
  
     "borders" : 
