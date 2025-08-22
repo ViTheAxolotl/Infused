@@ -22,7 +22,8 @@
         "bloodyTownHall": "images/map/bloodyTownHall.jpg",
         "nileLight" : "images/map/nileLight.jpg",
         "jasonsLab" : "images/map/jasonsLab.jpg",
-        "flowerTunnel" : "images/map/flowerTunnel.jpg"
+        "flowerTunnel" : "images/map/flowerTunnel.jpg",
+        "caveSandPit" : "images/map/caveSandPit.jpg"
     }, 
 
     "tokens" : 
@@ -78,6 +79,8 @@
         "owlBear-" : "images/map/tokens/owlBear-.png",
         "purifier-" : "images/map/tokens/purifier-.png",
         "oni-": "images/map/tokens/oni-.png",
+        "sandCube-": "images/map/tokens/sandCube-.jpg",
+        "waterCube-": "images/map/tokens/waterCube-.jpg",
         "yellowDoorX-" : "images/map/tokens/yellowDoorX-.png",
         "yellowWallX-" : "images/map/tokens/yellowWallX-.png",
         "yellowWallY-" : "images/map/tokens/yellowWallY-.png"
