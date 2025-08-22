@@ -414,7 +414,6 @@ function addCharacter(character, update)
     let tokenImg = character["name"];
     let x = map.pos[0];
     let y = map.pos[0];
-    let files = img;
 
     char[0].classList = `tokens ${character["id"]} char`;
 
