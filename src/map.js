@@ -423,7 +423,7 @@ function addCharacter(character, update)
     else{img.src = wholeCustom[image]["src"];}
     img.onerror = () => {char[0].src = `images/map/tokens/unknown-.png`;};
     
-    if(!tokenImg.includes("custom-")){char[0].src = `images/map/tokens/${tokenImg}.png`;} else{char[0].src = wholeCustom[tokenImg]["src"]; char[0].classList.add("customImg");}
+    if(!tokenImg.includes("custom-")){char[0].src = img["tokens"][tokenImg];} else{char[0].src = wholeCustom[tokenImg]["src"]; char[0].classList.add("customImg");}
     char[0].id = character["id"];
     char[1].src = `images/map/tokens/${character["border"]}Border.png`;
     char[1].id = character["border"];
