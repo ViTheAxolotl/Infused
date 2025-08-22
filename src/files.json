@@ -91,7 +91,8 @@
         "mimicSpirit-" : "images/map/tokens/mimicSpirit-.png",
         "spiderSpirit-" : "images/map/tokens/spiderSpirit-.png",
         "wolfSpirit-" : "images/map/tokens/wolfSpirit-.png",
-        "yellowShardStatue-" : "images/map/tokens/yellowShardStatue-.png"
+        "yellowShardStatue-" : "images/map/tokens/yellowShardStatue-.png",
+        "vault-" : "images/map/tokens/vault-.png"
     },
  
     "borders" : 
