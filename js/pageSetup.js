@@ -96,11 +96,11 @@ function navBarSetup()
                 <li class="nav-item"><a class="nav-link active" aria-current="page" href="${mainLocation}questAndNotes.html">Quests & Personal Notes</a></li> 
                 <li class="nav-item dropdown"> 
                     <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Map Board
+                        Dashboard
                     </a>
                     <ul class="dropdown-menu bg-dark" aria-labelledby="navbarScrollingDropdown">
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="${mainLocation}selection.html">Change Token</a></li>
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="${mainLocation}map.html">Quick Start</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="${mainLocation}map.html">Dashboard</a></li>
                     </ul>
                 </li>
                 <li class="nav-item"><a class="nav-link active" aria-current="page" href="${mainLocation}skillTree.html">Skill Tree</a></li> 
