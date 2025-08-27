@@ -270,13 +270,14 @@ export function statFormat(stat)
     }
 }
 
-/**
- * Refreshes page after the given seconds
- * @param {*} seconds 
- */
+export function wait(seconds, fun)
+{
+    setTimeout(fun, seconds * 1000);
+}
+
 export function reload(seconds)
 {
-    setTimeout(function(){location.reload();}, 1000 * seconds);
+    wait(seconds, function(){location.reload();})
 }
 
 /**
