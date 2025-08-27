@@ -118,7 +118,7 @@ onAuthStateChanged(auth, (user) =>
                         }
                     }
                 }
-                setDoc(`playerChar/${player}/stats/infusedRate`, `${infusedRate}`);
+                setDoc(`playerChar/${player}/stats/InfusedRate`, `${infusedRate}`);
             }
 
             updateDisplay();

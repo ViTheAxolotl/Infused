@@ -404,7 +404,7 @@ function handleDiceRoll()
         break;
 
         case "Saves":
-            if(modifier[0] == "InfusionReaction")
+            if(modifier[0] == "InfusionRate")
             {
                 let dc = parseInt(modifier[1].slice(0, modifier.length - 1));
                 let roll = diceRoller("1", "100", "0");
