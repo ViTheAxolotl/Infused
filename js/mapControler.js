@@ -385,26 +385,47 @@ function diceRoller(amount, dice, modifier, ifName)
  */
 function handleDiceRoll()
 {
-    if(document.getElementsByClassName("selected-dice")[0].innerHTML == "Basic")
-    {
-        let amount = parseInt(document.getElementById("diceToRoll").value);
-        let dice = parseInt(document.getElementById("sides").value);
-        let modifier = parseInt(document.getElementById("modifier").value);
-        
-        if(!Number.isNaN(amount) && !Number.isNaN(dice) && !Number.isNaN(modifier)) //If all three values are given
-        {
-            sendDiscordMessage(diceRoller(amount, dice, modifier, "discord") + "."); //Rolls the dice given and send the result to discord
-        }
+    let modifier = document.getElementById("diceMod").innerHTML;
+    modifier = modifier.split(": ");
 
-        else{alert("Need input in all 3 inputs.");} //If one or more of the values are missed
-    }
-    
-    else
+    switch(document.getElementsByClassName("selected-dice")[0].innerHTML == "Basic")
     {
-        let modifier = document.getElementById("diceMod").innerHTML;
-        modifier = modifier.split(": ");
+        case "Basic":
+            let amount = parseInt(document.getElementById("diceToRoll").value);
+            let dice = parseInt(document.getElementById("sides").value);
+            modifier = parseInt(document.getElementById("modifier").value);
         
-        sendDiscordMessage(`${diceRoller("1", "20", modifier[1], "discord")} on their ${modifier[0]}.`);
+            if(!Number.isNaN(amount) && !Number.isNaN(dice) && !Number.isNaN(modifier)) //If all three values are given
+            {
+                sendDiscordMessage(diceRoller(amount, dice, modifier, "discord") + "."); //Rolls the dice given and send the result to discord
+            }
+
+            else{alert("Need input in all 3 inputs.");} //If one or more of the values are missed
+        break;
+
+        case "Saves":
+            if(modifier[0] == "InfusionReaction")
+            {
+                let dc = parseInt(modifier[1].slice(0, modifier.length - 1));
+                let roll = diceRoller("1", "100", "0");
+                alert(roll);
+                roll = parseInt(roll);
+
+                if(roll <= dc)
+                {
+                    sendDiscordMessage(`${player} has failed their infusion save, with a roll of ${roll}.`);
+                }
+
+                else
+                {
+                    sendDiscordMessage(`${player} has succeded their infusion save, with a roll of ${roll}.`);
+                }
+                break;
+            }
+    
+        default:
+            sendDiscordMessage(`${diceRoller("1", "20", modifier[1], "discord")} on their ${modifier[0]}.`);
+            break;
     }
 }
 
