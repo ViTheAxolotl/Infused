@@ -96,7 +96,7 @@ onValue(charRef, (snapshot) =>
     const data = snapshot.val();
     let infusedRate = document.getElementById("infusionRate");
     wholeChar = data;
-    infusedRate.innerHTML = `${infusedRate.title} ${data[player]["infusedRate"]}%`;
+    infusedRate.innerHTML = `${infusedRate.title} ${data[player]["stats"]["infusedRate"]}%`;
 
     if(firstRun) //The first time it loads
     {
