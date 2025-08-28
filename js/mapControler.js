@@ -388,7 +388,7 @@ function handleDiceRoll()
     let modifier = document.getElementById("diceMod").innerHTML;
     modifier = modifier.split(": ");
 
-    switch(document.getElementsByClassName("selected-dice")[0].innerHTML == "Basic")
+    switch(document.getElementsByClassName("selected-dice")[0].innerHTML)
     {
         case "Basic":
             let amount = parseInt(document.getElementById("diceToRoll").value);
