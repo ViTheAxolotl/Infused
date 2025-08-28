@@ -2,7 +2,7 @@
   "rolls" :
   {
     "Basic" : "basic",
-    "Saves" : ["StrengthSave", "ConstitutionSave", "DexteritySave", "WisdomSave", "IntelligenceSave", "CharismaSave", "InfusionRate"],
+    "Saves" : ["StrengthSave", "ConstitutionSave", "DexteritySave", "WisdomSave", "IntelligenceSave", "CharismaSave", "InfusedRate"],
     "Checks" : ["acrobatics", "animalHandling", "arcana", "athletics", "deception", "history", "insight", "intimidation", "investigation", "medicine", "nature", "perception", "performance", "persuasion", "religion", "slightOfHand", "stealth", "survival"],
     "Misc" : ["Initiative", "deathSave"]
   }
