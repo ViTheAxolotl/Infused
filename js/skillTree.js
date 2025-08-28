@@ -122,6 +122,7 @@ onAuthStateChanged(auth, (user) =>
             }
 
             updateDisplay();
+            reload(1);
         });
     }
 });
