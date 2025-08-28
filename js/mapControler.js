@@ -415,12 +415,12 @@ function handleDiceRoll()
 
                 if(roll <= dc)
                 {
-                    sendDiscordMessage(`${player} has failed their infusion save, with a roll of ${roll}.`);
+                    sendDiscordMessage(`${player} has failed their infusion save, with a roll of ${roll}, needed at least ${dc}.`);
                 }
 
                 else
                 {
-                    sendDiscordMessage(`${player} has succeeded their infusion save, with a roll of ${roll}.`);
+                    sendDiscordMessage(`${player} has succeeded their infusion save, with a roll of ${roll}, got above ${dc}.`);
                 }
                 break;
             }
