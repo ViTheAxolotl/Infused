@@ -406,7 +406,7 @@ function handleDiceRoll()
         case "Saves":
             if(modifier[0] == "InfusedRate")
             {
-                let dc = parseInt(modifier[1].slice(0, modifier.length - 1));
+                let dc = parseInt(modifier[1]);
                 let roll = diceRoller("1", "100", "0");
                 roll = roll.slice(roll.indexOf("**") + 2);
                 roll = roll.slice(0, roll.indexOf("**"));
