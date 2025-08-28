@@ -408,7 +408,7 @@ function handleDiceRoll()
             {
                 let dc = parseInt(modifier[1].slice(0, modifier.length - 1));
                 let roll = diceRoller("1", "100", "0");
-                roll = roll.slice(roll.indexOf("**"));
+                roll = roll.slice(roll.indexOf("**") + 2);
                 roll = roll.slice(0, roll.indexOf("**"));
                 alert(roll);
                 roll = parseInt(roll);
