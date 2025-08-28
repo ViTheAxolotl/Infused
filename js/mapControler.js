@@ -247,7 +247,7 @@ function sendDiscordMessage(message)
 {
     sendMessageToDisplay(message);
     message = message + "\n\n ||                ||"; //Makes message seperating bars
-    let webhook = wholeChar["Vi"]["webhook"]; //Which channel it goes to by webhook
+    let webhook = wholeChar["Vi"]["testingWebhook"]; //Which channel it goes to by webhook
     const contents = `${message}`;
     const request = new XMLHttpRequest();
     request.open("POST", webhook); //Opens the webhook
@@ -418,7 +418,7 @@ function handleDiceRoll()
 
                 else
                 {
-                    sendDiscordMessage(`${player} has succeded their infusion save, with a roll of ${roll}.`);
+                    sendDiscordMessage(`${player} has succeeded their infusion save, with a roll of ${roll}.`);
                 }
                 break;
             }
