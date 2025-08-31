@@ -28,7 +28,7 @@ function handleBringToTop()
 
 function handleReset()
 {
-    location.reload(true);
+    location.reload(true); 
 }
 
 window.onload = init;
