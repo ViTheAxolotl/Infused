@@ -1,7 +1,7 @@
 "use strict";
 function init()
 {
-    let characters = document.getElementsByTagName("button");
+    let characters = document.getElementsByClassName("recapButton");
 
     for(let char of characters) 
     {
