@@ -24,7 +24,7 @@ function setUpCards()
 let titleAndText =
 {
     "Impower Infusion" : "You have been given the quest to gather supplies to make a toxin that will strengthen your infusions. You have gathered the Pickled Greens and the flowers from the ravine. Now you must report back to him to create the toxin.",
-    "Garrett's Headache" : "Garrett has been acting strange since he was resurected. In the middle of the night, he woke up bleeding from his forehead. Insisting they go to Pavv right away to get fixed."
+    "Garrett's Headache" : "Garrett has been acting strange since he was resurected. In the middle of the night, he woke up bleeding from his forehead. Insisting they go to Pavv right away to get fixed.",
     "Missing Pieces" : "You have restored the tablet from a century ago, surprisingly it still works. However it is missing 3 computing parts, ECC Chip, RTC Chip, & Fusion Chip. Jason may have a lead, but he needed some time to remember where he found the tablet. Check back with him the next time you see him."
 };
 
