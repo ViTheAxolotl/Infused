@@ -218,7 +218,6 @@ function handleCustomImg()
         let label = document.createElement("h6");
         label.innerHTML = `${names[i]}:`;
         label.style.display = "inline";
-        label.classList = "color-UP-yellow";
         label.style.margin = "5px";
 
         objects[i].id = names[i];
@@ -309,7 +308,7 @@ function addHp()
     {
         let seprateDiv = document.createElement("div");
         labels[i].innerHTML = names[i] + ':';
-        labels[i].classList = "color-UP-yellow labelS";
+        labels[i].classList = "labelS";
         seprateDiv.appendChild(labels[i]);
 
         numbers[i].id = names[i];
