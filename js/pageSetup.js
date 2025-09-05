@@ -84,15 +84,6 @@ function navBarSetup()
         <div class="collapse navbar-collapse" id="navbarSupportedContent"> 
             <ul class="navbar-nav me-auto my-2 my-lg-0 " style="--bs-scroll-height: 100px;"> 
                 <li class="nav-item"><a class="nav-link active" aria-current="page" href="${mainLocation}index.html">Infused</a></li>
-                <li class="nav-item dropdown"> 
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        World Information
-                    </a>
-                    <ul class="dropdown-menu bg-dark" aria-labelledby="navbarScrollingDropdown">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="${mainLocation}characters.html">Characters</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item"><a class="nav-link active" aria-current="page" href="${mainLocation}mapAndTowns.html">Maps</a></li>
                 <li class="nav-item"><a class="nav-link active" aria-current="page" href="${mainLocation}questAndNotes.html">Quests & Personal Notes</a></li> 
                 <li class="nav-item dropdown"> 
                     <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">

@@ -6,7 +6,7 @@ function createCard(title, text, status)
     (
         '<div class="card '+ status +'">'+
             '<div class="card-body '+ status + '">'+
-                '<h5 class="card-title">' + title + ' (' + status[0].toUpperCase() + status.substring(1)  + ')</h5>'+
+                '<h5 class="card-title color-UP-black">' + title + ' (' + status[0].toUpperCase() + status.substring(1)  + ')</h5>'+
                 '<p class="card-text ' + status +'">' + text + '</p>'+
             '</div>'+
         '</div>'

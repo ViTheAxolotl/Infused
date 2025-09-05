@@ -122,7 +122,6 @@ onAuthStateChanged(auth, (user) =>
             }
 
             updateDisplay();
-            reload(1);
         });
     }
 });
@@ -234,6 +233,7 @@ function handleButtonClick(elm)
         case "unlock":
             setDoc(`playerChar/${player}/skillTree/${elm.title}`, "active");
             viewDiv.classList = "invisible";
+            reload(1);
             break;
         
         default:
