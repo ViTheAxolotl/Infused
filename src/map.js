@@ -121,7 +121,7 @@ function init()
     
     for(let iFrame of iFrames)
     {
-        wait(15, function() {iFrame.src = iFrame.classList[0];});
+        wait(10, function() {iFrame.src = iFrame.classList[0];});
     }
 }
 

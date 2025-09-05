@@ -2208,8 +2208,7 @@ function handleChangeToken()
         selects[i].style.width = "100%";
 
         let dropBtn = document.createElement("button");
-        dropBtn.classList.add("dropbtn");
-        dropBtn.classList.add(labels[i]);
+        dropBtn.classList = `color-I-button dropbtn ${labels[i]}`;
         dropBtn.id = `${labels[i]}Button`;
         dropBtn.onclick = handleShowSelect;
         placeBefore(dropBtn, selects[i]);

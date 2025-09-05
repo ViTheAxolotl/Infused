@@ -55,6 +55,16 @@ body * { -webkit-text-size-adjust: none !important; }
     color: #000000;
 }
 
+.color-I-button
+{
+    color: #0D6DFC;
+}
+
+.color-I-label
+{
+    color: #455B7D;
+}
+
 #corkBoard
 {
     background: url(../images/cork-board.jpg) brown;
