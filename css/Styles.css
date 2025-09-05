@@ -12,17 +12,17 @@ body * { -webkit-text-size-adjust: none !important; }
 
 .bg-UP-purple
 {
-    background-color: #510086;
+    background-color: #FCC90D;
 }
 
 .bg-UP-blue
 {
-    background-color: #00098C;
+    background-color: #FFEE00;
 }
 
 .bg-UP-yellow
 {
-    background-color: #AD9622;
+    background-color: #FC8B0D;
 }
 
 .bg-UP-grey
@@ -37,17 +37,17 @@ body * { -webkit-text-size-adjust: none !important; }
 
 .color-UP-purple
 {
-    color: #510086;
+    color: #FCC90D;
 }
 
 .color-UP-blue
 {
-    color: #00098C;
+    color: #FFEE00;
 }
 
 .color-UP-yellow
 {
-    color: #AD9622;
+    color: #FC8B0D;
 }
 
 .color-UP-black
@@ -64,8 +64,8 @@ body * { -webkit-text-size-adjust: none !important; }
 {
     text-align: center;
     margin-top: 20px;
-    background-color: #AD9622;
-    color: #510086;
+    background-color: #FFEE00;
+    color: #FCC90D;
 }
 
 #footer
@@ -73,8 +73,8 @@ body * { -webkit-text-size-adjust: none !important; }
     text-align: center;
     padding-bottom: 10px;
     margin: 20px 0px;
-    background-color: #AD9622;
-    color: #510086;
+    background-color: #FFEE00;
+    color: #FCC90D;
 }
 
 #hometown, #info, #quests, #notes
@@ -123,7 +123,7 @@ h3, h5
 {
     text-align: center;
     margin-bottom: 10px;
-    color: #AD9622;
+    color: #455B7D;
 }
 
 h5
@@ -138,8 +138,8 @@ button
     width: 100%;
     padding: 5px;
     margin: 5px 0px;
-    background-color: #510086;
-    color: #AD9622;
+    background-color: #FCC90D;
+    color: #0D6DFC;
 }
 
 table, .itemSearch, #itemImg, #charImg
@@ -226,7 +226,7 @@ table, .itemSearch, #itemImg
   
 .navbar-primary .navbar-toggler 
 {
-    border-color: #510086; 
+    border-color: #FCC90D; 
     width: 56px;
 } 
 
@@ -474,7 +474,7 @@ table, .itemSearch, #itemImg
 
 #hideCover, #quickAction
 {
-    background-color: #510086;
+    background-color: #FCC90D;
     color: white;
     width: 20%;
     position: absolute;
