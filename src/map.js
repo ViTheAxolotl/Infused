@@ -270,7 +270,6 @@ function makeToken(key, turn, charPos)
         {
             row[0].appendChild(row[i]); 
             row[i].style.display = "inline";
-            row[i].classList.add("color-UP-yellow");
 
             if(i == 3)
             {
@@ -425,6 +424,7 @@ function addCharacter(character, update)
     
     if(!tokenImg.includes("custom-")){char[0].src = imgs["tokens"][tokenImg];} else{char[0].src = wholeCustom[tokenImg]["src"]; char[0].classList.add("customImg");}
     char[0].id = character["id"];
+    
     char[1].src = `images/map/tokens/${character["border"]}Border.png`;
     char[1].id = character["border"];
     char[1].classList = `tokens ${character["id"]} border_`;
