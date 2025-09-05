@@ -94,7 +94,6 @@ function navBarSetup()
                     </ul>
                 </li>
                 <li class="nav-item"><a class="nav-link active" aria-current="page" href="${mainLocation}questAndNotes.html">Quests & Personal Notes</a></li> 
-                <li class="nav-item"><a class="nav-link active" aria-current="page" href="${mainLocation}skillTree.html">Skill Tree</a></li> 
                 <li class="nav-item"><a class="nav-link active" aria-current="page" href="${mainLocation}recap.html">Sessions Recap</a></li> 
                 <li class="nav-item"><a class="nav-link active" aria-current="page" href="${mainLocation}itemIndex.html">Magic Item Index</a></li>);    
                 <li class="nav-item"><a class="nav-link active" aria-current="page" href="https://vitheaxolotl.github.io/sheets/index.html">Standalone Character Sheets</a></li>);    
