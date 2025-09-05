@@ -123,6 +123,19 @@ function init()
     {
         wait(10, function() {iFrame.src = iFrame.classList[0];});
     }
+
+    wait(20, function() 
+    {
+        let skillDiv = document.getElementById("skills");
+        let myIframe = document.getElementById('iFrameSkill');
+        let isLoaded = myIframe.prop('data-isLoaded');
+
+        if(isLoaded == '1')
+        {
+            skillDiv.style.opacity = "1";
+            skillDiv.style.display = "none";
+        } 
+    });
 }
 
 const startDragging = (e) => 

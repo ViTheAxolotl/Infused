@@ -133,6 +133,8 @@ function init()
     document.getElementById("hideCovers").onclick = function(){handleButtonClick(this);};
     document.getElementById("unlock").onclick = function(){handleButtonClick(this);};
     fetch('https://vitheaxolotl.github.io/Infused/src/skillTree.json').then(res => res.json()).then((json) => skillDesc = json);
+    let sourceURL = document.referrer;
+    window.parent.postMessage('1', sourceURL);
 }
 
 function summonDarkness(map, image)
