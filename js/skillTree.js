@@ -67,7 +67,6 @@ onAuthStateChanged(auth, (user) =>
     {
         player = auth.currentUser.email.split("@");
         player = toTitleCase(player[0]);
-        document.getElementById("name").innerHTML = `${player}${document.getElementById("name").innerHTML}`;
         let skillRef = ref(database, `playerChar/${player}/skillTree`);
         onValue(skillRef, (snapshot) => 
         {
