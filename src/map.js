@@ -2,7 +2,7 @@
 "use strict";
 import { ref, onValue } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js';
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
-import { toTitleCase, auth, database, setDoc, deleteDoc, returnHpImage, setMapValue, placeBefore, quickAction, setQuickAction } from '../js/viMethods.js';
+import { toTitleCase, auth, database, setDoc, deleteDoc, returnHpImage, setMapValue, placeBefore, quickAction, setQuickAction, wait } from '../js/viMethods.js';
 
 let map = setMapValue();
 let wholeDB = {};
@@ -116,7 +116,13 @@ function init()
 
     document.getElementById("helpBtn").onclick = handleCharClick;
     document.getElementById("hideCover").onclick = hideCover; 
+
+    let iFrames = document.getElementsByTagName("iframe");
     
+    for(let iFrame of iFrames)
+    {
+        wait(15, function() {iFrame.src = iFrame.classList[0];});
+    }
 }
 
 const startDragging = (e) => 
