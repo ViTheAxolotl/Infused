@@ -570,7 +570,6 @@ table, .itemSearch, #itemImg
 .dropbtn 
 {
     background-color: grey;
-    color: black;
     -moz-border-radius: 30%;
     -webkit-border-radius: 30%;
     border-radius: 30%;
