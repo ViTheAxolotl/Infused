@@ -124,16 +124,23 @@ function init()
         wait(10, function() {iFrame.src = iFrame.classList[0];});
     }
 
-    wait(20, function() 
-    {
-        let skillDiv = document.getElementById("skills");
+    wait(13, function(){hideSkill()});
+}
 
-        if(parent.skillsLoaded == true)
-        {
-            skillDiv.style.opacity = "1";
-            skillDiv.style.display = "none";
-        } 
-    });
+function hideSkill()
+{
+    let skillDiv = document.getElementById("skills");
+
+    if(parent.skillsLoaded == true)
+    {
+        skillDiv.style.opacity = "1";
+        skillDiv.style.display = "none";
+    } 
+
+    else
+    {
+        wait(3, function(){hideSkill();});
+    }
 }
 
 const startDragging = (e) => 
