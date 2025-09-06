@@ -127,10 +127,8 @@ function init()
     wait(20, function() 
     {
         let skillDiv = document.getElementById("skills");
-        let myIframe = document.getElementById('iFrameSkill');
-        let isLoaded = myIframe.prop('data-isLoaded');
 
-        if(isLoaded == '1')
+        if(parent.skillsLoaded == true)
         {
             skillDiv.style.opacity = "1";
             skillDiv.style.display = "none";
