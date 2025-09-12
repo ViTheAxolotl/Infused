@@ -256,6 +256,12 @@ function addTokens()
 
     if(!(Object.keys(wholeDB).includes(wholeChar[player]["token"]["id"])))
     {
+        if(wholeDB["spawnPoint"])
+        {
+            wholeChar[player]["token"]["xPos"] = wholeDB["spawnPoint"]["xPos"];
+            wholeChar[player]["token"]["yPos"] = wholeDB["spawnPoint"]["yPos"];
+        }
+
         setDoc(`currentMap/${wholeChar[player]["token"]["id"]}`, wholeChar[player]["token"]);
 
         if(isSummonOn)
@@ -269,6 +275,12 @@ function addTokens()
 
                     if(wholeChar[player]["charName"] == user)
                     {
+                        if(wholeDB["spawnPoint"])
+                        {
+                            wholeSummons[key]["xPos"] = wholeDB["spawnPoint"]["xPos"];
+                            wholeSummons[key]["yPos"] = wholeDB["spawnPoint"]["yPos"];
+                        }
+
                         setDoc(`currentMap/${wholeSummons[key]["id"]}`, wholeSummons[key]);
                     }
                 }
