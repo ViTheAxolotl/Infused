@@ -258,8 +258,16 @@ function addTokens()
     {
         if(wholeDB["spawnPoint"])
         {
-            wholeChar[player]["token"]["xPos"] = wholeDB["spawnPoint"]["xPos"];
-            wholeChar[player]["token"]["yPos"] = wholeDB["spawnPoint"]["yPos"];
+            let negOrPos = [-1, 1];
+            let differential = [0, 1, 2];
+            let diffrenceX;
+            let diffrenceY;
+
+            diffrenceX = getRandomItem(negOrPos) * getRandomItem(differential);
+            diffrenceY = getRandomItem(negOrPos) * getRandomItem(differential);
+
+            wholeChar[player]["token"]["xPos"] = `${parseInt(wholeDB["spawnPoint"]["xPos"]) + diffrenceX}`;
+            wholeChar[player]["token"]["yPos"] = `${parseInt(wholeDB["spawnPoint"]["yPos"]) + diffrenceY}`;
         }
 
         setDoc(`currentMap/${wholeChar[player]["token"]["id"]}`, wholeChar[player]["token"]);
