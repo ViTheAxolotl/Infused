@@ -154,7 +154,7 @@ function makeToken(key)
 {
     let token = [document.createElement("div"), document.createElement("img"), document.createElement("img"), document.createElement("img")];
     token[0].id = `${key.id}-div`;
-    token[0].classList = "bg-UP-grey objectBorder";
+    token[0].classList = "bg-UP-blue objectBorder";
     token[0].style.margin = "5px";
     token[0].style.position = "relative";
     token[0].style.minHeight = "82px";
