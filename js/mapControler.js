@@ -167,6 +167,7 @@ onValue(questRef, (snapshot) =>
 {
     const data = snapshot.val();
     wholeQuests = data;
+    alert("loaded");
         let questTitle = document.getElementById("questTitle");
         let questText = document.getElementById("questText");
         
