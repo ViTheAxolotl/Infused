@@ -49,6 +49,7 @@ let zoomLevel = 100;
 let grid = document.getElementById("grid");
 let discription;
 let currentToken;
+let wholeQuests = {};
 
 /**
  * When it shows that your logged in
@@ -159,6 +160,24 @@ onValue(displayRef, (snapshot) =>
 {
     const data = snapshot.val();
     wholeDisplay = data;
+});
+
+const questRef = ref(database, `playerChar/Vi/Quests/`);
+onValue(questRef, (snapshot) =>
+{
+    const data = snapshot.val();
+    wholeQuests = data;
+        let questTitle = document.getElementById("questTitle");
+        let questText = document.getElementById("questText");
+        
+        for(let quest of Object.keys(wholeQuests))
+        {
+            if(quest["activeQuest"])
+            {
+                questTitle.innerHTML = quest["name"];
+                questText.innerHTML = quest["Desc"];
+            }
+        }
 });
 
 let favoriteRef;
