@@ -2615,7 +2615,7 @@ function handleLoadQuests()
     {
         let questTitle, questText;
 
-        if(!wholeQuests[quest]["activeQuest"]){ questTitle.innerHTML = wholeQuests[quest]["name"]; questText.innerHTML = wholeQuests[quest]["Desc"]; }
+        if(!wholeQuests[quest]["activeQuest"]){ questTitle = wholeQuests[quest]["name"]; questText = wholeQuests[quest]["Desc"]; }
         else { continue; }
 
         let card = document.createElement("div");
