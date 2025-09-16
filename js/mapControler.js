@@ -2654,7 +2654,7 @@ function handleLoadQuests()
 function handleDeleteQuests()
 {
     document.getElementById("questInstructions").innerHTML="<em><b>Click To See All Quest...</b></em>";
-    this.onclick = handleLoadQuests; aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+    this.onclick = handleLoadQuests;
     let temp = document.getElementsByClassName("temp-Card");
 
     while(true)
