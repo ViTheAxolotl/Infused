@@ -2659,7 +2659,7 @@ function handleDeleteQuests()
 
     while(true)
     {
-        if(temp.length > 1)
+        if(temp.length > 0)
         {
             temp[0].remove();
         }
