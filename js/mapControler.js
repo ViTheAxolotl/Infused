@@ -165,20 +165,19 @@ onValue(displayRef, (snapshot) =>
 const questRef = ref(database, `playerChar/Vi/quests/`);
 onValue(questRef, (snapshot) =>
 {
+    let questTitle = document.getElementById("questTitle");
+    let questText = document.getElementById("questText");
     const data = snapshot.val();
     wholeQuests = data;
-    alert("loaded");
-        let questTitle = document.getElementById("questTitle");
-        let questText = document.getElementById("questText");
-        
-        for(let quest of Object.keys(wholeQuests))
+    
+    for(let quest of Object.keys(wholeQuests))
+    {
+        if(wholeQuests[quest["activeQuest"]])
         {
-            if(quest["activeQuest"])
-            {
-                questTitle.innerHTML = quest["name"];
-                questText.innerHTML = quest["Desc"];
-            }
+            questTitle.innerHTML = wholeQuests[quest["name"]];
+            questText.innerHTML = wholeQuests[quest["Desc"]];
         }
+    }
 });
 
 let favoriteRef;
