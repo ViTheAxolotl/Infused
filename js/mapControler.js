@@ -2659,9 +2659,9 @@ function handleDeleteQuests()
 
     while(true)
     {
-        if(temp.children.length > 1)
+        if(temp.length > 1)
         {
-            temp.firstChild.remove();
+            temp[0].remove();
         }
 
         else
