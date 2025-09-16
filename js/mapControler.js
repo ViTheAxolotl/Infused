@@ -2646,7 +2646,7 @@ function handleLoadQuests()
             card.classList.add("complete");
             cardBody.classList.add("complete");
             text.classList.add("complete");
-            placeBefore(card, questDiv.firstChild);
+            placeBefore(card, this);
         }
     }
 }
@@ -2654,12 +2654,22 @@ function handleLoadQuests()
 function handleDeleteQuests()
 {
     document.getElementById("questInstructions").innerHTML="<em><b>Click To See All Quest...</b></em>";
-    this.onclick = handleLoadQuests;
+    this.onclick = handleLoadQuests; aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+    let temp = document.getElementsByClassName("temp-Card");
 
-    for(let quest of document.getElementsByClassName("temp-Card"))
+    while(true)
     {
-        quest.remove();
+        if(temp.children.length > 1)
+        {
+            temp.firstChild.remove();
+        }
+
+        else
+        {
+            break;
+        }
     }
+
 }
 
 function updateStat()
