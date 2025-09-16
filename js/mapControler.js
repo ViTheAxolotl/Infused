@@ -216,6 +216,7 @@ function init()
     currentToken = wholeChar[player]["currentToken"];
 
     for(let diceSelect of document.getElementsByClassName("diceSelect")){diceSelect.onclick = handleDiceSelect;}
+    document.getElementById("questCard").onclick = handleLoadQuests;
 }
 
 /**
@@ -2600,6 +2601,64 @@ function handleDiceSelect()
             display.appendChild(select);
             display.appendChild(mod);
             break;
+    }
+}
+
+function handleLoadQuests()
+{
+    let questDiv = document.getElementById("quest");
+    
+    document.getElementById("questInstructions").innerHTML="<em><b>Click To Hide Other Quests...</b></em>";
+    this.onclick = handleDeleteQuests;
+
+    for(let quest of Object.keys(wholeQuests))
+    {
+        let questTitle, questText;
+
+        if(!wholeQuests[quest]["activeQuest"]){ questTitle.innerHTML = wholeQuests[quest]["name"]; questText.innerHTML = wholeQuests[quest]["Desc"]; }
+        else { continue; }
+
+        let card = document.createElement("div");
+        let cardBody = document.createElement("div");
+        let title = document.createElement("h5");
+        let text = document.createElement("p");
+        
+        card.classList = "card temp-Card";
+        cardBody.classList = "card-body";
+        title.classList = "card-title color-UP-black";
+        title.innerHTML = questTitle;
+        text.innerHTML = questText;
+        text.classList = "card-text";
+        card.appendChild(cardBody);
+        cardBody.appendChild(title);
+        cardBody.appendChild(text);
+
+        if(wholeQuests[quest]["status"] == "incomplete")
+        {
+            card.classList.add("incomplete");
+            cardBody.classList.add("incomplete");
+            text.classList.add("incomplete");
+            questDiv.appendChild(card);
+        }
+
+        else
+        {
+            card.classList.add("complete");
+            cardBody.classList.add("complete");
+            text.classList.add("complete");
+            placeBefore(card, questDiv.firstChild);
+        }
+    }
+}
+
+function handleDeleteQuests()
+{
+    document.getElementById("questInstructions").innerHTML="<em><b>Click To See All Quest...</b></em>";
+    this.onclick = handleLoadQuests;
+
+    for(let quest of document.getElementsByClassName("temp-Card"))
+    {
+        quest.remove();
     }
 }
 
