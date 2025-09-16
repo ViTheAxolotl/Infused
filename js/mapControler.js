@@ -162,7 +162,7 @@ onValue(displayRef, (snapshot) =>
     wholeDisplay = data;
 });
 
-const questRef = ref(database, `playerChar/Vi/Quests/`);
+const questRef = ref(database, `playerChar/Vi/quests/`);
 onValue(questRef, (snapshot) =>
 {
     const data = snapshot.val();
