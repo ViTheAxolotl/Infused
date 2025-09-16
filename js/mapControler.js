@@ -2565,11 +2565,11 @@ function handleDiceSelect()
         case "Basic":
             let numOfDice = document.createElement("input");
             numOfDice.id = "diceToRoll"; numOfDice.placeholder = "1"; display.appendChild(numOfDice);
-            display.innerHTML += '<p class="color-UP-yellow">d</p>';
+            display.innerHTML += '<p>d</p>';
             
             let sides = document.createElement("input");
             sides.id = "sides"; sides.placeholder = "20"; display.appendChild(sides);
-            display.innerHTML += '<p class="color-UP-yellow">+/-</p>';
+            display.innerHTML += '<p>+/-</p>';
             
             let modifier = document.createElement("input");
             modifier.id = "modifier"; modifier.placeholder = "0"; display.appendChild(modifier);
