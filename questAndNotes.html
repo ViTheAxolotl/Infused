@@ -12,39 +12,16 @@
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href = "css/Styles.css" rel = "stylesheet" />
 
-    <title>Quests & Notes</title>
+    <title>Notes</title>
   </head>
   
   <body>
-    <nav class="navbar navbar-expand-lg bg-dark navbar-primary"> 
-        <script src="js/pageSetup.js" class="noParent" type="module"></script>
-    </nav>
-
-    <div class="container">
-      <div class="row align-items-top">
-        <div id = "header" class = "col-12">
-            <h1>Quests & Notes</h1><br>
-        </div>
-
-        <div id = "quests" class = "bg-UP-blue color-UP-black col-md-5 col-sm-12">
-          <h3>Quests</h3> <hr>
-            <a href="#notes"><p class = "center sLink"><b>Notes</b></p></a>
-            <script src="js/quests.js"></script>
-        </div>
-         
-        <div id = "notes" class = "bg-UP-purple color-UP-black col-md-7 col-sm-12 ">
-          <h3>Notes</h3> <hr>
-            <a href="#quests"><p class = "center sLink"><b>Quests</b></p></a>
-            <script src="src/fire.js" type = "module"></script>
-            <div id = "notesDisplay"><p></p></div>
-            <input type="text" class = "itemSearch" id = "searchBar" placeholder=""/>
-            <button id="enter"><b>Enter</b></button>
-        </div>
-      
-        <div id = "footer" class = "col-12">
-        </div>
-      </div>
-	  </div>
+    <div id = "notes" class = "bg-UP-purple color-UP-black">
+        <script src="src/fire.js" type = "module"></script>
+        <div id = "notesDisplay"><p></p></div>
+        <input type="text" class = "itemSearch" id = "searchBar" placeholder=""/>
+        <button id="enter"><b>Enter</b></button>
+    </div>
 
      <!-- Bootstrap JavaScript Components-LOAD LAST -->
      <script scr="js/bootstrap/scripts.js"></script>
