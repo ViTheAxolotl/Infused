@@ -172,10 +172,10 @@ onValue(questRef, (snapshot) =>
     
     for(let quest of Object.keys(wholeQuests))
     {
-        if(wholeQuests[quest["activeQuest"]])
+        if(wholeQuests[quest]["activeQuest"])
         {
-            questTitle.innerHTML = wholeQuests[quest["name"]];
-            questText.innerHTML = wholeQuests[quest["Desc"]];
+            questTitle.innerHTML = wholeQuests[quest]["name"];
+            questText.innerHTML = wholeQuests[quest]["Desc"];
         }
     }
 });
