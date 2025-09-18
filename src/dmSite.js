@@ -1126,7 +1126,7 @@ function createQuestCard(quest)
     status.type = "text";
     status.style.display = "inline";
 
-    active.type = "checkbox";
+    active.type = "radio";
     active.style.display = "inline";
 
     deleteBtn.src = "images/trashIcon.png";

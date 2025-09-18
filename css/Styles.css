@@ -631,11 +631,13 @@ table, .itemSearch, #itemImg
     width: 56.8% !important;
 }
 
+/*
 #story input
 {
     display: inline;
     width: 25vw;
 }
+*/
 
 .stats table, .stats td, .stats tr
 {
