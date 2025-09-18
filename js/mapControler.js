@@ -2641,7 +2641,7 @@ function handleLoadQuests()
             questDiv.appendChild(card);
         }
 
-        else
+        else if (wholeQuests[quest]["status"] == "complete")
         {
             card.classList.add("complete");
             cardBody.classList.add("complete");
