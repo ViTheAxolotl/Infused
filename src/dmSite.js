@@ -1112,8 +1112,10 @@ function createQuestCard(quest)
         deleteBtn.id = `empty-delete`;
     }
 
-    card.classList = "card color-UP-black";
+    card.classList = "card color-UP-black bg-UP-blue";
+    card.classList.add("incomplete");
     cardBody.classList = "card-body";
+    cardBody.classList.add("incomplete");
     
     title.classList = "card-title color-UP-black";
     title.type = "text";
@@ -1122,6 +1124,7 @@ function createQuestCard(quest)
     text.classList = "card-text";
     text.type = "textbox";
     text.style.display = "inline";
+    text.classList.add("incomplete");
 
     status.type = "text";
     status.style.display = "inline";
@@ -1143,22 +1146,10 @@ function createQuestCard(quest)
     cardBody.appendChild(status);
     cardBody.appendChild(document.createElement("div"));
     cardBody.appendChild(createLabel("Active Quest"));
+    cardBody.appendChild(document.createElement("div"));
     cardBody.appendChild(active);
+    cardBody.appendChild(document.createElement("div"));
     cardBody.appendChild(deleteBtn);
-
-    if(wholeQuests[quest]["status"] == "incomplete")
-    {
-        card.classList.add("incomplete");
-        cardBody.classList.add("incomplete");
-        text.classList.add("incomplete");
-    }
-
-    else
-    {
-        card.classList.add("complete");
-        cardBody.classList.add("complete");
-        text.classList.add("complete");
-    }
 
     return card;
 }
