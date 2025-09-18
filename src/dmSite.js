@@ -37,6 +37,13 @@ onValue(presetRef, (snapshot) =>
     wholePre = data;
 });
 
+const questRef = ref(database, `playerChar/Vi/quests/`);
+onValue(questRef, (snapshot) =>
+{
+    const data = snapshot.val();
+    wholeQuests = data;
+});
+
 let fiveButtons = [];
 let wholeDB = {};
 let wholeTO = {};
@@ -54,6 +61,7 @@ let mode;
 let user;
 let wholeActions;
 let wholeSpells;
+let wholeQuests;
 
 function init()
 {
@@ -114,6 +122,10 @@ function init()
                 fiveButtons.push(button);
                 button.onclick = handleInteractive;
                 break;
+            
+            case "quest":
+                fiveButtons.push(button);
+                button.onclick = handleQuest;
 
             case "generate":
                 fiveButtons.push(button);
@@ -1060,6 +1072,105 @@ function displayInteractive(exitButton)
             img.classList.add("char");
             selectDiv.appendChild(img); 
         }
+    }
+}
+
+function createQuestCard(quest)
+{
+    let card = document.createElement("div");
+    let cardBody = document.createElement("div");
+    let title = document.createElement("input");
+    let text = document.createElement("input");
+    let status = document.createElement("input");
+    let active = document.createElement("input");
+    let deleteBtn = document.createElement("img");
+    let spacer = document.createElement("span");
+
+    if(quest != "empty")
+    {
+        card.id = `${wholeQuests[quest]["name"]}-div`;
+        title.id = `${wholeQuests[quest]["name"]}-title`;
+        text.id = `${wholeQuests[quest]["name"]}-text`;
+        status.id = `${wholeQuests[quest]["name"]}-`;
+        active.id = `${wholeQuests[quest]["name"]}-activeQuest`;
+        deleteBtn.id = `${wholeQuests[quest]["name"]}-delete`;
+
+        title.value = wholeQuests[quest]["name"];
+        text.value = wholeQuests[quest]["Desc"];
+        status.value = wholeQuests[quest]["status"];
+        active.checked = wholeQuests[quest]["activeQuest"];
+    }
+
+    else
+    {
+        card.id = `empty-div`;
+        title.id = `empty-title`;
+        text.id = `empty-text`;
+        status.id = `empty-`;
+        active.id = `empty-activeQuest`;
+        deleteBtn.id = `empty-delete`;
+    }
+
+    card.classList = "card";
+    cardBody.classList = "card-body";
+    
+    title.classList = "card-title color-UP-black";
+    title.type = "text";
+    title.style.display = "inline";
+    
+    text.classList = "card-text";
+    text.type = "text";
+    text.style.display = "inline";
+
+    status.type = "text";
+    status.style.display = "inline";
+
+    active.type = "checkbox";
+    active.style.display = "inline";
+
+    deleteBtn.src = "../images/trashIcon.png";
+    spacer.style.display = "block";
+
+    card.appendChild(cardBody);
+    cardBody.appendChild(createLabel("Title:"));
+    cardBody.appendChild(title);
+    cardBody.appendChild(spacer);
+    cardBody.appendChild(createLabel("Desc:"));
+    cardBody.appendChild(text);
+    cardBody.appendChild(spacer);
+    cardBody.appendChild(createLabel("Status:"));
+    cardBody.appendChild(status);
+    cardBody.appendChild(spacer);
+    cardBody.appendChild(createLabel("Active Quest:"));
+    cardBody.appendChild(active);
+    cardBody.appendChild(deleteBtn);
+
+    if(wholeQuests[quest]["status"] == "incomplete")
+    {
+        card.classList.add("incomplete");
+        cardBody.classList.add("incomplete");
+        text.classList.add("incomplete");
+        questDiv.appendChild(card);
+    }
+
+    else
+    {
+        card.classList.add("complete");
+        cardBody.classList.add("complete");
+        text.classList.add("complete");
+        placeBefore(card, this);
+    }
+
+    return card;
+}
+
+function handleQuest()
+{
+    hideButtons();
+
+    for(let quest of Object.keys(wholeQuests))
+    {
+        createQuestCard(wholeQuests[quest]);
     }
 }
 
