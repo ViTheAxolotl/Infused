@@ -631,6 +631,11 @@ table, .itemSearch, #itemImg
     width: 56.8% !important;
 }
 
+.basicMargin
+{
+    margin: 5px;
+}
+
 /*
 #story input
 {

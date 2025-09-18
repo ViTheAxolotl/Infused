@@ -1115,21 +1115,25 @@ function createQuestCard(quest)
     card.classList = "card color-UP-black bg-UP-blue";
     cardBody.classList = "card-body";
     
-    title.classList = "card-title color-UP-black";
+    title.classList = "basicMargin color-UP-black";
     title.type = "text";
     title.style.display = "inline";
     
-    text.classList = "card-text";
+    text.classList = "basicMargin card-text";
     text.type = "textbox";
     text.style.display = "inline";
 
     status.type = "text";
     status.style.display = "inline";
+    status.classList = "basicMargin";
 
-    active.type = "radio";
+    active.type = "checkbox";
     active.style.display = "inline";
+    active.classList = "basicMargin";
 
     deleteBtn.src = "images/trashIcon.png";
+    deleteBtn.onclick = handleDeleteQuest;
+    deleteBtn.classList = "basicMargin";
     spacer.style.display = "block";
 
     card.appendChild(cardBody);
@@ -1148,6 +1152,21 @@ function createQuestCard(quest)
     cardBody.appendChild(deleteBtn);
 
     return card;
+}
+
+function handleDeleteQuest()
+{
+    this.parentElement.parentElement.remove();
+}
+
+function handleCreateQuest()
+{
+
+}
+
+function uploadQuests()
+{
+
 }
 
 function handleQuest()
