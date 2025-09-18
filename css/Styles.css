@@ -12,22 +12,22 @@ body * { -webkit-text-size-adjust: none !important; }
 
 .bg-UP-purple
 {
-    background-color: #FCC90D;
+    background-color: #FCC90D !important;
 }
 
 .bg-UP-blue
 {
-    background-color: #FFFF00;
+    background-color: #FFFF00 !important;
 }
 
 .bg-UP-yellow
 {
-    background-color: #FC8B0D;
+    background-color: #FC8B0D !important;
 }
 
 .bg-UP-grey
 {
-    background-color: rgb(70, 70, 70);
+    background-color: rgb(70, 70, 70) !important;
 }
 
 .bg-UP-white
