@@ -1112,7 +1112,7 @@ function createQuestCard(quest)
         deleteBtn.id = `empty-delete`;
     }
 
-    card.classList = "card";
+    card.classList = "card color-UP-black";
     cardBody.classList = "card-body";
     
     title.classList = "card-title color-UP-black";
@@ -1120,7 +1120,7 @@ function createQuestCard(quest)
     title.style.display = "inline";
     
     text.classList = "card-text";
-    text.type = "text";
+    text.type = "textbox";
     text.style.display = "inline";
 
     status.type = "text";
@@ -1129,20 +1129,20 @@ function createQuestCard(quest)
     active.type = "checkbox";
     active.style.display = "inline";
 
-    deleteBtn.src = "../images/trashIcon.png";
+    deleteBtn.src = "images/trashIcon.png";
     spacer.style.display = "block";
 
     card.appendChild(cardBody);
-    cardBody.appendChild(createLabel("Title:"));
+    cardBody.appendChild(createLabel("Title"));
     cardBody.appendChild(title);
-    cardBody.appendChild(spacer);
-    cardBody.appendChild(createLabel("Desc:"));
+    cardBody.appendChild(document.createElement("span").style.display = "block");
+    cardBody.appendChild(createLabel("Desc"));
     cardBody.appendChild(text);
-    cardBody.appendChild(spacer);
-    cardBody.appendChild(createLabel("Status:"));
+    cardBody.appendChild(document.createElement("span").style.display = "block");
+    cardBody.appendChild(createLabel("Status"));
     cardBody.appendChild(status);
-    cardBody.appendChild(spacer);
-    cardBody.appendChild(createLabel("Active Quest:"));
+    cardBody.appendChild(document.createElement("span").style.display = "block");
+    cardBody.appendChild(createLabel("Active Quest"));
     cardBody.appendChild(active);
     cardBody.appendChild(deleteBtn);
 
