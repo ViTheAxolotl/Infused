@@ -1151,7 +1151,6 @@ function createQuestCard(quest)
         card.classList.add("incomplete");
         cardBody.classList.add("incomplete");
         text.classList.add("incomplete");
-        questDiv.appendChild(card);
     }
 
     else
@@ -1159,7 +1158,6 @@ function createQuestCard(quest)
         card.classList.add("complete");
         cardBody.classList.add("complete");
         text.classList.add("complete");
-        placeBefore(card, this);
     }
 
     return card;
