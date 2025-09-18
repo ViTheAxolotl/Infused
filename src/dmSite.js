@@ -1171,7 +1171,7 @@ function handleQuest()
 
     for(let quest of Object.keys(wholeQuests))
     {
-        createQuestCard(quest);
+        div.appendChild(createQuestCard(quest));
     }
 }
 
