@@ -1135,13 +1135,13 @@ function createQuestCard(quest)
     card.appendChild(cardBody);
     cardBody.appendChild(createLabel("Title"));
     cardBody.appendChild(title);
-    cardBody.appendChild(document.createElement("span").style.display = "block");
+    cardBody.appendChild(document.createElement("div"));
     cardBody.appendChild(createLabel("Desc"));
     cardBody.appendChild(text);
-    cardBody.appendChild(document.createElement("span").style.display = "block");
+    cardBody.appendChild(document.createElement("div"));
     cardBody.appendChild(createLabel("Status"));
     cardBody.appendChild(status);
-    cardBody.appendChild(document.createElement("span").style.display = "block");
+    cardBody.appendChild(document.createElement("div"));
     cardBody.appendChild(createLabel("Active Quest"));
     cardBody.appendChild(active);
     cardBody.appendChild(deleteBtn);
