@@ -1113,9 +1113,7 @@ function createQuestCard(quest)
     }
 
     card.classList = "card color-UP-black bg-UP-blue";
-    card.classList.add("incomplete");
     cardBody.classList = "card-body";
-    cardBody.classList.add("incomplete");
     
     title.classList = "card-title color-UP-black";
     title.type = "text";
@@ -1124,7 +1122,6 @@ function createQuestCard(quest)
     text.classList = "card-text";
     text.type = "textbox";
     text.style.display = "inline";
-    text.classList.add("incomplete");
 
     status.type = "text";
     status.style.display = "inline";
