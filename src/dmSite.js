@@ -1228,8 +1228,6 @@ function handleUploadInteractive()
 function handleGenerate()
 {
     hideButtons();
-    backupFavorites();
-    alert("done");
     handleDone();
 }
 
