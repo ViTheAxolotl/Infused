@@ -1120,6 +1120,8 @@ function createQuestCard(quest)
     
     text.classList = "basicMargin card-text";
     text.style.display = "inline";
+    text.style.width = "30vw";
+    text.style.height = "30vw";
 
     status.style.display = "inline";
     status.classList = "basicMargin";
@@ -1214,6 +1216,8 @@ function handleQuest()
                 button.onclick = handleDone;
                 break;
         }
+
+        div.appendChild(btn);
     }
 }
 
