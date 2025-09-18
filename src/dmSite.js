@@ -1081,7 +1081,7 @@ function createQuestCard(quest)
     let card = document.createElement("div");
     let cardBody = document.createElement("div");
     let title = document.createElement("input");
-    let text = document.createElement("input");
+    let text = document.createElement("textarea");
     let status = document.createElement("input");
     let active = document.createElement("input");
     let deleteBtn = document.createElement("img");
@@ -1092,7 +1092,7 @@ function createQuestCard(quest)
         card.id = `${wholeQuests[quest]["name"]}-div`;
         title.id = `${wholeQuests[quest]["name"]}-title`;
         text.id = `${wholeQuests[quest]["name"]}-text`;
-        status.id = `${wholeQuests[quest]["name"]}-`;
+        status.id = `${wholeQuests[quest]["name"]}-status`;
         active.id = `${wholeQuests[quest]["name"]}-activeQuest`;
         deleteBtn.id = `${wholeQuests[quest]["name"]}-delete`;
 
@@ -1116,14 +1116,11 @@ function createQuestCard(quest)
     cardBody.classList = "card-body";
     
     title.classList = "basicMargin color-UP-black";
-    title.type = "text";
     title.style.display = "inline";
     
     text.classList = "basicMargin card-text";
-    text.type = "textbox";
     text.style.display = "inline";
 
-    status.type = "text";
     status.style.display = "inline";
     status.classList = "basicMargin";
 
@@ -1161,21 +1158,62 @@ function handleDeleteQuest()
 
 function handleCreateQuest()
 {
-
+    placeBefore(createQuestCard("empty"), this);
 }
 
 function uploadQuests()
 {
+    let children = div.children;
+    let quests = {};
 
+    for(let child of children)
+    {
+        let quest = child.id.slice(0, child.indexOf("-div"));
+
+        quests[document.getElementById(`${quest}-title`)] = 
+        {
+            "Desc" : document.getElementById(`${quest}-text`),
+            "activeQuest" : document.getElementById(`${quest}-activeQuest`),
+            "name" : document.getElementById(`${quest}-title`),
+            "status" : document.getElementById(`${quest}-status`)
+        }
+    }
+
+    setDoc("playerChar/Vi/quests", quests);
+    handleDone();
 }
 
 function handleQuest()
 {
     hideButtons();
+    
+    let buttons = ["Create", "Upload", "Back"];
 
     for(let quest of Object.keys(wholeQuests))
     {
         div.appendChild(createQuestCard(quest));
+    }
+
+    for(let button of buttons)
+    {
+        let btn = document.createElement("button");
+        btn.innerHTML = button;
+        btn.id = button;
+
+        switch(button)
+        {
+            case "Create":
+                button.onclick = handleCreateQuest;
+                break;
+
+            case "Upload":
+                button.onclick = uploadQuests;
+                break;
+
+            case "Back":
+                button.onclick = handleDone;
+                break;
+        }
     }
 }
 
