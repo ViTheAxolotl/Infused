@@ -126,6 +126,7 @@ function init()
             case "quest":
                 fiveButtons.push(button);
                 button.onclick = handleQuest;
+                break;
 
             case "generate":
                 fiveButtons.push(button);
