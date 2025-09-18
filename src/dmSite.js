@@ -1143,7 +1143,6 @@ function createQuestCard(quest)
     cardBody.appendChild(status);
     cardBody.appendChild(document.createElement("div"));
     cardBody.appendChild(createLabel("Active Quest"));
-    cardBody.appendChild(document.createElement("div"));
     cardBody.appendChild(active);
     cardBody.appendChild(document.createElement("div"));
     cardBody.appendChild(deleteBtn);

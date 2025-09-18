@@ -300,6 +300,7 @@ export function createLabel(name)
     let label = document.createElement("h6");
     label.innerHTML = `${name}:`;
     label.style.display = "inline";
+    label.style.margin = "5px";
     return label;
 }
 
