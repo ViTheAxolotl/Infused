@@ -74,8 +74,6 @@ body * { -webkit-text-size-adjust: none !important; }
 {
     text-align: center;
     margin-top: 20px;
-    background-color: #FFEE00;
-    color: #FCC90D;
 }
 
 #footer
@@ -83,8 +81,6 @@ body * { -webkit-text-size-adjust: none !important; }
     text-align: center;
     padding-bottom: 10px;
     margin: 20px 0px;
-    background-color: #FFEE00;
-    color: #FCC90D;
 }
 
 #hometown, #info, #quests, #notes
@@ -133,7 +129,6 @@ h1, h3, h5, h6
 {
     text-align: center;
     margin-bottom: 10px;
-    color: #455B7D;
 }
 
 h5
@@ -148,8 +143,8 @@ button
     width: 100%;
     padding: 5px;
     margin: 5px 0px;
-    background-color: #FFEE00;
-    color: #0D6DFC;
+    background-color: #88008B;
+    color: #5AADE6;
 }
 
 table, .itemSearch, #itemImg, #charImg
