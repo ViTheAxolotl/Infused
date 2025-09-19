@@ -1173,7 +1173,7 @@ function uploadQuests()
 
     for(let child of children)
     {
-        let quest = child.id.slice(0, child.indexOf("-div"));
+        let quest = child.id.slice(0, child.id.indexOf("-div"));
 
         quests[document.getElementById(`${quest}-title`)] = 
         {
