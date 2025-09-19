@@ -1086,6 +1086,7 @@ function createQuestCard(quest)
     let active = document.createElement("input");
     let deleteBtn = document.createElement("img");
     let spacer = document.createElement("span");
+    let desc = createLabel("Desc");
 
     if(quest != "empty")
     {
@@ -1135,11 +1136,13 @@ function createQuestCard(quest)
     deleteBtn.classList = "basicMargin";
     spacer.style.display = "block";
 
+    desc.style.transform = "translateY(-7.5vw)";
+
     card.appendChild(cardBody);
     cardBody.appendChild(createLabel("Title"));
     cardBody.appendChild(title);
     cardBody.appendChild(document.createElement("div"));
-    cardBody.appendChild(createLabel("Desc"));
+    cardBody.appendChild(desc);
     cardBody.appendChild(text);
     cardBody.appendChild(document.createElement("div"));
     cardBody.appendChild(createLabel("Status"));
