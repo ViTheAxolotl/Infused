@@ -1121,7 +1121,7 @@ function createQuestCard(quest)
     text.classList = "basicMargin card-text";
     text.style.display = "inline";
     text.style.width = "30vw";
-    text.style.height = "30vw";
+    text.style.height = "15vw";
 
     status.style.display = "inline";
     status.classList = "basicMargin";
@@ -1205,15 +1205,15 @@ function handleQuest()
         switch(button)
         {
             case "Create":
-                button.onclick = handleCreateQuest;
+                btn.onclick = handleCreateQuest;
                 break;
 
             case "Upload":
-                button.onclick = uploadQuests;
+                btn.onclick = uploadQuests;
                 break;
 
             case "Back":
-                button.onclick = handleDone;
+                btn.onclick = handleDone;
                 break;
         }
 
