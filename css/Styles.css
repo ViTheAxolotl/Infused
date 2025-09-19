@@ -239,6 +239,11 @@ table, .itemSearch, #itemImg
     color: #0d6efd;
 }
 
+.d-block
+{
+    width: 150vh;
+}
+
 .complete
 {
     background: green;
