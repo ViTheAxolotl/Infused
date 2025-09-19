@@ -1108,7 +1108,7 @@ function createQuestCard(quest)
         card.id = `empty-div`;
         title.id = `empty-title`;
         text.id = `empty-text`;
-        status.id = `empty-`;
+        status.id = `empty-status`;
         active.id = `empty-activeQuest`;
         deleteBtn.id = `empty-delete`;
     }
