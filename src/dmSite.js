@@ -1175,12 +1175,12 @@ function uploadQuests()
     {
         let quest = child.id.slice(0, child.id.indexOf("-div"));
 
-        quests[document.getElementById(`${quest}-title`)] = 
+        quests[document.getElementById(`${quest}-title`).value] = 
         {
-            "Desc" : document.getElementById(`${quest}-text`),
-            "activeQuest" : document.getElementById(`${quest}-activeQuest`),
-            "name" : document.getElementById(`${quest}-title`),
-            "status" : document.getElementById(`${quest}-status`)
+            "Desc" : document.getElementById(`${quest}-text`).value,
+            "activeQuest" : document.getElementById(`${quest}-activeQuest`).checked,
+            "name" : document.getElementById(`${quest}-title`).value,
+            "status" : document.getElementById(`${quest}-status`).value
         }
     }
 
