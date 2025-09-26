@@ -93,8 +93,7 @@
         "wolfSpirit-" : "images/map/tokens/wolfSpirit-.png",
         "yellowShardStatue-" : "images/map/tokens/yellowShardStatue-.png",
         "vault-" : "images/map/tokens/vault-.png",
-        "spawnPoint-" : "images/map/tokens/spawnPoint-.png",
-        "pinkFlower-" : "images/map/tokens/pinkFlower-.png"
+        "spawnPoint-" : "images/map/tokens/spawnPoint-.png"
     },
  
     "borders" : 
@@ -122,6 +121,7 @@
         "dracoTablet" : "images/push/dracoTablet.png",
         "purifier" : "images/push/purifier.png",
         "purifiers" : "images/push/purifiers.png",
-        "pavv" : "images/push/pavv.jpg"
+        "pavv" : "images/push/pavv.jpg",
+        "pinkFlower-" : "images/push/pinkFlower-.png"
     }
 }
