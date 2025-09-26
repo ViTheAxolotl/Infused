@@ -120,6 +120,7 @@
         "jason" : "images/push/jason.png",
         "dracoTablet" : "images/push/dracoTablet.png",
         "purifier" : "images/push/purifier.png",
-        "purifiers" : "images/push/purifiers.png"
+        "purifiers" : "images/push/purifiers.png",
+        "pavv" : "images/push/pavv.jpg"
     }
 }
