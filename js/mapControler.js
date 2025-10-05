@@ -1515,6 +1515,11 @@ function handleUseAction(targets)
                 ad_dis += ` First Roll: ${take}, Second Roll: ${take2}.`;
             }
 
+            if(abilityDisc.includes("{@Rage"))
+            {
+                setDoc(`playerChar/${player}/rage`, true);
+            }
+
             if(abilityDisc.includes("{@save "))
             {
                 let damage;
