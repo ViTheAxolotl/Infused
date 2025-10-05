@@ -1517,7 +1517,7 @@ function handleUseAction(targets)
 
             if(abilityDisc.includes("{@Rage"))
             {
-                setDoc(`playerChar/${player}/rage`, true);
+                setDoc(`playerChar/${player}/rage`, "true");
             }
 
             if(abilityDisc.includes("{@save "))
