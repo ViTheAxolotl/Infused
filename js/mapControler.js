@@ -1515,13 +1515,6 @@ function handleUseAction(targets)
                 ad_dis += ` First Roll: ${take}, Second Roll: ${take2}.`;
             }
 
-            if(abilityDisc.includes("{@Rage"))
-            {
-                alert(`playerChar/${player}/rage`);
-                setDoc(`playerChar/${player}/rage`, "true");
-                
-            }
-
             if(abilityDisc.includes("{@save "))
             {
                 let damage;
@@ -1636,6 +1629,12 @@ function handleUseAction(targets)
             setDoc(`currentMap/${token.id}`, token);
         }
 
+        if(abilityDisc.includes("{@Rage"))
+            {
+                setDoc(`playerChar/${player}/rage`, true);
+                
+            }
+        
         if(description.includes("{@damage"))
         {
             let userAddTo = "";
