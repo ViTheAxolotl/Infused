@@ -12,30 +12,22 @@ let isFirstRead = true;
 
 onAuthStateChanged(auth, (user) => 
 {
-    if(!user) 
+    let user = auth.currentUser.email.split("@");
+    player = toTitleCase(user[0]);
+    
+    notesRef = ref(database, `playerChar/${player}/notes`);
+    onValue(notesRef, (snapshot) => 
     {
-        alert("You need to login before using this resource. Click Ok and be redirected");
-        window.location.href = "loginPage.html?questAndNotes.html";        
-    }
-
-    else
-    {
-        let user = auth.currentUser.email.split("@");
-        player = toTitleCase(user[0]);
+        const data = snapshot.val();
+        wholeNotes = data;
         
-        notesRef = ref(database, `playerChar/${player}/notes`);
-        onValue(notesRef, (snapshot) => 
+        if(isFirstRead)
         {
-            const data = snapshot.val();
-            wholeNotes = data;
-            if(isFirstRead)
-            {
-                readNotes(player);
-                createAddButton();
-                isFirstRead = false;
-            }
-        });
-    }
+            readNotes(player);
+            createAddButton();
+            isFirstRead = false;
+        }
+    });
 });
 
 function init()
@@ -192,7 +184,9 @@ async function readNotes()
     for(let key of Object.keys(wholeNotes))
     {
         let text = [];
+        let slot = Object.keys(wholeNotes).indexOf(slot);
         text.push(wholeNotes[key]);
+        
         createCard(key, text, "notesDisplay");
     }
 
