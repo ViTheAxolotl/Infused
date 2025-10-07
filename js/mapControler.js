@@ -1629,6 +1629,12 @@ function handleUseAction(targets)
             setDoc(`currentMap/${token.id}`, token);
         }
 
+        if(abilityDisc.includes("{@Rage"))
+            {
+                alert(`playerChar/${player}/rage`);
+                setDoc(`playerChar/${player}/rage`, true);
+            }
+        
         if(description.includes("{@damage"))
         {
             let userAddTo = "";

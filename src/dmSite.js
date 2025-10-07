@@ -782,6 +782,10 @@ function uploadTO()
     date.innerHTML = `Current Turn Order at time of ${curDate}`;
     div.appendChild(date);
 
+    for(let person of Object.keys(wholeChar))
+    {
+        setDoc(`playerChar/${person}/rage`, false);
+    }
 }
 
 function uploadRowTO(key)
