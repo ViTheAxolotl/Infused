@@ -1712,7 +1712,7 @@ function handleUseAction(targets)
             damage = splitRoll(description, "@damage");
             if(accurcy.includes("(20)")){damage[0] = `${parseInt(damage[0]) * 2}`}
             
-            if(wholeChar[player]["rage"]){damage[0] = `${parseInt(damage[0]) + 2}`}
+            if(wholeChar[player]["rage"]&& !description.includes("{noRage")){damage[0] = `${parseInt(damage[0]) + 2}`}
 
             if(damage[2].length > 2)
                 {
@@ -1754,9 +1754,11 @@ function handleUseAction(targets)
                     {
                         display += `(Success Hit) ${targets[key].title.split(":")[0]} (${ac}), `;
                         fail = false; 
-                        handleChangeHp(damage.split("**")[1], wholeDb[targets[key].title.split(":")[0]], "-");
+                        let hp = damage.split("**")[1];
+                        if(wholeChar[targets[key].title.split(":")[0]]){if(wholeChar[key]["rage"] && !description.includes("{noRage")){hp = parseInt(hp)/2; display += "1/2 damage for Rage.";}}
+                        handleChangeHp(hp, wholeDb[targets[key].title.split(":")[0]], "-");
                         if(document.getElementById("sneak").value != "Sneak-Attack?"){description += `{@sDice ${Math.floor(parseInt(wholeChar[player]["stats"]["lv"])/2)}d6} Sneak Attack.`;}
-                        if(wholeChar[player]["rage"]){display += "(Rage adding 2 automaticaly)";}
+                        if(wholeChar[player]["rage"] && !display.includes("{noRage")){display += "(Rage adding 2 automaticaly)";}
                     }
 
                     else
