@@ -1764,7 +1764,6 @@ function handleUseAction(targets)
                         if(wholeChar[targets[key].title.split(":")[0]]){if(wholeChar[key]["rage"] && !description.includes("{noRage")){hp = parseInt(hp)/2; display += "1/2 damage for Rage.";}}
                         handleChangeHp(hp, wholeDb[targets[key].title.split(":")[0]], "-");
                         if(document.getElementById("sneak").value != "Sneak-Attack?"){description += `{@sDice ${Math.floor(parseInt(wholeChar[player]["stats"]["lv"])/2)}d6} Sneak Attack.`;}
-                        if(wholeChar[player]["rage"] && !display.includes("{noRage")){display += "(Rage adding 2 automaticaly)";}
                     }
 
                     else
@@ -1777,10 +1776,12 @@ function handleUseAction(targets)
                 display = display.slice(0, display.length - 2);
                 if(fail == false){display += `Dealing: ${damage} ${ending}.\n`;}
             }
-            else{display = `${toTitleCase(wholeChar[player]["currentToken"])} cast, ${lastUse} on `;
-            for(key in Object.keys(targets)){display += `${toTitleCase(targets[key].title.split(":")[0])}, `}
-            display = display.slice(0, display.length - 2);
-            display += `\n${useInfo}\nAccurcy: ${accurcy} to Hit.\n`;
+            else
+            {
+                display = `${toTitleCase(wholeChar[player]["currentToken"])} cast, ${lastUse} on `;
+                for(key in Object.keys(targets)){display += `${toTitleCase(targets[key].title.split(":")[0])}, `;}
+                display = display.slice(0, display.length - 2);
+                display += `\n${useInfo}\nAccurcy: ${accurcy} to Hit.\n`;
                 let roll = accurcy.split("**")[1];
 
                 for(let key in Object.keys(targets))
@@ -1790,6 +1791,7 @@ function handleUseAction(targets)
                     if(display.includes("regains"))
                     {
                         fail = false;
+                        if(wholeChar[targets[key].title.split(":")[0]]){if(wholeChar[key]["rage"] && !description.includes("{noRage")){hp = parseInt(hp)/2; display += "1/2 damage for Rage.";}}
                         handleChangeHp(damage.split("**")[1], wholeDb[targets[key].title.split(":")[0]], "+");
                         display = display.split("Accurcy:")[0];
                         ending = "Healing";
