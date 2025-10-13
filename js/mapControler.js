@@ -1711,8 +1711,6 @@ function handleUseAction(targets)
 
             damage = splitRoll(description, "@damage");
             if(accurcy.includes("(20)")){damage[0] = `${parseInt(damage[0]) * 2}`}
-            
-            if(wholeChar[player]["rage"]&& !description.includes("{noRage")){damage[0] = `${parseInt(damage[0]) + 2}`}
 
             if(damage[2].length > 2)
                 {
@@ -1732,6 +1730,14 @@ function handleUseAction(targets)
 
             
             damage = diceRoller(damage[0], damage[1], damage[2], "false");
+
+            if(wholeChar[player]["rage"] && !description.includes("{noRage"))
+            {
+                let dealt = damage.slice(damage.indexOf("**"));
+                dealt = dealt.slice(0, dealt.indexOf("**"));
+                damage = damage.replace("=", "+2(Rage)="); 
+                damage = damage.replace(dealt, `${parseInt(dealt) + 2}`);
+            }
 
             if(display)
             {
