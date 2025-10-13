@@ -1733,7 +1733,7 @@ function handleUseAction(targets)
 
             if(wholeChar[player]["rage"] && !description.includes("{noRage"))
             {
-                let dealt = damage.slice(damage.indexOf("**"));
+                let dealt = damage.slice(damage.indexOf("**") + 2);
                 dealt = dealt.slice(0, dealt.indexOf("**"));
                 damage = damage.replace("=", "+2(Rage)="); 
                 damage = damage.replace(dealt, `${parseInt(dealt) + 2}`);
