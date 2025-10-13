@@ -1800,7 +1800,7 @@ function handleUseAction(targets)
                     {
                         display += `(Success Hit) ${targets[key].title.split(":")[0]} (${ac}), `;
                         fail = false; 
-                        if(wholeChar[targets[key].title.split(":")[0]]){let targe = targets[key].title.split(":")[0]; if(wholeChar[targe]["rage"] && !description.includes("{noRage")){let hp = damage.split("**" + 2).split(0, "**"); hp = parseInt(hp)/2; damage = damage.replace(damage.split("**" + 2).split(0, "**"), `**${hp}** (1/2 Rage)`);}}
+                        if(wholeChar[targets[key].title.split(":")[0]]){let targe = targets[key].title.split(":")[0]; if(wholeChar[targe]["rage"] && !description.includes("{noRage")){let past = damage.split("**" + 2); past = past.split(0, "**"); let hp = parseInt(hp)/2; damage = damage.replace(past, `**${hp}** (1/2 Rage)`);}}
                         handleChangeHp(damage.split("**")[1], wholeDb[targets[key].title.split(":")[0]], "-");
                         if(document.getElementById("sneak")){if(document.getElementById("sneak").value != "Sneak-Attack?"){description += `{@sDice ${Math.floor(parseInt(wholeChar[player]["stats"]["lv"])/2)}d6} Sneak Attack.`;}}
                     }

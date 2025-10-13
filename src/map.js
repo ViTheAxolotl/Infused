@@ -559,7 +559,7 @@ function addCharacter(character, update)
 
         else if(title.includes("180"))
         {
-            for(let image of char)
+            for(let image of char) 
             {
                 image.style.transform = 'rotate(180deg)';
             }
