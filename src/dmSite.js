@@ -1283,6 +1283,17 @@ function handleUploadInteractive()
 
 function handleGenerate()
 {
+    for(let player of Object.keys(wholeChar))
+    {
+        let I = 1;
+
+        for(let noteName of Object.keys(wholeChar[player]["notes"]))
+        {
+            let note = {"desc": wholeChar[player][noteName], "pos" : I};
+            I++;
+            setDoc(`playerChar/${player}/${noteName}`, note);
+        }
+    }
     hideButtons();
     handleDone();
 }
