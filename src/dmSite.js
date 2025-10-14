@@ -1289,6 +1289,7 @@ function handleGenerate()
 
         for(let noteName of Object.keys(wholeChar[player]["notes"]))
         {
+            alert(noteName);
             let note = {"desc": wholeChar[player][noteName], "pos" : I};
             I++;
             setDoc(`playerChar/${player}/${noteName}`, note);
