@@ -1286,6 +1286,7 @@ function handleGenerate()
     for(let player of Object.keys(wholeChar))
     {
         let I = 1;
+        alert(player);
 
         for(let noteName of Object.keys(wholeChar[player]["notes"]))
         {
