@@ -1761,7 +1761,7 @@ function handleUseAction(targets)
                         display += `(Success Hit) ${targets[key].title.split(":")[0]} (${ac}), `;
                         fail = false; 
                         let hp = damage.split("**")[1];
-                        if(wholeChar[targets[key].title.split(":")[0]]){if(wholeChar[key]["rage"] && !description.includes("{noRage")){hp = parseInt(hp)/2; display += "1/2 damage for Rage.";}}
+                        if(wholeChar[targets[key].title.split(":")[0]]){let targe = targets[key].title.split(":")[0]; if(wholeChar[targe]["rage"] && !description.includes("{noRage")){let past = damage.slice(damage.indexOf("**") + 2); past = past.slice(0, damage.indexOf("**")); let hp = parseInt(past)/2; damage = damage.replace(past, `${hp}** (1/2 Rage)`);}}
                         handleChangeHp(hp, wholeDb[targets[key].title.split(":")[0]], "-");
                         if(document.getElementById("sneak").value != "Sneak-Attack?"){description += `{@sDice ${Math.floor(parseInt(wholeChar[player]["stats"]["lv"])/2)}d6} Sneak Attack.`;}
                     }
