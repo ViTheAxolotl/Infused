@@ -1288,6 +1288,8 @@ function handleGenerate()
         let I = 1;
         alert(player);
 
+        if(wholeChar[player]["notes"])
+        {
         for(let noteName of Object.keys(wholeChar[player]["notes"]))
         {
             alert(noteName);
@@ -1295,6 +1297,7 @@ function handleGenerate()
             I++;
             setDoc(`playerChar/${player}/${noteName}`, note);
         }
+    }
     }
     hideButtons();
     handleDone();
