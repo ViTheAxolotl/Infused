@@ -88,9 +88,10 @@ function handleDeleteButton()
     let enter = document.getElementById("enter");
     let title = document.getElementById("searchBar");
     let text = document.getElementById("text");
+    let pos = document.getElementById("pos");
 
     deleteNote();
-    setCardScreen(enter, title, text);
+    setCardScreen(enter, title, pos, text);
 }
 
 function setAddScreen()
@@ -109,13 +110,19 @@ function setAddScreen()
     title.placeholder = "Write Title Here";
     title.parentNode.appendChild(text);
     title.parentNode.appendChild(addButton);
+
+    let pos = document.createElement("input");
+    pos.placeholder = "Write Position Order";
+    title.parentNode.appendChild(pos);
+    pos.id = "pos";
 }
 
-function setCardScreen(enter, title, text)
+function setCardScreen(enter, title, pos, text)
 {
     let deleteButton = document.getElementById("deleteButton");
     deleteButton.parentNode.removeChild(deleteButton);
     text.parentNode.removeChild(text);
+    pos.parentNode.removeChild(pos);
     enter.innerHTML = "Enter";
     title.placeholder = "";
     title.value = "";
@@ -157,7 +164,7 @@ function createDeleteButton()
     notes.appendChild(addButton);
 }
 
-async function addNote(title, text)
+async function addNote(title, text, pos)
 {
     try 
     {
@@ -166,7 +173,7 @@ async function addNote(title, text)
             deleteDoc(`playerChar/${player}/notes/${currentTitle}`);
         }
   
-        setDoc(`playerChar/${player}/notes/${title}`, text);
+        setDoc(`playerChar/${player}/notes/${title}`, {text, pos});
         setTimeout(() => {location.reload();}, 50);
     } 
     
@@ -176,7 +183,7 @@ async function addNote(title, text)
     }
 }
 
-async function readNotes()
+async function readNotes() //Need to do manual
 {
     let display = document.getElementById("notesDisplay");
     display.innerHTML = "";
