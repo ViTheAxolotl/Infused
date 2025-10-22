@@ -1294,7 +1294,7 @@ function handleGenerate()
             alert(noteName);
             let note = {"desc": wholeChar[player]["notes"][noteName], "pos" : I};
             I++;
-            setDoc(`playerChar/${player}/${noteName}`, note);
+            setDoc(`playerChar/${player}/notes/${noteName}`, note);
         }
     }
     }
