@@ -1,7 +1,7 @@
 "use strict"
 import { ref, onValue } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js';
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
-import { toTitleCase, auth, database, createCard, setDoc, deleteDoc } from '../js/viMethods.js';
+import { toTitleCase, auth, database, setDoc, deleteDoc, returnHpImage } from '../js/viMethods.js';
 
 let wholeNotes = {};
 let player;
@@ -128,6 +128,31 @@ function setCardScreen(enter, title, pos, text)
     title.value = "";
 }
 
+function createNoteCard(title, text)
+{
+        let cardDiv = document.createElement("div");
+        cardDiv.setAttribute("class", "card .bg-UP-blue notes");
+        let cardBody = document.createElement("div");
+        cardBody.setAttribute("class", "card-body notes");
+        let cardTitle = document.createElement("h5");
+        cardTitle.setAttribute("class", "card-title");
+        cardTitle.innerHTML = title;
+        cardBody.appendChild(cardTitle);
+
+        for(let i = 0; i < text.length; i++) //For each sentence in the card
+        {
+            let cardText = document.createElement("p");
+            cardText.setAttribute("class", "card-text");
+            cardText.style.margin = "3px";
+            cardText.innerHTML = text[i];
+            cardBody.appendChild(cardText);
+        }
+        
+        cardDiv.appendChild(cardBody);
+        return cardDiv;
+    
+}
+
 function createAddButton()
 {
     let addButton = document.createElement("img");
@@ -187,15 +212,21 @@ async function readNotes() //Need to do manual
 {
     let display = document.getElementById("notesDisplay");
     display.innerHTML = "";
+    let orderedNotes = {};
 
     for(let key of Object.keys(wholeNotes))
     {
         let text = [];
+        let pos;
         let slot = Object.keys(wholeNotes).indexOf(slot);
-        text.push(wholeNotes[key]);
+        text.push(wholeNotes[key]["desc"]);
+        pos = wholeNotes[key]["pos"];
         
-        createCard(key, text, "notesDisplay");
+        orderedNotes[pos] = createNoteCard(key, text);
     }
+
+    for(let noteNumber = 1; noteNumber++; noteNumber < orderedNotes.length)
+    {display.appendChild(orderedNotes[noteNumber]);}
 
     for(let key of document.getElementsByClassName("card-body")){key.onclick = handleCardClick;}
 }
