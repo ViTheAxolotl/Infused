@@ -224,7 +224,7 @@ async function readNotes() //Need to do manual
         orderedNotes[pos] = createNoteCard(key, text);
     }
 
-    for(let noteNumber = 0; noteNumber++; noteNumber < orderedNotes.length)
+    for(let noteNumber = 1; noteNumber++; noteNumber < orderedNotes.length)
     {display.appendChild(orderedNotes[noteNumber]);}
 
     for(let key of document.getElementsByClassName("card-body")){key.onclick = handleCardClick;}
