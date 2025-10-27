@@ -218,7 +218,6 @@ async function readNotes() //Need to do manual
     {
         let text = [];
         let pos;
-        let slot = Object.keys(wholeNotes).indexOf(slot);
         text.push(wholeNotes[key]["desc"]);
         pos = wholeNotes[key]["pos"];
         
