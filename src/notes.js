@@ -12,7 +12,7 @@ let isFirstRead = true;
 
 onAuthStateChanged(auth, (user) => 
 {
-    let user = auth.currentUser.email.split("@");
+    user = auth.currentUser.email.split("@");
     player = toTitleCase(user[0]);
     
     notesRef = ref(database, `playerChar/${player}/notes`);
