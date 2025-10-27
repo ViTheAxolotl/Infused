@@ -41,6 +41,7 @@ function handleEnter()
 {
     let title = document.getElementById("searchBar");
     let text = document.getElementById("text");
+    let pos = document.getElementById("pos");
 
     if(title.value == null || text.value == null || title.value == "" || text.value == "")
     {
@@ -49,7 +50,7 @@ function handleEnter()
 
     else
     {
-        addNote(title.value, text.value);
+        addNote(title.value, text.value, pos.value);
         //setCardScreen(enter, title, text);
     }   
 }
