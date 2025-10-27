@@ -79,8 +79,10 @@ function handleCardClick()
     
     let title = document.getElementById("searchBar");
     let text = document.getElementById("text");
+    let pos = document.getElementById("pos")
     title.value = currentTitle;
     text.value = currentText;
+    pos.value = wholeNotes[title.value]["pos"];
 }
 
 function handleDeleteButton()
