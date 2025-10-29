@@ -100,7 +100,11 @@ function handleDeleteButton()
 
 function setAddScreen()
 {
-    let text = document.createElement("textarea");
+    for(let child of display.children)
+    {
+        alert(child.id);
+    }
+    /**let text = document.createElement("textarea");
     text.setAttribute("id", "text");
     text.setAttribute("rows", "5");
     text.setAttribute("cols", "50");
@@ -118,7 +122,8 @@ function setAddScreen()
     let pos = document.createElement("input");
     pos.placeholder = "Write Position Order";
     title.parentNode.appendChild(pos);
-    pos.id = "pos";
+    pos.id = "pos"
+    **/
 }
 
 function setCardScreen(enter, title, pos, text)
