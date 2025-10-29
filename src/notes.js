@@ -9,6 +9,7 @@ let notesRef;
 let currentTitle;
 let currentText;
 let isFirstRead = true;
+let display = document.getElementById("notesDisplay");
 
 onAuthStateChanged(auth, (user) => 
 {
@@ -158,9 +159,10 @@ function createNoteCard(title, text)
 
 function createAddButton()
 {
-    let addButton = document.createElement("img");
-    addButton.setAttribute("src", "images/addIcon.png");
+    let addButton = document.createElement("button");
+    addButton.setAttribute("class", "gridButton");
     addButton.setAttribute("id", "addButton");
+    addButton.innerHTML = "Edit/Add Notes";
     addButton.onclick = handleAddButton;
 
     let instructions = document.createElement("p");
@@ -213,7 +215,7 @@ async function addNote(title, text, pos)
 
 async function readNotes() //Need to do manual
 {
-    let display = document.getElementById("notesDisplay");
+    display = document.getElementById("notesDisplay");
     display.innerHTML = "";
     let orderedNotes = {};
 
@@ -230,7 +232,7 @@ async function readNotes() //Need to do manual
     for(let noteNumber = 1; noteNumber < Object.keys(orderedNotes).length + 1; noteNumber++)
     {display.appendChild(orderedNotes[noteNumber]);}
 
-    for(let key of document.getElementsByClassName("card-body")){key.onclick = handleCardClick;}
+    //for(let key of document.getElementsByClassName("card-body")){key.onclick = handleCardClick;}
 }
 
 async function deleteNote()
