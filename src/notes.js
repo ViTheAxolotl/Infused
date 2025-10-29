@@ -61,11 +61,11 @@ function handleAddButton()
     let notes = document.getElementsByClassName("notes");
     let addButton = document.getElementById("addButton");
 
-    addButton.parentNode.removeChild(addButton);
+    /**addButton.parentNode.removeChild(addButton);
     while(notes.length > 0)
     {
         notes[0].parentNode.removeChild(notes[0]);
-    }
+    }**/
 
     setAddScreen();
     createDeleteButton();
@@ -165,19 +165,12 @@ function createNoteCard(title, text)
 function createAddButton()
 {
     let addButton = document.createElement("button");
-    addButton.setAttribute("class", "gridButton");
     addButton.setAttribute("id", "addButton");
     addButton.innerHTML = "Edit/Add Notes";
     addButton.onclick = handleAddButton;
 
-    let instructions = document.createElement("p");
-    instructions.setAttribute("id", "instruc");
-    instructions.setAttribute("class", "center");
-    instructions.innerHTML = "Click a note to edit it, or delete it.";
-
     let noteDisplay = document.getElementById("notesDisplay");
     noteDisplay.appendChild(addButton);
-    noteDisplay.appendChild(instructions);
 }
 
 function createDeleteButton()
@@ -186,9 +179,6 @@ function createDeleteButton()
     deleteButton.setAttribute("src", "images/trashIcon.png");
     deleteButton.setAttribute("id", "deleteButton");
     deleteButton.onclick = handleDeleteButton;
-
-    let instructions = document.getElementById("instruc");
-    instructions.innerHTML = "Type in a title and description for your note. If you change your mind, hit the trash icon.";
 
     let addButton = document.getElementById("enter");
     addButton.innerHTML = "Upload";
