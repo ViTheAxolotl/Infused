@@ -34,8 +34,6 @@ onAuthStateChanged(auth, (user) =>
 function init()
 {
     let button = document.getElementById("enter");
-
-    button.onclick = handleEnter;
 }
 
 function handleEnter()
@@ -59,7 +57,7 @@ function handleEnter()
 function handleAddButton()
 {
     let notes = document.getElementsByClassName("notes");
-    let addButton = document.getElementById("addButton");
+    let addButton = document.getElementById("AddButton");
 
     /**addButton.parentNode.removeChild(addButton);
     while(notes.length > 0)
@@ -139,34 +137,35 @@ function setCardScreen(enter, title, pos, text)
 
 function createNoteCard(title, text)
 {
-        let cardDiv = document.createElement("div");
-        cardDiv.setAttribute("class", "card .bg-UP-blue notes");
-        let cardBody = document.createElement("div");
-        cardBody.setAttribute("class", "card-body notes");
-        let cardTitle = document.createElement("h5");
-        cardTitle.setAttribute("class", "card-title");
-        cardTitle.innerHTML = title;
-        cardBody.appendChild(cardTitle);
+    let cardDiv = document.createElement("div");
+    cardDiv.setAttribute("class", "card .bg-UP-blue notes");
+    cardDiv.id = `${title}-div`;
+    let cardBody = document.createElement("div");
+    cardBody.setAttribute("class", "card-body notes");
+    let cardTitle = document.createElement("h5");
+    cardTitle.setAttribute("class", "card-title");
+    cardTitle.innerHTML = title;
+    cardBody.appendChild(cardTitle);
 
-        for(let i = 0; i < text.length; i++) //For each sentence in the card
-        {
-            let cardText = document.createElement("p");
-            cardText.setAttribute("class", "card-text");
-            cardText.style.margin = "3px";
-            cardText.innerHTML = text[i];
-            cardBody.appendChild(cardText);
-        }
-        
-        cardDiv.appendChild(cardBody);
-        return cardDiv;
+    for(let i = 0; i < text.length; i++) //For each sentence in the card
+    {
+        let cardText = document.createElement("p");
+        cardText.setAttribute("class", "card-text");
+        cardText.style.margin = "3px";
+        cardText.innerHTML = text[i];
+        cardBody.appendChild(cardText);
+    }
     
+    cardDiv.appendChild(cardBody);
+    return cardDiv;
 }
 
 function createAddButton()
 {
     let addButton = document.createElement("button");
-    addButton.setAttribute("id", "addButton");
+    addButton.setAttribute("id", "AddButton");
     addButton.innerHTML = "Edit/Add Notes";
+    addButton.style.height = "75px";
     addButton.onclick = handleAddButton;
 
     let noteDisplay = document.getElementById("notesDisplay");
