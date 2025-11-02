@@ -74,42 +74,7 @@ function setAddScreen()
         }
 
         display.classList = "card-body center";
-
-        let cardTitle = document.createElement("input");
-        cardTitle.setAttribute("class", "card-title");
-        cardTitle.value = title;
-        cardTitle.style.width = "50vw";
-        cardTitle.style.display = "block";
-        display.appendChild(cardTitle);
-
-        let cardText = document.createElement("textarea");
-        cardText.setAttribute("class", "card-text");
-        cardText.style.margin = "3px";
-        cardText.value = text;
-        cardText.style.display = "block";
-        cardText.style.width = "50vw";
-        cardText.style.height = "20vh";
-        display.appendChild(cardText);
-
-        let cardPos = document.createElement("select");
-        cardPos.style.width = "5vw";
-        cardPos.classList.add("center");
-        let desc = document.createElement("option");
-        desc.value = "";
-        desc.innerHTML = "--Select the order you want the note in--";
-        cardPos.appendChild(desc);
-
-        for(let i = 1; i < Object.keys(wholeNotes).length + 1; i++)
-        {
-            let option = document.createElement("option");
-            option.value = `${i}`;
-            option.innerHTML = `${i}`;
-            cardPos.appendChild(option);
-        }
-
-        cardPos.value = `${pos}`;
-        cardPos.style.display = "block";
-        display.appendChild(cardPos);
+        createEditableNote(title, text, pos, display);   
         display.appendChild(createDeleteButton());
     }
 
@@ -128,9 +93,24 @@ function setAddScreen()
     placeBefore(cancel, upload);
 }
 
-function handleCreate()
+function createEditableNote(title, text, pos, display)
 {
-    let newCard = createNoteCard("Title", "Text");
+    let cardTitle = document.createElement("input");
+    cardTitle.setAttribute("class", "card-title");
+    cardTitle.value = title;
+    cardTitle.style.width = "50vw";
+    cardTitle.style.display = "block";
+    display.appendChild(cardTitle);
+
+    let cardText = document.createElement("textarea");
+    cardText.setAttribute("class", "card-text");
+    cardText.style.margin = "3px";
+    cardText.value = text;
+    cardText.style.display = "block";
+    cardText.style.width = "50vw";
+    cardText.style.height = "20vh";
+    display.appendChild(cardText);
+
     let cardPos = document.createElement("select");
     cardPos.style.width = "5vw";
     cardPos.classList.add("center");
@@ -139,7 +119,7 @@ function handleCreate()
     desc.innerHTML = "--Select the order you want the note in--";
     cardPos.appendChild(desc);
 
-    for(let i = 1; i <= display.children.length + 1; i++)
+    for(let i = 1; i < Object.keys(wholeNotes).length + 1; i++)
     {
         let option = document.createElement("option");
         option.value = `${i}`;
@@ -147,9 +127,20 @@ function handleCreate()
         cardPos.appendChild(option);
     }
 
+    cardPos.value = `${pos}`;
     cardPos.style.display = "block";
-    newCard.children[0].append(cardPos);
-    placeBefore(newCard, this);
+    display.appendChild(cardPos);
+}
+
+function handleCreate()
+{
+    let cardDiv = document.createElement("div");
+    cardDiv.setAttribute("class", "card .bg-UP-blue notes");
+    cardDiv.id = `new-div`;
+    let cardBody = document.createElement("div");
+    cardBody.setAttribute("class", "card-body notes");
+    createEditableNote("Title", "Text", "", cardBody);
+    placeBefore(cardDiv, this);
 }
 
 function setCardScreen(enter, title, pos, text)
