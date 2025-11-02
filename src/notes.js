@@ -124,11 +124,15 @@ function setAddScreen()
         display.appendChild(cardText);
 
         let cardPos = document.createElement("select");
+        let desc = document.createElement("option");
+        desc.value = "";
+        desc.innerHTML = "--Select the order you want the note in--";
 
         for(let i = 1; i < Object.keys(wholeNotes).length + 1; i++)
         {
             let option = document.createElement("option");
             option.value = `${i}`;
+            option.innerHTML = `${i}`;
             cardPos.appendChild(option);
         }
 
