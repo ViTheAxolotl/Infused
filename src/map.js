@@ -110,6 +110,11 @@ onValue(bubbleRef, (snapshot) =>
     }
 });
 
+export function test()
+{
+    return "Perfect!";
+}
+
 function init()
 {
     setInterval(timer, 250);
@@ -124,7 +129,6 @@ function init()
         wait(10, function() {iFrame.src = iFrame.classList[0];});
     }
  
-    alert(parent.test);
     wait(13, function(){hideSkill()});
 }
 
