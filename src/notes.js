@@ -114,6 +114,7 @@ function createEditableNote(title, text, pos, display)
     let cardPos = document.createElement("select");
     cardPos.style.width = "5vw";
     cardPos.classList.add("center");
+    cardPos.id = `${title}-pos`;
     let desc = document.createElement("option");
     desc.value = "";
     desc.innerHTML = "--Select the order you want the note in--";
@@ -138,10 +139,17 @@ function handleCreate()
     cardDiv.setAttribute("class", "card .bg-UP-blue notes");
     cardDiv.id = `new-div`;
     let cardBody = document.createElement("div");
-    cardBody.setAttribute("class", "card-body notes");
+    cardBody.setAttribute("class", "card-body center");
     createEditableNote("Title", "Text", "", cardBody);
     cardDiv.appendChild(cardBody);
     placeBefore(cardDiv, this);
+    
+    let i = display.children.length - 2;
+    let option = document.createElement("option");
+    option.value = `${i}`;
+    option.innerHTML = `${i}`;
+    document.getElementById("Title-pos").appendChild(option);
+    document.getElementById("Title-pos").value = `${i}`;
 }
 
 function setCardScreen(enter, title, pos, text)
