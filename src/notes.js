@@ -54,7 +54,16 @@ function handleAddButton()
 function handleDeleteButton()
 {
     if(deleteProtection){alert("Are you sure you want to delete this note? Click trash again to confirm."); deleteProtection = false;}
-    else{this.parentNode.parentNode.remove();}
+    
+    else
+    {
+        this.parentNode.parentNode.remove();
+        
+        for(let note of Object.keys(wholeNotes))
+        {
+            document.getElementById(`${note}-pos`).lastChild.remove();
+        }
+    }
 }
 
 function setAddScreen()
@@ -157,7 +166,6 @@ function handleCreate()
         option.value = `${i}`;
         option.innerHTML = `${i}`;
         document.getElementById(`${note}-pos`).appendChild(option);
-        document.getElementById(`${note}-pos`).value = `${i}`;
     }
 }
 
