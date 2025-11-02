@@ -100,7 +100,38 @@ function setAddScreen()
 {
     for(let child of display.children)
     {
-        alert(child.id);
+        if(child.tagName != 'DIV'){continue;}
+
+        let title = child.id;
+        let text = wholeNotes[title]["desc"];
+        let pos = wholeNotes[title]["pos"];
+        let display = child.children[0];
+
+        while(display.children.length > 0)
+        {
+            display.children[0].remove();
+        }
+
+        let cardTitle = document.createElement("input");
+        cardTitle.setAttribute("class", "card-title");
+        cardTitle.value = title;
+        display.appendChild(cardTitle);
+
+        let cardText = document.createElement("textarea");
+        cardText.setAttribute("class", "card-text");
+        cardText.style.margin = "3px";
+        cardText.value = text;
+        display.appendChild(cardText);
+
+        let cardPos = document.createElement("select");
+        for(let i = 1; i < Object.keys(wholeNotes).length + 1; i++)
+        {
+            let option = document.createElement("option");
+            option.value = i;
+            cardPos.appendChild(option);
+        }
+        cardPos.value = pos;
+        display.appendChild(cardPos);
     }
     /**let text = document.createElement("textarea");
     text.setAttribute("id", "text");
