@@ -130,7 +130,25 @@ function setAddScreen()
 
 function handleCreate()
 {
-    
+    let newCard = createNoteCard("Title", "Text");
+    let cardPos = document.createElement("select");
+    cardPos.style.width = "5vw";
+    cardPos.classList.add("center");
+    let desc = document.createElement("option");
+    desc.value = "";
+    desc.innerHTML = "--Select the order you want the note in--";
+    cardPos.appendChild(desc);
+
+    for(let i = 1; i <= display.children.length + 1; i++)
+    {
+        let option = document.createElement("option");
+        option.value = `${i}`;
+        option.innerHTML = `${i}`;
+        cardPos.appendChild(option);
+    }
+
+    cardPos.style.display = "block";
+    newCard.children[0].append(cardPos);
 }
 
 function setCardScreen(enter, title, pos, text)
