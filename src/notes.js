@@ -1,7 +1,7 @@
 "use strict"
 import { ref, onValue } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js';
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
-import { toTitleCase, auth, database, setDoc, deleteDoc, returnHpImage, placeBefore } from '../js/viMethods.js';
+import { toTitleCase, auth, database, setDoc, deleteDoc, reload, placeBefore } from '../js/viMethods.js';
 
 let wholeNotes = {};
 let player;
@@ -10,6 +10,7 @@ let currentTitle;
 let currentText;
 let isFirstRead = true;
 let display = document.getElementById("notesDisplay");
+let deleteProtection = true;
 
 onAuthStateChanged(auth, (user) => 
 {
@@ -36,24 +37,6 @@ function init()
     let button = document.getElementById("enter");
 }
 
-function handleEnter()
-{
-    let title = document.getElementById("searchBar");
-    let text = document.getElementById("text");
-    let pos = document.getElementById("pos");
-
-    if(title.value == null || text.value == null || title.value == "" || text.value == "")
-    {
-        alert("Please enter both a title and text for your note.");
-    }
-
-    else
-    {
-        addNote(title.value, text.value, pos.value);
-        //setCardScreen(enter, title, text);
-    }   
-}
-
 function handleAddButton()
 {
     let notes = document.getElementsByClassName("notes");
@@ -70,7 +53,8 @@ function handleAddButton()
 
 function handleDeleteButton()
 {
-    this.parentNode.parentNode.remove();
+    if(deleteProtection){alert("Are you sure you want to delete this note? Click trash again to confirm."); deleteProtection = false;}
+    else{this.parentNode.parentNode.remove();}
 }
 
 function setAddScreen()
@@ -137,6 +121,11 @@ function setAddScreen()
     createNew.innerHTML = "Create Note";
     createNew.onclick = handleCreate;
     placeBefore(createNew, upload);
+
+    let cancel = document.createElement("button");
+    cancel.innerHTML = "Cancel";
+    cancel.onclick = function(){reload(1);};
+    placeBefore(cancel, upload);
 }
 
 function handleCreate()
@@ -223,7 +212,7 @@ async function addNote()
             notes[title] = {"desc" : text, "pos" : pos};
         }
 
-        for(let i = 1; i < Object.keys(notes).length; i++)
+        for(let i = 1; i < Object.keys(notes).length + 1; i++)
         {
             if(!poses.includes(i))
             {
@@ -236,6 +225,7 @@ async function addNote()
         {
             setDoc(`playerChar/${player}/notes`, null);
             setDoc(`playerChar/${player}/notes`, notes);
+            reload(1);
         }
     } 
     
@@ -265,20 +255,6 @@ async function readNotes() //Need to do manual
     {display.appendChild(orderedNotes[noteNumber]);}
 
     //for(let key of document.getElementsByClassName("card-body")){key.onclick = handleCardClick;}
-}
-
-async function deleteNote()
-{
-    if(currentTitle != undefined)
-    {
-        deleteDoc(`playerChar/${player}/notes/${currentTitle}`);
-        setTimeout(() => {location.reload();}, 50);
-    }
-
-    else
-    {
-        location.reload();
-    }
 }
 
 window.onload = init;
