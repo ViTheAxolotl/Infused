@@ -140,6 +140,7 @@ function handleCreate()
     let cardBody = document.createElement("div");
     cardBody.setAttribute("class", "card-body notes");
     createEditableNote("Title", "Text", "", cardBody);
+    cardDiv.appendChild(cardBody);
     placeBefore(cardDiv, this);
 }
 
