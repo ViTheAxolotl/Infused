@@ -66,7 +66,6 @@ function handleAddButton()
     }**/
 
     setAddScreen();
-    createDeleteButton();
 }
 
 function handleCardClick()
@@ -112,9 +111,12 @@ function setAddScreen()
             display.children[0].remove();
         }
 
+        display.classList = "card-body center";
+
         let cardTitle = document.createElement("input");
         cardTitle.setAttribute("class", "card-title");
         cardTitle.value = title;
+        cardTitle.style.width = "50vw";
         cardTitle.style.display = "block";
         display.appendChild(cardTitle);
 
@@ -123,12 +125,14 @@ function setAddScreen()
         cardText.style.margin = "3px";
         cardText.value = text;
         cardText.style.display = "block";
+        cardText.style.width = "50vw";
         display.appendChild(cardText);
 
         let cardPos = document.createElement("select");
         let desc = document.createElement("option");
         desc.value = "";
         desc.innerHTML = "--Select the order you want the note in--";
+        cardPos.appendChild(desc);
 
         for(let i = 1; i < Object.keys(wholeNotes).length + 1; i++)
         {
@@ -141,6 +145,7 @@ function setAddScreen()
         cardPos.value = `${pos}`;
         cardPos.style.display = "block";
         display.appendChild(cardPos);
+        display.appendChild(createDeleteButton());
     }
 }
 
@@ -198,9 +203,7 @@ function createDeleteButton()
     deleteButton.setAttribute("src", "images/trashIcon.png");
     deleteButton.setAttribute("id", "deleteButton");
     deleteButton.onclick = handleDeleteButton;
-
-    let notes = document.getElementById("notes");
-    notes.appendChild(deleteButton);
+    return deleteButton;
 }
 
 async function addNote(title, text, pos)
