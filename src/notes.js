@@ -215,7 +215,7 @@ async function addNote()
             
             let title = child.children[0].children[0].value;
             let text = child.children[0].children[1].value;
-            let pos = child.children[0].children[2].value;
+            let pos = parseInt(child.children[0].children[2].value);
 
             if(!poses.includes(pos)){poses.push(pos);}
             else{alert("Can't have repeating order positions."); upload = false;}
