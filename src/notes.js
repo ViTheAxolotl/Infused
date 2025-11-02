@@ -151,6 +151,7 @@ function handleCreate()
     cardBody.setAttribute("class", "card-body center");
     createEditableNote("Title", "Text", "", cardBody);
     cardDiv.appendChild(cardBody);
+    cardBody.appendChild(createDeleteButton());
     placeBefore(cardDiv, this);
     
     let i = display.children.length - 3;
