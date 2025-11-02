@@ -102,7 +102,7 @@ function setAddScreen()
     {
         if(child.tagName != 'DIV'){continue;}
 
-        let title = child.id;
+        let title = child.id.slice(0, child.id.indexOf("-"));
         let text = wholeNotes[title]["desc"];
         let pos = wholeNotes[title]["pos"];
         let display = child.children[0];
