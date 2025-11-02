@@ -124,35 +124,17 @@ function setAddScreen()
         display.appendChild(cardText);
 
         let cardPos = document.createElement("select");
+
         for(let i = 1; i < Object.keys(wholeNotes).length + 1; i++)
         {
             let option = document.createElement("option");
-            option.value = i;
+            option.value = `${i}`;
             cardPos.appendChild(option);
         }
-        cardPos.value = pos;
+
+        cardPos.value = `${pos}`;
         display.appendChild(cardPos);
     }
-    /**let text = document.createElement("textarea");
-    text.setAttribute("id", "text");
-    text.setAttribute("rows", "5");
-    text.setAttribute("cols", "50");
-    text.placeholder = "Write Text Here";
-
-    let addButton = document.getElementById("enter");
-    addButton.innerHTML = "Upload";
-    addButton.parentNode.removeChild(addButton);
-
-    let title = document.getElementById("searchBar");
-    title.placeholder = "Write Title Here";
-    title.parentNode.appendChild(text);
-    title.parentNode.appendChild(addButton);
-
-    let pos = document.createElement("input");
-    pos.placeholder = "Write Position Order";
-    title.parentNode.appendChild(pos);
-    pos.id = "pos"
-    **/
 }
 
 function setCardScreen(enter, title, pos, text)
@@ -210,13 +192,8 @@ function createDeleteButton()
     deleteButton.setAttribute("id", "deleteButton");
     deleteButton.onclick = handleDeleteButton;
 
-    let addButton = document.getElementById("enter");
-    addButton.innerHTML = "Upload";
-    addButton.parentNode.removeChild(addButton);
-
     let notes = document.getElementById("notes");
     notes.appendChild(deleteButton);
-    notes.appendChild(addButton);
 }
 
 async function addNote(title, text, pos)
