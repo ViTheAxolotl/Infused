@@ -115,12 +115,14 @@ function setAddScreen()
         let cardTitle = document.createElement("input");
         cardTitle.setAttribute("class", "card-title");
         cardTitle.value = title;
+        cardTitle.style.display = "block";
         display.appendChild(cardTitle);
 
         let cardText = document.createElement("textarea");
         cardText.setAttribute("class", "card-text");
         cardText.style.margin = "3px";
         cardText.value = text;
+        cardText.style.display = "block";
         display.appendChild(cardText);
 
         let cardPos = document.createElement("select");
@@ -137,6 +139,7 @@ function setAddScreen()
         }
 
         cardPos.value = `${pos}`;
+        cardPos.style.display = "block";
         display.appendChild(cardPos);
     }
 }
