@@ -135,7 +135,7 @@ function setAddScreen()
 
     let createNew = document.createElement("button");
     createNew.innerHTML = "Create Note";
-    createNew = handleCreate;
+    createNew.onclick = handleCreate;
     placeBefore(createNew, upload);
 }
 
@@ -213,9 +213,9 @@ async function addNote()
         {
             if(child.tagName != 'DIV'){continue;}
             
-            let title = child.children[0].value;
-            let text = child.children[1].value;
-            let pos = child.children[2].value;
+            let title = child.children[0].children[0].value;
+            let text = child.children[0].children[1].value;
+            let pos = child.children[0].children[2].value;
 
             if(!poses.includes(pos)){poses.push(pos);}
             else{alert("Can't have repeating order positions."); upload = false;}
