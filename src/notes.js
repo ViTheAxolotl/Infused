@@ -86,13 +86,7 @@ function handleCardClick()
 
 function handleDeleteButton()
 {
-    let enter = document.getElementById("enter");
-    let title = document.getElementById("searchBar");
-    let text = document.getElementById("text");
-    let pos = document.getElementById("pos");
-
-    deleteNote();
-    setCardScreen(enter, title, pos, text);
+    this.parentNode.parentNode.remove();
 }
 
 function setAddScreen()
@@ -126,9 +120,11 @@ function setAddScreen()
         cardText.value = text;
         cardText.style.display = "block";
         cardText.style.width = "50vw";
+        cardText.style.height = "20vh";
         display.appendChild(cardText);
 
         let cardPos = document.createElement("select");
+        cardPos.style.width = "5vw";
         let desc = document.createElement("option");
         desc.value = "";
         desc.innerHTML = "--Select the order you want the note in--";
