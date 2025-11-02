@@ -144,12 +144,21 @@ function handleCreate()
     cardDiv.appendChild(cardBody);
     placeBefore(cardDiv, this);
     
-    let i = display.children.length - 2;
+    let i = display.children.length - 3;
     let option = document.createElement("option");
     option.value = `${i}`;
     option.innerHTML = `${i}`;
     document.getElementById("Title-pos").appendChild(option);
     document.getElementById("Title-pos").value = `${i}`;
+
+    for(let note of Object.keys(wholeNotes))
+    {
+        let option = document.createElement("option");
+        option.value = `${i}`;
+        option.innerHTML = `${i}`;
+        document.getElementById(`${note}-pos`).appendChild(option);
+        document.getElementById(`${note}-pos`).value = `${i}`;
+    }
 }
 
 function setCardScreen(enter, title, pos, text)
