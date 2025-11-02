@@ -149,6 +149,7 @@ function handleCreate()
 
     cardPos.style.display = "block";
     newCard.children[0].append(cardPos);
+    placeBefore(newCard, this);
 }
 
 function setCardScreen(enter, title, pos, text)
