@@ -1,7 +1,7 @@
 "use strict"
 import { ref, onValue } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js';
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
-import { toTitleCase, auth, database, setDoc, deleteDoc, returnHpImage } from '../js/viMethods.js';
+import { toTitleCase, auth, database, setDoc, deleteDoc, returnHpImage, placeBefore } from '../js/viMethods.js';
 
 let wholeNotes = {};
 let player;
@@ -68,22 +68,6 @@ function handleAddButton()
     setAddScreen();
 }
 
-function handleCardClick()
-{
-    let children = this.childNodes;
-
-    currentTitle = children[0].innerHTML;
-    currentText = children[1].innerHTML;
-    handleAddButton();
-    
-    let title = document.getElementById("searchBar");
-    let text = document.getElementById("text");
-    let pos = document.getElementById("pos")
-    title.value = currentTitle;
-    text.value = currentText;
-    pos.value = wholeNotes[title.value]["pos"];
-}
-
 function handleDeleteButton()
 {
     this.parentNode.parentNode.remove();
@@ -125,6 +109,7 @@ function setAddScreen()
 
         let cardPos = document.createElement("select");
         cardPos.style.width = "5vw";
+        cardPos.classList.add("center");
         let desc = document.createElement("option");
         desc.value = "";
         desc.innerHTML = "--Select the order you want the note in--";
@@ -143,6 +128,20 @@ function setAddScreen()
         display.appendChild(cardPos);
         display.appendChild(createDeleteButton());
     }
+
+    let upload = document.getElementById("AddButton");
+    upload.innerHTML = "Upload Notes";
+    upload.onclick = addNote;
+
+    let createNew = document.createElement("button");
+    createNew.innerHTML = "Create Note";
+    createNew = handleCreate;
+    placeBefore(createNew, upload);
+}
+
+function handleCreate()
+{
+    
 }
 
 function setCardScreen(enter, title, pos, text)
@@ -202,17 +201,42 @@ function createDeleteButton()
     return deleteButton;
 }
 
-async function addNote(title, text, pos)
+async function addNote()
 {
+    let poses = [];
+    let notes = {};
+    let upload = true;
+
     try 
     {
-        if(currentTitle != undefined)
+        for(let child of display.children)
         {
-            deleteDoc(`playerChar/${player}/notes/${currentTitle}`);
+            if(child.tagName != 'DIV'){continue;}
+            
+            let title = child.children[0].value;
+            let text = child.children[1].value;
+            let pos = child.children[2].value;
+
+            if(!poses.includes(pos)){poses.push(pos);}
+            else{alert("Can't have repeating order positions."); upload = false;}
+
+            notes[title] = {"desc" : text, "pos" : pos};
         }
-  
-        setDoc(`playerChar/${player}/notes/${title}`, {text, pos});
-        setTimeout(() => {location.reload();}, 50);
+
+        for(let i = 1; i < Object.keys(notes).length; i++)
+        {
+            if(!poses.includes(i))
+            {
+                alert(`Missing note in the ${i} position of order`);
+                upload = false;
+            }
+        }
+
+        if(upload)
+        {
+            setDoc(`playerChar/${player}/notes`, null);
+            setDoc(`playerChar/${player}/notes`, notes);
+        }
     } 
     
     catch (e) 
