@@ -314,7 +314,7 @@
       import { ref, onValue } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js';
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
 import { toTitleCase, auth, database, setDoc, deleteDoc, returnHpImage, setMapValue, placeBefore, quickAction, setQuickAction, wait, getRandomItem } from './js/viMethods.js';
-        import { setMode } from './src/map.js';
+        import { setMode, setWholeCustom, setWholeDB } from './src/map.js';
         
         var skillsLoaded = false;
         
@@ -330,6 +330,20 @@ import { toTitleCase, auth, database, setDoc, deleteDoc, returnHpImage, setMapVa
     {
         setMode(auth);
     }
+});
+
+const customsRef = ref(database, 'customImages/');
+onValue(customsRef, (snapshot) => 
+{
+    const data = snapshot.val();
+    setWholeCustom(data);
+});
+
+const currentMapRef = ref(database, 'currentMap/');
+onValue(currentMapRef, (snapshot) => 
+{
+    const data = snapshot.val();
+    setWholeDB(data);
 });
      </script>
   </body>
