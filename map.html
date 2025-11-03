@@ -311,9 +311,26 @@
      <script src="js/mapControler.js" type = "module"></script>
      <script src="src/map.js" type = "module"></script>
      <script type="module">
-        import { test } from './src/map.js';
+      import { ref, onValue } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js';
+import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
+import { toTitleCase, auth, database, setDoc, deleteDoc, returnHpImage, setMapValue, placeBefore, quickAction, setQuickAction, wait, getRandomItem } from '../js/viMethods.js';
+        import { setMode } from './src/map.js';
+        
         var skillsLoaded = false;
-        alert(test());
+        
+        onAuthStateChanged(auth, (user) => 
+{
+    if (!user) 
+    {
+        alert("You need to login before using this resource. Click Ok and be redirected, -map.html");
+        window.location.href = "loginPage.html?map.html"; 
+    } 
+
+    else
+    {
+        setMode(auth);
+    }
+});
      </script>
   </body>
 </html>
