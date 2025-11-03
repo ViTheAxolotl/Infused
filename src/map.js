@@ -36,17 +36,9 @@ let slider = gridMap;
 let wholeBubbles;
 fetch('https://vitheaxolotl.github.io/Infused/src/files.json').then(res => res.json()).then((json) => imgs = json);
 
-onAuthStateChanged(auth, (user) => 
+export function setMode(auth)
 {
-    if (!user) 
-    {
-        alert("You need to login before using this resource. Click Ok and be redirected");
-        window.location.href = "loginPage.html?map.html"; 
-    } 
-
-    else
-    {
-        player = auth.currentUser.email.split("@");
+    player = auth.currentUser.email.split("@");
         player = toTitleCase(player[0]);
         setDoc(`playerChar/${player}/mode`, "waiting");
         
@@ -56,9 +48,7 @@ onAuthStateChanged(auth, (user) =>
             const data = snapshot.val();
             mode = data;
         });
-    }
-});
-
+}
 const customsRef = ref(database, 'customImages/');
 onValue(customsRef, (snapshot) => 
 {
