@@ -49,20 +49,17 @@ export function setMode(auth)
             mode = data;
         });
 }
-const customsRef = ref(database, 'customImages/');
-onValue(customsRef, (snapshot) => 
-{
-    const data = snapshot.val();
-    wholeCustom = data;
-});
 
-const currentMapRef = ref(database, 'currentMap/');
-onValue(currentMapRef, (snapshot) => 
+export function setWholeCustom(data)
 {
-    const data = snapshot.val();
+    wholeCustom = data;
+}
+
+export function setWholeDB(data)
+{
     wholeDB = data;
     addTokens();
-});
+}
 
 const charRef = ref(database, 'playerChar/');
 onValue(charRef, (snapshot) => 
