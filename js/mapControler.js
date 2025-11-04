@@ -51,50 +51,41 @@ let discription;
 let currentToken;
 let wholeQuests = {};
 
-/**
- * When it shows that your logged in
- */
-onAuthStateChanged(auth, (user) => 
+export function setPlayer(auth)
 {
-    if (user) //If logged in
-    {
         player = auth.currentUser.email.split("@");
         player = toTitleCase(player[0]); //gives the players name
-    } 
-});
+}
 
+export function setWholeTOCont(data)
+{
+   wholeTO = data;
+}
 /**
  * When anything under this changes it will use onValue
  */
-const currentTORef = ref(database, 'currentTO/');
-onValue(currentTORef, (snapshot) => 
-{
-    const data = snapshot.val();
-    wholeTO = data;
-});
+
 
 /**
  * When anything under this changes it will use onValue
- */
-const interactiveRef = ref(database, 'playerChar/Vi/interactive');
-onValue(interactiveRef, (snapshot) => 
-{
-    const data = snapshot.val();
+ */ 
+
+export function setWholeInteractive(data)
+{ 
     wholeInteractive = data;
 
     if(!firstRun)
     {
         displayInteractive();
     }
-});
+}
 
 /**
  * When anything under this changes it will use onValue
  */
-const charRef = ref(database, 'playerChar/');
-onValue(charRef, (snapshot) => 
+
+export function setWholeCharCont(data)
 {
-    const data = snapshot.val();
     let infusedRate = document.getElementById("infusionRate");
     wholeChar = data;
     infusedRate.innerHTML = `${infusedRate.title} ${data[player]["stats"]["InfusedRate"]}%`;
@@ -133,7 +124,12 @@ onValue(charRef, (snapshot) =>
         document.getElementById("statSheet").style.marginBottom = `${((wholeChar[player]["zoomSheetLevel"]/100)-1)*70*9.4}px`;
         document.getElementById("statSheet").style.height = `${((100/wholeChar[player]["zoomSheetLevel"]))*50+40}vh`;
     }
-});
+}
+
+/**
+ * When it shows that your logged in
+ */
+
 
 /**
  * When anything under this changes it will use onValue
