@@ -61,45 +61,32 @@ export function setWholeDB(data)
     addTokens();
 }
 
-const charRef = ref(database, 'playerChar/');
-onValue(charRef, (snapshot) => 
+export function setWholeChar(data)
 {
-    const data = snapshot.val();
     wholeChar = data;
-});
+}
 
-const currentTORef = ref(database, 'currentTO/');
-onValue(currentTORef, (snapshot) => 
+export function setWholeTO(data)
 {
-    const data = snapshot.val();
     wholeTO = data;
     removeTurnOrder(); 
     setTurnOrder();
-});
+}
 
-const summonsRef = ref(database, 'playerChar/Vi/summons');
-onValue(summonsRef, (snapshot) => 
+export function setWholeSummons(data)
 {
-    const data = snapshot.val();
     wholeSummons = data;
     isSummonOn = wholeSummons["isSummonOn"];
-});
+}
 
-const bubbleRef = ref(database, 'bubbles');
-onValue(bubbleRef, (snapshot) => 
+export function setWholeBubbles(data)
 {
-    const data = snapshot.val();
     wholeBubbles = data;
 
     for(let bubble of Object.keys(wholeBubbles))
     {
         addBubbles(wholeBubbles[bubble]);
     }
-});
-
-export function test()
-{
-    return "Perfect!";
 }
 
 function init()
