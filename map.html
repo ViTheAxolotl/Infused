@@ -314,7 +314,7 @@
       import { ref, onValue } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js';
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
 import { toTitleCase, auth, database, setDoc, deleteDoc, returnHpImage, setMapValue, placeBefore, quickAction, setQuickAction, wait, getRandomItem } from './js/viMethods.js';
-        import { setMode, setWholeCustom, setWholeDB } from './src/map.js';
+        import { setMode, setWholeCustom, setWholeDB, setWholeChar, setWholeTO, setWholeSummons, setWholeBubbles } from './src/map.js';
         
         var skillsLoaded = false;
         
@@ -344,6 +344,34 @@ onValue(currentMapRef, (snapshot) =>
 {
     const data = snapshot.val();
     setWholeDB(data);
+});
+
+const charRef = ref(database, 'playerChar/');
+onValue(charRef, (snapshot) => 
+{
+    const data = snapshot.val();
+    setWholeChar(data);
+});
+
+const currentTORef = ref(database, 'currentTO/');
+onValue(currentTORef, (snapshot) => 
+{
+    const data = snapshot.val();
+    setWholeTO(data);
+});
+
+const summonsRef = ref(database, 'playerChar/Vi/summons');
+onValue(summonsRef, (snapshot) => 
+{
+    const data = snapshot.val();
+    setWholeSummons(data);
+});
+
+const bubbleRef = ref(database, 'bubbles');
+onValue(bubbleRef, (snapshot) => 
+{
+    const data = snapshot.val();
+    setWholeBubbles(data);
 });
      </script>
   </body>
