@@ -315,6 +315,7 @@
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
 import { toTitleCase, auth, database, setDoc, deleteDoc, returnHpImage, setMapValue, placeBefore, quickAction, setQuickAction, wait, getRandomItem } from './js/viMethods.js';
         import { setMode, setWholeCustom, setWholeDB, setWholeChar, setWholeTO, setWholeSummons, setWholeBubbles } from './src/map.js';
+        import { setPlayer, setWholeTOCont, setWholeInteractive, setWholeCharCont } from './js/mapControler.js';
         
         var skillsLoaded = false;
         
@@ -329,6 +330,7 @@ import { toTitleCase, auth, database, setDoc, deleteDoc, returnHpImage, setMapVa
     else
     {
         setMode(auth);
+        setPlayer(auth);
     }
 });
 
@@ -351,6 +353,7 @@ onValue(charRef, (snapshot) =>
 {
     const data = snapshot.val();
     setWholeChar(data);
+    setWholeCharCont(data);
 });
 
 const currentTORef = ref(database, 'currentTO/');
@@ -358,6 +361,7 @@ onValue(currentTORef, (snapshot) =>
 {
     const data = snapshot.val();
     setWholeTO(data);
+    setWholeTOCont(data);
 });
 
 const summonsRef = ref(database, 'playerChar/Vi/summons');
@@ -372,6 +376,13 @@ onValue(bubbleRef, (snapshot) =>
 {
     const data = snapshot.val();
     setWholeBubbles(data);
+});
+
+const interactiveRef = ref(database, 'playerChar/Vi/interactive');
+onValue(interactiveRef, (snapshot) => 
+{
+    const data = snapshot.val();
+    setWholeInteractive(data);
 });
      </script>
   </body>
