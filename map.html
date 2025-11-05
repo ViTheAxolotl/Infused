@@ -316,6 +316,7 @@
       import { toTitleCase, auth, database, setDoc, deleteDoc, returnHpImage, setMapValue, placeBefore, quickAction, setQuickAction, wait, getRandomItem } from './js/viMethods.js';
         import { setMode, setWholeCustom, setWholeDB, setWholeChar, setWholeTO, setWholeSummons, setWholeBubbles } from './src/map.js';
         import { setPlayer, setWholeTOCont, setWholeInteractive, setWholeCharCont, setWholeCustomCont, setWholeDb, setWholeDisplay, setWholeQuests } from './js/mapControler.js';
+        import {  setWholeDBDm, setWholeTODm, setWholeSummonsDm, setWholeCharDm, setWholePre, setWholeQuestsDm } from './src/dmSite.js';
         
         var skillsLoaded = false;
         
@@ -348,6 +349,7 @@ onValue(currentMapRef, (snapshot) =>
     const data = snapshot.val();
     setWholeDB(data);
     setWholeDb(data);
+    setWholeDBDm(data);
 });
 
 const charRef = ref(database, 'playerChar/');
@@ -356,6 +358,7 @@ onValue(charRef, (snapshot) =>
     const data = snapshot.val();
     setWholeChar(data);
     setWholeCharCont(data);
+    setWholeCharDm(data);
 });
 
 const currentTORef = ref(database, 'currentTO/');
@@ -364,6 +367,7 @@ onValue(currentTORef, (snapshot) =>
     const data = snapshot.val();
     setWholeTO(data);
     setWholeTOCont(data);
+    setWholeTODm(data);
 });
 
 const summonsRef = ref(database, 'playerChar/Vi/summons');
@@ -371,6 +375,7 @@ onValue(summonsRef, (snapshot) =>
 {
     const data = snapshot.val();
     setWholeSummons(data);
+    setWholeSummonsDm(data);
 });
 
 const bubbleRef = ref(database, 'bubbles');
@@ -399,6 +404,14 @@ onValue(questRef, (snapshot) =>
 {
     const data = snapshot.val();
     setWholeQuests(data);
+    setWholeQuestsDm(data);
+});
+
+const presetRef = ref(database, 'preset/');
+onValue(presetRef, (snapshot) => 
+{
+    const data = snapshot.val();
+    setWholePre(data);
 });
      </script>
   </body>
