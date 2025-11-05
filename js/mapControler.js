@@ -134,36 +134,29 @@ export function setWholeCharCont(data)
 /**
  * When anything under this changes it will use onValue
  */
-const customRef = ref(database, 'customImages/');
-onValue(customRef, (snapshot) => 
+export function setWholeCustomCont(data)
 {
-    const data = snapshot.val();
-    wholeCustom = data;
-});
+        wholeCustom = data;
+}
 
+
+export function setWholeDb(data)
+{
+        wholeDb = data;
+}
 /**
  * When anything under this changes it will use onValue
  */
-const dBRef = ref(database, 'currentMap/');
-onValue(dBRef, (snapshot) => 
-{
-    const data = snapshot.val();
-    wholeDb = data;
-});
 
-const displayRef = ref(database, 'display/');
-onValue(displayRef, (snapshot) => 
+export function setWholeDisplay(data)
 {
-    const data = snapshot.val();
-    wholeDisplay = data;
-});
+        wholeDisplay = data;
+}
 
-const questRef = ref(database, `playerChar/Vi/quests/`);
-onValue(questRef, (snapshot) =>
+export function setWholeQuests(data)
 {
     let questTitle = document.getElementById("questTitle");
     let questText = document.getElementById("questText");
-    const data = snapshot.val();
     wholeQuests = data;
     
     for(let quest of Object.keys(wholeQuests))
@@ -174,7 +167,7 @@ onValue(questRef, (snapshot) =>
             questText.innerHTML = wholeQuests[quest]["Desc"];
         }
     }
-});
+}
 
 let favoriteRef;
 
