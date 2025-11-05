@@ -2,42 +2,7 @@
 import { ref, onValue } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js';
 import { toTitleCase, auth, database, setDoc, deleteDoc, returnHpImage, placeBefore, createLabel } from '../js/viMethods.js';
 
-export function setWholeDBDm(data)
-{
-    wholeDB = data;
-}
-
-export function setWholeTODm(data)
-{
-    wholeTO = data;
-}
-
-export function setWholeSummonsDm(data)
-{
-    wholeSummons = data;
-}
-
-export function setWholeCharDm(data)
-{
-    wholeChar = data;
-}
-
-export function setWholePre(data)
-{
-    wholePre = data;
-}
-
-export function setWholeQuestsDm(data)
-{
-    wholeQuests = data;
-}
-
 let fiveButtons = [];
-let wholeDB = {};
-let wholeTO = {};
-let wholePre = {};
-let wholeSummons = {};
-let wholeChar;
 let db;
 let div = document.getElementById("story");
 let preOrSumm;
@@ -49,7 +14,6 @@ let mode;
 let user;
 let wholeActions;
 let wholeSpells;
-let wholeQuests;
 
 function init()
 {
@@ -181,11 +145,11 @@ function handleRemove()
 {
     hideButtons();
 
-    for(let key of Object.keys(wholeDB))
+    for(let key of Object.keys(parent.wholeDB))
     {
         if(key != "invisible")
         {
-            makeToken(wholeDB[key]);
+            makeToken(parent.wholeDB[key]);
         }
     }
 
@@ -223,13 +187,13 @@ function handleDeleteOrEdit()
 
 function deleteToken()
 {
-    for(let key of Object.keys(wholeDB))
+    for(let key of Object.keys(parent.wholeDB))
     {
         if(key == this.classList[1])
         {
             try
             { 
-                deleteDoc(`currentMap/${wholeDB[key].id}`);
+                deleteDoc(`currentMap/${parent.wholeDB[key].id}`);
             }
             
             catch (e) 
@@ -276,11 +240,11 @@ function handleEdit()
     {
         if(mode == undefined)
         {
-            for(let key of Object.keys(wholeDB))
+            for(let key of Object.keys(parent.wholeDB))
             {
-                if(wholeDB[key].name == temp + "-")
+                if(parent.wholeDB[key].name == temp + "-")
                 {
-                    curCharacter = wholeDB[key];
+                    curCharacter = parent.wholeDB[key];
                 }
             }
         }
@@ -442,21 +406,21 @@ function handleQuick()
     date.innerHTML = `Current Hps at time of ${curDate}`;
     div.appendChild(date);
 
-    for(let key of Object.keys(wholeDB))
+    for(let key of Object.keys(parent.wholeDB))
     {
-        if(key != "invisible" && wholeDB[key].border != "invisible")
+        if(key != "invisible" && parent.wholeDB[key].border != "invisible")
         {
-            makeToken(wholeDB[key]);
-            let currentDiv = document.getElementById(`${wholeDB[key].id}-div`);
+            makeToken(parent.wholeDB[key]);
+            let currentDiv = document.getElementById(`${parent.wholeDB[key].id}-div`);
             let names = ["xPos", "yPos", "currentHp", "maxHp"];
             let feilds = [document.createElement("h6"), document.createElement("h6"), document.createElement("input"), document.createElement("h6")]
             
-            feilds[0].innerHTML = wholeDB[key].xPos;
-            feilds[1].innerHTML = wholeDB[key].yPos;
-            feilds[2].value = wholeDB[key].currentHp;
-            feilds[2].id = "newHp_" + wholeDB[key].id;
+            feilds[0].innerHTML = parent.wholeDB[key].xPos;
+            feilds[1].innerHTML = parent.wholeDB[key].yPos;
+            feilds[2].value = parent.wholeDB[key].currentHp;
+            feilds[2].id = "newHp_" + parent.wholeDB[key].id;
             feilds[2].style.width = "3%";
-            feilds[3].innerHTML = wholeDB[key].maxHp;
+            feilds[3].innerHTML = parent.wholeDB[key].maxHp;
 
             for(let i = 0; i < 4; i++)
             {
@@ -471,7 +435,7 @@ function handleQuick()
             }
 
             let upload = document.createElement("button");
-            upload.id = wholeDB[key].id;
+            upload.id = parent.wholeDB[key].id;
             upload.onclick = quickUpdate;
             upload.style.margin = "5px";
             upload.style.width = "6%";
@@ -490,16 +454,16 @@ function quickUpdate()
 
     setDoc(`currentMap/${i}`,
     {
-        border : wholeDB[i].border,
+        border : parent.wholeDB[i].border,
         currentHp : newHp.value,
-        maxHp : wholeDB[i].maxHp,
+        maxHp : parent.wholeDB[i].maxHp,
         map : "",
         id : i,
-        name : wholeDB[i].name,
-        title : wholeDB[i].title,
-        xPos : wholeDB[i].xPos,
-        yPos : wholeDB[i].yPos,
-        AC: wholeDB[i].ac
+        name : parent.wholeDB[i].name,
+        title : parent.wholeDB[i].title,
+        xPos : parent.wholeDB[i].xPos,
+        yPos : parent.wholeDB[i].yPos,
+        AC: parent.wholeDB[i].ac
     });
 
     resetQuick();
@@ -509,7 +473,7 @@ function handlePreset()
 {
     hideButtons();
     if(preOrSumm == undefined){preOrSumm = 0;}
-    db = [wholePre, wholeSummons];
+    db = [parent.wholePre, parent.wholeSummons];
 
     for(let token of Object.keys(db[preOrSumm]))
     {
@@ -607,11 +571,11 @@ function addToMap()
     let id = db[preOrSumm][this.id].id;
     let token = db[preOrSumm][this.id];
     
-    if(Object.keys(wholeDB).includes(id))
+    if(Object.keys(parent.wholeDB).includes(id))
     {
         id = id + "1";
 
-        while(Object.keys(wholeDB).includes(id))
+        while(Object.keys(parent.wholeDB).includes(id))
         {
             id = id.slice(0, id.length - 1) + (parseInt(id.charAt(id.length - 1)) + 1);
         }
@@ -626,11 +590,11 @@ function handleSummons()
     if(preOrSumm == undefined){preOrSumm = 1;}
 
     let changeIsSummons = document.createElement("button");
-    if(wholeSummons["isSummonOn"]){changeIsSummons.innerHTML = "Turn Summon's Off";}
+    if(parent.wholeSummons["isSummonOn"]){changeIsSummons.innerHTML = "Turn Summon's Off";}
     else{changeIsSummons.innerHTML = "Turn Summon's On";}
     changeIsSummons.onclick = (event) => 
         {
-            if(wholeSummons["isSummonOn"]){changeIsSummons.innerHTML = "Turn Summon's On"; setDoc(`playerChar/Vi/summons/isSummonOn`, false);}
+            if(parent.wholeSummons["isSummonOn"]){changeIsSummons.innerHTML = "Turn Summon's On"; setDoc(`playerChar/Vi/summons/isSummonOn`, false);}
             else{changeIsSummons.innerHTML = "Turn Summon's Off"; setDoc(`playerChar/Vi/summons/isSummonOn`, true);}
         };
     div.appendChild(changeIsSummons);
@@ -681,9 +645,9 @@ function removeFromTO()
 {
     let nodeName = this.id.replace("_Remove", "");
 
-    if(Object.keys(wholeTO).includes(nodeName))
+    if(Object.keys(parent.wholeTO).includes(nodeName))
     {
-        wholeTO = DeleteKeys(wholeTO, [nodeName]);
+        parent.wholeTO = DeleteKeys(parent.wholeTO, [nodeName]);
     }
 
     document.getElementById(`${nodeName}-div`).remove();
@@ -691,9 +655,9 @@ function removeFromTO()
 
 function addTORow(rowName)
 {
-    if(wholeTO == null){wholeTO = {};}
+    if(parent.wholeTO == null){parent.wholeTO = {};}
     let newRow = {charName : rowName, position : 0, selected : false};
-    wholeTO[rowName] = newRow;
+    parent.wholeTO[rowName] = newRow;
     makeTORow(newRow);
 
     let feilds = [document.getElementById(`Name_${rowName}`), document.getElementById(`Order_${rowName}`), document.getElementById(`Selected_${rowName}`)];
@@ -708,18 +672,18 @@ function handleTurn()
     hideButtons();
     setTimeout(() => 
     {
-        if(wholeTO != null)
+        if(parent.wholeTO != null)
         {
-            for(let key of Object.keys(wholeTO))
+            for(let key of Object.keys(parent.wholeTO))
             {
-                if(wholeTO[key].charName)
+                if(parent.wholeTO[key].charName)
                 {
-                    makeTORow(wholeTO[key]);
-                    let feilds = [document.getElementById(`Name_${wholeTO[key].charName}`), document.getElementById(`Order_${wholeTO[key].charName}`), document.getElementById(`Selected_${wholeTO[key].charName}`)]
+                    makeTORow(parent.wholeTO[key]);
+                    let feilds = [document.getElementById(`Name_${parent.wholeTO[key].charName}`), document.getElementById(`Order_${parent.wholeTO[key].charName}`), document.getElementById(`Selected_${parent.wholeTO[key].charName}`)]
                     
-                    feilds[0].innerHTML = wholeTO[key].charName;
-                    feilds[1].value = wholeTO[key].position;
-                    feilds[2].value = wholeTO[key].selected;
+                    feilds[0].innerHTML = parent.wholeTO[key].charName;
+                    feilds[1].value = parent.wholeTO[key].position;
+                    feilds[2].value = parent.wholeTO[key].selected;
                 } 
             }
         }
@@ -755,7 +719,7 @@ function handleTurn()
 
 function uploadTO()
 {
-    temp = wholeTO;
+    temp = parent.wholeTO;
     emptyTOCollection();
     deleteDoc("currentTO/Var");
 
@@ -770,7 +734,7 @@ function uploadTO()
     date.innerHTML = `Current Turn Order at time of ${curDate}`;
     div.appendChild(date);
 
-    for(let person of Object.keys(wholeChar))
+    for(let person of Object.keys(parent.wholeChar))
     {
         setDoc(`playerChar/${person}/rage`, false);
     }
@@ -890,14 +854,14 @@ function handleUploadeSave()
         emptyCollection(cName);
     }
 
-    for(let key of Object.keys(wholeDB))
+    for(let key of Object.keys(parent.wholeDB))
     {
-        setDoc(`${cName}/${key}`, wholeDB[key]);
+        setDoc(`${cName}/${key}`, parent.wholeDB[key]);
     }
 
-    setDoc(`${cName}/${Object.keys(wholeDB)[0]}`, wholeDB[Object.keys(wholeDB)[0]]);
+    setDoc(`${cName}/${Object.keys(parent.wholeDB)[0]}`, parent.wholeDB[Object.keys(parent.wholeDB)[0]]);
 
-    wholeDB[Object.keys(wholeDB)[0]]
+    parent.wholeDB[Object.keys(parent.wholeDB)[0]]
 
     setDoc(`lists/${cName}`, {name : `${cName}`});
 
@@ -939,12 +903,12 @@ function loadMap()
     onValue(tempRef, (snapshot) => 
     {
         const data = snapshot.val();
-        wholeDB = data;
+        parent.wholeDB = data;
     });
 
     setTimeout(() => 
     {  
-        temp = wholeDB;
+        temp = parent.wholeDB;
         for(let key of Object.keys(temp))
         {
             setDoc(`currentMap/${key}`, temp[key]);
@@ -1082,17 +1046,17 @@ function createQuestCard(quest)
 
     if(quest != "empty")
     {
-        card.id = `${wholeQuests[quest]["name"]}-div`;
-        title.id = `${wholeQuests[quest]["name"]}-title`;
-        text.id = `${wholeQuests[quest]["name"]}-text`;
-        status.id = `${wholeQuests[quest]["name"]}-status`;
-        active.id = `${wholeQuests[quest]["name"]}-activeQuest`;
-        deleteBtn.id = `${wholeQuests[quest]["name"]}-delete`;
+        card.id = `${parent.wholeQuests[quest]["name"]}-div`;
+        title.id = `${parent.wholeQuests[quest]["name"]}-title`;
+        text.id = `${parent.wholeQuests[quest]["name"]}-text`;
+        status.id = `${parent.wholeQuests[quest]["name"]}-status`;
+        active.id = `${parent.wholeQuests[quest]["name"]}-activeQuest`;
+        deleteBtn.id = `${parent.wholeQuests[quest]["name"]}-delete`;
 
-        title.value = wholeQuests[quest]["name"];
-        text.value = wholeQuests[quest]["Desc"];
-        status.value = wholeQuests[quest]["status"];
-        active.checked = wholeQuests[quest]["activeQuest"];
+        title.value = parent.wholeQuests[quest]["name"];
+        text.value = parent.wholeQuests[quest]["Desc"];
+        status.value = parent.wholeQuests[quest]["status"];
+        active.checked = parent.wholeQuests[quest]["activeQuest"];
     }
 
     else
@@ -1188,7 +1152,7 @@ function handleQuest()
     
     let buttons = ["Create", "Upload", "Back"];
 
-    for(let quest of Object.keys(wholeQuests))
+    for(let quest of Object.keys(parent.wholeQuests))
     {
         div.appendChild(createQuestCard(quest));
     }
@@ -1271,16 +1235,16 @@ function handleUploadInteractive()
 
 function handleGenerate()
 {
-    for(let player of Object.keys(wholeChar))
+    for(let player of Object.keys(parent.wholeChar))
     {
         let I = 1;
 
-        if(wholeChar[player]["notes"])
+        if(parent.wholeChar[player]["notes"])
         {
-        for(let noteName of Object.keys(wholeChar[player]["notes"]))
+        for(let noteName of Object.keys(parent.wholeChar[player]["notes"]))
         {
             alert(noteName);
-            let note = {"desc": wholeChar[player]["notes"][noteName], "pos" : I};
+            let note = {"desc": parent.wholeChar[player]["notes"][noteName], "pos" : I};
             I++;
             setDoc(`playerChar/${player}/notes/${noteName}`, note);
         }
@@ -1294,10 +1258,10 @@ function backupFavorites()
 {
     let classes = ["Artificer", "Barbarian", "Bard", "Cleric", "Druid", "Fighter", "Monk", "Paladin", "Ranger", "Rogue", "Sorcerer", "Warlock", "Wizard", "Infused Abilities"];
 
-    for(let player of Object.keys(wholeChar))
+    for(let player of Object.keys(parent.wholeChar))
     {
-        let favoriteSpells = wholeChar[player]["favorites"]["spells"];
-        let favoriteActions = wholeChar[player]["favorites"]["actions"];
+        let favoriteSpells = parent.wholeChar[player]["favorites"]["spells"];
+        let favoriteActions = parent.wholeChar[player]["favorites"]["actions"];
 
         for(let spellLv of Object.keys(favoriteSpells))
         {
@@ -1389,11 +1353,11 @@ function addToken()
     let ac = document.getElementById("ac").value;
     let id = n.slice(0, n.indexOf("-"));
     
-    if(Object.keys(wholeDB).includes(id) && mode == "add")
+    if(Object.keys(parent.wholeDB).includes(id) && mode == "add")
     {
         id = id + "1";
 
-        while(Object.keys(wholeDB).includes(id))
+        while(Object.keys(parent.wholeDB).includes(id))
         {
             id = id.slice(0, id.length - 1) + (parseInt(id.charAt(id.length - 1)) + 1);
         }
