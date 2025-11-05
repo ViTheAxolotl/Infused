@@ -312,10 +312,10 @@
      <script src="src/map.js" type = "module"></script>
      <script type="module">
       import { ref, onValue } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js';
-import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
-import { toTitleCase, auth, database, setDoc, deleteDoc, returnHpImage, setMapValue, placeBefore, quickAction, setQuickAction, wait, getRandomItem } from './js/viMethods.js';
+      import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js'; 
+      import { toTitleCase, auth, database, setDoc, deleteDoc, returnHpImage, setMapValue, placeBefore, quickAction, setQuickAction, wait, getRandomItem } from './js/viMethods.js';
         import { setMode, setWholeCustom, setWholeDB, setWholeChar, setWholeTO, setWholeSummons, setWholeBubbles } from './src/map.js';
-        import { setPlayer, setWholeTOCont, setWholeInteractive, setWholeCharCont } from './js/mapControler.js';
+        import { setPlayer, setWholeTOCont, setWholeInteractive, setWholeCharCont, setWholeCustomCont, setWholeDb, setWholeDisplay, setWholeQuests } from './js/mapControler.js';
         
         var skillsLoaded = false;
         
@@ -339,6 +339,7 @@ onValue(customsRef, (snapshot) =>
 {
     const data = snapshot.val();
     setWholeCustom(data);
+    setWholeCustomCont(data);
 });
 
 const currentMapRef = ref(database, 'currentMap/');
@@ -346,6 +347,7 @@ onValue(currentMapRef, (snapshot) =>
 {
     const data = snapshot.val();
     setWholeDB(data);
+    setWholeDb(data);
 });
 
 const charRef = ref(database, 'playerChar/');
@@ -383,6 +385,20 @@ onValue(interactiveRef, (snapshot) =>
 {
     const data = snapshot.val();
     setWholeInteractive(data);
+});
+
+const displayRef = ref(database, 'display/');
+onValue(displayRef, (snapshot) => 
+{
+    const data = snapshot.val();
+    setWholeDisplay(data);
+});
+
+const questRef = ref(database, `playerChar/Vi/quests/`);
+onValue(questRef, (snapshot) =>
+{
+    const data = snapshot.val();
+    setWholeQuests(data);
 });
      </script>
   </body>
