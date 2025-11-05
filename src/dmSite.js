@@ -2,47 +2,35 @@
 import { ref, onValue } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js';
 import { toTitleCase, auth, database, setDoc, deleteDoc, returnHpImage, placeBefore, createLabel } from '../js/viMethods.js';
 
-const currentMapRef = ref(database, 'currentMap/');
-onValue(currentMapRef, (snapshot) => 
+export function setWholeDBDm(data)
 {
-    const data = snapshot.val();
     wholeDB = data;
-});
+}
 
-const currentTORef = ref(database, 'currentTO/');
-onValue(currentTORef, (snapshot) => 
+export function setWholeTODm(data)
 {
-    const data = snapshot.val();
     wholeTO = data;
-});
+}
 
-const summonsRef = ref(database, 'playerChar/Vi/summons');
-onValue(summonsRef, (snapshot) => 
+export function setWholeSummonsDm(data)
 {
-    const data = snapshot.val();
     wholeSummons = data;
-});
+}
 
-const charRef = ref(database, 'playerChar/');
-onValue(charRef, (snapshot) => 
+export function setWholeCharDm(data)
 {
-    const data = snapshot.val();
     wholeChar = data;
-});
+}
 
-const presetRef = ref(database, 'preset/');
-onValue(presetRef, (snapshot) => 
+export function setWholePre(data)
 {
-    const data = snapshot.val();
     wholePre = data;
-});
+}
 
-const questRef = ref(database, `playerChar/Vi/quests/`);
-onValue(questRef, (snapshot) =>
+export function setWholeQuestsDm(data)
 {
-    const data = snapshot.val();
     wholeQuests = data;
-});
+}
 
 let fiveButtons = [];
 let wholeDB = {};
