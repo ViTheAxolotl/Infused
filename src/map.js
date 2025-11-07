@@ -39,15 +39,15 @@ fetch('https://vitheaxolotl.github.io/Infused/src/files.json').then(res => res.j
 export function setMode(auth)
 {
     player = auth.currentUser.email.split("@");
-        player = toTitleCase(player[0]);
-        setDoc(`playerChar/${player}/mode`, "waiting");
-        
-        modeRef = ref(database, `playerChar/${player}/mode`);
-        onValue(modeRef, (snapshot) => 
-        {
-            const data = snapshot.val();
-            mode = data;
-        });
+    player = toTitleCase(player[0]);
+    setDoc(`playerChar/${player}/mode`, "waiting");
+    
+    modeRef = ref(database, `playerChar/${player}/mode`);
+    onValue(modeRef, (snapshot) => 
+    {
+        const data = snapshot.val();
+        mode = data;
+    });
 }
 
 export function setWholeCustom(data)
@@ -55,7 +55,7 @@ export function setWholeCustom(data)
     wholeCustom = data;
 }
 
-export function setWholeDB(data)
+export function setwholeDB(data)
 {
     wholeDB = data;
     addTokens();

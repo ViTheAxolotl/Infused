@@ -27,7 +27,7 @@ let wholeTO = {};
 let wholeChar = {};
 let wholeCustom = {};
 let wholeFavorite = {};
-let wholeDb = {};
+let wholeDB = {};
 let wholeRoles = {};
 let wholeSpells;
 let wholeActions;
@@ -140,9 +140,9 @@ export function setWholeCustomCont(data)
 }
 
 
-export function setWholeDb(data)
+export function setwholeDB(data)
 {
-        wholeDb = data;
+        wholeDB = data;
 }
 /**
  * When anything under this changes it will use onValue
@@ -289,7 +289,7 @@ function sendMessageToDisplay(message)
 
 function handleGridClick(e)
 {
-    let bubbleDB = {id : `${player}-bubble`, x : (e.offsetX * (100/zoomLevel) - map.bubble), y : (e.offsetY * (100/zoomLevel) - map.bubble), size : 1, src : imgs["borders"][wholeDb[wholeChar[player]["currentToken"]].border]};
+    let bubbleDB = {id : `${player}-bubble`, x : (e.offsetX * (100/zoomLevel) - map.bubble), y : (e.offsetY * (100/zoomLevel) - map.bubble), size : 1, src : imgs["borders"][wholeDB[wholeChar[player]["currentToken"]].border]};
     if(bubbleDB.src.includes("invisible")){bubbleDB.src = imgs["borders"]["blue"];}
     setDoc(`bubbles/${bubbleDB.id}`, bubbleDB);
 }
@@ -602,7 +602,7 @@ function tempHpUpdate()
     setDoc(`currentMap/${currentCharacter[0].classList[1]}/tempHp`, tempHp.value);
 
     if(player == currentCharacter[0].classList[1]){setDoc(`playerChar/${player}/token/tempHp`, tempHp.value);}
-    if(wholeDb[currentCharacter[0].classList[1]]["isSummon"]){setDoc(`playerChar/Vi/summons/${currentCharacter[0].classList[1]}/tempHp`, tempHp.value);}
+    if(wholeDB[currentCharacter[0].classList[1]]["isSummon"]){setDoc(`playerChar/Vi/summons/${currentCharacter[0].classList[1]}/tempHp`, tempHp.value);}
 }
 
 /**
@@ -704,7 +704,7 @@ function changeValue()
             title = title.innerHTML.slice(title.innerHTML.indexOf(": ") + 2).trim();
             setDoc(`currentMap/${currentToken}/title`, title);
             if(currentToken == player){setDoc(`playerChar/${player}/token/title`, title);}
-            if(wholeDb[currentCharacter[0].classList[1]]["isSummon"]){setDoc(`playerChar/Vi/summons/${currentCharacter[0].classList[1]}/title`, title);}
+            if(wholeDB[currentCharacter[0].classList[1]]["isSummon"]){setDoc(`playerChar/Vi/summons/${currentCharacter[0].classList[1]}/title`, title);}
             break;
         
         case "turn":
@@ -812,7 +812,7 @@ function moveChar(xPos, yPos)
         setDoc(`playerChar/${player}/token/yPos`, y);
     }
 
-    if(wholeDb[currentCharacter[0].classList[1]]["isSummon"])
+    if(wholeDB[currentCharacter[0].classList[1]]["isSummon"])
     {
         setDoc(`playerChar/Vi/summons/${currentCharacter[0].classList[1]}/xPos`, x);
         setDoc(`playerChar/Vi/summons/${currentCharacter[0].classList[1]}/yPos`, y);
@@ -834,7 +834,7 @@ function updateHp()
         setDoc(`playerChar/${player}/token/currentHp`, `${current.value}`);
     }
 
-    if(wholeDb[currentCharacter[0].classList[1]]["isSummon"]){setDoc(`playerChar/Vi/summons/${currentCharacter[0].classList[1]}/currentHp`, `${current.value}`);}
+    if(wholeDB[currentCharacter[0].classList[1]]["isSummon"]){setDoc(`playerChar/Vi/summons/${currentCharacter[0].classList[1]}/currentHp`, `${current.value}`);}
 }
 
 /**
@@ -1475,7 +1475,7 @@ function handleUseAction(targets)
 
             if(wholeRespone["currentResponse"] == "Toll the Dead")
             {
-                if(parseInt(wholeDb[targets[0].classList[1]]["currentHp"]) < parseInt(wholeDb[targets[0].classList[1]]["maxHp"]))
+                if(parseInt(wholeDB[targets[0].classList[1]]["currentHp"]) < parseInt(wholeDB[targets[0].classList[1]]["maxHp"]))
                 {
                     abilityDisc = abilityDisc.replaceAll("d8", "d12");
                 }
@@ -1507,7 +1507,7 @@ function handleUseAction(targets)
             if(abilityDisc.includes("{@save "))
             {
                 let damage;
-                let token = wholeDb[wholeChar[player]["currentToken"]];
+                let token = wholeDB[wholeChar[player]["currentToken"]];
                 damage = splitRoll(abilityDisc, "@save");
                 if(abilityDisc.includes("{@scaledamage")){damage = splitRoll(wholeRespone["castUp"], "@save")}
                 else if(abilityDisc.includes(currentLv)){damage = splitRoll(abilityDisc.slice(`${abilityDisc.indexOf(currentLv)}`), "@save");}
@@ -1556,7 +1556,7 @@ function handleUseAction(targets)
             info = info.slice(info.indexOf(" ") + 1, info.indexOf("}"));
             info = info.split(":"); 
             token.title += `${info[3]}, `;
-            let currentToken = wholeDb[wholeChar[player]["currentToken"]];
+            let currentToken = wholeDB[wholeChar[player]["currentToken"]];
 
             if(!currentToken["title"].includes(player))
             {
@@ -1571,11 +1571,11 @@ function handleUseAction(targets)
             token.name = info[0] + "-";
             let id = info[0];
 
-            if(Object.keys(wholeDb).includes(id))
+            if(Object.keys(wholeDB).includes(id))
             {
                 id = id + "1";
         
-                while(Object.keys(wholeDb).includes(id))
+                while(Object.keys(wholeDB).includes(id))
                 {
                     id = id.slice(0, id.length - 1) + (parseInt(id.charAt(id.length - 1)) + 1);
                 }
@@ -1735,12 +1735,12 @@ function handleUseAction(targets)
 
                 for(let key in Object.keys(targets))
                 {
-                    let ac = wholeDb[targets[key].title.split(":")[0]].AC;
+                    let ac = wholeDB[targets[key].title.split(":")[0]].AC;
 
                     if(display.includes("regain"))
                     {
                         fail = false;
-                        handleChangeHp(damage.split("**")[1], wholeDb[targets[key].title.split(":")[0]], "+");
+                        handleChangeHp(damage.split("**")[1], wholeDB[targets[key].title.split(":")[0]], "+");
                         display = display.split("Accurcy:")[0];
                         ending = "Healing";
                     }
@@ -1751,7 +1751,7 @@ function handleUseAction(targets)
                         fail = false; 
                         let hp = damage.split("**")[1];
                         if(wholeChar[targets[key].title.split(":")[0]]){let targe = targets[key].title.split(":")[0]; if(wholeChar[targe]["rage"] && !description.includes("{noRage") && !spellLevel){let past = damage.slice(damage.indexOf("**") + 2); past = past.slice(0, damage.indexOf("**")); let hp = parseInt(past)/2; damage = damage.replace(past, `${hp}** (1/2 Rage)`);}}
-                        handleChangeHp(hp, wholeDb[targets[key].title.split(":")[0]], "-");
+                        handleChangeHp(hp, wholeDB[targets[key].title.split(":")[0]], "-");
                         if(document.getElementById("sneak").value != "Sneak-Attack?"){description += `{@sDice ${Math.floor(parseInt(wholeChar[player]["stats"]["lv"])/2)}d6} Sneak Attack.`;}
                     }
 
@@ -1775,12 +1775,12 @@ function handleUseAction(targets)
 
                 for(let key in Object.keys(targets))
                 {
-                    let ac = wholeDb[targets[key].title.split(":")[0]].AC;
+                    let ac = wholeDB[targets[key].title.split(":")[0]].AC;
                     
                     if(display.includes("regains"))
                     {
                         fail = false;
-                        handleChangeHp(damage.split("**")[1], wholeDb[targets[key].title.split(":")[0]], "+");
+                        handleChangeHp(damage.split("**")[1], wholeDB[targets[key].title.split(":")[0]], "+");
                         display = display.split("Accurcy:")[0];
                         ending = "Healing";
                     }
@@ -1790,7 +1790,7 @@ function handleUseAction(targets)
                         display += `(Success Hit) ${targets[key].title.split(":")[0]} (${ac}), `;
                         fail = false; 
                         if(wholeChar[targets[key].title.split(":")[0]]){let targe = targets[key].title.split(":")[0]; if(wholeChar[targe]["rage"] && !description.includes("{noRage") && !spellLevel){let past = damage.slice(damage.indexOf("**") + 2); past = past.slice(0, damage.indexOf("**")); let hp = parseInt(past)/2; damage = damage.replace(past, `${hp}** (1/2 Rage)`);}}
-                        handleChangeHp(damage.split("**")[1], wholeDb[targets[key].title.split(":")[0]], "-");
+                        handleChangeHp(damage.split("**")[1], wholeDB[targets[key].title.split(":")[0]], "-");
                         if(document.getElementById("sneak")){if(document.getElementById("sneak").value != "Sneak-Attack?"){description += `{@sDice ${Math.floor(parseInt(wholeChar[player]["stats"]["lv"])/2)}d6} Sneak Attack.`;}}
                     }
 
@@ -1824,7 +1824,7 @@ function handleUseAction(targets)
 
                 damage = splitRoll(sDice, "@sDice");
                 damage = diceRoller(damage[0], damage[1], damage[2], "false");
-                for(let key in Object.keys(targets)){handleChangeHp(damage.split("**")[1], wholeDb[targets[key].title.split(":")[0]], "-");}
+                for(let key in Object.keys(targets)){handleChangeHp(damage.split("**")[1], wholeDB[targets[key].title.split(":")[0]], "-");}
             
                 if(display){display += `\nResult: ${damage}. \n`;}
                 else{display = `${wholeChar[player]["charName"]} used the ability, ${lastUse}:\n${useInfo}\n\nResult: ${damage}. \n`;}
@@ -1864,7 +1864,7 @@ function handleUseAction(targets)
             else{display = `${wholeChar[player]["charName"]} used the ability, ${lastUse}:\n${useInfo}\n\nResult: ${damage}. \n`;}
         }
 
-        setDoc("currentMap/", wholeDb);
+        setDoc("currentMap/", wholeDB);
     }
 
     else
@@ -2256,13 +2256,13 @@ function handleChangeToken()
                 for(let token of Object.keys(temp)){if(token != "hold"){sources.push(temp[token]["src"]);}} //Populates Sources with all the selectable token images
                 temp = imgs["tokens"];
                 for(let token of Object.keys(temp)){if(token != "invisible-"){sources.push(temp[token]);}} //Populates Sources with all the selectable token images
-                dropBtn.innerHTML = wholeDb[currentCharacter[0].id]["name"];
+                dropBtn.innerHTML = wholeDB[currentCharacter[0].id]["name"];
                 break;
             
             case 1:
                 temp = imgs["borders"];
                 for(let border of Object.keys(temp)){if(border != "invisible"){sources.push(temp[border]);}} //Populates Sources with all the selectable border images
-                dropBtn.innerHTML = wholeDb[currentCharacter[0].id]["border"];
+                dropBtn.innerHTML = wholeDB[currentCharacter[0].id]["border"];
                 break;
         }
 
@@ -2316,7 +2316,7 @@ function handleUpdateToken()
 {
     let name = document.getElementById("name").innerHTML;
     let toUpdate = name[0].toLowerCase() + name.slice(1);
-    let fields = wholeDb[toUpdate];
+    let fields = wholeDB[toUpdate];
 
     fields.border = `${document.getElementById("BorderButton").innerHTML}`;
     fields.name = `${document.getElementById("CharacterButton").innerHTML}`;
@@ -2456,12 +2456,12 @@ function handleDeleteCustom()
 {
     deleteDoc(`customImages/${this.id}`);
     
-    for(let tokens of Object.keys(wholeDb))
+    for(let tokens of Object.keys(wholeDB))
     {
-        if(wholeDb[tokens]["name"] == this.id)
+        if(wholeDB[tokens]["name"] == this.id)
         {
             let access = document.getElementById("name").innerHTML.toLowerCase();
-            let newToken = wholeDb[access];
+            let newToken = wholeDB[access];
 
             newToken.name = `${newToken.id}-`;
             setDoc(`currentMap/${access}`, newToken);
@@ -2531,7 +2531,7 @@ function useAbility()
 
             for(let token of tokens)
             {
-                if(token.id == wholeDb[wholeChar[player]["currentToken"]].border)
+                if(token.id == wholeDB[wholeChar[player]["currentToken"]].border)
                 {
                     token.classList.add("selected-temp");
                     this.click();
