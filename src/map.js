@@ -55,7 +55,7 @@ export function setWholeCustom(data)
     wholeCustom = data;
 }
 
-export function setwholeDB(data)
+export function setWholeDB(data)
 {
     wholeDB = data;
     addTokens();
