@@ -2,7 +2,7 @@ import { ref, onValue } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js'; 
 import { auth, database } from './js/viMethods.js';
 import { setMode, setWholeCustom, setWholeDB, setWholeChar, setWholeTO, setWholeSummons, setWholeBubbles } from './src/map.js';
-import { setPlayer, setWholeTOCont, setWholeInteractive, setWholeCharCont, setWholeCustomCont, setWholeDb, setWholeDisplay, setWholeQuests } from './js/mapControler.js';
+import { setPlayer, setWholeTOCont, setWholeInteractive, setWholeCharCont, setWholeCustomCont, setWholeDBCont, setWholeDisplay, setWholeQuests } from './js/mapControler.js';
 
 export let wholeCustom = {};
 export let wholeBubbles = {};
@@ -52,7 +52,7 @@ onValue(currentMapRef, (snapshot) =>
     const data = snapshot.val();
     wholeDB = data;
     setWholeDB(data);
-    setWholeDb(data);
+    setWholeDBCont(data);
 });
 
 const charRef = ref(database, 'playerChar/');

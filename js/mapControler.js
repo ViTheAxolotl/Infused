@@ -140,7 +140,7 @@ export function setWholeCustomCont(data)
 }
 
 
-export function setwholeDB(data)
+export function setwholeDBCont(data)
 {
         wholeDB = data;
 }
