@@ -137,11 +137,11 @@ function handleRemove()
 {
     hideButtons();
 
-    for(let key of Object.keys(wholeDB))
+    for(let key of Object.keys(window.wholeDB))
     {
         if(key != "invisible")
         {
-            makeToken(wholeDB[key]);
+            makeToken(window.wholeDB[key]);
         }
     }
 
@@ -179,13 +179,13 @@ function handleDeleteOrEdit()
 
 function deleteToken()
 {
-    for(let key of Object.keys(wholeDB))
+    for(let key of Object.keys(window.wholeDB))
     {
         if(key == this.classList[1])
         {
             try
             { 
-                deleteDoc(`currentMap/${wholeDB[key].id}`);
+                deleteDoc(`currentMap/${window.wholeDB[key].id}`);
             }
             
             catch (e) 
@@ -232,11 +232,11 @@ function handleEdit()
     {
         if(mode == undefined)
         {
-            for(let key of Object.keys(wholeDB))
+            for(let key of Object.keys(window.wholeDB))
             {
-                if(wholeDB[key].name == temp + "-")
+                if(window.wholeDB[key].name == temp + "-")
                 {
-                    curCharacter = wholeDB[key];
+                    curCharacter = window.wholeDB[key];
                 }
             }
         }
@@ -398,21 +398,21 @@ function handleQuick()
     date.innerHTML = `Current Hps at time of ${curDate}`;
     div.appendChild(date);
 
-    for(let key of Object.keys(wholeDB))
+    for(let key of Object.keys(window.wholeDB))
     {
-        if(key != "invisible" && wholeDB[key].border != "invisible")
+        if(key != "invisible" && window.wholeDB[key].border != "invisible")
         {
-            makeToken(wholeDB[key]);
-            let currentDiv = document.getElementById(`${wholeDB[key].id}-div`);
+            makeToken(window.wholeDB[key]);
+            let currentDiv = document.getElementById(`${window.wholeDB[key].id}-div`);
             let names = ["xPos", "yPos", "currentHp", "maxHp"];
             let feilds = [document.createElement("h6"), document.createElement("h6"), document.createElement("input"), document.createElement("h6")]
             
-            feilds[0].innerHTML = wholeDB[key].xPos;
-            feilds[1].innerHTML = wholeDB[key].yPos;
-            feilds[2].value = wholeDB[key].currentHp;
-            feilds[2].id = "newHp_" + wholeDB[key].id;
+            feilds[0].innerHTML = window.wholeDB[key].xPos;
+            feilds[1].innerHTML = window.wholeDB[key].yPos;
+            feilds[2].value = window.wholeDB[key].currentHp;
+            feilds[2].id = "newHp_" + window.wholeDB[key].id;
             feilds[2].style.width = "3%";
-            feilds[3].innerHTML = wholeDB[key].maxHp;
+            feilds[3].innerHTML = window.wholeDB[key].maxHp;
 
             for(let i = 0; i < 4; i++)
             {
@@ -427,7 +427,7 @@ function handleQuick()
             }
 
             let upload = document.createElement("button");
-            upload.id = wholeDB[key].id;
+            upload.id = window.wholeDB[key].id;
             upload.onclick = quickUpdate;
             upload.style.margin = "5px";
             upload.style.width = "6%";
@@ -446,16 +446,16 @@ function quickUpdate()
 
     setDoc(`currentMap/${i}`,
     {
-        border : wholeDB[i].border,
+        border : window.wholeDB[i].border,
         currentHp : newHp.value,
-        maxHp : wholeDB[i].maxHp,
+        maxHp : window.wholeDB[i].maxHp,
         map : "",
         id : i,
-        name : wholeDB[i].name,
-        title : wholeDB[i].title,
-        xPos : wholeDB[i].xPos,
-        yPos : wholeDB[i].yPos,
-        AC: wholeDB[i].ac
+        name : window.wholeDB[i].name,
+        title : window.wholeDB[i].title,
+        xPos : window.wholeDB[i].xPos,
+        yPos : window.wholeDB[i].yPos,
+        AC: window.wholeDB[i].ac
     });
 
     resetQuick();
@@ -465,7 +465,7 @@ function handlePreset()
 {
     hideButtons();
     if(preOrSumm == undefined){preOrSumm = 0;}
-    db = [wholePre, wholeSummons];
+    db = [window.wholePre, window.wholeSummons];
 
     for(let token of Object.keys(db[preOrSumm]))
     {
@@ -563,11 +563,11 @@ function addToMap()
     let id = db[preOrSumm][this.id].id;
     let token = db[preOrSumm][this.id];
     
-    if(Object.keys(wholeDB).includes(id))
+    if(Object.keys(window.wholeDB).includes(id))
     {
         id = id + "1";
 
-        while(Object.keys(wholeDB).includes(id))
+        while(Object.keys(window.wholeDB).includes(id))
         {
             id = id.slice(0, id.length - 1) + (parseInt(id.charAt(id.length - 1)) + 1);
         }
@@ -582,11 +582,11 @@ function handleSummons()
     if(preOrSumm == undefined){preOrSumm = 1;}
 
     let changeIsSummons = document.createElement("button");
-    if(wholeSummons["isSummonOn"]){changeIsSummons.innerHTML = "Turn Summon's Off";}
+    if(window.wholeSummons["isSummonOn"]){changeIsSummons.innerHTML = "Turn Summon's Off";}
     else{changeIsSummons.innerHTML = "Turn Summon's On";}
     changeIsSummons.onclick = (event) => 
         {
-            if(wholeSummons["isSummonOn"]){changeIsSummons.innerHTML = "Turn Summon's On"; setDoc(`playerChar/Vi/summons/isSummonOn`, false);}
+            if(window.wholeSummons["isSummonOn"]){changeIsSummons.innerHTML = "Turn Summon's On"; setDoc(`playerChar/Vi/summons/isSummonOn`, false);}
             else{changeIsSummons.innerHTML = "Turn Summon's Off"; setDoc(`playerChar/Vi/summons/isSummonOn`, true);}
         };
     div.appendChild(changeIsSummons);
@@ -637,9 +637,9 @@ function removeFromTO()
 {
     let nodeName = this.id.replace("_Remove", "");
 
-    if(Object.keys(wholeTO).includes(nodeName))
+    if(Object.keys(window.wholeTO).includes(nodeName))
     {
-        wholeTO = DeleteKeys(wholeTO, [nodeName]);
+        window.wholeTO = DeleteKeys(window.wholeTO, [nodeName]);
     }
 
     document.getElementById(`${nodeName}-div`).remove();
@@ -647,9 +647,9 @@ function removeFromTO()
 
 function addTORow(rowName)
 {
-    if(wholeTO == null){wholeTO = {};}
+    if(window.wholeTO == null){window.wholeTO = {};}
     let newRow = {charName : rowName, position : 0, selected : false};
-    wholeTO[rowName] = newRow;
+    window.wholeTO[rowName] = newRow;
     makeTORow(newRow);
 
     let feilds = [document.getElementById(`Name_${rowName}`), document.getElementById(`Order_${rowName}`), document.getElementById(`Selected_${rowName}`)];
@@ -664,18 +664,18 @@ function handleTurn()
     hideButtons();
     setTimeout(() => 
     {
-        if(wholeTO != null)
+        if(window.wholeTO != null)
         {
-            for(let key of Object.keys(wholeTO))
+            for(let key of Object.keys(window.wholeTO))
             {
-                if(wholeTO[key].charName)
+                if(window.wholeTO[key].charName)
                 {
-                    makeTORow(wholeTO[key]);
-                    let feilds = [document.getElementById(`Name_${wholeTO[key].charName}`), document.getElementById(`Order_${wholeTO[key].charName}`), document.getElementById(`Selected_${wholeTO[key].charName}`)]
+                    makeTORow(window.wholeTO[key]);
+                    let feilds = [document.getElementById(`Name_${window.wholeTO[key].charName}`), document.getElementById(`Order_${window.wholeTO[key].charName}`), document.getElementById(`Selected_${window.wholeTO[key].charName}`)]
                     
-                    feilds[0].innerHTML = wholeTO[key].charName;
-                    feilds[1].value = wholeTO[key].position;
-                    feilds[2].value = wholeTO[key].selected;
+                    feilds[0].innerHTML = window.wholeTO[key].charName;
+                    feilds[1].value = window.wholeTO[key].position;
+                    feilds[2].value = window.wholeTO[key].selected;
                 } 
             }
         }
@@ -711,7 +711,7 @@ function handleTurn()
 
 function uploadTO()
 {
-    temp = wholeTO;
+    temp = window.wholeTO;
     emptyTOCollection();
     deleteDoc("currentTO/Var");
 
@@ -726,7 +726,7 @@ function uploadTO()
     date.innerHTML = `Current Turn Order at time of ${curDate}`;
     div.appendChild(date);
 
-    for(let person of Object.keys(wholeChar))
+    for(let person of Object.keys(window.wholeChar))
     {
         setDoc(`playerChar/${person}/rage`, false);
     }
@@ -846,14 +846,14 @@ function handleUploadeSave()
         emptyCollection(cName);
     }
 
-    for(let key of Object.keys(wholeDB))
+    for(let key of Object.keys(window.wholeDB))
     {
-        setDoc(`${cName}/${key}`, wholeDB[key]);
+        setDoc(`${cName}/${key}`, window.wholeDB[key]);
     }
 
-    setDoc(`${cName}/${Object.keys(wholeDB)[0]}`, wholeDB[Object.keys(wholeDB)[0]]);
+    setDoc(`${cName}/${Object.keys(window.wholeDB)[0]}`, window.wholeDB[Object.keys(window.wholeDB)[0]]);
 
-    wholeDB[Object.keys(wholeDB)[0]]
+    window.wholeDB[Object.keys(window.wholeDB)[0]]
 
     setDoc(`lists/${cName}`, {name : `${cName}`});
 
@@ -895,12 +895,12 @@ function loadMap()
     onValue(tempRef, (snapshot) => 
     {
         const data = snapshot.val();
-        wholeDB = data;
+        window.wholeDB = data;
     });
 
     setTimeout(() => 
     {  
-        temp = wholeDB;
+        temp = window.wholeDB;
         for(let key of Object.keys(temp))
         {
             setDoc(`currentMap/${key}`, temp[key]);
@@ -1038,17 +1038,17 @@ function createQuestCard(quest)
 
     if(quest != "empty")
     {
-        card.id = `${wholeQuests[quest]["name"]}-div`;
-        title.id = `${wholeQuests[quest]["name"]}-title`;
-        text.id = `${wholeQuests[quest]["name"]}-text`;
-        status.id = `${wholeQuests[quest]["name"]}-status`;
-        active.id = `${wholeQuests[quest]["name"]}-activeQuest`;
-        deleteBtn.id = `${wholeQuests[quest]["name"]}-delete`;
+        card.id = `${window.wholeQuests[quest]["name"]}-div`;
+        title.id = `${window.wholeQuests[quest]["name"]}-title`;
+        text.id = `${window.wholeQuests[quest]["name"]}-text`;
+        status.id = `${window.wholeQuests[quest]["name"]}-status`;
+        active.id = `${window.wholeQuests[quest]["name"]}-activeQuest`;
+        deleteBtn.id = `${window.wholeQuests[quest]["name"]}-delete`;
 
-        title.value = wholeQuests[quest]["name"];
-        text.value = wholeQuests[quest]["Desc"];
-        status.value = wholeQuests[quest]["status"];
-        active.checked = wholeQuests[quest]["activeQuest"];
+        title.value = window.wholeQuests[quest]["name"];
+        text.value = window.wholeQuests[quest]["Desc"];
+        status.value = window.wholeQuests[quest]["status"];
+        active.checked = window.wholeQuests[quest]["activeQuest"];
     }
 
     else
@@ -1144,7 +1144,7 @@ function handleQuest()
     
     let buttons = ["Create", "Upload", "Back"];
 
-    for(let quest of Object.keys(wholeQuests))
+    for(let quest of Object.keys(window.wholeQuests))
     {
         div.appendChild(createQuestCard(quest));
     }
@@ -1227,16 +1227,16 @@ function handleUploadInteractive()
 
 function handleGenerate()
 {
-    for(let player of Object.keys(wholeChar))
+    for(let player of Object.keys(window.wholeChar))
     {
         let I = 1;
 
-        if(wholeChar[player]["notes"])
+        if(window.wholeChar[player]["notes"])
         {
-        for(let noteName of Object.keys(wholeChar[player]["notes"]))
+        for(let noteName of Object.keys(window.wholeChar[player]["notes"]))
         {
             alert(noteName);
-            let note = {"desc": wholeChar[player]["notes"][noteName], "pos" : I};
+            let note = {"desc": window.wholeChar[player]["notes"][noteName], "pos" : I};
             I++;
             setDoc(`playerChar/${player}/notes/${noteName}`, note);
         }
@@ -1250,16 +1250,16 @@ function backupFavorites()
 {
     let classes = ["Artificer", "Barbarian", "Bard", "Cleric", "Druid", "Fighter", "Monk", "Paladin", "Ranger", "Rogue", "Sorcerer", "Warlock", "Wizard", "Infused Abilities"];
 
-    for(let player of Object.keys(wholeChar))
+    for(let player of Object.keys(window.wholeChar))
     {
-        let favoriteSpells = wholeChar[player]["favorites"]["spells"];
-        let favoriteActions = wholeChar[player]["favorites"]["actions"];
+        let favoriteSpells = window.wholeChar[player]["favorites"]["spells"];
+        let favoriteActions = window.wholeChar[player]["favorites"]["actions"];
 
         for(let spellLv of Object.keys(favoriteSpells))
         {
             for(let spell of Object.keys(favoriteSpells[spellLv]))
             {
-                if(spell != "hold"){wholeSpells[spellLv][spell] = favoriteSpells[spellLv][spell]};
+                if(spell != "hold"){window.wholeSpells[spellLv][spell] = favoriteSpells[spellLv][spell]};
             }
         }
 
@@ -1271,22 +1271,22 @@ function backupFavorites()
                 {
                     if(!classes.includes(tag))
                     {
-                        wholeActions["Misc"][action] = favoriteActions[tag][action];
+                        window.wholeActions["Misc"][action] = favoriteActions[tag][action];
                     }
     
-                    else{wholeActions[tag][action] = favoriteActions[tag][action];}
+                    else{window.wholeActions[tag][action] = favoriteActions[tag][action];}
                 }
             }
         }
     }
 
-    let dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(wholeSpells));
+    let dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(window.wholeSpells));
     let dlAnchorElem = document.createElement('a');
     dlAnchorElem.setAttribute("href",     dataStr     );
     dlAnchorElem.setAttribute("download", "spells.json");
     dlAnchorElem.click();
 
-    dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(wholeActions));
+    dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(window.wholeActions));
     dlAnchorElem = document.createElement('a');
     dlAnchorElem.setAttribute("href",     dataStr     );
     dlAnchorElem.setAttribute("download", "actions.json");
@@ -1345,11 +1345,11 @@ function addToken()
     let ac = document.getElementById("ac").value;
     let id = n.slice(0, n.indexOf("-"));
     
-    if(Object.keys(wholeDB).includes(id) && mode == "add")
+    if(Object.keys(window.wholeDB).includes(id) && mode == "add")
     {
         id = id + "1";
 
-        while(Object.keys(wholeDB).includes(id))
+        while(Object.keys(window.wholeDB).includes(id))
         {
             id = id.slice(0, id.length - 1) + (parseInt(id.charAt(id.length - 1)) + 1);
         }
