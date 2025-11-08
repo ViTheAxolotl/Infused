@@ -3,6 +3,43 @@
 import { ref, onValue } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js';
 import { toTitleCase, database, createCard, setDoc, deleteDoc, placeBefore, createLabel, clenseInput, reload, setMapValue, quickAction, setQuickAction, skillDecrypt} from './viMethods.js';
 
+let map = setMapValue();
+let currentPos;
+let currentCharacter;
+let playerName = document.getElementById("name");
+let key;
+let keyControl;
+let arrows = [];
+let currentHp = document.getElementById("current");
+let maxHp = document.getElementById("max");
+let tempHp = document.getElementById("temp");
+let buttons;
+let player = window.player;
+let bounds;
+let firstRun = true;
+let firstMenu;
+let secondMenu;
+let spellBtn;
+let rollDiceBtn;
+let actionBtn;
+let wholeRoles = {};
+let currentLv;
+let spellLevel;
+let curClass;
+let searchBar = document.getElementsByName("search");
+let upper = document.getElementById("cards");
+let favorite = false;
+let db;
+let lastSpell;
+let lastAbility;
+let changeTokenBtn;
+let currentAction;
+let zoomLevel = 100;
+let grid = document.getElementById("grid");
+let discription;
+let currentToken;
+let favoriteRef;
+
 export function setWholeInteractive(data)
 { 
     if(!firstRun)
@@ -66,43 +103,6 @@ export function setWholeQuests(data)
         }
     }
 }
-
-let map = setMapValue();
-let currentPos;
-let currentCharacter;
-let playerName = document.getElementById("name");
-let key;
-let keyControl;
-let arrows = [];
-let currentHp = document.getElementById("current");
-let maxHp = document.getElementById("max");
-let tempHp = document.getElementById("temp");
-let buttons;
-let player = window.player;
-let bounds;
-let firstRun = true;
-let firstMenu;
-let secondMenu;
-let spellBtn;
-let rollDiceBtn;
-let actionBtn;
-let wholeRoles = {};
-let currentLv;
-let spellLevel;
-let curClass;
-let searchBar = document.getElementsByName("search");
-let upper = document.getElementById("cards");
-let favorite = false;
-let db;
-let lastSpell;
-let lastAbility;
-let changeTokenBtn;
-let currentAction;
-let zoomLevel = 100;
-let grid = document.getElementById("grid");
-let discription;
-let currentToken;
-let favoriteRef;
 
 /**
  * Runs when JS opens

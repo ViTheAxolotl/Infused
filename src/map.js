@@ -4,6 +4,30 @@ import { ref, onValue } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
 import { toTitleCase, auth, database, setDoc, deleteDoc, returnHpImage, setMapValue, placeBefore, quickAction, setQuickAction, wait, getRandomItem } from '../js/viMethods.js';
 
+let map = setMapValue();
+let div = document.getElementById("gridMap");
+let html = {};
+const gridMap = document.querySelector("#gridMap"); //gridMap
+const rect = gridMap.getBoundingClientRect();
+let tokens = [];
+let currentHp = document.getElementById("current");
+let maxHp = document.getElementById("max");
+let tempHp = document.getElementById("temp");
+let AC = document.getElementById("AC");
+let titleTxt = document.getElementById("title");
+let offSet;
+let divTO = document.getElementById("turnOrder");
+let isSummonOn;
+let player = window.player;
+let firstRun = true;
+let currentTurn;
+let mode = "";
+let modeRef;
+let mouseDown = false;
+let startX, scrollLeft;
+let startY, scrollUp;
+let slider = gridMap;
+
 export function setMode(auth)
 {
     setDoc(`playerChar/${player}/mode`, "waiting");
@@ -39,30 +63,6 @@ export function setWholeBubbles(data)
         addBubbles(window.wholeBubbles[bubble]);
     }
 }
-
-let map = setMapValue();
-let div = document.getElementById("gridMap");
-let html = {};
-const gridMap = document.querySelector("#gridMap"); //gridMap
-const rect = gridMap.getBoundingClientRect();
-let tokens = [];
-let currentHp = document.getElementById("current");
-let maxHp = document.getElementById("max");
-let tempHp = document.getElementById("temp");
-let AC = document.getElementById("AC");
-let titleTxt = document.getElementById("title");
-let offSet;
-let divTO = document.getElementById("turnOrder");
-let isSummonOn;
-let player = window.player;
-let firstRun = true;
-let currentTurn;
-let mode = "";
-let modeRef;
-let mouseDown = false;
-let startX, scrollLeft;
-let startY, scrollUp;
-let slider = gridMap;
 
 function init()
 {
