@@ -1,7 +1,6 @@
 "use strict";
 import { toTitleCase, setDoc, statFormat, skillDecrypt, reload, deleteDoc } from './viMethods.js';
 
-let player = window.top.parent.player;
 let stats;
 let firstRun = true;
 
@@ -17,34 +16,34 @@ function init()
 
     for(let stat of stats)
     {
-        if(window.top.parent.wholeChar[player]["stats"][stat.id] || window.top.parent.wholeChar[player]["stats"][stat.id] == "")
+        if(window.top.parent.wholeChar[window.top.parent.player]["stats"][stat.id] || window.top.parent.wholeChar[window.top.parent.player]["stats"][stat.id] == "")
         {
-            if(!window.top.parent.wholeChar[player]["stats"][stat.id]){setDoc(`window.top.parent.wholeChar/${player}/stats/${stat.id}`, "");}
-            if(typeof window.top.parent.wholeChar[player]["stats"][stat.id] == "string")
+            if(!window.top.parent.wholeChar[window.top.parent.player]["stats"][stat.id]){setDoc(`window.top.parent.wholeChar/${window.top.parent.player}/stats/${stat.id}`, "");}
+            if(typeof window.top.parent.wholeChar[window.top.parent.player]["stats"][stat.id] == "string")
             {
-                if(stat.id == "spellBonus"){let bonus = statFormat(parseInt(window.top.parent.wholeChar[player]["stats"][window.top.parent.wholeChar[player]["stats"]["spellAbility"]]) + parseInt(window.top.parent.wholeChar[player]["stats"]["proficiency"])); stat.innerHTML = bonus; setDoc(`playerChar/${player}/stats/spellBonus`, bonus);}
-                else if(stat.id == "spellDC"){let dc = statFormat(parseInt(window.top.parent.wholeChar[player]["stats"][window.top.parent.wholeChar[player]["stats"]["spellAbility"]]) + parseInt(window.top.parent.wholeChar[player]["stats"]["proficiency"]) + 8); stat.innerHTML = dc; setDoc(`playerChar/${player}/stats/spellDC`, dc);}
-                else if(stat.id == "proficiency"){let prof = statFormat(Math.ceil(parseInt(window.top.parent.wholeChar[player]["stats"]["lv"])/4)+1); setDoc(`playerChar/${player}/stats/proficiency`, prof); stat.innerHTML = prof;}
-                else if(stat.id == "name"){stat.innerHTML = player;}
-                else if(stat.id == "totalHitDice"){for(let i = 0; i < stat.length; i++){stat[i].innerHTML = `${window.top.parent.wholeChar[player]["stats"]["lv"]}${stat[i].value}`; stat.value = window.top.parent.wholeChar[player]["stats"][stat.id];}}
-                else if(stat.id == "currentHitDice"){let max = window.top.parent.wholeChar[player]["stats"]["totalHitDice"]; stat.innerHTML = ""; for(let i = parseInt(window.top.parent.wholeChar[player]["stats"]["lv"]); i >= 0; i--){let option = document.createElement("option"); option.innerHTML = `${i}${max}`; option.value = `${i}`; stat.appendChild(option);} stat.value = window.top.parent.wholeChar[player]["stats"][stat.id];}
+                if(stat.id == "spellBonus"){let bonus = statFormat(parseInt(window.top.parent.wholeChar[window.top.parent.player]["stats"][window.top.parent.wholeChar[window.top.parent.player]["stats"]["spellAbility"]]) + parseInt(window.top.parent.wholeChar[window.top.parent.player]["stats"]["proficiency"])); stat.innerHTML = bonus; setDoc(`playerChar/${window.top.parent.player}/stats/spellBonus`, bonus);}
+                else if(stat.id == "spellDC"){let dc = statFormat(parseInt(window.top.parent.wholeChar[window.top.parent.player]["stats"][window.top.parent.wholeChar[window.top.parent.player]["stats"]["spellAbility"]]) + parseInt(window.top.parent.wholeChar[window.top.parent.player]["stats"]["proficiency"]) + 8); stat.innerHTML = dc; setDoc(`playerChar/${window.top.parent.player}/stats/spellDC`, dc);}
+                else if(stat.id == "proficiency"){let prof = statFormat(Math.ceil(parseInt(window.top.parent.wholeChar[window.top.parent.player]["stats"]["lv"])/4)+1); setDoc(`playerChar/${window.top.parent.player}/stats/proficiency`, prof); stat.innerHTML = prof;}
+                else if(stat.id == "name"){stat.innerHTML = window.top.parent.player;}
+                else if(stat.id == "totalHitDice"){for(let i = 0; i < stat.length; i++){stat[i].innerHTML = `${window.top.parent.wholeChar[window.top.parent.player]["stats"]["lv"]}${stat[i].value}`; stat.value = window.top.parent.wholeChar[window.top.parent.player]["stats"][stat.id];}}
+                else if(stat.id == "currentHitDice"){let max = window.top.parent.wholeChar[window.top.parent.player]["stats"]["totalHitDice"]; stat.innerHTML = ""; for(let i = parseInt(window.top.parent.wholeChar[window.top.parent.player]["stats"]["lv"]); i >= 0; i--){let option = document.createElement("option"); option.innerHTML = `${i}${max}`; option.value = `${i}`; stat.appendChild(option);} stat.value = window.top.parent.wholeChar[window.top.parent.player]["stats"][stat.id];}
                 else if(stat.id.includes("Save")){continue;}
-                else if(["spellAbility", "lv"].includes(stat.id)){stat.value = window.top.parent.wholeChar[player]["stats"][stat.id];}
-                else if(stat.value == ""){stat.value = window.top.parent.wholeChar[player]["stats"][stat.id]; if(!["profAndLang", "infusion", "feats", "equipment", "apperance", "characterBackstory", "ally1", "ally2", "additionalFeat&Traits", "treasure"].includes(stat.id)){stat.style.minWidth = stat.value.length + 2 + "ch";}}
-                else{stat.innerHTML = window.top.parent.wholeChar[player]["stats"][stat.id];}
+                else if(["spellAbility", "lv"].includes(stat.id)){stat.value = window.top.parent.wholeChar[window.top.parent.player]["stats"][stat.id];}
+                else if(stat.value == ""){stat.value = window.top.parent.wholeChar[window.top.parent.player]["stats"][stat.id]; if(!["profAndLang", "infusion", "feats", "equipment", "apperance", "characterBackstory", "ally1", "ally2", "additionalFeat&Traits", "treasure"].includes(stat.id)){stat.style.minWidth = stat.value.length + 2 + "ch";}}
+                else{stat.innerHTML = window.top.parent.wholeChar[window.top.parent.player]["stats"][stat.id];}
             }
 
             else
             {
-                stat.checked = window.top.parent.wholeChar[player]["stats"][stat.id];
+                stat.checked = window.top.parent.wholeChar[window.top.parent.player]["stats"][stat.id];
                 setStats(stat);
             }
         }
 
         else
         {
-            if(stat.id.includes("-btn") && !stat.id.includes("lvl")){setDoc(`playerChar/${player}/stats/${stat.id}`, false); }
-            else{setDoc(`playerChar/${player}/stats/${stat.id}`, "");}
+            if(stat.id.includes("-btn") && !stat.id.includes("lvl")){setDoc(`playerChar/${window.top.parent.player}/stats/${stat.id}`, false); }
+            else{setDoc(`playerChar/${window.top.parent.player}/stats/${stat.id}`, "");}
             setStats(stat);
         }
 
@@ -75,7 +74,7 @@ function setStats(stat)
         if(stat.id.includes("Save-btn"))
         {
             skill = stat.id.slice(0, stat.id.length-8);
-            modifier = window.top.parent.wholeChar[player]["stats"][skill];
+            modifier = window.top.parent.wholeChar[window.top.parent.player]["stats"][skill];
             display = document.getElementById(skill + "Save");
             exper = skill + "Save";
         }
@@ -84,27 +83,27 @@ function setStats(stat)
         {
             skill = stat.id.slice(0, stat.id.length-4);
             let base6 = skillDecrypt[skill];
-            modifier = window.top.parent.wholeChar[player]["stats"][base6];
+            modifier = window.top.parent.wholeChar[window.top.parent.player]["stats"][base6];
             display = document.getElementById(skill);
             exper = skill;
         }
 
         if(stat.checked)
         {
-            modifier = parseInt(modifier) + parseInt(window.top.parent.wholeChar[player]["stats"]["proficiency"]);
+            modifier = parseInt(modifier) + parseInt(window.top.parent.wholeChar[window.top.parent.player]["stats"]["proficiency"]);
 
-            if(window.top.parent.wholeChar[player]["stats"][`${exper}-expertise`]){modifier += parseInt(window.top.parent.wholeChar[player]["stats"]["proficiency"]);}
+            if(window.top.parent.wholeChar[window.top.parent.player]["stats"][`${exper}-expertise`]){modifier += parseInt(window.top.parent.wholeChar[window.top.parent.player]["stats"]["proficiency"]);}
         }
         
-        else if(!stat.checked && window.top.parent.wholeChar[player]["stats"]["class"] == "Bard")
+        else if(!stat.checked && window.top.parent.wholeChar[window.top.parent.player]["stats"]["class"] == "Bard")
         {
-            modifier = parseInt(modifier) + Math.floor(parseInt(window.top.parent.wholeChar[player]["stats"]["proficiency"]) / 2);
+            modifier = parseInt(modifier) + Math.floor(parseInt(window.top.parent.wholeChar[window.top.parent.player]["stats"]["proficiency"]) / 2);
         }
 
         modifier = statFormat(modifier);
-        setDoc(`playerChar/${player}/stats/${stat.id.slice(0, stat.id.length-4)}`, modifier);
+        setDoc(`playerChar/${window.top.parent.player}/stats/${stat.id.slice(0, stat.id.length-4)}`, modifier);
         display.innerHTML = toTitleCase(skill + ": " + modifier);
-        if(window.top.parent.wholeChar[player]["stats"][`${exper}-expertise`]){display.innerHTML += " <strong>(Expertise)</strong>"}
+        if(window.top.parent.wholeChar[window.top.parent.player]["stats"][`${exper}-expertise`]){display.innerHTML += " <strong>(Expertise)</strong>"}
     }
 }
 
@@ -115,14 +114,14 @@ function handleExpertise()
 
     if(button.checked)
     {
-        if(window.top.parent.wholeChar[player]["stats"][`${stat}-expertise`])
+        if(window.top.parent.wholeChar[window.top.parent.player]["stats"][`${stat}-expertise`])
         {
-            deleteDoc(`playerChar/${player}/stats/${stat}-expertise`);
+            deleteDoc(`playerChar/${window.top.parent.player}/stats/${stat}-expertise`);
         }
 
         else
         {
-            setDoc(`playerChar/${player}/stats/${stat}-expertise`, true);
+            setDoc(`playerChar/${window.top.parent.player}/stats/${stat}-expertise`, true);
         }
 
         setTimeout(init, 1000);
@@ -164,7 +163,7 @@ function updateStat()
         smaller = (full - 10) / 2;
         smaller = statFormat(Math.floor(smaller));
         ref.innerHTML = smaller;
-        setDoc(`playerChar/${player}/stats/${this.id.slice(0, this.id.length-4)}`, smaller);
+        setDoc(`playerChar/${window.top.parent.player}/stats/${this.id.slice(0, this.id.length-4)}`, smaller);
         setTimeout(init, 1000);
     }
 
@@ -172,8 +171,8 @@ function updateStat()
 
     else if(["AC", "currentHp", "maxHp", "tempHp"].includes(this.id))
     {
-        setDoc(`playerChar/${player}/token/${this.id}`, setTo);
-        setDoc(`currentMap/${player}/${this.id}`, setTo);
+        setDoc(`playerChar/${window.top.parent.player}/token/${this.id}`, setTo);
+        setDoc(`currentMap/${window.top.parent.player}/${this.id}`, setTo);
         this.style.minWidth = this.value.length + 2 + "ch";
     }
 
@@ -182,7 +181,7 @@ function updateStat()
         if(!["profAndLang", "infusion", "feats", "equipment", "apperance", "characterBackstory", "ally1", "ally2", "additionalFeat&Traits", "treasure"].includes(this.id)){this.style.minWidth = this.value.length + 2 + "ch";}
     }
 
-    setDoc(`playerChar/${player}/stats/${this.id}`, setTo);
+    setDoc(`playerChar/${window.top.parent.player}/stats/${this.id}`, setTo);
 
     if(this.id.includes("lvl") || this.id.includes("can"))
     {

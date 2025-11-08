@@ -18,7 +18,6 @@ let titleTxt = document.getElementById("title");
 let offSet;
 let divTO = document.getElementById("turnOrder");
 let isSummonOn;
-let player = window.player;
 let firstRun = true;
 let currentTurn;
 let mode = "";
@@ -30,9 +29,9 @@ let slider = gridMap;
 
 export function setMode(auth)
 {
-    setDoc(`playerChar/${player}/mode`, "waiting");
+    setDoc(`playerChar/${window.player}/mode`, "waiting");
     
-    modeRef = ref(database, `playerChar/${player}/mode`);
+    modeRef = ref(database, `playerChar/${window.player}/mode`);
     onValue(modeRef, (snapshot) => 
     {
         const data = snapshot.val();
@@ -200,7 +199,7 @@ function addTokens()
         else{addCharacter(window.wholeDB[key], false);}     
     }
 
-    if(player == "Vi")
+    if(window.player == "Vi")
     {
         if(isSummonOn && !(Object.keys(window.wholeDB).includes("sky")) && window.wholeSummons["sky"] != undefined)
         {
@@ -208,7 +207,7 @@ function addTokens()
         }
     }
 
-    if(!(Object.keys(window.wholeDB).includes(window.wholeChar[player]["token"]["id"])))
+    if(!(Object.keys(window.wholeDB).includes(window.wholeChar[window.player]["token"]["id"])))
     {
         if(window.wholeDB["spawnPoint"])
         {
@@ -220,11 +219,11 @@ function addTokens()
             diffrenceX = getRandomItem(negOrPos) * getRandomItem(differential);
             diffrenceY = getRandomItem(negOrPos) * getRandomItem(differential);
 
-            window.wholeChar[player]["token"]["xPos"] = `${parseInt(window.wholeDB["spawnPoint"]["xPos"]) + diffrenceX}`;
-            window.wholeChar[player]["token"]["yPos"] = `${parseInt(window.wholeDB["spawnPoint"]["yPos"]) + diffrenceY}`;
+            window.wholeChar[window.player]["token"]["xPos"] = `${parseInt(window.wholeDB["spawnPoint"]["xPos"]) + diffrenceX}`;
+            window.wholeChar[window.player]["token"]["yPos"] = `${parseInt(window.wholeDB["spawnPoint"]["yPos"]) + diffrenceY}`;
         }
 
-        setDoc(`currentMap/${window.wholeChar[player]["token"]["id"]}`, window.wholeChar[player]["token"]);
+        setDoc(`currentMap/${window.wholeChar[window.player]["token"]["id"]}`, window.wholeChar[window.player]["token"]);
 
         if(isSummonOn)
         {
@@ -235,7 +234,7 @@ function addTokens()
                     let user = window.wholeSummons[key]["title"].replaceAll(" ", "").slice(window.wholeSummons[key]["title"].indexOf(":") + 1).split(",");
                     user = toTitleCase(user[0]);
 
-                    if(window.wholeChar[player]["charName"] == user)
+                    if(window.wholeChar[window.player]["charName"] == user)
                     {
                         if(window.wholeDB["spawnPoint"])
                         {
@@ -249,7 +248,7 @@ function addTokens()
             }
         }
 
-        setDoc(`playerChar/${player}/currentToken`, window.wholeChar[player]["token"]["id"]);
+        setDoc(`playerChar/${window.player}/currentToken`, window.wholeChar[window.player]["token"]["id"]);
         location.reload();
     }
 }
@@ -435,7 +434,7 @@ function addCharacter(character, update)
         char[1].title = `${character["id"]}:${character["title"]}`;
     }
 
-    if(window.wholeChar[player]["currentToken"] == character["id"])
+    if(window.wholeChar[window.player]["currentToken"] == character["id"])
     {
         if(currentHp.value == "" && title.innerHTML == "Status: ")
         {
@@ -556,7 +555,7 @@ function addCharacter(character, update)
 
         if(title.includes("Invisible"))
         {
-            if(window.wholeChar[player]["token"]["id"] != character["id"])
+            if(window.wholeChar[window.player]["token"]["id"] != character["id"])
             {
                 for(let image of char)
                 {
@@ -579,7 +578,7 @@ function addCharacter(character, update)
             let name = titleTxt.innerHTML.replaceAll(" ", "").slice(titleTxt.innerHTML.indexOf(":") + 1).split(",");
             let compName = title.replaceAll(" ", "").slice(title.indexOf(":") + 1).split(",");
 
-            if(!(name.includes(compName[0]) && compName[0] != "" || player == "Vi"))
+            if(!(name.includes(compName[0]) && compName[0] != "" || window.player == "Vi"))
             {
                 for(let image of char)
                 {
@@ -764,15 +763,15 @@ function handleCharClick()
     switch(mode)
     {
         case "waiting":
-            if(player == "Vi" && !event.ctrlKey)
+            if(window.player == "Vi" && !event.ctrlKey)
             {
-                setDoc(`playerChar/${player}/currentToken`, this.classList[1]);
+                setDoc(`playerChar/${window.player}/currentToken`, this.classList[1]);
                 location.reload();
             }
         
             else if(name.includes(compName[0]) && compName[0] != "")
             {
-                setDoc(`playerChar/${player}/currentToken`, this.classList[1]);
+                setDoc(`playerChar/${window.player}/currentToken`, this.classList[1]);
                 location.reload();
             }
         

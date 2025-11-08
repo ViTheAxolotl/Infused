@@ -14,7 +14,6 @@ let currentHp = document.getElementById("current");
 let maxHp = document.getElementById("max");
 let tempHp = document.getElementById("temp");
 let buttons;
-let player = window.player;
 let bounds;
 let firstRun = true;
 let firstMenu;
@@ -51,7 +50,7 @@ export function setWholeInteractive(data)
 export function setWholeCharCont(data)
 {
     let infusedRate = document.getElementById("infusionRate");
-    infusedRate.innerHTML = `${infusedRate.title} ${data[player]["stats"]["InfusedRate"]}%`;
+    infusedRate.innerHTML = `${infusedRate.title} ${data[window.player]["stats"]["InfusedRate"]}%`;
 
     if(firstRun) //The first time it loads
     {
@@ -59,7 +58,7 @@ export function setWholeCharCont(data)
         init();
     }
 
-    if(window.wholeChar[player]["bardicInspo"])
+    if(window.wholeChar[window.player]["bardicInspo"])
     {
         let inspo = document.getElementById("inspo");
         inspo.style.display = "block";
@@ -73,19 +72,19 @@ export function setWholeCharCont(data)
         inspo.innerHTML = `${inspo.title} 0`;
     }
 
-    if(window.wholeChar[player]["zoomLevel"])
+    if(window.wholeChar[window.player]["zoomLevel"])
     {
-        zoomLevel = window.wholeChar[player]["zoomLevel"];
+        zoomLevel = window.wholeChar[window.player]["zoomLevel"];
         document.getElementById("gridMap").style.zoom = `${zoomLevel}%`;
     }
 
-    if(window.wholeChar[player]["zoomSheetLevel"])
+    if(window.wholeChar[window.player]["zoomSheetLevel"])
     {
         //document.getElementById("statSheet").style.zoom = `${window.wholeChar[player]["zoomSheetLevel"]}%`;
-        document.getElementById("statSheet").style.transform = `scale(${window.wholeChar[player]["zoomSheetLevel"]/100})`;
-        document.getElementById("statSheet").style.width = `${100/(window.wholeChar[player]["zoomSheetLevel"]/100)}%`;
-        document.getElementById("statSheet").style.marginBottom = `${((window.wholeChar[player]["zoomSheetLevel"]/100)-1)*70*9.4}px`;
-        document.getElementById("statSheet").style.height = `${((100/window.wholeChar[player]["zoomSheetLevel"]))*50+40}vh`;
+        document.getElementById("statSheet").style.transform = `scale(${window.wholeChar[window.player]["zoomSheetLevel"]/100})`;
+        document.getElementById("statSheet").style.width = `${100/(window.wholeChar[window.player]["zoomSheetLevel"]/100)}%`;
+        document.getElementById("statSheet").style.marginBottom = `${((window.wholeChar[window.player]["zoomSheetLevel"]/100)-1)*70*9.4}px`;
+        document.getElementById("statSheet").style.height = `${((100/window.wholeChar[window.player]["zoomSheetLevel"]))*50+40}vh`;
     }
 }
 
@@ -116,7 +115,7 @@ function init()
     
     currentHp.onchange = updateHp;
     tempHp.onchange = tempHpUpdate;
-    maxHp.innerHTML = "/ " + window.wholeChar[player]["stats"]["maxHp"];
+    maxHp.innerHTML = "/ " + window.wholeChar[window.player]["stats"]["maxHp"];
     searchBar[0].onchange = handleSearch;
 
     for(let arrow of arrows)
@@ -128,8 +127,8 @@ function init()
     document.addEventListener("keydown", (ev) => {key = ev.key.slice(ev.key.indexOf("w") + 1).toLowerCase(); keyControl = ev; let keyValues = ["left", "right", "down", "up"]; if(keyValues.includes(key) && ev.ctrlKey) {handleArrow();}}); //If control is held down and an arrow
     setMainVaribles();
     grid.onclick = function(e){handleGridClick(e);};
-    currentLv = window.wholeChar[player]["stats"]["lv"] + "th level";
-    currentToken = window.wholeChar[player]["currentToken"];
+    currentLv = window.wholeChar[window.player]["stats"]["lv"] + "th level";
+    currentToken = window.wholeChar[window.player]["currentToken"];
 
     for(let diceSelect of document.getElementsByClassName("diceSelect")){diceSelect.onclick = handleDiceSelect;}
     document.getElementById("questCard").onclick = handleLoadQuests;
@@ -143,8 +142,8 @@ function setMainVaribles()
     changeTokenBtn = document.getElementById("changeTokenBtn");
     changeTokenBtn.onclick = handleChangeToken;
     buttons = document.getElementsByClassName("inOrDe");
-    playerName.innerHTML = toTitleCase(window.wholeChar[player]["currentToken"]);
-    currentCharacter = document.getElementsByClassName(window.wholeChar[player]["currentToken"]);
+    playerName.innerHTML = toTitleCase(window.wholeChar[window.player]["currentToken"]);
+    currentCharacter = document.getElementsByClassName(window.wholeChar[window.player]["currentToken"]);
     let hiddenVi = document.getElementsByClassName("isVi");
     firstMenu = document.getElementsByClassName("firstMenu");
     for(let fButton of firstMenu){fButton.onclick = handleChangeFirstDisplay;} //for each of the first row
@@ -157,7 +156,7 @@ function setMainVaribles()
     rollDiceBtn = document.getElementById("rollDice").onclick = handleDiceRoll;
     document.getElementById("quickAction").onclick = handleQuickAction;
 
-    if(player != "Vi") //If player isn't me
+    if(window.player != "Vi") //If player isn't me
     {
         for(let elem of hiddenVi) //Hides the controls to change turn order
         {
@@ -216,7 +215,7 @@ function sendMessageToDisplay(message)
 
 function handleGridClick(e)
 {
-    let bubbleDB = {id : `${player}-bubble`, x : (e.offsetX * (100/zoomLevel) - map.bubble), y : (e.offsetY * (100/zoomLevel) - map.bubble), size : 1, src : imgs["borders"][window.wholeDB[window.wholeChar[player]["currentToken"]].border]};
+    let bubbleDB = {id : `${window.player}-bubble`, x : (e.offsetX * (100/zoomLevel) - map.bubble), y : (e.offsetY * (100/zoomLevel) - map.bubble), size : 1, src : imgs["borders"][window.wholeDB[window.wholeChar[window.player]["currentToken"]].border]};
     if(bubbleDB.src.includes("invisible")){bubbleDB.src = imgs["borders"]["blue"];}
     setDoc(`bubbles/${bubbleDB.id}`, bubbleDB);
 }
@@ -276,7 +275,7 @@ function diceRoller(amount, dice, modifier, ifName)
     let viewMod = `${modifier}`;
     if(modifier >= 0 && !viewMod.includes("+")){viewMod = "+" + modifier;} //Adds the + if the modifier is positive
     let message = ""; 
-    if(ifName == "discord"){message = `${player} rolled `;} //Creates the message for discord
+    if(ifName == "discord"){message = `${window.player} rolled `;} //Creates the message for discord
     message += ` *${amount}d${dice}${viewMod}* : *(`;
     
     for(let roll of rolls) //For each die that was rolled
@@ -292,7 +291,7 @@ function diceRoller(amount, dice, modifier, ifName)
     
     let finalResult = sum + parseInt(modifier); //Adds the sum and modifier
     
-    if(window.wholeChar[player]["bardicInspo"] && dice == "20")
+    if(window.wholeChar[window.player]["bardicInspo"] && dice == "20")
     {
         inspo = confirm(`You have rolled a ${finalResult} on your d20. You do have a Bardic Inspiration Die, would you like to roll it and add it to the total?`);
     }
@@ -303,7 +302,7 @@ function diceRoller(amount, dice, modifier, ifName)
 
         finalResult += parseInt(iDice);
         message += `)${viewMod}+${iDice} (Inspiration)=* **${finalResult}** `;
-        deleteDoc(`playerChar/${player}/bardicInspo`);
+        deleteDoc(`playerChar/${window.player}/bardicInspo`);
 
         let vis = document.getElementById("inspo");
         vis.style.display = "none";
@@ -351,12 +350,12 @@ function handleDiceRoll()
 
                 if(roll <= dc)
                 {
-                    sendDiscordMessage(`${player} has failed their infusion save, with a roll of ${roll}, needed at least ${dc}.`);
+                    sendDiscordMessage(`${window.player} has failed their infusion save, with a roll of ${roll}, needed at least ${dc}.`);
                 }
 
                 else
                 {
-                    sendDiscordMessage(`${player} has succeeded their infusion save, with a roll of ${roll}, got above ${dc}.`);
+                    sendDiscordMessage(`${window.player} has succeeded their infusion save, with a roll of ${roll}, got above ${dc}.`);
                 }
                 break;
             }
@@ -414,7 +413,7 @@ function handleChangeFirstDisplay()
 function handleFavoriteSelect()
 {
     favorite = true;
-    favoriteRef = ref(database, `playerChar/${player}/favorites/`); //Connects the the favorites database
+    favoriteRef = ref(database, `playerChar/${window.player}/favorites/`); //Connects the the favorites database
     onValue(favoriteRef, (snapshot) => 
     { //Every time something changes in the database
         const data = snapshot.val();
@@ -528,7 +527,7 @@ function tempHpUpdate()
 
     setDoc(`currentMap/${currentCharacter[0].classList[1]}/tempHp`, tempHp.value);
 
-    if(player == currentCharacter[0].classList[1]){setDoc(`playerChar/${player}/token/tempHp`, tempHp.value);}
+    if(window.player == currentCharacter[0].classList[1]){setDoc(`playerChar/${window.player}/token/tempHp`, tempHp.value);}
     if(window.wholeDB[currentCharacter[0].classList[1]]["isSummon"]){setDoc(`playerChar/Vi/summons/${currentCharacter[0].classList[1]}/tempHp`, tempHp.value);}
 }
 
@@ -583,7 +582,7 @@ function changeValue()
             break; 
 
         case "zoom":
-            let zoomLevel = 100; if(window.wholeChar[player]["zoomLevel"]){zoomLevel = window.wholeChar[player]["zoomLevel"];}
+            let zoomLevel = 100; if(window.wholeChar[window.player]["zoomLevel"]){zoomLevel = window.wholeChar[window.player]["zoomLevel"];}
             if(modifier == "+") //If plus button is 
             {
                 if(zoomLevel < 170){zoomLevel += 10;}
@@ -595,11 +594,11 @@ function changeValue()
                 if (zoomLevel < 70){zoomLevel = 70;}
             }
 
-            setDoc(`playerChar/${player}/zoomLevel`, zoomLevel);
+            setDoc(`playerChar/${window.player}/zoomLevel`, zoomLevel);
             break;
 
         case "zoomSheet":
-            let zoomSheetLevel = 100; if(window.wholeChar[player]["zoomSheetLevel"]){zoomSheetLevel = window.wholeChar[player]["zoomSheetLevel"];}
+            let zoomSheetLevel = 100; if(window.wholeChar[window.player]["zoomSheetLevel"]){zoomSheetLevel = window.wholeChar[window.player]["zoomSheetLevel"];}
             if(modifier == "+") //If plus button is 
             {
                 if(zoomSheetLevel < 100){zoomSheetLevel += 10;}
@@ -611,7 +610,7 @@ function changeValue()
                 if (zoomSheetLevel < 30){zoomSheetLevel = 30;}
             }
 
-            setDoc(`playerChar/${player}/zoomSheetLevel`, zoomSheetLevel);
+            setDoc(`playerChar/${window.player}/zoomSheetLevel`, zoomSheetLevel);
             break;
         
         case "title":
@@ -630,7 +629,7 @@ function changeValue()
 
             title = title.innerHTML.slice(title.innerHTML.indexOf(": ") + 2).trim();
             setDoc(`currentMap/${currentToken}/title`, title);
-            if(currentToken == player){setDoc(`playerChar/${player}/token/title`, title);}
+            if(currentToken == window.player){setDoc(`playerChar/${window.player}/token/title`, title);}
             if(window.wholeDB[currentCharacter[0].classList[1]]["isSummon"]){setDoc(`playerChar/Vi/summons/${currentCharacter[0].classList[1]}/title`, title);}
             break;
         
@@ -733,10 +732,10 @@ function moveChar(xPos, yPos)
     setDoc(`currentMap/${currentCharacter[0].classList[1]}/xPos`, x);
     setDoc(`currentMap/${currentCharacter[0].classList[1]}/yPos`, y);
 
-    if(currentCharacter[0].classList[1] == player)
+    if(currentCharacter[0].classList[1] == window.player)
     {
-        setDoc(`playerChar/${player}/token/xPos`, x);
-        setDoc(`playerChar/${player}/token/yPos`, y);
+        setDoc(`playerChar/${window.player}/token/xPos`, x);
+        setDoc(`playerChar/${window.player}/token/yPos`, y);
     }
 
     if(window.wholeDB[currentCharacter[0].classList[1]]["isSummon"])
@@ -756,9 +755,9 @@ function updateHp()
 
     setDoc(`currentMap/${currentCharacter[0].classList[1]}/currentHp`, `${current.value}`);
 
-    if(currentCharacter[0].classList[1] == player)
+    if(currentCharacter[0].classList[1] == window.player)
     {
-        setDoc(`playerChar/${player}/token/currentHp`, `${current.value}`);
+        setDoc(`playerChar/${window.player}/token/currentHp`, `${current.value}`);
     }
 
     if(window.wholeDB[currentCharacter[0].classList[1]]["isSummon"]){setDoc(`playerChar/Vi/summons/${currentCharacter[0].classList[1]}/currentHp`, `${current.value}`);}
@@ -1144,9 +1143,9 @@ function handleCardClick()
                 let spellDisc = db[spellLevel][currentTitle]["description"];
                 if(favorite){spellDisc = window.wholeFavorite["spells"][spellLevel][currentTitle]["description"]}
 
-                if(window.wholeChar[player]["favorites"]["spells"][spellLevel])
+                if(window.wholeChar[window.player]["favorites"]["spells"][spellLevel])
                 {
-                    if(window.wholeChar[player]["favorites"]["spells"][spellLevel][currentTitle])
+                    if(window.wholeChar[window.player]["favorites"]["spells"][spellLevel][currentTitle])
                     {
                         favoriteBtn.setAttribute("src", "images/favorited.png");
                     }
@@ -1190,9 +1189,9 @@ function handleCardClick()
                 let abilityDisc = db[curClass][currentTitle]["description"];
                 if(favorite){abilityDisc = window.wholeFavorite["actions"][curClass][currentTitle]["description"];}
 
-                if(window.wholeChar[player]["favorites"]["actions"][curClass])
+                if(window.wholeChar[window.player]["favorites"]["actions"][curClass])
                 {
-                    if(window.wholeChar[player]["favorites"]["actions"][curClass][currentTitle])
+                    if(window.wholeChar[window.player]["favorites"]["actions"][curClass][currentTitle])
                     {
                         favoriteBtn.setAttribute("src", "images/favorited.png");
                     }
@@ -1236,7 +1235,7 @@ function handleCardClick()
             }
 
             optionDiv.appendChild(slotSelect);
-            if(window.wholeChar[player]["stats"]["class"].includes("Rogue")){optionDiv.appendChild(sneakSelect);}
+            if(window.wholeChar[window.player]["stats"]["class"].includes("Rogue")){optionDiv.appendChild(sneakSelect);}
             optionDiv.appendChild(castBtn);
             
             if(!quickAction)
@@ -1326,7 +1325,7 @@ function handleUseAction(targets)
         {
             stat = description.slice(description.indexOf("$")+1);
             stat = stat.slice(0, stat.indexOf("$"));
-            mod = parseInt(window.wholeChar[player]["stats"][stat]) + "";
+            mod = parseInt(window.wholeChar[window.player]["stats"][stat]) + "";
             description = description.replaceAll(`$${stat}$`, mod);
 
             if(!description.includes("$")){isDollar = false;}
@@ -1337,7 +1336,7 @@ function handleUseAction(targets)
     {
         if(description.includes("{@Choice"))
         {
-            display = `${window.wholeChar[player]["charName"]} cast:\n${lastUse} on `;
+            display = `${window.wholeChar[window.player]["charName"]} cast:\n${lastUse} on `;
             for(key in Object.keys(targets)){display += `${toTitleCase(targets[key].classList[1])}, `;}
             display = display.slice(0, display.length - 2);
             display += `\n${useInfo}`;
@@ -1376,9 +1375,9 @@ function handleUseAction(targets)
                 }
             }
 
-            setDoc(`playerChar/Vi/responses`, {"ability" : skill, "currentResponse" : lastUse, "toBeat" : toBeat, "castBy" : window.wholeChar[player]["charName"], "isSpell" : isSpell, "ind" : ind, "castUp" : castUp});
+            setDoc(`playerChar/Vi/responses`, {"ability" : skill, "currentResponse" : lastUse, "toBeat" : toBeat, "castBy" : window.wholeChar[window.player]["charName"], "isSpell" : isSpell, "ind" : ind, "castUp" : castUp});
 
-            display = `${toTitleCase(window.wholeChar[player]["currentToken"])} cast,\n${lastUse} on `;
+            display = `${toTitleCase(window.wholeChar[window.player]["currentToken"])} cast,\n${lastUse} on `;
             for(key in Object.keys(targets)){display += `${toTitleCase(targets[key].classList[1])}, `}
             display = display.slice(0, display.length - 2);
             display += `\n${useInfo}\nPlease roll ${skill}, DC: ${toBeat} or use the Response option under Misc...`;
@@ -1391,8 +1390,8 @@ function handleUseAction(targets)
             let wholeRespone = window.wholeChar["Vi"]["responses"];
             let usersRoll;
             let userAddTo;
-            if(window.wholeChar[player]["stats"][window.wholeRespone["ability"]]){userAddTo = window.wholeChar[player]["stats"][window.wholeRespone["ability"]];}
-            else{userAddTo = prompt(`The Current Response is to ${window.wholeRespone["currentResponse"]}, cast by ${window.wholeRespone["castBy"]}. This check is checking for ${window.wholeRespone["ability"]} stat. What is your Modifier? (+/-)`, window.wholeChar[player]["stats"][window.wholeRespone["ability"]]);}
+            if(window.wholeChar[window.player]["stats"][window.wholeRespone["ability"]]){userAddTo = window.wholeChar[window.player]["stats"][window.wholeRespone["ability"]];}
+            else{userAddTo = prompt(`The Current Response is to ${window.wholeRespone["currentResponse"]}, cast by ${window.wholeRespone["castBy"]}. This check is checking for ${window.wholeRespone["ability"]} stat. What is your Modifier? (+/-)`, window.wholeChar[window.player]["stats"][window.wholeRespone["ability"]]);}
             userAddTo = userAddTo.replaceAll(" ", "");
             let abilityDisc;
             let abilityName;
@@ -1408,7 +1407,7 @@ function handleUseAction(targets)
                 }
             }
             
-            setDoc(`playerChar/${player}/stats/${window.wholeRespone["ability"]}`, userAddTo);
+            setDoc(`playerChar/${window.player}/stats/${window.wholeRespone["ability"]}`, userAddTo);
             usersRoll = diceRoller("1", "20", userAddTo, "finalResult");
             ad_dis += " Rolling d12's instead, since they were hurt.";
 
@@ -1434,7 +1433,7 @@ function handleUseAction(targets)
             if(abilityDisc.includes("{@save "))
             {
                 let damage;
-                let token = window.wholeDB[window.wholeChar[player]["currentToken"]];
+                let token = window.wholeDB[window.wholeChar[window.player]["currentToken"]];
                 damage = splitRoll(abilityDisc, "@save");
                 if(abilityDisc.includes("{@scaledamage")){damage = splitRoll(window.wholeRespone["castUp"], "@save")}
                 else if(abilityDisc.includes(currentLv)){damage = splitRoll(abilityDisc.slice(`${abilityDisc.indexOf(currentLv)}`), "@save");}
@@ -1444,20 +1443,20 @@ function handleUseAction(targets)
                 {
                     if(abilityDisc.includes("half damage"))
                     {
-                        display = `${window.wholeChar[player]["charName"]} has succeded the ${window.wholeRespone["ability"]} check/save for ${window.wholeRespone["currentResponse"]}, (${parseInt(usersRoll) + (-1 * parseInt(userAddTo))} + ${userAddTo} = **${usersRoll}** ) taking half of the damage. (${damage} / 2) = **${parseInt(damage) / 2}** .`;
+                        display = `${window.wholeChar[window.player]["charName"]} has succeded the ${window.wholeRespone["ability"]} check/save for ${window.wholeRespone["currentResponse"]}, (${parseInt(usersRoll) + (-1 * parseInt(userAddTo))} + ${userAddTo} = **${usersRoll}** ) taking half of the damage. (${damage} / 2) = **${parseInt(damage) / 2}** .`;
                         if(parseInt(token.currentHp) - (parseInt(damage) / 2) > 0){token.currentHp = `${parseInt(token.currentHp) - (parseInt(damage) / 2)}`;}
                         else{token.currentHp = "0";}
                     }
 
                     else
                     {
-                        display = `${window.wholeChar[player]["charName"]} has succeded the ${window.wholeRespone["ability"]} check/save for ${window.wholeRespone["currentResponse"]}. With the roll of ${parseInt(usersRoll) + (-1 * parseInt(userAddTo))} + ${userAddTo} = **${usersRoll}** .`
+                        display = `${window.wholeChar[window.player]["charName"]} has succeded the ${window.wholeRespone["ability"]} check/save for ${window.wholeRespone["currentResponse"]}. With the roll of ${parseInt(usersRoll) + (-1 * parseInt(userAddTo))} + ${userAddTo} = **${usersRoll}** .`
                     }
                 }
                 
                 else
                 {
-                    display = `${window.wholeChar[player]["charName"]} has failed the ${window.wholeRespone["ability"]} check/save for ${window.wholeRespone["currentResponse"]}, (${parseInt(usersRoll) + (-1 * parseInt(userAddTo))} + ${userAddTo} = **${usersRoll}** ) taking the **${damage}** damage.`;
+                    display = `${window.wholeChar[window.player]["charName"]} has failed the ${window.wholeRespone["ability"]} check/save for ${window.wholeRespone["currentResponse"]}, (${parseInt(usersRoll) + (-1 * parseInt(userAddTo))} + ${userAddTo} = **${usersRoll}** ) taking the **${damage}** damage.`;
                     if(parseInt(token.currentHp) - parseInt(damage) > 0){token.currentHp = `${parseInt(token.currentHp) - parseInt(damage)}`;}
                     else{token.currentHp = "0";}
                 }
@@ -1465,7 +1464,7 @@ function handleUseAction(targets)
 
             else
             {
-                display = `${window.wholeChar[player]["charName"]} has failed the ${window.wholeRespone["ability"]} check/save for ${window.wholeRespone["currentResponse"]}, ${parseInt(usersRoll) + (-1 * parseInt(userAddTo))} + ${userAddTo} = **${usersRoll}** .`;
+                display = `${window.wholeChar[window.player]["charName"]} has failed the ${window.wholeRespone["ability"]} check/save for ${window.wholeRespone["currentResponse"]}, ${parseInt(usersRoll) + (-1 * parseInt(userAddTo))} + ${userAddTo} = **${usersRoll}** .`;
 
                 if(parseInt(usersRoll) >= parseInt(window.wholeRespone["toBeat"])) 
                 {
@@ -1478,21 +1477,21 @@ function handleUseAction(targets)
 
         if(discription.includes("{@Summon"))
         {
-            let token = {border : "blue", currentHp : `0`, maxHp : `0`, tempHp : "0", map : "", id : "", name : "", title : ` ${player}, `, xPos : "1", yPos : "A", isSummon : false, AC : "10"};
+            let token = {border : "blue", currentHp : `0`, maxHp : `0`, tempHp : "0", map : "", id : "", name : "", title : ` ${window.player}, `, xPos : "1", yPos : "A", isSummon : false, AC : "10"};
             let info = discription.slice(discription.indexOf("{@Summon"));
             info = info.slice(info.indexOf(" ") + 1, info.indexOf("}"));
             info = info.split(":"); 
             token.title += `${info[3]}, `;
-            let currentToken = window.wholeDB[window.wholeChar[player]["currentToken"]];
+            let currentToken = window.wholeDB[window.wholeChar[window.player]["currentToken"]];
 
-            if(!currentToken["title"].includes(player))
+            if(!currentToken["title"].includes(window.player))
             {
                 let t = document.getElementById("title");
-                currentToken.title = ` ${player}, ${currentToken["title"]}`; 
+                currentToken.title = ` ${window.player}, ${currentToken["title"]}`; 
                 t.innerHTML = "Status: " + currentToken.title; 
 
-                setDoc(`currentMap/${player}/title`, currentToken.title);
-                setDoc(`playerChar/${player}/token/title`, currentToken.title);
+                setDoc(`currentMap/${window.player}/title`, currentToken.title);
+                setDoc(`playerChar/${window.player}/token/title`, currentToken.title);
             }
             
             token.name = info[0] + "-";
@@ -1547,7 +1546,7 @@ function handleUseAction(targets)
 
         if(description.includes("{@Rage"))
         {
-            setDoc(`playerChar/${player}/rage`, true);
+            setDoc(`playerChar/${window.player}/rage`, true);
         }
         
         if(description.includes("{@damage"))
@@ -1609,17 +1608,17 @@ function handleUseAction(targets)
             
             if(spellLevel == "0")
             {
-                if(parseInt(window.wholeChar[player]["stats"]["lv"]) >= 17)
+                if(parseInt(window.wholeChar[window.player]["stats"]["lv"]) >= 17)
                 {
                     description = description.slice(description.indexOf("17th level"));
                 }
 
-                else if(parseInt(window.wholeChar[player]["stats"]["lv"]) >= 11)
+                else if(parseInt(window.wholeChar[window.player]["stats"]["lv"]) >= 11)
                 {
                     description = description.slice(description.indexOf("11th level"));
                 }
 
-                else if(parseInt(window.wholeChar[player]["stats"]["lv"]) >= 5)
+                else if(parseInt(window.wholeChar[window.player]["stats"]["lv"]) >= 5)
                 {
                     description = description.slice(description.indexOf("5th level"));
                 }
@@ -1647,7 +1646,7 @@ function handleUseAction(targets)
             
             damage = diceRoller(damage[0], damage[1], damage[2], "false");
 
-            if(window.wholeChar[player]["rage"] && !description.includes("{noRage"))
+            if(window.wholeChar[window.player]["rage"] && !description.includes("{noRage"))
             {
                 let dealt = damage.slice(damage.indexOf("**") + 2);
                 dealt = dealt.slice(0, dealt.indexOf("**"));
@@ -1679,7 +1678,7 @@ function handleUseAction(targets)
                         let hp = damage.split("**")[1];
                         if(window.wholeChar[targets[key].title.split(":")[0]]){let targe = targets[key].title.split(":")[0]; if(window.wholeChar[targe]["rage"] && !description.includes("{noRage") && !spellLevel){let past = damage.slice(damage.indexOf("**") + 2); past = past.slice(0, damage.indexOf("**")); let hp = parseInt(past)/2; damage = damage.replace(past, `${hp}** (1/2 Rage)`);}}
                         handleChangeHp(hp, window.wholeDB[targets[key].title.split(":")[0]], "-");
-                        if(document.getElementById("sneak").value != "Sneak-Attack?"){description += `{@sDice ${Math.floor(parseInt(window.wholeChar[player]["stats"]["lv"])/2)}d6} Sneak Attack.`;}
+                        if(document.getElementById("sneak").value != "Sneak-Attack?"){description += `{@sDice ${Math.floor(parseInt(window.wholeChar[window.player]["stats"]["lv"])/2)}d6} Sneak Attack.`;}
                     }
 
                     else
@@ -1694,7 +1693,7 @@ function handleUseAction(targets)
             }
             else
             {
-                display = `${toTitleCase(window.wholeChar[player]["currentToken"])} cast, ${lastUse} on `;
+                display = `${toTitleCase(window.wholeChar[window.player]["currentToken"])} cast, ${lastUse} on `;
                 for(key in Object.keys(targets)){display += `${toTitleCase(targets[key].title.split(":")[0])}, `;}
                 display = display.slice(0, display.length - 2);
                 display += `\n${useInfo}\nAccurcy: ${accurcy} to Hit.\n`;
@@ -1718,7 +1717,7 @@ function handleUseAction(targets)
                         fail = false; 
                         if(window.wholeChar[targets[key].title.split(":")[0]]){let targe = targets[key].title.split(":")[0]; if(window.wholeChar[targe]["rage"] && !description.includes("{noRage") && !spellLevel){let past = damage.slice(damage.indexOf("**") + 2); past = past.slice(0, damage.indexOf("**")); let hp = parseInt(past)/2; damage = damage.replace(past, `${hp}** (1/2 Rage)`);}}
                         handleChangeHp(damage.split("**")[1], window.wholeDB[targets[key].title.split(":")[0]], "-");
-                        if(document.getElementById("sneak")){if(document.getElementById("sneak").value != "Sneak-Attack?"){description += `{@sDice ${Math.floor(parseInt(window.wholeChar[player]["stats"]["lv"])/2)}d6} Sneak Attack.`;}}
+                        if(document.getElementById("sneak")){if(document.getElementById("sneak").value != "Sneak-Attack?"){description += `{@sDice ${Math.floor(parseInt(window.wholeChar[window.player]["stats"]["lv"])/2)}d6} Sneak Attack.`;}}
                     }
 
                     else
@@ -1754,13 +1753,13 @@ function handleUseAction(targets)
                 for(let key in Object.keys(targets)){handleChangeHp(damage.split("**")[1], window.wholeDB[targets[key].title.split(":")[0]], "-");}
             
                 if(display){display += `\nResult: ${damage}. \n`;}
-                else{display = `${window.wholeChar[player]["charName"]} used the ability, ${lastUse}:\n${useInfo}\n\nResult: ${damage}. \n`;}
+                else{display = `${window.wholeChar[window.player]["charName"]} used the ability, ${lastUse}:\n${useInfo}\n\nResult: ${damage}. \n`;}
             }
         }
 
         if(description.includes("{@infuseRate"))
         {
-            let rate = parseInt(window.wholeChar[player]["infusedRate"]);
+            let rate = parseInt(window.wholeChar[window.player]["infusedRate"]);
             let roll = diceRoller("1", "100", "0");
             let result;
 
@@ -1778,7 +1777,7 @@ function handleUseAction(targets)
             }
 
             if(display){display += `\nInfusion Check: ${result}, rolled ${roll}, needs to be above ${rate}. \n`;}
-            else{display = `${window.wholeChar[player]["charName"]} used the ability, ${lastUse}:\n${useInfo}\n\nInfusion Check: ${result}, rolled ${roll}, needs to be above ${rate}.\n`;}
+            else{display = `${window.wholeChar[window.player]["charName"]} used the ability, ${lastUse}:\n${useInfo}\n\nInfusion Check: ${result}, rolled ${roll}, needs to be above ${rate}.\n`;}
         }
 
         if(description.includes("{@sneak"))
@@ -1788,7 +1787,7 @@ function handleUseAction(targets)
             damage = diceRoller(damage[0], damage[1], damage[2], "false");
     
             if(display){display += `nResult: ${damage}. \n`;}
-            else{display = `${window.wholeChar[player]["charName"]} used the ability, ${lastUse}:\n${useInfo}\n\nResult: ${damage}. \n`;}
+            else{display = `${window.wholeChar[window.player]["charName"]} used the ability, ${lastUse}:\n${useInfo}\n\nResult: ${damage}. \n`;}
         }
 
         setDoc("currentMap/", window.wholeDB);
@@ -1796,7 +1795,7 @@ function handleUseAction(targets)
 
     else
     {
-        display = `${toTitleCase(window.wholeChar[player]["currentToken"])} cast: ${lastUse}\n${useInfo}`;
+        display = `${toTitleCase(window.wholeChar[window.player]["currentToken"])} cast: ${lastUse}\n${useInfo}`;
         if(curClass){display = display.replaceAll("cast", "use the ability");}
     }
 
@@ -1870,7 +1869,7 @@ function handleUseAction(targets)
 
     if(timeActive != "0")
     {
-        if(player != "Vi"){setDoc(`currentTO/Var/${window.wholeChar[player]["charName"]}/${lastUse}`, {"expires" : window.wholeTO["Var"]["currentTurn"] + timeActive, "castOn": window.wholeTO["Var"]["currentTurn"], "id" : lastUse});}
+        if(window.player != "Vi"){setDoc(`currentTO/Var/${window.wholeChar[window.player]["charName"]}/${lastUse}`, {"expires" : window.wholeTO["Var"]["currentTurn"] + timeActive, "castOn": window.wholeTO["Var"]["currentTurn"], "id" : lastUse});}
         else{setDoc(`currentTO/Var/Enemy/${lastUse}`, {"expires" : window.wholeTO["Var"]["currentTurn"] + timeActive, "castOn": window.wholeTO["Var"]["currentTurn"], "id" : lastUse});}
     }
 
@@ -1883,22 +1882,22 @@ function spellOrAttackBonus(usage)
 {
     let userAddTo;
 
-    if(player == "Vi")
+    if(window.player == "Vi")
     {
         if(usage == "@damage")
         {
-            if(spellLevel){userAddTo = prompt("What is your Spell Attack Bonus?", window.wholeChar[player]["stats"]["addToSpell"]);}
-            else{userAddTo = prompt("What is your Attack Bonus?", window.wholeChar[player]["stats"]["attackBonus"]);}
+            if(spellLevel){userAddTo = prompt("What is your Spell Attack Bonus?", window.wholeChar[window.player]["stats"]["addToSpell"]);}
+            else{userAddTo = prompt("What is your Attack Bonus?", window.wholeChar[window.player]["stats"]["attackBonus"]);}
             userAddTo = userAddTo.replaceAll(" ", "");
     
-            if(spellLevel){setDoc(`playerChar/${player}/stats/addToSpell`, userAddTo);}
-            else{setDoc(`playerChar/${player}/stats/attackBonus`, userAddTo);}
+            if(spellLevel){setDoc(`playerChar/${window.player}/stats/addToSpell`, userAddTo);}
+            else{setDoc(`playerChar/${window.player}/stats/attackBonus`, userAddTo);}
         }
         
         else if(usage == "@save")
         {
-            userAddTo = prompt("What is the DC to beat (Spell DC)?", window.wholeChar[player]["stats"]["spellDC"]);
-            setDoc(`playerChar/${player}/stats/spellDC`, userAddTo);
+            userAddTo = prompt("What is the DC to beat (Spell DC)?", window.wholeChar[window.player]["stats"]["spellDC"]);
+            setDoc(`playerChar/${window.player}/stats/spellDC`, userAddTo);
         }
     }
 
@@ -1906,16 +1905,16 @@ function spellOrAttackBonus(usage)
     {
         if(usage == "@damage")
         {
-            if(spellLevel){if(!window.wholeChar[player]["stats"]["spellBonus"]){userAddTo = prompt("What is your Spell Attack Bonus?", window.wholeChar[player]["stats"]["spellBonus"]);} else{userAddTo = window.wholeChar[player]["stats"]["spellBonus"];}}
-            else{userAddTo = `${parseInt(window.wholeChar[player]["stats"]["proficiency"]) + parseInt(window.wholeChar[player]["stats"]["Strength"])}`;}
+            if(spellLevel){if(!window.wholeChar[window.player]["stats"]["spellBonus"]){userAddTo = prompt("What is your Spell Attack Bonus?", window.wholeChar[window.player]["stats"]["spellBonus"]);} else{userAddTo = window.wholeChar[window.player]["stats"]["spellBonus"];}}
+            else{userAddTo = `${parseInt(window.wholeChar[window.player]["stats"]["proficiency"]) + parseInt(window.wholeChar[window.player]["stats"]["Strength"])}`;}
             userAddTo = userAddTo.replaceAll(" ", "");
         }
         
         else if(usage == "@save")
         {
-            if(!window.wholeChar[player]["stats"]["spellDC"]){userAddTo = prompt("What is the DC to beat (Spell DC)?", window.wholeChar[player]["stats"]["spellDC"]);}
-            else{userAddTo = window.wholeChar[player]["stats"]["spellDC"];}
-            setDoc(`playerChar/${player}/stats/spellDC`, userAddTo);
+            if(!window.wholeChar[window.player]["stats"]["spellDC"]){userAddTo = prompt("What is the DC to beat (Spell DC)?", window.wholeChar[window.player]["stats"]["spellDC"]);}
+            else{userAddTo = window.wholeChar[window.player]["stats"]["spellDC"];}
+            setDoc(`playerChar/${window.player}/stats/spellDC`, userAddTo);
         }
     }
 
@@ -1940,14 +1939,14 @@ function handleCreateNew()
     {
         spellLevel = "0";
         lastSpell = "Sacred Flame";
-        setDoc(`playerChar/${player}/favorites/spells/${spellLevel}/${lastSpell}`, window.wholeSpells[spellLevel][lastSpell]);
+        setDoc(`playerChar/${window.player}/favorites/spells/${spellLevel}/${lastSpell}`, window.wholeSpells[spellLevel][lastSpell]);
     }
 
     else if(this.innerHTML == "Create New Ability")
     {
         curClass = "Artificer";
         lastAbility = "Magical Tinkering";
-        setDoc(`playerChar/${player}/favorites/actions/${curClass}/${lastAbility}`, window.wholeActions[curClass][lastAbility]);
+        setDoc(`playerChar/${window.player}/favorites/actions/${curClass}/${lastAbility}`, window.wholeActions[curClass][lastAbility]);
     }
 
     handleEditCard();
@@ -2045,7 +2044,7 @@ function cancelEdit()
     {
         if(lastSpell == "Sacred Flame")
         {
-            deleteDoc(`playerChar/${player}/favorites/spells/${spellLevel}/${lastSpell}`);
+            deleteDoc(`playerChar/${window.player}/favorites/spells/${spellLevel}/${lastSpell}`);
         }
     }
 
@@ -2053,7 +2052,7 @@ function cancelEdit()
     {
         if(lastAbility == "Magical Tinkering")
         {
-            deleteDoc(`playerChar/${player}/favorites/actions/${curClass}/${lastAbility}`);
+            deleteDoc(`playerChar/${window.player}/favorites/actions/${curClass}/${lastAbility}`);
         }   
     }
 
@@ -2067,9 +2066,9 @@ function uploadEdit()
 
     if(spellLevel)
     {
-        deleteDoc(`playerChar/${player}/favorites/spells/${spellLevel}/${lastSpell}`);
+        deleteDoc(`playerChar/${window.player}/favorites/spells/${spellLevel}/${lastSpell}`);
 
-        setDoc(`playerChar/${player}/favorites/spells/${spellDisc[1].value.trim()}/${spellDisc[0].value.trim()}`,
+        setDoc(`playerChar/${window.player}/favorites/spells/${spellDisc[1].value.trim()}/${spellDisc[0].value.trim()}`,
         {
             castTime : spellDisc[2].value.trim(),
             components : spellDisc[4].value.trim(),
@@ -2084,9 +2083,9 @@ function uploadEdit()
 
     else
     {
-        deleteDoc(`playerChar/${player}/favorites/actions/${curClass}/${lastAbility}`);
+        deleteDoc(`playerChar/${window.player}/favorites/actions/${curClass}/${lastAbility}`);
 
-        setDoc(`playerChar/${player}/favorites/actions/${spellDisc[1].value.trim()}/${spellDisc[0].value.trim()}`,
+        setDoc(`playerChar/${window.player}/favorites/actions/${spellDisc[1].value.trim()}/${spellDisc[0].value.trim()}`,
         {
             description : spellDisc[2].value.trim(),
             level : spellDisc[1].value.trim(),
@@ -2108,12 +2107,12 @@ function handleFavoriteBtn()
         
         if(spellLevel)
         {
-            setDoc(`playerChar/${player}/favorites/spells/${spellLevel}/${titleName}`, window.wholeSpells[spellLevel][cardName]);
+            setDoc(`playerChar/${window.player}/favorites/spells/${spellLevel}/${titleName}`, window.wholeSpells[spellLevel][cardName]);
         }
 
         else
         {
-            setDoc(`playerChar/${player}/favorites/actions/${curClass}/${titleName}`, window.wholeActions[curClass][cardName]);
+            setDoc(`playerChar/${window.player}/favorites/actions/${curClass}/${titleName}`, window.wholeActions[curClass][cardName]);
         }
     }
 
@@ -2123,12 +2122,12 @@ function handleFavoriteBtn()
         
         if(spellLevel)
         {
-            deleteDoc(`playerChar/${player}/favorites/spells/${spellLevel}/${titleName}`);
+            deleteDoc(`playerChar/${window.player}/favorites/spells/${spellLevel}/${titleName}`);
         }
 
         else
         {
-            deleteDoc(`playerChar/${player}/favorites/actions/${curClass}/${titleName}`);
+            deleteDoc(`playerChar/${window.player}/favorites/actions/${curClass}/${titleName}`);
         }
         
         emptyCards();
@@ -2321,7 +2320,7 @@ function handleCustomsButton()
 
     for(let custom of Object.keys(window.wholeCustom))
     {
-        if(window.wholeCustom[custom]["player"] == player)
+        if(window.wholeCustom[custom]["player"] == window.player)
         {
             let personDiv = document.createElement("div");
             personDiv.classList.add("center");
@@ -2407,7 +2406,7 @@ function handleCreateCustom()
     nickname = clenseInput(nickname);
     nickname = "custom-" + nickname;
 
-    setDoc(`customImages/${nickname}`, {"name" : nickname, "player" : player, "src" : url});
+    setDoc(`customImages/${nickname}`, {"name" : nickname, "player" : window.player, "src" : url});
     reload(.5);
 }
 
@@ -2435,7 +2434,7 @@ function displaySelect()
 {
     alert("Tap on the targets for this action/spell. Then when finished click 'Cast Spell' or 'Use Ability' again.");
     this.onclick = useAbility;
-    setDoc(`playerChar/${player}/mode`, "using");
+    setDoc(`playerChar/${window.player}/mode`, "using");
     let otherCast = document.createElement("button");
     otherCast.classList = this.classList;
     otherCast.innerHTML = this.innerHTML;
@@ -2454,11 +2453,11 @@ function useAbility()
 
         if(awnser)
         {
-            let tokens = document.getElementsByClassName(window.wholeChar[player]["currentToken"]);
+            let tokens = document.getElementsByClassName(window.wholeChar[window.player]["currentToken"]);
 
             for(let token of tokens)
             {
-                if(token.id == window.wholeDB[window.wholeChar[player]["currentToken"]].border)
+                if(token.id == window.wholeDB[window.wholeChar[window.player]["currentToken"]].border)
                 {
                     token.classList.add("selected-temp");
                     this.click();
@@ -2470,7 +2469,7 @@ function useAbility()
     else
     {
         this.onclick = displaySelect;
-        setDoc(`playerChar/${player}/mode`, "waiting");
+        setDoc(`playerChar/${window.player}/mode`, "waiting");
         handleUseAction(targets);
         emptyCards();
         document.getElementById("hideCover").click();
@@ -2612,7 +2611,7 @@ function updateStat()
     let diceMod = document.getElementById("diceMod");
     let stat = document.getElementById("statChoice").value;
     
-    if(!["deathSave", "Misc", "Saves", "Checks", "Basic"].includes(stat)){diceMod.innerHTML = `${toTitleCase(stat)}: ${window.wholeChar[player]["stats"][stat]}`;}
+    if(!["deathSave", "Misc", "Saves", "Checks", "Basic"].includes(stat)){diceMod.innerHTML = `${toTitleCase(stat)}: ${window.wholeChar[window.player]["stats"][stat]}`;}
     else{diceMod.innerHTML = `${toTitleCase(stat)}: +0`;}
 }
 
