@@ -1,8 +1,8 @@
 import { ref, onValue } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js';
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js'; 
-import { auth, database } from './js/viMethods.js';
+import { auth, database, toTitleCase } from './js/viMethods.js';
 import { setMode, setWholeDB, setWholeTO, setWholeSummons, setWholeBubbles } from './src/map.js';
-import { setPlayer, setWholeInteractive, setWholeCharCont, setWholeQuests } from './js/mapControler.js';
+import { setWholeInteractive, setWholeCharCont, setWholeQuests } from './js/mapControler.js';
 
 window.wholeCustom = {};
 window.wholeBubbles = {};
@@ -30,6 +30,8 @@ onAuthStateChanged(auth, (user) =>
     {
         setMode(auth);
         setPlayer(auth);
+        window.player = auth.currentUser.email.split("@");
+        window.player = toTitleCase(window.player[0]);
     }
 });
 

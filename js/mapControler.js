@@ -1,14 +1,7 @@
 "use strict";
 
 import { ref, onValue } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js';
-import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
-import { toTitleCase, auth, database, createCard, setDoc, deleteDoc, placeBefore, createLabel, clenseInput, reload, setMapValue, quickAction, setQuickAction, skillDecrypt} from './viMethods.js';
-
-export function setPlayer(auth)
-{
-    player = auth.currentUser.email.split("@");
-    player = toTitleCase(player[0]); //gives the players name
-}
+import { toTitleCase, database, createCard, setDoc, deleteDoc, placeBefore, createLabel, clenseInput, reload, setMapValue, quickAction, setQuickAction, skillDecrypt} from './viMethods.js';
 
 export function setWholeInteractive(data)
 { 
@@ -85,7 +78,7 @@ let currentHp = document.getElementById("current");
 let maxHp = document.getElementById("max");
 let tempHp = document.getElementById("temp");
 let buttons;
-let player;
+let player = window.player;
 let bounds;
 let firstRun = true;
 let firstMenu;

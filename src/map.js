@@ -6,8 +6,6 @@ import { toTitleCase, auth, database, setDoc, deleteDoc, returnHpImage, setMapVa
 
 export function setMode(auth)
 {
-    player = auth.currentUser.email.split("@");
-    player = toTitleCase(player[0]);
     setDoc(`playerChar/${player}/mode`, "waiting");
     
     modeRef = ref(database, `playerChar/${player}/mode`);
@@ -56,7 +54,7 @@ let titleTxt = document.getElementById("title");
 let offSet;
 let divTO = document.getElementById("turnOrder");
 let isSummonOn;
-let player;
+let player = window.player;
 let firstRun = true;
 let currentTurn;
 let mode = "";
