@@ -1,4 +1,3 @@
-"use strict";
 import { ref, onValue } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js';
 import { toTitleCase, auth, database, setDoc, deleteDoc, returnHpImage, placeBefore, createLabel } from '../js/viMethods.js';
 import { wholeCustom, wholeBubbles, wholeChar, wholeDB, wholeDisplay, wholeInteractive, wholePre, wholeQuests, wholeSummons, wholeTO, imgs, wholeActions, wholeSpells } from '../parent.js';
