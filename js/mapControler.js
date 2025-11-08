@@ -3,7 +3,6 @@
 import { ref, onValue } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js';
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
 import { toTitleCase, auth, database, createCard, setDoc, deleteDoc, placeBefore, createLabel, clenseInput, reload, setMapValue, quickAction, setQuickAction, skillDecrypt} from './viMethods.js';
-import { wholeCustom, wholeBubbles, wholeChar, wholeDB, wholeDisplay, wholeInteractive, wholePre, wholeQuests, wholeSummons, wholeTO, imgs, wholeActions, wholeSpells } from '../parent.js';
 
 export function setPlayer(auth)
 {
@@ -30,7 +29,7 @@ export function setWholeCharCont(data)
         init();
     }
 
-    if(wholeChar[player]["bardicInspo"])
+    if(window.wholeChar[player]["bardicInspo"])
     {
         let inspo = document.getElementById("inspo");
         inspo.style.display = "block";
@@ -44,19 +43,19 @@ export function setWholeCharCont(data)
         inspo.innerHTML = `${inspo.title} 0`;
     }
 
-    if(wholeChar[player]["zoomLevel"])
+    if(window.wholeChar[player]["zoomLevel"])
     {
-        zoomLevel = wholeChar[player]["zoomLevel"];
+        zoomLevel = window.wholeChar[player]["zoomLevel"];
         document.getElementById("gridMap").style.zoom = `${zoomLevel}%`;
     }
 
-    if(wholeChar[player]["zoomSheetLevel"])
+    if(window.wholeChar[player]["zoomSheetLevel"])
     {
-        //document.getElementById("statSheet").style.zoom = `${wholeChar[player]["zoomSheetLevel"]}%`;
-        document.getElementById("statSheet").style.transform = `scale(${wholeChar[player]["zoomSheetLevel"]/100})`;
-        document.getElementById("statSheet").style.width = `${100/(wholeChar[player]["zoomSheetLevel"]/100)}%`;
-        document.getElementById("statSheet").style.marginBottom = `${((wholeChar[player]["zoomSheetLevel"]/100)-1)*70*9.4}px`;
-        document.getElementById("statSheet").style.height = `${((100/wholeChar[player]["zoomSheetLevel"]))*50+40}vh`;
+        //document.getElementById("statSheet").style.zoom = `${window.wholeChar[player]["zoomSheetLevel"]}%`;
+        document.getElementById("statSheet").style.transform = `scale(${window.wholeChar[player]["zoomSheetLevel"]/100})`;
+        document.getElementById("statSheet").style.width = `${100/(window.wholeChar[player]["zoomSheetLevel"]/100)}%`;
+        document.getElementById("statSheet").style.marginBottom = `${((window.wholeChar[player]["zoomSheetLevel"]/100)-1)*70*9.4}px`;
+        document.getElementById("statSheet").style.height = `${((100/window.wholeChar[player]["zoomSheetLevel"]))*50+40}vh`;
     }
 }
 
@@ -65,12 +64,12 @@ export function setWholeQuests(data)
     let questTitle = document.getElementById("questTitle");
     let questText = document.getElementById("questText");
     
-    for(let quest of Object.keys(wholeQuests))
+    for(let quest of Object.keys(window.wholeQuests))
     {
-        if(wholeQuests[quest]["activeQuest"])
+        if(window.wholeQuests[quest]["activeQuest"])
         {
-            questTitle.innerHTML = wholeQuests[quest]["name"];
-            questText.innerHTML = wholeQuests[quest]["Desc"];
+            questTitle.innerHTML = window.wholeQuests[quest]["name"];
+            questText.innerHTML = window.wholeQuests[quest]["Desc"];
         }
     }
 }
@@ -124,7 +123,7 @@ function init()
     
     currentHp.onchange = updateHp;
     tempHp.onchange = tempHpUpdate;
-    maxHp.innerHTML = "/ " + wholeChar[player]["stats"]["maxHp"];
+    maxHp.innerHTML = "/ " + window.wholeChar[player]["stats"]["maxHp"];
     searchBar[0].onchange = handleSearch;
 
     for(let arrow of arrows)
@@ -136,8 +135,8 @@ function init()
     document.addEventListener("keydown", (ev) => {key = ev.key.slice(ev.key.indexOf("w") + 1).toLowerCase(); keyControl = ev; let keyValues = ["left", "right", "down", "up"]; if(keyValues.includes(key) && ev.ctrlKey) {handleArrow();}}); //If control is held down and an arrow
     setMainVaribles();
     grid.onclick = function(e){handleGridClick(e);};
-    currentLv = wholeChar[player]["stats"]["lv"] + "th level";
-    currentToken = wholeChar[player]["currentToken"];
+    currentLv = window.wholeChar[player]["stats"]["lv"] + "th level";
+    currentToken = window.wholeChar[player]["currentToken"];
 
     for(let diceSelect of document.getElementsByClassName("diceSelect")){diceSelect.onclick = handleDiceSelect;}
     document.getElementById("questCard").onclick = handleLoadQuests;
@@ -151,8 +150,8 @@ function setMainVaribles()
     changeTokenBtn = document.getElementById("changeTokenBtn");
     changeTokenBtn.onclick = handleChangeToken;
     buttons = document.getElementsByClassName("inOrDe");
-    playerName.innerHTML = toTitleCase(wholeChar[player]["currentToken"]);
-    currentCharacter = document.getElementsByClassName(wholeChar[player]["currentToken"]);
+    playerName.innerHTML = toTitleCase(window.wholeChar[player]["currentToken"]);
+    currentCharacter = document.getElementsByClassName(window.wholeChar[player]["currentToken"]);
     let hiddenVi = document.getElementsByClassName("isVi");
     firstMenu = document.getElementsByClassName("firstMenu");
     for(let fButton of firstMenu){fButton.onclick = handleChangeFirstDisplay;} //for each of the first row
@@ -191,7 +190,7 @@ function sendDiscordMessage(message)
 {
     sendMessageToDisplay(message);
     message = message + "\n\n ||                ||"; //Makes message seperating bars
-    let webhook = wholeChar["Vi"]["testingWebhook"]; //Which channel it goes to by webhook
+    let webhook = window.wholeChar["Vi"]["testingWebhook"]; //Which channel it goes to by webhook
     const contents = `${message}`;
     const request = new XMLHttpRequest();
     request.open("POST", webhook); //Opens the webhook
@@ -205,7 +204,7 @@ function sendDiscordMessage(message)
 
 function sendMessageToDisplay(message)
 {
-    let current = parseInt(wholeDisplay["current"]);
+    let current = parseInt(window.wholeDisplay["current"]);
 
     if(current + 1 > 9)
     {
@@ -224,7 +223,7 @@ function sendMessageToDisplay(message)
 
 function handleGridClick(e)
 {
-    let bubbleDB = {id : `${player}-bubble`, x : (e.offsetX * (100/zoomLevel) - map.bubble), y : (e.offsetY * (100/zoomLevel) - map.bubble), size : 1, src : imgs["borders"][wholeDB[wholeChar[player]["currentToken"]].border]};
+    let bubbleDB = {id : `${player}-bubble`, x : (e.offsetX * (100/zoomLevel) - map.bubble), y : (e.offsetY * (100/zoomLevel) - map.bubble), size : 1, src : imgs["borders"][window.wholeDB[window.wholeChar[player]["currentToken"]].border]};
     if(bubbleDB.src.includes("invisible")){bubbleDB.src = imgs["borders"]["blue"];}
     setDoc(`bubbles/${bubbleDB.id}`, bubbleDB);
 }
@@ -300,7 +299,7 @@ function diceRoller(amount, dice, modifier, ifName)
     
     let finalResult = sum + parseInt(modifier); //Adds the sum and modifier
     
-    if(wholeChar[player]["bardicInspo"] && dice == "20")
+    if(window.wholeChar[player]["bardicInspo"] && dice == "20")
     {
         inspo = confirm(`You have rolled a ${finalResult} on your d20. You do have a Bardic Inspiration Die, would you like to roll it and add it to the total?`);
     }
@@ -426,7 +425,7 @@ function handleFavoriteSelect()
     onValue(favoriteRef, (snapshot) => 
     { //Every time something changes in the database
         const data = snapshot.val();
-        wholeFavorite = data;
+        window.wholeFavorite = data;
         let spellDiv = document.getElementById("spellsF");
         let actionDiv = document.getElementById("abilityF");
 
@@ -450,9 +449,9 @@ function handleFavoriteSelect()
         spellDiv.classList.add("center"); //Centers the spells
         actionDiv.classList.add("center"); //Centers the actions
         
-        if(wholeFavorite["spells"]) //The spell btn is active
+        if(window.wholeFavorite["spells"]) //The spell btn is active
         {
-            for(let spellLv of Object.keys(wholeFavorite["spells"])) //For each spell in the favorite of the player
+            for(let spellLv of Object.keys(window.wholeFavorite["spells"])) //For each spell in the favorite of the player
             {
                 let lvlBtn = document.createElement("button"); //Creates the button
                 lvlBtn.name = spellLv;
@@ -465,9 +464,9 @@ function handleFavoriteSelect()
             }
         }
 
-        if(wholeFavorite["actions"]) //If the action btn is active
+        if(window.wholeFavorite["actions"]) //If the action btn is active
         {
-            for(let actionTag of Object.keys(wholeFavorite["actions"])) //For each spell in the favorite of the player
+            for(let actionTag of Object.keys(window.wholeFavorite["actions"])) //For each spell in the favorite of the player
             {
                 let tagBtn = document.createElement("button"); //Creates the button
                 tagBtn.name = actionTag;
@@ -537,7 +536,7 @@ function tempHpUpdate()
     setDoc(`currentMap/${currentCharacter[0].classList[1]}/tempHp`, tempHp.value);
 
     if(player == currentCharacter[0].classList[1]){setDoc(`playerChar/${player}/token/tempHp`, tempHp.value);}
-    if(wholeDB[currentCharacter[0].classList[1]]["isSummon"]){setDoc(`playerChar/Vi/summons/${currentCharacter[0].classList[1]}/tempHp`, tempHp.value);}
+    if(window.wholeDB[currentCharacter[0].classList[1]]["isSummon"]){setDoc(`playerChar/Vi/summons/${currentCharacter[0].classList[1]}/tempHp`, tempHp.value);}
 }
 
 /**
@@ -591,7 +590,7 @@ function changeValue()
             break; 
 
         case "zoom":
-            let zoomLevel = 100; if(wholeChar[player]["zoomLevel"]){zoomLevel = wholeChar[player]["zoomLevel"];}
+            let zoomLevel = 100; if(window.wholeChar[player]["zoomLevel"]){zoomLevel = window.wholeChar[player]["zoomLevel"];}
             if(modifier == "+") //If plus button is 
             {
                 if(zoomLevel < 170){zoomLevel += 10;}
@@ -607,7 +606,7 @@ function changeValue()
             break;
 
         case "zoomSheet":
-            let zoomSheetLevel = 100; if(wholeChar[player]["zoomSheetLevel"]){zoomSheetLevel = wholeChar[player]["zoomSheetLevel"];}
+            let zoomSheetLevel = 100; if(window.wholeChar[player]["zoomSheetLevel"]){zoomSheetLevel = window.wholeChar[player]["zoomSheetLevel"];}
             if(modifier == "+") //If plus button is 
             {
                 if(zoomSheetLevel < 100){zoomSheetLevel += 10;}
@@ -639,7 +638,7 @@ function changeValue()
             title = title.innerHTML.slice(title.innerHTML.indexOf(": ") + 2).trim();
             setDoc(`currentMap/${currentToken}/title`, title);
             if(currentToken == player){setDoc(`playerChar/${player}/token/title`, title);}
-            if(wholeDB[currentCharacter[0].classList[1]]["isSummon"]){setDoc(`playerChar/Vi/summons/${currentCharacter[0].classList[1]}/title`, title);}
+            if(window.wholeDB[currentCharacter[0].classList[1]]["isSummon"]){setDoc(`playerChar/Vi/summons/${currentCharacter[0].classList[1]}/title`, title);}
             break;
         
         case "turn":
@@ -687,11 +686,11 @@ function handleChangeInTurn(direction)
     let curSelected;
     let newSelected;
     let newPosition;
-    let currentTurn = wholeTO["Var"]["currentTurn"];
+    let currentTurn = window.wholeTO["Var"]["currentTurn"];
 
-    for(let key of Object.keys(wholeTO)) //For each turn of the turn order
+    for(let key of Object.keys(window.wholeTO)) //For each turn of the turn order
     {
-        if(wholeTO[key].selected == "true") //If the current turn is this turn
+        if(window.wholeTO[key].selected == "true") //If the current turn is this turn
         {
             curSelected = key; 
             break;
@@ -700,20 +699,20 @@ function handleChangeInTurn(direction)
 
     if(direction == "up") //If the + button is hit
     {
-        if(wholeTO[curSelected].position == Object.keys(wholeTO).length - 1){newPosition = "1"; setDoc("currentTO/Var/currentTurn", currentTurn + 1);} //If the selected is the last one in the order move to the beginning
-        else{newPosition = `${parseInt(wholeTO[curSelected].position) + 1}`} //Else move down one in the order
+        if(window.wholeTO[curSelected].position == Object.keys(window.wholeTO).length - 1){newPosition = "1"; setDoc("currentTO/Var/currentTurn", currentTurn + 1);} //If the selected is the last one in the order move to the beginning
+        else{newPosition = `${parseInt(window.wholeTO[curSelected].position) + 1}`} //Else move down one in the order
     }
         
     else if(direction == "down") //If the - button is hit
     {
-        if(wholeTO[curSelected].position == "1"){newPosition = `${Object.keys(wholeTO).length - 1}`; setDoc("currentTO/Var/currentTurn", currentTurn - 1);} //If the selected is the first one in the order move to the end
-        else{newPosition = `${parseInt(wholeTO[curSelected].position) - 1}`} //Else move up one in the order
+        if(window.wholeTO[curSelected].position == "1"){newPosition = `${Object.keys(window.wholeTO).length - 1}`; setDoc("currentTO/Var/currentTurn", currentTurn - 1);} //If the selected is the first one in the order move to the end
+        else{newPosition = `${parseInt(window.wholeTO[curSelected].position) - 1}`} //Else move up one in the order
     }
 
-    for(let key of Object.keys(wholeTO)) //For each turn in the turn order
+    for(let key of Object.keys(window.wholeTO)) //For each turn in the turn order
     {
-        if(direction == "up" && wholeTO[key].position == newPosition){newSelected = key; break;} //If we are moving up in turn order and the current turn is the new turn
-        else if(direction == "down" && wholeTO[key].position == newPosition){newSelected = key; break;} //If we are moving down in turn order and the current turn is the new turn
+        if(direction == "up" && window.wholeTO[key].position == newPosition){newSelected = key; break;} //If we are moving up in turn order and the current turn is the new turn
+        else if(direction == "down" && window.wholeTO[key].position == newPosition){newSelected = key; break;} //If we are moving down in turn order and the current turn is the new turn
     }
 
     if(document.getElementById(`${curSelected}-div`)) //If the turns are currently visible
@@ -722,8 +721,8 @@ function handleChangeInTurn(direction)
         document.getElementById(`${newSelected}-div`).classList.add("selected"); //Adds selected class to the new turn
     }
 
-    changeTOValue(wholeTO[curSelected], "unset");
-    changeTOValue(wholeTO[newSelected], "set");
+    changeTOValue(window.wholeTO[curSelected], "unset");
+    changeTOValue(window.wholeTO[newSelected], "set");
 }
 
 /**
@@ -747,7 +746,7 @@ function moveChar(xPos, yPos)
         setDoc(`playerChar/${player}/token/yPos`, y);
     }
 
-    if(wholeDB[currentCharacter[0].classList[1]]["isSummon"])
+    if(window.wholeDB[currentCharacter[0].classList[1]]["isSummon"])
     {
         setDoc(`playerChar/Vi/summons/${currentCharacter[0].classList[1]}/xPos`, x);
         setDoc(`playerChar/Vi/summons/${currentCharacter[0].classList[1]}/yPos`, y);
@@ -769,7 +768,7 @@ function updateHp()
         setDoc(`playerChar/${player}/token/currentHp`, `${current.value}`);
     }
 
-    if(wholeDB[currentCharacter[0].classList[1]]["isSummon"]){setDoc(`playerChar/Vi/summons/${currentCharacter[0].classList[1]}/currentHp`, `${current.value}`);}
+    if(window.wholeDB[currentCharacter[0].classList[1]]["isSummon"]){setDoc(`playerChar/Vi/summons/${currentCharacter[0].classList[1]}/currentHp`, `${current.value}`);}
 }
 
 /**
@@ -882,8 +881,8 @@ function handleShowSpells()
 {
     spellLevel = this.name;
     curClass = undefined;
-    db = wholeSpells;
-    if(favorite){db = wholeFavorite["spells"];} //If spell level from player's favorite was clicked change databases
+    db = window.wholeSpells;
+    if(favorite){db = window.wholeFavorite["spells"];} //If spell level from player's favorite was clicked change databases
     let spells = db[spellLevel];
     
     for(let spell of spellBtn) //For each spell button
@@ -926,8 +925,8 @@ function handleShowActions()
 {
     spellLevel = undefined;
     curClass = this.name;
-    db = wholeActions;
-    if(favorite){db = wholeFavorite["actions"];} //If the favorite action tag was clicked change databases
+    db = window.wholeActions;
+    if(favorite){db = window.wholeFavorite["actions"];} //If the favorite action tag was clicked change databases
     let actions = db[curClass];
 
     for(let action of actionBtn) //For each action buttons
@@ -1150,11 +1149,11 @@ function handleCardClick()
             {
                 lastSpell = currentTitle;
                 let spellDisc = db[spellLevel][currentTitle]["description"];
-                if(favorite){spellDisc = wholeFavorite["spells"][spellLevel][currentTitle]["description"]}
+                if(favorite){spellDisc = window.wholeFavorite["spells"][spellLevel][currentTitle]["description"]}
 
-                if(wholeChar[player]["favorites"]["spells"][spellLevel])
+                if(window.wholeChar[player]["favorites"]["spells"][spellLevel])
                 {
-                    if(wholeChar[player]["favorites"]["spells"][spellLevel][currentTitle])
+                    if(window.wholeChar[player]["favorites"]["spells"][spellLevel][currentTitle])
                     {
                         favoriteBtn.setAttribute("src", "images/favorited.png");
                     }
@@ -1196,11 +1195,11 @@ function handleCardClick()
             {
                 lastAbility = currentTitle;
                 let abilityDisc = db[curClass][currentTitle]["description"];
-                if(favorite){abilityDisc = wholeFavorite["actions"][curClass][currentTitle]["description"];}
+                if(favorite){abilityDisc = window.wholeFavorite["actions"][curClass][currentTitle]["description"];}
 
-                if(wholeChar[player]["favorites"]["actions"][curClass])
+                if(window.wholeChar[player]["favorites"]["actions"][curClass])
                 {
-                    if(wholeChar[player]["favorites"]["actions"][curClass][currentTitle])
+                    if(window.wholeChar[player]["favorites"]["actions"][curClass][currentTitle])
                     {
                         favoriteBtn.setAttribute("src", "images/favorited.png");
                     }
@@ -1244,7 +1243,7 @@ function handleCardClick()
             }
 
             optionDiv.appendChild(slotSelect);
-            if(wholeChar[player]["stats"]["class"].includes("Rogue")){optionDiv.appendChild(sneakSelect);}
+            if(window.wholeChar[player]["stats"]["class"].includes("Rogue")){optionDiv.appendChild(sneakSelect);}
             optionDiv.appendChild(castBtn);
             
             if(!quickAction)
@@ -1310,7 +1309,7 @@ function handleUseAction(targets)
         {
             let target = toTitleCase(targets[key].classList[1]);
 
-            if(wholeChar[target])
+            if(window.wholeChar[target])
             {
                 setDoc(`playerChar/${target}/bardicInspo`, true);
             }
@@ -1334,7 +1333,7 @@ function handleUseAction(targets)
         {
             stat = description.slice(description.indexOf("$")+1);
             stat = stat.slice(0, stat.indexOf("$"));
-            mod = parseInt(wholeChar[player]["stats"][stat]) + "";
+            mod = parseInt(window.wholeChar[player]["stats"][stat]) + "";
             description = description.replaceAll(`$${stat}$`, mod);
 
             if(!description.includes("$")){isDollar = false;}
@@ -1345,7 +1344,7 @@ function handleUseAction(targets)
     {
         if(description.includes("{@Choice"))
         {
-            display = `${wholeChar[player]["charName"]} cast:\n${lastUse} on `;
+            display = `${window.wholeChar[player]["charName"]} cast:\n${lastUse} on `;
             for(key in Object.keys(targets)){display += `${toTitleCase(targets[key].classList[1])}, `;}
             display = display.slice(0, display.length - 2);
             display += `\n${useInfo}`;
@@ -1384,9 +1383,9 @@ function handleUseAction(targets)
                 }
             }
 
-            setDoc(`playerChar/Vi/responses`, {"ability" : skill, "currentResponse" : lastUse, "toBeat" : toBeat, "castBy" : wholeChar[player]["charName"], "isSpell" : isSpell, "ind" : ind, "castUp" : castUp});
+            setDoc(`playerChar/Vi/responses`, {"ability" : skill, "currentResponse" : lastUse, "toBeat" : toBeat, "castBy" : window.wholeChar[player]["charName"], "isSpell" : isSpell, "ind" : ind, "castUp" : castUp});
 
-            display = `${toTitleCase(wholeChar[player]["currentToken"])} cast,\n${lastUse} on `;
+            display = `${toTitleCase(window.wholeChar[player]["currentToken"])} cast,\n${lastUse} on `;
             for(key in Object.keys(targets)){display += `${toTitleCase(targets[key].classList[1])}, `}
             display = display.slice(0, display.length - 2);
             display += `\n${useInfo}\nPlease roll ${skill}, DC: ${toBeat} or use the Response option under Misc...`;
@@ -1396,27 +1395,27 @@ function handleUseAction(targets)
 
         if(description.includes("{@respond}")) //Needs to check if half damage if sucess
         {
-            let wholeRespone = wholeChar["Vi"]["responses"];
+            let window.wholeRespone = window.wholeChar["Vi"]["responses"];
             let usersRoll;
             let userAddTo;
-            if(wholeChar[player]["stats"][wholeRespone["ability"]]){userAddTo = wholeChar[player]["stats"][wholeRespone["ability"]];}
-            else{userAddTo = prompt(`The Current Response is to ${wholeRespone["currentResponse"]}, cast by ${wholeRespone["castBy"]}. This check is checking for ${wholeRespone["ability"]} stat. What is your Modifier? (+/-)`, wholeChar[player]["stats"][wholeRespone["ability"]]);}
+            if(window.wholeChar[player]["stats"][window.wholeRespone["ability"]]){userAddTo = window.wholeChar[player]["stats"][window.wholeRespone["ability"]];}
+            else{userAddTo = prompt(`The Current Response is to ${window.wholeRespone["currentResponse"]}, cast by ${window.wholeRespone["castBy"]}. This check is checking for ${window.wholeRespone["ability"]} stat. What is your Modifier? (+/-)`, window.wholeChar[player]["stats"][window.wholeRespone["ability"]]);}
             userAddTo = userAddTo.replaceAll(" ", "");
             let abilityDisc;
             let abilityName;
             let ad_dis = "";
-            if(wholeRespone["isSpell"]){abilityDisc = wholeSpells[wholeRespone["ind"]][wholeRespone["currentResponse"]]["description"];}
-            else{abilityDisc = db[wholeRespone["ind"]][wholeRespone["currentResponse"]]["description"];}
+            if(window.wholeRespone["isSpell"]){abilityDisc = window.wholeSpells[window.wholeRespone["ind"]][window.wholeRespone["currentResponse"]]["description"];}
+            else{abilityDisc = db[window.wholeRespone["ind"]][window.wholeRespone["currentResponse"]]["description"];}
 
-            if(wholeRespone["currentResponse"] == "Toll the Dead")
+            if(window.wholeRespone["currentResponse"] == "Toll the Dead")
             {
-                if(parseInt(wholeDB[targets[0].classList[1]]["currentHp"]) < parseInt(wholeDB[targets[0].classList[1]]["maxHp"]))
+                if(parseInt(window.wholeDB[targets[0].classList[1]]["currentHp"]) < parseInt(window.wholeDB[targets[0].classList[1]]["maxHp"]))
                 {
                     abilityDisc = abilityDisc.replaceAll("d8", "d12");
                 }
             }
             
-            setDoc(`playerChar/${player}/stats/${wholeRespone["ability"]}`, userAddTo);
+            setDoc(`playerChar/${player}/stats/${window.wholeRespone["ability"]}`, userAddTo);
             usersRoll = diceRoller("1", "20", userAddTo, "finalResult");
             ad_dis += " Rolling d12's instead, since they were hurt.";
 
@@ -1442,30 +1441,30 @@ function handleUseAction(targets)
             if(abilityDisc.includes("{@save "))
             {
                 let damage;
-                let token = wholeDB[wholeChar[player]["currentToken"]];
+                let token = window.wholeDB[window.wholeChar[player]["currentToken"]];
                 damage = splitRoll(abilityDisc, "@save");
-                if(abilityDisc.includes("{@scaledamage")){damage = splitRoll(wholeRespone["castUp"], "@save")}
+                if(abilityDisc.includes("{@scaledamage")){damage = splitRoll(window.wholeRespone["castUp"], "@save")}
                 else if(abilityDisc.includes(currentLv)){damage = splitRoll(abilityDisc.slice(`${abilityDisc.indexOf(currentLv)}`), "@save");}
                 damage = diceRoller(damage[0], damage[1], damage[2], "finalResult");
 
-                if(parseInt(usersRoll) >= parseInt(wholeRespone["toBeat"])) 
+                if(parseInt(usersRoll) >= parseInt(window.wholeRespone["toBeat"])) 
                 {
                     if(abilityDisc.includes("half damage"))
                     {
-                        display = `${wholeChar[player]["charName"]} has succeded the ${wholeRespone["ability"]} check/save for ${wholeRespone["currentResponse"]}, (${parseInt(usersRoll) + (-1 * parseInt(userAddTo))} + ${userAddTo} = **${usersRoll}** ) taking half of the damage. (${damage} / 2) = **${parseInt(damage) / 2}** .`;
+                        display = `${window.wholeChar[player]["charName"]} has succeded the ${window.wholeRespone["ability"]} check/save for ${window.wholeRespone["currentResponse"]}, (${parseInt(usersRoll) + (-1 * parseInt(userAddTo))} + ${userAddTo} = **${usersRoll}** ) taking half of the damage. (${damage} / 2) = **${parseInt(damage) / 2}** .`;
                         if(parseInt(token.currentHp) - (parseInt(damage) / 2) > 0){token.currentHp = `${parseInt(token.currentHp) - (parseInt(damage) / 2)}`;}
                         else{token.currentHp = "0";}
                     }
 
                     else
                     {
-                        display = `${wholeChar[player]["charName"]} has succeded the ${wholeRespone["ability"]} check/save for ${wholeRespone["currentResponse"]}. With the roll of ${parseInt(usersRoll) + (-1 * parseInt(userAddTo))} + ${userAddTo} = **${usersRoll}** .`
+                        display = `${window.wholeChar[player]["charName"]} has succeded the ${window.wholeRespone["ability"]} check/save for ${window.wholeRespone["currentResponse"]}. With the roll of ${parseInt(usersRoll) + (-1 * parseInt(userAddTo))} + ${userAddTo} = **${usersRoll}** .`
                     }
                 }
                 
                 else
                 {
-                    display = `${wholeChar[player]["charName"]} has failed the ${wholeRespone["ability"]} check/save for ${wholeRespone["currentResponse"]}, (${parseInt(usersRoll) + (-1 * parseInt(userAddTo))} + ${userAddTo} = **${usersRoll}** ) taking the **${damage}** damage.`;
+                    display = `${window.wholeChar[player]["charName"]} has failed the ${window.wholeRespone["ability"]} check/save for ${window.wholeRespone["currentResponse"]}, (${parseInt(usersRoll) + (-1 * parseInt(userAddTo))} + ${userAddTo} = **${usersRoll}** ) taking the **${damage}** damage.`;
                     if(parseInt(token.currentHp) - parseInt(damage) > 0){token.currentHp = `${parseInt(token.currentHp) - parseInt(damage)}`;}
                     else{token.currentHp = "0";}
                 }
@@ -1473,9 +1472,9 @@ function handleUseAction(targets)
 
             else
             {
-                display = `${wholeChar[player]["charName"]} has failed the ${wholeRespone["ability"]} check/save for ${wholeRespone["currentResponse"]}, ${parseInt(usersRoll) + (-1 * parseInt(userAddTo))} + ${userAddTo} = **${usersRoll}** .`;
+                display = `${window.wholeChar[player]["charName"]} has failed the ${window.wholeRespone["ability"]} check/save for ${window.wholeRespone["currentResponse"]}, ${parseInt(usersRoll) + (-1 * parseInt(userAddTo))} + ${userAddTo} = **${usersRoll}** .`;
 
-                if(parseInt(usersRoll) >= parseInt(wholeRespone["toBeat"])) 
+                if(parseInt(usersRoll) >= parseInt(window.wholeRespone["toBeat"])) 
                 {
                     display = display.replace("failed", "succeded");
                 }
@@ -1491,7 +1490,7 @@ function handleUseAction(targets)
             info = info.slice(info.indexOf(" ") + 1, info.indexOf("}"));
             info = info.split(":"); 
             token.title += `${info[3]}, `;
-            let currentToken = wholeDB[wholeChar[player]["currentToken"]];
+            let currentToken = window.wholeDB[window.wholeChar[player]["currentToken"]];
 
             if(!currentToken["title"].includes(player))
             {
@@ -1506,11 +1505,11 @@ function handleUseAction(targets)
             token.name = info[0] + "-";
             let id = info[0];
 
-            if(Object.keys(wholeDB).includes(id))
+            if(Object.keys(window.wholeDB).includes(id))
             {
                 id = id + "1";
         
-                while(Object.keys(wholeDB).includes(id))
+                while(Object.keys(window.wholeDB).includes(id))
                 {
                     id = id.slice(0, id.length - 1) + (parseInt(id.charAt(id.length - 1)) + 1);
                 }
@@ -1617,17 +1616,17 @@ function handleUseAction(targets)
             
             if(spellLevel == "0")
             {
-                if(parseInt(wholeChar[player]["stats"]["lv"]) >= 17)
+                if(parseInt(window.wholeChar[player]["stats"]["lv"]) >= 17)
                 {
                     description = description.slice(description.indexOf("17th level"));
                 }
 
-                else if(parseInt(wholeChar[player]["stats"]["lv"]) >= 11)
+                else if(parseInt(window.wholeChar[player]["stats"]["lv"]) >= 11)
                 {
                     description = description.slice(description.indexOf("11th level"));
                 }
 
-                else if(parseInt(wholeChar[player]["stats"]["lv"]) >= 5)
+                else if(parseInt(window.wholeChar[player]["stats"]["lv"]) >= 5)
                 {
                     description = description.slice(description.indexOf("5th level"));
                 }
@@ -1655,7 +1654,7 @@ function handleUseAction(targets)
             
             damage = diceRoller(damage[0], damage[1], damage[2], "false");
 
-            if(wholeChar[player]["rage"] && !description.includes("{noRage"))
+            if(window.wholeChar[player]["rage"] && !description.includes("{noRage"))
             {
                 let dealt = damage.slice(damage.indexOf("**") + 2);
                 dealt = dealt.slice(0, dealt.indexOf("**"));
@@ -1670,12 +1669,12 @@ function handleUseAction(targets)
 
                 for(let key in Object.keys(targets))
                 {
-                    let ac = wholeDB[targets[key].title.split(":")[0]].AC;
+                    let ac = window.wholeDB[targets[key].title.split(":")[0]].AC;
 
                     if(display.includes("regain"))
                     {
                         fail = false;
-                        handleChangeHp(damage.split("**")[1], wholeDB[targets[key].title.split(":")[0]], "+");
+                        handleChangeHp(damage.split("**")[1], window.wholeDB[targets[key].title.split(":")[0]], "+");
                         display = display.split("Accurcy:")[0];
                         ending = "Healing";
                     }
@@ -1685,9 +1684,9 @@ function handleUseAction(targets)
                         display += `(Success Hit) ${targets[key].title.split(":")[0]} (${ac}), `;
                         fail = false; 
                         let hp = damage.split("**")[1];
-                        if(wholeChar[targets[key].title.split(":")[0]]){let targe = targets[key].title.split(":")[0]; if(wholeChar[targe]["rage"] && !description.includes("{noRage") && !spellLevel){let past = damage.slice(damage.indexOf("**") + 2); past = past.slice(0, damage.indexOf("**")); let hp = parseInt(past)/2; damage = damage.replace(past, `${hp}** (1/2 Rage)`);}}
-                        handleChangeHp(hp, wholeDB[targets[key].title.split(":")[0]], "-");
-                        if(document.getElementById("sneak").value != "Sneak-Attack?"){description += `{@sDice ${Math.floor(parseInt(wholeChar[player]["stats"]["lv"])/2)}d6} Sneak Attack.`;}
+                        if(window.wholeChar[targets[key].title.split(":")[0]]){let targe = targets[key].title.split(":")[0]; if(window.wholeChar[targe]["rage"] && !description.includes("{noRage") && !spellLevel){let past = damage.slice(damage.indexOf("**") + 2); past = past.slice(0, damage.indexOf("**")); let hp = parseInt(past)/2; damage = damage.replace(past, `${hp}** (1/2 Rage)`);}}
+                        handleChangeHp(hp, window.wholeDB[targets[key].title.split(":")[0]], "-");
+                        if(document.getElementById("sneak").value != "Sneak-Attack?"){description += `{@sDice ${Math.floor(parseInt(window.wholeChar[player]["stats"]["lv"])/2)}d6} Sneak Attack.`;}
                     }
 
                     else
@@ -1702,7 +1701,7 @@ function handleUseAction(targets)
             }
             else
             {
-                display = `${toTitleCase(wholeChar[player]["currentToken"])} cast, ${lastUse} on `;
+                display = `${toTitleCase(window.wholeChar[player]["currentToken"])} cast, ${lastUse} on `;
                 for(key in Object.keys(targets)){display += `${toTitleCase(targets[key].title.split(":")[0])}, `;}
                 display = display.slice(0, display.length - 2);
                 display += `\n${useInfo}\nAccurcy: ${accurcy} to Hit.\n`;
@@ -1710,12 +1709,12 @@ function handleUseAction(targets)
 
                 for(let key in Object.keys(targets))
                 {
-                    let ac = wholeDB[targets[key].title.split(":")[0]].AC;
+                    let ac = window.wholeDB[targets[key].title.split(":")[0]].AC;
                     
                     if(display.includes("regains"))
                     {
                         fail = false;
-                        handleChangeHp(damage.split("**")[1], wholeDB[targets[key].title.split(":")[0]], "+");
+                        handleChangeHp(damage.split("**")[1], window.wholeDB[targets[key].title.split(":")[0]], "+");
                         display = display.split("Accurcy:")[0];
                         ending = "Healing";
                     }
@@ -1724,9 +1723,9 @@ function handleUseAction(targets)
                     {
                         display += `(Success Hit) ${targets[key].title.split(":")[0]} (${ac}), `;
                         fail = false; 
-                        if(wholeChar[targets[key].title.split(":")[0]]){let targe = targets[key].title.split(":")[0]; if(wholeChar[targe]["rage"] && !description.includes("{noRage") && !spellLevel){let past = damage.slice(damage.indexOf("**") + 2); past = past.slice(0, damage.indexOf("**")); let hp = parseInt(past)/2; damage = damage.replace(past, `${hp}** (1/2 Rage)`);}}
-                        handleChangeHp(damage.split("**")[1], wholeDB[targets[key].title.split(":")[0]], "-");
-                        if(document.getElementById("sneak")){if(document.getElementById("sneak").value != "Sneak-Attack?"){description += `{@sDice ${Math.floor(parseInt(wholeChar[player]["stats"]["lv"])/2)}d6} Sneak Attack.`;}}
+                        if(window.wholeChar[targets[key].title.split(":")[0]]){let targe = targets[key].title.split(":")[0]; if(window.wholeChar[targe]["rage"] && !description.includes("{noRage") && !spellLevel){let past = damage.slice(damage.indexOf("**") + 2); past = past.slice(0, damage.indexOf("**")); let hp = parseInt(past)/2; damage = damage.replace(past, `${hp}** (1/2 Rage)`);}}
+                        handleChangeHp(damage.split("**")[1], window.wholeDB[targets[key].title.split(":")[0]], "-");
+                        if(document.getElementById("sneak")){if(document.getElementById("sneak").value != "Sneak-Attack?"){description += `{@sDice ${Math.floor(parseInt(window.wholeChar[player]["stats"]["lv"])/2)}d6} Sneak Attack.`;}}
                     }
 
                     else
@@ -1759,16 +1758,16 @@ function handleUseAction(targets)
 
                 damage = splitRoll(sDice, "@sDice");
                 damage = diceRoller(damage[0], damage[1], damage[2], "false");
-                for(let key in Object.keys(targets)){handleChangeHp(damage.split("**")[1], wholeDB[targets[key].title.split(":")[0]], "-");}
+                for(let key in Object.keys(targets)){handleChangeHp(damage.split("**")[1], window.wholeDB[targets[key].title.split(":")[0]], "-");}
             
                 if(display){display += `\nResult: ${damage}. \n`;}
-                else{display = `${wholeChar[player]["charName"]} used the ability, ${lastUse}:\n${useInfo}\n\nResult: ${damage}. \n`;}
+                else{display = `${window.wholeChar[player]["charName"]} used the ability, ${lastUse}:\n${useInfo}\n\nResult: ${damage}. \n`;}
             }
         }
 
         if(description.includes("{@infuseRate"))
         {
-            let rate = parseInt(wholeChar[player]["infusedRate"]);
+            let rate = parseInt(window.wholeChar[player]["infusedRate"]);
             let roll = diceRoller("1", "100", "0");
             let result;
 
@@ -1786,7 +1785,7 @@ function handleUseAction(targets)
             }
 
             if(display){display += `\nInfusion Check: ${result}, rolled ${roll}, needs to be above ${rate}. \n`;}
-            else{display = `${wholeChar[player]["charName"]} used the ability, ${lastUse}:\n${useInfo}\n\nInfusion Check: ${result}, rolled ${roll}, needs to be above ${rate}.\n`;}
+            else{display = `${window.wholeChar[player]["charName"]} used the ability, ${lastUse}:\n${useInfo}\n\nInfusion Check: ${result}, rolled ${roll}, needs to be above ${rate}.\n`;}
         }
 
         if(description.includes("{@sneak"))
@@ -1796,15 +1795,15 @@ function handleUseAction(targets)
             damage = diceRoller(damage[0], damage[1], damage[2], "false");
     
             if(display){display += `nResult: ${damage}. \n`;}
-            else{display = `${wholeChar[player]["charName"]} used the ability, ${lastUse}:\n${useInfo}\n\nResult: ${damage}. \n`;}
+            else{display = `${window.wholeChar[player]["charName"]} used the ability, ${lastUse}:\n${useInfo}\n\nResult: ${damage}. \n`;}
         }
 
-        setDoc("currentMap/", wholeDB);
+        setDoc("currentMap/", window.wholeDB);
     }
 
     else
     {
-        display = `${toTitleCase(wholeChar[player]["currentToken"])} cast: ${lastUse}\n${useInfo}`;
+        display = `${toTitleCase(window.wholeChar[player]["currentToken"])} cast: ${lastUse}\n${useInfo}`;
         if(curClass){display = display.replaceAll("cast", "use the ability");}
     }
 
@@ -1878,8 +1877,8 @@ function handleUseAction(targets)
 
     if(timeActive != "0")
     {
-        if(player != "Vi"){setDoc(`currentTO/Var/${wholeChar[player]["charName"]}/${lastUse}`, {"expires" : wholeTO["Var"]["currentTurn"] + timeActive, "castOn": wholeTO["Var"]["currentTurn"], "id" : lastUse});}
-        else{setDoc(`currentTO/Var/Enemy/${lastUse}`, {"expires" : wholeTO["Var"]["currentTurn"] + timeActive, "castOn": wholeTO["Var"]["currentTurn"], "id" : lastUse});}
+        if(player != "Vi"){setDoc(`currentTO/Var/${window.wholeChar[player]["charName"]}/${lastUse}`, {"expires" : window.wholeTO["Var"]["currentTurn"] + timeActive, "castOn": window.wholeTO["Var"]["currentTurn"], "id" : lastUse});}
+        else{setDoc(`currentTO/Var/Enemy/${lastUse}`, {"expires" : window.wholeTO["Var"]["currentTurn"] + timeActive, "castOn": window.wholeTO["Var"]["currentTurn"], "id" : lastUse});}
     }
 
     display = display.replaceAll("<li>", "\n- ");
@@ -1895,8 +1894,8 @@ function spellOrAttackBonus(usage)
     {
         if(usage == "@damage")
         {
-            if(spellLevel){userAddTo = prompt("What is your Spell Attack Bonus?", wholeChar[player]["stats"]["addToSpell"]);}
-            else{userAddTo = prompt("What is your Attack Bonus?", wholeChar[player]["stats"]["attackBonus"]);}
+            if(spellLevel){userAddTo = prompt("What is your Spell Attack Bonus?", window.wholeChar[player]["stats"]["addToSpell"]);}
+            else{userAddTo = prompt("What is your Attack Bonus?", window.wholeChar[player]["stats"]["attackBonus"]);}
             userAddTo = userAddTo.replaceAll(" ", "");
     
             if(spellLevel){setDoc(`playerChar/${player}/stats/addToSpell`, userAddTo);}
@@ -1905,7 +1904,7 @@ function spellOrAttackBonus(usage)
         
         else if(usage == "@save")
         {
-            userAddTo = prompt("What is the DC to beat (Spell DC)?", wholeChar[player]["stats"]["spellDC"]);
+            userAddTo = prompt("What is the DC to beat (Spell DC)?", window.wholeChar[player]["stats"]["spellDC"]);
             setDoc(`playerChar/${player}/stats/spellDC`, userAddTo);
         }
     }
@@ -1914,15 +1913,15 @@ function spellOrAttackBonus(usage)
     {
         if(usage == "@damage")
         {
-            if(spellLevel){if(!wholeChar[player]["stats"]["spellBonus"]){userAddTo = prompt("What is your Spell Attack Bonus?", wholeChar[player]["stats"]["spellBonus"]);} else{userAddTo = wholeChar[player]["stats"]["spellBonus"];}}
-            else{userAddTo = `${parseInt(wholeChar[player]["stats"]["proficiency"]) + parseInt(wholeChar[player]["stats"]["Strength"])}`;}
+            if(spellLevel){if(!window.wholeChar[player]["stats"]["spellBonus"]){userAddTo = prompt("What is your Spell Attack Bonus?", window.wholeChar[player]["stats"]["spellBonus"]);} else{userAddTo = window.wholeChar[player]["stats"]["spellBonus"];}}
+            else{userAddTo = `${parseInt(window.wholeChar[player]["stats"]["proficiency"]) + parseInt(window.wholeChar[player]["stats"]["Strength"])}`;}
             userAddTo = userAddTo.replaceAll(" ", "");
         }
         
         else if(usage == "@save")
         {
-            if(!wholeChar[player]["stats"]["spellDC"]){userAddTo = prompt("What is the DC to beat (Spell DC)?", wholeChar[player]["stats"]["spellDC"]);}
-            else{userAddTo = wholeChar[player]["stats"]["spellDC"];}
+            if(!window.wholeChar[player]["stats"]["spellDC"]){userAddTo = prompt("What is the DC to beat (Spell DC)?", window.wholeChar[player]["stats"]["spellDC"]);}
+            else{userAddTo = window.wholeChar[player]["stats"]["spellDC"];}
             setDoc(`playerChar/${player}/stats/spellDC`, userAddTo);
         }
     }
@@ -1948,14 +1947,14 @@ function handleCreateNew()
     {
         spellLevel = "0";
         lastSpell = "Sacred Flame";
-        setDoc(`playerChar/${player}/favorites/spells/${spellLevel}/${lastSpell}`, wholeSpells[spellLevel][lastSpell]);
+        setDoc(`playerChar/${player}/favorites/spells/${spellLevel}/${lastSpell}`, window.wholeSpells[spellLevel][lastSpell]);
     }
 
     else if(this.innerHTML == "Create New Ability")
     {
         curClass = "Artificer";
         lastAbility = "Magical Tinkering";
-        setDoc(`playerChar/${player}/favorites/actions/${curClass}/${lastAbility}`, wholeActions[curClass][lastAbility]);
+        setDoc(`playerChar/${player}/favorites/actions/${curClass}/${lastAbility}`, window.wholeActions[curClass][lastAbility]);
     }
 
     handleEditCard();
@@ -1979,14 +1978,14 @@ function handleEditCard()
     {
         let spell = lastSpell;
         text = ["Name:", "Level:", "Casting Time:", "Range:", "Components:", "Duration:", "Concentration:", "Description:"];
-        temp = [`${toTitleCase(wholeFavorite["spells"][spellLevel][spell]["name"])}`, `${spellLevel}`, `${toTitleCase(wholeFavorite["spells"][spellLevel][spell]["castTime"])}`, `${toTitleCase(wholeFavorite["spells"][spellLevel][spell]["range"])}`, `${wholeFavorite["spells"][spellLevel][spell]["components"]}`, `${toTitleCase(wholeFavorite["spells"][spellLevel][spell]["duration"])}`, `${wholeFavorite["spells"][spellLevel][spell]["concentration"]}`, `${wholeFavorite["spells"][spellLevel][spell]["description"]}`];
+        temp = [`${toTitleCase(window.wholeFavorite["spells"][spellLevel][spell]["name"])}`, `${spellLevel}`, `${toTitleCase(window.wholeFavorite["spells"][spellLevel][spell]["castTime"])}`, `${toTitleCase(window.wholeFavorite["spells"][spellLevel][spell]["range"])}`, `${window.wholeFavorite["spells"][spellLevel][spell]["components"]}`, `${toTitleCase(window.wholeFavorite["spells"][spellLevel][spell]["duration"])}`, `${window.wholeFavorite["spells"][spellLevel][spell]["concentration"]}`, `${window.wholeFavorite["spells"][spellLevel][spell]["description"]}`];
     }
 
     else
     {
         let action = lastAbility;
         text = ["Name:", "Tag:", "Description:"];
-        temp = [`${toTitleCase(wholeFavorite["actions"][curClass][action]["name"])}`, `${curClass}`, `${wholeFavorite["actions"][curClass][action]["description"]}`];
+        temp = [`${toTitleCase(window.wholeFavorite["actions"][curClass][action]["name"])}`, `${curClass}`, `${window.wholeFavorite["actions"][curClass][action]["description"]}`];
     }
 
     for(let i = 0; i < text.length; i++)
@@ -2116,12 +2115,12 @@ function handleFavoriteBtn()
         
         if(spellLevel)
         {
-            setDoc(`playerChar/${player}/favorites/spells/${spellLevel}/${titleName}`, wholeSpells[spellLevel][cardName]);
+            setDoc(`playerChar/${player}/favorites/spells/${spellLevel}/${titleName}`, window.wholeSpells[spellLevel][cardName]);
         }
 
         else
         {
-            setDoc(`playerChar/${player}/favorites/actions/${curClass}/${titleName}`, wholeActions[curClass][cardName]);
+            setDoc(`playerChar/${player}/favorites/actions/${curClass}/${titleName}`, window.wholeActions[curClass][cardName]);
         }
     }
 
@@ -2187,17 +2186,17 @@ function handleChangeToken()
         switch(i)
         {
             case 0:
-                temp = wholeCustom;
+                temp = window.wholeCustom;
                 for(let token of Object.keys(temp)){if(token != "hold"){sources.push(temp[token]["src"]);}} //Populates Sources with all the selectable token images
                 temp = imgs["tokens"];
                 for(let token of Object.keys(temp)){if(token != "invisible-"){sources.push(temp[token]);}} //Populates Sources with all the selectable token images
-                dropBtn.innerHTML = wholeDB[currentCharacter[0].id]["name"];
+                dropBtn.innerHTML = window.wholeDB[currentCharacter[0].id]["name"];
                 break;
             
             case 1:
                 temp = imgs["borders"];
                 for(let border of Object.keys(temp)){if(border != "invisible"){sources.push(temp[border]);}} //Populates Sources with all the selectable border images
-                dropBtn.innerHTML = wholeDB[currentCharacter[0].id]["border"];
+                dropBtn.innerHTML = window.wholeDB[currentCharacter[0].id]["border"];
                 break;
         }
 
@@ -2224,9 +2223,9 @@ function handleChangeToken()
 
             else
             {
-                for(let token of Object.keys(wholeCustom))
+                for(let token of Object.keys(window.wholeCustom))
                 {
-                    if(wholeCustom[token]["src"] == img.src){temp = wholeCustom[token]["name"];}
+                    if(window.wholeCustom[token]["src"] == img.src){temp = window.wholeCustom[token]["name"];}
                 }
             }
 
@@ -2251,7 +2250,7 @@ function handleUpdateToken()
 {
     let name = document.getElementById("name").innerHTML;
     let toUpdate = name[0].toLowerCase() + name.slice(1);
-    let fields = wholeDB[toUpdate];
+    let fields = window.wholeDB[toUpdate];
 
     fields.border = `${document.getElementById("BorderButton").innerHTML}`;
     fields.name = `${document.getElementById("CharacterButton").innerHTML}`;
@@ -2327,16 +2326,16 @@ function handleCustomsButton()
 {
     handleCancelTokenChange();
 
-    for(let custom of Object.keys(wholeCustom))
+    for(let custom of Object.keys(window.wholeCustom))
     {
-        if(wholeCustom[custom]["player"] == player)
+        if(window.wholeCustom[custom]["player"] == player)
         {
             let personDiv = document.createElement("div");
             personDiv.classList.add("center");
             
             let person = document.createElement("img");
-            person.id = wholeCustom[custom]["name"];
-            person.src = wholeCustom[custom]["src"];
+            person.id = window.wholeCustom[custom]["name"];
+            person.src = window.wholeCustom[custom]["src"];
             person.classList = "char customImg";
             person.style.width = "73px";
             person.style.height = "73px";
@@ -2346,7 +2345,7 @@ function handleCustomsButton()
             let deleteBtn = document.createElement("button");
             deleteBtn.innerHTML = "Delete Custom Img";
             deleteBtn.onclick = handleDeleteCustom;
-            deleteBtn.id = wholeCustom[custom]["name"];
+            deleteBtn.id = window.wholeCustom[custom]["name"];
             personDiv.appendChild(deleteBtn);
             placeBefore(personDiv, changeTokenBtn);
             deleteBtn.style.margin = "10px";
@@ -2391,12 +2390,12 @@ function handleDeleteCustom()
 {
     deleteDoc(`customImages/${this.id}`);
     
-    for(let tokens of Object.keys(wholeDB))
+    for(let tokens of Object.keys(window.wholeDB))
     {
-        if(wholeDB[tokens]["name"] == this.id)
+        if(window.wholeDB[tokens]["name"] == this.id)
         {
             let access = document.getElementById("name").innerHTML.toLowerCase();
-            let newToken = wholeDB[access];
+            let newToken = window.wholeDB[access];
 
             newToken.name = `${newToken.id}-`;
             setDoc(`currentMap/${access}`, newToken);
@@ -2430,13 +2429,13 @@ function displayInteractive()
     viewDiv.style.opacity = .95;
     text.classList.remove("invisible");
 
-    if(wholeInteractive["image"] != "")
+    if(window.wholeInteractive["image"] != "")
     {
         image.classList.remove("invisible");
-        image.src = wholeInteractive["image"];
+        image.src = window.wholeInteractive["image"];
     }
     
-    text.innerHTML = wholeInteractive["text"];
+    text.innerHTML = window.wholeInteractive["text"];
 }
 
 function displaySelect()
@@ -2462,11 +2461,11 @@ function useAbility()
 
         if(awnser)
         {
-            let tokens = document.getElementsByClassName(wholeChar[player]["currentToken"]);
+            let tokens = document.getElementsByClassName(window.wholeChar[player]["currentToken"]);
 
             for(let token of tokens)
             {
-                if(token.id == wholeDB[wholeChar[player]["currentToken"]].border)
+                if(token.id == window.wholeDB[window.wholeChar[player]["currentToken"]].border)
                 {
                     token.classList.add("selected-temp");
                     this.click();
@@ -2530,7 +2529,7 @@ function handleDiceSelect()
             select.style.margin = "10px";
             select.style.display = "inline";
 
-            for(let roll of wholeRoles["rolls"][this.innerHTML])
+            for(let roll of window.wholeRoles["rolls"][this.innerHTML])
             {
                 select.innerHTML += `<option value="${roll}">${toTitleCase(roll)}</option>`;
             }
@@ -2554,11 +2553,11 @@ function handleLoadQuests()
     document.getElementById("questInstructions").innerHTML="<em><b>Click To Hide Other Quests...</b></em>";
     this.onclick = handleDeleteQuests;
 
-    for(let quest of Object.keys(wholeQuests))
+    for(let quest of Object.keys(window.wholeQuests))
     {
         let questTitle, questText;
 
-        if(!wholeQuests[quest]["activeQuest"]){ questTitle = wholeQuests[quest]["name"]; questText = wholeQuests[quest]["Desc"]; }
+        if(!window.wholeQuests[quest]["activeQuest"]){ questTitle = window.wholeQuests[quest]["name"]; questText = window.wholeQuests[quest]["Desc"]; }
         else { continue; }
 
         let card = document.createElement("div");
@@ -2576,7 +2575,7 @@ function handleLoadQuests()
         cardBody.appendChild(title);
         cardBody.appendChild(text);
 
-        if(wholeQuests[quest]["status"] == "incomplete")
+        if(window.wholeQuests[quest]["status"] == "incomplete")
         {
             card.classList.add("incomplete");
             cardBody.classList.add("incomplete");
@@ -2584,7 +2583,7 @@ function handleLoadQuests()
             questDiv.appendChild(card);
         }
 
-        else if (wholeQuests[quest]["status"] == "complete")
+        else if (window.wholeQuests[quest]["status"] == "complete")
         {
             card.classList.add("complete");
             cardBody.classList.add("complete");
@@ -2620,7 +2619,7 @@ function updateStat()
     let diceMod = document.getElementById("diceMod");
     let stat = document.getElementById("statChoice").value;
     
-    if(!["deathSave", "Misc", "Saves", "Checks", "Basic"].includes(stat)){diceMod.innerHTML = `${toTitleCase(stat)}: ${wholeChar[player]["stats"][stat]}`;}
+    if(!["deathSave", "Misc", "Saves", "Checks", "Basic"].includes(stat)){diceMod.innerHTML = `${toTitleCase(stat)}: ${window.wholeChar[player]["stats"][stat]}`;}
     else{diceMod.innerHTML = `${toTitleCase(stat)}: +0`;}
 }
 

@@ -4,19 +4,19 @@ import { auth, database } from './js/viMethods.js';
 import { setMode, setWholeDB, setWholeTO, setWholeSummons, setWholeBubbles } from './src/map.js';
 import { setPlayer, setWholeInteractive, setWholeCharCont, setWholeQuests } from './js/mapControler.js';
 
-export let wholeCustom = {};
-export let wholeBubbles = {};
-export let wholeChar = {};
-export let wholeDB = {};
-export let wholeDisplay = {};
-export let wholeInteractive = {};
-export let wholePre = {};
-export let wholeQuests = {};
-export let wholeSummons = {};
-export let wholeTO = {};
-export let imgs = {};
-export let wholeActions = {};
-export let wholeSpells = {};
+window.wholeCustom = {};
+window.wholeBubbles = {};
+window.wholeChar = {};
+window.wholeDB = {};
+window.wholeDisplay = {};
+window.wholeInteractive = {};
+window.wholePre = {};
+window.wholeQuests = {};
+window.wholeSummons = {};
+window.wholeTO = {};
+window.imgs = {};
+window.wholeActions = {};
+window.wholeSpells = {};
 
 onAuthStateChanged(auth, (user) => 
 {
@@ -42,7 +42,6 @@ onValue(customsRef, (snapshot) =>
 {
     const data = snapshot.val();
     wholeCustom = data;
-    setWholeCustomCont(data);
 });
 
 const currentMapRef = ref(database, 'currentMap/');

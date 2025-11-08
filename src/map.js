@@ -3,7 +3,6 @@
 import { ref, onValue } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js';
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
 import { toTitleCase, auth, database, setDoc, deleteDoc, returnHpImage, setMapValue, placeBefore, quickAction, setQuickAction, wait, getRandomItem } from '../js/viMethods.js';
-import { wholeCustom, wholeBubbles, wholeChar, wholeDB, wholeDisplay, wholeInteractive, wholePre, wholeQuests, wholeSummons, wholeTO, imgs, wholeActions, wholeSpells } from '../parent.js';
 
 export function setMode(auth)
 {
@@ -32,14 +31,14 @@ export function setWholeTO(data)
 
 export function setWholeSummons(data)
 {
-    isSummonOn = wholeSummons["isSummonOn"];
+    isSummonOn = window.wholeSummons["isSummonOn"];
 }
 
 export function setWholeBubbles(data)
 {
-    for(let bubble of Object.keys(wholeBubbles))
+    for(let bubble of Object.keys(window.wholeBubbles))
     {
-        addBubbles(wholeBubbles[bubble]);
+        addBubbles(window.wholeBubbles[bubble]);
     }
 }
 
@@ -197,23 +196,23 @@ function addTokens()
         }
     }
 
-    for(let key of Object.keys(wholeDB))
+    for(let key of Object.keys(window.wholeDB))
     {
-        if(key == "map") {document.getElementById("grid").src = imgs["mapName"][wholeDB[key]];}
-        else{addCharacter(wholeDB[key], false);}     
+        if(key == "map") {document.getElementById("grid").src = imgs["mapName"][window.wholeDB[key]];}
+        else{addCharacter(window.wholeDB[key], false);}     
     }
 
     if(player == "Vi")
     {
-        if(isSummonOn && !(Object.keys(wholeDB).includes("sky")) && wholeSummons["sky"] != undefined)
+        if(isSummonOn && !(Object.keys(window.wholeDB).includes("sky")) && window.wholeSummons["sky"] != undefined)
         {
-            setDoc("currentMap/sky", wholeSummons["sky"]);
+            setDoc("currentMap/sky", window.wholeSummons["sky"]);
         }
     }
 
-    if(!(Object.keys(wholeDB).includes(wholeChar[player]["token"]["id"])))
+    if(!(Object.keys(window.wholeDB).includes(window.wholeChar[player]["token"]["id"])))
     {
-        if(wholeDB["spawnPoint"])
+        if(window.wholeDB["spawnPoint"])
         {
             let negOrPos = [-1, 1];
             let differential = [0, 1, 2];
@@ -223,36 +222,36 @@ function addTokens()
             diffrenceX = getRandomItem(negOrPos) * getRandomItem(differential);
             diffrenceY = getRandomItem(negOrPos) * getRandomItem(differential);
 
-            wholeChar[player]["token"]["xPos"] = `${parseInt(wholeDB["spawnPoint"]["xPos"]) + diffrenceX}`;
-            wholeChar[player]["token"]["yPos"] = `${parseInt(wholeDB["spawnPoint"]["yPos"]) + diffrenceY}`;
+            window.wholeChar[player]["token"]["xPos"] = `${parseInt(window.wholeDB["spawnPoint"]["xPos"]) + diffrenceX}`;
+            window.wholeChar[player]["token"]["yPos"] = `${parseInt(window.wholeDB["spawnPoint"]["yPos"]) + diffrenceY}`;
         }
 
-        setDoc(`currentMap/${wholeChar[player]["token"]["id"]}`, wholeChar[player]["token"]);
+        setDoc(`currentMap/${window.wholeChar[player]["token"]["id"]}`, window.wholeChar[player]["token"]);
 
         if(isSummonOn)
         {
-            for(let key of Object.keys(wholeSummons))
+            for(let key of Object.keys(window.wholeSummons))
             {
                 if(key != "isSummonOn" && key != "summonPreset")
                 {
-                    let user = wholeSummons[key]["title"].replaceAll(" ", "").slice(wholeSummons[key]["title"].indexOf(":") + 1).split(",");
+                    let user = window.wholeSummons[key]["title"].replaceAll(" ", "").slice(window.wholeSummons[key]["title"].indexOf(":") + 1).split(",");
                     user = toTitleCase(user[0]);
 
-                    if(wholeChar[player]["charName"] == user)
+                    if(window.wholeChar[player]["charName"] == user)
                     {
-                        if(wholeDB["spawnPoint"])
+                        if(window.wholeDB["spawnPoint"])
                         {
-                            wholeSummons[key]["xPos"] = wholeDB["spawnPoint"]["xPos"];
-                            wholeSummons[key]["yPos"] = wholeDB["spawnPoint"]["yPos"];
+                            window.wholeSummons[key]["xPos"] = window.wholeDB["spawnPoint"]["xPos"];
+                            window.wholeSummons[key]["yPos"] = window.wholeDB["spawnPoint"]["yPos"];
                         }
 
-                        setDoc(`currentMap/${wholeSummons[key]["id"]}`, wholeSummons[key]);
+                        setDoc(`currentMap/${window.wholeSummons[key]["id"]}`, window.wholeSummons[key]);
                     }
                 }
             }
         }
 
-        setDoc(`playerChar/${player}/currentToken`, wholeChar[player]["token"]["id"]);
+        setDoc(`playerChar/${player}/currentToken`, window.wholeChar[player]["token"]["id"]);
         location.reload();
     }
 }
@@ -274,7 +273,7 @@ function makeToken(key, turn, charPos)
 
             if(i == 3)
             {
-                if(Object.keys(wholeTO["Var"][key]).length == 1){row[i].classList.add("invisible");}
+                if(Object.keys(window.wholeTO["Var"][key]).length == 1){row[i].classList.add("invisible");}
                 row[i].src = "images/upcomingAction.png";
                 row[i].style.width = "25px";
                 row[i].style.height = "25px";
@@ -311,26 +310,26 @@ function removeTurnOrder()
 
 function setTurnOrder()
 {
-    for(let i = 1; i <= Object.keys(wholeTO).length; i++)
+    for(let i = 1; i <= Object.keys(window.wholeTO).length; i++)
     {
-        for(let key of Object.keys(wholeTO))
+        for(let key of Object.keys(window.wholeTO))
         {
             if(key == "Var")
             {
                 let turn = document.getElementById("currentTurn");
-                turn.innerHTML = `Turn: ${wholeTO[key]["currentTurn"]}`;
+                turn.innerHTML = `Turn: ${window.wholeTO[key]["currentTurn"]}`;
                 continue;
             }
                 
-            else if(i == wholeTO[key].position)
+            else if(i == window.wholeTO[key].position)
             {
-                makeToken(wholeTO[key].charName, wholeTO[key].selected, wholeTO[key].position);
+                makeToken(window.wholeTO[key].charName, window.wholeTO[key].selected, window.wholeTO[key].position);
                 break;
             }
         }
     }
 
-    for(let person of Object.keys(wholeTO["Var"]))
+    for(let person of Object.keys(window.wholeTO["Var"]))
     {
         if(person == "currentTurn")
         {
@@ -339,9 +338,9 @@ function setTurnOrder()
 
         else
         {
-            if(Object.keys(wholeTO["Var"][person]).length > 1)
+            if(Object.keys(window.wholeTO["Var"][person]).length > 1)
             {
-                for(let ability of Object.keys(wholeTO["Var"][person]))
+                for(let ability of Object.keys(window.wholeTO["Var"][person]))
                 {
                     if(ability == "temp")
                     {
@@ -350,9 +349,9 @@ function setTurnOrder()
 
                     else
                     {
-                        let used = wholeTO["Var"][person][ability];
+                        let used = window.wholeTO["Var"][person][ability];
                         
-                        if(used["expires"] - 2 <= wholeTO["Var"]["currentTurn"])
+                        if(used["expires"] - 2 <= window.wholeTO["Var"]["currentTurn"])
                         {
                             let timer = document.getElementById(`${person}-timer`);
                             timer.src = "images/expiringAction.png";
@@ -360,7 +359,7 @@ function setTurnOrder()
                             timer.onclick = handleTurnTimer;
                         }
 
-                        if(used["expires"] == wholeTO["Var"]["currentTurn"])
+                        if(used["expires"] == window.wholeTO["Var"]["currentTurn"])
                         {
                             deleteDoc(`currentTO/Var/${person}/${ability}`);
                         }
@@ -375,7 +374,7 @@ function handleTurnTimer()
 {
     let div = document.getElementById("turnOrder");
     let person = this.id.slice(0, this.id.indexOf("-"));
-    let skills = wholeTO["Var"][person];
+    let skills = window.wholeTO["Var"][person];
     let back = document.createElement("a");
     let title = document.createElement("h5");
     let list = document.createElement("ul");
@@ -398,7 +397,7 @@ function handleTurnTimer()
         {
             let bullet = document.createElement("li");
             bullet.classList= "color-UP-yellow";
-            bullet.innerHTML = `${skill} | ${skills[skill]["expires"] - wholeTO["Var"]["currentTurn"]} turns left active.`;
+            bullet.innerHTML = `${skill} | ${skills[skill]["expires"] - window.wholeTO["Var"]["currentTurn"]} turns left active.`;
             list.appendChild(bullet);
         }
     }
@@ -420,10 +419,10 @@ function addCharacter(character, update)
     let image = tokenImg;
     let img = new Image();
     if(!image.includes("custom-")){img.src = `images/map/tokens/${image}.png`;}
-    else{img.src = wholeCustom[image]["src"];}
+    else{img.src = window.wholeCustom[image]["src"];}
     img.onerror = () => {char[0].src = `images/map/tokens/unknown-.png`;};
     
-    if(!tokenImg.includes("custom-")){char[0].src = imgs["tokens"][tokenImg];} else{char[0].src = wholeCustom[tokenImg]["src"]; char[0].classList.add("customImg");}
+    if(!tokenImg.includes("custom-")){char[0].src = imgs["tokens"][tokenImg];} else{char[0].src = window.wholeCustom[tokenImg]["src"]; char[0].classList.add("customImg");}
     char[0].id = character["id"];
     
     char[1].src = `images/map/tokens/${character["border"]}Border.png`;
@@ -438,7 +437,7 @@ function addCharacter(character, update)
         char[1].title = `${character["id"]}:${character["title"]}`;
     }
 
-    if(wholeChar[player]["currentToken"] == character["id"])
+    if(window.wholeChar[player]["currentToken"] == character["id"])
     {
         if(currentHp.value == "" && title.innerHTML == "Status: ")
         {
@@ -559,7 +558,7 @@ function addCharacter(character, update)
 
         if(title.includes("Invisible"))
         {
-            if(wholeChar[player]["token"]["id"] != character["id"])
+            if(window.wholeChar[player]["token"]["id"] != character["id"])
             {
                 for(let image of char)
                 {
@@ -971,13 +970,13 @@ function placeTokens(x, y, prop)
 
 function timer()
 {
-    if(wholeBubbles)
+    if(window.wholeBubbles)
     {
-        if(Object.keys(wholeBubbles).length > 1)
+        if(Object.keys(window.wholeBubbles).length > 1)
         {
-            for(let bubble of Object.keys(wholeBubbles))
+            for(let bubble of Object.keys(window.wholeBubbles))
             {
-                editBubble(wholeBubbles[bubble]);
+                editBubble(window.wholeBubbles[bubble]);
             }
         }
     
