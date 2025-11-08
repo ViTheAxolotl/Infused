@@ -3,38 +3,7 @@
 import { ref, onValue } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js';
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
 import { toTitleCase, auth, database, setDoc, deleteDoc, returnHpImage, setMapValue, placeBefore, quickAction, setQuickAction, wait, getRandomItem } from '../js/viMethods.js';
-
-let map = setMapValue();
-let wholeDB = {};
-let div = document.getElementById("gridMap");
-let html = {};
-const gridMap = document.querySelector("#gridMap"); //gridMap
-const rect = gridMap.getBoundingClientRect();
-let tokens = [];
-let imgs;
-let currentHp = document.getElementById("current");
-let maxHp = document.getElementById("max");
-let tempHp = document.getElementById("temp");
-let AC = document.getElementById("AC");
-let titleTxt = document.getElementById("title");
-let offSet;
-let divTO = document.getElementById("turnOrder");
-let wholeTO;
-let wholeSummons;
-let isSummonOn;
-let player;
-let wholeChar;
-let wholeCustom;
-let firstRun = true;
-let currentTurn;
-let mode = "";
-let modeRef;
-let mouseDown = false;
-let startX, scrollLeft;
-let startY, scrollUp;
-let slider = gridMap;
-let wholeBubbles;
-fetch('https://vitheaxolotl.github.io/Infused/src/files.json').then(res => res.json()).then((json) => imgs = json);
+import { wholeCustom, wholeBubbles, wholeChar, wholeDB, wholeDisplay, wholeInteractive, wholePre, wholeQuests, wholeSummons, wholeTO, imgs, wholeActions, wholeSpells } from '../parent.js';
 
 export function setMode(auth)
 {
@@ -50,20 +19,10 @@ export function setMode(auth)
     });
 }
 
-export function setWholeCustom(data)
-{
-    wholeCustom = data;
-}
-
 export function setWholeDB(data)
 {
     wholeDB = data;
     addTokens();
-}
-
-export function setWholeChar(data)
-{
-    wholeChar = data;
 }
 
 export function setWholeTO(data)
@@ -88,6 +47,30 @@ export function setWholeBubbles(data)
         addBubbles(wholeBubbles[bubble]);
     }
 }
+
+let map = setMapValue();
+let div = document.getElementById("gridMap");
+let html = {};
+const gridMap = document.querySelector("#gridMap"); //gridMap
+const rect = gridMap.getBoundingClientRect();
+let tokens = [];
+let currentHp = document.getElementById("current");
+let maxHp = document.getElementById("max");
+let tempHp = document.getElementById("temp");
+let AC = document.getElementById("AC");
+let titleTxt = document.getElementById("title");
+let offSet;
+let divTO = document.getElementById("turnOrder");
+let isSummonOn;
+let player;
+let firstRun = true;
+let currentTurn;
+let mode = "";
+let modeRef;
+let mouseDown = false;
+let startX, scrollLeft;
+let startY, scrollUp;
+let slider = gridMap;
 
 function init()
 {

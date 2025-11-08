@@ -1,8 +1,8 @@
 import { ref, onValue } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js';
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js'; 
 import { auth, database } from './js/viMethods.js';
-import { setMode, setWholeCustom, setWholeDB, setWholeChar, setWholeTO, setWholeSummons, setWholeBubbles } from './src/map.js';
-import { setPlayer, setWholeTOCont, setWholeInteractive, setWholeCharCont, setWholeCustomCont, setWholeDBCont, setWholeDisplay, setWholeQuests } from './js/mapControler.js';
+import { setMode, setWholeDB, setWholeTO, setWholeSummons, setWholeBubbles } from './src/map.js';
+import { setPlayer, setWholeInteractive, setWholeCharCont, setWholeDisplay, setWholeQuests } from './js/mapControler.js';
 
 export let wholeCustom = {};
 export let wholeBubbles = {};
@@ -42,7 +42,6 @@ onValue(customsRef, (snapshot) =>
 {
     const data = snapshot.val();
     wholeCustom = data;
-    setWholeCustom(data);
     setWholeCustomCont(data);
 });
 
@@ -52,7 +51,6 @@ onValue(currentMapRef, (snapshot) =>
     const data = snapshot.val();
     wholeDB = data;
     setWholeDB(data);
-    setWholeDBCont(data);
 });
 
 const charRef = ref(database, 'playerChar/');
@@ -60,7 +58,6 @@ onValue(charRef, (snapshot) =>
 {
     const data = snapshot.val();
     wholeChar = data;
-    setWholeChar(data);
     setWholeCharCont(data);
 });
 
@@ -70,7 +67,6 @@ onValue(currentTORef, (snapshot) =>
     const data = snapshot.val();
     wholeTO = data;
     setWholeTO(data);
-    setWholeTOCont(data);
 });
 
 const summonsRef = ref(database, 'playerChar/Vi/summons');

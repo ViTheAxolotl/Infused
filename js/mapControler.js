@@ -3,72 +3,13 @@
 import { ref, onValue } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js';
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
 import { toTitleCase, auth, database, createCard, setDoc, deleteDoc, placeBefore, createLabel, clenseInput, reload, setMapValue, quickAction, setQuickAction, skillDecrypt} from './viMethods.js';
-
-let map = setMapValue();
-let currentPos;
-let currentCharacter;
-let playerName = document.getElementById("name");
-let key;
-let keyControl;
-let arrows = [];
-let currentHp = document.getElementById("current");
-let maxHp = document.getElementById("max");
-let tempHp = document.getElementById("temp");
-let buttons;
-let player;
-let bounds;
-let firstRun = true;
-let firstMenu;
-let secondMenu;
-let spellBtn;
-let rollDiceBtn;
-let actionBtn;
-let wholeTO = {};
-let wholeChar = {};
-let wholeCustom = {};
-let wholeFavorite = {};
-let wholeDB = {};
-let wholeRoles = {};
-let wholeSpells;
-let wholeActions;
-let currentLv;
-let spellLevel;
-let curClass;
-let searchBar = document.getElementsByName("search");
-let upper = document.getElementById("cards");
-let favorite = false;
-let db;
-let lastSpell;
-let lastAbility;
-let changeTokenBtn;
-let imgs;
-let wholeInteractive;
-let currentAction;
-let wholeDisplay = {};
-let zoomLevel = 100;
-let grid = document.getElementById("grid");
-let discription;
-let currentToken;
-let wholeQuests = {};
+import { wholeCustom, wholeBubbles, wholeChar, wholeDB, wholeDisplay, wholeInteractive, wholePre, wholeQuests, wholeSummons, wholeTO, imgs, wholeActions, wholeSpells } from '../parent.js';
 
 export function setPlayer(auth)
 {
-        player = auth.currentUser.email.split("@");
-        player = toTitleCase(player[0]); //gives the players name
+    player = auth.currentUser.email.split("@");
+    player = toTitleCase(player[0]); //gives the players name
 }
-
-export function setWholeTOCont(data)
-{
-   wholeTO = data;
-}
-/**
- * When anything under this changes it will use onValue
- */
-
-
-/**
- * When anything under this changes it will use onValue
- */ 
 
 export function setWholeInteractive(data)
 { 
@@ -79,10 +20,6 @@ export function setWholeInteractive(data)
         displayInteractive();
     }
 }
-
-/**
- * When anything under this changes it will use onValue
- */
 
 export function setWholeCharCont(data)
 {
@@ -126,31 +63,9 @@ export function setWholeCharCont(data)
     }
 }
 
-/**
- * When it shows that your logged in
- */
-
-
-/**
- * When anything under this changes it will use onValue
- */
-export function setWholeCustomCont(data)
-{
-        wholeCustom = data;
-}
-
-
-export function setWholeDBCont(data)
-{
-        wholeDB = data;
-}
-/**
- * When anything under this changes it will use onValue
- */
-
 export function setWholeDisplay(data)
 {
-        wholeDisplay = data;
+    wholeDisplay = data;
 }
 
 export function setWholeQuests(data)
@@ -169,6 +84,45 @@ export function setWholeQuests(data)
     }
 }
 
+let map = setMapValue();
+let currentPos;
+let currentCharacter;
+let playerName = document.getElementById("name");
+let key;
+let keyControl;
+let arrows = [];
+let currentHp = document.getElementById("current");
+let maxHp = document.getElementById("max");
+let tempHp = document.getElementById("temp");
+let buttons;
+let player;
+let bounds;
+let firstRun = true;
+let firstMenu;
+let secondMenu;
+let spellBtn;
+let rollDiceBtn;
+let actionBtn;
+let wholeRoles = {};
+let wholeSpells;
+let wholeActions;
+let currentLv;
+let spellLevel;
+let curClass;
+let searchBar = document.getElementsByName("search");
+let upper = document.getElementById("cards");
+let favorite = false;
+let db;
+let lastSpell;
+let lastAbility;
+let changeTokenBtn;
+let imgs;
+let wholeInteractive;
+let currentAction;
+let zoomLevel = 100;
+let grid = document.getElementById("grid");
+let discription;
+let currentToken;
 let favoriteRef;
 
 /**
