@@ -18,7 +18,7 @@ function init()
     {
         if(window.top.parent.wholeChar[window.top.parent.player]["stats"][stat.id] || window.top.parent.wholeChar[window.top.parent.player]["stats"][stat.id] == "")
         {
-            if(!window.top.parent.wholeChar[window.top.parent.player]["stats"][stat.id]){setDoc(`window.top.parent.wholeChar/${window.top.parent.player}/stats/${stat.id}`, "");}
+            if(!window.top.parent.wholeChar[window.top.parent.player]["stats"][stat.id]){setDoc(`playerChar/${window.top.parent.player}/stats/${stat.id}`, "");}
             if(typeof window.top.parent.wholeChar[window.top.parent.player]["stats"][stat.id] == "string")
             {
                 if(stat.id == "spellBonus"){let bonus = statFormat(parseInt(window.top.parent.wholeChar[window.top.parent.player]["stats"][window.top.parent.wholeChar[window.top.parent.player]["stats"]["spellAbility"]]) + parseInt(window.top.parent.wholeChar[window.top.parent.player]["stats"]["proficiency"])); stat.innerHTML = bonus; setDoc(`playerChar/${window.top.parent.player}/stats/spellBonus`, bonus);}
