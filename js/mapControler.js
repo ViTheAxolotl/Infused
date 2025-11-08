@@ -114,7 +114,6 @@ let db;
 let lastSpell;
 let lastAbility;
 let changeTokenBtn;
-let imgs;
 let currentAction;
 let zoomLevel = 100;
 let grid = document.getElementById("grid");
