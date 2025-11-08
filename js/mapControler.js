@@ -1395,7 +1395,7 @@ function handleUseAction(targets)
 
         if(description.includes("{@respond}")) //Needs to check if half damage if sucess
         {
-            let window.wholeRespone = window.wholeChar["Vi"]["responses"];
+            let wholeRespone = window.wholeChar["Vi"]["responses"];
             let usersRoll;
             let userAddTo;
             if(window.wholeChar[player]["stats"][window.wholeRespone["ability"]]){userAddTo = window.wholeChar[player]["stats"][window.wholeRespone["ability"]];}
