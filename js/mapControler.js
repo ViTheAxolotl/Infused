@@ -13,8 +13,6 @@ export function setPlayer(auth)
 
 export function setWholeInteractive(data)
 { 
-    wholeInteractive = data;
-
     if(!firstRun)
     {
         displayInteractive();
@@ -24,7 +22,6 @@ export function setWholeInteractive(data)
 export function setWholeCharCont(data)
 {
     let infusedRate = document.getElementById("infusionRate");
-    wholeChar = data;
     infusedRate.innerHTML = `${infusedRate.title} ${data[player]["stats"]["InfusedRate"]}%`;
 
     if(firstRun) //The first time it loads
@@ -63,16 +60,10 @@ export function setWholeCharCont(data)
     }
 }
 
-export function setWholeDisplay(data)
-{
-    wholeDisplay = data;
-}
-
 export function setWholeQuests(data)
 {
     let questTitle = document.getElementById("questTitle");
     let questText = document.getElementById("questText");
-    wholeQuests = data;
     
     for(let quest of Object.keys(wholeQuests))
     {
