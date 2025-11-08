@@ -21,27 +21,22 @@ export function setMode(auth)
 
 export function setWholeDB(data)
 {
-    wholeDB = data;
     addTokens();
 }
 
 export function setWholeTO(data)
 {
-    wholeTO = data;
     removeTurnOrder(); 
     setTurnOrder();
 }
 
 export function setWholeSummons(data)
 {
-    wholeSummons = data;
     isSummonOn = wholeSummons["isSummonOn"];
 }
 
 export function setWholeBubbles(data)
 {
-    wholeBubbles = data;
-
     for(let bubble of Object.keys(wholeBubbles))
     {
         addBubbles(wholeBubbles[bubble]);
