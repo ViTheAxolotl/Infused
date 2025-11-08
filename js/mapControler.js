@@ -122,12 +122,6 @@ function init()
     arrows.push(document.getElementById("right"));
     arrows.push(document.getElementById("down"));
     
-    fetch('https://vitheaxolotl.github.io/Infused/src/files.json').then(res => res.json()).then((json) => imgs = json);
-    fetch('https://vitheaxolotl.github.io/Infused/src/spells.json').then(res => res.json()).then((json) => wholeSpells = json); //Opens the spell json file
-    fetch('https://vitheaxolotl.github.io/Infused/src/actions.json').then(res => res.json()).then((json) => wholeActions = json); //Opens the actions json file
-    fetch('https://vitheaxolotl.github.io/Infused/src/rolls.json').then(res => res.json()).then((json) => wholeRoles = json); //Opens the actions json file
-
-
     currentHp.onchange = updateHp;
     tempHp.onchange = tempHpUpdate;
     maxHp.innerHTML = "/ " + wholeChar[player]["stats"]["maxHp"];
