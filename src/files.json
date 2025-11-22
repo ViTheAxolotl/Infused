@@ -97,7 +97,8 @@
         "giantElk-" : "images/map/tokens/giantElk-.png",
         "yellowArch-" : "images/map/tokens/yellowArch-.png",
         "buzzer-" : "images/map/tokens/buzzer-.png",
-        "key-" : "images/map/tokens/key-.png"
+        "key-" : "images/map/tokens/key-.png",
+        "yellowDragon-" : "images/map/tokens/yellowDragon-.png"
     },
  
     "borders" : 
