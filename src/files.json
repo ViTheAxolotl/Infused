@@ -94,7 +94,8 @@
         "yellowShardStatue-" : "images/map/tokens/yellowShardStatue-.png",
         "vault-" : "images/map/tokens/vault-.png",
         "spawnPoint-" : "images/map/tokens/spawnPoint-.png",
-        "giantElk-" : "images/map/tokens/giantElk-.png"
+        "giantElk-" : "images/map/tokens/giantElk-.png",
+        "yellowArch-" : "images/map/tokens/yellowArch-.png"
     },
  
     "borders" : 
