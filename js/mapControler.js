@@ -2290,7 +2290,7 @@ function handleShowSelect()
 
     for(let div of divs)
     {
-        if(div.id == this.classList[1])
+        if(div.id == this.classList[2])
         {
             if(div.classList.contains("ddownHide"))
             {
