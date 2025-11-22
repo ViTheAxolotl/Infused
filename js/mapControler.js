@@ -215,8 +215,8 @@ function sendMessageToDisplay(message)
 
 function handleGridClick(e)
 {
-    let bubbleDB = {id : `${window.player}-bubble`, x : (e.offsetX * (100/zoomLevel) - map.bubble), y : (e.offsetY * (100/zoomLevel) - map.bubble), size : 1, src : imgs["borders"][window.wholeDB[window.wholeChar[window.player]["currentToken"]].border]};
-    if(bubbleDB.src.includes("invisible")){bubbleDB.src = imgs["borders"]["blue"];}
+    let bubbleDB = {id : `${window.player}-bubble`, x : (e.offsetX * (100/zoomLevel) - map.bubble), y : (e.offsetY * (100/zoomLevel) - map.bubble), size : 1, src : window.imgs["borders"][window.wholeDB[window.wholeChar[window.player]["currentToken"]].border]};
+    if(bubbleDB.src.includes("invisible")){bubbleDB.src = window.imgs["borders"]["blue"];}
     setDoc(`bubbles/${bubbleDB.id}`, bubbleDB);
 }
 
@@ -2180,13 +2180,13 @@ function handleChangeToken()
             case 0:
                 temp = window.wholeCustom;
                 for(let token of Object.keys(temp)){if(token != "hold"){sources.push(temp[token]["src"]);}} //Populates Sources with all the selectable token images
-                temp = imgs["tokens"];
+                temp = window.imgs["tokens"];
                 for(let token of Object.keys(temp)){if(token != "invisible-"){sources.push(temp[token]);}} //Populates Sources with all the selectable token images
                 dropBtn.innerHTML = window.wholeDB[currentCharacter[0].id]["name"];
                 break;
             
             case 1:
-                temp = imgs["borders"];
+                temp = window.imgs["borders"];
                 for(let border of Object.keys(temp)){if(border != "invisible"){sources.push(temp[border]);}} //Populates Sources with all the selectable border images
                 dropBtn.innerHTML = window.wholeDB[currentCharacter[0].id]["border"];
                 break;
