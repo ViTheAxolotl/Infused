@@ -95,7 +95,8 @@
         "vault-" : "images/map/tokens/vault-.png",
         "spawnPoint-" : "images/map/tokens/spawnPoint-.png",
         "giantElk-" : "images/map/tokens/giantElk-.png",
-        "yellowArch-" : "images/map/tokens/yellowArch-.png"
+        "yellowArch-" : "images/map/tokens/yellowArch-.png",
+        "buzzer-" : "images/map/tokens/buzzer-.png"
     },
  
     "borders" : 
