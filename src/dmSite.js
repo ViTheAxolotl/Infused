@@ -267,9 +267,9 @@ function handleEdit()
             txtFeilds[i] = document.createElement("select");
             txtFeilds[i].name = names[i];
 
-            for(let key of Object.keys(imgs["borders"]))
+            for(let key of Object.keys(window.top.parent.imgs["borders"]))
             {
-                let currentBorder = imgs["borders"][key];
+                let currentBorder = window.top.parent.imgs["borders"][key];
                 let option = document.createElement("option");
                 option.value = key;
                 option.text = currentBorder.slice(currentBorder.indexOf("ns/") + 3).replace("Border.png", "");
@@ -283,9 +283,9 @@ function handleEdit()
             txtFeilds[i] = document.createElement("select");
             txtFeilds[i].name = names[i];
 
-            for(let key of Object.keys(imgs["tokens"]))
+            for(let key of Object.keys(window.top.parent.imgs["tokens"]))
             {
-                let currentBorder = imgs["tokens"][key];
+                let currentBorder = window.top.parent.imgs["tokens"][key];
                 let option = document.createElement("option");
                 option.value = key;
                 option.text = currentBorder.slice(currentBorder.indexOf("ns/") + 3).replace(".png", "");
@@ -332,12 +332,12 @@ function handleEdit()
 
 function updateBorderPic()
 {
-    this.parentNode.childNodes[1].src = imgs["borders"][this[this.selectedIndex].value];
+    this.parentNode.childNodes[1].src = window.top.parent.imgs["borders"][this[this.selectedIndex].value];
 }
 
 function updateTokenPic()
 {
-    this.parentNode.childNodes[0].src = imgs["tokens"][this[this.selectedIndex].value];
+    this.parentNode.childNodes[0].src = window.top.parent.imgs["tokens"][this[this.selectedIndex].value];
 }
 
 function handleChangeCurrent()
@@ -752,9 +752,9 @@ function handleChangeMap()
     select.classList = "center blo";
     select.id = "select";
 
-    for(let keys of Object.keys(imgs["mapName"]))
+    for(let keys of Object.keys(window.top.parent.imgs["mapName"]))
     {
-        let mapImg = imgs["mapName"][keys];
+        let mapImg = window.top.parent.imgs["mapName"][keys];
         let option = document.createElement("option");
         option.value = keys;
         option.text = mapImg.slice(mapImg.indexOf("ap/") + 3).replace(".jpg", "");
@@ -984,7 +984,7 @@ function displayInteractive(exitButton)
         switch(i)
         {
             case 0:
-                temp = imgs["push"];
+                temp = window.top.parent.imgs["push"];
                 for(let img of Object.keys(temp)){sources.push(temp[img]);} //Populates Sources with all the selectable images
                 break;
         }
@@ -1218,7 +1218,7 @@ function handleUploadInteractive()
     let select = document.getElementById("PushButton");
     let src = img.value;
 
-    if(select.innerHTML != ""){src = imgs["push"][select.innerHTML];}
+    if(select.innerHTML != ""){src = window.top.parent.imgs["push"][select.innerHTML];}
     let obj = {"image" : `${src}`, "text" : `${text.value}`};
 
     setDoc("playerChar/Vi/interactive", obj);
