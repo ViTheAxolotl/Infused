@@ -1227,21 +1227,7 @@ function handleUploadInteractive()
 
 function handleGenerate()
 {
-    for(let player of Object.keys(window.top.parent.wholeChar))
-    {
-        let I = 1;
-
-        if(window.top.parent.wholeChar[player]["notes"])
-        {
-        for(let noteName of Object.keys(window.top.parent.wholeChar[player]["notes"]))
-        {
-            alert(noteName);
-            let note = {"desc": window.top.parent.wholeChar[player]["notes"][noteName], "pos" : I};
-            I++;
-            setDoc(`playerChar/${player}/notes/${noteName}`, note);
-        }
-    }
-    }
+    setDoc("playerChar/Barry", window.top.parent.wholeChar["Garrett"]);
     hideButtons();
     handleDone();
 }
