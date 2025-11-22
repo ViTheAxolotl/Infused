@@ -52,15 +52,15 @@
 
         "upgrade3" : 
         {
-            "name" : "Enhanced Ghost Wildshape",
-            "desc" : "By having your ghostly side take over majority of your body you will be able to wildshape into a ghost (Using <a class= 'nav-link active' aria-current= 'page' href='wildshape.html?ghost' target=' blank' style='display: inline;' ›Ghost</a> D&D 5e Stat Block) for an action, this can be done proficiency bonus times a day. You can stay a ghost for up to 10 turns or until your HP drops to 0 (Any overflow will go to your normal hp same as druid) Once unwildshaped, you must wait 5 minutes before using the ability again, as your ghost side needs time to recharge. For these benefits, you gain 10% more Infusion Rate.",
+            "name" : "Improved Ghostly Levitation",
+            "desc" : "By unlocking this your levitation from your Ghost Mode goes up to a full 40 feet and can be activated while midair. For these benefits you gain 10% more Infusion Rate.",
             "infusionRate" : 10
         },
 
         "upgrade4" : 
         {
-            "name" : "Improved Ghostly Levitation",
-            "desc" : "By unlocking this your levitation from your Ghost Mode goes up to a full 40 feet and can be activated while midair. For these benefits you gain 10% more Infusion Rate.",
+            "name" : "Enhanced Ghost Wildshape",
+            "desc" : "By having your ghostly side take over majority of your body you will be able to wildshape into a ghost (Using <a class= 'nav-link active' aria-current= 'page' href='wildshape.html?ghost' target=' blank' style='display: inline;' ›Ghost</a> D&D 5e Stat Block) for an action, this can be done proficiency bonus times a day. You can stay a ghost for up to 10 turns or until your HP drops to 0 (Any overflow will go to your normal hp same as druid) Once unwildshaped, you must wait 5 minutes before using the ability again, as your ghost side needs time to recharge. For these benefits, you gain 10% more Infusion Rate.",
             "infusionRate" : 10
         }
     },
