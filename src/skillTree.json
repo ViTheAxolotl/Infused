@@ -414,7 +414,7 @@
         "ability3" : 
         {
             "name" : "Hydra Wildshape",
-            "desc" : "By having your Hydra side take over the majority of your body you will be able to wildshape into a Hydra (Using <a class='nav-link active' aria-current='page' href='wildshape.html?hydra' target='_blank' style='display: inline;'>Hydra</a> 5e Stat Block) for an action, this can be done proficiency bonus / 2 (rounded down) times a day. You can stay a Vampire Squid for up to 5 turns or until your HP drops to 0 (Any overflow will go to your normal hp same as druid) Once unwildshaped, you must wait 10 minutes before using the ability again, as your Hydra side needs time to recharge. For these benefits, you gain 15% more Infusion Rate.",
+            "desc" : "By having your Hydra side take over the majority of your body you will be able to wildshape into a Hydra (Using <a class='nav-link active' aria-current='page' href='wildshape.html?hydra' target='_blank' style='display: inline;'>Hydra</a> 5e Stat Block) for an action, this can be done proficiency bonus / 2 (rounded down) times a day. You can stay a Hydra for up to 5 turns or until your HP drops to 0 (Any overflow will go to your normal hp same as druid) Once unwildshaped, you must wait 10 minutes before using the ability again, as your Hydra side needs time to recharge. For these benefits, you gain 15% more Infusion Rate.",
             "infusionRate" : 15
         },
 
@@ -457,6 +457,79 @@
         {
             "name" : "Enhanced Hydra Wildshape",
             "desc" : "By unlocking this your Hydra Wildshape gains stronger giving you many upgrades. You can now wildshape up to your proficiency bonus instead of pb/2. You also can remain in wildshape for up to 10 turns, and only need to wait 5 minutes instead of the 10 to wildshape. For these benefits, you gain 10% more Infusion Rate.",
+            "infusionRate" : 10
+        }
+    },
+
+    "Colin" :
+    {
+        "ability1" :
+        {
+            "name" : "Hydra’s More The Merrier",
+            "desc" : "Your Snake infusion grants you many benefits and drawbacks. The stronger this side of you gets, the less control of your body you have. By unlocking this skill, you gain resistance to poison and proficiency in Athletics and Acrobatics, but gain a weakness to the cold. You also gain Snake Mode, an active ability, by using an action your Snake side grows temporarily (5 Turns) to boost your abilities. In Snake Mode, you will gain a bite action 1d10+proficiency bonus+strength, with proficiency and strength being added to the accuracy roll. When you successfully bite someone, you can use your bonus action to deploy your venom, dealing your proficiency bonus number of d4s and adding your level. You can continue to keep your prey in your grasp. On each of your turns, you can auto-apply this poison again for a bonus action. The target needs to break your grapple to stop you from keeping your bite. Also, while in Snake Mode, you will have blindsight up to 10ft. Snake mode can be used as many times as you have a proficiency bonus. For these benefits, you gain 15% Infusion Rate, once you hit 100% you will become permanently your chosen animal/beast forever. When in an interaction that may have your infused side wanting to do something, you must roll a d100 if you roll above your Infusion Rate you resist that action.",
+            "infusionRate" : 15
+        },
+       
+        "ability2" :
+        {
+            "name" : "Asclepius’ Snake",
+            "desc" : "Like the snakes of Asclepius, you too will have healing powers. Whenever you do your bite action, you may now choose to do the poison, or release a healing agent. The liquid can speed up the natural healing process, causing their injuries to heal and shed off the dead skin. This can be done to yourself or anyone else you bite. They will heal your proficiency bonus number of d4s and add your level. You can continue to keep your pay in your grasp. On each of your turns, you can auto-apply this agent again for a bonus action. The target needs to break your grapple to stop you from keeping your bite. For these benefits, you gain 10% more Infusion Rate.",
+            "infusionRate" : 10
+        },
+
+
+        "ability3" :
+        {
+            "name" : "Snake Wildshape",
+            "desc" : "By having your Snake side take over the majority of your body you will be able to wildshape into a Snake (Using <a class='nav-link active' aria-current='page' href='wildshape.html?snake' target='_blank' style='display: inline;'>Snake</a> 5e Stat Block) for an action, this can be done proficiency bonus / 2 (rounded down) times a day. You can stay a Snake for up to 5 turns or until your HP drops to 0 (Any overflow will go to your normal hp same as druid) Once unwildshaped, you must wait 10 minutes before using the ability again, as your Hydra side needs time to recharge. For these benefits, you gain 15% more Infusion Rate.",
+            "infusionRate" : 15
+        },
+
+
+        "ability4" :
+        {
+            "name" : "Snake’s Camouflage",
+            "desc" : "Snakes are excellent attackers, able to stay still for long hours and camouflage with their surroundings. Like snakes, you can also use this ability. While in snake mode, you can use your action to cast the invisibility spell. And as long as you don’t move any squares, you will remain invisible to the naked eye. For these benefits, you gain 10% more Infusion Rate.",
+            "infusionRate" : 10
+        },
+
+
+        "ability5" :
+        {
+            "name" : "Shedding Snakes Skin",
+            "desc" : "Snakes shed their skin, like them, you can also shed your skin. While in Snake mode, you can shed your skin once a day. Doing this cures you of any illness or curse, resets your hp to full, and regains your spell slots. For these benefits, you gain 10% more Infusion Rate.",
+            "infusionRate" : 10
+        },
+
+
+        "upgrade1" :
+        {
+            "name" : "Longer Snake Mode",
+            "desc" : "By unlocking this, your Snake Mode ability will be able to be held for 10 turns instead of the normal 5. As a bonus, you also get 30 feet of blindsight instead of 10. For these benefits, you gain 10% more Infusion Rate.",
+            "infusionRate" : 10
+        },
+
+
+        "upgrade2" :
+        {
+            "name" : "Improved Venom/Healing agent",
+            "desc" : "Your d4s you roll for healing and doing poison damage will now be upgraded to d6s. For these benefits, you gain 10% more Infusion Rate.",
+            "infusionRate" : 10
+        },
+
+
+        "upgrade3" :
+        {
+            "name" : "Improved Snakes Bite Deploy",
+            "desc" : "By unlocking this, your Snake Mode bite will automatically use either the venom or Healing Agent if you have it unlocked, instead of using a bonus action. To deploy more in the next turn, you must still use your bonus action. For these benefits, you gain 10% more Infusion Rate.",
+            "infusionRate" : 10
+        },
+
+
+        "upgrade4" :
+        {
+            "name" : "Enhanced Snake Wildshape",
+            "desc" : "By unlocking this your Snake Wildshape gains stronger, giving you many upgrades. You can now wildshape up to your proficiency bonus instead of pb/2. You can also remain in wildshape for up to 10 turns, and only need to wait 5 minutes instead of the 10 to wildshape. For these benefits, you gain 10% more Infusion Rate.",
             "infusionRate" : 10
         }
     }
