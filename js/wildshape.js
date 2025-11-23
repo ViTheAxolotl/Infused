@@ -31,6 +31,10 @@ function init()
         case "hydra":
             img.src = "images/hydra.jpg";
             break;
+
+        case "snake":
+            img.src = "images/snake.jpg";
+            break;
     }
 }
 
