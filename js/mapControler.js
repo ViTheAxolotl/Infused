@@ -2244,6 +2244,7 @@ function handleUpdateToken()
     let toUpdate = name[0].toLowerCase() + name.slice(1);
     let fields = window.wholeDB[toUpdate];
 
+    if(toUpdate == window.player.toLowerCase()){fields = window.wholeDB[window.player];}
     fields.border = `${document.getElementById("BorderButton").innerHTML}`;
     fields.name = `${document.getElementById("CharacterButton").innerHTML}`;
 
