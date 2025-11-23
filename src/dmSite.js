@@ -1227,7 +1227,6 @@ function handleUploadInteractive()
 
 function handleGenerate()
 {
-    setDoc("playerChar/Colin", window.top.parent.wholeChar["Garrett"]);
     hideButtons();
     handleDone();
 }
