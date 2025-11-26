@@ -122,6 +122,7 @@ onValue(refreshRef, (snapshot) =>
     
     if(window.player == data)
     {
-       location.reload(true); 
+        setDoc(`playerChar/Vi/playerRefresh`, null);
+        location.reload(true); 
     }
 });
