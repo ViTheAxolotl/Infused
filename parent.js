@@ -1,6 +1,6 @@
 import { ref, onValue } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js';
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js'; 
-import { auth, database, toTitleCase } from './js/viMethods.js';
+import { auth, database, toTitleCase, setDoc } from './js/viMethods.js';
 import { setMode, setWholeDB, setWholeTO, setWholeSummons, setWholeBubbles } from './src/map.js';
 import { setWholeInteractive, setWholeCharCont, setWholeQuests } from './js/mapControler.js';
 
