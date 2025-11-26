@@ -74,7 +74,7 @@ function init()
     
     for(let iFrame of iFrames)
     {
-        wait(10, function() {iFrame.src = iFrame.classList[0];});
+        wait(7, function() {iFrame.src = iFrame.classList[0];});
     }
  
     wait(13, function(){hideSkill()});
