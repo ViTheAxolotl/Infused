@@ -114,3 +114,14 @@ onValue(presetRef, (snapshot) =>
     const data = snapshot.val();
     wholePre = data;
 });
+
+const refreshRef = ref(database, `playerChar/Vi/playerRefresh`);
+onValue(refreshRef, (snapshot) =>
+{
+    const data = snapshot.val();
+    
+    if(window.player == data)
+    {
+       location.reload(true); 
+    }
+});

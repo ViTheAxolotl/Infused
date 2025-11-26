@@ -77,6 +77,11 @@ function init()
                 button.onclick = handleGenerate;
                 break;
 
+            case "refresh":
+                fiveButtons.push(button);
+                button.onclick = handleRefresh;
+                break;
+
             case "openPage":
                 fiveButtons.push(button);
                 button.onclick = handleOpenPage;
@@ -1370,6 +1375,41 @@ function addToken()
     });
 
     resetDelete();
+}
+
+function handleRefresh()
+{
+    hideButtons();
+
+    let playerSelect;
+    let upload;
+
+    playerSelect = document.createElement("select");
+    playerSelect.id = "playerSelect";
+    
+    for(let player of Object.keys(window.top.parent.wholeChar))
+    {
+        let playerOption = document.createElement("option");
+        playerOption.value = player;
+        playerOption.innerHTML = player;
+        playerSelect.appendChild(playerOption);
+    }
+
+    upload = document.createElement("button");
+    upload.innerHTML = "Upload";
+    upload.onclick = handleRefreshUpload;
+
+    div.appendChild(playerSelect);
+    div.appendChild(upload);
+
+    addDone();
+}
+
+function handleRefreshUpload()
+{
+    let playerToRefresh = document.getElementById("playerSelect").value;
+    setDoc("playerChar/Vi/playerRefresh", playerToRefresh);
+    alert("Done");
 }
 
 setTimeout(init(), 1000);
