@@ -182,7 +182,7 @@ function sendDiscordMessage(message)
 {
     sendMessageToDisplay(message);
     message = message + "\n\n ||                ||"; //Makes message seperating bars
-    let webhook = window.wholeChar["Vi"]["testingWebhook"]; //Which channel it goes to by webhook
+    let webhook = window.wholeChar["Vi"]["webhook"]; //Which channel it goes to by webhook
     const contents = `${message}`;
     const request = new XMLHttpRequest();
     request.open("POST", webhook); //Opens the webhook
