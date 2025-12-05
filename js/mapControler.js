@@ -1104,6 +1104,7 @@ function handleCardClick()
             castBtn.innerHTML = "Select Targets";
             castBtn.name = currentTitle;
             castBtn.style.margin = "0px 5px";
+            castBtn.id = "castBtn";
 
             let individual = ["Advantage/Disadvantage", "Advantage", "Disadvantage"];
             let slotSelect = document.createElement("select");
@@ -1306,7 +1307,37 @@ function handleTargetButton()
 
 function handleSelectedTarget()
 {
-    alert(`${this.id} is selected`);
+    if(!this.checked)
+    {
+        let tokens = document.getElementsByClassName(this.id);
+        for(let token of tokens)
+        {
+            if(token.classList.contains("border_"))
+            {
+                token.classList.add("selected");
+                
+            }
+        }
+
+        castBtn.innerHTML = "Use Ability";
+    }
+
+    else
+    {
+        let tokens = document.getElementsByClassName(this.id);
+        for(let token of tokens)
+        {
+            if(token.classList.contains("border_"))
+            {
+                token.classList.remove("selected");
+            }
+        }
+
+        if(document.getElementsByClassName("selected").length == 0)
+        {
+            castBtn.innerHTML = "Select Targets";
+        }
+    }
 }
 
 function handleUseAction(targets)
