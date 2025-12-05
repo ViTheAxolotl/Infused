@@ -1085,6 +1085,9 @@ function handleCardClick()
             let targetButton = document.createElement("button");
             targetButton.id = "targetButton";
             targetButton.onclick = handleTargetButton;
+            targetButton.innerHTML = "Select Targets"
+            targetButton.classList.add("gridButton");
+            targetButton.classList.add("center");
 
             let favoriteBtn = document.createElement("img");
             favoriteBtn.setAttribute("id", "favoriteBtn");
@@ -1281,7 +1284,7 @@ function handleTargetButton()
 
 function handleConfirmTargets()
 {
-    
+
 }
 
 function handleUseAction(targets)
