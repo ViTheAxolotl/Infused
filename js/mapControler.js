@@ -1274,6 +1274,16 @@ function handleCardClick()
     }
 }
 
+function handleTargetButton()
+{
+
+}
+
+function handleConfirmTargets()
+{
+    
+}
+
 function handleUseAction(targets)
 {
     let display;
