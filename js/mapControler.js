@@ -2523,7 +2523,10 @@ function useAbility()
     
     if(targets.length < 1)
     {
-        handleTargetButton();
+        if(document.getElementById("targetsDiv").style.display == "none")
+        {
+            handleTargetButton();
+        }
     }
 
     else
