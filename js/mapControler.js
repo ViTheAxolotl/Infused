@@ -1081,6 +1081,7 @@ function handleCardClick()
             let targetsDiv = document.createElement("div");
             targetsDiv.id = "targetsDiv";
             targetsDiv.style.display = "none";
+            targetsDiv.style.margin = "5px";
 
             let favoriteBtn = document.createElement("img");
             favoriteBtn.setAttribute("id", "favoriteBtn");
@@ -1279,23 +1280,26 @@ function handleTargetButton()
 
     for(let token of Object.keys(window.wholeDB))
     {
-        let select = document.createElement("input");
-        select.type = "checkbox";
-        select.id = token;
-        select.name = token;
-        select.value = token;
-        select.onchange = handleSelectedTarget;
+        if(!["invisible", "map", "spawnPoint"].includes(token))
+        {
+            let select = document.createElement("input");
+            select.type = "checkbox";
+            select.id = token;
+            select.name = token;
+            select.value = token;
+            select.onchange = handleSelectedTarget;
+            select.style.margin = "5px";
 
-        let label = document.createElement("label");
-        label.for = token;
-        label.innerHTML = `${token}: Position: ${window.wholeDB[token].xPos}, ${window.wholeDB[token].yPos}`;
+            let label = document.createElement("label");
+            label.for = token;
+            label.innerHTML = `${token}: Position: ${window.wholeDB[token].xPos}, ${window.wholeDB[token].yPos}`;
 
-        let br = document.createElement("br");
+            let br = document.createElement("br");
 
-        div.appendChild(select);
-        div.appendChild(label);
-        div.appendChild(br);
-
+            div.appendChild(select);
+            div.appendChild(label);
+            div.appendChild(br);
+        }
     }
 }
 
