@@ -1078,6 +1078,8 @@ function handleCardClick()
             optionDiv.classList.add("center");
             optionDiv.id = "optionDiv";
 
+            let innerButtons = document.createElement("div");
+
             let targetsDiv = document.createElement("div");
             targetsDiv.id = "targetsDiv";
             targetsDiv.style.display = "none";
@@ -1246,8 +1248,9 @@ function handleCardClick()
             
             if(!quickAction)
             {
-                document.getElementById("cards").childNodes[0].appendChild(wrapper);
-                placeBefore(targetButton, wrapper);
+                innerButtons.appendChild(targetButton);
+                innerButtons.appendChild(wrapper);
+                document.getElementById("cards").childNodes[0].appendChild(innerButtons);
                 document.getElementById("cards").childNodes[0].appendChild(targetsDiv);
                 if(this.parentNode.nextSibling != null){placeBefore(optionDiv, this.parentNode.nextSibling);}
                 else{document.getElementById("cards").appendChild(optionDiv);}
