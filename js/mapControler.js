@@ -1289,6 +1289,7 @@ function handleTargetButton()
             select.value = token;
             select.onchange = handleSelectedTarget;
             select.style.margin = "5px";
+            select.style.marginLeft = "20vw";
 
             let label = document.createElement("label");
             label.for = token;
