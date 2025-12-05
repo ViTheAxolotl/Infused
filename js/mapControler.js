@@ -1307,7 +1307,7 @@ function handleTargetButton()
 
 function handleSelectedTarget()
 {
-    if(!this.checked)
+    if(this.checked)
     {
         let tokens = document.getElementsByClassName(this.id);
         for(let token of tokens)
