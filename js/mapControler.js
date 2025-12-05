@@ -1276,7 +1276,7 @@ function handleTargetButton()
     let div = document.getElementById("targetsDiv");
     div.style.display = "block";
     let title = document.createElement("h3");
-    title.innerHTML = "Choose the Target's";
+    title.innerHTML = "Choose the Targets";
     div.appendChild(title);
 
     for(let token of Object.keys(window.wholeDB))
@@ -1314,7 +1314,7 @@ function handleSelectedTarget()
         {
             if(token.classList.contains("border_"))
             {
-                token.classList.add("selected");
+                token.classList.add("selected-temp");
                 
             }
         }
@@ -1325,15 +1325,17 @@ function handleSelectedTarget()
     else
     {
         let tokens = document.getElementsByClassName(this.id);
+        let selected = document.getElementsByClassName("selected-temp");
         for(let token of tokens)
         {
             if(token.classList.contains("border_"))
             {
-                token.classList.remove("selected");
+                token.classList.remove("selected-temp");
             }
         }
 
-        if(document.getElementsByClassName("selected").length == 0)
+
+        if(selected.length < 1)
         {
             castBtn.innerHTML = "Select Targets";
         }
