@@ -1306,7 +1306,7 @@ function handleTargetButton()
 
 function handleSelectedTarget()
 {
-
+    alert(`${this.id} is selected`);
 }
 
 function handleUseAction(targets)
