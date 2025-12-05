@@ -1070,11 +1070,6 @@ function handleCardClick()
         anchor.click();
     }
 
-    else
-    {
-
-    }
-
     if(lastAbility != currentTitle && lastSpell != currentTitle) //If they didn't click the same card twice
     {
         if(searchBar[0].value != "" || quickAction)
@@ -1082,6 +1077,14 @@ function handleCardClick()
             let optionDiv = document.createElement("div");
             optionDiv.classList.add("center");
             optionDiv.id = "optionDiv";
+
+            let targetsDiv = document.createElement("div");
+            targetsDiv.id = "targetsDiv";
+            targetsDiv.style.display = "none";
+
+            let targetButton = document.createElement("button");
+            targetButton.id = "targetButton";
+            targetButton.onclick = handleTargetButton;
 
             let favoriteBtn = document.createElement("img");
             favoriteBtn.setAttribute("id", "favoriteBtn");
@@ -1241,6 +1244,8 @@ function handleCardClick()
             if(!quickAction)
             {
                 document.getElementById("cards").childNodes[0].appendChild(wrapper);
+                placeBefore(targetButton, wrapper);
+                document.getElementById("cards").childNodes[0].appendChild(targetsDiv);
                 if(this.parentNode.nextSibling != null){placeBefore(optionDiv, this.parentNode.nextSibling);}
                 else{document.getElementById("cards").appendChild(optionDiv);}
             }
