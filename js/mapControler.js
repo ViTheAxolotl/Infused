@@ -1273,7 +1273,30 @@ function handleTargetButton()
 {
     let div = document.getElementById("targetsDiv");
     div.style.display = "block";
-    alert("target populate");
+    let title = document.createElement("h3");
+    title.innerHTML = "Choose the Target's";
+    div.appendChild(title);
+
+    for(let token of Object.keys(window.wholeDB))
+    {
+        let select = document.createElement("input");
+        select.type = "checkbox";
+        select.id = token;
+        select.name = token;
+        select.value = token;
+        select.onchange = handleSelectedTarget;
+
+        let label = document.createElement("label");
+        label.for = token;
+        label.innerHTML = `${token}: Position: ${window.wholeDB[token].xPos}, ${window.wholeDB[token].yPos}`;
+
+        let br = document.createElement("br");
+
+        div.appendChild(select);
+        div.appendChild(label);
+        div.appendChild(br);
+
+    }
 }
 
 function handleSelectedTarget()
