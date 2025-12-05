@@ -1079,6 +1079,7 @@ function handleCardClick()
             optionDiv.id = "optionDiv";
 
             let innerButtons = document.createElement("div");
+            innerButtons.classList.add("center");
 
             let targetsDiv = document.createElement("div");
             targetsDiv.id = "targetsDiv";
