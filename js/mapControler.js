@@ -1271,10 +1271,12 @@ function handleCardClick()
 
 function handleTargetButton()
 {
-
+    let div = document.getElementById("targetsDiv");
+    div.style.display = "block";
+    alert("target populate");
 }
 
-function handleConfirmTargets()
+function handleSelectedTarget()
 {
 
 }
@@ -2443,7 +2445,6 @@ function displayInteractive()
 
 function displaySelect()
 {
-    alert("Tap on the targets for this action/spell. Then when finished click 'Cast Spell' or 'Use Ability' again.");
     this.onclick = useAbility;
     setDoc(`playerChar/${window.player}/mode`, "using");
     let otherCast = document.createElement("button");
@@ -2452,6 +2453,7 @@ function displaySelect()
     otherCast.onclick = useAbility;
     otherCast.id = "otherCast";
     placeBefore(otherCast, document.getElementById("grid"));
+    this.click();
 }
 
 function useAbility()
