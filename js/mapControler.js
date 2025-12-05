@@ -2461,7 +2461,6 @@ function useAbility()
     if(targets.length < 1)
     {
         handleTargetButton();
-        this.innerHTML = "Use Ability";
     }
 
     else
