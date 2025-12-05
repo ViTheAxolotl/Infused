@@ -1078,6 +1078,10 @@ function handleCardClick()
             optionDiv.classList.add("center");
             optionDiv.id = "optionDiv";
 
+            let targetsDiv = document.createElement("div");
+            targetsDiv.id = "targetsDiv";
+            targetsDiv.style.display = "none";
+
             let favoriteBtn = document.createElement("img");
             favoriteBtn.setAttribute("id", "favoriteBtn");
             favoriteBtn.classList.add(currentTitle.replaceAll(" ", "_"));
