@@ -182,7 +182,7 @@ function sendDiscordMessage(message)
 {
     sendMessageToDisplay(message);
     message = message + "\n\n ||                ||"; //Makes message seperating bars
-    let webhook = window.wholeChar["Vi"]["webhook"]; //Which channel it goes to by webhook
+    let webhook = window.wholeChar["Vi"]["testingWebhook"]; //Which channel it goes to by webhook
     const contents = `${message}`;
     const request = new XMLHttpRequest();
     request.open("POST", webhook); //Opens the webhook
@@ -1100,7 +1100,7 @@ function handleCardClick()
             castBtn.classList.add("gridButton");
             castBtn.onclick = displaySelect;
             if(quickAction){castBtn.onclick = useAbility;}
-            castBtn.innerHTML = "Cast Spell";
+            castBtn.innerHTML = "Select Targets";
             castBtn.name = currentTitle;
             castBtn.style.margin = "0px 5px";
 
@@ -1219,7 +1219,7 @@ function handleCardClick()
                     optionDiv.appendChild(lvlSelect);
                 }
 
-                castBtn.innerHTML = "Use Ability";
+                castBtn.innerHTML = "Select Targets";
             }
 
             if(favorite) 
@@ -2460,21 +2460,8 @@ function useAbility()
     
     if(targets.length < 1)
     {
-        let awnser = confirm("You need to select your targets before using this. If the target is yourself, tap 'OK'.");
-
-        if(awnser)
-        {
-            let tokens = document.getElementsByClassName(window.wholeChar[window.player]["currentToken"]);
-
-            for(let token of tokens)
-            {
-                if(token.id == window.wholeDB[window.wholeChar[window.player]["currentToken"]].border)
-                {
-                    token.classList.add("selected-temp");
-                    this.click();
-                }
-            }
-        }
+        handleTargetButton();
+        this.innerHTML = "Use Ability";
     }
 
     else
