@@ -18,10 +18,10 @@ function init()
     {
         if(window.top.parent.wholeChar[window.top.parent.player] == undefined)
         {
-            reload(0);
+            location.reload();
         }
 
-        if(window.top.parent.wholeChar[window.top.parent.player]["stats"][stat.id] || window.top.parent.wholeChar[window.top.parent.player]["stats"][stat.id] == "")
+        else if(window.top.parent.wholeChar[window.top.parent.player]["stats"][stat.id] || window.top.parent.wholeChar[window.top.parent.player]["stats"][stat.id] == "")
         {
             if(!window.top.parent.wholeChar[window.top.parent.player]["stats"][stat.id]){setDoc(`playerChar/${window.top.parent.player}/stats/${stat.id}`, "");}
             if(typeof window.top.parent.wholeChar[window.top.parent.player]["stats"][stat.id] == "string")
@@ -64,7 +64,7 @@ function init()
         }
     }
 
-    for(let stat of document.getElementsByClassName("expertise")){stat.onclick = handleExpertise; stat.oncontextmenu = handleRightClickRoll}
+    for(let stat of document.getElementsByClassName("expertise")){stat.onclick = handleExpertise; stat.oncontextmenu = handleRightClickRoll; stat.addEventListener("contextmenu", (e) => {e.preventDefault()});}
 }
 
 function setStats(stat)
