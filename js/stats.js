@@ -16,6 +16,11 @@ function init()
 
     for(let stat of stats)
     {
+        if(window.top.parent.wholeChar[window.top.parent.player] == undefined)
+        {
+            reload(0);
+        }
+
         if(window.top.parent.wholeChar[window.top.parent.player]["stats"][stat.id] || window.top.parent.wholeChar[window.top.parent.player]["stats"][stat.id] == "")
         {
             if(!window.top.parent.wholeChar[window.top.parent.player]["stats"][stat.id]){setDoc(`playerChar/${window.top.parent.player}/stats/${stat.id}`, "");}
