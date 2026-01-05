@@ -59,7 +59,7 @@ function init()
         }
     }
 
-    for(let stat of document.getElementsByClassName("expertise")){stat.onclick = handleExpertise;}
+    for(let stat of document.getElementsByClassName("expertise")){stat.onclick = function (e) {e = e || window.event; handleExpertise(e);}}
 }
 
 function setStats(stat)
@@ -112,7 +112,17 @@ function handleExpertise()
     let stat = this.id;
     let button = document.getElementById(stat + "-btn");
 
-    if(button.checked)
+    if("which" in e)
+    {
+        handleRightClickRoll(stat);
+    }
+
+    else if("button" in e)
+    {
+        handleRightClickRoll(stat);
+    }
+
+    else if(button.checked)
     {
         if(window.top.parent.wholeChar[window.top.parent.player]["stats"][`${stat}-expertise`])
         {
@@ -214,4 +224,9 @@ function showSpell()
 function handleExit()
 {
     document.getElementById("spellFrame").classList.add("invisible");
+}
+
+function handleRightClickRoll(stat)
+{
+    alert(`Right Click detected on ${toTitleCase(stat)}.`);
 }
