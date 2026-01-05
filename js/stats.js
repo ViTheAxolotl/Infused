@@ -107,7 +107,7 @@ function setStats(stat)
     }
 }
 
-function handleExpertise()
+function handleExpertise(e)
 {
     let stat = this.id;
     let button = document.getElementById(stat + "-btn");
