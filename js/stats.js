@@ -64,7 +64,7 @@ function init()
         }
     }
 
-    for(let stat of document.getElementsByClassName("expertise")){stat.onclick = handleExpertise; stat.oncontextmenu = handleRightClickRoll; stat.addEventListener("contextmenu", (e) => {e.preventDefault()});}
+    for(let stat of document.getElementsByClassName("expertise")){stat.onclick = handleExpertise; stat.oncontextmenu = function(e) {e.preventDefault(); handleRightClickRoll(e);}}
 }
 
 function setStats(stat)
@@ -221,8 +221,8 @@ function handleExit()
     document.getElementById("spellFrame").classList.add("invisible");
 }
 
-function handleRightClickRoll()
+function handleRightClickRoll(e)
 {
-    alert(`Right Click detected on ${this.id}}.`);
+    alert(`Right Click detected on ${toTitleCase(e.currentTarget.id)}}.`);
     return false;
 }

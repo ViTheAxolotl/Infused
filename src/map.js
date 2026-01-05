@@ -74,7 +74,7 @@ function init()
     
     for(let iFrame of iFrames)
     {
-        iFrame.addEventListener("contextmenu", (e) => {e.preventDefault()});
+        iFrame.oncontextmenu = function(e) {e.preventDefault(); return false;}
         wait(9, function() {iFrame.src = iFrame.classList[0];});
     }
  
