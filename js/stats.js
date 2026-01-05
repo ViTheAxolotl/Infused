@@ -109,7 +109,7 @@ function setStats(stat)
 
 function handleExpertise(e)
 {
-    let stat = this.id;
+    let stat = e.currentTarget.id;
     let button = document.getElementById(stat + "-btn");
 
     if("which" in e)
