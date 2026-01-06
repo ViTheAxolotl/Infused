@@ -251,7 +251,7 @@ function handleRightClickRoll(e, type)
     let random = Math.random();
     let roll = Math.floor(random * (20)) + modifier; //Gives random roll
 
-    alert(`${player} had rolled a ${roll} for ${toTitleCase(clicked)}. (${roll-modifier} + ${modifier})`);
+    alert(`${window.top.parent.player} had rolled a ${roll} for ${toTitleCase(clicked)}. (${roll-modifier} + ${modifier})`);
 
     return false;
 }
