@@ -6,7 +6,7 @@ import { getAuth } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth
 
 
 
-let webhook; setTimeout(webhook = window.wholeChar["Vi"]["testingWebhook"], 11 * 1000); //Which channel it goes to by webhook
+let webhook; setTimeout(function (){webhook = window.wholeChar["Vi"]["testingWebhook"]}, 11 * 1000); //Which channel it goes to by webhook
 
 
 
