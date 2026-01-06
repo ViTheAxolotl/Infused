@@ -228,10 +228,11 @@ function handleRightClickRoll(e, type)
 {
     let clicked = e.currentTarget.id
     let modifier;
+    let mod;
 
     switch(type)
     {
-        case "stat":
+        case "stat": 
             if(e.currentTarget.innerHTML.includes("+"))
             {
                 modifier = e.currentTarget.innerHTML.slice(e.currentTarget.innerHTML.indexOf("+"));
@@ -248,10 +249,11 @@ function handleRightClickRoll(e, type)
             break;
     }
 
+    mod = parseInt(modifier);
     let random = Math.random();
-    let roll = Math.floor(random * (20)) + modifier; //Gives random roll
+    let roll = Math.floor(random * (20)) + mod; //Gives random roll
 
-    alert(`${window.top.parent.player} had rolled a ${roll} for ${toTitleCase(clicked)}. (${roll-modifier} + ${modifier})`);
+    alert(`${window.top.parent.player} had rolled a ${roll} for ${toTitleCase(clicked)}. (${roll-mod} + ${modifier})`);
 
     return false;
 }
