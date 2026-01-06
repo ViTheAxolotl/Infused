@@ -64,7 +64,10 @@ function init()
         }
     }
 
-    for(let stat of document.getElementsByClassName("expertise")){stat.onclick = handleExpertise; stat.oncontextmenu = function(e) {e.preventDefault(); handleRightClickRoll(e);}}
+    for(let stat of document.getElementsByClassName("expertise")){stat.onclick = handleExpertise; stat.oncontextmenu = function(e) {e.preventDefault(); handleRightClickRoll(e, "stat");};}
+    
+    document.getElementById("Initiative").oncontextmenu = function(e) {e.preventDefault(); handleRightClickRoll(e, "init");};
+    document.getElementById("initLabel").oncontextmenu = function(e) {e.preventDefault(); handleRightClickRoll(e, "init");};
 }
 
 function setStats(stat)
@@ -221,8 +224,34 @@ function handleExit()
     document.getElementById("spellFrame").classList.add("invisible");
 }
 
-function handleRightClickRoll(e)
+function handleRightClickRoll(e, type)
 {
-    alert(`Right Click detected on ${toTitleCase(e.currentTarget.id)}}.`);
+    let clicked = e.currentTarget.id
+    let modifier;
+
+    switch(type)
+    {
+        case "stat":
+            if(e.currentTarget.innerHTML.includes("+"))
+            {
+                modifier = e.currentTarget.innerHTML.slice(e.currentTarget.innerHTML.indexOf("+"));
+            }
+            
+            else
+            {
+                modifier = e.currentTarget.innerHTML.slice(e.currentTarget.innerHTML.indexOf("-"));
+            }
+            break;
+
+        case "init":
+            modifier = document.getElementById("Initiative").value;
+            break;
+    }
+
+    let random = Math.random();
+    let roll = Math.floor(random * (20)) + modifier; //Gives random roll
+
+    alert(`${player} had rolled a ${roll} for ${toTitleCase(clicked)}. (${roll-modifier} + ${modifier})`);
+
     return false;
 }
