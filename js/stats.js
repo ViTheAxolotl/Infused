@@ -256,7 +256,7 @@ function handleRightClickRoll(e, type)
     let message = `${window.top.parent.player} had rolled (${roll-mod})${modifier} = **${roll}** for ${toTitleCase(clicked)}.`;
 
     sendDiscordMessage(message);
-    alert(message);
+    alert(`Rolled (${roll-mod})${modifier} = **${roll}** for ${toTitleCase(clicked)}.`);
 
     return false;
 }
