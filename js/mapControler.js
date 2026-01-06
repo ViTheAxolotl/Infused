@@ -1,7 +1,7 @@
 "use strict";
 
 import { ref, onValue } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js';
-import { toTitleCase, database, createCard, setDoc, deleteDoc, placeBefore, createLabel, clenseInput, reload, setMapValue, quickAction, setQuickAction, skillDecrypt} from './viMethods.js';
+import { toTitleCase, database, createCard, setDoc, deleteDoc, placeBefore, createLabel, clenseInput, reload, setMapValue, quickAction, setQuickAction, skillDecrypt, sendDiscordMessage} from './viMethods.js';
 
 let map = setMapValue();
 let currentPos;
@@ -172,45 +172,6 @@ function setMainVaribles()
     {
         button.onclick = changeValue;
     }
-}
-
- /**
-  * Sends message into the discord using a webhook
-  * @param {*} message 
-  */
-function sendDiscordMessage(message)
-{
-    sendMessageToDisplay(message);
-    message = message + "\n\n ||                ||"; //Makes message seperating bars
-    let webhook = window.wholeChar["Vi"]["testingWebhook"]; //Which channel it goes to by webhook
-    const contents = `${message}`;
-    const request = new XMLHttpRequest();
-    request.open("POST", webhook); //Opens the webhook
-    request.setRequestHeader("Content-type", "application/json"); //Gives json header
-    const prams = 
-    {
-        content: contents
-    } 
-    request.send(JSON.stringify(prams)); //Sends message
-}
-
-function sendMessageToDisplay(message)
-{
-    let current = parseInt(window.wholeDisplay["current"]);
-
-    if(current + 1 > 9)
-    {
-        setDoc("display/current", "0");
-        current = 0;
-    }
-
-    else
-    {
-        setDoc("display/current", `${current + 1}`);
-        current++;
-    }
-
-    setDoc(`display/${current}`, message);
 }
 
 function handleGridClick(e)

@@ -4,6 +4,12 @@ import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.15.0/firebas
 import { getDatabase, ref, set } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js';
 import { getAuth } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
 
+
+
+let webhook = window.wholeChar["Vi"]["testingWebhook"]; //Which channel it goes to by webhook
+
+
+
 const firebaseApp = initializeApp
 ({
     apiKey: "AIzaSyArcsmJkXSeuIHMysYtIzRdjIDlKNQA25Y",
@@ -308,4 +314,42 @@ export function getRandomItem(list)
 {
     let randomIndex = Math.floor(Math.random() * list.length);
     return list[randomIndex];
+}
+
+ /**
+  * Sends message into the discord using a webhook
+  * @param {*} message 
+  */
+export function sendDiscordMessage(message)
+{
+    sendMessageToDisplay(message);
+    message = message + "\n\n ||                ||"; //Makes message seperating bars
+    const contents = `${message}`;
+    const request = new XMLHttpRequest();
+    request.open("POST", webhook); //Opens the webhook
+    request.setRequestHeader("Content-type", "application/json"); //Gives json header
+    const prams = 
+    {
+        content: contents
+    } 
+    request.send(JSON.stringify(prams)); //Sends message
+}
+
+function sendMessageToDisplay(message)
+{
+    let current = parseInt(window.wholeDisplay["current"]);
+
+    if(current + 1 > 9)
+    {
+        setDoc("display/current", "0");
+        current = 0;
+    }
+
+    else
+    {
+        setDoc("display/current", `${current + 1}`);
+        current++;
+    }
+
+    setDoc(`display/${current}`, message);
 }

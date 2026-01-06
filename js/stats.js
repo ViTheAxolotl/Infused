@@ -1,5 +1,5 @@
 "use strict";
-import { toTitleCase, setDoc, statFormat, skillDecrypt, reload, deleteDoc } from './viMethods.js';
+import { toTitleCase, setDoc, statFormat, skillDecrypt, reload, deleteDoc, sendDiscordMessage } from './viMethods.js';
 
 let stats;
 let firstRun = true;
@@ -246,6 +246,7 @@ function handleRightClickRoll(e, type)
 
         case "init":
             modifier = document.getElementById("Initiative").value;
+            clicked = "Initiative";
             break;
     }
 
@@ -253,7 +254,7 @@ function handleRightClickRoll(e, type)
     let random = Math.random();
     let roll = Math.floor(random * (20)) + mod; //Gives random roll
 
-    alert(`${window.top.parent.player} had rolled a ${roll} for ${toTitleCase(clicked)}. (${roll-mod} + ${mod})`);
+    sendDiscordMessage(`${window.top.parent.player} had rolled a ${roll} for ${toTitleCase(clicked)}. (${roll-mod} + ${mod})`);
 
     return false;
 }
