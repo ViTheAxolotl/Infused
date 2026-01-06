@@ -253,7 +253,7 @@ function handleRightClickRoll(e, type)
     let random = Math.random();
     let roll = Math.floor(random * (20)) + mod; //Gives random roll
 
-    alert(`${window.top.parent.player} had rolled a ${roll} for ${toTitleCase(clicked)}. (${roll-mod} + ${modifier})`);
+    alert(`${window.top.parent.player} had rolled a ${roll} for ${toTitleCase(clicked)}. (${roll-mod} + ${mod})`);
 
     return false;
 }
