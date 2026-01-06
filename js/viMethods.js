@@ -6,7 +6,7 @@ import { getAuth } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth
 
 
 
-let webhook; setTimeout(function (){webhook = window.wholeChar["Vi"]["testingWebhook"]}, 11 * 1000); //Which channel it goes to by webhook
+let webhook; setTimeout(function (){webhook = window.top.parent.wholeChar["Vi"]["testingWebhook"]}, 11 * 1000); //Which channel it goes to by webhook
 
 
 
@@ -337,7 +337,7 @@ export function sendDiscordMessage(message)
 
 function sendMessageToDisplay(message)
 {
-    let current = parseInt(window.wholeDisplay["current"]);
+    let current = parseInt(window.top.parent.wholeDisplay["current"]);
 
     if(current + 1 > 9)
     {
