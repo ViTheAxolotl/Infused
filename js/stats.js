@@ -253,7 +253,7 @@ function handleRightClickRoll(e, type)
     mod = parseInt(modifier);
     let random = Math.random();
     let roll = Math.floor(random * (20)) + mod; //Gives random roll
-    let message = `${window.top.parent.player} had rolled a ${roll} for ${toTitleCase(clicked)}. (${roll-mod} + ${mod})`;
+    let message = `${window.top.parent.player} had rolled (${roll-mod})${modifier} = **${roll}** for ${toTitleCase(clicked)}. (${roll-mod} + ${mod})`;
 
     sendDiscordMessage(message);
     alert(message);
