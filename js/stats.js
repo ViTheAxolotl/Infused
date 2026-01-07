@@ -32,7 +32,7 @@ function init()
                 else if(stat.id == "name"){stat.innerHTML = window.top.parent.player;}
                 else if(stat.id == "totalHitDice"){for(let i = 0; i < stat.length; i++){stat[i].innerHTML = `${window.top.parent.wholeChar[window.top.parent.player]["stats"]["lv"]}${stat[i].value}`; stat.value = window.top.parent.wholeChar[window.top.parent.player]["stats"][stat.id];}}
                 else if(stat.id == "currentHitDice"){let max = window.top.parent.wholeChar[window.top.parent.player]["stats"]["totalHitDice"]; stat.innerHTML = ""; for(let i = parseInt(window.top.parent.wholeChar[window.top.parent.player]["stats"]["lv"]); i >= 0; i--){let option = document.createElement("option"); option.innerHTML = `${i}${max}`; option.value = `${i}`; stat.appendChild(option);} stat.value = window.top.parent.wholeChar[window.top.parent.player]["stats"][stat.id];}
-                else if(stat.id.includes("Save")){stat.checked = false; setStats(stat);} //Stats not clicked
+                else if(stat.id.includes("-btn") && !stat.id.includes("lvl")){stat.checked = false; setStats(stat);} //Stats not clicked
                 else if(["spellAbility", "lv"].includes(stat.id)){stat.value = window.top.parent.wholeChar[window.top.parent.player]["stats"][stat.id];}
                 else if(stat.value == ""){stat.value = window.top.parent.wholeChar[window.top.parent.player]["stats"][stat.id]; if(!["profAndLang", "infusion", "feats", "equipment", "apperance", "characterBackstory", "ally1", "ally2", "additionalFeat&Traits", "treasure"].includes(stat.id)){stat.style.minWidth = stat.value.length + 2 + "ch";}}
                 else{stat.innerHTML = window.top.parent.wholeChar[window.top.parent.player]["stats"][stat.id];}
