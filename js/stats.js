@@ -210,6 +210,10 @@ function showSpell()
 {
     let spellName = toTitleCase(document.getElementById(this.id.slice(0, this.id.length - 4)).value);
     let link;
+    let spellLevel = this.id;
+
+    if(spellLevel.includes("can")){spellLevel = "0";}
+    else{alert(spellLevel.slice(3, 4));}
 
     if(spellName != "")
     {
