@@ -213,7 +213,7 @@ function showSpell()
     let spellLevel = this.id;
 
     if(spellLevel.includes("can")){spellLevel = "0";}
-    else{alert(spellLevel.slice(3, 4));}
+    else{spellLevel = spellLevel.slice(3, 4);}
 
     if(spellName != "")
     {
