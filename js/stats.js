@@ -217,9 +217,32 @@ function showSpell()
 
     if(spellName != "")
     {
-        spellName.replaceAll(" ", "%20");
-        link = `https://roll20.net/compendium/dnd5e/${spellName}`;
-        document.getElementById("spellLookup").src = link;
+        if(window.top.parent.wholeSpells[spellLevel][spellName])
+        {
+            let spell = window.top.parent.wholeSpells[spellLevel][spellName];
+            document.getElementById("spellTitle").innerHTML = spell["name"];
+            document.getElementById("CT").innerHTML = spell["castTime"];
+            document.getElementById("R").innerHTML = spell["range"];
+            document.getElementById("C").innerHTML = spell["components"];
+            document.getElementById("D").innerHTML = spell["duration"];
+            if(spell["concentration"]){document.getElementById("concentration").style.display = "block";}
+            else{document.getElementById("concentration").style.display = "none";}
+            document.getElementById("spellText").innerHTML = spell["description"];
+
+            document.getElementById("frame").style.display = "none";
+            document.getElementById("spellCard").style.display = "block";
+        }
+
+        else
+        {
+            spellName.replaceAll(" ", "%20");
+            link = `https://roll20.net/compendium/dnd5e/${spellName}`;
+            document.getElementById("spellLookup").src = link;
+
+            document.getElementById("spellCard").style.display = "none";
+            document.getElementById("frame").style.display = "block";
+        }
+        
         document.getElementById("spellFrame").classList.remove("invisible");
     }
 }
