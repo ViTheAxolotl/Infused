@@ -21,7 +21,7 @@ let secondMenu;
 let spellBtn;
 let rollDiceBtn;
 let actionBtn;
-let wholeRoles = {};
+let wholeRolls = {};
 let currentLv;
 let spellLevel;
 let curClass;
@@ -2545,7 +2545,7 @@ function handleDiceSelect()
             select.style.margin = "10px";
             select.style.display = "inline";
 
-            for(let roll of window.wholeRoles["rolls"][this.innerHTML])
+            for(let roll of window.wholeRolls["rolls"][this.innerHTML])
             {
                 select.innerHTML += `<option value="${roll}">${toTitleCase(roll)}</option>`;
             }
