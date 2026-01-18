@@ -38,7 +38,7 @@ onAuthStateChanged(auth, (user) =>
 fetch('https://vitheaxolotl.github.io/Infused/src/files.json').then(res => res.json()).then((json) => imgs = json);
 fetch('https://vitheaxolotl.github.io/Infused/src/actions.json').then(res => res.json()).then((json) => wholeActions = json);
 fetch('https://vitheaxolotl.github.io/Infused/src/spells.json').then(res => res.json()).then((json) => wholeSpells = json);
-fetch('https://vitheaxolotl.github.io/Infused/src/rolls.json').then(res => res.json()).then((json) => wholeRoles = json);
+fetch('https://vitheaxolotl.github.io/Infused/src/rolls.json').then(res => res.json()).then((json) => wholeRolls = json);
 
 const customsRef = ref(database, 'customImages/');
 onValue(customsRef, (snapshot) => 
