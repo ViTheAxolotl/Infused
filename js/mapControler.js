@@ -1707,7 +1707,7 @@ function handleUseAction(targets)
 
                     else if(parseInt(roll) >= parseInt(ac))
                     {
-                        display += `(Success Hit) ${targets[key].title.split(":")[0]} (${ac}), `;
+                        display += `(Success Hit) ${targets[key].title.split(":")[0]}, `;
                         fail = false; 
                         let hp = damage.split("**")[1];
                         if(window.wholeChar[targets[key].title.split(":")[0]]){let targe = targets[key].title.split(":")[0]; if(window.wholeChar[targe]["rage"] && !description.includes("{noRage") && !spellLevel){let past = damage.slice(damage.indexOf("**") + 2); past = past.slice(0, damage.indexOf("**")); let hp = parseInt(past)/2; damage = damage.replace(past, `${hp}** (1/2 Rage)`);}}
@@ -1717,7 +1717,7 @@ function handleUseAction(targets)
 
                     else
                     {
-                        display += `(Fail Hit) ${targets[key].title.split(":")[0]} (${ac}), `;
+                        display += `(Fail Hit) ${targets[key].title.split(":")[0]}, `;
                     }
 
                 }
@@ -1747,7 +1747,7 @@ function handleUseAction(targets)
 
                     else if(parseInt(roll) >= parseInt(ac))
                     {
-                        display += `(Success Hit) ${targets[key].title.split(":")[0]} (${ac}), `;
+                        display += `(Success Hit) ${targets[key].title.split(":")[0]}, `;
                         fail = false; 
                         if(window.wholeChar[targets[key].title.split(":")[0]]){let targe = targets[key].title.split(":")[0]; if(window.wholeChar[targe]["rage"] && !description.includes("{noRage") && !spellLevel){let past = damage.slice(damage.indexOf("**") + 2); past = past.slice(0, damage.indexOf("**")); let hp = parseInt(past)/2; damage = damage.replace(past, `${hp}** (1/2 Rage)`);}}
                         handleChangeHp(damage.split("**")[1], window.wholeDB[targets[key].title.split(":")[0]], "-");
@@ -1756,7 +1756,7 @@ function handleUseAction(targets)
 
                     else
                     {
-                        display += `(Fail Hit) ${targets[key].title.split(":")[0]} (${ac}), `;
+                        display += `(Fail Hit) ${targets[key].title.split(":")[0]}, `;
                     }
                 }
 
