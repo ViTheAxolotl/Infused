@@ -1,5 +1,5 @@
 import { ref, onValue } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js';
-import { toTitleCase, auth, database, setDoc, deleteDoc, returnHpImage, placeBefore, createLabel } from '../js/viMethods.js';
+import { toTitleCase, auth, database, setDoc, deleteDoc, returnHpImage, placeBefore, createLabel, wait } from '../js/viMethods.js';
 
 let fiveButtons = [];
 let db;
@@ -1140,7 +1140,7 @@ function uploadQuests()
     }
 
     setDoc("playerChar/Vi/quests", quests);
-    handleDone();
+    wait(4, handleDone());
 }
 
 function handleQuest()
