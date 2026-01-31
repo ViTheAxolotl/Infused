@@ -726,15 +726,13 @@ function uploadTO()
     }
 
     setDoc(`currentTO/Var/currentTurn`, 1);
-    let curDate = new Date().toLocaleTimeString();
-    let date = document.createElement("h3");
-    date.innerHTML = `Current Turn Order at time of ${curDate}`;
-    div.appendChild(date);
 
     for(let person of Object.keys(window.top.parent.wholeChar))
     {
         setDoc(`playerChar/${person}/rage`, false);
     }
+
+    wait(4, handleDone);
 }
 
 function uploadRowTO(key)
