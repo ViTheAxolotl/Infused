@@ -1708,7 +1708,7 @@ function handleUseAction(targets)
             if(display)
             {
                 display += `\nAccurcy: ${accurcy} to Hit.\n`;
-                if(document.getElementById("crit").value == "Activate Crit!"){display += "Changed to Crit with the power of Angiorian!"}
+                if(document.getElementById("crit").value == "Activate Crit!"){display += "Changed to Crit with the power of Angiorian! "}
                 let roll = accurcy.split("**")[1];
 
                 for(let key in Object.keys(targets))
@@ -1749,7 +1749,7 @@ function handleUseAction(targets)
                 for(key in Object.keys(targets)){display += `${toTitleCase(targets[key].title.split(":")[0])}, `;}
                 display = display.slice(0, display.length - 2);
                 display += `\n${useInfo}\nAccurcy: ${accurcy} to Hit.\n`;
-                if(document.getElementById("crit").value == "Activate Crit!"){display+= "Changed to Crit with Angiorian Strength!"}
+                if(document.getElementById("crit").value == "Activate Crit!"){display+= "Changed to Crit with Angiorian Strength! "}
                 let roll = accurcy.split("**")[1];
 
                 for(let key in Object.keys(targets))
