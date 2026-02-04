@@ -1108,8 +1108,8 @@ function handleCardClick()
             for(let i = 0; i < kodyCrit.length; i++)
             {
                 let option = document.createElement("option");
-                option.value = sneak[i];
-                option.text = sneak[i];
+                option.value = kodyCrit[i];
+                option.text = kodyCrit[i];
                 critSelect.appendChild(option);
             }
 
