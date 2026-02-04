@@ -1099,6 +1099,22 @@ function handleCardClick()
 
             sneakSelect.selectedIndex = "0";
 
+            let kodyCrit = ["Angiorian's Crit?", "Activate Crit!"];
+            let critSelect = document.createElement("select");
+            critSelect.name = "crit";
+            critSelect.id = "crit";
+            critSelect.style.margin = "0px 5px";
+
+            for(let i = 0; i < kodyCrit.length; i++)
+            {
+                let option = document.createElement("option");
+                option.value = sneak[i];
+                option.text = sneak[i];
+                critSelect.appendChild(option);
+            }
+
+            critSelect.selectedIndex = "0";
+
             if(spellLevel) //If it was a spell clicked
             {
                 lastSpell = currentTitle;
@@ -1198,6 +1214,7 @@ function handleCardClick()
 
             optionDiv.appendChild(slotSelect);
             if(window.wholeChar[window.player]["stats"]["class"].includes("Rogue")){optionDiv.appendChild(sneakSelect);}
+            if(window.player == "Kody"){optionDiv.appendChild(critSelect);}
             optionDiv.appendChild(castBtn);
             
             if(!quickAction)
@@ -1659,23 +1676,23 @@ function handleUseAction(targets)
             }
 
             damage = splitRoll(description, "@damage");
-            if(accurcy.includes("(20)")){damage[0] = `${parseInt(damage[0]) * 2}`}
+            if(accurcy.includes("(20)") || document.getElementById("crit").value == "Activate Crit!"){damage[0] = `${parseInt(damage[0]) * 2}`}
 
             if(damage[2].length > 2)
+            {
+                damage[2] = damage[2].replaceAll("+", "/");
+                damage[2] = damage[2].replaceAll("-", "/-");
+                if(damage[2][0]=="/"){damage[2] = damage[2].slice(1);}
+                damage[2] = damage[2].split("/");
+                let total = 0;
+
+                for(let hit in damage[2])
                 {
-                    damage[2] = damage[2].replaceAll("+", "/");
-                    damage[2] = damage[2].replaceAll("-", "/-");
-                    if(damage[2][0]=="/"){damage[2] = damage[2].slice(1);}
-                    damage[2] = damage[2].split("/");
-                    let total = 0;
-
-                    for(let hit in damage[2])
-                    {
-                        total += parseInt(damage[2][hit]);
-                    }
-
-                    if(total >= 0){damage[2] = `+${total}`;}
+                    total += parseInt(damage[2][hit]);
                 }
+
+                if(total >= 0){damage[2] = `+${total}`;}
+            }
 
             
             damage = diceRoller(damage[0], damage[1], damage[2], "false");
@@ -1691,6 +1708,7 @@ function handleUseAction(targets)
             if(display)
             {
                 display += `\nAccurcy: ${accurcy} to Hit.\n`;
+                if(document.getElementById("crit").value == "Activate Crit!"){display += "Changed to Crit with the power of Angiorian!"}
                 let roll = accurcy.split("**")[1];
 
                 for(let key in Object.keys(targets))
@@ -1823,6 +1841,8 @@ function handleUseAction(targets)
             if(display){display += `nResult: ${damage}. \n`;}
             else{display = `${window.wholeChar[window.player]["charName"]} used the ability, ${lastUse}:\n${useInfo}\n\nResult: ${damage}. \n`;}
         }
+
+
 
         setDoc("currentMap/", window.wholeDB);
     }
