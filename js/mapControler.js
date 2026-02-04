@@ -1676,8 +1676,7 @@ function handleUseAction(targets)
             }
 
             damage = splitRoll(description, "@damage");
-            if(document.getElementById("crit").value == "Activate Crit!"){damage[0] = `${parseInt(damage[0]) * 2}`;}
-            else if(accurcy.includes("(20)")){damage[0] = `${parseInt(damage[0]) * 2}`;}
+            if(accurcy.includes("(20)") || document.getElementById("crit").value == "Activate Crit!"){damage[0] = `${parseInt(damage[0]) * 2}`}
 
             if(damage[2].length > 2)
             {
@@ -1724,7 +1723,7 @@ function handleUseAction(targets)
                         ending = "Healing";
                     }
 
-                    else if(parseInt(roll) >= parseInt(ac))
+                    else if(parseInt(roll) >= parseInt(ac) || document.getElementById("crit").value == "Activate Crit!")
                     {
                         display += `(Success Hit) ${targets[key].title.split(":")[0]}, `;
                         fail = false; 
@@ -1765,7 +1764,7 @@ function handleUseAction(targets)
                         ending = "Healing";
                     }
 
-                    else if(parseInt(roll) >= parseInt(ac))
+                    else if(parseInt(roll) >= parseInt(ac) || document.getElementById("crit").value == "Activate Crit!")
                     {
                         display += `(Success Hit) ${targets[key].title.split(":")[0]}, `;
                         fail = false; 
