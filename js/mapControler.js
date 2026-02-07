@@ -1652,7 +1652,7 @@ function handleUseAction(targets)
             if(document.getElementById("flanking").value == "Flanking!")
             {
                 userAddTo = `${parseInt(userAddTo) + 2}`;
-                if(parseInt(userAddTo) < 0){userAddTo = "+" + userAddTo;} else{userAddTo = "-" + userAddTo;}
+                if(parseInt(userAddTo) > 0){userAddTo = "+" + userAddTo;} else{userAddTo = "-" + userAddTo;}
             }
 
             let accurcy = diceRoller(1, 20, userAddTo, "false");
