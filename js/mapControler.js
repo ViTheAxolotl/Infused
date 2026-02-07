@@ -1099,6 +1099,22 @@ function handleCardClick()
 
             sneakSelect.selectedIndex = "0";
 
+            let flank = ["Flanking?", "Flanking!"];
+            let flankSelect = document.createElement("select");
+            flankSelect.name = "flanking";
+            flankSelect.id = "flanking";
+            flankSelect.style.margin = "0px 5px";
+
+            for(let i = 0; i < flank.length; i++)
+            {
+                let option = document.createElement("option");
+                option.value = flank[i];
+                option.text = flank[i];
+                sneakSelect.appendChild(option);
+            }
+
+            flankSelect.selectedIndex = "0";
+
             let kodyCrit = ["Angiorian's Crit?", "Activate Crit!"];
             let critSelect = document.createElement("select");
             critSelect.name = "crit";
@@ -1215,6 +1231,7 @@ function handleCardClick()
             optionDiv.appendChild(slotSelect);
             if(window.wholeChar[window.player]["stats"]["class"].includes("Rogue")){optionDiv.appendChild(sneakSelect);}
             if(window.player == "Kody"){optionDiv.appendChild(critSelect);}
+            optionDiv.appendChild(flankSelect);
             optionDiv.appendChild(castBtn);
             
             if(!quickAction)
@@ -1627,6 +1644,12 @@ function handleUseAction(targets)
                 
                 userAddTo = toHit;
             }
+            
+            if(document.getElementById("flanking").value == "Flanking!")
+            {
+                userAddTo += `+2`;
+            }
+
             else{userAddTo = spellOrAttackBonus("@damage")}
             let accurcy = diceRoller(1, 20, userAddTo, "false");
             let ending = "Damage";
