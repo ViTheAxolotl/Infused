@@ -1110,7 +1110,7 @@ function handleCardClick()
                 let option = document.createElement("option");
                 option.value = flank[i];
                 option.text = flank[i];
-                sneakSelect.appendChild(option);
+                flankSelect.appendChild(option);
             }
 
             flankSelect.selectedIndex = "0";
