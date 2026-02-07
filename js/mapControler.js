@@ -1645,12 +1645,15 @@ function handleUseAction(targets)
                 userAddTo = toHit;
             }
             
+            
+
+            else{userAddTo = spellOrAttackBonus("@damage")}
+
             if(document.getElementById("flanking").value == "Flanking!")
             {
                 userAddTo += `+2`;
             }
-
-            else{userAddTo = spellOrAttackBonus("@damage")}
+            
             let accurcy = diceRoller(1, 20, userAddTo, "false");
             let ending = "Damage";
             let ad_dis = "";
