@@ -1735,8 +1735,8 @@ function handleUseAction(targets)
             if(display)
             {
                 display += `\nAccurcy: ${accurcy} to Hit.\n`;
-                if(document.getElementById("crit").value == "Activate Crit!"){display += "Changed to Crit with the power of Angiorian! "}
-                if(document.getElementById("flanking").value == "Flanking!"){display += "Added +2 to accuracy for flanking with Ally."}
+                if(document.getElementById("crit").value == "Activate Crit!"){display += "Changed to Crit with the power of Angiorian!\n"}
+                if(document.getElementById("flanking").value == "Flanking!"){display += "Added +2 to accuracy for flanking with Ally.\n"}
                 let roll = accurcy.split("**")[1];
 
                 for(let key in Object.keys(targets))
@@ -1777,8 +1777,8 @@ function handleUseAction(targets)
                 for(key in Object.keys(targets)){display += `${toTitleCase(targets[key].title.split(":")[0])}, `;}
                 display = display.slice(0, display.length - 2);
                 display += `\n${useInfo}\nAccurcy: ${accurcy} to Hit.\n`;
-                if(document.getElementById("crit").value == "Activate Crit!"){display+= "Changed to Crit with Angiorian Strength! "}
-                if(document.getElementById("flanking").value == "Flanking!"){display += "Added +2 to accuracy for flanking with Ally."}
+                if(document.getElementById("crit").value == "Activate Crit!"){display+= "Changed to Crit with Angiorian Strength!\n"}
+                if(document.getElementById("flanking").value == "Flanking!"){display += "Added +2 to accuracy for flanking with Ally.\n"}
                 let roll = accurcy.split("**")[1];
 
                 for(let key in Object.keys(targets))
