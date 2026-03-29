@@ -358,8 +358,8 @@ function handleDiceRoll()
         default:
             if(document.getElementById("adv").value != "Advantage/Disadvantage") 
             { 
-                let take = parseInt(diceRoller(`${amount}`, `${dice}`, `${modifier}`, "finalResult"));
-                let take2 = parseInt(diceRoller(`${amount}`, `${dice}`, `${modifier}`, "finalResult"));
+                let take = parseInt(diceRoller(`1`, `20`, `${modifier[1]}`, "finalResult"));
+                let take2 = parseInt(diceRoller(`1`, `20`, `${modifier[1]}`, "finalResult"));
                 let usersRoll;
 
                 switch(document.getElementById("adv").value)
@@ -373,7 +373,7 @@ function handleDiceRoll()
                         break;
                 }
 
-                sendDiscordMessage(`${window.player} rolled ${amount}d${dice}+${modifier}: (${parseInt(usersRoll)-modifier})+${modifier}= ${usersRoll} on their ${modifier[0]}. First Roll: ${take}, Second Roll: ${take2}.`);
+                sendDiscordMessage(`${window.player} rolled 1d20+${modifier[1]}: (${parseInt(usersRoll)-modifier[1]})+${modifier[1]}= ${usersRoll} on their ${modifier[0]}. First Roll: ${take}, Second Roll: ${take2}.`);
             }
 
             else
