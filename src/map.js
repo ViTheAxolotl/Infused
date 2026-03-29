@@ -27,18 +27,6 @@ let startX, scrollLeft;
 let startY, scrollUp;
 let slider = gridMap;
 
-export function setMode(auth)
-{
-    setDoc(`playerChar/${window.player}/mode`, "waiting");
-    
-    modeRef = ref(database, `playerChar/${window.player}/mode`);
-    onValue(modeRef, (snapshot) => 
-    {
-        const data = snapshot.val();
-        mode = data;
-    });
-}
-
 export function setWholeDB(data)
 {
     addTokens();
@@ -1047,3 +1035,15 @@ iframe.contentWindow.addEventListener("mouseup", () =>
 {
     drag = false;
 });
+
+export function setMode(auth)
+{
+    setDoc(`playerChar/${window.player}/mode`, "waiting");
+    
+    modeRef = ref(database, `playerChar/${window.player}/mode`);
+    onValue(modeRef, (snapshot) => 
+    {
+        const data = snapshot.val();
+        mode = data;
+    });
+}

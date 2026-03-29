@@ -29,9 +29,9 @@ onAuthStateChanged(auth, (user) =>
 
     else
     {
-        setMode(auth);
         window.player = auth.currentUser.email.split("@");
         window.player = toTitleCase(window.player[0]);
+        setMode(auth);
     }
 });
 
