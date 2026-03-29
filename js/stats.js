@@ -284,7 +284,7 @@ function handleRightClickRoll(e, type)
     if(clicked == parent.saveOrCheck)
     {
         let token = parent.wholeDB[parent.player];
-        window.handleUseAction([token], "{@respond}");
+        parent.handleUseAction([token], "{@respond}");
         return false;
     }
 
