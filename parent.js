@@ -60,7 +60,8 @@ onValue(charRef, (snapshot) =>
 {
     const data = snapshot.val();
     wholeChar = data;
-    window.saveOrCheck = data["Vi"]["responses"]["ability"];
+    window.wholeRespone = data["Vi"]["responses"];
+    window.saveOrCheck = window.wholeRespone["ability"];
     setWholeCharCont(data);
 });
 
