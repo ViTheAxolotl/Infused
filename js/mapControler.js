@@ -1479,7 +1479,7 @@ function handleUseAction(targets, manual = null)
             let abilityName;
             let ad_dis = "";
             if(window.wholeRespone["isSpell"]){abilityDisc = window.wholeSpells[window.wholeRespone["ind"]][window.wholeRespone["currentResponse"]]["description"];}
-            else{abilityDisc = db[window.wholeRespone["ind"]][window.wholeRespone["currentResponse"]]["description"];}
+            else{if(abilityDisc == db[window.wholeRespone["ind"]]){abilityDisc = db[window.wholeRespone["ind"]][window.wholeRespone["currentResponse"]]["description"];} else{abilityDisc = db["Misc"][window.wholeRespone["currentResponse"]]["description"];}}
 
             if(window.wholeRespone["currentResponse"] == "Toll the Dead")
             {

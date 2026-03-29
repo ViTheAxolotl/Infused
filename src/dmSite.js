@@ -1232,6 +1232,7 @@ function handleGenerate()
 {
     hideButtons();
     handleDone();
+    backupFavorites();
 }
 
 function backupFavorites()
