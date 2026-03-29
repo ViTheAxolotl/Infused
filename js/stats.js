@@ -3,6 +3,7 @@ import { toTitleCase, setDoc, statFormat, skillDecrypt, reload, deleteDoc, sendD
 
 let stats;
 let firstRun = true;
+let parent = window.top.parent;
 
 init();
 
@@ -16,40 +17,40 @@ function init()
 
     for(let stat of stats)
     {
-        if(window.top.parent.wholeChar[window.top.parent.player] == undefined)
+        if(parent.wholeChar[parent.player] == undefined)
         {
             location.reload();
         }
 
-        else if(window.top.parent.wholeChar[window.top.parent.player]["stats"][stat.id] || window.top.parent.wholeChar[window.top.parent.player]["stats"][stat.id] == "")
+        else if(parent.wholeChar[parent.player]["stats"][stat.id] || parent.wholeChar[parent.player]["stats"][stat.id] == "")
         {
-            if(!window.top.parent.wholeChar[window.top.parent.player]["stats"][stat.id]){setDoc(`playerChar/${window.top.parent.player}/stats/${stat.id}`, "");}
-            if(typeof window.top.parent.wholeChar[window.top.parent.player]["stats"][stat.id] == "string")
+            if(!parent.wholeChar[parent.player]["stats"][stat.id]){setDoc(`playerChar/${parent.player}/stats/${stat.id}`, "");}
+            if(typeof parent.wholeChar[parent.player]["stats"][stat.id] == "string")
             {
-                if(stat.id == "spellBonus"){let bonus = statFormat(parseInt(window.top.parent.wholeChar[window.top.parent.player]["stats"][window.top.parent.wholeChar[window.top.parent.player]["stats"]["spellAbility"]]) + parseInt(window.top.parent.wholeChar[window.top.parent.player]["stats"]["proficiency"])); stat.innerHTML = bonus; setDoc(`playerChar/${window.top.parent.player}/stats/spellBonus`, bonus);}
-                else if(stat.id == "spellDC"){let dc = statFormat(parseInt(window.top.parent.wholeChar[window.top.parent.player]["stats"][window.top.parent.wholeChar[window.top.parent.player]["stats"]["spellAbility"]]) + parseInt(window.top.parent.wholeChar[window.top.parent.player]["stats"]["proficiency"]) + 8); stat.innerHTML = dc; setDoc(`playerChar/${window.top.parent.player}/stats/spellDC`, dc);}
-                else if(stat.id == "proficiency"){let prof = statFormat(Math.ceil(parseInt(window.top.parent.wholeChar[window.top.parent.player]["stats"]["lv"])/4)+1); setDoc(`playerChar/${window.top.parent.player}/stats/proficiency`, prof); stat.innerHTML = prof;}
-                else if(stat.id == "name"){stat.innerHTML = window.top.parent.player;}
-                else if(stat.id == "totalHitDice"){for(let i = 0; i < stat.length; i++){stat[i].innerHTML = `${window.top.parent.wholeChar[window.top.parent.player]["stats"]["lv"]}${stat[i].value}`; stat.value = window.top.parent.wholeChar[window.top.parent.player]["stats"][stat.id];}}
-                else if(stat.id == "currentHitDice"){let max = window.top.parent.wholeChar[window.top.parent.player]["stats"]["totalHitDice"]; stat.innerHTML = ""; for(let i = parseInt(window.top.parent.wholeChar[window.top.parent.player]["stats"]["lv"]); i >= 0; i--){let option = document.createElement("option"); option.innerHTML = `${i}${max}`; option.value = `${i}`; stat.appendChild(option);} stat.value = window.top.parent.wholeChar[window.top.parent.player]["stats"][stat.id];}
+                if(stat.id == "spellBonus"){let bonus = statFormat(parseInt(parent.wholeChar[parent.player]["stats"][parent.wholeChar[parent.player]["stats"]["spellAbility"]]) + parseInt(parent.wholeChar[parent.player]["stats"]["proficiency"])); stat.innerHTML = bonus; setDoc(`playerChar/${parent.player}/stats/spellBonus`, bonus);}
+                else if(stat.id == "spellDC"){let dc = statFormat(parseInt(parent.wholeChar[parent.player]["stats"][parent.wholeChar[parent.player]["stats"]["spellAbility"]]) + parseInt(parent.wholeChar[parent.player]["stats"]["proficiency"]) + 8); stat.innerHTML = dc; setDoc(`playerChar/${parent.player}/stats/spellDC`, dc);}
+                else if(stat.id == "proficiency"){let prof = statFormat(Math.ceil(parseInt(parent.wholeChar[parent.player]["stats"]["lv"])/4)+1); setDoc(`playerChar/${parent.player}/stats/proficiency`, prof); stat.innerHTML = prof;}
+                else if(stat.id == "name"){stat.innerHTML = parent.player;}
+                else if(stat.id == "totalHitDice"){for(let i = 0; i < stat.length; i++){stat[i].innerHTML = `${parent.wholeChar[parent.player]["stats"]["lv"]}${stat[i].value}`; stat.value = parent.wholeChar[parent.player]["stats"][stat.id];}}
+                else if(stat.id == "currentHitDice"){let max = parent.wholeChar[parent.player]["stats"]["totalHitDice"]; stat.innerHTML = ""; for(let i = parseInt(parent.wholeChar[parent.player]["stats"]["lv"]); i >= 0; i--){let option = document.createElement("option"); option.innerHTML = `${i}${max}`; option.value = `${i}`; stat.appendChild(option);} stat.value = parent.wholeChar[parent.player]["stats"][stat.id];}
                 else if(stat.id.includes("-btn") && !stat.id.includes("lvl")){stat.checked = false; setStats(stat);} //Stats not clicked
                 else if(stat.id.includes("Save")){stat.checked = false; setStats(stat);} //Stats not clicked
-                else if(["spellAbility", "lv"].includes(stat.id)){stat.value = window.top.parent.wholeChar[window.top.parent.player]["stats"][stat.id];}
-                else if(stat.value == ""){stat.value = window.top.parent.wholeChar[window.top.parent.player]["stats"][stat.id]; if(!["profAndLang", "infusion", "feats", "equipment", "apperance", "characterBackstory", "ally1", "ally2", "additionalFeat&Traits", "treasure"].includes(stat.id)){stat.style.minWidth = stat.value.length + 2 + "ch";}}
-                else{stat.innerHTML = window.top.parent.wholeChar[window.top.parent.player]["stats"][stat.id];}
+                else if(["spellAbility", "lv"].includes(stat.id)){stat.value = parent.wholeChar[parent.player]["stats"][stat.id];}
+                else if(stat.value == ""){stat.value = parent.wholeChar[parent.player]["stats"][stat.id]; if(!["profAndLang", "infusion", "feats", "equipment", "apperance", "characterBackstory", "ally1", "ally2", "additionalFeat&Traits", "treasure"].includes(stat.id)){stat.style.minWidth = stat.value.length + 2 + "ch";}}
+                else{stat.innerHTML = parent.wholeChar[parent.player]["stats"][stat.id];}
             }
 
             else //stats clicked since in booleen
             {
-                stat.checked = window.top.parent.wholeChar[window.top.parent.player]["stats"][stat.id];
+                stat.checked = parent.wholeChar[parent.player]["stats"][stat.id];
                 setStats(stat);
             }
         }
 
         else
         {
-            if(stat.id.includes("-btn") && !stat.id.includes("lvl")){setDoc(`playerChar/${window.top.parent.player}/stats/${stat.id}`, false); }
-            else{setDoc(`playerChar/${window.top.parent.player}/stats/${stat.id}`, "");}
+            if(stat.id.includes("-btn") && !stat.id.includes("lvl")){setDoc(`playerChar/${parent.player}/stats/${stat.id}`, false); }
+            else{setDoc(`playerChar/${parent.player}/stats/${stat.id}`, "");}
             setStats(stat);
         }
 
@@ -83,7 +84,7 @@ function setStats(stat)
         if(stat.id.includes("Save-btn"))
         {
             skill = stat.id.slice(0, stat.id.length-8);
-            modifier = window.top.parent.wholeChar[window.top.parent.player]["stats"][skill];
+            modifier = parent.wholeChar[parent.player]["stats"][skill];
             display = document.getElementById(skill + "Save");
             exper = skill + "Save";
         }
@@ -92,27 +93,27 @@ function setStats(stat)
         {
             skill = stat.id.slice(0, stat.id.length-4);
             let base6 = skillDecrypt[skill];
-            modifier = window.top.parent.wholeChar[window.top.parent.player]["stats"][base6];
+            modifier = parent.wholeChar[parent.player]["stats"][base6];
             display = document.getElementById(skill);
             exper = skill;
         }
 
         if(stat.checked)
         {
-            modifier = parseInt(modifier) + parseInt(window.top.parent.wholeChar[window.top.parent.player]["stats"]["proficiency"]);
+            modifier = parseInt(modifier) + parseInt(parent.wholeChar[parent.player]["stats"]["proficiency"]);
 
-            if(window.top.parent.wholeChar[window.top.parent.player]["stats"][`${exper}-expertise`]){modifier += parseInt(window.top.parent.wholeChar[window.top.parent.player]["stats"]["proficiency"]);}
+            if(parent.wholeChar[parent.player]["stats"][`${exper}-expertise`]){modifier += parseInt(parent.wholeChar[parent.player]["stats"]["proficiency"]);}
         }
         
-        else if(!stat.checked && window.top.parent.wholeChar[window.top.parent.player]["stats"]["class"] == "Bard")
+        else if(!stat.checked && parent.wholeChar[parent.player]["stats"]["class"] == "Bard")
         {
-            modifier = parseInt(modifier) + Math.floor(parseInt(window.top.parent.wholeChar[window.top.parent.player]["stats"]["proficiency"]) / 2);
+            modifier = parseInt(modifier) + Math.floor(parseInt(parent.wholeChar[parent.player]["stats"]["proficiency"]) / 2);
         }
 
         modifier = statFormat(modifier);
-        setDoc(`playerChar/${window.top.parent.player}/stats/${stat.id.slice(0, stat.id.length-4)}`, modifier);
+        setDoc(`playerChar/${parent.player}/stats/${stat.id.slice(0, stat.id.length-4)}`, modifier);
         display.innerHTML = toTitleCase(skill + ": " + modifier);
-        if(window.top.parent.wholeChar[window.top.parent.player]["stats"][`${exper}-expertise`]){display.innerHTML += " <strong>(Expertise)</strong>"}
+        if(parent.wholeChar[parent.player]["stats"][`${exper}-expertise`]){display.innerHTML += " <strong>(Expertise)</strong>"}
     }
 }
 
@@ -123,14 +124,14 @@ function handleExpertise()
 
     if(button.checked)
     {
-        if(window.top.parent.wholeChar[window.top.parent.player]["stats"][`${stat}-expertise`])
+        if(parent.wholeChar[parent.player]["stats"][`${stat}-expertise`])
         {
-            deleteDoc(`playerChar/${window.top.parent.player}/stats/${stat}-expertise`);
+            deleteDoc(`playerChar/${parent.player}/stats/${stat}-expertise`);
         }
 
         else
         {
-            setDoc(`playerChar/${window.top.parent.player}/stats/${stat}-expertise`, true);
+            setDoc(`playerChar/${parent.player}/stats/${stat}-expertise`, true);
         }
 
         setTimeout(init, 1000);
@@ -172,7 +173,7 @@ function updateStat()
         smaller = (full - 10) / 2;
         smaller = statFormat(Math.floor(smaller));
         ref.innerHTML = smaller;
-        setDoc(`playerChar/${window.top.parent.player}/stats/${this.id.slice(0, this.id.length-4)}`, smaller);
+        setDoc(`playerChar/${parent.player}/stats/${this.id.slice(0, this.id.length-4)}`, smaller);
         setTimeout(init, 1000);
     }
 
@@ -180,8 +181,8 @@ function updateStat()
 
     else if(["AC", "currentHp", "maxHp", "tempHp"].includes(this.id))
     {
-        setDoc(`playerChar/${window.top.parent.player}/token/${this.id}`, setTo);
-        setDoc(`currentMap/${window.top.parent.player}/${this.id}`, setTo);
+        setDoc(`playerChar/${parent.player}/token/${this.id}`, setTo);
+        setDoc(`currentMap/${parent.player}/${this.id}`, setTo);
         this.style.minWidth = this.value.length + 2 + "ch";
     }
 
@@ -190,7 +191,7 @@ function updateStat()
         if(!["profAndLang", "infusion", "feats", "equipment", "apperance", "characterBackstory", "ally1", "ally2", "additionalFeat&Traits", "treasure"].includes(this.id)){this.style.minWidth = this.value.length + 2 + "ch";}
     }
 
-    setDoc(`playerChar/${window.top.parent.player}/stats/${this.id}`, setTo);
+    setDoc(`playerChar/${parent.player}/stats/${this.id}`, setTo);
 
     if(this.id.includes("lvl") || this.id.includes("can"))
     {
@@ -217,9 +218,9 @@ function showSpell()
 
     if(spellName != "")
     {
-        if(window.top.parent.wholeSpells[spellLevel][spellName])
+        if(parent.wholeSpells[spellLevel][spellName])
         {
-            let spell = window.top.parent.wholeSpells[spellLevel][spellName];
+            let spell = parent.wholeSpells[spellLevel][spellName];
             document.getElementById("spellTitle").innerHTML = spell["name"];
             document.getElementById("CT").innerHTML = `Cast Time: ${spell["castTime"]}`;
             document.getElementById("R").innerHTML = `Range: ${spell["range"]}`;
@@ -279,9 +280,17 @@ function handleRightClickRoll(e, type)
     }
 
     mod = parseInt(modifier);
+
+    if(clicked == parent.saveOrCheck)
+    {
+        let token = parent.wholeDB[parent.player];
+        window.handleUseAction([token], "{@respond}");
+        return false;
+    }
+
     let random = Math.random();
     let roll = Math.floor(random * (20)) + mod + 1; //Gives random roll
-    let message = `${window.top.parent.player} had rolled (${roll-mod})${modifier} = **${roll}** for ${toTitleCase(clicked)}.`;
+    let message = `${parent.player} had rolled (${roll-mod})${modifier} = **${roll}** for ${toTitleCase(clicked)}.`;
 
     sendDiscordMessage(message);
     alert(`Rolled (${roll-mod})${modifier} = **${roll}** for ${toTitleCase(clicked)}.`);

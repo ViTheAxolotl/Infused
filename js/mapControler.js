@@ -1337,7 +1337,7 @@ function handleSelectedTarget()
     }
 }
 
-function handleUseAction(targets)
+function handleUseAction(targets, manual = null)
 {
     let display;
     let useInfo;
@@ -1346,8 +1346,22 @@ function handleUseAction(targets)
     let listOf;
     let lastUse;
 
-    if(spellLevel){listOf = db[spellLevel]; lastUse = lastSpell;}
-    else{listOf = db[curClass]; lastUse = lastAbility;}
+    if(manual)
+    {
+        switch(manual)
+        {
+            case "{@respond}":
+                db = window.wholeActions;
+                listOf = db["Misc"]; lastUse = "Response";
+                break;
+        }
+    }
+
+    else
+    {
+        if(spellLevel){listOf = db[spellLevel]; lastUse = lastSpell;}
+        else{listOf = db[curClass]; lastUse = lastAbility;}
+    }
 
     let description = listOf[lastUse]["description"];
     discription = description;
@@ -1961,6 +1975,8 @@ function handleUseAction(targets)
     display = display.replaceAll("</li>", "");
     sendDiscordMessage(display);
 }
+
+window.handleUseAction = handleUseAction;
 
 function spellOrAttackBonus(usage)
 {
