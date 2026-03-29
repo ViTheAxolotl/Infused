@@ -281,9 +281,13 @@ function diceRoller(amount, dice, modifier, ifName)
  */
 function handleDiceRoll()
 {
-    let modifier = document.getElementById("diceMod").innerHTML;
-    modifier = modifier.split(": ");
-
+    let modifier;
+    if(document.getElementById("diceMod"))
+    {
+        modifier = document.getElementById("diceMod").innerHTML;
+        modifier = modifier.split(": ");
+    }
+    
     switch(document.getElementsByClassName("selected-dice")[0].innerHTML)
     {
         case "Basic":
@@ -293,6 +297,24 @@ function handleDiceRoll()
         
             if(!Number.isNaN(amount) && !Number.isNaN(dice) && !Number.isNaN(modifier)) //If all three values are given
             {
+                if(document.getElementById("adv").value != "Advantage/Disadvantage") 
+                { 
+                    let take = diceRoller("1", "20", userAddTo, "finalResult");
+                    let take2 = diceRoller("1", "20", userAddTo, "finalResult");
+
+                    switch(document.getElementById("adv").value)
+                    {
+                        case "Advantage":
+                            if(take > take2){usersRoll = take;} else {usersRoll = take2;}
+                            break;
+
+                        case "Disadvantage":
+                            if(take < take2){usersRoll = take;} else {usersRoll = take2;}
+                            break;
+                    }
+
+                    ad_dis += ` First Roll: ${take}, Second Roll: ${take2}.`;
+                }
                 sendDiscordMessage(diceRoller(amount, dice, modifier, "discord") + "."); //Rolls the dice given and send the result to discord
             }
 
@@ -1493,21 +1515,21 @@ function handleUseAction(targets, manual = null)
                 if(parseInt(window.wholeDB[targets[0].classList[1]]["currentHp"]) < parseInt(window.wholeDB[targets[0].classList[1]]["maxHp"]))
                 {
                     abilityDisc = abilityDisc.replaceAll("d8", "d12");
+                    ad_dis += " Rolling d12's instead, since they were hurt.";
                 }
             }
             
             setDoc(`playerChar/${window.player}/stats/${window.wholeRespone["ability"]}`, userAddTo);
             usersRoll = diceRoller("1", "20", userAddTo, "finalResult");
-            ad_dis += " Rolling d12's instead, since they were hurt.";
 
-            if(document.getElementById("advantage"))
+            if(document.getElementById("adv"))
             {
-                if(document.getElementById("advantage").value != "Advantage/Disadvantage")
+                if(document.getElementById("adv").value != "Advantage/Disadvantage")
                 {
                     let take = usersRoll;
                     let take2 = diceRoller("1", "20", userAddTo, "finalResult");
 
-                    switch(document.getElementById("advantage").value)
+                    switch(document.getElementById("adv").value)
                     {
                         case "Advantage":
                             if(take > take2){usersRoll = take;} else {usersRoll = take2;}
