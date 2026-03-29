@@ -1493,23 +1493,26 @@ function handleUseAction(targets, manual = null)
             usersRoll = diceRoller("1", "20", userAddTo, "finalResult");
             ad_dis += " Rolling d12's instead, since they were hurt.";
 
-            if(document.getElementById("advantage").value != "Advantage/Disadvantage")
+            if(document.getElementById("advantage"))
             {
-                let take = usersRoll;
-                let take2 = diceRoller("1", "20", userAddTo, "finalResult");
-
-                switch(document.getElementById("advantage").value)
+                if(document.getElementById("advantage").value != "Advantage/Disadvantage")
                 {
-                    case "Advantage":
-                        if(take > take2){usersRoll = take;} else {usersRoll = take2;}
-                        break;
+                    let take = usersRoll;
+                    let take2 = diceRoller("1", "20", userAddTo, "finalResult");
 
-                    case "Disadvantage":
-                        if(take < take2){usersRoll = take;} else {usersRoll = take2;}
-                        break;
-                }
+                    switch(document.getElementById("advantage").value)
+                    {
+                        case "Advantage":
+                            if(take > take2){usersRoll = take;} else {usersRoll = take2;}
+                            break;
 
-                ad_dis += ` First Roll: ${take}, Second Roll: ${take2}.`;
+                        case "Disadvantage":
+                            if(take < take2){usersRoll = take;} else {usersRoll = take2;}
+                            break;
+                    }
+
+                    ad_dis += ` First Roll: ${take}, Second Roll: ${take2}.`;
+                } 
             }
 
             if(abilityDisc.includes("{@save "))
