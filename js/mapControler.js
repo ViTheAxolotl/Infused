@@ -299,8 +299,9 @@ function handleDiceRoll()
             {
                 if(document.getElementById("adv").value != "Advantage/Disadvantage") 
                 { 
-                    let take = diceRoller("1", "20", userAddTo, "finalResult");
-                    let take2 = diceRoller("1", "20", userAddTo, "finalResult");
+                    let take = diceRoller(`${amount}`, `${dice}`, `${modifier}`, "finalResult");
+                    let take2 = diceRoller(`${amount}`, `${dice}`, `${modifier}`, "finalResult");
+                    let usersRoll;
 
                     switch(document.getElementById("adv").value)
                     {
@@ -313,9 +314,13 @@ function handleDiceRoll()
                             break;
                     }
 
-                    ad_dis += ` First Roll: ${take}, Second Roll: ${take2}.`;
+                    sendDiscordMessage(`${window.player} rolled ${amount}d${dice}+${modifier}: (${parseInt(usersRoll)-modifier})+${modifier}= ${usersRoll}. First Roll: ${take}, Second Roll: ${take2}.`);
                 }
-                sendDiscordMessage(diceRoller(amount, dice, modifier, "discord") + "."); //Rolls the dice given and send the result to discord
+
+                else
+                {
+                    sendDiscordMessage(diceRoller(amount, dice, modifier, "discord")); //Rolls the dice given and send the result to discord
+                }
             }
 
             else{alert("Need input in all 3 inputs.");} //If one or more of the values are missed
@@ -351,7 +356,30 @@ function handleDiceRoll()
             }
     
         default:
-            sendDiscordMessage(`${diceRoller("1", "20", modifier[1], "discord")} on their ${modifier[0]}.`);
+            if(document.getElementById("adv").value != "Advantage/Disadvantage") 
+            { 
+                let take = diceRoller(`${amount}`, `${dice}`, `${modifier}`, "finalResult");
+                let take2 = diceRoller(`${amount}`, `${dice}`, `${modifier}`, "finalResult");
+                let usersRoll;
+
+                switch(document.getElementById("adv").value)
+                {
+                    case "Advantage":
+                        if(take > take2){usersRoll = take;} else {usersRoll = take2;}
+                        break;
+
+                    case "Disadvantage":
+                        if(take < take2){usersRoll = take;} else {usersRoll = take2;}
+                        break;
+                }
+
+                sendDiscordMessage(`${window.player} rolled ${amount}d${dice}+${modifier}: (${parseInt(usersRoll)-modifier})+${modifier}= ${usersRoll} on their ${modifier[0]}. First Roll: ${take}, Second Roll: ${take2}.`);
+            }
+
+            else
+            {
+                sendDiscordMessage(`${diceRoller("1", "20", modifier[1], "discord")} on their ${modifier[0]}.`);
+            }
             break;
     }
 }
