@@ -1554,8 +1554,8 @@ function handleUseAction(targets, manual = null)
             {
                 if(document.getElementById("adv").value != "Advantage/Disadvantage")
                 {
-                    let take = usersRoll;
-                    let take2 = diceRoller("1", "20", userAddTo, "finalResult");
+                    let take = parseInt(usersRoll);
+                    let take2 = parseInt(diceRoller("1", "20", userAddTo, "finalResult"));
 
                     switch(document.getElementById("adv").value)
                     {
