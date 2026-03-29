@@ -299,8 +299,8 @@ function handleDiceRoll()
             {
                 if(document.getElementById("adv").value != "Advantage/Disadvantage") 
                 { 
-                    let take = diceRoller(`${amount}`, `${dice}`, `${modifier}`, "finalResult");
-                    let take2 = diceRoller(`${amount}`, `${dice}`, `${modifier}`, "finalResult");
+                    let take = parseInt(diceRoller(`${amount}`, `${dice}`, `${modifier}`, "finalResult"));
+                    let take2 = parseInt(diceRoller(`${amount}`, `${dice}`, `${modifier}`, "finalResult"));
                     let usersRoll;
 
                     switch(document.getElementById("adv").value)
