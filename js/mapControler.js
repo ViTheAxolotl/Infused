@@ -320,6 +320,13 @@ function handleDiceRoll()
                 }
                 break;
             }
+        case "Checks":
+            if(modifier[0] == window.saveOrCheck)
+            {
+                let token = window.wholeDB[window.player];
+                window.handleUseAction([token], "{@respond}");
+                break;
+            }
     
         default:
             sendDiscordMessage(`${diceRoller("1", "20", modifier[1], "discord")} on their ${modifier[0]}.`);
