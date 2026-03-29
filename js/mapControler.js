@@ -282,6 +282,7 @@ function diceRoller(amount, dice, modifier, ifName)
 function handleDiceRoll()
 {
     let modifier;
+    
     if(document.getElementById("diceMod"))
     {
         modifier = document.getElementById("diceMod").innerHTML;
