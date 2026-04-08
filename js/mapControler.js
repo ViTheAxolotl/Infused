@@ -1714,6 +1714,7 @@ function handleUseAction(targets, manual = null)
         {
             let userAddTo = "";
             let fail = true;
+
             if(description.includes("toHit}"))
             {
                 let toHit = description.slice(0, description.indexOf("toHit}"));
@@ -1737,8 +1738,6 @@ function handleUseAction(targets, manual = null)
                 
                 userAddTo = toHit;
             }
-            
-            
 
             else{userAddTo = spellOrAttackBonus("@damage")}
 
@@ -1795,7 +1794,17 @@ function handleUseAction(targets, manual = null)
                 }
             }
 
-            damage = splitRoll(description, "@damage");
+            if(description.includes("infused"))
+            {
+                damage = splitRoll(description, "@infused");
+            }
+
+            else
+            {
+                damage = splitRoll(description, "@damage");
+            }
+
+            
             if(accurcy.includes("(20)") || document.getElementById("crit").value == "Activate Crit!"){damage[0] = `${parseInt(damage[0]) * 2}`}
 
             if(damage[2].length > 2)
