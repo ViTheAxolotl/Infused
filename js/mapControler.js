@@ -646,6 +646,24 @@ function changeValue()
                 title.innerHTML = title.innerHTML.replace(` ${toTitleCase(status.value)},`, ""); //Removes the given keyword from the title
             }
 
+            if(window.player != "Vi")
+            {
+                if(!title.innerHTML.includes(window.player))
+                {
+                    title.innerHTML = `Status: ${window.player},`
+                    
+                    if(modifier == "+") //If plus button is clicked
+                    {
+                        title.innerHTML += ` ${toTitleCase(status.value)},`; //Adds the key word written to your title
+                    }
+                }
+
+                if(!title.innerHTML.includes("Infused"))
+                {
+                    title.innerHTML = title.innerHTML.replace(",", ", Infused,");
+                }
+            }
+
             title = title.innerHTML.slice(title.innerHTML.indexOf(": ") + 2).trim();
             setDoc(`currentMap/${currentToken}/title`, title);
             if(currentToken == window.player){setDoc(`playerChar/${window.player}/token/title`, title);}
