@@ -1305,7 +1305,7 @@ function handleCardClick()
             }
 
             optionDiv.appendChild(slotSelect);
-            if(window.wholeChar[window.player]["stats"]["class"].includes("Rogue")){optionDiv.appendChild(sneakSelect);}
+            if(window.wholeChar[window.player]["stats"]["class"].toLowerCase().includes("rogue")){optionDiv.appendChild(sneakSelect);}
             if(window.player == "Kody" || window.player == "Vi"){optionDiv.appendChild(critSelect);}
             optionDiv.appendChild(flankSelect);
             optionDiv.appendChild(castBtn);
