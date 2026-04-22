@@ -95,7 +95,7 @@ function navBarSetup()
                 </li>
                 <li class="nav-item"><a class="nav-link active" aria-current="page" href="${mainLocation}recap.html">Sessions Recap</a></li> 
                 <li class="nav-item"><a class="nav-link active" aria-current="page" href="${mainLocation}itemIndex.html">Magic Item Index</a></li>);    
-                <li class="nav-item"><a class="nav-link active" aria-current="page" href="https://vitheaxolotl.github.io/sheets/index.html">Standalone Character Sheets</a></li>);    
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="https://sheets.axol-apps.com/index.html">Standalone Character Sheets</a></li>);    
                 ${log}
     </div>`;
 
