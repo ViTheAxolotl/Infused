@@ -1892,7 +1892,7 @@ function handleUseAction(targets, manual = null)
             else
             {
                 display = `${toTitleCase(window.wholeChar[window.player]["currentToken"])} cast, ${lastUse} on `;
-                for(key in Object.keys(targets)){display += `${toTitleCase(targets[key].title.split(":")[0])}, `;}
+                for(key in Object.keys(targets)){display += `${toTitleCase(window.wholeDB[targets[key].classList[1]])}, `;}
                 display = display.slice(0, display.length - 2);
                 display += `\n${useInfo}\nAccurcy: ${accurcy} to Hit.\n`;
                 if(document.getElementById("crit")){if(document.getElementById("crit").value == "Activate Crit!"){display+= "- Changed to Crit with Angiorian Strength!\n";}}
