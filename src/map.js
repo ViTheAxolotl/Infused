@@ -767,6 +767,12 @@ function handleCharClick()
             else
             {
                 this.classList.add("selected-temp");
+
+                if(document.getElementsByName(this.classList[1]))
+                {
+                    document.getElementsByName(token.classList[1])[0].checked = true;
+                }
+
                 handleViewTokens(this);
             }
 
@@ -783,6 +789,11 @@ function handleCharClick()
                     else
                     {
                         this.classList.add("selected-temp");
+
+                        if(document.getElementsByName(this.classList[1]))
+                        {
+                            document.getElementsByName(token.classList[1])[0].checked = true;
+                        }
                     }
             }
             break;

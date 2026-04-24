@@ -1386,8 +1386,8 @@ function handleSelectedTarget()
             if(token.classList.contains("border_"))
             {
                 token.classList.add("selected-temp");
-                
-                if(document.getElementsByName(token.classList[1])[0])
+
+                if(document.getElementsByName(this.classList[1]))
                 {
                     document.getElementsByName(token.classList[1])[0].checked = true;
                 }
