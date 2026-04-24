@@ -4,12 +4,6 @@ import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.15.0/firebas
 import { getDatabase, ref, set } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js';
 import { getAuth } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
 
-
-
-let webhook; setTimeout(function (){webhook = window.top.parent.wholeChar["Vi"]["testingWebhook"]}, 11 * 1000); //Which channel it goes to by webhook
-
-
-
 const firebaseApp = initializeApp
 ({
     apiKey: "AIzaSyArcsmJkXSeuIHMysYtIzRdjIDlKNQA25Y",
@@ -326,7 +320,7 @@ export function sendDiscordMessage(message)
     message = message + "\n\n ||                ||"; //Makes message seperating bars
     const contents = `${message}`;
     const request = new XMLHttpRequest();
-    request.open("POST", webhook); //Opens the webhook
+    request.open("POST", window.top.parent.wholeChar["Vi"]["testingWebhook"]); //Opens the webhook
     request.setRequestHeader("Content-type", "application/json"); //Gives json header
     const prams = 
     {
