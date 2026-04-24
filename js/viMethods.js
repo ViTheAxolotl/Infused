@@ -101,7 +101,10 @@ export function toTitleCase(word)
 
     else //If only one word given
     {
-        finalWord = word[0].toUpperCase() + word.slice(1); //Caps the one word
+        if(word[0])
+        {
+            finalWord = word[0].toUpperCase() + word.slice(1); //Caps the one word
+        }
     }
 
     return finalWord;
