@@ -67,6 +67,7 @@ onAuthStateChanged(auth, (user) =>
     {
         player = auth.currentUser.email.split("@");
         player = toTitleCase(player[0]);
+        
         let skillRef = ref(database, `playerChar/${player}/skillTree`);
         onValue(skillRef, (snapshot) => 
         {
@@ -132,7 +133,7 @@ function init()
     new ResponsiveImageMap(map, image, 1920);
     document.getElementById("hideCovers").onclick = function(){handleButtonClick(this);};
     document.getElementById("unlock").onclick = function(){handleButtonClick(this);};
-    fetch('https://vitheaxolotl.github.io/Infused/src/skillTree.json').then(res => res.json()).then((json) => skillDesc = json);
+    fetch('https://infused.axol-apps.com/src/skillTree.json').then(res => res.json()).then((json) => skillDesc = json);
     parent.skillsLoaded = true;
 }
 
