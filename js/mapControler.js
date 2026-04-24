@@ -1805,7 +1805,18 @@ function handleUseAction(targets, manual = null)
             }
 
             
-            if(accurcy.includes("(20)") || document.getElementById("crit").value == "Activate Crit!"){damage[0] = `${parseInt(damage[0]) * 2}`}
+            if(accurcy.includes("(20)"))
+            {
+                damage[0] = `${parseInt(damage[0]) * 2}`;
+            }
+
+            if(document.getElementById("crit"))
+            {
+                if(document.getElementById("crit").value == "Activate Crit!")
+                {
+                    damage[0] = `${parseInt(damage[0]) * 2}`;
+                }
+            }
 
             if(damage[2].length > 2)
             {
