@@ -1906,7 +1906,7 @@ function handleUseAction(targets, manual = null)
                     if(display.includes("regains"))
                     {
                         fail = false;
-                        handleChangeHp(damage.split("**")[1], window.wholeDB[targets[key].title.split(":")[0]], "+");
+                        handleChangeHp(damage.split("**")[1], window.wholeDB[targets[key].classList[1]], "+");
                         display = display.split("Accurcy:")[0];
                         ending = "Healing";
                     }
@@ -1916,7 +1916,7 @@ function handleUseAction(targets, manual = null)
                         display += `(Success Hit) ${targets[key].title.split(":")[0]}, `;
                         fail = false; 
                         if(window.wholeChar[targets[key].title.split(":")[0]]){let targe = targets[key].title.split(":")[0]; if(window.wholeChar[targe]["rage"] && !description.includes("{noRage") && !spellLevel){let past = damage.slice(damage.indexOf("**") + 2); past = past.slice(0, damage.indexOf("**")); let hp = parseInt(past)/2; damage = damage.replace(past, `${hp}** (1/2 Rage)`);}}
-                        handleChangeHp(damage.split("**")[1], window.wholeDB[targets[key].title.split(":")[0]], "-");
+                        handleChangeHp(damage.split("**")[1], window.wholeDB[targets[key].classList[1]], "-");
                         if(document.getElementById("sneak")){if(document.getElementById("sneak").value != "Sneak-Attack?"){description += `{@sDice ${Math.floor(parseInt(window.wholeChar[window.player]["stats"]["lv"])/2)}d6} Sneak Attack.`;}}
                     }
 
