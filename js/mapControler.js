@@ -1387,7 +1387,7 @@ function handleSelectedTarget()
             {
                 token.classList.add("selected-temp");
 
-                if(document.getElementsByName(this.classList[1]))
+                if(document.getElementsByName(token.classList[1]))
                 {
                     document.getElementsByName(token.classList[1])[0].checked = true;
                 }

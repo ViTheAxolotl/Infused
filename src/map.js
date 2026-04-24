@@ -770,7 +770,7 @@ function handleCharClick()
 
                 if(document.getElementsByName(this.classList[1]))
                 {
-                    document.getElementsByName(token.classList[1])[0].checked = true;
+                    document.getElementsByName(this.classList[1])[0].checked = true;
                 }
 
                 handleViewTokens(this);
@@ -792,7 +792,7 @@ function handleCharClick()
 
                         if(document.getElementsByName(this.classList[1]))
                         {
-                            document.getElementsByName(token.classList[1])[0].checked = true;
+                            document.getElementsByName(this.classList[1])[0].checked = true;
                         }
                     }
             }
