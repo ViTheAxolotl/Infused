@@ -1901,7 +1901,7 @@ function handleUseAction(targets, manual = null)
 
                 for(let key in Object.keys(targets))
                 {
-                    let ac = window.wholeDB[targets[key].title.split(":")[0]].AC;
+                    let ac = window.wholeDB[targets[key].classList[1]].AC;
                     
                     if(display.includes("regains"))
                     {
