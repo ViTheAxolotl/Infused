@@ -1387,6 +1387,10 @@ function handleSelectedTarget()
             {
                 token.classList.add("selected-temp");
                 
+                if(document.getElementsByName(token.classList[1])[0])
+                {
+                    document.getElementsByName(token.classList[1])[0].checked = true;
+                }
             }
         }
 
