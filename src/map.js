@@ -768,11 +768,6 @@ function handleCharClick()
             {
                 this.classList.add("selected-temp");
 
-                if(document.getElementsByName(this.classList[1]))
-                {
-                    document.getElementsByName(this.classList[1])[0].checked = true;
-                }
-
                 handleViewTokens(this);
             }
 
@@ -784,6 +779,11 @@ function handleCharClick()
                 if(this.classList.contains("selected-temp"))
                     {
                         this.classList.remove("selected-temp");
+
+                        if(document.getElementsByName(this.classList[1]))
+                        {
+                            document.getElementsByName(this.classList[1])[0].checked = false;
+                        }
                     }
         
                     else
