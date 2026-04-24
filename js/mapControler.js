@@ -1138,7 +1138,8 @@ function handleCardClick()
             castBtn.classList.add("gridButton");
             castBtn.onclick = displaySelect;
             if(quickAction){castBtn.onclick = useAbility;}
-            castBtn.innerHTML = "Select Targets";
+            if(document.getElementsByClassName("selected-temp").length > 0){castBtn.innerHTML = "Use Ability/Spell";}
+            else{castBtn.innerHTML = "Select Targets";}
             castBtn.name = currentTitle;
             castBtn.style.margin = "0px 5px";
             castBtn.id = "castBtn";
