@@ -1706,8 +1706,11 @@ function handleUseAction(targets, manual = null)
                 setDoc(`currentMap/${token.id}`, token);
             }
 
-            display = `${toTitleCase(window.wholeChar[window.player]["currentToken"])} cast: ${lastUse}\n${useInfo}`;
-            if(curClass){display = display.replaceAll("cast", "use the ability");}
+            if(display == undefined)
+            {
+                display = `${toTitleCase(window.wholeChar[window.player]["currentToken"])} cast: ${lastUse}\n${useInfo}`;
+                if(curClass){display = display.replaceAll("cast", "use the ability");}  
+            }
         }
 
         if(description.includes("{@Rage"))
