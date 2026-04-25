@@ -1643,72 +1643,77 @@ function handleUseAction(targets, manual = null)
 
         if(discription.includes("{@Summon"))
         {
-            let token = {border : "blue", currentHp : `0`, maxHp : `0`, tempHp : "0", map : "", id : "", name : "", title : ` ${window.player}, `, xPos : "1", yPos : "A", isSummon : false, AC : "10"};
             let info = discription.slice(discription.indexOf("{@Summon"));
             info = info.slice(info.indexOf(" ") + 1, info.indexOf("}"));
-            info = info.split(":"); 
-            token.AC = `${info[3]}`;
-            token.title += `${info[4]}, `;
-            let currentToken = window.wholeDB[window.wholeChar[window.player]["currentToken"]];
+            info = info.split(":");
 
-            if(!currentToken["title"].includes(window.player))
+            for(let z = 1; z <= parseInt(info[5]); i++)
             {
-                let t = document.getElementById("title");
-                currentToken.title = ` ${window.player}, ${currentToken["title"]}`; 
-                t.innerHTML = "Status: " + currentToken.title; 
+                let token = {border : "blue", currentHp : `0`, maxHp : `0`, tempHp : "0", map : "", id : "", name : "", title : ` ${window.player}, `, xPos : "1", yPos : "A", isSummon : false, AC : "10"};
+                 
+                token.AC = `${info[3]}`;
+                token.title += `${info[4]}, `;
+                let currentToken = window.wholeDB[window.wholeChar[window.player]["currentToken"]];
 
-                setDoc(`currentMap/${window.player}/title`, currentToken.title);
-                setDoc(`playerChar/${window.player}/token/title`, currentToken.title);
-            }
+                if(!currentToken["title"].includes(window.player))
+                {
+                    let t = document.getElementById("title");
+                    currentToken.title = ` ${window.player}, ${currentToken["title"]}`; 
+                    t.innerHTML = "Status: " + currentToken.title; 
+
+                    setDoc(`currentMap/${window.player}/title`, currentToken.title);
+                    setDoc(`playerChar/${window.player}/token/title`, currentToken.title);
+                }
+                
+                token.name = info[0] + "-";
+                let id = info[0];
+
+                if(Object.keys(window.wholeDB).includes(id))
+                {
+                    id = id + "1";
             
-            token.name = info[0] + "-";
-            let id = info[0];
-
-            if(Object.keys(window.wholeDB).includes(id))
-            {
-                id = id + "1";
-        
-                while(Object.keys(window.wholeDB).includes(id))
-                {
-                    id = id.slice(0, id.length - 1) + (parseInt(id.charAt(id.length - 1)) + 1);
+                    while(Object.keys(window.wholeDB).includes(id))
+                    {
+                        id = id.slice(0, id.length - 1) + (parseInt(id.charAt(id.length - 1)) + 1);
+                    }
                 }
-            }
 
-            token.id = id;
+                token.id = id;
 
-            let fin;
-            if(info[1].includes("currentLv"))
-            {
-                let operation = info[1].replace("currentLv", "");
-                operation = operation.charAt(0);
-                let cL = parseInt(currentLv.charAt(0));
-                let num = parseFloat(info[1].slice(info[1].indexOf(operation) + 1));
-
-                switch(operation)
+                let fin;
+                if(info[1].includes("currentLv"))
                 {
-                    case "+":
-                        fin = cL + num;
-                        break;
-                    
-                    case "-":
-                        fin = cL - num;
-                        break;
+                    let operation = info[1].replace("currentLv", "");
+                    operation = operation.charAt(0);
+                    let cL = parseInt(currentLv.charAt(0));
+                    let num = parseFloat(info[1].slice(info[1].indexOf(operation) + 1));
 
-                    case "*":
-                        fin = cL * num;
-                        break;
+                    switch(operation)
+                    {
+                        case "+":
+                            fin = cL + num;
+                            break;
+                        
+                        case "-":
+                            fin = cL - num;
+                            break;
 
-                    case "/":
-                        fin = cL / num;
-                        break;
+                        case "*":
+                            fin = cL * num;
+                            break;
+
+                        case "/":
+                            fin = cL / num;
+                            break;
+                    }
                 }
-            }
-            else{fin = parseFloat(info[1]);}
-            token.maxHp = `${fin}`;
-            token.currentHp = `${fin}`;
-            token.border = info[2];
+                else{fin = parseFloat(info[1]);}
+                token.maxHp = `${fin}`;
+                token.currentHp = `${fin}`;
+                token.border = info[2];
 
-            setDoc(`currentMap/${token.id}`, token);
+                setDoc(`currentMap/${token.id}`, token);
+            }
         }
 
         if(description.includes("{@Rage"))
@@ -2195,7 +2200,7 @@ function handleEditCard()
     cardText.setAttribute("class", "card-text");
     cardText.style.margin = "3px";
     cardText.style.display = "inline";
-    cardText.innerHTML = "<li>{@save} : makes it able to use the save/check rolls. Can use {@save 2d6} to have it roll damage as well, for the skill you need to write strength (etc.) or use {@skill Perception} to show.</li> <li>{@damage 3d4} will roll accuracy then damage of 3d4. Or if it has the word regains in the description, then it will heal instead.</li><li>{@scaledamage 1d8+4|1-9|1d8} will allow you to cast spells at higher levels. The base level is the first one at first level it does 1d8 + 4, the second column says it can be cast as a lvl 1 spell all the way up to 9th level. The third one give how much it goes up by each level.</li><li>{+3toHit} will add 3 to the accuracy roll.</li><li>{@Choice} will make a bullet point.</li><li>{@sDice 2d4} Will just roll 2d4 not accuracy</li><li>{@Summon pictureName:Hp:border:AC:Modifiers} Picture name decides which picture and id it will have, ask me for an exact one a universal one is 'genericA-'. Hp is the max and current hp the token will have. Border is the color border it will have.</li><li>$Strength$ will use your strength stat. Use surround the stat name with $ to use it from your character sheet.</li>";
+    cardText.innerHTML = "<li>{@save} : makes it able to use the save/check rolls. Can use {@save 2d6} to have it roll damage as well, for the skill you need to write strength (etc.) or use {@skill Perception} to show.</li> <li>{@damage 3d4} will roll accuracy then damage of 3d4. Or if it has the word regains in the description, then it will heal instead.</li><li>{@scaledamage 1d8+4|1-9|1d8} will allow you to cast spells at higher levels. The base level is the first one at first level it does 1d8 + 4, the second column says it can be cast as a lvl 1 spell all the way up to 9th level. The third one give how much it goes up by each level.</li><li>{+3toHit} will add 3 to the accuracy roll.</li><li>{@Choice} will make a bullet point.</li><li>{@sDice 2d4} Will just roll 2d4 not accuracy</li><li>{@Summon pictureName:Hp:border:AC:Modifiers:Quantity} Picture name decides which picture and id it will have, ask me for an exact one a universal one is 'genericA-'. Hp is the max and current hp the token will have. Border is the color border it will have.</li><li>$Strength$ will use your strength stat. Use surround the stat name with $ to use it from your character sheet.</li>";
     cardBody.appendChild(cardText);
     cardBody.appendChild(document.createElement("br"));
 
