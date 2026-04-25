@@ -1647,7 +1647,7 @@ function handleUseAction(targets, manual = null)
             info = info.slice(info.indexOf(" ") + 1, info.indexOf("}"));
             info = info.split(":");
 
-            for(let z = 1; z <= parseInt(info[5]); i++)
+            for(let z = 1; z <= parseInt(info[5]); z++)
             {
                 let token = {border : "blue", currentHp : `0`, maxHp : `0`, tempHp : "0", map : "", id : "", name : "", title : ` ${window.player}, `, xPos : "1", yPos : "A", isSummon : false, AC : "10"};
                  
