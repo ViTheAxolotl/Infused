@@ -1647,7 +1647,8 @@ function handleUseAction(targets, manual = null)
             let info = discription.slice(discription.indexOf("{@Summon"));
             info = info.slice(info.indexOf(" ") + 1, info.indexOf("}"));
             info = info.split(":"); 
-            token.AC += `${info[3]}`;
+            token.AC = `${info[3]}`;
+            token.title += `${info[4]}, `;
             let currentToken = window.wholeDB[window.wholeChar[window.player]["currentToken"]];
 
             if(!currentToken["title"].includes(window.player))
@@ -2194,7 +2195,7 @@ function handleEditCard()
     cardText.setAttribute("class", "card-text");
     cardText.style.margin = "3px";
     cardText.style.display = "inline";
-    cardText.innerHTML = "<li>{@save} : makes it able to use the save/check rolls. Can use {@save 2d6} to have it roll damage as well, for the skill you need to write strength (etc.) or use {@skill Perception} to show.</li> <li>{@damage 3d4} will roll accuracy then damage of 3d4. Or if it has the word regains in the description, then it will heal instead.</li><li>{@scaledamage 1d8+4|1-9|1d8} will allow you to cast spells at higher levels. The base level is the first one at first level it does 1d8 + 4, the second column says it can be cast as a lvl 1 spell all the way up to 9th level. The third one give how much it goes up by each level.</li><li>{+3toHit} will add 3 to the accuracy roll.</li><li>{@Choice} will make a bullet point.</li><li>{@sDice 2d4} Will just roll 2d4 not accuracy</li><li>{@Summon pictureName:Hp:border:AC} Picture name decides which picture and id it will have, ask me for an exact one a universal one is 'genericA-'. Hp is the max and current hp the token will have. Border is the color border it will have.</li><li>$Strength$ will use your strength stat. Use surround the stat name with $ to use it from your character sheet.</li>";
+    cardText.innerHTML = "<li>{@save} : makes it able to use the save/check rolls. Can use {@save 2d6} to have it roll damage as well, for the skill you need to write strength (etc.) or use {@skill Perception} to show.</li> <li>{@damage 3d4} will roll accuracy then damage of 3d4. Or if it has the word regains in the description, then it will heal instead.</li><li>{@scaledamage 1d8+4|1-9|1d8} will allow you to cast spells at higher levels. The base level is the first one at first level it does 1d8 + 4, the second column says it can be cast as a lvl 1 spell all the way up to 9th level. The third one give how much it goes up by each level.</li><li>{+3toHit} will add 3 to the accuracy roll.</li><li>{@Choice} will make a bullet point.</li><li>{@sDice 2d4} Will just roll 2d4 not accuracy</li><li>{@Summon pictureName:Hp:border:AC:Modifiers} Picture name decides which picture and id it will have, ask me for an exact one a universal one is 'genericA-'. Hp is the max and current hp the token will have. Border is the color border it will have.</li><li>$Strength$ will use your strength stat. Use surround the stat name with $ to use it from your character sheet.</li>";
     cardBody.appendChild(cardText);
     cardBody.appendChild(document.createElement("br"));
 
