@@ -1655,16 +1655,6 @@ function handleUseAction(targets, manual = null)
                 token.AC = `${info[3]}`;
                 if(info[4] != "none"){token.title += `${info[4]}, `;}
                 let currentToken = window.wholeDB[window.wholeChar[window.player]["currentToken"]];
-
-                if(!currentToken["title"].includes(window.player))
-                {
-                    let t = document.getElementById("title");
-                    currentToken.title = ` ${window.player}, ${currentToken["title"]}`; 
-                    t.innerHTML = "Status: " + currentToken.title; 
-
-                    setDoc(`currentMap/${window.player}/title`, currentToken.title);
-                    setDoc(`playerChar/${window.player}/token/title`, currentToken.title);
-                }
                 
                 token.name = info[0] + "-";
                 let id = info[0];
