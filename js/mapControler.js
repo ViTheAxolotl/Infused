@@ -1802,7 +1802,7 @@ function handleUseAction(targets, manual = null)
                 }
             }
 
-            if(description.includes("infused"))
+            if(description.includes("infused") && targets[key].title.includes("Infused"))
             {
                 damage = splitRoll(description, "@infused");
             }
