@@ -101,7 +101,8 @@
         "buzzer-" : "images/map/tokens/buzzer-.png",
         "key-" : "images/map/tokens/key-.png",
         "yellowDragon-" : "images/map/tokens/yellowDragon-.png",
-        "reaper-" : "images/map/tokens/reaper-.png"
+        "reaper-" : "images/map/tokens/reaper-.png",
+        "theTable-" : "images/map/tokens/theTable-.png"
     },
  
     "borders" : 
