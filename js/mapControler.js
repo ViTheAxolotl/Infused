@@ -1645,7 +1645,7 @@ function handleUseAction(targets, manual = null)
         {
             let info = discription.slice(discription.indexOf("{@Summon"));
             info = info.slice(info.indexOf(" ") + 1, info.indexOf("}"));
-            info = prompt("Are you sure you want this token this way, you can edit it here. The instructions are as follows: {@Summon pictureName:Hp:border:AC:Modifiers:Quantity} Picture name decides which picture and id it will have, ask me for an exact one a universal one is 'genericA'. Hp is the max and current hp the token will have. Border is the color border it will have. Ex. {@Summon genericA:10:blue:15:none:4} Summons 4 generic tokens, with 10 hp, and 15 AC, with no token modifiers.", info);
+            info = prompt("Are you sure you want this token this way, you can edit it here. The instructions are as follows: pictureName:Hp:border:AC:Modifiers:Quantity. Picture name decides which picture and id it will have, ask me for an exact one a universal one is 'genericA'. Hp is the max and current hp the token will have. Border is the color border it will have. Ex. genericA:10:blue:15:none:4 Summons 4 generic tokens, with 10 hp, and 15 AC, with no token modifiers.", info);
             info = info.split(":");
 
             for(let z = 1; z <= parseInt(info[5]); z++)
