@@ -42,4 +42,4 @@ function handleReset()
     reload(.1)
 }
 
-window.top.parent.onload = init; //After the webpage is done loading
+init();
