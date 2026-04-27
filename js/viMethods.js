@@ -231,43 +231,43 @@ export function returnHpImage(maxHp, tempHp, currentHp)
     {
         if(tempHp != "0")
         {
-            return "images/map/hpBar/tempHp.png";
+            return window.top.parent.imgs["hpBar"]["tempHP"];
         }
     }
 
     if(maxHp == "0" && currentHp == "0")
     {
-        return "images/map/hpBar/invisible.png";
+        return window.top.parent.imgs["hpBar"]["invisible"];
     }
 
     else if(fraction == 1)
     {
-        return "images/map/hpBar/hpBar1.png";
+        return window.top.parent.imgs["hpBar"]["hpBar1"];
     }
 
     else if(fraction >= .8)
     {
-        return "images/map/hpBar/hpBar2.png";
+        return window.top.parent.imgs["hpBar"]["hpBar2"];
     }
 
     else if(fraction >= .6)
     {
-        return "images/map/hpBar/hpBar3.png";
+        return window.top.parent.imgs["hpBar"]["hpBar3"];
     }
 
     else if(fraction >= .4)
     {
-        return "images/map/hpBar/hpBar4.png";
+        return window.top.parent.imgs["hpBar"]["hpBar4"];
     }
 
     else if(fraction > 0)
     {
-        return "images/map/hpBar/hpBar5.png";
+        return window.top.parent.imgs["hpBar"]["hpBar5"];
     }
 
     else if(fraction == 0)
     {
-        return "images/map/hpBar/hpBar6.png";
+        return window.top.parent.imgs["hpBar"]["hpBar6"];
     }  
 }
 

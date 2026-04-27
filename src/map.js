@@ -404,14 +404,14 @@ function addCharacter(character, update)
 
     let image = tokenImg;
     let img = new Image();
-    if(!image.includes("custom-")){img.src = `images/map/tokens/${image}.png`;}
-    else{img.src = window.wholeCustom[image]["src"];}
-    img.onerror = () => {char[0].src = `images/map/tokens/unknown-.png`;};
+    if(!image.includes("custom-")){img.src = window.imgs["tokens"][image];}
+    else{img.src = window.wholeCustom[image]["src"];} 
+    img.onerror = () => {char[0].src = `images/unknown-.png`;};
     
-    if(!tokenImg.includes("custom-")){char[0].src = imgs["tokens"][tokenImg];} else{char[0].src = window.wholeCustom[tokenImg]["src"]; char[0].classList.add("customImg");}
+    if(!tokenImg.includes("custom-")){char[0].src = window.imgs["tokens"][tokenImg];} else{char[0].src = window.wholeCustom[tokenImg]["src"]; char[0].classList.add("customImg");}
     char[0].id = character["id"];
     
-    char[1].src = `images/map/tokens/${character["border"]}Border.png`;
+    char[1].src = window.imgs["borders"][character["border"]];
     char[1].id = character["border"];
     char[1].classList = `tokens ${character["id"]} border_`;
     char[2].src = getHpImg(character);
