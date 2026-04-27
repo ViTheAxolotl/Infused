@@ -231,7 +231,7 @@ export function returnHpImage(maxHp, tempHp, currentHp)
     {
         if(tempHp != "0")
         {
-            return window.top.parent.imgs["hpBar"]["tempHP"];
+            return window.top.parent.imgs["hpBar"]["tempHp"];
         }
     }
 
