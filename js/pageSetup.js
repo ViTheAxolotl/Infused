@@ -92,8 +92,7 @@ function navBarSetup()
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="${mainLocation}selection.html">Change Token</a></li>
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="${mainLocation}map.html">Dashboard</a></li>
                     </ul>
-                </li>
-                <li class="nav-item"><a class="nav-link active" aria-current="page" href="${mainLocation}itemIndex.html">Magic Item Index</a></li>);    
+                </li>    
                 <li class="nav-item"><a class="nav-link active" aria-current="page" href="https://sheets.axol-apps.com/index.html">Standalone Character Sheets</a></li>);    
                 ${log}
     </div>`;
