@@ -22,9 +22,9 @@ function handleSearch()
     let display = document.getElementById("description");
     let image = document.getElementById("itemImg");
 
-    display.innerHTML = window.imgs["items"][txtBox.value]["desc"]; //Changes display to show the item's descriptions
+    display.innerHTML = window.top.parent.imgs["items"][txtBox.value]["desc"]; //Changes display to show the item's descriptions
     image.classList = ""; //Makes the image visible
-    image.src = window.imgs["items"][txtBox.value]["img"]; //Adds the image of the item
+    image.src = window.top.parent.imgs["items"][txtBox.value]["img"]; //Adds the image of the item
     document.getElementById("display").scrollIntoView({behavior: 'smooth'}); //Moves the view to the item's description
 }
 
@@ -44,4 +44,4 @@ function handleReset()
     reload(.1)
 }
 
-window.onload = init; //After the webpage is done loading
+window.top.parent.onload = init; //After the webpage is done loading
