@@ -478,7 +478,7 @@
         "ability3" :
         {
             "name": "Rat’s Wildshape",
-            "desc": "By having your rat side take over the majority of your body, you can wildshape into a Rat (Using a Rat D&D 5e Stat Block) for an action. This can be done proficiency bonus / 2 (rounded down) times a day. You can stay a rat for up to 5 turns or until your HP drops to 0. Once unwildshaped, you must wait 10 minutes before using the ability again. For this benefit, you gain 15% infusion rate.",
+            "desc": "By having your rat side take over the majority of your body, you can wildshape into a Rat (Using <a class='nav-link active' aria-current='page' href='wildshape.html?rat' target='_blank' style='display: inline;'>Rat</a> 5e Stat Block)) for an action. This can be done proficiency bonus / 2 (rounded down) times a day. You can stay a rat for up to 5 turns or until your HP drops to 0. Once unwildshaped, you must wait 10 minutes before using the ability again. For this benefit, you gain 15% infusion rate.",
             "infusionRate": 15
         },
         "ability4" :
