@@ -35,10 +35,16 @@ onAuthStateChanged(auth, (user) =>
     }
 });
 
-fetch('https://infused.axol-apps.com/src/files.json').then(res => res.json()).then((json) => imgs = json);
 fetch('https://infused.axol-apps.com/src/actions.json').then(res => res.json()).then((json) => wholeActions = json);
 fetch('https://infused.axol-apps.com/src/spells.json').then(res => res.json()).then((json) => wholeSpells = json);
 fetch('https://infused.axol-apps.com/src/rolls.json').then(res => res.json()).then((json) => wholeRolls = json);
+
+const filesRef = ref(database, 'files/');
+onValue(filesRef, (snapshot) => 
+{
+    const data = snapshot.val();
+    imgs = data;
+});
 
 const customsRef = ref(database, 'customImages/');
 onValue(customsRef, (snapshot) => 
