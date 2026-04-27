@@ -6,36 +6,7 @@ function init()
     let url = window.location.href.split("?");
     url = url[1];
 
-    switch(url)
-    {
-        case "scorpion":
-            img.src = "images/scorpion.jpg";
-            break;
-        
-        case "pixiu":
-            img.src = "images/pixiu.jpg";
-            break;
-
-        case "ferret":
-            img.src = "images/ferret.jpg";
-            break;
-
-        case "basilisk":
-            img.src = "images/basilisk.png";
-            break;
-
-        case "vSquid":
-            img.src = "images/vSquid.jpg";
-            break;
-
-        case "hydra":
-            img.src = "images/hydra.jpg";
-            break;
-
-        case "snake":
-            img.src = "images/snake.jpg";
-            break;
-    }
+    img.src = `images/${url}.jpg`;
 }
 
 init();
