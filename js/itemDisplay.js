@@ -5,12 +5,10 @@ import { reload } from '../js/viMethods.js';
  * Runs after the webpage loads
  */
 function init()
-{
-    let buttons = document.getElementsByTagName("button"); //Gets all of the buttons
-    
-    buttons[buttons.length - 3].onclick = handleSearch;
-    buttons[buttons.length - 2].onclick = handleBringToTop;
-    buttons[buttons.length - 1].onclick = handleReset;
+{ 
+    document.getElementById("searchItem").onclick = handleSearch;
+    document.getElementById("backToTopItem").onclick = handleBringToTop;
+    document.getElementById("resetItem").onclick = handleReset;
 }
 
 /**
