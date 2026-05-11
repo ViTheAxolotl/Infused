@@ -7,7 +7,6 @@ import { reload } from '../js/viMethods.js';
 function init()
 { 
     document.getElementById("searchItem").onclick = handleSearch;
-    document.getElementById("backToTopItem").onclick = handleBringToTop;
     document.getElementById("resetItem").onclick = handleReset;
 }
 
@@ -24,14 +23,6 @@ function handleSearch()
     image.classList = ""; //Makes the image visible
     image.src = window.top.parent.imgs["items"][txtBox.value]["img"]; //Adds the image of the item
     document.getElementById("display").scrollIntoView({behavior: 'smooth'}); //Moves the view to the item's description
-}
-
-/**
- * Moves the view back to the top of the webpage
- */
-function handleBringToTop()
-{
-    document.getElementById("header").scrollIntoView({behavior: 'smooth'});
 }
 
 /**
