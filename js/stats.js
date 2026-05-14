@@ -54,6 +54,8 @@ function init()
             setStats(stat);
         }
 
+        if(stat.id.includes("slot")){updateCheckboxes(stat.id.split("level")[1].charAt(0));}
+
         stat.onchange = updateStat;
     }
 
