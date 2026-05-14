@@ -1641,6 +1641,13 @@ function handleUseAction(targets, manual = null)
             display += ad_dis;
         }
 
+        if(discription.includes("{@temp"))
+        {
+            let increase = discription.indexOf("@temp") + 6;
+            increase = discription.slice(increase, discription.indexOf("}"));
+            handleChangeHp(increase, window.wholeDB[targets[key].title.split(":")[0]], "+")
+        }
+
         if(discription.includes("{@Summon"))
         {
             let info = discription.slice(discription.indexOf("{@Summon"));
@@ -2814,7 +2821,7 @@ function updateStat()
 
 function handleChangeHp(damage, token, modifier)
 {
-    if(discription.includes("temporary hit point"))
+    if(discription.toLowerCase().includes("temporary hit point"))
     {
         let total = parseInt(token.tempHp);
         total += parseInt(damage);
