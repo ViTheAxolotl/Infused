@@ -72,6 +72,26 @@ function init()
     document.getElementById("initLabel").oncontextmenu = function(e) {e.preventDefault(); handleRightClickRoll(e, "init");};
 }
 
+function updateCheckboxes(level)
+{
+    let input = document.getElementById(`level${level}-slot`);
+    let display = document.getElementById(`level${level}-slot-display`);
+
+    if(!input || !display){return;}
+
+    let count = parseInt(input.value) || 0;
+    display.innerHTML = "";
+
+    for(let i = 0; i < count; i++)
+    {
+        let box = document.createElement('input');
+        box.type = 'checkbox';
+        box.id= `level${level}-cb-${i}`;
+
+        display.appendChild(box);
+    }
+}
+
 function setStats(stat)
 {
     if(stat.id.includes("-btn") && !stat.id.includes("lvl"))
@@ -204,6 +224,11 @@ function updateStat()
         {
             document.getElementById(this.id + "-See").classList.add("invisible");
         }
+    }
+
+    if(this.id.includes("slot"))
+    {
+        updateCheckboxes(this.id.split("level")[1].charAt(0));
     }
 }
 
