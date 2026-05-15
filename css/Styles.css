@@ -693,8 +693,8 @@ table, .itemSearch, #itemImg
 .spell-slot-label 
 {
     display: inline-block; 
-    width: 75px; 
-    height: 75px;          
+    width: 50px; 
+    height: 50px;          
     background-image: url('../images/spellSlot.png'); 
     background-size: contain;
     background-repeat: no-repeat;
