@@ -692,7 +692,7 @@ table, .itemSearch, #itemImg
 /* The default 'Unchecked' state */
 .spell-slot-label 
 {
-    background-image: url('images/spellSlot.png');
+    background-image: url('../images/spellSlot.png');
     background-size: contain;
     background-repeat: no-repeat;
     cursor: pointer;
@@ -709,7 +709,7 @@ table, .itemSearch, #itemImg
 /* The '+' selector looks for the label immediately following a checked input */
 .spell-check-hidden:checked + .spell-slot-label 
 {
-    background-image: url('images/usedSpellSlot.png');
+    background-image: url('../images/usedSpellSlot.png');
 }
 
 @media (max-width: 1399px) {
