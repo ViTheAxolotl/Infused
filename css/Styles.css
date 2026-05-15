@@ -692,11 +692,15 @@ table, .itemSearch, #itemImg
 /* The default 'Unchecked' state */
 .spell-slot-label 
 {
-    background-image: url('../images/spellSlot.png');
+    display: inline-block; 
+    width: 75px; 
+    height: 75px;          
+    background-image: url('../images/spellSlot.png'); 
     background-size: contain;
     background-repeat: no-repeat;
+    background-position: center;
     cursor: pointer;
-    transition: transform 0.1s ease;
+    margin: 2px;
 }
 
 /* Hover effect so players know it's clickable */
