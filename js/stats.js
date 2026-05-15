@@ -98,8 +98,8 @@ function updateCheckboxes(level)
         label.setAttribute("for", id);
         label.className = 'spell-slot-label';
         
-        display.appendChild(label);
         display.appendChild(box);
+        display.appendChild(label);
     }
 }
 
