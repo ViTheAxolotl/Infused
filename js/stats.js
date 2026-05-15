@@ -86,10 +86,19 @@ function updateCheckboxes(level)
 
     for(let i = 0; i < count; i++)
     {
+        let id = `level${level}-cb-${i}`;
+        
         let box = document.createElement('input');
         box.type = 'checkbox';
-        box.id= `level${level}-cb-${i}`;
+        box.id = id;
+        box.style.display = "none";
+        box.className = "spell-check-hidden";
 
+        let label = document.createElement('label');
+        label.setAttribute("for", id);
+        label.className = 'spell-slot-label';
+        
+        display.appendChild(label);
         display.appendChild(box);
     }
 }
