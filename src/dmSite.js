@@ -767,7 +767,7 @@ function handleChangeMap()
         let mapImg = window.top.parent.imgs["mapName"][keys];
         let option = document.createElement("option");
         option.value = keys;
-        option.text = mapImg.slice(mapImg.indexOf("ap/") + 3).replace(".jpg", "");
+        option.text = keys;
         select.appendChild(option);
     }
 
