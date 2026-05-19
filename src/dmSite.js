@@ -1391,6 +1391,12 @@ function uploadImage()
     let desc = "";
     let toUpload;
 
+    if (!files || files.length === 0) 
+    {
+        alert("Please select a file first!");
+        return;
+    }
+
     switch (type)
     {
         case "token":
@@ -1423,7 +1429,7 @@ function uploadImage()
         };
 
     try {
-        const compressedFile = await imageCompression(files, options);
+        const compressedFile = await imageCompression(files[0], options);
         
         // --- STEP 2: UPLOAD TO STORAGE ---
         // Saving it as the player's name ensures they only ever have ONE file (saves space)
@@ -1442,8 +1448,8 @@ function uploadImage()
     
     catch (error) 
     {
-        alert("Upload failed:", error);
-        break;
+        console.error("Compression or upload crashed:", error);
+        return;
     }
 
     setDoc(dbPath, toUpload);
