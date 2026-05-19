@@ -2567,7 +2567,7 @@ function handleCustomsButton()
     newDiv.classList.add("center");
     
     let fileLabel = document.createElement("h6");
-    fileLabel.innerHTML = "Choose Token Image: ";
+    fileLabel.innerHTML = "Upload Image: ";
     fileLabel.classList = "color-UP-yellow";
     fileLabel.style.margin = "5px";
     fileLabel.style.display = "inline";
@@ -2577,7 +2577,7 @@ function handleCustomsButton()
     tokenFileInput.id = "CustomFileInput";
     tokenFileInput.accept = "image/*";
     tokenFileInput.style.margin = "5px";
-    tokenFileInput.style.width = "40%;"
+    tokenFileInput.style.setProperty("width", "40%", "important");
 
     let br = document.createElement("span");
     br.style.display = "block";
@@ -2601,6 +2601,7 @@ function handleCustomsButton()
     newDiv.appendChild(tokenNameInput);
 
     changeTokenBtn.onclick = handleCreateCustom;
+    changeTokenBtn.innerHTML = "Upload Image";
 
     let cancelBtn = document.createElement("button");
     cancelBtn.innerHTML = "Cancel";
@@ -2650,8 +2651,8 @@ async function handleCreateCustom()
 
     let nickname = clenseInput(nicknameInput);
     nickname = nickname + "-";
-    dbPath = `files/tokens/${name}`;
-    storagePath = `images/map/tokens/${name}`;
+    dbPath = `files/tokens/${nickname}`;
+    storagePath = `images/map/tokens/${nickname}`;
 
     // Setup Compression configuration boundaries
     const compressionOptions = 
