@@ -1430,7 +1430,7 @@ function uploadImage()
         };
 
     try {
-        const compressedFile = await imageCompression(files[0], options);
+        const compressedFile = imageCompression(files[0], options);
         
         // --- STEP 2: UPLOAD TO STORAGE ---
         // Saving it as the player's name ensures they only ever have ONE file (saves space)
