@@ -1352,7 +1352,7 @@ function handleUploadImage()
     uploadBtn.classList = "gridButton"; // Inherits your styling parameters safely 
 
     // Empty template for your upcoming Firebase Storage integration execution block
-    uploadBtn.onclick = uploadImage();
+    uploadBtn.onclick = uploadImage;
 
     // --- STEP 7: APARTMENT STRUCTURE WRAPPER & INJECTION ---
     let formWrapper = document.createElement("div");
