@@ -1,6 +1,6 @@
 import { ref, onValue } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js';
 import { toTitleCase, auth, database, setDoc, deleteDoc, returnHpImage, placeBefore, createLabel, wait, storage } from '../js/viMethods.js';
-import { getStorage, uploadBytes, getDownloadURL, ref as sRef } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-storage.js";
+import { uploadBytes, getDownloadURL, ref as sRef } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-storage.js";
 import imageCompression from 'https://cdn.jsdelivr.net/npm/browser-image-compression@2.0.2/dist/browser-image-compression.mjs';
 
 let fiveButtons = [];
@@ -1383,7 +1383,7 @@ function handleUploadImage()
     addDone();
 }
 
-function uploadImage()
+async function uploadImage()
 {
     let type = document.getElementById("dm-asset-type-select").value;
     let name = document.getElementById("dm-asset-name-input").value;
@@ -1430,21 +1430,24 @@ function uploadImage()
         };
 
     try {
-        const compressedFile = imageCompression(files[0], options);
+        const compressedFile = await imageCompression(files[0], options);
         
         // --- STEP 2: UPLOAD TO STORAGE ---
         // Saving it as the player's name ensures they only ever have ONE file (saves space)
         const storageRef = sRef(storage, storagePath);
         
-        const snapshot = uploadBytes(storageRef, compressedFile);
+        const snapshot = await uploadBytes(storageRef, compressedFile);
         
         // --- STEP 3: GET THE PERMANENT URL ---
-        toUpload = getDownloadURL(snapshot.ref);
+        toUpload = await getDownloadURL(snapshot.ref);
 
         if(type == "item")
         {
             toUpload = {"desc": desc, "img": toUpload};
         }
+
+        setDoc(dbPath, toUpload);
+        alert("Upload Complete");
     } 
     
     catch (error) 
@@ -1452,10 +1455,6 @@ function uploadImage()
         console.error("Compression or upload crashed:", error);
         return;
     }
-
-    setDoc(dbPath, toUpload);
-
-    alert("Upload Complete");
 }
 
 function handleOpenPage()
