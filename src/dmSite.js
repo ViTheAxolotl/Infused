@@ -1440,7 +1440,7 @@ function uploadImage()
         // --- STEP 3: GET THE PERMANENT URL ---
         toUpload = await getDownloadURL(snapshot.ref);
 
-        if(type == item)
+        if(type == "item")
         {
             toUpload = {"desc": desc, "img": toUpload};
         }
