@@ -1,5 +1,6 @@
 import { ref, onValue } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js';
-import { toTitleCase, auth, database, setDoc, deleteDoc, returnHpImage, placeBefore, createLabel, wait } from '../js/viMethods.js';
+import { toTitleCase, auth, database, setDoc, deleteDoc, returnHpImage, placeBefore, createLabel, wait, storage } from '../js/viMethods.js';
+import { getStorage, uploadBytes, getDownloadURL, ref as sRef } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-storage.js";
 
 let fiveButtons = [];
 let db;
@@ -1386,21 +1387,66 @@ function uploadImage()
     let type = document.getElementById("dm-asset-type-select").value;
     let name = document.getElementById("dm-asset-name-input").value;
     let files = document.getElementById("dm-asset-file-input").files;
+    let dbPath, storagePath;
+    let desc = "";
+    let toUpload;
 
     switch (type)
     {
         case "token":
+            dbPath = `files/tokens/${name}-`;
+            storagePath = `images/map/tokens/${name}-`;
             break;
 
         case "push":
+            dbPath = `files/push/${name}`;
+            storagePath = `images/push/${name}`;
             break;
 
         case "item":
+            dbPath = `files/items/${name}`;
+            storagePath = `images/items/${name}`;
+            desc = prompt("Please write the description of said item:", "Placeholder.");
             break;
 
         case "map":
+            dbPath = `files/mapName/${name}`;
+            storagePath = `images/map/${name}`;
             break;
     }
+
+    const options = 
+        {
+            maxSizeMB: 0.4,          // Max size 200KB (Perfect for tokens/sheets)
+            maxWidthOrHeight: 1024, // Keeps it crisp but not massive
+            useWebWorker: true
+        };
+
+    try {
+        const compressedFile = await imageCompression(files, options);
+        
+        // --- STEP 2: UPLOAD TO STORAGE ---
+        // Saving it as the player's name ensures they only ever have ONE file (saves space)
+        const storageRef = sRef(storage, storagePath);
+        
+        const snapshot = await uploadBytes(storageRef, compressedFile);
+        
+        // --- STEP 3: GET THE PERMANENT URL ---
+        toUpload = await getDownloadURL(snapshot.ref);
+
+        if(type == item)
+        {
+            toUpload = {"desc": desc, "img": toUpload};
+        }
+    } 
+    
+    catch (error) 
+    {
+        alert("Upload failed:", error);
+        break;
+    }
+
+    setDoc(dbPath, toUpload);
 
     alert("Upload Complete");
 }
