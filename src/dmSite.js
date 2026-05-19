@@ -82,6 +82,11 @@ function init()
                 button.onclick = handleRefresh;
                 break;
 
+            case "image":
+                fiveButtons.push(button);
+                button.onclick = handleUploadImage;
+                break;
+
             case "openPage":
                 fiveButtons.push(button);
                 button.onclick = handleOpenPage;
@@ -1280,6 +1285,125 @@ function backupFavorites()
     dlAnchorElem.setAttribute("href",     dataStr     );
     dlAnchorElem.setAttribute("download", "actions.json");
     dlAnchorElem.click();
+}
+
+function handleUploadImage()
+{
+    // 1. Wipe out the main control grid layout buttons 
+    hideButtons();
+
+    // --- STEP 3: CHOOSE ASSET TYPE DROPDOWN (<select>) ---
+    let selectLabel = document.createElement("label");
+    selectLabel.innerHTML = "Select Image Type: ";
+    selectLabel.style.fontWeight = "bold";
+    selectLabel.style.margin = "10px";
+
+    let assetSelect = document.createElement("select");
+    assetSelect.id = "dm-asset-type-select";
+    assetSelect.style.margin = "10px";
+    assetSelect.style.padding = "5px";
+
+    // Set options exactly as requested
+    let choices = [
+        { value: "token", display: "Token Image" },
+        { value: "push", display: "Push Image" },
+        { value: "item", display: "Item Image" },
+        { value: "map", display: "Map Image" }
+    ];
+
+    choices.forEach(choice => {
+        let option = document.createElement("option");
+        option.value = choice.value;
+        option.text = choice.display;
+        assetSelect.appendChild(option);
+    });
+
+    // --- STEP 4: TRACKING NAME INPUT (<input type="text">) ---
+    let nameLabel = document.createElement("label");
+    nameLabel.innerHTML = "File Name / Label: ";
+    nameLabel.style.fontWeight = "bold";
+    nameLabel.style.margin = "10px";
+
+    let assetNameInput = document.createElement("input");
+    assetNameInput.type = "text";
+    assetNameInput.id = "dm-asset-name-input";
+    assetNameInput.placeholder = "Ancient Red Dragon";
+    assetNameInput.style.margin = "10px";
+    assetNameInput.style.padding = "5px";
+
+    // --- STEP 5: FILE SELECTOR (<input type="file">) ---
+    let fileLabel = document.createElement("label");
+    fileLabel.innerHTML = "Choose File: ";
+    fileLabel.style.fontWeight = "bold";
+    fileLabel.style.margin = "10px";
+
+    let assetFileInput = document.createElement("input");
+    assetFileInput.type = "file";
+    assetFileInput.id = "dm-asset-file-input";
+    assetFileInput.accept = "image/*"; // Handshakes with system to filter to graphics
+    assetFileInput.style.margin = "10px";
+
+    // --- STEP 6: UPLOAD EXECUTION TRIGGER (<button>) ---
+    let uploadBtn = document.createElement("button");
+    uploadBtn.id = "dm-upload-btn";
+    uploadBtn.innerHTML = "Upload";
+    uploadBtn.style.margin = "10px";
+    uploadBtn.style.padding = "6px 12px";
+    uploadBtn.classList = "gridButton"; // Inherits your styling parameters safely 
+
+    // Empty template for your upcoming Firebase Storage integration execution block
+    uploadBtn.onclick = uploadImage();
+
+    // --- STEP 7: APARTMENT STRUCTURE WRAPPER & INJECTION ---
+    let formWrapper = document.createElement("div");
+    formWrapper.id = "dm-upload-form-wrapper";
+    formWrapper.style.padding = "20px";
+    formWrapper.style.textAlign = "center";
+
+    // Grouping structure elements cleanly with linebreaks to stack symmetrically
+    formWrapper.appendChild(selectLabel);
+    formWrapper.appendChild(assetSelect);
+    formWrapper.appendChild(document.createElement("br"));
+
+    formWrapper.appendChild(nameLabel);
+    formWrapper.appendChild(assetNameInput);
+    formWrapper.appendChild(document.createElement("br"));
+
+    formWrapper.appendChild(fileLabel);
+    formWrapper.appendChild(assetFileInput);
+    formWrapper.appendChild(document.createElement("br"));
+
+    formWrapper.appendChild(uploadBtn);
+
+    // Append the whole setup box to your global 'story' div workspace element 
+    div.appendChild(formWrapper);
+
+    // 8. Call your existing utility function to cleanly place the "Done" button underneath 
+    addDone();
+}
+
+function uploadImage()
+{
+    let type = document.getElementById("dm-asset-type-select").value;
+    let name = document.getElementById("dm-asset-name-input").value;
+    let files = document.getElementById("dm-asset-file-input").files;
+
+    switch (type)
+    {
+        case "token":
+            break;
+
+        case "push":
+            break;
+
+        case "item":
+            break;
+
+        case "map":
+            break;
+    }
+
+    alert("Upload Complete");
 }
 
 function handleOpenPage()
