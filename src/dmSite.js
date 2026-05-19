@@ -1436,10 +1436,10 @@ function uploadImage()
         // Saving it as the player's name ensures they only ever have ONE file (saves space)
         const storageRef = sRef(storage, storagePath);
         
-        const snapshot = await uploadBytes(storageRef, compressedFile);
+        const snapshot = uploadBytes(storageRef, compressedFile);
         
         // --- STEP 3: GET THE PERMANENT URL ---
-        toUpload = await getDownloadURL(snapshot.ref);
+        toUpload = getDownloadURL(snapshot.ref);
 
         if(type == "item")
         {
