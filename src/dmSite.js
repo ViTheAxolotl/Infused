@@ -1358,7 +1358,7 @@ function handleUploadImage()
     let formWrapper = document.createElement("div");
     formWrapper.id = "dm-upload-form-wrapper";
     formWrapper.style.padding = "20px";
-    formWrapper.style.textAlign = "center";
+    formWrapper.style.textAlign = "left";
 
     // Grouping structure elements cleanly with linebreaks to stack symmetrically
     formWrapper.appendChild(selectLabel);
@@ -1373,10 +1373,9 @@ function handleUploadImage()
     formWrapper.appendChild(assetFileInput);
     formWrapper.appendChild(document.createElement("br"));
 
-    formWrapper.appendChild(uploadBtn);
-
     // Append the whole setup box to your global 'story' div workspace element 
     div.appendChild(formWrapper);
+    div.appendChild(uploadBtn);
 
     // 8. Call your existing utility function to cleanly place the "Done" button underneath 
     addDone();
@@ -1440,6 +1439,9 @@ function addDone()
     let doneButton = document.createElement("button");
     doneButton.id = "done";
     doneButton.innerHTML = "Done";
+    doneButton.style.margin = "10px";
+    doneButton.style.padding = "6px 12px";
+    doneButton.classList.add("gridButton");
     doneButton.onclick = handleDone;
     div.appendChild(doneButton);
 }
