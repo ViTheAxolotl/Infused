@@ -1376,12 +1376,16 @@ function handleTargetButton()
             select.style.marginLeft = "20vw";
 
             let label = document.createElement("label");
-            label.htmlFor = token;
-            label.innerHTML = `${token}: Position: ${window.wholeDB[token].xPos}, ${window.wholeDB[token].yPos}`;
+            /**label.htmlFor = token;
+            label.innerHTML = `${token}: Position: ${window.wholeDB[token].xPos}, ${window.wholeDB[token].yPos}`;*/
+            label.appendChild(select);
+
+            let labelText = document.createTextNode(`${token}: Position: ${window.wholeDB[token].xPos}, ${window.wholeDB[token].yPos}`);
+            label.appendChild(labelText);
 
             let br = document.createElement("br");
 
-            div.appendChild(select);
+            //div.appendChild(select);
             div.appendChild(label);
             div.appendChild(br);
         }
