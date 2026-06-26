@@ -1516,9 +1516,9 @@ function handleUseAction(targets, manual = null)
             if(curClass){display = display.replaceAll("cast", "use the ability");}
         }
 
-        if(description.includes("{@enter"))
+        if(description.includes("<p></p>") || description.includes("{@enter}"))
         {
-            description.replaceAll("{@enter}", "\\n");
+            description.replaceAll("<p></p>", "\\n");
         }
 
         if(description.includes("{@save")) 
