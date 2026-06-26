@@ -1026,6 +1026,12 @@ function setUpText(current, lst)
                 lineNum++;
             }
 
+            else if(temp[t].includes("{@enter}"))
+            {
+                txt.push(temp[t].replace("{@enter}", "</p><p>")); //New Line?
+                lineNum++;
+            }
+
             else //If the line isn't apart of the list
             {
                 if(lineNum > 0 && txt[`${lineNum}`].includes("<li>")) //If the last line was apart of the list
@@ -1508,6 +1514,11 @@ function handleUseAction(targets, manual = null)
             display = display.slice(0, display.length - 2);
             display += `\n${useInfo}`;
             if(curClass){display = display.replaceAll("cast", "use the ability");}
+        }
+
+        if(description.includes("{@enter"))
+        {
+            description.replaceAll("{@enter}", "\\n");
         }
 
         if(description.includes("{@save")) 
