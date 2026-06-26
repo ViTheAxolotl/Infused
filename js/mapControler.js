@@ -1376,7 +1376,7 @@ function handleTargetButton()
             select.style.marginLeft = "20vw";
 
             let label = document.createElement("label");
-            label.for = token;
+            label.htmlFor = token;
             label.innerHTML = `${token}: Position: ${window.wholeDB[token].xPos}, ${window.wholeDB[token].yPos}`;
 
             let br = document.createElement("br");
@@ -2011,10 +2011,10 @@ function handleUseAction(targets, manual = null)
             else{display = `${window.wholeChar[window.player]["charName"]} used the ability, ${lastUse}:\n${useInfo}\n\nResult: ${damage}. \n`;}
         }
 
-        if(useInfo.includes("<p></p>"))
+        if(useInfo.includes("</p><p>"))
         {
-            useInfo.replaceAll("<p></p>", "\\n");
-            display.replaceAll("<p></p>", "\\n");
+            useInfo.replaceAll("</p><p>", "\\n");
+            display.replaceAll("</p><p>", "\\n");
         }
 
         setDoc("currentMap/", window.wholeDB);
