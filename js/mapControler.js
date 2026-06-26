@@ -1152,6 +1152,7 @@ function handleCardClick()
             else{castBtn.innerHTML = "Select Targets";}
             castBtn.name = currentTitle;
             castBtn.style.margin = "0px 5px";
+            castBtn.style.backgroundColor = "green";
             castBtn.id = "castBtn";
 
             let individual = ["Advantage/Disadvantage", "Advantage", "Disadvantage"];
@@ -1514,11 +1515,6 @@ function handleUseAction(targets, manual = null)
             display = display.slice(0, display.length - 2);
             display += `\n${useInfo}`;
             if(curClass){display = display.replaceAll("cast", "use the ability");}
-        }
-
-        if(description.includes("<p></p>") || description.includes("{@enter}"))
-        {
-            description.replaceAll("<p></p>", "\\n");
         }
 
         if(description.includes("{@save")) 
@@ -2015,7 +2011,11 @@ function handleUseAction(targets, manual = null)
             else{display = `${window.wholeChar[window.player]["charName"]} used the ability, ${lastUse}:\n${useInfo}\n\nResult: ${damage}. \n`;}
         }
 
-
+        if(useInfo.includes("<p></p>"))
+        {
+            useInfo.replaceAll("<p></p>", "\\n");
+            display.replaceAll("<p></p>", "\\n");
+        }
 
         setDoc("currentMap/", window.wholeDB);
     }
