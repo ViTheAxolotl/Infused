@@ -53,6 +53,8 @@ export function setWholeCharCont(data)
 {
     let infusedRate = document.getElementById("infusionRate");
     infusedRate.innerHTML = `${infusedRate.title} ${data[window.player]["stats"]["InfusedRate"]}%`;
+    let ac = document.getElementById("ac");
+    ac.innerHTML = `${ac.title} ${data[window.player][stats]["AC"]}`;
 
     if(firstRun) //The first time it loads
     {
