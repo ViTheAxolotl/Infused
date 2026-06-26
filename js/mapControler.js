@@ -2017,8 +2017,8 @@ function handleUseAction(targets, manual = null)
 
         if(useInfo.includes("</p><p>"))
         {
-            useInfo = useInfo.replaceAll("</p><p>", "\\n");
-            display = display.replaceAll("</p><p>", "\\n");
+            useInfo = useInfo.replaceAll("</p><p>", "\n");
+            display = display.replaceAll("</p><p>", "\n");
         }
 
         setDoc("currentMap/", window.wholeDB);
