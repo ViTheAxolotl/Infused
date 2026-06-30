@@ -148,7 +148,7 @@ function setStats(stat)
             if(parent.wholeChar[parent.player]["stats"][`${exper}-expertise`]){modifier += parseInt(parent.wholeChar[parent.player]["stats"]["proficiency"]);}
         }
         
-        else if(!stat.checked && parent.wholeChar[parent.player]["stats"]["class"] == "Bard")
+        else if(!stat.checked && parent.wholeChar[parent.player]["stats"]["class"].includes("Bard"))
         {
             modifier = parseInt(modifier) + Math.floor(parseInt(parent.wholeChar[parent.player]["stats"]["proficiency"]) / 2);
         }
