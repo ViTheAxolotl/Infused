@@ -174,7 +174,7 @@ function addNewHD()
  */
 function removeRecentHD() 
 {
-    const baseCap = extractPlayerLevel();
+    const baseCap = parent.wholeChar[parent.player]["stats"]["lv"];
     const baselineCollection = [{ totalCount: baseCap, dieSize: 'd8', currentCount: baseCap }];
     createHD(baselineCollection);
     commitHDStateToDatabase();
