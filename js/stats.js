@@ -139,7 +139,6 @@ function createHD(hdStateArray)
         });
 
         totalRow.innerHTML = `
-            <span style="font-size: 13px; color: #555; width: 40px; display: inline-block;">Total:</span>
             <select class="hd-total-select" style="width: 45px; text-align: center;">${totalOptions}</select>
             <select class="hd-die-select" style="width: 55px; margin-left: 2px;">${dieOptions}</select>
         `;
@@ -158,8 +157,7 @@ function createHD(hdStateArray)
         }
 
         currentRow.innerHTML = `
-            <select class="hd-current-select" style="width: 70px; text-align: center;">${currentOptions}</select>
-            <span style="font-size: 11px; color: #777; margin-left: 4px;">remaining</span>
+            <select class="hd-current-select" style="width: 70px; text-align: center; display: inline;">${currentOptions}</select>
         `;
         currentBox.appendChild(currentRow);
 
