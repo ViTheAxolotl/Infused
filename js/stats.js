@@ -156,7 +156,7 @@ function createHD(hdStateArray)
         rowWrapper.querySelector('.hd-die-dropdown').onchange = commitHDStateToDatabase;
         currentSelectNode.onchange = commitHDStateToDatabase;
 
-        outputBox.appendChild(rowWrapper);
+        display.appendChild(rowWrapper);
     });
 }
 
