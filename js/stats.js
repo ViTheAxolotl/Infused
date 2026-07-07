@@ -148,6 +148,7 @@ function createHD(hdStateArray)
         const currentRow = document.createElement('div');
         currentRow.className = 'hd-current-row-item';
         currentRow.style.margin = '4px 0';
+        currentRow.style.display = "inline";
         currentRow.dataset.index = index;
 
         let currentOptions = '';
@@ -157,7 +158,7 @@ function createHD(hdStateArray)
         }
 
         currentRow.innerHTML = `
-            <select class="hd-current-select" style="width: 70px; text-align: center; display: inline;">${currentOptions}</select>
+            <select class="hd-current-select" style="width: 70px; text-align: center;">${currentOptions}</select>
         `;
         currentBox.appendChild(currentRow);
 
