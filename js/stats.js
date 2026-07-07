@@ -87,7 +87,7 @@ function createHD(hdStateArray)
     totalBox.innerHTML = "";
 
     let maxGlobalLevel = parent.wholeChar[parent.player]["stats"]["lv"];
-    let standardDice = ['d6', 'd8', 'd10', 'd12'];
+    let standardDice = ['d4', 'd6', 'd8', 'd10', 'd12', 'd20'];
 
     if(!hdStateArray || hdStateArray.length === 0) //If no multiclass
     {
@@ -214,7 +214,7 @@ function addNewHD()
 function removeRecentHD() 
 {
     const baseCap = parent.wholeChar[parent.player]["stats"]["lv"];
-    const baselineCollection = [{ totalCount: baseCap, dieSize: 'd8', currentCount: baseCap }];
+    const baselineCollection = [{ totalCount: baseCap, dieSize: 'd6', currentCount: baseCap }];
     createHD(baselineCollection);
     commitHDStateToDatabase();
 }
