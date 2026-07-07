@@ -87,7 +87,7 @@ function createHD(hdStateArray)
 
     if(!hdStateArray || hdStateArray.length === 0) //If no multiclass
     {
-        hdStateArray = [{ totalCount: maxLevelLimit, dieSize: 'd8', currentCount: parent.wholeChar[parent.player]["stats"]["lv"] }];
+        hdStateArray = [{ totalCount: parent.wholeChar[parent.player]["stats"]["lv"], dieSize: 'd8', currentCount: parent.wholeChar[parent.player]["stats"]["lv"] }];
     }
 
     hdStateArray.forEach((classGroup, positionIndex) => 
@@ -99,7 +99,7 @@ function createHD(hdStateArray)
 
         // Generate total count list (Options scaling from 1 to total character level)
         let totalDropdownHTML = `<select class="hd-total-dropdown">`;
-        for (let i = 1; i <= maxLevelLimit; i++) 
+        for (let i = 1; i <= parent.wholeChar[parent.player]["stats"]["lv"]; i++) 
         {
             totalDropdownHTML += `<option value="${i}" ${classGroup.totalCount == i ? 'selected' : ''}>${i}</option>`;
         }
