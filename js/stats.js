@@ -72,6 +72,157 @@ function init()
     
     document.getElementById("Initiative").oncontextmenu = function(e) {e.preventDefault(); handleRightClickRoll(e, "init");};
     document.getElementById("initLabel").oncontextmenu = function(e) {e.preventDefault(); handleRightClickRoll(e, "init");};
+
+    document.getElementById('add-hd').onclick = addNewHD;
+    document.getElementById('remove-hd').onclick = removeRecentHD;
+    loadMulticlassHitDice();
+}
+
+function createHD(hdStateArray)
+{
+    let display = document.getElementById("hd-div");
+    display.innerHTML = "";
+
+    let standardDice = ['d6', 'd8', 'd10', 'd12'];
+
+    if(!hdStateArray || hdStateArray.length === 0) //If no multiclass
+    {
+        hdStateArray = [{ totalCount: maxLevelLimit, dieSize: 'd8', currentCount: parent.wholeChar[parent.player]["stats"]["lv"] }];
+    }
+
+    hdStateArray.forEach((classGroup, positionIndex) => 
+    {
+        const rowWrapper = document.createElement('div');
+        rowWrapper.className = 'hd-class-row';
+        rowWrapper.style.marginBottom = '6px';
+        rowWrapper.dataset.index = positionIndex;
+
+        // Generate total count list (Options scaling from 1 to total character level)
+        let totalDropdownHTML = `<select class="hd-total-dropdown">`;
+        for (let i = 1; i <= maxLevelLimit; i++) 
+        {
+            totalDropdownHTML += `<option value="${i}" ${classGroup.totalCount == i ? 'selected' : ''}>${i}</option>`;
+        }
+        totalDropdownHTML += `</select>`;
+
+        // Generate die sizing option fields
+        let dieDropdownHTML = `<select class="hd-die-dropdown">`;
+        standardDice.forEach(die => 
+        {
+            dieDropdownHTML += `<option value="${die}" ${classGroup.dieSize === die ? 'selected' : ''}>${die}</option>`;
+        });
+        dieDropdownHTML += `</select>`;
+
+        // Generate current count available fields (Clamped strictly from 0 to selected total)
+        let currentDropdownHTML = `<select class="hd-current-dropdown">`;
+        for (let i = 0; i <= classGroup.totalCount; i++) 
+        {
+            currentDropdownHTML += `<option value="${i}" ${classGroup.currentCount == i ? 'selected' : ''}>${i}</option>`;
+        }
+        currentDropdownHTML += `</select>`;
+
+        rowWrapper.innerHTML = `
+            <div style="display: flex; flex-direction: column; gap: 2px;">
+                <div>
+                    <span style="font-size: 11px; color: #555; margin-right: 4px;">Total:</span>
+                    ${totalDropdownHTML} ${dieDropdownHTML}
+                </div>
+                <div>
+                    <span style="font-size: 11px; color: #555; margin-right: 4px;">Current:</span>
+                    ${currentDropdownHTML} <span style="font-size: 11px; color: #777;">remaining</span>
+                </div>
+                <hr style="margin: 4px 0; border-color: #ccc;" />
+            </div>
+        `;
+
+        const totalSelectNode = rowWrapper.querySelector('.hd-total-dropdown');
+        const currentSelectNode = rowWrapper.querySelector('.hd-current-dropdown');
+
+        // Capture total selector modifications to dynamically clamp current available options safely
+        totalSelectNode.onchange = function() 
+        {
+            const freshTotalBoundary = parseInt(this.value);
+            let contextualCurrentHTML = '';
+            for (let i = 0; i <= freshTotalBoundary; i++) 
+            {
+                contextualCurrentHTML += `<option value="${i}">${i}</option>`;
+            }
+            currentSelectNode.innerHTML = contextualCurrentHTML;
+            currentSelectNode.value = Math.min(parseInt(currentSelectNode.value) || 0, freshTotalBoundary);
+            
+            commitHDStateToDatabase();
+        };
+
+        rowWrapper.querySelector('.hd-die-dropdown').onchange = commitHDStateToDatabase;
+        currentSelectNode.onchange = commitHDStateToDatabase;
+
+        outputBox.appendChild(rowWrapper);
+    });
+}
+
+function addNewHD() 
+{
+    const dynamicStack = serializeHDInterface();
+    // Append a standard layout object for a multiclass component
+    dynamicStack.push({ totalCount: 1, dieSize: 'd6', currentCount: 1 });
+    createHD(dynamicStack);
+    commitHDStateToDatabase();
+}
+
+/**
+ * Triggers on Minus input click: Drops all modular blocks and fixes primary row back to player's level capacity
+ */
+function removeRecentHD() 
+{
+    const baseCap = extractPlayerLevel();
+    const baselineCollection = [{ totalCount: baseCap, dieSize: 'd8', currentCount: baseCap }];
+    createHD(baselineCollection);
+    commitHDStateToDatabase();
+}
+
+/**
+ * Traverses selector rows to serialize current option metrics out of the DOM elements
+ */
+function serializeHDInterface() 
+{
+    const layoutRows = document.querySelectorAll('.hd-class-row');
+    const stateOutputArray = [];
+    
+    layoutRows.forEach(row => 
+    {
+        stateOutputArray.push(
+        {
+            totalCount: parseInt(row.querySelector('.hd-total-dropdown').value) || 1,
+            dieSize: row.querySelector('.hd-die-dropdown').value || 'd8',
+            currentCount: parseInt(row.querySelector('.hd-current-dropdown').value) || 0
+        });
+    });
+    
+    return stateOutputArray;
+}
+
+/**
+ * Encapsulates data array back into your Firebase storage schema via setDoc
+ */
+function commitHDStateToDatabase() 
+{
+    const valuesPayload = serializeHDInterface();
+    // Formulates character reference node paths mirroring your standard setDoc setup
+    setDoc(`playerChar/${parent.player}/stats/multiclassHitDice`, valuesPayload);
+}
+
+function loadMulticlassHitDice() 
+{
+    if (parent.wholeChar[parent.player] && parent.wholeChar[parent.player]["stats"]) 
+    {
+        const cloudRecord = parent.wholeChar[parent.player]["stats"]["multiclassHitDice"];
+        createHD(cloudRecord);
+    } 
+    
+    else 
+    {
+        createHD(null);
+    }
 }
 
 function updateCheckboxes(level)
@@ -148,7 +299,7 @@ function setStats(stat)
             if(parent.wholeChar[parent.player]["stats"][`${exper}-expertise`]){modifier += parseInt(parent.wholeChar[parent.player]["stats"]["proficiency"]);}
         }
         
-        else if(!stat.checked && parent.wholeChar[parent.player]["stats"]["class"].includes("Bard"))
+        else if(!stat.checked && parent.wholeChar[parent.player]["stats"]["class"].toLowerCase().includes("Bard"))
         {
             modifier = parseInt(modifier) + Math.floor(parseInt(parent.wholeChar[parent.player]["stats"]["proficiency"]) / 2);
         }
