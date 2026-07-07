@@ -80,90 +80,130 @@ function init()
 
 function createHD(hdStateArray)
 {
-    let display = document.getElementById("hd-div");
-    display.innerHTML = "";
+    let totalBox = document.getElementById("hd-div");
+    let currentBox = document.getElementById("hd-current");
 
+    currentBox.innerHTML = "";
+    totalBox.innerHTML = "";
+
+    let maxGlobalLevel = parent.wholeChar[parent.player]["stats"]["lv"];
     let standardDice = ['d6', 'd8', 'd10', 'd12'];
 
     if(!hdStateArray || hdStateArray.length === 0) //If no multiclass
     {
-        hdStateArray = [{ totalCount: parent.wholeChar[parent.player]["stats"]["lv"], dieSize: 'd8', currentCount: parent.wholeChar[parent.player]["stats"]["lv"] }];
+        hdStateArray = [{ totalCount: maxGlobalLevel, dieSize: 'd8', currentCount: maxGlobalLevel }];
     }
 
-    hdStateArray.forEach((classGroup, positionIndex) => 
+    let allocatedLevels = 0;
+    hdStateArray.forEach((group) => 
     {
-        const rowWrapper = document.createElement('div');
-        rowWrapper.className = 'hd-class-row';
-        rowWrapper.style.marginBottom = '6px';
-        rowWrapper.dataset.index = positionIndex;
+        allocatedLevels += parseInt(group.totalCount) || 0;
+    });
 
-        // Generate total count list (Options scaling from 1 to total character level)
-        let totalDropdownHTML = `<select class="hd-total-dropdown">`;
-        for (let i = 1; i <= parent.wholeChar[parent.player]["stats"]["lv"]; i++) 
+    if (allocatedLevels > maxGlobalLevel) 
+    {
+        let pool = maxGlobalLevel;
+        hdStateArray.forEach((group) => 
         {
-            totalDropdownHTML += `<option value="${i}" ${classGroup.totalCount == i ? 'selected' : ''}>${i}</option>`;
-        }
-        totalDropdownHTML += `</select>`;
-
-        // Generate die sizing option fields
-        let dieDropdownHTML = `<select class="hd-die-dropdown">`;
-        standardDice.forEach(die => 
-        {
-            dieDropdownHTML += `<option value="${die}" ${classGroup.dieSize === die ? 'selected' : ''}>${die}</option>`;
+            group.totalCount = Math.min(group.totalCount, pool);
+            pool -= group.totalCount;
+            if (group.totalCount < 1 && pool === 0) group.totalCount = 0; // handle trailing entries safely
+            group.currentCount = Math.min(group.currentCount, group.totalCount);
         });
-        dieDropdownHTML += `</select>`;
+    }
 
-        // Generate current count available fields (Clamped strictly from 0 to selected total)
-        let currentDropdownHTML = `<select class="hd-current-dropdown">`;
-        for (let i = 0; i <= classGroup.totalCount; i++) 
-        {
-            currentDropdownHTML += `<option value="${i}" ${classGroup.currentCount == i ? 'selected' : ''}>${i}</option>`;
+    // Pass 2: Draw components onto the page matching layout rules
+    let cumulativeUsed = 0;
+    hdStateArray.forEach((classGroup, index) => {
+        // Skip drawing rendering elements for fully dead tracking slots
+        if (index > 0 && classGroup.totalCount === 0 && hdStateArray.length > 1) return;
+
+        // Calculate maximum allowable selection for this row item without breaking overall character max limit
+        const otherRowsAllocated = hdStateArray.reduce((acc, g, i) => acc + (i !== index ? g.totalCount : 0), 0);
+        const maxRowAllocation = Math.max(1, maxGlobalLevel - otherRowsAllocated);
+
+        // --- Render Total Configurations Column Section ---
+        const totalRow = document.createElement('div');
+        totalRow.className = 'hd-total-row-item';
+        totalRow.style.margin = '4px 0';
+        totalRow.dataset.index = index;
+
+        let totalOptions = '';
+        for (let i = 1; i <= maxRowAllocation; i++) {
+            totalOptions += `<option value="${i}" ${classGroup.totalCount == i ? 'selected' : ''}>${i}</option>`;
         }
-        currentDropdownHTML += `</select>`;
 
-        rowWrapper.innerHTML = `
-            <div style="display: flex; flex-direction: column; gap: 2px;">
-                <div>
-                    <span style="font-size: 11px; color: #555; margin-right: 4px;">Total:</span>
-                    ${totalDropdownHTML} ${dieDropdownHTML}
-                </div>
-                <div>
-                    <span style="font-size: 11px; color: #555; margin-right: 4px;">Current:</span>
-                    ${currentDropdownHTML} <span style="font-size: 11px; color: #777;">remaining</span>
-                </div>
-                <hr style="margin: 4px 0; border-color: #ccc;" />
-            </div>
+        let dieOptions = '';
+        standardDice.forEach(die => {
+            dieOptions += `<option value="${die}" ${classGroup.dieSize === die ? 'selected' : ''}>${die}</option>`;
+        });
+
+        totalRow.innerHTML = `
+            <span style="font-size: 13px; color: #555; width: 40px; display: inline-block;">Total:</span>
+            <select class="hd-total-select" style="width: 45px; text-align: center;">${totalOptions}</select>
+            <select class="hd-die-select" style="width: 55px; margin-left: 2px;">${dieOptions}</select>
         `;
+        totalBox.appendChild(totalRow);
 
-        const totalSelectNode = rowWrapper.querySelector('.hd-total-dropdown');
-        const currentSelectNode = rowWrapper.querySelector('.hd-current-dropdown');
+        // --- Render Current Remaining Selector Column Section ---
+        const currentRow = document.createElement('div');
+        currentRow.className = 'hd-current-row-item';
+        currentRow.style.margin = '4px 0';
+        currentRow.dataset.index = index;
 
-        // Capture total selector modifications to dynamically clamp current available options safely
-        totalSelectNode.onchange = function() 
-        {
-            const freshTotalBoundary = parseInt(this.value);
-            let contextualCurrentHTML = '';
-            for (let i = 0; i <= freshTotalBoundary; i++) 
-            {
-                contextualCurrentHTML += `<option value="${i}">${i}</option>`;
-            }
-            currentSelectNode.innerHTML = contextualCurrentHTML;
-            currentSelectNode.value = Math.min(parseInt(currentSelectNode.value) || 0, freshTotalBoundary);
-            
+        let currentOptions = '';
+        for (let i = classGroup.totalCount; i >= 0; i--) {
+            // Displays with custom dynamic text formatting (e.g., "6d8", "0d6") matching your setup design
+            currentOptions += `<option value="${i}" ${classGroup.currentCount == i ? 'selected' : ''}>${i}${classGroup.dieSize}</option>`;
+        }
+
+        currentRow.innerHTML = `
+            <select class="hd-current-select" style="width: 70px; text-align: center;">${currentOptions}</select>
+            <span style="font-size: 11px; color: #777; margin-left: 4px;">remaining</span>
+        `;
+        currentBox.appendChild(currentRow);
+
+        // --- Bind Listener Logic Rules ---
+        const totalSelect = totalRow.querySelector('.hd-total-select');
+        const dieSelect = totalRow.querySelector('.hd-die-select');
+        const currentSelect = currentRow.querySelector('.hd-current-select');
+
+        // Handle cascading structural changes across rows when levels are modified
+        totalSelect.onchange = function() {
+            classGroup.totalCount = parseInt(this.value);
+            classGroup.currentCount = Math.min(classGroup.currentCount, classGroup.totalCount);
+            // Re-evaluate entire stack array to apply updated calculations to neighboring elements
+            createHD(serializeHDInterface());
             commitHDStateToDatabase();
         };
 
-        rowWrapper.querySelector('.hd-die-dropdown').onchange = commitHDStateToDatabase;
-        currentSelectNode.onchange = commitHDStateToDatabase;
+        // Re-draw dropdown labels immediately when the selected die format changes
+        dieSelect.onchange = function() {
+            classGroup.dieSize = this.value;
+            createHD(serializeHDInterface());
+            commitHDStateToDatabase();
+        };
 
-        display.appendChild(rowWrapper);
+        currentSelect.onchange = function() {
+            commitHDStateToDatabase();
+        };
     });
 }
 
 function addNewHD() 
 {
     const dynamicStack = serializeHDInterface();
-    // Append a standard layout object for a multiclass component
+    const maxAllowedLevel = parent.wholeChar[parent.player]["stats"]["lv"];
+    
+    let currentAllocatedSum = 0;
+    dynamicStack.forEach(g => currentAllocatedSum += g.totalCount);
+
+    // Stop adding rows if the level budget is already fully spent
+    if (currentAllocatedSum >= maxAllowedLevel) {
+        alert("Cannot add multiclass hit dice: Total combined levels already equal your character level.");
+        return;
+    }
+
     dynamicStack.push({ totalCount: 1, dieSize: 'd6', currentCount: 1 });
     createHD(dynamicStack);
     commitHDStateToDatabase();
@@ -185,17 +225,19 @@ function removeRecentHD()
  */
 function serializeHDInterface() 
 {
-    const layoutRows = document.querySelectorAll('.hd-class-row');
+    const totalRowElements = document.querySelectorAll('.hd-total-row-item');
+    const currentRowElements = document.querySelectorAll('.hd-current-row-item');
     const stateOutputArray = [];
     
-    layoutRows.forEach(row => 
-    {
-        stateOutputArray.push(
-        {
-            totalCount: parseInt(row.querySelector('.hd-total-dropdown').value) || 1,
-            dieSize: row.querySelector('.hd-die-dropdown').value || 'd8',
-            currentCount: parseInt(row.querySelector('.hd-current-dropdown').value) || 0
-        });
+    totalRowElements.forEach((totalRow, idx) => {
+        const correspondingCurrentRow = currentRowElements[idx];
+        if (correspondingCurrentRow) {
+            stateOutputArray.push({
+                totalCount: parseInt(totalRow.querySelector('.hd-total-select').value) || 1,
+                dieSize: totalRow.querySelector('.hd-die-select').value || 'd8',
+                currentCount: parseInt(correspondingCurrentRow.querySelector('.hd-current-select').value) || 0
+            });
+        }
     });
     
     return stateOutputArray;
