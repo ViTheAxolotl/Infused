@@ -408,8 +408,23 @@ function addCharacter(character, update)
     else{img.src = window.wholeCustom[image]["src"];} 
     img.onerror = () => {char[0].src = `images/unknown-.png`;};
     
-    if(!tokenImg.includes("custom-")){char[0].src = window.imgs["tokens"][tokenImg];} else{char[0].src = window.wholeCustom[tokenImg]["src"]; char[0].classList.add("customImg");}
+    char[0].src = window.imgs["tokens"][tokenImg];
     char[0].id = character["id"];
+    char[0].style.maxHeight = "100%";
+    char[0].style.maxWidth = "100%";
+    
+
+    char[0].onload = function() 
+    {
+        if (this.naturalWidth !== 73 || this.naturalHeight !== 73) 
+        {
+            this.classList.add("customImg");
+            
+            // Force non-standard uploads to scale down safely to the grid cell bounds
+            this.style.setProperty("borderRadius", "50%");
+            this.style.setProperty("objectFit", "cover");
+        }
+    };
     
     char[1].src = window.imgs["borders"][character["border"]];
     char[1].id = character["border"];
