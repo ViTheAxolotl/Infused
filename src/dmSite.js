@@ -1329,7 +1329,7 @@ function handleUploadImage()
     let assetNameInput = document.createElement("input");
     assetNameInput.type = "text";
     assetNameInput.id = "dm-asset-name-input";
-    assetNameInput.placeholder = "Ancient Red Dragon";
+    assetNameInput.placeholder = "couch-.png";
     assetNameInput.style.margin = "10px";
     assetNameInput.style.padding = "5px";
 
