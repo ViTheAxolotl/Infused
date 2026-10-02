@@ -345,6 +345,7 @@ function handleEdit()
 function updateBorderPic()
 {
     this.parentNode.childNodes[1].src = window.top.parent.imgs["borders"][this[this.selectedIndex].value];
+    this.parentNode.childNodes[1].classList.remove("invisible");
 }
 
 function updateTokenPic()
