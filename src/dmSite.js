@@ -131,7 +131,7 @@ function makeToken(key)
     token[1].src = window.top.parent.imgs["tokens"][key.name];
     token[1].id = key.name;
     token[1].classList = `tokens ${key.name} char`;
-    token[2].src = window.top.parent.imgs["tokens"][key.name];
+    token[2].src = window.top.parent.imgs["borders"][key.name];
     token[2].id = key.border;
     token[2].classList = `tokens ${key.id} border_`;
     token[3].src = window.top.parent.imgs["tokens"][key.name];
