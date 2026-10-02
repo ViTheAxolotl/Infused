@@ -119,7 +119,7 @@ function handleAdd()
     reset.onclick = handleDone;
 }
 
-function makeToken(key)
+function makeToken(key) 
 {
     let token = [document.createElement("div"), document.createElement("img"), document.createElement("img"), document.createElement("img")];
     token[0].id = `${key.id}-div`;
