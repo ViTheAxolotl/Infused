@@ -128,13 +128,13 @@ function makeToken(key)
     token[0].style.position = "relative";
     token[0].style.minHeight = "82px";
     token[0].style.minWidth = "82px";
-    token[1].src = window.top.parent.imgs["tokens"][key];
+    token[1].src = window.top.parent.imgs["tokens"][key.name];
     token[1].id = key.name;
     token[1].classList = `tokens ${key.name} char`;
-    token[2].src = window.top.parent.imgs["tokens"][key];
+    token[2].src = window.top.parent.imgs["tokens"][key.name];
     token[2].id = key.border;
     token[2].classList = `tokens ${key.id} border_`;
-    token[3].src = window.top.parent.imgs["tokens"][key];
+    token[3].src = window.top.parent.imgs["tokens"][key.name];
     token[3].id = "hp";
     token[3].classList = `tokens ${key.name} hp`;
     token[2].onclick = handleDeleteOrEdit;
