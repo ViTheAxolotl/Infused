@@ -1416,7 +1416,7 @@ async function uploadImage()
         case "push":
             dbPath = `files/push/${name}`;
             storagePath = `images/push/${name}`;
-            break;
+            break; 
 
         case "item":
             dbPath = `files/items/${name}`;
