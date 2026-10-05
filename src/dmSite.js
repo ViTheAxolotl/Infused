@@ -1399,6 +1399,13 @@ async function uploadImage()
         return;
     }
 
+    let options = 
+    {
+        maxSizeMB: 0.4,          // Max size 200KB (Perfect for tokens/sheets)
+        maxWidthOrHeight: 1024, // Keeps it crisp but not massive
+        useWebWorker: true
+    };
+
     switch (type)
     {
         case "token":
@@ -1420,15 +1427,9 @@ async function uploadImage()
         case "map":
             dbPath = `files/mapName/${name}`;
             storagePath = `images/map/${name}`;
+            options.maxWidthOrHeight = 2030;
             break;
     }
-
-    const options = 
-        {
-            maxSizeMB: 0.4,          // Max size 200KB (Perfect for tokens/sheets)
-            maxWidthOrHeight: 1024, // Keeps it crisp but not massive
-            useWebWorker: true
-        };
 
     try {
         const compressedFile = await imageCompression(files[0], options);
