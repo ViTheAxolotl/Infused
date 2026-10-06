@@ -1411,6 +1411,7 @@ async function uploadImage()
         case "token":
             dbPath = `files/tokens/${name}-`;
             storagePath = `images/map/tokens/${name}-`;
+            options.maxWidthOrHeight = 73;
             break;
 
         case "push":
