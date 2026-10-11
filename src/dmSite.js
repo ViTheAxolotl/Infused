@@ -124,7 +124,7 @@ function handleAdd()
     reset.onclick = handleDone;
 }
 
-function makeToken(key)
+function makeToken(key) 
 {
     let token = [document.createElement("div"), document.createElement("img"), document.createElement("img"), document.createElement("img")];
     token[0].id = `${key.id}-div`;
@@ -133,13 +133,13 @@ function makeToken(key)
     token[0].style.position = "relative";
     token[0].style.minHeight = "82px";
     token[0].style.minWidth = "82px";
-    token[1].src = `images/map/tokens/${key.name}.png`;
+    token[1].src = window.top.parent.imgs["tokens"][key.name];
     token[1].id = key.name;
     token[1].classList = `tokens ${key.name} char`;
-    token[2].src = `images/map/tokens/${key.border}Border.png`;
+    token[2].src = window.top.parent.imgs["borders"][key.border];
     token[2].id = key.border;
     token[2].classList = `tokens ${key.id} border_`;
-    token[3].src = updateHpPic(key.maxHp, key.currentHp);
+    token[3].src = window.top.parent.imgs["tokens"][key.name];
     token[3].id = "hp";
     token[3].classList = `tokens ${key.name} hp`;
     token[2].onclick = handleDeleteOrEdit;
@@ -289,7 +289,7 @@ function handleEdit()
                 let currentBorder = window.top.parent.imgs["borders"][key];
                 let option = document.createElement("option");
                 option.value = key;
-                option.text = currentBorder.slice(currentBorder.indexOf("ns/") + 3).replace("Border.png", "");
+                option.text = key;
                 txtFeilds[i].appendChild(option);
                 txtFeilds[i].onchange = updateBorderPic;
             }
@@ -305,7 +305,7 @@ function handleEdit()
                 let currentBorder = window.top.parent.imgs["tokens"][key];
                 let option = document.createElement("option");
                 option.value = key;
-                option.text = currentBorder.slice(currentBorder.indexOf("ns/") + 3).replace(".png", "");
+                option.text = key;
                 txtFeilds[i].appendChild(option);
                 txtFeilds[i].onchange = updateTokenPic;
             }
@@ -350,6 +350,7 @@ function handleEdit()
 function updateBorderPic()
 {
     this.parentNode.childNodes[1].src = window.top.parent.imgs["borders"][this[this.selectedIndex].value];
+    this.parentNode.childNodes[1].classList.remove("invisible");
 }
 
 function updateTokenPic()
@@ -1428,17 +1429,25 @@ async function uploadImage()
         return;
     }
 
+    let options = 
+    {
+        maxSizeMB: 0.4,          // Max size 200KB (Perfect for tokens/sheets)
+        maxWidthOrHeight: 1024, // Keeps it crisp but not massive
+        useWebWorker: true
+    };
+
     switch (type)
     {
         case "token":
             dbPath = `files/tokens/${name}-`;
             storagePath = `images/map/tokens/${name}-`;
+            options.maxWidthOrHeight = 73;
             break;
 
         case "push":
             dbPath = `files/push/${name}`;
             storagePath = `images/push/${name}`;
-            break;
+            break;  
 
         case "item":
             dbPath = `files/items/${name}`;
@@ -1449,15 +1458,9 @@ async function uploadImage()
         case "map":
             dbPath = `files/mapName/${name}`;
             storagePath = `images/map/${name}`;
+            options.maxWidthOrHeight = 2030;
             break;
     }
-
-    const options = 
-        {
-            maxSizeMB: 0.4,          // Max size 200KB (Perfect for tokens/sheets)
-            maxWidthOrHeight: 1024, // Keeps it crisp but not massive
-            useWebWorker: true
-        };
 
     try {
         const compressedFile = await imageCompression(files[0], options);

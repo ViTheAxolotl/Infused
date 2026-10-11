@@ -139,10 +139,12 @@ export function toTitleCase(word)
     if(word.includes(" ")) //More than one word
     {
         word = word.split(" "); 
+        
         for(let singleWord of word)
         {
-            finalWord += `${singleWord[0].toUpperCase() + singleWord.slice(1)} `; //Capitilize each word in the varible
+            if(singleWord != ""){finalWord += `${singleWord[0].toUpperCase() + singleWord.slice(1)} `;} //Capitilize each word in the varible
         }
+        
         finalWord = finalWord.slice(0, finalWord.length - 1);
     }
 
