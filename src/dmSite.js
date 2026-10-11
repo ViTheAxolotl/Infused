@@ -63,6 +63,11 @@ function init()
                 fiveButtons.push(button);
                 button.onclick = handleLoad;
                 break;
+
+            case "delete":
+                fiveButtons.push(button);
+                button.onclick = handleDelete;
+                break;
             
             case "interactive":
                 fiveButtons.push(button);
@@ -918,6 +923,31 @@ function loadMap()
 
         handleDone();
     }, 90);
+}
+
+function handleDelete()
+{
+    hideButtons();
+    listSelect();
+
+    let goButton = document.createElement("button");
+
+    goButton.style.margin = "5px";
+    goButton.innerHTML = "Delete";
+    goButton.onclick = deleteMap;
+    div.appendChild(goButton);
+    addDone();
+}
+
+function deleteMap()
+{
+    let selectNames = document.getElementById("selectNames");
+    let cName = "";
+    cName = selectNames[selectNames.selectedIndex].value;
+
+    deleteDoc(cname);
+    deleteDoc(`lists/${cname}`);
+    wait(30, handleDone);
 }
 
 function handleInteractive()
