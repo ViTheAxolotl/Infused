@@ -947,8 +947,8 @@ function deleteMap()
     cName = selectNames[selectNames.selectedIndex].value;
     
 
-    deleteDoc(cname);
-    deleteDoc(`lists/${cname}`);
+    deleteDoc(cName);
+    deleteDoc(`lists/${cName}`);
     
     wait(30, function(){selectNames.remove(); listSelect();});
 }
