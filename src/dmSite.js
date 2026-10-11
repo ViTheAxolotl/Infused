@@ -949,8 +949,8 @@ function deleteMap()
 
     deleteDoc(cname);
     deleteDoc(`lists/${cname}`);
-    selectNames.remove();
-    wait(30, listSelect());
+    
+    wait(30, function(){selectNames.remove(); listSelect();});
 }
 
 function handleInteractive()
