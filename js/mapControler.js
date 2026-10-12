@@ -769,62 +769,55 @@ function moveChar(xPos, yPos, explicitDirection = null)
     let tokenData = window.wholeDB[currentId];
     let x, y;
 
-    // If a Dup flag is present, calculate the movement using grid index arrays with proper signed direction
-    if (tokenData && tokenData["title"] && (tokenData["title"].includes("Dup X") || tokenData["title"].includes("Dup Y"))) 
-    {
-        let isDupX = tokenData["title"].includes("Dup X");
-        let posArray = isDupX ? map.xPos : map.yPos;
-        let currentCoord = isDupX ? tokenData["xPos"] : tokenData["yPos"];
-        let currentIndex = posArray.indexOf(currentCoord);
+    let isDupX = tokenData && tokenData["title"] && tokenData["title"].includes("Dup X");
+    let isDupY = tokenData && tokenData["title"] && tokenData["title"].includes("Dup Y");
 
-        let delta = 0;
-        if (explicitDirection === "right" || explicitDirection === "down") delta = 1;
-        if (explicitDirection === "left" || explicitDirection === "up") delta = -1;
-
+    // Handle Dup X movement strictly on Left/Right inputs
+    if (isDupX && (explicitDirection === "left" || explicitDirection === "right")) {
+        let posArray = map.xPos;
+        let currentIndex = posArray.indexOf(tokenData["xPos"]);
+        let delta = (explicitDirection === "right") ? 1 : -1;
         let newIndex = currentIndex + delta;
 
-        if (newIndex >= 0 && newIndex < posArray.length) 
-        {
-            if (isDupX) 
-            {
-                x = map.xPos[newIndex];
-                y = tokenData["yPos"];
-            } 
-            
-            else 
-            {
-                x = tokenData["xPos"];
-                y = map.yPos[newIndex];
-            }
-        } 
-        
-        else 
-        {
+        if (newIndex >= 0 && newIndex < posArray.length) {
+            x = map.xPos[newIndex];
+            y = tokenData["yPos"];
+        } else {
             x = map.xPos[map.pos.indexOf(xPos)];
             y = map.yPos[map.pos.indexOf(yPos)];
         }
     } 
-    
-    else 
-    {
-        // Standard non-dup movement lookup
+    // Handle Dup Y movement strictly on Up/Down inputs
+    else if (isDupY && (explicitDirection === "up" || explicitDirection === "down")) {
+        let posArray = map.yPos;
+        let currentIndex = posArray.indexOf(tokenData["yPos"]);
+        let delta = (explicitDirection === "down") ? 1 : -1;
+        let newIndex = currentIndex + delta;
+
+        if (newIndex >= 0 && newIndex < posArray.length) {
+            x = tokenData["xPos"];
+            y = map.yPos[newIndex];
+        } else {
+            x = map.xPos[map.pos.indexOf(xPos)];
+            y = map.yPos[map.pos.indexOf(yPos)];
+        }
+    } 
+    // Standard movement fallback for non-dup tokens or orthogonal keypresses
+    else {
         x = map.xPos[map.pos.indexOf(xPos)];
         y = map.yPos[map.pos.indexOf(yPos)];
     }
 
-    // Fallback safety if x or y didn't resolve
     if (x === undefined) x = map.xPos[map.pos.indexOf(xPos)];
     if (y === undefined) y = map.yPos[map.pos.indexOf(yPos)];
 
     setDoc(`currentMap/${currentId}/xPos`, x);
     setDoc(`currentMap/${currentId}/yPos`, y);
-    
     if(currentId == window.player)
     {
         setDoc(`playerChar/${window.player}/token/xPos`, x);
         setDoc(`playerChar/${window.player}/token/yPos`, y);
     }
-
     if(window.wholeDB[currentId]["isSummon"])
     {
         setDoc(`playerChar/Vi/summons/${currentId}/xPos`, x);
