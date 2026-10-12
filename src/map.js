@@ -708,21 +708,29 @@ function dup(xOrY, char, character, locations, title)
     }
 
     let baseIndex;
-    
+    let posArray;
     if(xOrY == "x")
     {
-        baseIndex = map.xPos.indexOf(character["xPos"]);
+        posArray = map.xPos;
+        baseIndex = posArray.indexOf(character["xPos"]);
     } 
     
     else 
     {
-        baseIndex = map.yPos.indexOf(character["yPos"]);
+        posArray = map.yPos;
+        baseIndex = posArray.indexOf(character["yPos"]);
     }
 
+    if (baseIndex === -1) return;
+
+    // Loop to spawn duplicates extending outward from the base token position
     for(let i = 1; i <= num; i++) 
     {
         let currentOffset = baseIndex + i; 
-        setupDup(char, character, xOrY, locations, rotate, currentOffset);
+        if (currentOffset < posArray.length) 
+        {
+            setupDup(char, character, xOrY, locations, rotate, currentOffset);
+        }
     }
 }
 
@@ -762,7 +770,7 @@ function setupDup(char, character, xOrY, locations, rotate, offSet)
                 stuffs[d].classList.add("hp");
                 break;
         }
-        
+
         div.appendChild(stuffs[d]);
     }
 }

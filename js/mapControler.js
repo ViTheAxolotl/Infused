@@ -766,51 +766,14 @@ function handleChangeInTurn(direction)
 function moveChar(xPos, yPos)
 {
     let x, y;
-    let currentId = currentCharacter[0].classList[1];
-    let tokenData = window.wholeDB[currentId];
+    x = map.xPos[map.pos.indexOf(xPos)];
+    y = map.yPos[map.pos.indexOf(yPos)];
     
-    let currentPixelX = parseInt(currentCharacter[1].style.left.replace("px", ""));
-    let currentPixelY = parseInt(currentCharacter[1].style.top.replace("px", ""));
-
-    if (tokenData && tokenData["title"] && tokenData["title"].includes("Dup X")) {
-        let posArray = map.xPos;
-        let currentIndex = posArray.indexOf(tokenData["xPos"]);
-        let delta = (xPos > currentPixelX) ? 1 : -1;
-        let newIndex = currentIndex + delta;
-
-        if (newIndex >= 0 && newIndex < posArray.length) {
-            x = map.xPos[newIndex];
-            y = tokenData["yPos"];
-        } else {
-            x = map.xPos[map.pos.indexOf(xPos)];
-            y = map.yPos[map.pos.indexOf(yPos)];
-        }
-    } 
-    else if (tokenData && tokenData["title"] && tokenData["title"].includes("Dup Y")) {
-        let posArray = map.yPos;
-        let currentIndex = posArray.indexOf(tokenData["yPos"]);
-        // Use vertical pixel changes (yPos) for Dup Y tokens!
-        let delta = (yPos > currentPixelY) ? 1 : -1;
-        let newIndex = currentIndex + delta;
-
-        if (newIndex >= 0 && newIndex < posArray.length) {
-            x = tokenData["xPos"];
-            y = map.yPos[newIndex];
-        } else {
-            x = tokenData["xPos"];
-            y = map.yPos[map.pos.indexOf(yPos)];
-        }
-    } 
-    else {
-        x = map.xPos[map.pos.indexOf(xPos)];
-        y = map.yPos[map.pos.indexOf(yPos)];
-    }
-
-    if (x === undefined) x = map.xPos[map.pos.indexOf(xPos)];
-    if (y === undefined) y = map.yPos[map.pos.indexOf(yPos)];
-
+    let currentId = currentCharacter[0].classList[1];
+    
     setDoc(`currentMap/${currentId}/xPos`, x);
     setDoc(`currentMap/${currentId}/yPos`, y);
+    
     if(currentId == window.player)
     {
         setDoc(`playerChar/${window.player}/token/xPos`, x);
