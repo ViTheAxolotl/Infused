@@ -676,70 +676,75 @@ function setupExp(num, char, xOrY)
     }
 }
 
-function dup(xOrY, char, character, locations, title)
-{
-    let num;
-    let dupNum;
+function dup(xOrY, char, character, locations, title) {
+    let num = 1;
+    let dupNum = "";
     let rotate = "0";
-
-    if(xOrY == "x"){dupNum = title.slice(title.indexOf("Dup X"));}
-    else{dupNum = title.slice(title.indexOf("Dup Y"));}
-
-    if(title.includes("90")){rotate = "90";}
-    else if(title.includes("180")){rotate = "180";}
-    else if(title.includes("270")){rotate = "270";}
-
-    if(dupNum[5] != ",")
-    {
-        if(dupNum[6] != ",")
-        {
-            num = parseInt(dupNum[5] + dupNum[6]);
-        }
-
-        else
-        {
-            num = parseInt(dupNum[5]);
-        }
+    
+    // Determine if it's X or Y duplication
+    if (title.includes("Dup X")) {
+        dupNum = title.slice(title.indexOf("Dup X"));
+        xOrY = "x";
+    } else if (title.includes("Dup Y")) {
+        dupNum = title.slice(title.indexOf("Dup Y"));
+        xOrY = "y";
     }
-
-    else
-    {
-        num = 12
+    
+    if (title.includes("90")) { rotate = "90"; }
+    else if (title.includes("180")) { rotate = "180"; }
+    else if (title.includes("270")) { rotate = "270"; }
+    
+    // Parse the number safely (e.g., "Dup X3" -> 3)
+    let parsedVal = parseInt(dupNum.replace(/[^0-9]/g, ''));
+    if (!isNaN(parsedVal)) {
+        num = parsedVal;
     }
 
     let baseIndex;
-    if(xOrY == "x"){
-        baseIndex = map.xPos.indexOf(character["xPos"]);
+    let posArray;
+    
+    if (xOrY === "x") {
+        posArray = map.xPos;
+        baseIndex = posArray.indexOf(character["xPos"]);
     } else {
-        baseIndex = map.yPos.indexOf(character["yPos"]);
+        posArray = map.yPos;
+        baseIndex = posArray.indexOf(character["yPos"]);
     }
 
-    // Loop to spawn duplicates in both directions or handle signed steps if needed
-    for(let i = 1; i <= num; i++) {
-        // You can alternate or check direction flags here. 
-        // For standard expansion or bidirectional spreading, we calculate forward/backward offsets:
-        let currentOffset = baseIndex + i; 
-        setupDup(char, character, xOrY, locations, rotate, currentOffset);
+    if (baseIndex === -1) return;
+
+    // Loop to create duplicates with signed offsets (can go left/up or right/down)
+    for (let i = 1; i <= num; i++) {
+        // Depending on your movement vector or layout, you can choose 
+        // whether duplicates extend positively or negatively. 
+        // For bidirectional or standard backward/forward offset:
+        let targetIndex = baseIndex + i; // Change to (baseIndex - i) if moving backward
+        
+        // Ensure index stays within grid bounds
+        if (targetIndex >= 0 && targetIndex < posArray.length) {
+            setupDup(char, character, xOrY, locations, rotate, targetIndex);
+        }
     }
 }
 
-function setupDup(char, character, xOrY, locations, rotate, offSet) {
+function setupDup(char, character, xOrY, locations, rotate, offSetIndex) {
     let stuffs = [document.createElement("img"), document.createElement("img"), document.createElement("img")];
     
-    for(let d = 0; d < 3; d++) {
+    for (let d = 0; d < 3; d++) {
         stuffs[d].classList.add("tokens");
         stuffs[d].src = char[d].src;
         stuffs[d].style.zIndex = char[d].style.zIndex;
         stuffs[d].style.transform = `rotate(${rotate}deg)`;
         stuffs[d].classList.add(character["id"]);
         
-        if(xOrY == "x") {
-            placeTokens(map.pos[offSet], locations[1], stuffs[d]);
+        // Correctly map to X or Y coordinate arrays based on xOrY flag
+        if (xOrY === "x") {
+            placeTokens(map.pos[map.xPos[offSetIndex]], locations[1], stuffs[d]);
         } else {
-            placeTokens(locations[0], map.pos[offSet], stuffs[d]);
+            placeTokens(locations[0], map.pos[map.yPos[offSetIndex]], stuffs[d]);
         }
         
-        switch(d) {
+        switch (d) {
             case 0: {
                 stuffs[d].classList.add("char");
                 break;
