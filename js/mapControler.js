@@ -787,7 +787,7 @@ function moveChar(xPos, yPos, explicitDirection = null)
             y = map.yPos[map.pos.indexOf(yPos)];
         }
     } 
-    // Handle Dup Y movement strictly on Up/Down inputs
+    // Handle Dup Y movement strictly on Up/Down inputs, locking X coordinate
     else if (isDupY && (explicitDirection === "up" || explicitDirection === "down")) {
         let posArray = map.yPos;
         let currentIndex = posArray.indexOf(tokenData["yPos"]);
@@ -795,10 +795,10 @@ function moveChar(xPos, yPos, explicitDirection = null)
         let newIndex = currentIndex + delta;
 
         if (newIndex >= 0 && newIndex < posArray.length) {
-            x = tokenData["xPos"];
+            x = tokenData["xPos"]; // Lock X so it cannot shift right/left
             y = map.yPos[newIndex];
         } else {
-            x = map.xPos[map.pos.indexOf(xPos)];
+            x = tokenData["xPos"];
             y = map.yPos[map.pos.indexOf(yPos)];
         }
     } 
