@@ -12,24 +12,6 @@ let curCharacter;
 let temp;
 let mode;
 let user;
-const allowedActions = {handleDelete: () => handleDelete()};
-
-window.addEventListener('DOMContentLoaded', () => 
-{
-    const hash = window.location.hash;
-
-    if (hash.startsWith('#run:')) 
-    {
-        const methodName = hash.split(':')[1];
-
-        if (typeof allowedActions[methodName] === 'function') 
-        {
-            allowedActions[methodName]();
-        }
-
-        history.replaceState(null, null, window.location.pathname + window.location.search);
-    }
-});
 
 function init()
 {
@@ -970,9 +952,9 @@ function deleteMap()
     let cName = "";
     cName = selectNames[selectNames.selectedIndex].value;
 
+    selectNames.remove(selectNames.selectedIndex);
     deleteDoc(cName);
     deleteDoc(`lists/${cName}`);
-    wait(5, function(){refreshAndRun('handleDelete');})
 }
 
 function handleInteractive()
