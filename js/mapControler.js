@@ -769,34 +769,39 @@ function moveChar(xPos, yPos)
     let currentId = currentCharacter[0].classList[1];
     let tokenData = window.wholeDB[currentId];
     
-    // Check if we are moving using pixel values from handleArrow
     let currentPixelX = parseInt(currentCharacter[1].style.left.replace("px", ""));
     let currentPixelY = parseInt(currentCharacter[1].style.top.replace("px", ""));
 
-    if (tokenData && tokenData["title"] && (tokenData["title"].includes("Dup X") || tokenData["title"].includes("Dup Y"))) {
-        let isDupX = tokenData["title"].includes("Dup X");
-        let posArray = isDupX ? map.xPos : map.yPos;
-        let currentCoord = isDupX ? tokenData["xPos"] : tokenData["yPos"];
-        let currentIndex = posArray.indexOf(currentCoord);
-
-        // Determine direction based on whether xPos or yPos increased/decreased relative to current pixels
-        let isMovingForward = isDupX ? (xPos > currentPixelX) : (yPos > currentPixelY);
-        let delta = isMovingForward ? 1 : -1;
+    if (tokenData && tokenData["title"] && tokenData["title"].includes("Dup X")) {
+        let posArray = map.xPos;
+        let currentIndex = posArray.indexOf(tokenData["xPos"]);
+        let delta = (xPos > currentPixelX) ? 1 : -1;
         let newIndex = currentIndex + delta;
 
         if (newIndex >= 0 && newIndex < posArray.length) {
-            if (isDupX) {
-                x = map.xPos[newIndex];
-                y = tokenData["yPos"];
-            } else {
-                x = tokenData["xPos"];
-                y = map.yPos[newIndex];
-            }
+            x = map.xPos[newIndex];
+            y = tokenData["yPos"];
         } else {
             x = map.xPos[map.pos.indexOf(xPos)];
             y = map.yPos[map.pos.indexOf(yPos)];
         }
-    } else {
+    } 
+    else if (tokenData && tokenData["title"] && tokenData["title"].includes("Dup Y")) {
+        let posArray = map.yPos;
+        let currentIndex = posArray.indexOf(tokenData["yPos"]);
+        // Use vertical pixel changes (yPos) for Dup Y tokens!
+        let delta = (yPos > currentPixelY) ? 1 : -1;
+        let newIndex = currentIndex + delta;
+
+        if (newIndex >= 0 && newIndex < posArray.length) {
+            x = tokenData["xPos"];
+            y = map.yPos[newIndex];
+        } else {
+            x = tokenData["xPos"];
+            y = map.yPos[map.pos.indexOf(yPos)];
+        }
+    } 
+    else {
         x = map.xPos[map.pos.indexOf(xPos)];
         y = map.yPos[map.pos.indexOf(yPos)];
     }
