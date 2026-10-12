@@ -765,26 +765,44 @@ function handleChangeInTurn(direction)
  */
 function moveChar(xPos, yPos)
 {
+    let x, y;
     let currentId = currentCharacter[0].classList[1];
     let tokenData = window.wholeDB[currentId];
+    
+    // Check if we are moving using pixel values from handleArrow
+    let currentPixelX = parseInt(currentCharacter[1].style.left.replace("px", ""));
+    let currentPixelY = parseInt(currentCharacter[1].style.top.replace("px", ""));
 
-    // Lock orthogonal movement based on Dup flags to prevent axis bleeding
-    if (tokenData && tokenData["title"] && currentCharacter[1] && currentCharacter[1].style) {
-        let currentPixelX = parseInt(currentCharacter[1].style.left.replace("px", ""));
-        let currentPixelY = parseInt(currentCharacter[1].style.top.replace("px", ""));
+    if (tokenData && tokenData["title"] && (tokenData["title"].includes("Dup X") || tokenData["title"].includes("Dup Y"))) {
+        let isDupX = tokenData["title"].includes("Dup X");
+        let posArray = isDupX ? map.xPos : map.yPos;
+        let currentCoord = isDupX ? tokenData["xPos"] : tokenData["yPos"];
+        let currentIndex = posArray.indexOf(currentCoord);
 
-        if (tokenData["title"].includes("Dup X")) {
-            // Dup X tokens only move horizontally; lock Y to current pixel position
-            yPos = currentPixelY;
-        } else if (tokenData["title"].includes("Dup Y")) {
-            // Dup Y tokens only move vertically; lock X to current pixel position
-            xPos = currentPixelX;
+        // Determine direction based on whether xPos or yPos increased/decreased relative to current pixels
+        let isMovingForward = isDupX ? (xPos > currentPixelX) : (yPos > currentPixelY);
+        let delta = isMovingForward ? 1 : -1;
+        let newIndex = currentIndex + delta;
+
+        if (newIndex >= 0 && newIndex < posArray.length) {
+            if (isDupX) {
+                x = map.xPos[newIndex];
+                y = tokenData["yPos"];
+            } else {
+                x = tokenData["xPos"];
+                y = map.yPos[newIndex];
+            }
+        } else {
+            x = map.xPos[map.pos.indexOf(xPos)];
+            y = map.yPos[map.pos.indexOf(yPos)];
         }
+    } else {
+        x = map.xPos[map.pos.indexOf(xPos)];
+        y = map.yPos[map.pos.indexOf(yPos)];
     }
 
-    let x, y;
-    x = map.xPos[map.pos.indexOf(xPos)];
-    y = map.yPos[map.pos.indexOf(yPos)];
+    if (x === undefined) x = map.xPos[map.pos.indexOf(xPos)];
+    if (y === undefined) y = map.yPos[map.pos.indexOf(yPos)];
 
     setDoc(`currentMap/${currentId}/xPos`, x);
     setDoc(`currentMap/${currentId}/yPos`, y);
