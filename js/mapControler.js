@@ -763,76 +763,36 @@ function handleChangeInTurn(direction)
  * @param {*} xPos 
  * @param {*} yPos 
  */
-function moveChar(xPos, yPos, explicitDirection = null)
+function moveChar(xPos, yPos)
 {
     let currentId = currentCharacter[0].classList[1];
     let tokenData = window.wholeDB[currentId];
-    let x, y;
 
-    let isDupX = tokenData && tokenData["title"] && tokenData["title"].includes("Dup X");
-    let isDupY = tokenData && tokenData["title"] && tokenData["title"].includes("Dup Y");
+    // Lock orthogonal movement based on Dup flags to prevent axis bleeding
+    if (tokenData && tokenData["title"] && currentCharacter[1] && currentCharacter[1].style) {
+        let currentPixelX = parseInt(currentCharacter[1].style.left.replace("px", ""));
+        let currentPixelY = parseInt(currentCharacter[1].style.top.replace("px", ""));
 
-    // Handle Dup X movement strictly on Left/Right inputs
-    if (isDupX && (explicitDirection === "left" || explicitDirection === "right")) 
-    {
-        let posArray = map.xPos;
-        let currentIndex = posArray.indexOf(tokenData["xPos"]);
-        let delta = (explicitDirection === "right") ? 1 : -1;
-        let newIndex = currentIndex + delta;
-
-        if (newIndex >= 0 && newIndex < posArray.length) 
-        {
-            x = map.xPos[newIndex];
-            y = tokenData["yPos"];
-        } 
-
-        else 
-        {
-            x = map.xPos[map.pos.indexOf(xPos)];
-            y = map.yPos[map.pos.indexOf(yPos)];
+        if (tokenData["title"].includes("Dup X")) {
+            // Dup X tokens only move horizontally; lock Y to current pixel position
+            yPos = currentPixelY;
+        } else if (tokenData["title"].includes("Dup Y")) {
+            // Dup Y tokens only move vertically; lock X to current pixel position
+            xPos = currentPixelX;
         }
-    } 
-
-    // Handle Dup Y movement strictly on Up/Down inputs, locking X coordinate
-    else if (isDupY && (explicitDirection === "up" || explicitDirection === "down")) 
-    {
-        let posArray = map.yPos;
-        let currentIndex = posArray.indexOf(tokenData["yPos"]);
-        let delta = (explicitDirection === "down") ? 1 : -1;
-        let newIndex = currentIndex + delta;
-
-        if (newIndex >= 0 && newIndex < posArray.length) 
-        {
-            x = tokenData["xPos"]; // Lock X so it cannot shift right/left
-            y = map.yPos[newIndex];
-        } 
-        
-        else 
-        {
-            x = tokenData["xPos"];
-            y = map.yPos[map.pos.indexOf(yPos)];
-        }
-    } 
-
-    // Standard movement fallback for non-dup tokens or orthogonal keypresses
-    else 
-    {
-        x = map.xPos[map.pos.indexOf(xPos)];
-        y = map.yPos[map.pos.indexOf(yPos)];
     }
 
-    if (x === undefined) {x = map.xPos[map.pos.indexOf(xPos)];}
-    if (y === undefined) {y = map.yPos[map.pos.indexOf(yPos)];}
+    let x, y;
+    x = map.xPos[map.pos.indexOf(xPos)];
+    y = map.yPos[map.pos.indexOf(yPos)];
 
     setDoc(`currentMap/${currentId}/xPos`, x);
     setDoc(`currentMap/${currentId}/yPos`, y);
-    
     if(currentId == window.player)
     {
         setDoc(`playerChar/${window.player}/token/xPos`, x);
         setDoc(`playerChar/${window.player}/token/yPos`, y);
     }
-
     if(window.wholeDB[currentId]["isSummon"])
     {
         setDoc(`playerChar/Vi/summons/${currentId}/xPos`, x);
