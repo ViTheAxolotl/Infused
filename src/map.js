@@ -684,6 +684,7 @@ function dup(xOrY, char, character, locations, title)
 
     if(xOrY == "x"){dupNum = title.slice(title.indexOf("Dup X"));}
     else{dupNum = title.slice(title.indexOf("Dup Y"));}
+
     if(title.includes("90")){rotate = "90";}
     else if(title.includes("180")){rotate = "180";}
     else if(title.includes("270")){rotate = "270";}
@@ -706,45 +707,50 @@ function dup(xOrY, char, character, locations, title)
         num = 12
     }
 
-    if(xOrY == "x"){offSet = map.xPos.indexOf(character["xPos"]);}
-    else{offSet = map.yPos.indexOf(character["yPos"]);}
+    let baseIndex;
+    if(xOrY == "x"){
+        baseIndex = map.xPos.indexOf(character["xPos"]);
+    } else {
+        baseIndex = map.yPos.indexOf(character["yPos"]);
+    }
 
-    for(let i = 0; i < num; i++){setupDup(char, character, xOrY, locations, rotate)}
+    // Loop to spawn duplicates in both directions or handle signed steps if needed
+    for(let i = 1; i <= num; i++) {
+        // You can alternate or check direction flags here. 
+        // For standard expansion or bidirectional spreading, we calculate forward/backward offsets:
+        let currentOffset = baseIndex + i; 
+        setupDup(char, character, xOrY, locations, rotate, currentOffset);
+    }
 }
 
-function setupDup(char, character, xOrY, locations, rotate)
-{
+function setupDup(char, character, xOrY, locations, rotate, offSet) {
     let stuffs = [document.createElement("img"), document.createElement("img"), document.createElement("img")];
-    offSet++;
-
-    for(let d = 0; d < 3; d++)
-    {
+    
+    for(let d = 0; d < 3; d++) {
         stuffs[d].classList.add("tokens");
         stuffs[d].src = char[d].src;
         stuffs[d].style.zIndex = char[d].style.zIndex;
         stuffs[d].style.transform = `rotate(${rotate}deg)`;
         stuffs[d].classList.add(character["id"]);
         
-        if(xOrY == "x"){placeTokens(map.pos[offSet], locations[1], stuffs[d]);}
-        else{placeTokens(locations[0], map.pos[offSet], stuffs[d]);}
+        if(xOrY == "x") {
+            placeTokens(map.pos[offSet], locations[1], stuffs[d]);
+        } else {
+            placeTokens(locations[0], map.pos[offSet], stuffs[d]);
+        }
         
-        switch(d)
-        {
-            case 0:
-            {
+        switch(d) {
+            case 0: {
                 stuffs[d].classList.add("char");
                 break;
             }
-
             case 1:
                 stuffs[d].classList.add("border_");
                 break;
-
             case 2:
                 stuffs[d].classList.add("hp");
                 break;
         }
-
         div.appendChild(stuffs[d]);
     }
 }
