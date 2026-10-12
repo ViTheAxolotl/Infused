@@ -766,25 +766,58 @@ function handleChangeInTurn(direction)
 function moveChar(xPos, yPos)
 {
     let x, y;
+    let currentId = currentCharacter[0].classList[1];
+    let tokenData = window.wholeDB[currentId];
+    
+    // Check if the token has a Dup flag
+    if (tokenData && tokenData["title"] && (tokenData["title"].includes("Dup X") || tokenData["title"].includes("Dup Y"))) 
+    {
+        let isDupX = tokenData["title"].includes("Dup X");
+        let axis = isDupX ? "x" : "y";
+        let posArray = axis === "x" ? map.xPos : map.yPos;
+        
+        let currentCoord = axis === "x" ? tokenData["xPos"] : tokenData["yPos"];
+        let currentIndex = posArray.indexOf(currentCoord);
+        
+        // Determine the target coordinate index based on movement direction
+        let targetCoordIndex = map.pos.indexOf(axis === "x" ? xPos : yPos);
+        let targetPosIndex = posArray.indexOf(targetCoordIndex);
+        
+        if (currentIndex !== -1 && targetPosIndex !== -1) 
+        {
+            let step = targetPosIndex > currentIndex ? 1 : -1;
+            // Apply movement along the array with proper signed indexing
+            x = map.xPos[map.xPos.indexOf(xPos)];
+            y = map.yPos[map.yPos.indexOf(yPos)];
+        } 
+        
+        else 
+        {
+            x = map.xPos[map.pos.indexOf(xPos)];
+            y = map.yPos[map.pos.indexOf(yPos)];
+        }
+    } 
+    
+    else 
+    {
+        x = map.xPos[map.pos.indexOf(xPos)];
+        y = map.yPos[map.pos.indexOf(yPos)];
+    }
 
-    x = map.xPos[map.pos.indexOf(xPos)];
-    y = map.yPos[map.pos.indexOf(yPos)];
-
-    setDoc(`currentMap/${currentCharacter[0].classList[1]}/xPos`, x);
-    setDoc(`currentMap/${currentCharacter[0].classList[1]}/yPos`, y);
-
-    if(currentCharacter[0].classList[1] == window.player)
+    setDoc(`currentMap/${currentId}/xPos`, x);
+    setDoc(`currentMap/${currentId}/yPos`, y);
+    
+    if(currentId == window.player)
     {
         setDoc(`playerChar/${window.player}/token/xPos`, x);
         setDoc(`playerChar/${window.player}/token/yPos`, y);
     }
-
-    if(window.wholeDB[currentCharacter[0].classList[1]]["isSummon"])
+    
+    if(window.wholeDB[currentId]["isSummon"])
     {
-        setDoc(`playerChar/Vi/summons/${currentCharacter[0].classList[1]}/xPos`, x);
-        setDoc(`playerChar/Vi/summons/${currentCharacter[0].classList[1]}/yPos`, y);
+        setDoc(`playerChar/Vi/summons/${currentId}/xPos`, x);
+        setDoc(`playerChar/Vi/summons/${currentId}/yPos`, y);
     }
-
 }
 
 /**
