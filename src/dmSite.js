@@ -945,10 +945,10 @@ function deleteMap()
     let selectNames = document.getElementById("selectNames");
     let cName = "";
     cName = selectNames[selectNames.selectedIndex].value;
-    selectNames.remove(selectNames.selectedIndex);
 
     deleteDoc(cName);
     deleteDoc(`lists/${cName}`);
+    wait(5, function(){location.reload(); handleDelete();})
 }
 
 function handleInteractive()
