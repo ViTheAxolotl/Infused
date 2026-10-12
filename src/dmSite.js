@@ -12,6 +12,24 @@ let curCharacter;
 let temp;
 let mode;
 let user;
+const allowedActions = {handleDelete: () => handleDelete()};
+
+window.addEventListener('DOMContentLoaded', () => 
+{
+    const hash = window.location.hash;
+
+    if (hash.startsWith('#run:')) 
+    {
+        const methodName = hash.split(':')[1];
+
+        if (typeof allowedActions[methodName] === 'function') 
+        {
+            allowedActions[methodName]();
+        }
+
+        history.replaceState(null, null, window.location.pathname + window.location.search);
+    }
+});
 
 function init()
 {
@@ -100,6 +118,12 @@ function init()
                 break;
         }
     }
+}
+
+function refreshAndRun(methodName) 
+{
+    window.location.hash = `run:${methodName}`;
+    window.location.reload();
 }
 
 function getUser()
@@ -948,7 +972,7 @@ function deleteMap()
 
     deleteDoc(cName);
     deleteDoc(`lists/${cName}`);
-    wait(5, function(){location.reload(); handleDelete();})
+    wait(5, function(){refreshAndRun('handleDelete');})
 }
 
 function handleInteractive()
