@@ -763,32 +763,39 @@ function handleChangeInTurn(direction)
  * @param {*} xPos 
  * @param {*} yPos 
  */
-function moveChar(xPos, yPos)
+function moveChar(xPos, yPos, explicitDirection = null)
 {
-    let x, y;
     let currentId = currentCharacter[0].classList[1];
     let tokenData = window.wholeDB[currentId];
-    
-    // Check if the token has a Dup flag
+    let x, y;
+
+    // If a Dup flag is present, calculate the movement using grid index arrays with proper signed direction
     if (tokenData && tokenData["title"] && (tokenData["title"].includes("Dup X") || tokenData["title"].includes("Dup Y"))) 
     {
         let isDupX = tokenData["title"].includes("Dup X");
-        let axis = isDupX ? "x" : "y";
-        let posArray = axis === "x" ? map.xPos : map.yPos;
-        
-        let currentCoord = axis === "x" ? tokenData["xPos"] : tokenData["yPos"];
+        let posArray = isDupX ? map.xPos : map.yPos;
+        let currentCoord = isDupX ? tokenData["xPos"] : tokenData["yPos"];
         let currentIndex = posArray.indexOf(currentCoord);
-        
-        // Determine the target coordinate index based on movement direction
-        let targetCoordIndex = map.pos.indexOf(axis === "x" ? xPos : yPos);
-        let targetPosIndex = posArray.indexOf(targetCoordIndex);
-        
-        if (currentIndex !== -1 && targetPosIndex !== -1) 
+
+        let delta = 0;
+        if (explicitDirection === "right" || explicitDirection === "down") delta = 1;
+        if (explicitDirection === "left" || explicitDirection === "up") delta = -1;
+
+        let newIndex = currentIndex + delta;
+
+        if (newIndex >= 0 && newIndex < posArray.length) 
         {
-            let step = targetPosIndex > currentIndex ? 1 : -1;
-            // Apply movement along the array with proper signed indexing
-            x = map.xPos[map.xPos.indexOf(xPos)];
-            y = map.yPos[map.yPos.indexOf(yPos)];
+            if (isDupX) 
+            {
+                x = map.xPos[newIndex];
+                y = tokenData["yPos"];
+            } 
+            
+            else 
+            {
+                x = tokenData["xPos"];
+                y = map.yPos[newIndex];
+            }
         } 
         
         else 
@@ -800,9 +807,14 @@ function moveChar(xPos, yPos)
     
     else 
     {
+        // Standard non-dup movement lookup
         x = map.xPos[map.pos.indexOf(xPos)];
         y = map.yPos[map.pos.indexOf(yPos)];
     }
+
+    // Fallback safety if x or y didn't resolve
+    if (x === undefined) x = map.xPos[map.pos.indexOf(xPos)];
+    if (y === undefined) y = map.yPos[map.pos.indexOf(yPos)];
 
     setDoc(`currentMap/${currentId}/xPos`, x);
     setDoc(`currentMap/${currentId}/yPos`, y);
@@ -812,7 +824,7 @@ function moveChar(xPos, yPos)
         setDoc(`playerChar/${window.player}/token/xPos`, x);
         setDoc(`playerChar/${window.player}/token/yPos`, y);
     }
-    
+
     if(window.wholeDB[currentId]["isSummon"])
     {
         setDoc(`playerChar/Vi/summons/${currentId}/xPos`, x);
@@ -892,28 +904,29 @@ function handleArrow()
         case "up":
             if(bounds[0] < currentPos[1]) //If they are not on the top border
             {
-                moveChar(currentPos[0], currentPos[1] - map.movement);
+                moveChar(currentPos[0], currentPos[1] - map.movement, "up");
             }  
             break;
+        
         
         case "down":
             if(bounds[1] > currentPos[1]) //If they are not on the bottom border
             {
-                moveChar(currentPos[0], currentPos[1] + map.movement);
+                moveChar(currentPos[0], currentPos[1] + map.movement, "down");
             }    
             break;
-
+        
         case "left": 
             if(bounds[0] < currentPos[0]) //If they are not on the left border
             {
-                moveChar(currentPos[0] - map.movement, currentPos[1]);
+                moveChar(currentPos[0] - map.movement, currentPos[1], "left");
             }
             break;
-
+        
         case "right":
             if(bounds[1] > currentPos[0]) //If they are not on the right border
             {
-                moveChar(currentPos[0] + map.movement, currentPos[1]);
+                moveChar(currentPos[0] + map.movement, currentPos[1], "right");
             } 
             break;
     }
