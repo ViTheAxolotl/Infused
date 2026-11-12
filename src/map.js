@@ -366,7 +366,7 @@ function handleTurnTimer()
     let list = document.createElement("ul");
 
     title.innerHTML = toTitleCase(person);
-    title.classList = "center color-UP-yellow";
+    title.classList = "center text-brass";
 
     back.innerHTML = "<- Back";
     back.onclick = function(){removeTurnOrder(); setTurnOrder();};
@@ -382,7 +382,7 @@ function handleTurnTimer()
         if(skill != "temp")
         {
             let bullet = document.createElement("li");
-            bullet.classList= "color-UP-yellow";
+            bullet.classList= "text-brass";
             bullet.innerHTML = `${skill} | ${skills[skill]["expires"] - window.wholeTO["Var"]["currentTurn"]} turns left active.`;
             list.appendChild(bullet);
         }
@@ -1098,3 +1098,28 @@ export function setMode(auth)
         mode = data;
     });
 }
+
+// Opening index.html#sheet (the "Character Sheet" link in the name dropdown)
+// jumps straight to the Sheet tab. The tab's click handler is attached by
+// another script, so wait for it before clicking (falls back after 5s).
+function openTabFromHash()
+{
+    if(location.hash != "#sheet"){return;}
+
+    let sheetBtn = document.querySelector('.firstMenu[name="sheet"]');
+    if(!sheetBtn){return;}
+
+    let tries = 0;
+    let timer = setInterval(() =>
+    {
+        tries++;
+        if(sheetBtn.onclick || tries >= 20)
+        {
+            clearInterval(timer);
+            sheetBtn.click();
+        }
+    }, 250);
+}
+
+openTabFromHash();
+window.addEventListener("hashchange", openTabFromHash);
