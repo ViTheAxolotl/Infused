@@ -96,7 +96,7 @@ function init()
 {
     setInterval(timer, 250);
 
-    document.getElementById("helpBtn").onclick = handleCharClick;
+    document.getElementById("helpBtn").onclick = function(){handleViewTokens(this);}; //Opens the instructions overlay
     document.getElementById("hideCover").onclick = hideCover; 
 
     let iFrames = document.getElementsByTagName("iframe");
@@ -950,7 +950,7 @@ function handleCharClick()
 /**
  * Opens the enlarged token view (#cover) for the clicked token, copying its picture,
  * ring and HP bar into it with its name/title. The help button reuses the same overlay
- * and adds Instructions tabs (Map / Stats / Actions / Favorites).
+ * and adds Instructions tabs (Map / Stats / Actions / Favorites), opening on Map.
  */
 function handleViewTokens(t)
 {
@@ -1017,7 +1017,9 @@ function handleViewTokens(t)
             holdingDiv.appendChild(label);
         }
 
-        viewDiv.insertBefore(holdingDiv, document.getElementById("viewToken"));
+        // The tabs go inside the overlay's first box, above the instruction text
+        viewDiv.children[0].insertBefore(holdingDiv, document.getElementById("showInstructions"));
+        holdingDiv.querySelector("button").click(); //Start on the Map instructions
     }
 }
 
