@@ -201,7 +201,7 @@ iframe
 
 .navbar-brand img
 {
-    width: 54px;
+    width: auto;        /* keep each logo's own proportions */
     height: 54px;
     filter: drop-shadow(0 0 8px rgba(255, 176, 84, .35));
 }
@@ -377,6 +377,79 @@ body.embedded #discDisplay
 #story, #map, #controls, #discDisplay, #gridMapWrapper, #login
 {
     margin-top: 24px;
+}
+
+/* Text or an icon under the page title (Axol-Apps headers) */
+#header p
+{
+    text-indent: 0;
+    margin: 8px 0 0;
+    font-size: 1.2rem;
+    color: var(--parchment-dim);
+}
+
+#header img
+{
+    display: block;
+    margin: 10px auto 4px;
+    filter: drop-shadow(0 0 6px rgba(236, 208, 140, .45));
+}
+
+#header h3
+{
+    margin: 4px 0 0;
+    font-size: 1.3rem;
+}
+
+/* Axol-Apps portfolio pages (body class="portfolio"): left-aligned
+   bio & project lists with heart bullets, and the game embeds */
+.portfolio #info,
+.portfolio #hometown
+{
+    text-align: left;
+}
+
+/* full-width panels on the game pages don't need the side-by-side margins */
+.portfolio #info.col-md-12,
+.portfolio #hometown.col-md-12
+{
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.portfolio #hometown
+{
+    padding: 16px 28px;
+    list-style-image: url(../images/heart.png);
+}
+
+.portfolio #hometown li
+{
+    margin: 3px 0;
+}
+
+.portfolio #hometown a
+{
+    text-decoration: none;
+    border-bottom: 1px solid var(--brass-dim);
+}
+
+.portfolio #hometown a:hover
+{
+    border-bottom-color: var(--brass);
+}
+
+#gameFrame
+{
+    overflow: hidden;
+    width: 80vw;
+    height: 80vh;
+    max-width: 100%;
+    display: block;
+    margin: 0 auto;
+    border: 1px solid var(--brass-dim);
+    border-radius: 2px;
+    background: #000;
 }
 
 /* 6. BUTTONS & STATES ------------------------------------------------- */
@@ -1526,6 +1599,9 @@ body.embedded #siteList > #story
     }
 
     .ddown-content img { width: 25%; }
+
+    /* Change Token's picture dropdown button (mapControler.js builds its id) */
+    #CharacterButton { width: 38%; }
 
     #hideCover, #quickAction { width: 38%; left: 62%; }
     #quickAction { left: 22%; }

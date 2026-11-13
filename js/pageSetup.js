@@ -1,3 +1,16 @@
+/**
+ * pageSetup.js — builds the navbar and footer on every full page.
+ *
+ * Each page includes it inside its <nav> with a class saying where the page sits:
+ *   <script src="js/pageSetup.js" class="noParent">   page is in the site root
+ *   class="downOne"                                   page is one folder down (links need ../)
+ * That first class is read below to build correct links and image paths.
+ *
+ * When Firebase reports the login state, the right-hand side of the navbar becomes
+ * either the player's name (with a dropdown: Character Sheet, Logout) or a Login button.
+ * The footer gets the copyright line.
+ */
+
 "use strict";
 import { ref, onValue } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js';
 import { onAuthStateChanged, signOut } from 'https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js';
@@ -7,6 +20,7 @@ let log;
 let isLoggedIn = false;
 let nav = document.getElementsByTagName("nav");
 let url = window.location.href.split("/");
+// The first <script> in <body> is this one; its first class tells us where the page lives.
 let params = document.body.getElementsByTagName('script');
 let query = params[0].classList;
 let parentFolder = query[0];
@@ -18,6 +32,7 @@ let imageLocation;
 let jsaLocation;
 let mainLocation;
 
+// Redraw the navbar whenever character data changes.
 const charRef = ref(database, 'playerChar/');
 onValue(charRef, (snapshot) => 
 {
@@ -38,6 +53,8 @@ if(parentFolder == "downOne")
     imageLocation = "../images/";
 }
 
+// Firebase calls this on load and on every login/logout. The account name is the part
+// of the email before "@" (accounts are <Name>@ForgottenRealms.com).
 onAuthStateChanged(auth, (user) => {
     if (user) 
     {
@@ -69,11 +86,19 @@ onAuthStateChanged(auth, (user) => {
     navBarSetup();
 });
 
+/**
+ * Runs once when the script loads: fills in the footer.
+ */
 function init()
 {
     copyrightSetup();
 }
 
+/**
+ * Writes the whole navbar into <nav>. `log` holds the right-hand part (name dropdown
+ * or Login button) and is set in onAuthStateChanged above, so this runs again once
+ * the login state is known.
+ */
 function navBarSetup()
 {
     nav[0].innerHTML = `<div class="container-fluid">
@@ -92,6 +117,9 @@ function navBarSetup()
     if(isLoggedIn){document.getElementById("logoutButton").onclick = logout;}
 }
 
+/**
+ * Signs the player out of Firebase and reloads the page (which then shows Login).
+ */
 function logout()
 {
     signOut(auth).then(() => 
@@ -103,6 +131,9 @@ function logout()
     });
 }
 
+/**
+ * Placeholder for an embedded Discord chat widget. Currently switched off (body commented out).
+ */
 function discordSetup()
 {
     /*let scripts = document.createElement("script");
@@ -111,6 +142,9 @@ function discordSetup()
     body[0].appendChild(scripts);*/
 }
 
+/**
+ * Adds "Copyright © Vi Snyder <current year>" to the footer.
+ */
 function copyrightSetup()
 {
     footer.innerHTML += `<h6>Copyright &copy; Vi Snyder ${new Date().getFullYear()}</h6>`;
