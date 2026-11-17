@@ -468,7 +468,7 @@ function createChar(curCharacter, curBorder)
 {
     let charName = curCharacter.slice(0, curCharacter.length - 1);
     if(curCharacter.includes("ustom")){charName = curCharacter.slice(7);}
-    let char = {border : curBorder, currentHp : `${document.getElementById("Current Hp").value}`, maxHp : `${document.getElementById("Max Hp").value}`, tempHp : document.getElementById("Temp Hp").value, map : "", id : charName, name : curCharacter, title : " " + charName + ", ", xPos : "1", yPos : "A", isSummon : false, AC : document.getElementById("AC").value};
+    let char = {border : curBorder, currentHp : `${document.getElementById("Current Hp").value}`, maxHp : `${document.getElementById("Max Hp").value}`, tempHp : document.getElementById("Temp Hp").value, map : "", id : charName, name : curCharacter, title : " " + charName + ", ", xPos : "1", yPos : "A", isSummon : false, AC : document.getElementById("AC").value || "10"}; //Blank AC box -> 10
 
     
     if(oldToken != null || oldToken != undefined)
