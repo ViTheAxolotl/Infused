@@ -178,8 +178,9 @@ function makeToken(key)
     token[0].classList = "bg-oak-deep objectBorder";
     token[0].style.margin = "5px";
     token[0].style.position = "relative";
-    token[0].style.minHeight = "82px";
+    token[0].style.minHeight = "calc(12vh + 10px)"; //Pictures are 12vh (Styles.css #story .tokens)
     token[0].style.minWidth = "82px";
+    token[0].style.paddingLeft = "calc(12vh + 15px)"; //Keeps every row of fields clear of the picture
     token[1].src = window.top.parent.imgs["tokens"][key.name];
     token[1].id = key.name;
     token[1].classList = `tokens ${key.name} char`;
@@ -203,6 +204,7 @@ function makeToken(key)
 function handleRemove()
 {
     hideButtons();
+    mode = undefined; //Clear "add"/"preset" left over from the last tool, or Edit shows the filler token
 
     for(let key of Object.keys(window.top.parent.wholeDB))
     {
@@ -240,7 +242,7 @@ function handleDeleteOrEdit()
     temp = this.classList[1];
     editB.classList = `eOrD ${this.classList[1]}`;
     editB.id = "edit";
-    editB.style.margin = `5px 5px 5px 79px`;
+    editB.style.margin = `5px`;
     deleteB.innerHTML = "delete";
     deleteB.onclick = deleteToken;
     deleteB.classList = `eOrD ${this.classList[1]}`;
@@ -309,15 +311,24 @@ function handleEdit()
 
     if(temp != undefined)
     {
-        if(mode == undefined)
+        if(mode != "preset" && mode != "add")
         {
-            for(let key of Object.keys(window.top.parent.wholeDB))
+            //temp is the token's id (the map key). Look it up directly: matching on name breaks for
+            //numbered copies (goblin1's name is still "goblin-") and for tokens whose picture changed.
+            let found = window.top.parent.wholeDB[temp];
+
+            if(found == undefined)
             {
-                if(window.top.parent.wholeDB[key].name == temp + "-")
+                for(let key of Object.keys(window.top.parent.wholeDB))
                 {
-                    curCharacter = window.top.parent.wholeDB[key];
+                    if(window.top.parent.wholeDB[key].id == temp || window.top.parent.wholeDB[key].name == temp + "-")
+                    {
+                        found = window.top.parent.wholeDB[key];
+                    }
                 }
             }
+
+            if(found != undefined){curCharacter = found;}
         }
 
         else if(mode == "preset")
@@ -342,7 +353,6 @@ function handleEdit()
         
         if(i == 0)
         {
-            label.style.margin = `5px 5px 5px 79px`;
             txtFeilds[i] = document.createElement("select");
             txtFeilds[i].name = names[i];
 
@@ -404,7 +414,8 @@ function handleEdit()
     txtFeilds[6].value = curCharacter.yPos;
     txtFeilds[7].value = curCharacter.tempHp;
     txtFeilds[8].value = curCharacter.isSummon;
-    txtFeilds[9].value = curCharacter.AC ?? curCharacter.ac ?? ""; //Map tokens store it as AC
+    let curAC = curCharacter.AC ?? curCharacter.ac; //Map tokens store it as AC
+    txtFeilds[9].value = (curAC == undefined || curAC === "" || curAC == "undefined") ? "10" : curAC;
     editDiv.appendChild(document.createElement("h6"));
     buttons.forEach(em => {editDiv.appendChild(em)});
 }
@@ -529,8 +540,7 @@ function handleQuick()
             {
                 let label = createLabel(names[i]);
 
-                if(i == 0){label.style.margin = `5px 5px 5px 79px`;}
-                else{label.style.margin = `5px`;}
+                label.style.margin = `5px`;
 
                 feilds[i].style.display = "inline";
                 currentDiv.appendChild(label);
@@ -590,8 +600,7 @@ function handlePreset()
         {
             let label = createLabel(names[i]);
 
-            if(i == 0){label.style.margin = `5px 5px 5px 79px`;}
-            else{label.style.margin = `5px`;}
+            label.style.margin = `5px`;
 
             feilds[i].style.display = "inline";
             feilds[i].id = db[preOrSumm][token].name.slice(0, db[preOrSumm][token].name.length - 1);
@@ -1774,6 +1783,7 @@ function addToken()
     let y = document.getElementById("yPos").value;
     let s = document.getElementById("isSummon").value;
     let ac = document.getElementById("ac").value;
+    if(ac.trim() == "" || ac == "undefined"){ac = "10";}
     let id = n.slice(0, n.indexOf("-"));
     
     if(Object.keys(window.top.parent.wholeDB).includes(id) && mode == "add")
